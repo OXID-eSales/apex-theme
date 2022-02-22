@@ -11,11 +11,11 @@
 <div class="btn-group" role="group">
     <button type="button" aria-label="Usercenter" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account") }) }}">
         {% block dd_layout_page_header_icon_menu_account_button %}
-            {{ *if not oxcmp_user.oxuser__oxpassword.value }}
+            {# if not oxcmp_user.oxuser__oxpassword.value }}
                 {{ translate({ ident: "LOGIN" }) }}
             {% else %}
                 {{ translate({ ident: "MY_ACCOUNT" }) }}
-            {{ /if* }}
+            {{ /if #}
             <i class="moga-person d-inline-block"></i>
         {% endblock %}
     </button>

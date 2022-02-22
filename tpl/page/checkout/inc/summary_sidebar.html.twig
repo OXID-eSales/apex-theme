@@ -8,7 +8,7 @@
                 <div class="collapse" id="voucherCollapse">
                     <div class="card-body">
                         <form name="voucher" action="{{ oViewConf.getSelfActionLink() }}" method="post" novalidate>
-                            {{ oViewConf.getHiddenSid() }}
+                            {{ oViewConf.getHiddenSid()|raw }}
                             <input type="hidden" name="cl" value="basket">
                             <input type="hidden" name="fnc" value="addVoucher">
                             <input type="hidden" name="CustomError" value="basket">
@@ -261,7 +261,7 @@
     {% if not oView.isLowOrderPrice() and btn %}
         {% block basket_btn_next_bottom %}
         <form action="{{ oViewConf.getSslSelfLink() }}" method="post">
-            {{ oViewConf.getHiddenSid() }}
+            {{ oViewConf.getHiddenSid()|raw }}
             <input type="hidden" name="cl" value="user">
             <button type="submit" class="btn btn-primary btn-lg w-100">
                 {{ translate({ ident: "CHECKOUT" }) }}

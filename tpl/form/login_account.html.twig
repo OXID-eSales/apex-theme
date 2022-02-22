@@ -1,5 +1,5 @@
-{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
-{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) #}
 
 {% if oView.getAccountDeletionStatus() == true %}
     {% set statusMessage = "DD_DELETE_MY_ACCOUNT_SUCCESS"|translate %}
@@ -11,8 +11,8 @@
         <div class="card-header">{{ translate({ ident: "LOGIN" }) }}</div>
         <div class="card-body">
             <form name="login" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
-                {{ oViewConf.getHiddenSid() }}
-                {{ oViewConf.getNavFormParams() }}
+                {{ oViewConf.getHiddenSid()|raw }}
+                {{ oViewConf.getNavFormParams()|raw }}
                 <input type="hidden" name="fnc" value="login_noredirect">
                 <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
                 <input type="hidden" name="tpl" value="{{ oViewConf.getActTplName() }}">

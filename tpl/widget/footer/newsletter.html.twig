@@ -2,7 +2,7 @@
     <form class="newsletter-form"  action="{{ oViewConf.getSslSelfLink() }}" method="post">
         <div class="mb-3">
             {% block dd_footer_newsletter_form_inner %}
-                {{ oViewConf.getHiddenSid() }}
+                {{ oViewConf.getHiddenSid()|raw }}
                 <input type="hidden" name="fnc" value="fill">
                 <input type="hidden" name="cl" value="newsletter">
                 {% if oView.getProduct() %}

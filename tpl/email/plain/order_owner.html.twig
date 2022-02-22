@@ -28,7 +28,7 @@
 {% set basketitemlist = basket.getBasketArticles() %}
 {% for basketindex, basketitem in basket.getContents() %}
 {% block email_plain_order_ownerbasketitem %}
-{% set basketproduct = basketitemlist.$basketindex %}
+{% set basketproduct = basketitemlist[basketindex] %}
 {{ basketproduct.oxarticles__oxtitle.getRawValue()|striptags }}{% if basketproduct.oxarticles__oxvarselect.value %}, {{ basketproduct.oxarticles__oxvarselect.value }}{% endif %}
 {% if basketitem.getChosenSelList() %}{% for oList in basketitem.getChosenSelList() %}{{ oList.name }} {{ oList.value }}{% endfor %}{% endif %}
 {% if basketitem.getPersParams() %}{% for sVar, aParam in basketitem.getPersParams() %}{{ sVar }} : {{ aParam }}{% endfor %}{% endif %}
@@ -159,7 +159,7 @@
 {% block email_plain_order_ownergrandtotal %}
 {# grand total price #}
 {{ translate({ ident: "GRAND_TOTAL" }) }} {{ basket.getFPrice() }} {{ currency.name }}
-{% if basket.oCard %}
+{% if basket['oCard'] %}
     {{ translate({ ident: "ATENTION_GREETING_CARD" }) }}
     {{ translate({ ident: "WHAT_I_WANTED_TO_SAY" }) }}
     {{ basket.getCardMessage() }}
@@ -206,7 +206,7 @@
 {% endblock %}
 
 {% block email_plain_order_ownerdeliveryinfo %}
-{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ order.oDelSet.oxdeliveryset__oxtitle.getRawValue() }}
+{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ oDelSet.oxdeliveryset__oxtitle.getRawValue() }}
 {% endif %}
 {% endblock %}
 

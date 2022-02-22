@@ -1,12 +1,12 @@
-{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
-{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) #}
 
 {% set currency = oView.getActCurrency() %}
 <p class="alert alert-info">{{ translate({ ident: "MESSAGE_PRICE_ALARM_PRICE_CHANGE" }) }}</p>
 <form class="max-600" name="pricealarm" action="{{ oViewConf.getSelfActionLink() }}" method="post" novalidate>
     <div>
-        {{ oViewConf.getHiddenSid() }}
-        {{ oViewConf.getNavFormParams() }}
+        {{ oViewConf.getHiddenSid()|raw }}
+        {{ oViewConf.getNavFormParams()|raw }}
         <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
         {% if oDetailsProduct %}
             <input type="hidden" name="anid" value="{{ oDetailsProduct.oxarticles__oxid.value }}">

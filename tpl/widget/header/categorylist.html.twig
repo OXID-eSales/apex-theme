@@ -10,10 +10,10 @@
 
         {% if navStyle == "MegaMenu" %}
             <nav id="mainnav" class="navbar navbar-mega navbar-expand-lg p-0 order-lg-2">
-            {% block dd_widget_header_categorylist_navbar %}
+            {% block dd_widget_header_categorylist_navbar_mega_menu %}
                 <div class="navbar-collapse collapse" id="navbarSupportedContent">
                     <div id="navigation" class="navbar-nav navbar-nav-mega">
-                        {% block dd_widget_header_categorylist_navbar_list %}
+                        {% block dd_widget_header_categorylist_navbar_list_mega_menu %}
                             {% for catkey, ocat in oxcmp_categories %}
                                 {% if ocat.getIsVisible() %}
                                     {% for oTopCont in ocat.getContentCats() %}
@@ -100,11 +100,11 @@
                         {% endblock %}
                     </div>
                     <div class="d-md-none">
-                        {% block dd_layout_page_header_icon_menu_languages %}
+                        {% block dd_layout_page_header_icon_menu_languages_mega_menu %}
                         {# Language Dropdown #}
                         {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassName(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
                         {% endblock %}
-                        {% block dd_layout_page_header_icon_menu_currencies %}
+                        {% block dd_layout_page_header_icon_menu_currencies_mega_menu %}
                         {# Currency Dropdown #}
                         {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassName(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
                         {% endblock %}

@@ -1,9 +1,9 @@
-{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
-{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();", dynamic: __oxid_include_dynamic }) #}
 <form id="optionLogin" name="login" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
 
-    {{ oViewConf.getHiddenSid() }}
-    {{ oViewConf.getNavFormParams() }}
+    {{ oViewConf.getHiddenSid()|raw }}
+    {{ oViewConf.getNavFormParams()|raw }}
     <input type="hidden" name="fnc" value="login_noredirect">
     <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
     {% block checkout_options_login_text %}

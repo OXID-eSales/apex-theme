@@ -15,12 +15,12 @@
     {% endif %}
     {% set aVariantSelections = product.getVariantSelections("null", "null", 1) %}
     {% set blShowToBasket = true %} {# tobasket or more info ? #}
-    {% if blDisableToCart or product.isNotBuyable()||(aVariantSelections&&$aVariantSelections.selections)||$product.getVariants()||(oViewConf.showSelectListsInList() and product.getSelections(1)) %}
+    {% if blDisableToCart or product.isNotBuyable() or (aVariantSelections and aVariantSelections.selections) or product.getVariants() or (oViewConf.showSelectListsInList() and product.getSelections(1)) %}
         {% set blShowToBasket = false %}
     {% endif %}
 
-        {{ oViewConf.getNavFormParams() }}
-        {{ oViewConf.getHiddenSid() }}
+        {{ oViewConf.getNavFormParams()|raw }}
+        {{ oViewConf.getHiddenSid()|raw }}
         <input type="hidden" name="pgNr" value="{{ oView.getActPage() }}">
         {% if recommid %}
             <input type="hidden" name="recommid" value="{{ recommid }}">
@@ -184,8 +184,8 @@
                                             {% hasrights { ident: "TOBASKET" } %}
                                                 <form name="tobasket{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink() }}" method="post"{% else %}action="{{ _productLink }}" method="get"{% endif %}>
                                                     <div class="hidden">
-                                                        {{ oViewConf.getNavFormParams() }}
-                                                        {{ oViewConf.getHiddenSid() }}
+                                                        {{ oViewConf.getNavFormParams()|raw }}
+                                                        {{ oViewConf.getHiddenSid()|raw }}
                                                         <input type="hidden" name="pgNr" value="{{ oView.getActPage() }}">
                                                         {% if recommid %}
                                                             <input type="hidden" name="recommid" value="{{ recommid }}">
@@ -220,7 +220,7 @@
                                                             <button id="toBasket_{{ testid }}" type="submit" aria-label="{{ translate({ ident: "TO_CART" }) }}" class="btn btn-primary" data-container="body">
                                                                 <i class="moga-bag"></i>
                                                             </button>
-                                                            {% if removeFunction and (owishid and (owishid==$oxcmp_user.oxuser__oxid.value)) or (wishid==$oxcmp_user.oxuser__oxid.value)) or recommid) %}
+                                                            {% if removeFunction and ((owishid and (owishid==oxcmp_user.oxuser__oxid.value)) or (wishid==oxcmp_user.oxuser__oxid.value) or recommid) %}
                                                             <button data-triggerForm="remove_{{ removeFunction }}{{ testid }}" type="submit" class="btn btn-light removeButton listRemoveButton">
                                                                 <i class="moga-times"></i>
                                                             </button>
@@ -232,7 +232,7 @@
                                         {% else %}
                                             <a class="btn btn-primary" href="{{ _productLink }}">{{ translate({ ident: "MORE_INFO" }) }}</a>
 
-                                            {% if removeFunction and (owishid and (owishid==$oxcmp_user.oxuser__oxid.value)) or (wishid==$oxcmp_user.oxuser__oxid.value)) or recommid) %}
+                                            {% if removeFunction and ((owishid and (owishid==oxcmp_user.oxuser__oxid.value)) or (wishid==oxcmp_user.oxuser__oxid.value) or recommid) %}
                                                 <button triggerForm="remove_{{ removeFunction }}{{ testid }}" type="submit" class="btn btn-danger w-100 removeButton">
                                                     <i class="moga-times"></i> {{ translate({ ident: "REMOVE" }) }}
                                                 </button>
@@ -247,9 +247,9 @@
             </div>
         </div>
 
-    {% if removeFunction and (owishid and (owishid==$oxcmp_user.oxuser__oxid.value)) or (wishid==$oxcmp_user.oxuser__oxid.value)) or recommid) %}
+    {% if removeFunction and ((owishid and (owishid==oxcmp_user.oxuser__oxid.value)) or (wishid==oxcmp_user.oxuser__oxid.value) or recommid) %}
         <form action="{{ oViewConf.getSelfActionLink() }}" method="post" id="remove_{{ removeFunction }}{{ testid }}">
-            {{ oViewConf.getHiddenSid() }}
+            {{ oViewConf.getHiddenSid()|raw }}
             <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
             <input type="hidden" name="fnc" value="{{ removeFunction }}">
             <input type="hidden" name="aid" value="{{ product.oxarticles__oxid.value }}">

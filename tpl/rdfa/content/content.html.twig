@@ -10,7 +10,7 @@
         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
         xml:base="{{ sRDFaUrl }}">
         {% for sTplName in oView.getContentPageTpl() %}
-            {% include $sTplName %}
+            {% include sTplName %}
         {% endfor %}
     </div>
 {% endif %}

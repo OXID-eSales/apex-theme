@@ -30,7 +30,7 @@
 {% set basketitemlist = basket.getBasketArticles() %}
 {% for basketindex, basketitem in basket.getContents() %}
 {% block email_plain_order_cust_basketitem %}
-{% set basketproduct = basketitemlist.$basketindex %}
+{% set basketproduct = basketitemlist[basketindex] %}
 {{ basketproduct.oxarticles__oxtitle.getRawValue()|striptags }}{% if basketproduct.oxarticles__oxvarselect.value %}, {{ basketproduct.oxarticles__oxvarselect.value }}{% endif %}
 {% if basketitem.getChosenSelList() %}{% for oList in basketitem.getChosenSelList() %}
 
@@ -201,7 +201,7 @@
 {% endif %}
 {% endblock %}
 
-{% block email_plain_order_cust_paymentinfo %}
+{% block email_plain_order_cust_paymentinfo_main %}
 {% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}
     {{ translate({ ident: "PAYMENT_METHOD" }) }} {{ payment.oxpayments__oxdesc.getRawValue() }} {% if basket.getPaymentCosts() %}({{ basket.getFPaymentCosts() }} {{ currency.sign }}){% endif %}
 {% endif %}
@@ -235,7 +235,7 @@
 {% endblock %}
 
 {% block email_plain_order_cust_deliveryinfo %}
-{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ order.oDelSet.oxdeliveryset__oxtitle.getRawValue() }}
+{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ oDelSet.oxdeliveryset__oxtitle.getRawValue() }}
 {% endif %}
 {% endblock %}
 

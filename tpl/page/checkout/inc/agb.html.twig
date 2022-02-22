@@ -27,7 +27,7 @@
                 {% else %}
                     {% ifcontent ident "oxrighttocancellegend2" set oContent %}
                         <p class="agbConfirmation">
-                            {{ oContent.oxcontents__oxcontent.value }}
+                            {{ include(template_from_string(oContent.oxcontents__oxcontent.value)) }}
                         </p>
                     {% endifcontent %}
                 {% endif %}

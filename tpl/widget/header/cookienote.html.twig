@@ -1,7 +1,7 @@
 {% if oView.isEnabled() and get_global_cookie("displayedCookiesNotification") != '1' %}
-    {{ *oxscript include="js/libs / jquery.cookie.min.js" }}
+    {# oxscript include="js/libs / jquery.cookie.min.js" }}
     {{ script({ add: "$.cookie('testing', 'yes'); if(!$.cookie('testing')) $('#cookieNote').hide(); else{ $('#cookieNote').show(); $.cookie('testing', null, -1);}", dynamic: __oxid_include_dynamic }) }}
-    {{ script({ include: "js/widgets/oxcookienote.min.js"*, dynamic: __oxid_include_dynamic }) }}
+    {{ script({ include: "js/widgets/oxcookienote.min.js", dynamic: __oxid_include_dynamic }) #}
     <div id="cookieNote">
         <div class="alert alert-info" style="margin: 0;">
             <button type="button" class="btn-close" data-bs-dismiss="alert">

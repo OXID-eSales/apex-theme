@@ -12,12 +12,12 @@
 
     {% if aUserAddresses|length > 0 %}
         <input type="hidden" name="changeClass" value="{{ onChangeClass|default('account_user') }}">
-        {{ *oxscript include="js/widgets / oxusershipingaddressselect.min.js" priority=10 }}
+        {# oxscript include="js/widgets / oxusershipingaddressselect.min.js" priority=10 }}
         {{ script({ include: "js/widgets/oxequalizer.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
         {{ script({ add: "$( '.dd-add-delivery-address' ).click( function() {  $('.dd-available-addresses .dd-action').remove(); $( this ).find( 'label.btn' ).button('toggle'); } );", dynamic: __oxid_include_dynamic }) }}
         {{ script({ add: "$( 'input[name=\"oxaddressid\"]', ).oxUserShipingAddressSelect();: ).oxUserShipingAddressSelect();", dynamic: __oxid_include_dynamic }) }}
         {{ script({ add: "$( window ).load( function() { if( !isMobileDevice() ) { oxEqualizer.equalHeight( $( '.dd-available-addresses .panel .card-body' ) ); } } );", dynamic: __oxid_include_dynamic }) }}
-        {{ script({ add: "$('.dd-edit-shipping-address').click(function(){ $('#shippingAddressForm').show(); $('html, body').animate({ scrollTop: $( '#shippingAddressForm').offset().top - 80 }, 600 ); } );"*, dynamic: __oxid_include_dynamic }) }}
+        {{ script({ add: "$('.dd-edit-shipping-address').click(function(){ $('#shippingAddressForm').show(); $('html, body').animate({ scrollTop: $( '#shippingAddressForm').offset().top - 80 }, 600 ); } );", dynamic: __oxid_include_dynamic }) #}
 
         {% block form_user_shipping_address_select %}
             {% for address in aUserAddresses %}

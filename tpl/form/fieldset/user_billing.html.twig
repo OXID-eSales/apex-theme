@@ -4,7 +4,7 @@
 {% if isset( invadr.oxuser__oxbirthdate.month ) %}
     {% set iBirthdayMonth = invadr.oxuser__oxbirthdate.month %}
 {% elseif oxcmp_user.oxuser__oxbirthdate.value and oxcmp_user.oxuser__oxbirthdate.value != "0000-00 - 00" %}
-    {% set iBirthdayMonth = oxcmp_user.oxuser__oxbirthdate.value|regex_replace("/^([0-9]{4)})[-]/":""|regex_replace("/[-]([0-9]{1,) 2})$/":"" %}
+    {% set iBirthdayMonth = oxcmp_user.oxuser__oxbirthdate.value|regex_replace("/^([0-9]{4})[-]/","")|regex_replace("/[-]([0-9]{1,2})$/","") %}
 {% else %}
     {% set iBirthdayMonth = 0 %}
 {% endif %}
@@ -12,7 +12,7 @@
 {% if isset( invadr.oxuser__oxbirthdate.day ) %}
     {% set iBirthdayDay = invadr.oxuser__oxbirthdate.day %}
 {% elseif oxcmp_user.oxuser__oxbirthdate.value and oxcmp_user.oxuser__oxbirthdate.value != "0000-00 - 00" %}
-    {% set iBirthdayDay = oxcmp_user.oxuser__oxbirthdate.value|regex_replace("/^([0-9]{4)})[-]([0-9]{1, 2})[-]/":"" %}
+    {% set iBirthdayDay = oxcmp_user.oxuser__oxbirthdate.value|regex_replace("/^([0-9]{4})[-]([0-9]{1,2})[-]/","") %}
 {% else %}
     {% set iBirthdayDay = 0 %}
 {% endif %}
@@ -20,7 +20,7 @@
 {% if isset( invadr.oxuser__oxbirthdate.year ) %}
     {% set iBirthdayYear = invadr.oxuser__oxbirthdate.year %}
 {% elseif oxcmp_user.oxuser__oxbirthdate.value and oxcmp_user.oxuser__oxbirthdate.value != "0000-00 - 00" %}
-    {% set iBirthdayYear = oxcmp_user.oxuser__oxbirthdate.value|regex_replace("/[-]([0-9]{1,) 2})[-]([0-9]{1, 2})$/":"" %}
+    {% set iBirthdayYear = oxcmp_user.oxuser__oxbirthdate.value|regex_replace("/[-]([0-9]{1,2})[-]([0-9]{1,2})$/","") %}
 {% else %}
     {% set iBirthdayYear = 0 %}
 {% endif %}
@@ -191,8 +191,8 @@
                     <select id="oxMonth" class="oxMonth form-select" name="invadr[oxuser__oxbirthdate][month]"{% if oView.isFieldRequired("oxuser__oxbirthdate") %} required{% endif %}>
                         <option value="" label="-">-</option>
                         {% for month in 1..13 %}
-                            <option value="[{loop.index0 %} selected="selected" {% endif %}>
-                                {{ translate({ ident: "MONTH_NAME_"|cat(smarty.section.month.index) }) }}
+                            <option value="{{ loop.index0 }}" label="{{ loop.index0 }}" {% if iBirthdayMonth == loop.index0 %} selected="selected" {% endif %}>
+                                {{ translate({ ident: "MONTH_NAME_" ~ loop.index0 }) }}
                             </option>
                         {% endfor %}
                     </select>

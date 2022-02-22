@@ -68,7 +68,7 @@
                                 <ol class="list-unstyled">
                                     {% for orderitem in order.getOrderArticles(true) %}
                                         {% set sArticleId = orderitem.oxorderarticles__oxartid.value %}
-                                        {% set oArticle = oArticleList[$sArticleId] %}
+                                        {% set oArticle = oArticleList[sArticleId] %}
                                         <li id="accOrderAmount_{{ order.oxorder__oxordernr.value }}_{{ loop.index }}">
                                             {{ orderitem.oxorderarticles__oxamount.value }} {{ translate({ ident: "QNT" }) }}
                                             {% if oArticle.oxarticles__oxid.value and oArticle.isVisible() %}
@@ -84,7 +84,7 @@
                                                 {% endif %}
                                             {% endfor %}
                                             {# Commented due to Trusted Shops precertification. Enable if needed #}
-                                            [{*
+                                            {#
                                             {% hasrights { ident: "TOBASKET" } %}
                                             {% if oArticle.isBuyable() %}
                                               {% if oArticle.oxarticles__oxid.value %}
@@ -92,7 +92,7 @@
                                               {% endif %}
                                             {% endif %}
                                             {% endhasrights %}
-                                            *}]
+                                            #}
                                         </li>
                                     {% endfor %}
                                 </ol>

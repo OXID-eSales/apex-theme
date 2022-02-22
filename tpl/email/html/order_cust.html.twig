@@ -33,7 +33,7 @@
     }
 {% endcapture %}
 
-{% include "email/html/header.html.twig" with {title: "PAGE_TITLE_ORDER"|translate|cat("), cat:$order->oxorder__oxordernr->value: cat:$order.oxorder__oxordernr.value, style: style} %}
+{% include "email/html/header.html.twig" with { title: ("PAGE_TITLE_ORDER"|translate) ~ " #" ~ order.oxorder__oxordernr.value, style: style } %}
 
 {% block email_html_order_cust_orderemail %}
     <p>
@@ -125,7 +125,7 @@
 
         {% for basketindex, basketitem in basket.getContents() %}
             {% block email_html_order_cust_basketitem %}
-                {% set basketproduct = basketitemlist.$basketindex %}
+                {% set basketproduct = basketitemlist[basketindex] %}
 
                 <tr valign="top">
                     {% if oViewConf.getViewThemeParam('blEmailsShowProductPictures') %}
@@ -185,7 +185,7 @@
                             {% endif %}
                         </p>
 
-                        {% if basketitem.aDiscounts %}
+                        {% if basketitem['aDiscounts'] %}
                             <p>
                                 <em>{{ translate({ ident: "DISCOUNT" }) }}
                                     {% for oDiscount in basketitem.aDiscounts %}
@@ -409,7 +409,7 @@
                 {% endif %}
             {% endblock %}
 
-            {% block email_html_order_cust_giftwrapping %}
+            {% block email_html_order_cust_giftwrapping_main %}
                 <!-- Greeting card -->
                 {% if basket.getGiftCardCostNet() %}
                     <tr valign="top" bgcolor="#ebebeb">
@@ -514,7 +514,7 @@
     {% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}
         <h3 class="underline">{{ translate({ ident: "SELECTED_SHIPPING_CARRIER" }) }}</h3>
         <p>
-            <b>{{ order.oDelSet.oxdeliveryset__oxtitle.value }}</b>
+            <b>{{ oDelSet.oxdeliveryset__oxtitle.value }}</b>
         </p>
         <br>
     {% endif %}

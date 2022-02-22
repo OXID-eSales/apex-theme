@@ -21,7 +21,7 @@
     }
 {% endcapture %}
 
-{% include "email/html/header.html.twig" with {title: "DD_ORDERSHIPPED_HEADING"|translate|cat("), cat:$order->oxorder__oxordernr->value: cat:$order.oxorder__oxordernr.value, style: style} %}
+{% include "email/html/header.html.twig" with { title: ("DD_ORDERSHIPPED_HEADING"|translate) ~ " #" ~ order.oxorder__oxordernr.value, style: style } %}
 
     {% block email_html_ordershipped_sendemail %}
        {% include 'content::ident::oxordersendemail' %}

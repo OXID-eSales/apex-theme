@@ -11,8 +11,8 @@
 
             {% if hasActiveValue %}
                 <form method="get" action="{{ oViewConf.getSelfActionLink() }}" name="_resetFilter" id="resetFilter">
-                    {{ oViewConf.getHiddenSid() }}
-                    {{ oViewConf.getNavFormParams() }}
+                    {{ oViewConf.getHiddenSid()|raw }}
+                    {{ oViewConf.getNavFormParams()|raw }}
                     <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
                     <input type="hidden" name="fnc" value="resetFilter">
                     <button type="submit" class="btn btn-outline-primary mb-3 btn-reset">{{ translate({ ident: "DD_CATEGORY_RESET_BUTTON" }) }}</button>
@@ -22,8 +22,8 @@
             {% set categoryWidth = oViewConf.getViewThemeParam('sCategoryWidth') %}
 
             <form method="get" action="{{ oViewConf.getSelfActionLink() }}" name="_filterlist">
-                {{ oViewConf.getHiddenSid() }}
-                {{ oViewConf.getNavFormParams() }}
+                {{ oViewConf.getHiddenSid()|raw }}
+                {{ oViewConf.getNavFormParams()|raw }}
                 <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
                 <input type="hidden" name="tpl" value="{{ oViewConf.getActTplName() }}">
                 <input type="hidden" name="oxloadid" value="{{ oViewConf.getActContentLoadId() }}">

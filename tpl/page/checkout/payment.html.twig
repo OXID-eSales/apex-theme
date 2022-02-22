@@ -26,8 +26,8 @@
                                     {% if oView.getAllSets() %}
                                         {% set aErrors = oView.getFieldValidationErrors() %}
                                         <form action="{{ oViewConf.getSslSelfLink() }}" name="shipping" id="shipping" method="post">
-                                            {{ oViewConf.getHiddenSid() }}
-                                            {{ oViewConf.getNavFormParams() }}
+                                            {{ oViewConf.getHiddenSid()|raw }}
+                                            {{ oViewConf.getNavFormParams()|raw }}
                                             <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
                                             <input type="hidden" name="fnc" value="changeshipping">
 
@@ -94,8 +94,8 @@
                                 {% block change_payment %}
                                     {{ script({ include: "js/payment.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
                                     <form action="{{ oViewConf.getSslSelfLink() }}" class="payment" id="payment" name="order" method="post" novalidate>
-                                        {{ oViewConf.getHiddenSid() }}
-                                        {{ oViewConf.getNavFormParams() }}
+                                        {{ oViewConf.getHiddenSid()|raw }}
+                                        {{ oViewConf.getNavFormParams()|raw }}
                                         <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
                                         <input type="hidden" name="fnc" value="validatepayment">
 
@@ -104,7 +104,7 @@
 
                                             {% set inptcounter = "-1" %}
                                             {% for sPaymentID, paymentmethod in oView.getPaymentList() %}
-                                                {% set inptcounter = "`$inptcounter+1`" %}
+                                                {% set inptcounter = inptcounter+1 %}
                                                 {% block select_payment %}
                                                     {% if sPaymentID == "oxidcashondel" %}
                                                         {% include "page/checkout/inc/payment_oxidcashondel.html.twig" %}
@@ -126,7 +126,7 @@
                                                     </div>
                                                 {% else %}
 
-                                                    {{ * }}<a href="{{ seo_url({ ident: oViewConf.getOrderLink() }) }}" class="btn btn-outline-primary float-left prevStep submitButton largeButton" id="paymentBackStepBottom"><i class="moga-left"></i> {{ translate({ ident: "PREVIOUS_STEP" }) }}</a>{{ * }}
+                                                    {# <a href="{{ seo_url({ ident: oViewConf.getOrderLink() }) }}" class="btn btn-outline-primary float-left prevStep submitButton largeButton" id="paymentBackStepBottom"><i class="moga-left"></i> {{ translate({ ident: "PREVIOUS_STEP" }) }}</a> #}
 
                                                     <button type="submit" name="userform" class="btn btn-primary btn-lg w-100 mt-3" id="paymentNextStepBottom">{{ translate({ ident: "CONTINUE_TO_NEXT_STEP" }) }}</button>
 

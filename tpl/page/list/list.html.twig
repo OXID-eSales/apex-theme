@@ -182,7 +182,7 @@
                                     {% endif %}
                                     <div class="card-img-overlay">
                                         <div class="h5 card-title">{{ category.oxcategories__oxtitle.value }}</div>
-                                        {{ *if oView.showCategoryArticlesCount() and (category.getNrOfArticles() > 0) }} ({{ category.getNrOfArticles() }}){% endif %}
+                                        {# if oView.showCategoryArticlesCount() and (category.getNrOfArticles() > 0) }} ({{ category.getNrOfArticles() }}){% endif %}
                                         {% if category.getHasVisibleSubCats() %}
                                         <ul class="list-unstyled">
                                             {% for subcategory in category.getSubCats() %}
@@ -200,7 +200,7 @@
                                             {% endif %}
                                             {% endfor %}
                                         </ul>
-                                        {{ /if* }}
+                                        {{ /if #}
                                     </div>
                                 </a>
                             </div>
@@ -257,7 +257,7 @@
     {% endblock %}
 
     {% if actCategory.oxcategories__oxlongdesc.value and oPageNavigation.actPage == 1 and sCategoryDescPosition == 'bottom' %}
-        {% block page_list_long_desc %}
+        {% block page_list_long_desc_bottom %}
             <div id="catLongDescLocator" class="container-{% if headerImageWidth == 'container' %}fluid{% else %}xxl{% endif %} categoryDescription">
                 {{ include(template_from_string(actCategory.oxcategories__oxlongdesc)) }}
             </div>
@@ -269,7 +269,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     {% if oView.getArticleList() %}
-                    {% block page_list_upperlocator %}
+                    {% block page_list_upperlocator_sidebar %}
                     {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedTop(), attributes: oView.getAttributes(), listDisplayType: false, sort: false} %}
                     {% endblock %}
                     {% endif %}

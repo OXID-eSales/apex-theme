@@ -18,14 +18,14 @@
         {% set _statusMessage2 = "PAGE_DETAILS_THANKYOUMESSAGE2"|translate|cat(" ") %}
         {% set _statusMessage3 = "PAGE_DETAILS_THANKYOUMESSAGE3"|translate|cat(" ")|cat(oView.getBidPrice())|cat(" ")|cat(currency.sign)|cat(" ") %}
         {% set _statusMessage4 = "PAGE_DETAILS_THANKYOUMESSAGE4"|translate %}
-        {% include "message/success.html.twig" with {statusMessage=`$_statusMessage1``$_statusMessage2``$_statusMessage3``$_statusMessage4`: statusMessage=`$_statusMessage1``$_statusMessage2``$_statusMessage3``$_statusMessage4`} %}
+        {% include "message/success.html.twig" with { statusMessage: _statusMessage1 ~ _statusMessage2 ~ _statusMessage3 ~ _statusMessage4 } %}
     {% elseif oView.getPriceAlarmStatus() == 2 %}
         {% set _statusMessage = "MESSAGE_WRONG_VERIFICATION_CODE"|translate %}
         {% include "message/error.html.twig" with {statusMessage: _statusMessage} %}
     {% elseif oView.getPriceAlarmStatus() is same as(0) %}
-        {% set _statusMessage1 = "MESSAGE_NOT_ABLE_TO_SEND_EMAIL"|translate|cat("<br>) %}
+        {% set _statusMessage1 = ("MESSAGE_NOT_ABLE_TO_SEND_EMAIL"|translate) ~ "<br>" %}
         {% set _statusMessage2 = "MESSAGE_VERIFY_YOUR_EMAIL"|translate %}
-        {% include "message/error.html.twig" with {statusMessage=`$_statusMessage1``$_statusMessage2`: statusMessage=`$_statusMessage1``$_statusMessage2`} %}
+        {% include "message/error.html.twig" with { statusMessage: _statusMessage1 ~ _statusMessage2 } %}
     {% endif %}
 
     <div id="details_container" class="details container-{% if headerImageWidth == 'container' %}fluid{% else %}xxl{% endif %}">

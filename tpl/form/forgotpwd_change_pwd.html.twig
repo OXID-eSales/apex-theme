@@ -1,10 +1,10 @@
-{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
-{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();", dynamic: __oxid_include_dynamic }) #}
 
 <form action="{{ oViewConf.getSelfActionLink() }}" name="forgotpwd" method="post" novalidate>
     {% set aErrors = oView.getFieldValidationErrors() %}
-        {{ oViewConf.getHiddenSid() }}
-        {{ oViewConf.getNavFormParams() }}
+        {{ oViewConf.getHiddenSid()|raw }}
+        {{ oViewConf.getNavFormParams()|raw }}
         <input type="hidden" name="fnc" value="updatePassword">
         <input type="hidden" name="uid" value="{{ oView.getUpdateId() }}">
         <input type="hidden" name="cl" value="forgotpwd">

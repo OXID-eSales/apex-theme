@@ -33,31 +33,31 @@
                                                 {% endif %}
                                                 {% if oViewConf.isModuleActive('cnc / imagebutler') %}
                                                     <picture>
-                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 375, 200, 'webp') }}" media="(max-width: 375px)">
+                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 375, 200, 'webp') }}" media="(max-width: 375px)">
 
-                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 750, 300, 'webp') }}" media="(max-width: 767px)">
-                                                        <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 750, 300, 'jpg') }}" media="(max-width: 767px)">
+                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 750, 300, 'webp') }}" media="(max-width: 767px)">
+                                                        <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 750, 300, 'jpg') }}" media="(max-width: 767px)">
 
-                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 970, 370, 'webp') }}" media="(max-width: 991px)">
-                                                        <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 970, 370, 'jpg') }}" media="(max-width: 991px)">
+                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 970, 370, 'webp') }}" media="(max-width: 991px)">
+                                                        <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 970, 370, 'jpg') }}" media="(max-width: 991px)">
 
-                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1170, 400, 'webp') }}" media="(max-width: 1199px)">
-                                                        <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1170, 400, 'jpg') }}" media="(max-width: 1199px)">
+                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 1170, 400, 'webp') }}" media="(max-width: 1199px)">
+                                                        <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 1170, 400, 'jpg') }}" media="(max-width: 1199px)">
 
                                                         {% if promosliderWidth == 'w100c100' %}
-                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1400, 450, 'webp') }}" media="(max-width: 1399px)">
-                                                            <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1400, 450, 'jpg') }}" media="(max-width: 1399px)">
+                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 1400, 450, 'webp') }}" media="(max-width: 1399px)">
+                                                            <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 1400, 450, 'jpg') }}" media="(max-width: 1399px)">
 
-                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1600, 500, 'webp') }}" media="(max-width: 1599px)">
-                                                            <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1600, 500, 'jpg') }}" media="(max-width: 1599px)">
+                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 1600, 500, 'webp') }}" media="(max-width: 1599px)">
+                                                            <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 1600, 500, 'jpg') }}" media="(max-width: 1599px)">
 
-                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1800, 600, 'webp') }}" media="(min-width: 1600px)">
-                                                            <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1800, 600, 'jpg') }}" media="(min-width: 1600px)">
+                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 1800, 600, 'webp') }}" media="(min-width: 1600px)">
+                                                            <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 1800, 600, 'jpg') }}" media="(min-width: 1600px)">
                                                         {% else %}
-                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1400, 450, 'webp') }}" media="(min-width: 1200px)">
-                                                            <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1400, 450, 'jpg') }}" media="(min-width: 1200px)">
+                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 1400, 450, 'webp') }}" media="(min-width: 1200px)">
+                                                            <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 1400, 450, 'jpg') }}" media="(min-width: 1200px)">
                                                         {% endif %}
-                                                        <img loading="lazy" src="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 375, 200, 'jpg') }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="w-100">
+                                                        <img loading="lazy" src="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 375, 200, 'jpg') }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="w-100">
                                                     </picture>
                                                 {% else %}
                                                     <img loading="lazy" src="{{ sBannerPictureUrl }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="w-100">

@@ -7,7 +7,7 @@
         {% endif %}
         {% set editval = oView.getEnteredData() %}
         <form action="{{ oViewConf.getSelfActionLink() }}" method="post" class="max-600">
-            {{ oViewConf.getHiddenSid() }}
+            {{ oViewConf.getHiddenSid()|raw }}
             <input type="hidden" name="fnc" value="sendwishlist">
             <input type="hidden" name="cl" value="account_wishlist">
             <input type="hidden" name="blshowsuggest" value="1">

@@ -6,8 +6,6 @@
         {% set _iCategoriesPerRow = 3 %}
         {% set iSubCategoriesCount = 0 %}
         {% if _navcategorytree %}
-            {# oxscript include="js/widgets/oxequalizer.min.js" priority=10 #}
-            {# oxscript add="$(window).on('load', function(){ if( !isMobileDevice() ) { oxEqualizer.equalHeight( $( '.subcatList .row .panel' ) ); } });" #}
             <div class="mb-3">
                 <div class="row">
                     {% for category in _navcategorytree %}

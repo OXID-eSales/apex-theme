@@ -46,7 +46,7 @@
                                             {% block dd_layout_page_header_icon_menu_minibasket_table %}
                                                 <div class="minibasket-items">
                                                     {% for _product in oxcmp_basket.getContents() %}
-                                                        {% block widget_minibasket_product %}
+                                                        {% block widget_minibasket_product_item %}
                                                             {% set minibasketItemTitle = _product.getTitle() %}
                                                             <div class="my-1">
                                                                 <a class="minibasket-link" href="{{ _product.getLink() }}" title="{{ minibasketItemTitle|striptags }}">
@@ -61,7 +61,7 @@
                                                                      {% endif %}
                                                                 </span>
                                                                     <span>
-                                                                    {{ _product.getAmount() }} x {{ minibasketItemTitle|striptags }}<br>
+                                                                    {{ _product.getAmount() }} x {{ minibasketItemTitle|striptags|raw }}<br>
                                                                     {{ format_price(_product.getPrice(), { currency: currency }) }}
                                                                 </span>
                                                                 </a>
@@ -82,7 +82,7 @@
                                                     </div>
                                                 </div>
 
-                                                {% block widget_minibasket_total %}{% endblock %}
+                                                {% block widget_minibasket_menu_total %}{% endblock %}
                                             {% endblock %}
                                         </div>
 

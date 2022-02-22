@@ -3,7 +3,7 @@
 {% set sOrderId = order.getId() %}
 {% set oOrderFileList = oEmailView.getOrderFileList(sOrderId) %}
 
-{% include "email/html/header.html.twig" with {title: "DD_DOWNLOADLINKS_HEADING"|translate|cat("), cat:$order->oxorder__oxordernr->value: cat:$order.oxorder__oxordernr.value} %}
+{% include "email/html/header.html.twig" with { title: ("DD_DOWNLOADLINKS_HEADING"|translate) ~ " #" ~ order.oxorder__oxordernr.value } %}
 
 {% block email_html_senddownloadlinks_infoheader %}
     {{ translate({ ident: "EMAIL_SENDDOWNLOADS_GREETING" }) }} {{ order.oxorder__oxbillsal.value|translate_salutation }} {{ order.oxorder__oxbillfname.value }} {{ order.oxorder__oxbilllname.value }},<br>

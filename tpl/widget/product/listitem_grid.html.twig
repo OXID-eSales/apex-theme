@@ -37,13 +37,13 @@
         <div class="card-body position-relative">
             {% block widget_product_listitem_infogrid_titlebox %}
                 <div class="h5 card-title">
-                    {{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}
+                    {{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value }}
                 </div>
             {% endblock %}
             <a href="{{ _productLink }}" class="stretched-link" title="{{ translate({ ident: "DETAILS" }) }}"></a>
         </div>
         <div class="card-footer p-0 ps-3 border-0">
-            {{ *block name="widget_product_listitem_grid_selections" }}
+            {# block name="widget_product_listitem_grid_selections" }}
                 {% if aVariantSelections and aVariantSelections.selections  %}
                     <form name="tobasket.{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink() }}" method="post"{% else %}action="{{ _productLink }}" method="get"{% endif %}>
                         <div id="variantselector_{{ iIndex }}" class="selectorsBox variant-dropdown">
@@ -62,7 +62,7 @@
                         </div>
                     {% endif %}
                 {% endif %}
-            {{ /block* }}
+            {{ /block #}
             {% block widget_product_listitem_grid_tobasket %}
                 <div class="actions d-flex justify-content-between">
                     <div class="price h5{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} sale{% endif %}">
@@ -121,8 +121,8 @@
                         {% hasrights { ident: "TOBASKET" } %}
                         <form name="tobasket{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink() }}" method="post"{% else %}action="{{ _productLink }}" method="get"{% endif %}>
                             <div class="hidden">
-                                {{ oViewConf.getNavFormParams() }}
-                                {{ oViewConf.getHiddenSid() }}
+                                {{ oViewConf.getNavFormParams()|raw }}
+                                {{ oViewConf.getHiddenSid()|raw }}
                                 <input type="hidden" name="pgNr" value="{{ oView.getActPage() }}">
                                 {% if recommid %}
                             <input type="hidden" name="recommid" value="{{ recommid }}">

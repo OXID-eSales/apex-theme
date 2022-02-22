@@ -31,7 +31,7 @@
 
             <form action="{{ oViewConf.getSelfActionLink() }}" name="forgotpwd" method="post" >
                 <div>
-                    {{ oViewConf.getHiddenSid() }}
+                    {{ oViewConf.getHiddenSid()|raw }}
                     <input type="hidden" name="cl" value="start">
                     <button id="backToShop" class="btn btn-primary" type="submit">
                         <i class="moga-left"></i> {{ translate({ ident: "BACK_TO_SHOP" }) }}
@@ -44,7 +44,7 @@
                 <div class="bar">
                     <form action="{{ oViewConf.getSelfActionLink() }}" name="forgotpwd" method="post">
                         <div>
-                            {{ oViewConf.getHiddenSid() }}
+                            {{ oViewConf.getHiddenSid()|raw }}
                             <input type="hidden" name="cl" value="start">
                             <button id="backToShop" class="btn btn-primary" type="submit">
                                 <i class="moga-left"></i> {{ translate({ ident: "BACK_TO_SHOP" }) }}

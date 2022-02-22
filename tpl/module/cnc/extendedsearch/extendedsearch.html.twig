@@ -2,9 +2,9 @@
 {% capture append = "oxidBlock_content" %}
     {% set search_title = "SEARCH"|translate %}
     {% set searchparamforhtml = oView.getSearchParamForHtml() %}
-    {% set template_title = "$search_title - $searchparamforhtml" %}
+    {% set template_title = search_title ~ "-" ~ searchparamforhtml %}
     {% set search_head = "HITS_FOR"|translate %}
-    {% set search_head = oView.getArticleCount()|cat(" ")|cat(search_head)|cat(") %}
+    {% set search_head = oView.getArticleCount() ~ " " ~ search_head ~ " &quot;" ~ oView.getSearchParamForHtml() ~ "&quot;" %}
 
 
     {% if blSuggestionTemplate %}

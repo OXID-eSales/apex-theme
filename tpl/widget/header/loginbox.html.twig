@@ -7,8 +7,8 @@
 {% endcapture %}
 <div class="dropdown-menu dropdown-menu-end">
     <form class="px-3 py-2" name="login" action="{{ oViewConf.getSslSelfLink() }}" method="post" style="width: 270px">
-        {{ oViewConf.getHiddenSid() }}
-        {{ oViewConf.getNavFormParams() }}
+        {{ oViewConf.getHiddenSid()|raw }}
+        {{ oViewConf.getNavFormParams()|raw }}
         <input type="hidden" name="fnc" value="login_noredirect">
         <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
         {% if oViewConf.getTopActiveClassName() == "content" %}

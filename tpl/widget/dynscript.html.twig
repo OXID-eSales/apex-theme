@@ -179,16 +179,16 @@
 
                     {# voraussichtliches Versanddatum berechnen #}
                     {% if blHasPreOrder %}
-                        {% set sShipDate = "`$sShippingDaysNotOnStock` weekdays"|strtotime %}
+                        {% set sShipDate = (sShippingDaysNotOnStock ~ "weekdays")|strtotime %}
                     {% else %}
-                        {% set sShipDate = "`$sShippingDaysOnStock` weekdays"|strtotime %}
+                        {% set sShipDate = (sShippingDaysOnStock ~ "weekdays")|strtotime %}
                     {% endif %}
 
                     {# voraussichtliches Lieferdatum berechnen #}
                     {% if blHasPreOrder %}
-                        {% set sDeliveryDate = "`$sDeliveryDaysNotOnStock` weekdays"|strtotime %}
+                        {% set sDeliveryDate = (sDeliveryDaysNotOnStock ~ "weekdays")|strtotime %}
                     {% else %}
-                        {% set sDeliveryDate = "`$sDeliveryDaysOnStock` weekdays"|strtotime %}
+                        {% set sDeliveryDate = (sDeliveryDaysOnStock ~ "weekdays")|strtotime %}
                     {% endif %}
 
                     <span id="gts-o-id">{{ oOrder.oxorder__oxordernr.value }}</span>

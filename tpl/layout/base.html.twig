@@ -6,10 +6,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset={{ oView.getCharSet() }}">
         <link rel="dns-prefetch" href="{{ oViewConf.getBaseDir() }}">
         <link rel="preconnect" href="{{ oViewConf.getBaseDir() }}">
-        <link rel="preload" href="{{ oViewConf.getResourceUrl('fonts / icons.woff2') }}" as="font" crossorigin type="font/woff2">
-        <link rel="preload" href="{{ oViewConf.getResourceUrl('fonts/barlow-condensed-latin-600 - normal.woff2') }}" as="font" crossorigin type="font/woff2">
-        <link rel="preload" href="{{ oViewConf.getResourceUrl('css / styles.min.css') }}" as="style">
-        <link rel="preload" href="{{ oViewConf.getResourceUrl('js / scripts.min.js') }}" as="script">
+        <link rel="preload" href="{{ oViewConf.getResourceUrl('fonts/icons.woff2') }}" as="font" crossorigin type="font/woff2">
+        <link rel="preload" href="{{ oViewConf.getResourceUrl('fonts/barlow-condensed-latin-600-normal.woff2') }}" as="font" crossorigin type="font/woff2">
+        <link rel="preload" href="{{ oViewConf.getResourceUrl('css/styles.min.css') }}" as="style">
+        <link rel="preload" href="{{ oViewConf.getResourceUrl('js/scripts.min.js') }}" as="script">
 
         {% set sPageTitle = oView.getPageTitle() %}
         <title>{% block head_title %}{{ sPageTitle }}{% endblock %}</title>
@@ -86,13 +86,13 @@
 
         {% block head_link_favicon %}
             {% set aAppleTouchIcon = oViewConf.getViewThemeParam('aAppleTouchIcon') %}
-            {% set appleTouchIcon = oViewConf.getImageUrl("favicons/`$aAppleTouchIcon`") %}
+            {% set appleTouchIcon = oViewConf.getImageUrl("favicons/" ~ aAppleTouchIcon) %}
             {% if aAppleTouchIcon %}
                 {% set appleTouchIcon72 = appleTouchIcon %}
                 {% set appleTouchIcon144 = appleTouchIcon %}
                 {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                    {% set appleTouchIcon72 = oViewConf.getDynamicImage($appleTouchIcon, %}
-                    {% set appleTouchIcon144 = oViewConf.getDynamicImage($appleTouchIcon, %}
+                    {% set appleTouchIcon72 = oViewConf.getDynamicImage(appleTouchIcon, 72, 72) %}
+                    {% set appleTouchIcon144 = oViewConf.getDynamicImage(appleTouchIcon, 144, 144) %}
                 {% endif %}
                 <link rel="apple-touch-icon-precomposed" href="{{ appleTouchIcon }}" />
                 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ appleTouchIcon72 }}" />
@@ -108,20 +108,20 @@
             {% set sThemeColor = oViewConf.getViewThemeParam('sThemeColor') %}
 
             {% if sFaviconFile %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons / `$sFaviconFile`") }}" type="image/x-icon" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconFile) }}" type="image/x-icon" />
             {% endif %}
             {% if sFavicon16File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon16File`") }}" sizes="16x16" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon16File) }}" sizes="16x16" />
             {% endif %}
             {% if sFavicon32File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons / `$sFavicon32File`") }}" sizes="32x32" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon32File) }}" sizes="32x32" />
             {% endif %}
             {% if sFaviconSvg %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons / `$sFaviconSvg`") }}" />
-                <link rel="mask-icon" color="{{ sThemeColor }}" href="{{ oViewConf.getImageUrl("favicons / `$sFaviconSvg`") }}">
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconSvg) }}" />
+                <link rel="mask-icon" color="{{ sThemeColor }}" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconSvg) }}">
             {% endif %}
             {% if sSiteManifestFile %}
-                <link rel="manifest" href="{{ oViewConf.getImageUrl("favicons / `$sSiteManifestFile`") }}" />
+                <link rel="manifest" href="{{ oViewConf.getImageUrl("favicons/" ~ sSiteManifestFile) }}" />
             {% endif %}
             {% if sThemeColor %}
                 <meta name="theme-color" content="{{ sThemeColor }}" />
@@ -132,7 +132,7 @@
             {% if oxcmp_user and oxcmp_user.oxuser__oxrights.value == "malladmin" and get_global_cookie("scsspreview") %}
                 {{ style({ include: "css/preview.css?"|cat(smarty.now) }) }}
             {% else %}
-                <link rel="stylesheet" href="{{ oViewConf.getResourceUrl('css / styles.min.css') }}">
+                <link rel="stylesheet" href="{{ oViewConf.getResourceUrl('css/styles.min.css') }}">
             {% endif %}
         {% endblock %}
 
@@ -161,7 +161,7 @@
 <html lang="{{ oView.getActiveLangAbbr() }}" {% block head_html_namespace %}{% endblock %}>
     <head>
         {% for _block in oxidBlock_pageHead %}
-            {{ _block }}
+            {{ _block|raw }}
         {% endfor %}
         {{ style() }}
     </head>
@@ -172,15 +172,15 @@
     {% block theme_svg_icons %}{% endblock %}
 
     {% for _block in oxidBlock_pageBody %}
-        {{ _block }}
+        {{ _block|raw }}
     {% endfor %}
-    {{ *if oViewConf.getTopActiveClassName() == 'details' and oView.showZoomPics() }}
+    {# if oViewConf.getTopActiveClassName() == 'details' and oView.showZoomPics() }}
         {% include "page/details/inc/photoswipe.html.twig" %}
-    {{ /if* }}
+    {{ /if #}
 
     {% block base_js %}
         {# include file="i18n/js_vars.tpl" #}
-        <script src="{{ oViewConf.getResourceUrl('js / scripts.min.js') }}"></script>
+        <script src="{{ oViewConf.getResourceUrl('js/scripts.min.js') }}"></script>
 
     {% endblock %}
     {% if oViewConf.isTplBlocksDebugMode() %}
@@ -188,7 +188,7 @@
         {{ script({ add: "$( 'body' ).oxBlockDebug();", dynamic: __oxid_include_dynamic }) }}
     {% endif %}
 
-    {{ script({ replace:'type="text/javascript"':: replace:'type="text/javascript"':'', dynamic: __oxid_include_dynamic }) }}
+    {{ script({ dynamic: __oxid_include_dynamic })|replace({ 'type="text/javascript"': '' }) }}
 
     {% if not oView.isDemoShop() %}
         {% include_dynamic "widget/dynscript.html.twig" %}

@@ -48,7 +48,7 @@
     {% endif %}
 {% endblock %}
 
-{{ *block name="details_tabs_pricealarm" }}
+{# block name="details_tabs_pricealarm" }}
     {% if oView.isPriceAlarm() and not oDetailsProduct.isParentNotBuyable() %}
         {% capture append = "tabs" %}
             <a id="pricealarm-tab" class="nav-link{% if blFirstTab %} active{% endif %}" href="#pricealarm" data-bs-toggle="tab" role="tab" aria-controls="pricealarm" aria-selected="false">
@@ -64,7 +64,7 @@
             {% set blFirstTab = false %}
         {% endcapture %}
     {% endif %}
-{{ /block* }}
+{{ /block #}
 
 {% set oManufacturer = oView.getManufacturer() %}
 {% if oManufacturer and oManufacturer.oxmanufacturers__oxshortdesc.value %}

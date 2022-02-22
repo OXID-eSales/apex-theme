@@ -8,7 +8,7 @@
             {% set showStepLinks = true %}
         {% endif %}
 
-        {{ *block name="checkout_steps_basket" }}
+        {# block name="checkout_steps_basket" }}
             <li class="nav-item">
                 {% if showStepLinks %}
                  <a class="nav-link{% if active == 1 %} active {% elseif active > 1 %} disabled {% endif %}" href="{{ seo_url({ ident: oViewConf.getBasketLink() }) }}">
@@ -21,7 +21,7 @@
                  </a>
                 {% endif %}
             </li>
-        {{ /block* }}
+        {{ /block #}
 
         <script>
             {% if active == 2 %}
@@ -68,7 +68,7 @@
             {# {{ script({ add: "$('#orderStep').click( function() { $('#paymentNextStepBottom').click();return false;});", dynamic: __oxid_include_dynamic }) }} #}
         {% endblock %}
 
-        {{ *block name="checkout_steps_laststep" }}
+        {# block name="checkout_steps_laststep" }}
             <li class="nav-item">
                 <span  class="nav-link disabled">
                     <div class="num">5</div>
@@ -77,6 +77,6 @@
                     </div>
                 </span>
             </li>
-        {{ /block* }}
+        {{ /block* #}
     </div>
 {% endblock %}

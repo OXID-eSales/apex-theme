@@ -5,8 +5,8 @@
         {% block user_form %}
             {% set aErrors = oView.getFieldValidationErrors() %}
             <div class="addressCollumns">
-                {{ oViewConf.getHiddenSid() }}
-                {{ oViewConf.getNavFormParams() }}
+                {{ oViewConf.getHiddenSid()|raw }}
+                {{ oViewConf.getNavFormParams()|raw }}
                 <input type="hidden" name="fnc" value="changeuser_testvalues">
                 <input type="hidden" name="cl" value="account_user">
                 <input type="hidden" name="CustomError" value='user'>

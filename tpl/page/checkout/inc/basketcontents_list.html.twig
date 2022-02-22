@@ -9,7 +9,7 @@
         {% for basketindex, basketitem in oxcmp_basket.getContents() %}
             <div class="list-group-item">
                 {% block checkout_basketcontents_basketitem %}
-                    {% set basketproduct = basketitemlist.$basketindex %}
+                    {% set basketproduct = basketitemlist[basketindex] %}
                     {% set oArticle = basketitem.getArticle() %}
                     {% set oAttributes = oArticle.getAttributesDisplayableInBasket() %}
                     <div class="row" id="list_cartItem_{{ loop.index }}">
@@ -74,7 +74,7 @@
                                                     <div class="selectorsBox" id="cartItemSelections_{{ loop.index }}">
                                                         {% for oList in oSelections %}
                                                             {% if oViewConf.showSelectListsInList() %}
-                                                                {% include "widget/product/selectbox.html.twig" with {oSelectionList: oList, sFieldName: "aproducts[`$basketindex`][sel]", iKey: loop.index0, blHideDefault: true, sSelType: "seldrop"} %}
+                                                                {% include "widget/product/selectbox.html.twig" with {oSelectionList: oList, sFieldName: "aproducts[" ~ basketindex ~ "][sel]", iKey: loop.index0, blHideDefault: true, sSelType: "seldrop"} %}
                                                             {% else %}
                                                                 {% set oActiveSelection = oList.getActiveSelection() %}
                                                                 {% if oActiveSelection %}
@@ -134,7 +134,7 @@
                                         {% endblock %}
 
                                         {% block checkout_basketcontents_basketitem_amount %}
-                                        {{ * "product" "amount" }}
+                                        {# "product" "amount" }]
                                         <span class="amount">
                                             <small>
                                                 {% if basketitem.getFUnitPrice() %} | {% endif %}

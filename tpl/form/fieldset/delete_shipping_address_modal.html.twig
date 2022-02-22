@@ -25,7 +25,7 @@
                                     <form name="delete_shipping_address_modal_form_{{ shippingAddressNumber }}"
                                           action="{{ oViewConf.getSelfActionLink() }}"
                                           method="post">
-                                            {{ oViewConf.getHiddenSid() }}
+                                            {{ oViewConf.getHiddenSid()|raw }}
                                             <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
                                             <input type="hidden" name="fnc" value="deleteShippingAddress">
                                             <input type="hidden" name="oxaddressid"

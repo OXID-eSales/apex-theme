@@ -1,6 +1,6 @@
 <form action="{{ oViewConf.getSelfActionLink() }}" name="newsletter" class="max-600" method="post">
-    {{ oViewConf.getHiddenSid() }}
-    {{ oViewConf.getNavFormParams() }}
+    {{ oViewConf.getHiddenSid()|raw }}
+    {{ oViewConf.getNavFormParams()|raw }}
     <input type="hidden" name="fnc" value="subscribe">
     <input type="hidden" name="cl" value="account_newsletter">
 

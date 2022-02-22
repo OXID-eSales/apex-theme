@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    {{ * }}
+    {#
     <select class="form-select" aria-label="{{ oSelectionList.getLabel() }}" name="{{ sFieldName|default("varselid") }}[{{ iKey }}]" onchange="this.form.submit()">
         <option value="">
         {% if sFieldName == "sel" %}
@@ -29,5 +29,5 @@
         {% for oSelection in oSelections %}
         <option{% if oSelection.isActive() %} selected{% endif %} value="{{ oSelection.getValue() }}">{{ oSelection.getName() }}</option>
         {% endfor %}
-    </select>{{ * }}
+    </select> #}
     {% endif %}

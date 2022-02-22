@@ -41,8 +41,8 @@
 
                                     {% for iProdNr, product in articleList %}
                                         <td class="attrib-text">
-                                            {% if oAttrib.aProd.$iProdNr and oAttrib.aProd.$iProdNr.value %}
-                                                {{ oAttrib.aProd.$iProdNr.value }}
+                                            {% if oAttrib.aProd[iProdNr] and oAttrib.aProd[iProdNr].value %}
+                                                {{ oAttrib.aProd[iProdNr].value }}
                                             {% else %}
                                                 -
                                             {% endif %}

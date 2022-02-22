@@ -1,8 +1,8 @@
-{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
-{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) #}
 {% set aRegParams = oView.getRegParams() %}
 <form class="max-600" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
-    {{ oViewConf.getHiddenSid() }}
+    {{ oViewConf.getHiddenSid()|raw }}
     <input type="hidden" name="fnc" value="send">
     <input type="hidden" name="cl" value="newsletter">
     <input type="hidden" name="editval[oxuser__oxcountryid]" value="{{ oView.getHomeCountryId() }}">

@@ -1,4 +1,4 @@
-{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
 
 {% capture assign = "sValidationJS" %}
     {% spaceless %}
@@ -20,7 +20,7 @@
     {% endspaceless %}
 {% endcapture %}
 
-{{ script({ add: sValidationJS*, dynamic: __oxid_include_dynamic }) }}
+{{ script({ add: sValidationJS*, dynamic: __oxid_include_dynamic }) #}
 
 {{ script({ include: "js/changeaddress.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
@@ -28,8 +28,8 @@
     <form class="max-600" action="{{ oViewConf.getSslSelfLink() }}" name="order" method="post" novalidate>
         {% block user_checkout_change_form %}
             {% set aErrors = oView.getFieldValidationErrors() %}
-            {{ oViewConf.getHiddenSid() }}
-            {{ oViewConf.getNavFormParams() }}
+            {{ oViewConf.getHiddenSid()|raw }}
+            {{ oViewConf.getNavFormParams()|raw }}
             <input type="hidden" name="cl" value="user">
             <input type="hidden" name="option" value="{{ oView.getLoginOption() }}">
             <input type="hidden" name="fnc" value="changeuser">

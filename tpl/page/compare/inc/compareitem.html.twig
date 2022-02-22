@@ -34,7 +34,7 @@
 
     {% set aVariantSelections = product.getVariantSelections("null", "null", 1) %}
     {% set blShowToBasket = true %} {# tobasket or more info ? #}
-    {% if product.isNotBuyable()||(aVariantSelections&&$aVariantSelections.selections)||$product.hasMdVariants() or (oViewConf.showSelectListsInList() and product.getSelections(1)) or product.getVariants() %}
+    {% if product.isNotBuyable() or (aVariantSelections and aVariantSelections.selections) or product.hasMdVariants() or (oViewConf.showSelectListsInList() and product.getSelections(1)) or product.getVariants() %}
         {% set blShowToBasket = false %}
     {% endif %}
 
@@ -42,8 +42,8 @@
         <div class="variants">
             {% hasrights { ident: "TOBASKET" } %}
                 {% if blShowToBasket %}
-                    {{ oViewConf.getHiddenSid() }}
-                    {{ oViewConf.getNavFormParams() }}
+                    {{ oViewConf.getHiddenSid()|raw }}
+                    {{ oViewConf.getNavFormParams()|raw }}
                     <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
                     {% if owishid %}
                         <input type="hidden" name="owishid" value="{{ owishid }}">
@@ -144,7 +144,7 @@
                     <span id="productPriceUnit">{{ format_price(oUnitPrice, { currency: currency }) }}/{{ product.getUnitName() }}</span>
                 {% endif %}
 
-                {{ *if product.getStockStatus() == -1 }}
+                {# if product.getStockStatus() == -1 }}
                     <span class="stockFlag notOnStock">
                         {% if product.oxarticles__oxnostocktext.value %}
                             {{ product.oxarticles__oxnostocktext.value }}
@@ -167,7 +167,7 @@
                             <span class="text-success">{{ translate({ ident: "READY_FOR_SHIPPING" }) }}</span>
                         {% endif %}
                     </span>
-                {{ /if* }}
+                {{ /if #}
             </div>
 
         </div>
@@ -175,8 +175,8 @@
     </form>
 
     <form action="{{ oViewConf.getSelfActionLink() }}" method="post">
-            {{ oViewConf.getHiddenSid() }}
-            {{ oViewConf.getNavFormParams() }}
+            {{ oViewConf.getHiddenSid()|raw }}
+            {{ oViewConf.getNavFormParams()|raw }}
             <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
             <input type="hidden" name="fnc" value="tocomparelist">
             <input type="hidden" name="aid" value="{{ product.oxarticles__oxid.value }}">

@@ -10,18 +10,18 @@
     {% for iKey, oSelectionList in aVariantSelections.rawselections %}
         {% set _sSelectionHash = "" %}
         {% for iPos, oListItem in oSelectionList %}
-            {% set _sSelectionHash = _sSelectionHash|cat(iPos)|cat(", ")|cat(oListItem.hash)|cat(")|" %}
+            {% set _sSelectionHash = _sSelectionHash|cat(iPos)|cat(":")|cat(oListItem.hash)|cat("|") %}
         {% endfor %}
         {% if _sSelectionHash %}
             {% if _sSelectionHashCollection %}{% set _sSelectionHashCollection = _sSelectionHashCollection|cat(",") %}{% endif %}
-            {% set _sSelectionHashCollection = _sSelectionHashCollection|cat("'`$_sSelectionHash`'") %}
+            {% set _sSelectionHashCollection = _sSelectionHashCollection ~ "'" ~ _sSelectionHash ~ "'" %}
         {% endif %}
     {% endfor %}
     {# oxscript add="oxVariantSelections = [`$_sSelectionHashCollection`];" #}
 
     <form class="js-oxWidgetReload" action="{{ oView.getWidgetLink() }}" method="get">
-        {{ oViewConf.getHiddenSid() }}
-        {{ oViewConf.getNavFormParams() }}
+        {{ oViewConf.getHiddenSid()|raw }}
+        {{ oViewConf.getNavFormParams()|raw }}
         <input type="hidden" name="cl" value="{{ oView.getClassName() }}">
         <input type="hidden" name="oxwparent" value="{{ oViewConf.getTopActiveClassName() }}">
         <input type="hidden" name="listtype" value="{{ oView.getListType() }}">
@@ -37,8 +37,8 @@
 
 {% hasrights { ident: "TOBASKET" } %}
     <form class="js-oxProductForm" action="{{ oViewConf.getSelfActionLink() }}" method="post">
-            {{ oViewConf.getHiddenSid() }}
-            {{ oViewConf.getNavFormParams() }}
+            {{ oViewConf.getHiddenSid()|raw }}
+            {{ oViewConf.getNavFormParams()|raw }}
             <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
             <input type="hidden" name="aid" value="{{ oDetailsProduct.oxarticles__oxid.value }}">
             <input type="hidden" name="anid" value="{{ oDetailsProduct.oxarticles__oxnid.value }}">
@@ -68,31 +68,31 @@
 
                                 {% if oViewConf.isModuleActive('cnc / imagebutler') %}
                                     <picture>
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 375, 375, 'webp', true) }}" media="(max-width: 375px)">
+                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, 375, 'webp', true) }}" media="(max-width: 375px)">
 
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 750, 750, 'webp', true) }}" media="(max-width: 767px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 750, 750, '', true) }}" media="(max-width: 767px)">
+                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, 750, 'webp', true) }}" media="(max-width: 767px)">
+                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, 750, '', true) }}" media="(max-width: 767px)">
 
                                         {% if loop.index > 2 %}
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 114, 114, 'webp', true) }}" media="(max-width: 991px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 114, 114, '', true) }}" media="(max-width: 991px)">
+                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 114, 114, 'webp', true) }}" media="(max-width: 991px)">
+                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 114, 114, '', true) }}" media="(max-width: 991px)">
 
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 190, 190, 'webp', true) }}" media="(max-width: 1199px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 190, 190, '', true) }}" media="(max-width: 1199px)">
+                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 190, 190, 'webp', true) }}" media="(max-width: 1199px)">
+                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 190, 190, '', true) }}" media="(max-width: 1199px)">
 
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 300, 300, 'webp', true) }}" media="(min-width: 1200px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 300, 300, '', true) }}" media="(min-width: 1200px)">
+                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 300, 300, 'webp', true) }}" media="(min-width: 1200px)">
+                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 300, 300, '', true) }}" media="(min-width: 1200px)">
                                         {% else %}
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 230, 230, 'webp', true) }}" media="(max-width: 991px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 230, 230, '', true) }}" media="(max-width: 991px)">
+                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 230, 230, 'webp', true) }}" media="(max-width: 991px)">
+                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 230, 230, '', true) }}" media="(max-width: 991px)">
 
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 440, 440, 'webp', true) }}" media="(max-width: 1199px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 440, 440, '', true) }}" media="(max-width: 1199px)">
+                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 440, 440, 'webp', true) }}" media="(max-width: 1199px)">
+                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 440, 440, '', true) }}" media="(max-width: 1199px)">
 
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 600, 600, 'webp', true) }}" media="(min-width: 1200px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 600, 600, '', true) }}" media="(min-width: 1200px)">
+                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 600, 600, 'webp', true) }}" media="(min-width: 1200px)">
+                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 600, 600, '', true) }}" media="(min-width: 1200px)">
                                         {% endif %}
-                                        <img class="details-thumb-img" loading="lazy" src="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 375, 375, '', true) }}" alt="morepic-{{ loop.index }}">
+                                        <img class="details-thumb-img" loading="lazy" src="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, 375, '', true) }}" alt="morepic-{{ loop.index }}">
                                     </picture>
                                 {% else %}
                                     <img class="details-thumb-img" loading="lazy" src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}" alt="morepic-{{ loop.index }}">
@@ -113,27 +113,27 @@
                         </ol>
 
                         {% for iPicNr, oArtIcon in oView.getIcons() %}
-                            {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", %}
-                            {% set aPictureInfo = oConfig.getMasterPicturePath("product/`$iPicNr`/`$sPictureName`")|getimagesize %}
+                            {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
+                            {% set aPictureInfo = oConfig.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
                             <div class="carousel-item{% if loop.first %} active{% endif %}">
                                 <div class="ratio ratio-1x1">
                                     {% if oViewConf.isModuleActive('cnc / imagebutler') %}
                                         <picture>
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 375, '', 'webp') }}" media="(max-width: 375px)">
+                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, '', 'webp') }}" media="(max-width: 375px)">
 
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 750, '', 'webp') }}" media="(max-width: 767px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 750, '', 'jpg') }}" media="(max-width: 767px)">
+                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, '', 'webp') }}" media="(max-width: 767px)">
+                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, '', 'jpg') }}" media="(max-width: 767px)">
 
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 970, '', 'webp') }}" media="(max-width: 991px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 970, '', 'jpg') }}" media="(max-width: 991px)">
+                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 970, '', 'webp') }}" media="(max-width: 991px)">
+                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 970, '', 'jpg') }}" media="(max-width: 991px)">
 
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 1170, '', 'webp') }}" media="(max-width: 1199px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 1170, '', 'jpg') }}" media="(max-width: 1199px)">
+                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1170, '', 'webp') }}" media="(max-width: 1199px)">
+                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1170, '', 'jpg') }}" media="(max-width: 1199px)">
 
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 1600, '', 'webp') }}" media="(min-width: 1200px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 1600, '', 'jpg') }}" media="(min-width: 1200px)">
+                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1600, '', 'webp') }}" media="(min-width: 1200px)">
+                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1600, '', 'jpg') }}" media="(min-width: 1200px)">
 
-                                            <img loading="lazy" src="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 375, '', 'jpg') }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}">
+                                            <img loading="lazy" src="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, '', 'jpg') }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}">
                                         </picture>
                                     {% else %}
                                         <img loading="lazy" src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}">
@@ -182,26 +182,26 @@
                         {% endif %}
                         {% if imageCount > 1 %}
                             {% for iPicNr, oArtIcon in oView.getIcons() %}
-                                {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", %}
-                                {% set aPictureInfo = oConfig.getMasterPicturePath("product/`$iPicNr`/`$sPictureName`")|getimagesize %}
+                                {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
+                                {% set aPictureInfo = oConfig.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
                                 <div class="carousel-item{% if loop.first %} active{% endif %}">
                                     {% if oViewConf.isModuleActive('cnc / imagebutler') %}
                                         <picture>
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 375, '', 'webp') }}" media="(max-width: 375px)">
+                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, '', 'webp') }}" media="(max-width: 375px)">
 
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 750, '', 'webp') }}" media="(max-width: 767px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 750, '', 'jpg') }}" media="(max-width: 767px)">
+                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, '', 'webp') }}" media="(max-width: 767px)">
+                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, '', 'jpg') }}" media="(max-width: 767px)">
 
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 970, '', 'webp') }}" media="(max-width: 991px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 970, '', 'jpg') }}" media="(max-width: 991px)">
+                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 970, '', 'webp') }}" media="(max-width: 991px)">
+                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 970, '', 'jpg') }}" media="(max-width: 991px)">
 
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 1170, '', 'webp') }}" media="(max-width: 1199px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 1170, '', 'jpg') }}" media="(max-width: 1199px)">
+                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1170, '', 'webp') }}" media="(max-width: 1199px)">
+                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1170, '', 'jpg') }}" media="(max-width: 1199px)">
 
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 1600, '', 'webp') }}" media="(min-width: 1200px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 1600, '', 'jpg') }}" media="(min-width: 1200px)">
+                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1600, '', 'webp') }}" media="(min-width: 1200px)">
+                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1600, '', 'jpg') }}" media="(min-width: 1200px)">
 
-                                            <img loading="lazy" src="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl($iPicNr), 375, '', 'jpg') }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}">
+                                            <img loading="lazy" src="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, '', 'jpg') }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}">
                                         </picture>
                                     {% else %}
                                         <img loading="lazy" src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}">
@@ -269,7 +269,7 @@
             {# ratings #}
             {% if oView.ratingIsActive() %}
                 {% block details_productmain_ratings %}
-                    {% include "widget/reviews/rating.html.twig" with {itemid: "anid=`$oDetailsProduct->oxarticles__oxnid->value`", sRateUrl: oDetailsProduct.getLink()} %}
+                    {% include "widget/reviews/rating.html.twig" with {itemid: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value, sRateUrl: oDetailsProduct.getLink()} %}
                 {% endblock %}
             {% endif %}
 
@@ -315,7 +315,7 @@
                 {# variants | md variants #}
                 {% block details_productmain_variantselections %}
                     {% if aVariantSelections and aVariantSelections.selections %}
-                        {{ *oxscript include="js / jquery.min.js" priority=4  }}
+                        {# oxscript include="js / jquery.min.js" priority=4  }}
                         {{ script({ include: "js/jquery-ui.js", priority: 4, dynamic: __oxid_include_dynamic }) }}
                         {# oxscript include="js/widgets/oxajax.min.js" priority=10 #}
                         {# oxscript include="js/widgets/oxarticlevariant.min.js" priority=10 #}
@@ -464,24 +464,24 @@
 
                             {% if oViewConf.getShowSuggest() %}
                             <div class="col-md-6">
-                                <a class="btn btn-sm btn-light w-100" id="suggest" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=suggest"), params: "anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "RECOMMEND" }) }}</a>
+                                <a class="btn btn-sm btn-light w-100" id="suggest" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=suggest"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "RECOMMEND" }) }}</a>
                             </div>
                             {% endif %}
 
                             <div class="col-md-6">
                                 {% if oxcmp_user %}
-                                    <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=`$oDetailsProduct.oxarticles__oxnid.value`&amp;anid=`$oDetailsProduct.oxarticles__oxnid.value`&amp;fnc=tonoticelist&amp;am=1"|cat(oViewConf.getNavUrlParams())|cat("&amp;stoken=")|cat(oViewConf.getSessionChallengeToken()) }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                    <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
                                 {% else %}
-                                    <a class="btn btn-sm btn-light w-100" id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                    <a class="btn btn-sm btn-light w-100" id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
                                 {% endif %}
                             </div>
 
                             {% if oViewConf.getShowWishlist() %}
                                 <div class="col-md-6">
                                     {% if oxcmp_user %}
-                                        <a class="btn btn-sm btn-light w-100" id="linkToWishList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=`$oDetailsProduct.oxarticles__oxnid.value`&anid=`$oDetailsProduct.oxarticles__oxnid.value`&amp;fnc=towishlist&amp;am=1"|cat(oViewConf.getNavUrlParams())|cat("&amp;stoken=")|cat(oViewConf.getSessionChallengeToken()) }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="linkToWishList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=towishlist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                     {% else %}
-                                        <a class="btn btn-sm btn-light w-100" id="loginToWish" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="loginToWish" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                     {% endif %}
                                 </div>
                             {% endif %}

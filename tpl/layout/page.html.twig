@@ -29,7 +29,7 @@
                 {% endif %}
 
                 {% for _block in oxidBlock_content %}
-                    {{ _block }}
+                    {{ _block|raw }}
                 {% endfor %}
             {% endblock %}
         </div>

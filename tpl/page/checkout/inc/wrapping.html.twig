@@ -22,7 +22,7 @@
                     <div class="alert alert-danger">{{ translate({ ident: "BASKET_EMPTY" }) }}</div>
                 {% else %}
                     <form name="basket" action="{{ oViewConf.getSelfActionLink() }}" method="post" id="giftoptions_modal_form">
-                        {{ oViewConf.getHiddenSid() }}
+                        {{ oViewConf.getHiddenSid()|raw }}
                         <input type="hidden" name="cl" value="basket">
                         <input type="hidden" name="fnc" value="changewrapping">
                         <div class="list-group list-group-flush">
@@ -35,7 +35,7 @@
                                     {% block checkout_wrapping_item %}
                                         <div class="list-group-item">
                                             <div class="row">
-                                                {% set basketproduct = basketitemlist.$basketindex %}
+                                                {% set basketproduct = basketitemlist[basketindex] %}
                                                 <div class="col-4 col-md-3 col-lg-2">
                                                     {% if oViewConf.isModuleActive('cnc / imagebutler') %}
                                                         <picture>
@@ -76,12 +76,12 @@
                                                                 {{ wrapping.oxwrapping__oxname.value }}
                                                                 <strong>{{ wrapping.getFPrice() }} {{ currency.sign }}</strong>
                                                             </label>
-                                                            {% set ictr = "`$ictr+1`" %}
+                                                            {% set ictr = ictr+1 %}
                                                         {% endfor %}
                                                     </div>
                                                 </div>
                                             </div>
-                                            {% set icounter = "`$icounter+1`" %}
+                                            {% set icounter = icounter+1 %}
                                         </div>
                                     {% endblock %}
                                 {% endfor %}
@@ -143,7 +143,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {% set icounter = "`$icounter+1`" %}
+                                    {% set icounter = icounter+1 %}
                                     {% endfor %}
                                 </div>
                             {% endblock %}

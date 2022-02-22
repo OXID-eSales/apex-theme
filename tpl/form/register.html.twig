@@ -1,10 +1,10 @@
-{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
-{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) #}
 
 <form class="max-600" action="{{ oViewConf.getSslSelfLink() }}" name="order" method="post" novalidate>
     {% set aErrors = oView.getFieldValidationErrors() %}
-    {{ oViewConf.getHiddenSid() }}
-    {{ oViewConf.getNavFormParams() }}
+    {{ oViewConf.getHiddenSid()|raw }}
+    {{ oViewConf.getNavFormParams()|raw }}
     <input type="hidden" name="fnc" value="registeruser">
     <input type="hidden" name="cl" value="register">
     <input type="hidden" name="lgn_cook" value="0">

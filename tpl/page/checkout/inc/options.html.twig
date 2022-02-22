@@ -8,8 +8,8 @@
 			{% block checkout_options_noreg %}
 			{% if oView.getShowNoRegOption() %}
 			<form action="{{ oViewConf.getSslSelfLink() }}" method="post" id="optionNoRegistration">
-				{{ oViewConf.getHiddenSid() }}
-				{{ oViewConf.getNavFormParams() }}
+				{{ oViewConf.getHiddenSid()|raw }}
+				{{ oViewConf.getNavFormParams()|raw }}
 				<input type="hidden" name="cl" value="user">
 				<input type="hidden" name="fnc" value="">
 				<input type="hidden" name="option" value="1">
@@ -25,8 +25,8 @@
 
 			{% block checkout_options_reg %}
 			<form action="{{ oViewConf.getSslSelfLink() }}" method="post" id="optionRegistration">
-				{{ oViewConf.getHiddenSid() }}
-				{{ oViewConf.getNavFormParams() }}
+				{{ oViewConf.getHiddenSid()|raw }}
+				{{ oViewConf.getNavFormParams()|raw }}
 				<input type="hidden" name="cl" value="user">
 				<input type="hidden" name="fnc" value="">
 				<input type="hidden" name="option" value="3">

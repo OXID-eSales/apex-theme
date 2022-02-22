@@ -32,7 +32,7 @@
     }
 {% endcapture %}
 
-{% include "email/html/header.html.twig" with {title: "PAGE_TITLE_ORDER"|translate|cat("), cat:$order->oxorder__oxordernr->value: cat:$order.oxorder__oxordernr.value, style: style} %}
+{% include "email/html/header.html.twig" with { title: ("PAGE_TITLE_ORDER"|translate) ~ " #" ~ order.oxorder__oxordernr.value, style: style } %}
 
 {% block email_html_order_owner_orderemail %}
     <p>
@@ -125,7 +125,7 @@
         {% set basketitemlist = basket.getBasketArticles() %}
         {% for basketindex, basketitem in basket.getContents() %}
             {% block email_html_order_owner_basketitem %}
-                {% set basketproduct = basketitemlist.$basketindex %}
+                {% set basketproduct = basketitemlist[basketindex] %}
                 <tr valign="top">
                     {% if oViewConf.getViewThemeParam('blEmailsShowProductPictures') %}
                         <td>
@@ -163,7 +163,7 @@
                                     <br><s>{{ basketitem.getFRegularUnitPrice() }}&nbsp;{{ currency.sign }}</s>
                                 {% endif %}
                             {% endif %}
-                            {% if basketitem.aDiscounts %}<br><br>
+                            {% if basketitem['aDiscounts'] %}<br><br>
                                 <em style="font-size: 7pt;font-weight: normal;">{{ translate({ ident: "DISCOUNT" }) }}
                                     {% for oDiscount in basketitem.aDiscounts %}
                                         <br>{{ oDiscount.sDiscount }}
@@ -183,8 +183,8 @@
                 </tr>
             {% endblock %}
         {% endfor %}
-        {% block email_html_order_owner_giftwrapping %}
-            {% if basket.oCard %}
+        {% block email_html_order_owner_giftwrapping_main %}
+            {% if basket['oCard'] %}
                 <tr valign="top">
                     <td>
                         <img src="{{ basket.oCard.getPictureUrl() }}" alt="{{ basket.oCard.oxwrapping__oxname.value }}" hspace="0" vspace="0" border="0" align="top">
