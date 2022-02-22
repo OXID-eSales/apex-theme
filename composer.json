@@ -6,6 +6,9 @@
   "license": [
     "GPL-3.0"
   ],
+  "require": {
+    "oxid-esales/twig-component": "*"
+  },
   "authors": [
     { "name": "Tino Favetto, c&c concepts and creations GmbH" },
     { "name": "Martin Müller, c&c concepts and creations GmbH" }
