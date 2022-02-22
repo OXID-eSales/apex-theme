@@ -1,0 +1,76 @@
+{% if not blWorkaroundInclude %}
+    {% capture append = "oxidBlock_content" %}
+        {% if oxcmp_user %}
+            {% set force_sid = oView.getSidForWidget() %}
+        {% endif %}
+        {{ include_widget({ cl: "oxwArticleDetails", _parent: oView.getClassName(), nocookie: 1, force_sid: force_sid, _navurlparams: oViewConf.getNavUrlParams(), _object: oView.getProduct(), anid: oViewConf.getActArticleId(), iPriceAlarmStatus: oView.getPriceAlarmStatus(), sorting: oView.getSortingParameters(), skipESIforUser: 1 }) }}
+    {% endcapture %}
+    {% include "layout/page.html.twig" %}
+{% else %}
+    {% set oDetailsProduct = oView.getProduct() %}
+    {% set oPictureProduct = oView.getPicturesProduct() %}
+    {% set currency = oView.getActCurrency() %}
+    {% set sPageHeadTitle = oDetailsProduct.oxarticles__oxtitle.value|cat(' ')|cat(oDetailsProduct.oxarticles__oxvarselect.value) %}
+    {% set headerImageWidth = oViewConf.getViewThemeParam('sHeaderImageWidth') %}
+
+    {% if oView.getPriceAlarmStatus() == 1 %}
+        {% set _statusMessage1 = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate|cat(" ")|cat(oxcmp_shop.oxshops__oxname.value) %}
+        {% set _statusMessage2 = "PAGE_DETAILS_THANKYOUMESSAGE2"|translate|cat(" ") %}
+        {% set _statusMessage3 = "PAGE_DETAILS_THANKYOUMESSAGE3"|translate|cat(" ")|cat(oView.getBidPrice())|cat(" ")|cat(currency.sign)|cat(" ") %}
+        {% set _statusMessage4 = "PAGE_DETAILS_THANKYOUMESSAGE4"|translate %}
+        {% include "message/success.html.twig" with {statusMessage=`$_statusMessage1``$_statusMessage2``$_statusMessage3``$_statusMessage4`: statusMessage=`$_statusMessage1``$_statusMessage2``$_statusMessage3``$_statusMessage4`} %}
+    {% elseif oView.getPriceAlarmStatus() == 2 %}
+        {% set _statusMessage = "MESSAGE_WRONG_VERIFICATION_CODE"|translate %}
+        {% include "message/error.html.twig" with {statusMessage: _statusMessage} %}
+    {% elseif oView.getPriceAlarmStatus() is same as(0) %}
+        {% set _statusMessage1 = "MESSAGE_NOT_ABLE_TO_SEND_EMAIL"|translate|cat("<br>) %}
+        {% set _statusMessage2 = "MESSAGE_VERIFY_YOUR_EMAIL"|translate %}
+        {% include "message/error.html.twig" with {statusMessage=`$_statusMessage1``$_statusMessage2`: statusMessage=`$_statusMessage1``$_statusMessage2`} %}
+    {% endif %}
+
+    <div id="details_container" class="details container-{% if headerImageWidth == 'container' %}fluid{% else %}xxl{% endif %}">
+        {# details locator #}
+        {% if oView.getSearchTitle() %}
+            {% set detailsLocation = oView.getSearchTitle() %}
+        {% else %}
+            {% for oCatPath in oView.getCatTreePath() %}
+                {% if loop.last %}
+                    {% set detailsLocation = oCatPath.oxcategories__oxtitle.value %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% set actCategory = oView.getActiveCategory() %}
+        <div class="row d-md-flex" id="detailsItemsPager">
+            <div class="col-3 details-pager-overview">
+                <a href="{{ actCategory.toListLink }}" class="details-pager-link d-flex">
+                    <i class="moga-bars"></i>
+                    <span class="details-pager d-none">{{ translate({ ident: "BACK_TO_OVERVIEW" }) }}</span>
+                </a>
+            </div>
+            <div class="col-3 details-pager-prev">
+                {% if actCategory.prevProductLink %}
+                    <a id="linkPrevArticle" class="details-pager-link d-flex" href="{{ actCategory.prevProductLink }}">
+                        <i class="moga-left"></i>
+                        <span class="details-pager d-none">{{ translate({ ident: "PREVIOUS_PRODUCT" }) }}</span>
+                    </a>
+                {% endif %}
+            </div>
+            <div class="col-3 text-center details-pager-current-page">
+                {% if actCategory.iProductPos %}
+                    {{ translate({ ident: "PRODUCT" }) }} {{ actCategory.iProductPos }} {{ translate({ ident: "OF" }) }} {{ actCategory.iCntOfProd }}
+                {% endif %}
+            </div>
+            <div class="col-3 details-pager-next">
+                {% if actCategory.nextProductLink %}
+                    <a id="linkNextArticle" class="details-pager-link d-flex" href="{{ actCategory.nextProductLink }}" style="float: right">
+                        <span class="d-md-flex d-none nowrap">{{ translate({ ident: "NEXT_PRODUCT" }) }}</span>
+                        <i class="moga-right"></i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        {# details locator #}
+        {% include "page/details/inc/fullproductinfo.html.twig" %}
+    </div>
+{% endif %}

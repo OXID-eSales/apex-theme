@@ -1,0 +1,62 @@
+.grid-view {
+  .card {
+    height: 100%;
+    text-decoration: none;
+    border: none;
+
+    @include media-breakpoint-up(md) {
+      transition: all 150ms;
+
+      &:hover {
+        z-index: 10;
+        transform: scale(1.01);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    &-picture {
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      object-fit: contain;
+
+      @include media-breakpoint-up(md) {
+        height: 200px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        height: 300px;
+      }
+    }
+
+    .product-img {
+      max-height: 150px;
+      max-width: 100%;
+      object-fit: contain;
+
+      @include media-breakpoint-up(md) {
+        max-height: 200px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        max-height: 300px;
+      }
+    }
+
+    .variant-dropdown {
+      padding-right: 1rem;
+    }
+
+    &-body {
+      background: #fff;
+    }
+
+    &-title {
+      margin: 0;
+
+      @include media-breakpoint-up(md) {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

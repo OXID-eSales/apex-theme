@@ -1,0 +1,51 @@
+{% capture append = "oxidBlock_pageBody" %}
+    {% if oView.showRDFa() %}
+        {% include "rdfa/rdfa.html.twig" %}
+    {% endif %}
+
+    {% block layout_header %}
+        {% include "layout/header.html.twig" %}
+    {% endblock %}
+
+    <div id="wrapper" class="wrapper{% if sidebar %} sidebar{{ sidebar }}{% endif %}">
+        {{ smarty.capture.loginErrors }}
+
+        {% if sidebar and sidebar != "Right" %}
+            <div class="{{ oView.getClassName() }}">
+                {% include "layout/sidebar.html.twig" %}
+            </div>
+        {% endif %}
+
+        <div class="content">
+            {% block content_main %}
+                {% include "message/errors.html.twig" %}
+
+                {% if oView.getClassName() == "details" or oView.getClassName() == "content" and not blHideBreadcrumb %}
+                    {% block layout_breadcrumb %}
+                        <div class="container-xxl d-none d-md-block pt-3">
+                            {% include "widget/breadcrumb.html.twig" %}
+                        </div>
+                    {% endblock %}
+                {% endif %}
+
+                {% for _block in oxidBlock_content %}
+                    {{ _block }}
+                {% endfor %}
+            {% endblock %}
+        </div>
+
+        {% if sidebar and sidebar == "Right" %}
+            <div class="{{ oView.getClassName() }}">
+                {% include "layout/sidebar.html.twig" %}
+            </div>
+        {% endif %}
+    </div>
+
+    {% include "layout/footer.html.twig" %}
+    {% block dd_layout_page_header_icon_menu_minibasket_list %}
+    {% include_dynamic "widget/minibasket/minibasket.html.twig" %}
+    {% endblock %}
+    {% block layout_init_social %}
+    {% endblock %}
+{% endcapture %}
+{% include "layout/base.html.twig" %}

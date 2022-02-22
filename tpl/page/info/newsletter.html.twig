@@ -1,0 +1,40 @@
+{% capture append = "oxidBlock_content" %}
+    <div class="container-xxl">
+        <div class="row">
+            <div class="col-12">
+                {% if oView.getNewsletterStatus() == 4 or not oView.getNewsletterStatus() %}
+                    <h1>{{ translate({ ident: "STAY_INFORMED" }) }}</h1>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <article>
+                                {% ifcontent ident "oxnewstlerinfo" set oCont %}
+                                    {{ oCont.oxcontents__oxcontent.value }}
+                                {% endifcontent %}
+                            </article>
+                        </div>
+                        <div class="col-lg-5"></div>
+                    </div>
+
+                    {% include "form/newsletter.html.twig" %}
+                {% elseif oView.getNewsletterStatus() == 1 %}
+                    <h1>{{ translate({ ident: "MESSAGE_THANKYOU_FOR_SUBSCRIBING_NEWSLETTERS" }) }}</h1>
+                    <article>
+                        <p>{{ translate({ ident: "MESSAGE_SENT_CONFIRMATION_EMAIL" }) }}</p>
+                    </article>
+                {% elseif oView.getNewsletterStatus() == 2 %}
+                    <h1>{{ translate({ ident: "MESSAGE_NEWSLETTER_CONGRATULATIONS" }) }}</h1>
+                    <article>
+                        <p>{{ translate({ ident: "MESSAGE_NEWSLETTER_SUBSCRIPTION_ACTIVATED" }) }}</p>
+                    </article>
+                {% elseif oView.getNewsletterStatus() == 3 %}
+                    <h1>{{ translate({ ident: "SUCCESS" }) }}</h1>
+                    <article>
+                        <p>{{ translate({ ident: "MESSAGE_NEWSLETTER_SUBSCRIPTION_CANCELED" }) }}</p>
+                    </article>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endcapture %}
+
+{% include "layout/page.html.twig" %}

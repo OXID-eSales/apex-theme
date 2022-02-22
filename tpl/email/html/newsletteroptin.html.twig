@@ -1,0 +1,9 @@
+{% set shop = oEmailView.getShop() %}
+{% set oViewConf = oEmailView.getViewConfig() %}
+{% set user = oEmailView.getUser() %}
+
+{% include "email/html/header.html.twig" with {title: "DD_NEWSLETTER_OPTIN_HEADING"|translate} %}
+
+<p>{% include 'content::ident::oxnewsletteremail' %}</p>
+
+{% include "email/html/footer.html.twig" %}

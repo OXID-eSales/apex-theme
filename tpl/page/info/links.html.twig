@@ -1,0 +1,24 @@
+{% capture append = "oxidBlock_content" %}
+    <div class="container-xxl">
+        <h1>{{ translate({ ident: "LINKS" }) }}</h1>
+
+        {% set aLinkList = oView.getLinksList() %}
+        {% if aLinkList|length > 0 %}
+            <ul class="list-unstyled">
+                {% for link in oView.getLinksList() %}
+                    <li>
+                        <h2>
+                            <a href="{{ link.oxlinks__oxurl.value }}" target="_blank">{{ link.oxlinks__oxurl.value }}</a>
+                            <small>&ndash; {{ link.oxlinks__oxinsert.value|date_format("%d.%m. % Y") }}</small>
+                        </h2>
+                        <article>{{ link.oxlinks__oxurldesc.value }}</article>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="alert alert-info">{{ translate({ ident: "DD_LINKS_NO_ENTRIES" }) }}</p>
+        {% endif %}
+    </div>
+{% endcapture %}
+
+{% include "layout/page.html.twig" %}

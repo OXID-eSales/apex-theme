@@ -1,0 +1,21 @@
+{% block widget_header_search_form %}
+    {% if oView.showSearch() %}
+        <form class="search collapse order-xl-1" id="searchCollapse" action="{{ oViewConf.getSelfActionLink() }}" method="get" name="search">
+            {{ oViewConf.getHiddenSid() }}
+            <input type="hidden" name="cl" value="search">
+
+            {% block dd_widget_header_search_form_inner %}
+                <div class="input-group">
+                    {% block header_search_field %}
+                        <label class="visually-hidden" for="searchParam">{{ translate({ ident: "SEARCH" }) }}</label>
+                        <input class="form-control" type="text" id="searchParam" name="searchparam" value="{{ oView.getSearchParamForHtml() }}" placeholder="{{ translate({ ident: "SEARCH" }) }}">
+                    {% endblock %}
+
+                    {% block dd_header_search_button %}
+                        <button class="btn btn-primary" type="submit" title="{{ translate({ ident: "SEARCH_SUBMIT" }) }}"><i class="moga-search"></i></button>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% block delete_review_confirmation_modal %}
+    <div class="modal fade"
+         id="delete_review_{{ reviewCounterIteration }}"
+         tabindex="-1"
+         role="dialog"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    {% block delete_review_confirmation_modal_header %}
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <span class="h4 modal-title">{{ translate({ ident: "DD_DELETE_REVIEW_CONFIRMATION_QUESTION" }) }}</span>
+                    {% endblock %}
+                </div>
+                <div class="modal-body">
+                    {% block delete_review_confirmation_modal_body %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {% block delete_review_confirmation_modal_form %}
+                                    <form
+                                        action="{{ oViewConf.getSslSelfLink() }}"
+                                        method="post"
+                                        id="remove_review_{{ reviewCounterIteration }}"
+                                    >
+                                        {{ oViewConf.getNavFormParams() }}
+                                        {{ oViewConf.getHiddenSid() }}
+                                        <input name="pgNr" value="{{ oView.getActPage() }}"  type="hidden">
+                                        <input name="cl" value="account_reviewlist" type="hidden">
+                                        <input name="fnc" value="deleteReviewAndRating" type="hidden">
+                                        <input name="reviewId" value="{{ reviewId }}" type="hidden">
+                                        <input name="ratingId" value="{{ ratingId }}" type="hidden">
+                                        {% block delete_review_confirmation_modal_buttons_set %}
+                                            <div class="text-end">
+                                                <button type="submit" class="btn btn-danger">
+                                                    {{ translate({ ident: "DD_DELETE" }) }}
+                                                </button>
+                                                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
+                                                    {{ translate({ ident: "CANCEL" }) }}
+                                                </button>
+                                            </div>
+                                        {% endblock %}
+                                    </form>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

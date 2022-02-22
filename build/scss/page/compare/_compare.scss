@@ -1,0 +1,17 @@
+@import 'inc/compareitem';
+
+.compare {
+  .table {
+    width: auto;
+  }
+
+  &-item-wrapper {
+    width: 280px;
+    padding: 15px;
+  }
+
+  td {
+    border-left: 1px solid #eee;
+    padding: 5px;
+  }
+}

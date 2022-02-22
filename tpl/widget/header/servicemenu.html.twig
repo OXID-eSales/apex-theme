@@ -1,0 +1,29 @@
+{% if oxcmp_user %}
+    {% set noticeListCount = oxcmp_user.getNoticeListArtCnt() %}
+    {% set wishListCount = oxcmp_user.getWishListArtCnt() %}
+    {% set recommListCount = oxcmp_user.getRecommListsCount() %}
+{% else %}
+    {% set noticeListCount = "0" %}
+    {% set wishListCount = "0" %}
+    {% set recommListCount = "0" %}
+{% endif %}
+{% set notificationsCounter = oView.getCompareItemsCnt()+noticeListCount+wishListCount+recommListCount %}
+<div class="btn-group" role="group">
+    <button type="button" aria-label="Usercenter" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account") }) }}">
+        {% block dd_layout_page_header_icon_menu_account_button %}
+            {{ *if not oxcmp_user.oxuser__oxpassword.value }}
+                {{ translate({ ident: "LOGIN" }) }}
+            {% else %}
+                {{ translate({ ident: "MY_ACCOUNT" }) }}
+            {{ /if* }}
+            <i class="moga-person d-inline-block"></i>
+        {% endblock %}
+    </button>
+    {% if not oxcmp_user.oxuser__oxpassword.value %}
+        {% include "widget/header/loginbox.html.twig" %}
+    {% else %}
+        {% block dd_layout_page_header_icon_menu_account_list %}
+            {% include "widget/header/servicebox.html.twig" %}
+        {% endblock %}
+    {% endif %}
+</div>

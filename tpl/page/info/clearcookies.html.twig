@@ -1,0 +1,12 @@
+{% capture append = "oxidBlock_content" %}
+    {% set template_title = oView.getTitle() %}
+    <h1>{{ oView.getTitle() }}</h1>
+    <div class="cmsContent">
+        <p>
+            {% ifcontent ident "oxcookiesexplanation" set oCont %}
+                {{ oCont.oxcontents__oxcontent.value }}
+            {% endifcontent %}
+        </p>
+    </div>
+{% endcapture %}
+{% include "layout/page.html.twig" %}

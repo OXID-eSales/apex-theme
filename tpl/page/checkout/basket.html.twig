@@ -1,0 +1,47 @@
+{{ script({ include: "js/movetonoticelist.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
+
+{% set oConfig = oViewConf.getConfig() %}
+{% capture append = "oxidBlock_content" %}
+    <div class="container-xxl py-5">
+        {% block checkout_basket_main %}
+            {% set currency = oView.getActCurrency() %}
+
+            {% if oView.isLowOrderPrice() %}
+                {% block checkout_basket_loworderprice_top %}
+                    <div class="alert alert-info">{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ oView.getMinOrderPrice() }} {{ currency.sign }}</div>
+                {% endblock %}
+            {% endif %}
+
+            {% if not oxcmp_basket.getProductsCount() %}
+                {% block checkout_basket_emptyshippingcart %}
+                    <div id="empty-basket-warning">
+                        <div class="h1 mb-3">{{ translate({ ident: "BASKET_EMPTY" }) }} 😢</div>
+                        <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" class="btn btn-outline-primary"><i class="moga-left"></i> {{ translate({ ident: "DD_BASKET_BACK_TO_SHOP" }) }}</a>
+
+                    </div>
+                {% endblock %}
+            {% else %}
+                {% block checkout_basket_next_step_top %}
+                {% endblock %}
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-10 col-xl-9">
+                            <div class="row">
+                                <div class="col-lg-8">
+                            {% include "page/checkout/inc/basketcontents.html.twig" with {editable: true} %}
+                                </div>
+                                <div class="col-lg-4">
+                                    {% include "page/checkout/inc/summary_sidebar.html.twig" with {btn: true} %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+    {% if oView.isWrapping() %}
+    {% include "page/checkout/inc/wrapping.html.twig" %}
+    {% endif %}
+{% endcapture %}
+
+{% include "layout/page.html.twig" %}

@@ -1,0 +1,17 @@
+{% capture append = "oxidBlock_content" %}
+    {% set oContent = oView.getContent() %}
+    {% set tpl = oViewConf.getActTplName() %}
+    {% set oxloadid = oViewConf.getActContentLoadId() %}
+    {% set template_title = oView.getTitle() %}
+
+    <div class="container-xxl">
+        {% if not oContent.oxcontents__ddhidetitle.value %}
+            <h1>{{ template_title }}</h1>
+        {% endif %}
+        <article class="cmsContent pb-5">
+            {{ oView.getParsedContent() }}
+        </article>
+    </div>
+
+{% endcapture %}
+{% include "layout/page.html.twig" %}

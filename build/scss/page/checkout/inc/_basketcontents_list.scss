@@ -1,0 +1,38 @@
+.cl-basket {
+  .wrapper {
+    background: #f1f1f1;
+  }
+}
+
+.btn-remove {
+  text-decoration: none;
+  font-size: 12px;
+  padding: 0;
+
+  @include media-breakpoint-up(md) {
+    i {
+      transition: color 150ms;
+    }
+
+    &:hover {
+      i {
+        color: $danger;
+      }
+    }
+  }
+}
+
+.card-collapse {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+
+  &:after {
+    font-family: 'icons';
+    content: map-get($icons, 'up');
+  }
+
+  &.collapsed:after {
+    content: map-get($icons, 'down');
+  }
+}

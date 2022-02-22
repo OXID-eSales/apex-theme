@@ -1,0 +1,82 @@
+.ratings {
+  margin-top: 5px;
+  margin-bottom: $hr-margin-y;
+
+  .moga-star {
+    font-size: 22px;
+  }
+
+  &-star-filled {
+    color: $ox-page-details-rating-star-filled-color;
+  }
+
+  &-star-empty {
+    color: $ox-page-details-rating-star-empty-color;
+  }
+}
+
+.rating {
+  color: $ox-page-details-rating-star-empty-color;
+
+  &-star {
+    display: inline-block;
+    padding-right: 5px;
+  }
+
+  .active {
+    color: $ox-page-details-rating-star-filled-color;
+  }
+
+  .ox-write-review {
+    color: inherit;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+
+  .moga-star {
+    font-size: 22px;
+  }
+
+  &.stars1 {
+    .s1 {
+      color: $ox-page-details-rating-star-filled-color;
+    }
+  }
+
+  &.stars2 {
+    .s1,
+    .s2 {
+      color: $ox-page-details-rating-star-filled-color;
+    }
+  }
+
+  &.stars3 {
+    .s1,
+    .s2,
+    .s3 {
+      color: $ox-page-details-rating-star-filled-color;
+    }
+  }
+
+  &.stars4 {
+    .s1,
+    .s2,
+    .s3,
+    .s4 {
+      color: $ox-page-details-rating-star-filled-color;
+    }
+  }
+
+  &.stars5 {
+    .s1,
+    .s2,
+    .s3,
+    .s4,
+    .s5 {
+      color: $ox-page-details-rating-star-filled-color;
+    }
+  }
+}

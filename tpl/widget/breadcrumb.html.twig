@@ -1,0 +1,33 @@
+{% block dd_widget_breadcrumb %}
+    {% spaceless %}
+        {% block dd_widget_breadcrumb_list_inner %}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-3 d-none d-md-flex">
+                {% block dd_widget_breadcrumb_list %}
+                    <li class="breadcrumb-item">
+                        <a href="{{ oViewConf.getHomeLink() }}" class="breadcrumb-link" title="{{ translate({ ident: "HOME" }) }}">
+                            <i class="moga-house-door"></i>
+                        </a>
+                    </li>
+                    {% for sCrum in oView.getBreadCrumb() %}
+                        <li class="breadcrumb-item{% if loop.last and oView.getClassName() != "details" %} active{% endif %}">
+                            {% if loop.last and oView.getClassName() != "details" %}
+                                {{ sCrum.title }}
+                            {% else %}
+                                <a href="{% if sCrum.link %}{{ sCrum.link }}{% else %}#{% endif %}" class="breadcrumb-link" title="{{ sCrum.title|escape('html') }}">
+                                    {{ sCrum.title }}
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    {% if oView.getClassName() == "details" %}
+                    <li class="breadcrumb-item active">
+                        {{ oDetailsProduct.oxarticles__oxtitle.value }}
+                    </li>
+                    {% endif %}
+                {% endblock %}
+            </ol>
+        </nav>
+        {% endblock %}
+    {% endspaceless %}
+{% endblock %}

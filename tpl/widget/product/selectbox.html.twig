@@ -1,0 +1,20 @@
+{% set oSelections = oSelectionList.getSelections() %}
+{% if oSelections %}
+<div class="mb-3 dropDown">
+    {% if not blHideLabel %}
+    <label class="form-label" for="formSelect{{ testid }}">{{ oSelectionList.getLabel() }}</label>
+    {% endif %}
+    <select id="formSelect{{ testid }}" class="form-select" aria-label="{{ oSelectionList.getLabel() }}" name="{{ sFieldName|default("varselid") }}[{{ iKey }}]"{% if blSubmitOnChange %} onchange="document.forms['tobasket.{{ testid }}'].submit()"{% endif %}>
+        <option value="">
+        {% if sFieldName == "sel" %}
+        {{ translate({ ident: "PLEASE_CHOOSE" }) }}
+        {% else %}
+        {{ translate({ ident: "CHOOSE_VARIANT" }) }}
+        {% endif %}</option>
+
+        {% for oSelection in oSelections %}
+            <option{% if oSelection.isActive() %} selected{% endif %} value="{{ oSelection.getValue() }}">{{ oSelection.getName() }}</option>
+        {% endfor %}
+    </select>
+</div>
+{% endif %}

@@ -1,0 +1,213 @@
+{% set shop = oEmailView.getShop() %}
+{% set oViewConf = oEmailView.getViewConfig() %}
+{% set currency = oEmailView.getCurrency() %}
+{% set user = oEmailView.getUser() %}
+{% set basket = order.getBasket() %}
+{% set oDelSet = order.getDelSet() %}
+{% set payment = order.getPayment() %}
+
+{% block email_plain_order_owner_orderemail %}
+{% if payment.oxuserpayments__oxpaymentsid.value == "oxempty" %}
+{% include 'content::ident::oxadminordernpplainemail' %}
+{% else %}
+{% include 'content::ident::oxadminorderplainemail' %}
+{% endif %}
+{% endblock %}
+
+{{ translate({ ident: "ORDER_NUMBER" }) }} {{ order.oxorder__oxordernr.value }}
+
+{% block email_plain_order_owner_voucherdiscount_top %}
+{% if oViewConf.getShowVouchers() %}
+{% for voucher in order.getVoucherList() %}
+{% set voucherseries = voucher.getSerie() %}
+{{ translate({ ident: "USED_COUPONS" }) }} {{ voucher.oxvouchers__oxvouchernr.value }} - {{ translate({ ident: "DISCOUNT" }) }} {{ voucherseries.oxvoucherseries__oxdiscount.value }} {% if voucherseries.oxvoucherseries__oxdiscounttype.value == "absolute" %}{{ currency.sign }}{% else %}%{% endif %}
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% set basketitemlist = basket.getBasketArticles() %}
+{% for basketindex, basketitem in basket.getContents() %}
+{% block email_plain_order_ownerbasketitem %}
+{% set basketproduct = basketitemlist.$basketindex %}
+{{ basketproduct.oxarticles__oxtitle.getRawValue()|striptags }}{% if basketproduct.oxarticles__oxvarselect.value %}, {{ basketproduct.oxarticles__oxvarselect.value }}{% endif %}
+{% if basketitem.getChosenSelList() %}{% for oList in basketitem.getChosenSelList() %}{{ oList.name }} {{ oList.value }}{% endfor %}{% endif %}
+{% if basketitem.getPersParams() %}{% for sVar, aParam in basketitem.getPersParams() %}{{ sVar }} : {{ aParam }}{% endfor %}{% endif %}
+{% if oViewConf.getShowGiftWrapping() %}
+{% set oWrapping = basketitem.getWrapping() %}
+{{ translate({ ident: "GIFT_WRAPPING" }) }} {% if not basketitem.getWrappingId() %}{{ translate({ ident: "NONE" }) }}{% else %}{{ oWrapping.oxwrapping__oxname.getRawValue() }}{% endif %}
+{% endif %}
+{% if basketproduct.oxarticles__oxorderinfo.value %}{{ basketproduct.oxarticles__oxorderinfo.getRawValue() }}{% endif %}
+
+{% set dRegUnitPrice = basketitem.getRegularUnitPrice() %}
+{% set dUnitPrice = basketitem.getUnitPrice() %}
+{{ translate({ ident: "UNIT_PRICE" }) }} {{ basketitem.getFUnitPrice() }} {{ currency.name }} {% if not basketitem.isBundle() %} {% if dRegUnitPrice.getPrice() > dUnitPrice.getPrice() %} ({{ basketitem.getFRegularUnitPrice() }} {{ currency.sign }}) {% endif %}{% endif %}
+{{ translate({ ident: "QUANTITY" }) }} {{ basketitem.getAmount() }}
+{{ translate({ ident: "VAT" }) }} {{ basketitem.getVatPercent() }}%
+{{ translate({ ident: "TOTAL" }) }} {{ basketitem.getFTotalPrice() }} {{ currency.name }}
+{% endblock %}
+{% endfor %}
+------------------------------------------------------------------
+{% if not basket.getDiscounts() %}
+{% block email_plain_order_ownernodiscounttotalnet %}
+{# netto price #}
+{{ translate({ ident: "TOTAL_NET" }) }} {{ basket.getProductsNetPrice() }} {{ currency.name }}
+{% endblock %}
+{% block email_plain_order_ownernodiscountproductvats %}
+{# VATs #}
+{% for key, VATitem in basket.getProductVats() %}
+{{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: key }) }} {{ VATitem }} {{ currency.name }}
+{% endfor %}
+{% endblock %}
+{% block email_plain_order_nodiscountownertotalgross %}
+{# brutto price #}
+{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getFProductsPrice() }} {{ currency.name }}
+{% endblock %}
+{% endif %}
+
+{# applied discounts #}
+{% if basket.getDiscounts() %}
+{% if order.isNettoMode() %}
+{% block email_plain_order_ownerdiscounttotalnet %}
+{# netto price #}
+{{ translate({ ident: "TOTAL_NET" }) }} {{ basket.getProductsNetPrice() }} {{ currency.name }}
+{% endblock %}
+{% else %}
+{% block email_plain_order_discountownertotalgross %}
+{# brutto price #}
+{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getFProductsPrice() }} {{ currency.name }}
+{% endblock %}
+{% endif %}
+{% block email_plain_order_ownerdiscounts %}
+  {% for oDiscount in basket.getDiscounts() %}
+  {% if oDiscount.dDiscount < 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DISCOUNT" }) }}{% endif %} {{ oDiscount.sDiscount }}: {% if oDiscount.dDiscount < 0 %}{{ oDiscount.fDiscount|replace(" - ", "") }}{% else %}-{{ oDiscount.fDiscount }}{% endif %} {{ currency.name }}
+  {% endfor %}
+{% endblock %}
+{% if not order.isNettoMode() %}
+{% block email_plain_order_ownertotalnet %}
+  {# netto price #}
+  {{ translate({ ident: "TOTAL_NET" }) }} {{ basket.getProductsNetPrice() }} {{ currency.name }}
+{% endblock %}
+{% endif %}
+{% block email_plain_order_ownerproductvats %}
+  {# VATs #}
+  {% for key, VATitem in basket.getProductVats() %}
+    {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: key }) }} {{ VATitem }} {{ currency.name }}
+  {% endfor %}
+{% endblock %}
+{% endif %}
+{% if order.isNettoMode() %}
+{% block email_plain_order_ownertotalgross %}
+{# brutto price #}
+{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getFProductsPrice() }} {{ currency.name }}
+{% endblock %}
+{% endif %}
+{% block email_plain_order_owner_voucherdiscount %}
+{# voucher discounts #}
+{% if oViewConf.getShowVouchers() and basket.getVoucherDiscValue() %}
+{{ translate({ ident: "COUPON" }) }} {% if basket.getFVoucherDiscountValue() > 0 %}-{% endif %}{{ basket.getFVoucherDiscountValue()|replace(" - ", "") }} {{ currency.name }}
+{% endif %}
+{% endblock %}
+{% block email_plain_order_ownerdelcosts %}
+{# delivery costs #}
+{% if basket.getDelCostNet() %}
+    {{ translate({ ident: "SHIPPING_NET", suffix: "COLON" }) }} {{ basket.getDelCostNet() }} {{ currency.sign }}
+    {% if basket.getDelCostVat() %} {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }} {% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getDelCostVatPercent() }) }}{% endif %} {{ basket.getDelCostVat() }} {{ currency.sign }}
+{% elseif basket.getFDeliveryCosts() %}
+    {{ translate({ ident: "SHIPPING_COST" }) }} {{ basket.getFDeliveryCosts() }} {{ currency.sign }}
+{% endif %}
+{% endblock %}
+{% block email_plain_order_ownerpaymentcosts %}
+{# payment sum #}
+{% if basket.getPayCostNet() %}
+    {% if basket.getPaymentCosts() >= 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DEDUCTION" }) }}{% endif %} {{ translate({ ident: "PAYMENT_METHOD" }) }} {{ basket.getPayCostNet() }} {{ currency.sign }}
+    {% if basket.getPayCostVat() %}
+        {% if basket.isProportionalCalculationOn() %} {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}{% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getPayCostVatPercent() }) }}{% endif %} {{ basket.getPayCostVat() }} {{ currency.sign }}
+    {% endif %}
+{% elseif basket.getFPaymentCosts() %}
+    {{ translate({ ident: "SURCHARGE" }) }} {{ basket.getFPaymentCosts() }} {{ currency.sign }}
+{% endif %}
+{% endblock %}
+
+{% block email_plain_order_giftwrapping %}
+{# Gift wrapping #}
+{% if oViewConf.getShowGiftWrapping() %}
+    {% if basket.getWrappCostNet() %}
+        {{ translate({ ident: "BASKET_TOTAL_WRAPPING_COSTS_NET" }) }} {{ basket.getWrappCostNet() }} {{ currency.sign }}
+        {% if basket.getWrappCostVat() %}
+            {{ translate({ ident: "PLUS_VAT" }) }} {{ basket.getWrappCostVat() }} {{ currency.sign }}
+        {% endif %}
+    {% elseif basket.getFWrappingCosts() %}
+        {{ translate({ ident: "GIFT_WRAPPING" }) }} {{ basket.getFWrappingCosts() }} {{ currency.sign }}
+    {% endif %}
+{% endif %}
+{% endblock %}
+
+{% block email_plain_order_cust_greetingcard %}
+{# Greeting card #}
+{% if oViewConf.getShowGiftWrapping() %}
+    {% if basket.getGiftCardCostNet() %}
+        {{ translate({ ident: "BASKET_TOTAL_GIFTCARD_COSTS_NET" }) }} {{ basket.getGiftCardCostNet() }} {{ currency.sign }}
+        {% if basket.getGiftCardCostVat() %}
+            {% if basket.isProportionalCalculationOn() %}{{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}{% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getGiftCardCostVatPercent() }) }}{% endif %} {{ basket.getGiftCardCostVat() }} {{ currency.sign }}
+        {% endif %}
+    {% elseif basket.getFGiftCardCosts() %}
+        {{ translate({ ident: "GREETING_CARD" }) }} {{ basket.getFGiftCardCosts() }} {{ currency.sign }}
+    {% endif %}
+{% endif %}
+{% endblock %}
+
+{% block email_plain_order_ownergrandtotal %}
+{# grand total price #}
+{{ translate({ ident: "GRAND_TOTAL" }) }} {{ basket.getFPrice() }} {{ currency.name }}
+{% if basket.oCard %}
+    {{ translate({ ident: "ATENTION_GREETING_CARD" }) }}
+    {{ translate({ ident: "WHAT_I_WANTED_TO_SAY" }) }}
+    {{ basket.getCardMessage() }}
+{% endif %}
+{% endblock %}
+
+{% block email_plain_order_owneruserremark %}
+{% if order.oxorder__oxremark.value %}
+{{ translate({ ident: "MESSAGE" }) }} {{ order.oxorder__oxremark.getRawValue() }}
+{% endif %}
+{% endblock %}
+
+{% block email_plain_order_ownerpaymentinfo %}
+{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "PAYMENT_INFORMATION" }) }}
+{{ translate({ ident: "PAYMENT_METHOD" }) }}{{ payment.oxpayments__oxdesc.getRawValue() }} {% if basket.getPaymentCosts() %}({{ basket.getFPaymentCosts() }} {{ currency.sign }}){% endif %}
+{% endif %}
+{% endblock %}
+
+{% block email_plain_order_ownerusername %}
+{{ translate({ ident: "EMAIL_ADDRESS" }) }} {{ user.oxuser__oxusername.value }}
+{% endblock %}
+
+{% block email_plain_order_owneraddress %}
+{{ translate({ ident: "BILLING_ADDRESS" }) }}
+{{ order.oxorder__oxbillcompany.getRawValue() }}
+{{ order.oxorder__oxbillsal.value|translate_salutation }} {{ order.oxorder__oxbillfname.getRawValue() }} {{ order.oxorder__oxbilllname.getRawValue() }}
+{% if order.oxorder__oxbilladdinfo.value %}{{ order.oxorder__oxbilladdinfo.getRawValue() }}{% endif %}
+{{ order.oxorder__oxbillstreet.getRawValue() }} {{ order.oxorder__oxbillstreetnr.value }}
+{{ order.oxorder__oxbillstateid.value }}
+{{ order.oxorder__oxbillzip.value }} {{ order.oxorder__oxbillcity.getRawValue() }}
+{{ order.oxorder__oxbillcountry.getRawValue() }}
+{% if order.oxorder__oxbillustid.value %}{{ translate({ ident: "VAT_ID_NUMBER" }) }} {{ order.oxorder__oxbillustid.value }}{% endif %}
+{{ translate({ ident: "PHONE" }) }} {{ order.oxorder__oxbillfon.value }}
+
+{% if order.oxorder__oxdellname.value %}{{ translate({ ident: "SHIPPING_ADDRESS" }) }}
+{{ order.oxorder__oxdelcompany.getRawValue() }}
+{{ order.oxorder__oxdelsal.value|translate_salutation }} {{ order.oxorder__oxdelfname.getRawValue() }} {{ order.oxorder__oxdellname.getRawValue() }}
+{% if order.oxorder__oxdeladdinfo.value %}{{ order.oxorder__oxdeladdinfo.getRawValue() }}{% endif %}
+{{ order.oxorder__oxdelstreet.getRawValue() }} {{ order.oxorder__oxdelstreetnr.value }}
+{{ order.oxorder__oxdelstateid.getRawValue() }}
+{{ order.oxorder__oxdelzip.value }} {{ order.oxorder__oxdelcity.getRawValue() }}
+{{ order.oxorder__oxdelcountry.getRawValue() }}
+{% endif %}
+{% endblock %}
+
+{% block email_plain_order_ownerdeliveryinfo %}
+{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ order.oDelSet.oxdeliveryset__oxtitle.getRawValue() }}
+{% endif %}
+{% endblock %}
+
+{% include 'content::ident::oxemailfooterplain' %}

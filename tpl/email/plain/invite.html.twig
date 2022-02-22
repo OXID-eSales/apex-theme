@@ -1,0 +1,11 @@
+{{ translate({ ident: "INVITE_TO_SHOP" }) }} {{ userinfo.send_name }}, {{ translate({ ident: "EMAIL_INVITE_HTML_INVITETOSHOP2" }) }} {{ shop.oxshops__oxname.getRawValue() }} {{ translate({ ident: "EMAIL_INVITE_HTML_INVITETOSHOP3" }) }}
+{{ translate({ ident: "FROM" }) }} {{ userinfo.send_name }}
+{{ translate({ ident: "EMAIL" }) }} {{ userinfo.send_email }}
+
+{{ userinfo.send_message }}
+
+{{ sHomeUrl }}
+
+{{ translate({ ident: "MANY_GREETINGS" }) }} {{ userinfo.send_name }}
+
+{% include 'content::ident::oxemailfooterplain' %}

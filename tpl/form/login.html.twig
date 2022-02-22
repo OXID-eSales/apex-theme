@@ -1,0 +1,23 @@
+{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+<form id="optionLogin" name="login" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
+
+    {{ oViewConf.getHiddenSid() }}
+    {{ oViewConf.getNavFormParams() }}
+    <input type="hidden" name="fnc" value="login_noredirect">
+    <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
+    {% block checkout_options_login_text %}
+    {% endblock %}
+    {% set aErrors = oView.getFieldValidationErrors() %}
+    <div class="mb-3 form-floating{% if aErrors %} oxInValid{% endif %}">
+        <input type="text" id="lgn_usr" name="lgn_usr" autocomplete="email" class="form-control textbox" placeholder="{{ translate({ ident: "EMAIL_ADDRESS" }) }}" required>
+        <label for="lgn_usr">{{ translate({ ident: "EMAIL_ADDRESS" }) }}</label>
+    </div>
+    <div class="mb-3 form-floating{% if aErrors %} oxInValid{% endif %}">
+        <input type="password" id="lgn_pwd" name="lgn_pwd" autocomplete="current-password" class="form-control textbox stepsPasswordbox" placeholder="{{ translate({ ident: "PASSWORD" }) }}" required>
+        <label for="lgn_pwd">{{ translate({ ident: "PASSWORD" }) }}</label>
+    </div>
+    <a class="btn btn-link px-0 forgotPasswordOpener" id="step2PswdOpener" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=forgotpwd") }) }}" title="{{ translate({ ident: "FORGOT_PASSWORD" }) }}">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
+
+    <button type="submit" class="btn btn-primary w-100">{{ translate({ ident: "LOGIN" }) }}</button>
+</form>

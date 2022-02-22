@@ -1,0 +1,10 @@
+{% if Errors|is_array and Errors.default|is_array and not empty(Errors.default) %}
+    <div class="container-xxl">
+        {% for key, oEr in Errors.default %}
+            <p class="alert alert-danger">{{ oEr.getOxMessage() }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+{% if Errors.popup|is_array and not empty(Errors.popup) %}
+    {% include "message/errors_modal.html.twig" %}
+{% endif %}

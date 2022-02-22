@@ -1,0 +1,27 @@
+<dl>
+    <dt>
+        <input class="form-check-input" id="payment_{{ sPaymentID }}" type="radio" name="paymentid" value="{{ sPaymentID }}" {% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %}checked{% endif %}>
+        <label class="form-check-label" for="payment_{{ sPaymentID }}">{{ paymentmethod.oxpayments__oxdesc.value }}</label>
+    </dt>
+    <div class="payment-option{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} activePayment{% endif %}">
+        {% if paymentmethod.getPrice() %}
+            {% set oPaymentPrice = paymentmethod.getPrice() %}
+            {% if oViewConf.isFunctionalityEnabled('blShowVATForPayCharge') %}
+                ({{ format_price(oPaymentPrice.getNettoPrice(), { currency: currency }) }}
+                {% if oPaymentPrice.getVatValue() > 0 %}
+                    {{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(oPaymentPrice.getVatValue(), { currency: currency }) }}
+                {% endif %})
+            {% else %}
+                ({{ format_price(oPaymentPrice.getBruttoPrice(), { currency: currency }) }})
+            {% endif %}
+        {% endif %}
+
+        {% block checkout_payment_longdesc %}
+            {% if paymentmethod.oxpayments__oxlongdesc.value %}
+                <div class="desc">
+                    {{ paymentmethod.oxpayments__oxlongdesc.getRawValue() }}
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+</dl>

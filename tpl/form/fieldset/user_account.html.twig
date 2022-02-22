@@ -1,0 +1,29 @@
+<div class="mb-3 form-floating{% if aErrors.oxuser__oxusername %} oxInValid{% endif %}">
+    {% block user_account_username %}
+        <input id="userLoginName" class="form-control" placeholder=" " type="email" name="lgn_usr" value="{{ oView.getActiveUsername() }}" required>
+        <label class="req" for="userLoginName">{{ translate({ ident: "EMAIL_ADDRESS" }) }}</label>
+    {% endblock %}
+</div>
+<div class="mb-3 form-floating{% if aErrors.oxuser__oxpassword %} oxInValid{% endif %}">
+    {% block user_account_password %}
+        <input type="hidden" id="passwordLength" value="{{ oViewConf.getPasswordLength() }}">
+        <input id="userPassword" class="form-control" placeholder=" " type="password" name="lgn_pwd" value="{{ lgn_pwd }}" required>
+        <label class="req" for="userPassword">{{ translate({ ident: "PASSWORD" }) }}</label>
+    {% endblock %}
+</div>
+<div class="mb-3 form-floating{% if aErrors.oxuser__oxpassword %} oxInValid{% endif %}">
+    {% block user_account_confirmpwd %}
+        <input id="userPasswordConfirm" class="form-control" placeholder=" " type="password" name="lgn_pwd2" value="{{ lgn_pwd2 }}" required>
+        <label class="req" for="userPasswordConfirm">{{ translate({ ident: "CONFIRM_PASSWORD" }) }}</label>
+    {% endblock %}
+</div>
+{% block user_account_newsletter %}
+    <input type="hidden" name="blnewssubscribed" value="0">
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="blnewssubscribed" name="blnewssubscribed" value="1" {% if oView.isNewsSubscribed() %}checked{% endif %}>
+        <label class="form-check-label" for="blnewssubscribed">
+            {{ translate({ ident: "NEWSLETTER_SUBSCRIPTION" }) }}
+        </label>
+        <p class="text-muted">{{ translate({ ident: "MESSAGE_NEWSLETTER_SUBSCRIPTION" }) }}</p>
+    </div>
+{% endblock %}

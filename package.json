@@ -1,0 +1,33 @@
+{
+  "name": "moga",
+  "version": "1.0.0",
+  "description": "moga new fancy Bootstrap 5 playground.",
+  "main": "index.js",
+  "author": "c&c concepts and creations gmbh",
+  "engines": {
+    "node": ">=8"
+  },
+  "devDependencies": {
+    "@fontsource/raleway": "^4.4.5",
+    "@popperjs/core": "^2.9.2",
+    "bootstrap": "^5.1.0",
+    "dart-sass": "^1.25.0",
+    "fontsource-barlow-condensed": "^4",
+    "grunt": "^1.4.1",
+    "grunt-combine-media-queries": "^1.0.20",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-uglify": "^5.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-sass": "^3.1.0",
+    "grunt-webfont": "^1.7.2",
+    "jquery": "^3.6.0",
+    "matchdep": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
+}

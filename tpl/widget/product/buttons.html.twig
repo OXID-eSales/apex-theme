@@ -1,0 +1,33 @@
+{% set oSelections = oSelectionList.getSelections() %}
+
+{% if oSelections %}
+    <div class="mb-3 dropDown">
+        {% if not blHideLabel %}
+        <label class="form-label">{{ oSelectionList.getLabel() }}</label>
+        {% endif %}
+        <div class="dropdown">
+            {% set oActiveSelection = oSelectionList.getActiveSelection() %}
+            {% if editable != false %}
+                <input type="hidden" name="{{ sFieldName|default("varselid") }}[{{ iKey }}]" value="{% if oActiveSelection %}{{ oActiveSelection.getValue() }}{% endif %}">
+
+                {% for oSelection in oSelections %}
+                    <a href="{{ oSelection.getLink() }}" data-selection-id="{{ oSelection.getValue() }}" class="btn btn-outline-primary{% if oSelection.isActive() %} active{% endif %}{% if oSelection.isDisabled() %} disabled{% endif %}">{{ oSelection.getName() }}</a>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    {{ * }}
+    <select class="form-select" aria-label="{{ oSelectionList.getLabel() }}" name="{{ sFieldName|default("varselid") }}[{{ iKey }}]" onchange="this.form.submit()">
+        <option value="">
+        {% if sFieldName == "sel" %}
+        {{ translate({ ident: "PLEASE_CHOOSE" }) }}
+        {% else %}
+        {{ translate({ ident: "CHOOSE_VARIANT" }) }}
+        {% endif %}</option>
+
+        {% for oSelection in oSelections %}
+        <option{% if oSelection.isActive() %} selected{% endif %} value="{{ oSelection.getValue() }}">{{ oSelection.getName() }}</option>
+        {% endfor %}
+    </select>{{ * }}
+    {% endif %}

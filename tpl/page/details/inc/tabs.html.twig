@@ -1,0 +1,132 @@
+{% set blFirstTab = true %}
+
+{% block details_tabs_longdescription %}
+    {% hasrights { ident: "SHOWLONGDESCRIPTION" } %}
+        {% set oLongdesc = oDetailsProduct.getLongDescription() %}
+        {% if oLongdesc.value %}
+            {% capture append = "tabs" %}
+                <a id="description-tab" class="nav-link{% if blFirstTab %} active{% endif %}" href="#description" data-bs-toggle="tab" role="tab" aria-controls="description" aria-selected="true">
+                {{ translate({ ident: "DESCRIPTION" }) }}
+                </a>
+            {% endcapture %}
+            {% capture append = "tabsContent" %}
+                <div id="description" class="tab-pane{% if blFirstTab %} active{% endif %}" role="tabpanel" aria-labelledby="description-tab">
+                    <div class="container-xxl">
+                        {{ include(template_from_string(oLongdesc)) }}
+                        {% if oDetailsProduct.oxarticles__oxexturl.value %}
+                            <a id="productExturl" class="js-external" href="{{ oDetailsProduct.oxarticles__oxexturl.value }}">
+                            {% if oDetailsProduct.oxarticles__oxurldesc.value %}
+                                {{ oDetailsProduct.oxarticles__oxurldesc.value }}
+                            {% else %}
+                                {{ oDetailsProduct.oxarticles__oxexturl.value }}
+                            {% endif %}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endcapture %}
+            {% set blFirstTab = false %}
+        {% endif %}
+    {% endhasrights %}
+{% endblock %}
+
+{% block details_tabs_attributes %}
+    {% if oView.getAttributes() %}
+        {% capture append = "tabs" %}
+            <a id="attributes-tab" class="nav-link{% if blFirstTab %} active{% endif %}" href="#attributes" data-bs-toggle="tab" role="tab" aria-controls="attributes" aria-selected="false">
+            {{ translate({ ident: "SPECIFICATION" }) }}
+            </a>
+        {% endcapture %}
+        {% capture append = "tabsContent" %}
+            <div id="attributes" class="tab-pane{% if blFirstTab %} active{% endif %}" role="tabpanel" aria-labelledby="attributes-tab">
+                <div class="container-xxl">
+                    {% include "page/details/inc/attributes.html.twig" %}
+                </div>
+            </div>
+            {% set blFirstTab = false %}
+        {% endcapture %}
+    {% endif %}
+{% endblock %}
+
+{{ *block name="details_tabs_pricealarm" }}
+    {% if oView.isPriceAlarm() and not oDetailsProduct.isParentNotBuyable() %}
+        {% capture append = "tabs" %}
+            <a id="pricealarm-tab" class="nav-link{% if blFirstTab %} active{% endif %}" href="#pricealarm" data-bs-toggle="tab" role="tab" aria-controls="pricealarm" aria-selected="false">
+                {{ translate({ ident: "PRICE_ALERT" }) }}
+            </a>
+        {% endcapture %}
+        {% capture append = "tabsContent" %}
+            <div id="pricealarm" class="tab-pane{% if blFirstTab %} active{% endif %}" role="tabpanel" aria-labelledby="pricealarm-tab">
+                <div class="container-xxl">
+                    {% include "form/pricealarm.html.twig" %}
+                </div>
+            </div>
+            {% set blFirstTab = false %}
+        {% endcapture %}
+    {% endif %}
+{{ /block* }}
+
+{% set oManufacturer = oView.getManufacturer() %}
+{% if oManufacturer and oManufacturer.oxmanufacturers__oxshortdesc.value %}
+    {% capture append = "tabs" %}<a class="nav-link{% if blFirstTab %} active{% endif %}" href="#manufacturer-tab" data-bs-toggle="tab">{{ translate({ ident: "MORE_ABOUT" }) }} {{ oManufacturer.oxmanufacturers__oxtitle.value }}</a>{% endcapture %}
+    {% capture append = "tabsContent" %}
+    <div id="manufacturer-tab" class="tab-pane{% if blFirstTab %} active{% endif %}">
+        <div class="container-xxl">
+            <p>
+                {{ oManufacturer.oxmanufacturers__oxshortdesc.value }}
+            </p>
+            <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                {{ translate({ ident: "SHOW_ME_MORE" }) }}
+            </a>
+        </div>
+    </div>
+    {% set blFirstTab = false %}
+    {% endcapture %}
+{% endif %}
+
+{% block details_tabs_tags %}
+{% endblock %}
+
+{% block details_tabs_media %}
+    {% if oView.getMediaFiles() or oDetailsProduct.oxarticles__oxfile.value %}
+        {% capture append = "tabs" %}
+            <a id="media-tab" class="nav-link{% if blFirstTab %} active{% endif %}" href="#media" data-bs-toggle="tab" role="tab" aria-controls="media" aria-selected="false">
+                {{ translate({ ident: "MEDIA" }) }}
+            </a>
+        {% endcapture %}
+        {% capture append = "tabsContent" %}
+            <div id="media" class="tab-pane{% if blFirstTab %} active{% endif %}" role="tabpanel" aria-labelledby="media-tab">
+                <div class="container-xxl">
+                    {% include "page/details/inc/media.html.twig" %}
+                </div>
+            </div>
+            {% set blFirstTab = false %}
+        {% endcapture %}
+    {% endif %}
+{% endblock %}
+
+{% block details_tabs_comments %}
+{% endblock %}
+
+{% block details_tabs_invite %}
+{% endblock %}
+
+{% block details_tabs_main %}
+    {% if tabs %}
+        <div class="details-tabs my-5">
+            <ul class="nav nav-tabs" role="tablist">
+                {% for tab in tabs %}
+                    <li class="nav-item" role="presentation">{{ tab }}</li>
+                {% endfor %}
+                {% block details_tabs_social_navigation %}{% endblock %}
+            </ul>
+            <div class="tab-content py-5">
+                {% for tabContent in tabsContent %}
+                    {{ tabContent }}
+                {% endfor %}
+                {% block details_tabs_social_content %}{% endblock %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+

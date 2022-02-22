@@ -1,0 +1,10 @@
+{% set template_title = "REGISTER"|translate %}
+{% capture append = "oxidBlock_content" %}
+    <div class="container-xxl">
+        <h1 class="h2">{{ translate({ ident: "LOGIN" }) }}</h1>
+        {% include "form/login_account.html.twig" %}
+    </div>
+
+{% endcapture %}
+
+{% include "layout/page.html.twig" %}

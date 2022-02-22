@@ -1,0 +1,43 @@
+{% block footer_services %}
+    <nav class="nav flex-column">
+        {% block footer_services_items %}
+            <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=contact") }) }}">{{ translate({ ident: "CONTACT" }) }}</a>
+            {% if oViewConf.getViewThemeParam('blFooterShowHelp') %}
+                <a class="nav-link" href="{{ oViewConf.getHelpPageLink() }}">{{ translate({ ident: "HELP" }) }}</a>
+            {% endif %}
+            {% if oViewConf.getViewThemeParam('blFooterShowLinks') %}
+                <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=links") }) }}">{{ translate({ ident: "LINKS" }) }}</a>
+            {% endif %}
+            {% if oView.isActive('Invitations') %}
+                <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=invite") }) }}">{{ translate({ ident: "INVITE_YOUR_FRIENDS" }) }}</a>
+            {% endif %}
+            {% hasrights { ident: "TOBASKET" } %}
+                {% block footer_services_cart %}
+                    <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getBasketLink() }) }}">
+                        {{ translate({ ident: "CART" }) }}
+                        {% if oxcmp_basket and oxcmp_basket.getItemsCount() > 0 %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_basket.getItemsCount() }}</span>{% endif %}
+                    </a>
+                {% endblock %}
+            {% endhasrights %}
+            <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account") }) }}">{{ translate({ ident: "ACCOUNT" }) }}</a>
+
+            <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+                {{ translate({ ident: "WISH_LIST" }) }}
+                {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+            </a>
+
+            {% if oViewConf.getShowWishlist() %}
+                <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_wishlist") }) }}">
+                    {{ translate({ ident: "MY_GIFT_REGISTRY" }) }}
+                    {% if oxcmp_user and oxcmp_user.getWishListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getWishListArtCnt() }}</span>{% endif %}
+                </a>
+                <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=wishlist"), params: "wishid="|cat(oView.getWishlistUserId()) }) }}">
+                    {{ translate({ ident: "PUBLIC_GIFT_REGISTRIES" }) }}
+                </a>
+            {% endif %}
+            {% if oView.isEnabledDownloadableFiles() %}
+                <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_downloads") }) }}">{{ translate({ ident: "MY_DOWNLOADS" }) }}</a>
+            {% endif %}
+        {% endblock %}
+    </nav>
+{% endblock %}

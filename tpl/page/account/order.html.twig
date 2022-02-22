@@ -1,0 +1,113 @@
+{% capture append = "oxidBlock_content" %}
+    {% set template_title = "ORDER_HISTORY"|translate %}
+    <div class="container-xxl py-5">
+        <div class="row">
+            <h3 class="page-header col pl-0 ml-3">
+                {{ translate({ ident: "ORDER_HISTORY" }) }}
+            </h3>
+            <div class="col-12 col-sm-3 button-col">
+                {% include "page/account/inc/account_menu.html.twig" with {active_link: "orderhistory"} %}
+            </div>
+        </div>
+
+    {% set oOrders = oView.getOrderList() %}
+
+    {% block account_order_history %}
+        {% if oOrders and not empty(oOrders) %}
+            {% set oArticleList = oView.getOrderArticleList() %}
+            <ol class="list-unstyled">
+                {% for order in oOrders %}
+                    <li>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <strong>{{ translate({ ident: "DATE", suffix: "COLON" }) }}</strong>
+                                        <span id="accOrderDate_{{ order.oxorder__oxordernr.value }}">{{ order.oxorder__oxorderdate.value|date_format("%d.%m. % Y") }}</span>
+                                        <span>{{ order.oxorder__oxorderdate.value|date_format(" % H, %M, %S") }}</span>
+                                    </div>
+                                    <div class="col-3">
+                                        <strong>{{ translate({ ident: "STATUS" }) }}</strong>
+                                        <span id="accOrderStatus_{{ order.oxorder__oxordernr.value }}">
+                                            {% if order.oxorder__oxstorno.value %}
+                                                <span class="note">{{ translate({ ident: "ORDER_IS_CANCELED" }) }}</span>
+                                            {% elseif order.oxorder__oxsenddate.value !=" - " %}
+                                                <span>{{ translate({ ident: "SHIPPED" }) }}</span>
+                                            {% else %}
+                                                <span class="note">{{ translate({ ident: "NOT_SHIPPED_YET" }) }}</span>
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                    <div class="col-3">
+                                        <strong>{{ translate({ ident: "ORDER_NUMBER" }) }}</strong>
+                                        <span id="accOrderNo_{{ order.oxorder__oxordernr.value }}">{{ order.oxorder__oxordernr.value }}</span>
+                                    </div>
+                                    <div class="col-3">
+                                        <strong>{{ translate({ ident: "SHIPMENT_TO" }) }}</strong>
+                                            <span id="accOrderName_{{ order.oxorder__oxordernr.value }}">
+                                            {% if order.oxorder__oxdellname.value %}
+                                                {{ order.oxorder__oxdelfname.value }}
+                                                {{ order.oxorder__oxdellname.value }}
+                                            {% else %}
+                                                {{ order.oxorder__oxbillfname.value }}
+                                                {{ order.oxorder__oxbilllname.value }}
+                                            {% endif %}
+                                        </span>
+                                        {% if order.getShipmentTrackingUrl() %}
+                                            &nbsp;|&nbsp;<strong>{{ translate({ ident: "TRACKING_ID" }) }}</strong>
+                                            <span id="accOrderTrack_{{ order.oxorder__oxordernr.value }}">
+                                                <a href="{{ order.getShipmentTrackingUrl() }}">{{ translate({ ident: "TRACK_SHIPMENT" }) }}</a>
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <strong>{{ translate({ ident: "CART" }) }}</strong>
+                                {% block account_order_history_cart_items %}
+                                <ol class="list-unstyled">
+                                    {% for orderitem in order.getOrderArticles(true) %}
+                                        {% set sArticleId = orderitem.oxorderarticles__oxartid.value %}
+                                        {% set oArticle = oArticleList[$sArticleId] %}
+                                        <li id="accOrderAmount_{{ order.oxorder__oxordernr.value }}_{{ loop.index }}">
+                                            {{ orderitem.oxorderarticles__oxamount.value }} {{ translate({ ident: "QNT" }) }}
+                                            {% if oArticle.oxarticles__oxid.value and oArticle.isVisible() %}
+                                                <a id="accOrderLink_{{ order.oxorder__oxordernr.value }}_{{ loop.index }}" href="{{ oArticle.getLink() }}">
+                                            {% endif %}
+                                            {{ orderitem.oxorderarticles__oxtitle.value }} {{ orderitem.oxorderarticles__oxselvariant.value }} <span class="amount"></span>
+                                            {% if oArticle.oxarticles__oxid.value and oArticle.isVisible() %}
+                                                </a>
+                                            {% endif %}
+                                            {% for sVar, aParam in orderitem.getPersParams() %}
+                                                {% if aParam %}
+                                                    <br>{{ translate({ ident: "DETAILS" }) }}: {{ aParam }}
+                                                {% endif %}
+                                            {% endfor %}
+                                            {# Commented due to Trusted Shops precertification. Enable if needed #}
+                                            [{*
+                                            {% hasrights { ident: "TOBASKET" } %}
+                                            {% if oArticle.isBuyable() %}
+                                              {% if oArticle.oxarticles__oxid.value %}
+                                                <a id="accOrderToBasket_{{ order.oxorder__oxordernr.value }}_{{ loop.index }}" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_order"), params: "fnc=tobasket&amp;aid=`$oArticle->oxarticles__oxid->value`&amp;am=1" }) }}">{{ translate({ ident: "TO_CART" }) }}</a>
+                                              {% endif %}
+                                            {% endif %}
+                                            {% endhasrights %}
+                                            *}]
+                                        </li>
+                                    {% endfor %}
+                                </ol>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ol>
+            {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigation(), place: "bottom"} %}
+        {% else %}
+            {{ translate({ ident: "ORDER_EMPTY_HISTORY" }) }}
+        {% endif %}
+    {% endblock %}
+    </div>
+{% endcapture %}
+
+{% include "layout/page.html.twig" %}

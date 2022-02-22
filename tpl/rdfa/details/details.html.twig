@@ -1,0 +1,96 @@
+{# Offering #}
+{% set currency = oView.getActCurrency() %}
+{% set oProduct = oView.getProduct() %}
+{% set sRDFaUrl = oView.getLink() %}
+
+<div xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:gr="http://purl.org/goodrelations/v1#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:v="http://rdf.data-vocabulary.org/#"
+    xml:base="{{ sRDFaUrl }}"
+    typeof="gr:Offering" about="{{ sRDFaUrl }}#offeringdata">
+    <div rel="foaf:page" resource="{{ sRDFaUrl }}"></div>
+{% ifcontent ident oView.getRDFaBusinessEntityLoc() set oCont %}
+    <div rev="gr:offers" resource="{{ oCont.getLink() }}#companydata"></div>
+{% endifcontent %}
+{% if oProduct.oxarticles__oxtitle.value %}
+    <div property="gr:name" content="{{ oProduct.oxarticles__oxtitle.value|striptags|strip }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
+{% endif %}
+{% hasrights { ident: "SHOWLONGDESCRIPTION" } %}
+{% set oLongdesc = oProduct.getLongDescription() %}
+{% if oLongdesc.value %}
+    <div property="gr:description" content="{{ oLongdesc.value|striptags|strip }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
+{% endif %}
+{% if not oProduct.oxarticles__oxbundleid.value %}
+    <div property="gr:hasStockKeepingUnit" content="{{ oProduct.oxarticles__oxartnum.value }}" datatype="xsd:string"></div>
+    {% if oProduct.oxarticles__oxmpn.value %}
+        <div property="gr:hasMPN" content="{{ oProduct.oxarticles__oxmpn.value }}" datatype="xsd:string"></div>
+    {% endif %}
+{% endif %}
+{% endhasrights %}
+{% include "rdfa/details/inc/object.html.twig" %}
+{% if oView.getRDFaNormalizedRating() %}
+    <div rel="v:hasReview">
+        <div typeof="v:Review-aggregate">
+            {% set aRDFaRating = oView.getRDFaNormalizedRating() %}
+            <div property="v:count" content="{{ aRDFaRating.count }}" datatype="xsd:float"></div>
+            <div property="v:rating" content="{{ aRDFaRating.value }}" datatype="xsd:float"></div>
+        </div>
+    </div>
+{% endif %}
+{% if oView.showRDFaProductStock() %}
+    <div rel="gr:hasInventoryLevel">
+        <div typeof="gr:QuantitativeValue">
+            <div property="gr:hasMinValue" content="{% if oProduct.getStockStatus() == -1 %}0{% else %}{{ oProduct.oxarticles__oxstock.value }}{% endif %}" datatype="xsd:float"></div>
+            <div property="gr:hasUnitOfMeasurement" content="C62" datatype="xsd:string"></div>
+        </div>
+    </div>
+{% endif %}
+{% hasrights { ident: "SHOWARTICLEPRICE" } %}
+{% include "rdfa/details/inc/price.html.twig" with {oDetailsProduct: oProduct} %}
+{% endhasrights %}
+{% if oProduct.getDeliveryDate() %}
+    <div property="gr:validFrom" content="{{ oProduct.getDeliveryDate() }}T00:00:00" datatype="xsd:dateTime"></div>
+{% elseif oView.getRDFaValidityPeriod('iRDFaOfferingValidity') %}
+    {% set aRDFaValidity = oView.getRDFaValidityPeriod('iRDFaOfferingValidity') %}
+    <div property="gr:validFrom" content="{{ aRDFaValidity.from }}" datatype="xsd:dateTime"></div>
+    <div property="gr:validThrough" content="{{ aRDFaValidity.through }}" datatype="xsd:dateTime"></div>
+{% endif %}
+{% if oView.getRDFaBusinessFnc() %}
+    <div rel="gr:hasBusinessFunction" resource="http://purl.org/goodrelations/v1#{{ oView.getRDFaBusinessFnc() }}"></div>
+{% endif %}
+{% if oView.getRDFaCustomers() %}
+    {% for Customer in oView.getRDFaCustomers() %}
+        <div rel="gr:eligibleCustomerTypes" resource="http://purl.org/goodrelations/v1#{{ Customer }}"></div>
+    {% endfor %}
+{% endif %}
+{% if oViewConf.getCountryList() %}
+{% for oRegion in oViewConf.getCountryList() %}
+    <div property="gr:eligibleRegions" content="{{ oRegion.oxcountry__oxisoalpha2.value }}" datatype="xsd:string"></div>
+{% endfor %}
+{% endif %}
+{% hasrights { ident: "SHOWARTICLEPRICE" } %}
+{% include "rdfa/details/inc/payment.html.twig" %}
+{% if oProduct.oxarticles__oxfreeshipping.value %}
+    <div rel="gr:hasPriceSpecification">
+        <div typeof="gr:DeliveryChargeSpecification">
+        {% if oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
+        {% set aRDFaPValidity = oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
+            <div property="gr:validFrom" content="{{ aRDFaPValidity.from }}" datatype="xsd:dateTime"></div>
+            <div property="gr:validThrough" content="{{ aRDFaPValidity.through }}" datatype="xsd:dateTime"></div>
+        {% endif %}
+        {% if oView.getRDFaVAT() > 0 %}
+            <div property="gr:valueAddedTaxIncluded" content="{% if oView.getRDFaVAT() == 1 %}true{% else %}false{% endif %}" datatype="xsd:boolean"></div>
+        {% endif %}
+        <div property="gr:hasCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
+        <div property="gr:hasCurrencyValue" content="0.00" datatype="xsd:float"></div>
+    </div>
+</div>
+{% else %}
+{% include "rdfa/details/inc/delivery.html.twig" %}
+{% endif %}
+{% endhasrights %}
+    <div rel="foaf:depiction v:image" resource="{{ oView.getActPicture() }}"></div>
+</div>

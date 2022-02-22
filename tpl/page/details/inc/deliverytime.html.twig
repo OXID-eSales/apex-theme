@@ -1,0 +1,16 @@
+{% if oDetailsProduct.oxarticles__oxmindeltime.value or oDetailsProduct.oxarticles__oxmaxdeltime.value %}
+    <span class="deliverytime">
+        {{ translate({ ident: "DELIVERYTIME_DELIVERYTIME", suffix: "COLON" }) }}
+        {% if oDetailsProduct.oxarticles__oxmindeltime.value and oDetailsProduct.oxarticles__oxmindeltime.value != oDetailsProduct.oxarticles__oxmaxdeltime.value %}
+            {{ oDetailsProduct.oxarticles__oxmindeltime.value }} -
+        {% endif %}
+        {% if oDetailsProduct.oxarticles__oxmaxdeltime.value %}
+            {% set unit = oDetailsProduct.oxarticles__oxdeltimeunit.value %}
+            {% set ident = unit %}
+            {% if oDetailsProduct.oxarticles__oxmaxdeltime.value > 1 %}
+                {% set ident = ident|cat("S") %}
+            {% endif %}
+            {{ oDetailsProduct.oxarticles__oxmaxdeltime.value }} {{ translate({ ident: ident }) }}
+        {% endif %}
+    </span>
+{% endif %}

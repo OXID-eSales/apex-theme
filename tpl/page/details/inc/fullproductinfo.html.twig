@@ -1,0 +1,17 @@
+<div id="detailsMain" class="mt-4">
+    {% include "page/details/inc/productmain.html.twig" %}
+</div>
+
+<div id="detailsRelated" class="details-related">
+    <div class="details-related-info{% if not oView.getSimilarProducts() and not oView.getCrossSelling() and not oView.getAccessoires() %} details-related-info-full{% endif %}">
+        {% include "page/details/inc/tabs.html.twig" %}
+
+        {% if oView.isReviewActive() %}
+            <div class="reviews my-5 container">
+                {% include "widget/reviews/reviews.html.twig" %}
+            </div>
+        {% endif %}
+    </div>
+
+    {% include "page/details/inc/related_products_tabs.html.twig" %}
+</div>

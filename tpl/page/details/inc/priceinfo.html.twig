@@ -1,0 +1,47 @@
+{% set currency = oView.getActCurrency() %}
+
+<button class="btn btn-outline-primary btn-sm dd-action"
+        data-bs-toggle="modal"
+        data-bs-target="#modal_priceinfo_{{ oDetailsProduct.oxarticles__oxartnum.value }}"
+        type="button">
+    {{ translate({ ident: "BLOCK_PRICE" }) }}
+</button>
+
+<div class="modal fade"
+     id="modal_priceinfo_{{ oDetailsProduct.oxarticles__oxartnum.value }}"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="modal_priceinfo_{{ oDetailsProduct.oxarticles__oxartnum.value }}"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                {% block delete_shipping_address_modal_header %}
+                    <span class="h4 modal-title">{{ translate({ ident: "BLOCK_PRICE" }) }}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                {% endblock %}
+            </div>
+            <div class="modal-body">
+                <dl class="row">
+                    {% for priceItem in oDetailsProduct.loadAmountPriceInfo() %}
+                        <dt class="col-sm-4">
+                            {{ translate({ ident: "FROM" }) }} {{ priceItem.oxprice2article__oxamount.value }} {{ translate({ ident: "PCS" }) }}
+                        </dt>
+                        <dd class="col-sm-8">
+                            {% if priceItem.oxprice2article__oxaddperc.value %}
+                                {{ priceItem.oxprice2article__oxaddperc.value }}% {{ translate({ ident: "DISCOUNT" }) }}
+                            {% else %}
+                                {% block details_productmain_price %}
+                                    {{ priceItem.fbrutprice }} {{ currency.sign }}
+                                    {% if oDetailsProduct.getUnitName() and priceItem.fbrutamountprice %}
+                                        &nbsp;({{ priceItem.fbrutamountprice }} {{ currency.sign }} / {{ oDetailsProduct.getUnitName() }})
+                                    {% endif %}
+                                {% endblock %}
+                            {% endif %}
+                        </dd>
+                    {% endfor %}
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

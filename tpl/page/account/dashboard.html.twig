@@ -1,0 +1,154 @@
+{% set template_title = "MY_ACCOUNT"|translate %}
+{% capture append = "oxidBlock_content" %}
+<div class="container-xxl py-5">
+    <div class="row">
+        <h3 class="page-header col pl-0 ml-3">
+            {{ translate({ ident: "HELLO" }) }} {{ oxcmp_user.oxuser__oxfname.value }}
+        </h3>
+        <div class="col-12 col-sm-3 button-col">
+            {% include "page/account/inc/account_menu.html.twig" with {active_link: "dashboard"} %}
+        </div>
+    </div>
+
+    {% if oView.getAccountDeletionStatus() is same as(false) %}
+    {% set statusMessage = "DD_DELETE_MY_ACCOUNT_ERROR"|translate %}
+    {% include "message/error.html.twig" with {statusMessage: statusMessage} %}
+    {% endif %}
+
+    <div class="row row-cols-1 row-cols-md-2">
+        {% block account_dashboard_col1 %}
+        {% endblock %}
+        {% block account_dashboard_col2 %}
+        {% endblock %}
+
+        <div class="col mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="card-title">{{ translate({ ident: "ORDER_HISTORY" }) }}</div>
+                    <div class="card-text mb-3">
+                        {{ translate({ ident: "ORDERS" }) }} {{ oView.getOrderCnt() }}
+                    </div>
+                    <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_order") }) }}">
+                        {{ translate({ ident: "MORE" }) }}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {% if oView.isEnabledDownloadableFiles() %}
+            <div class="col mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="card-title">
+                            {{ translate({ ident: "MY_DOWNLOADS" }) }}
+                        </div>
+                        <div class="card-text mb-3">
+                            {{ translate({ ident: "MY_DOWNLOADS_DESC" }) }}
+                        </div>
+                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_downloads") }) }}">
+                            {{ translate({ ident: "MORE" }) }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="col mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="card-title">
+                        {{ translate({ ident: "MY_WISH_LIST" }) }}
+                    </div>
+                    <div class="card-text mb-3">
+                        {{ translate({ ident: "PRODUCT" }) }} {% if oxcmp_user %}{{ oxcmp_user.getNoticeListArtCnt() }}{% else %}0{% endif %}
+                    </div>
+                    <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+                        {{ translate({ ident: "MORE" }) }}
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% if oViewConf.getShowWishlist() %}
+            <div class="col mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="card-title">
+                            {{ translate({ ident: "MY_GIFT_REGISTRY" }) }}
+                        </div>
+                        <div class="card-text mb-3">
+                            {{ translate({ ident: "PRODUCT" }) }} {% if oxcmp_user %}{{ oxcmp_user.getWishListArtCnt() }}{% else %}0{% endif %}
+                        </div>
+                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_wishlist") }) }}">
+                            {{ translate({ ident: "MORE" }) }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if oViewConf.getShowCompareList() %}
+            <div class="col mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="card-title">
+                            {{ translate({ ident: "MY_PRODUCT_COMPARISON" }) }}
+                        </div>
+                        <div class="card-text mb-3">
+                            {{ translate({ ident: "PRODUCT" }) }} {% if oView.getCompareItemsCnt() %}{{ oView.getCompareItemsCnt() }}{% else %}0{% endif %}
+                        </div>
+                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=compare") }) }}">
+                            {{ translate({ ident: "MORE" }) }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if oView.isUserAllowedToManageOwnReviews() %}
+            <div class="col mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="card-title">
+                            {{ translate({ ident: "MY_REVIEWS" }) }}
+                        </div>
+                        <div class="card-text mb-3">
+                            {{ translate({ ident: "MY_REVIEWS" }) }} {% if oView.getReviewAndRatingItemsCount() %}{{ oView.getReviewAndRatingItemsCount() }}{% else %}0{% endif %}
+                        </div>
+                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_reviewlist") }) }}">
+                            {{ translate({ ident: "MORE" }) }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        {% block account_dashboard_delete_my_account %}
+        <div class="col-6">
+            {% if oView.isUserAllowedToDeleteOwnAccount() %}
+            <button
+                    class="btn btn-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#delete_my_account_confirmation"
+            >
+                <i class="moga-trash"></i>
+                {{ translate({ ident: "DD_DELETE_MY_ACCOUNT" }) }}
+            </button>
+            {% include "page/account/delete_my_account_confirmation.html.twig" %}
+            {% endif %}
+        </div>
+        {% endblock %}
+        <div class="col-6 text-end">
+            <a href="{{ oViewConf.getLogoutLink() }}" class="btn btn-outline-primary" role="getLogoutLink">
+                {{ translate({ ident: "LOGOUT" }) }}
+            </a>
+        </div>
+    </div>
+</div>
+{% endcapture %}
+
+
+{% capture append = "oxidBlock_sidebar" %}
+    {% include "page/account/inc/account_menu.html.twig" %}
+{% endcapture %}
+{% include "layout/page.html.twig" %}

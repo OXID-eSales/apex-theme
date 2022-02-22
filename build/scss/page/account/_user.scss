@@ -1,0 +1,50 @@
+.select-address {
+  width: 40px;
+
+  .btn {
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    &.active {
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        left: 6px;
+        top: 6px;
+        background: #fff;
+      }
+    }
+
+    &:hover {
+      position: relative;
+      background: #fff;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        left: 6px;
+        top: 6px;
+        background: $primary;
+      }
+    }
+  }
+
+  .invisible {
+    overflow: hidden;
+    width: 0;
+  }
+}
+
+.address-info {
+  flex: 1;
+}

@@ -1,0 +1,44 @@
+{% capture append = "oxidBlock_pageBody" %}
+
+<div id="page">
+    <div id="header">
+       {% include "widget/header/languages.html.twig" %}
+       <div><a id="logo" href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}"><img src="{{ oViewConf.getImageUrl('logo.png') }}" alt="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}"></a></div>
+    </div>
+    <div>
+        {% ifcontent ident "oxstartwelcome" set oCont %}
+            {{ oCont.oxcontents__oxcontent.value }}
+        {% endifcontent %}
+        <div>
+            {{ translate({ ident: "PLEASE_CHOOSE" }) }}
+            <br>
+            <br>
+            {% set shoplinks = oView.getShopLinks() %}
+            {% set shoplangs = oView.getShopDefaultLangs() %}
+            {% for shopid, mallshop in oView.getShopList() %}
+                {% if shoplinks.$shopid %}
+                    <a href="{{ shoplinks.$shopid }}">{{ mallshop.oxshops__oxname.value }}</a><br>
+                {% else %}
+                    <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=mallstart"), params: "fnc=chshp&amp;shp=`$mallshop->oxshops__oxid->value`&amp;lang=`$shoplangs.$shopid`" }) }}" >{{ mallshop.oxshops__oxname.value }}</a><br>
+                {% endif %}
+            {% endfor %}
+         </div>
+        {% if oView.isDemoShop() %}
+            <a id="demoAdminLink" href="{{ oViewConf.getBaseDir() }}admin/"><img src="{{ oViewConf.getImageUrl('admin_start.jpg') }}"></a>
+        {% endif %}
+    </div>
+
+
+    <div id="footer">
+        <div class="copyright">
+            <img src="{{ oViewConf.getImageUrl('logo_small.png') }}" alt="{{ translate({ ident: "OXID_ESALES_URL_TITLE" }) }}">
+        </div>
+        <div class="text">
+            {% ifcontent ident "oxstdfooter" set oCont %}
+            {{ oCont.oxcontents__oxcontent.value }}
+            {% endifcontent %}
+        </div>
+    </div>
+</div>
+{% endcapture %}
+{% include "layout/base.html.twig" %}

@@ -1,0 +1,77 @@
+{% capture append = "oxidBlock_content" %}
+    <div class="container-xxl py-5">
+        <h1 class="list-heading">{{ translate({ ident: "CATEGORY_OVERVIEW" }) }}</h1>
+
+        {% set _navcategorytree = oView.getCategoryTree() %}
+        {% set _iCategoriesPerRow = 3 %}
+        {% set iSubCategoriesCount = 0 %}
+        {% if _navcategorytree %}
+            {# oxscript include="js/widgets/oxequalizer.min.js" priority=10 #}
+            {# oxscript add="$(window).on('load', function(){ if( !isMobileDevice() ) { oxEqualizer.equalHeight( $( '.subcatList .row .panel' ) ); } });" #}
+            <div class="mb-3">
+                <div class="row">
+                    {% for category in _navcategorytree %}
+                        {# TOP categories #}
+                        {% if category.getIsVisible() %}
+                            {# CMS top categories #}
+                            {% if category.getContentCats() %}
+                                {% for ocont in category.getContentCats() %}
+                                    {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
+                                    <div class="box">
+                                        <h3>
+                                            <a id="moreSubCms_{{ loop.index }}" href="{{ ocont.getLink() }}">{{ ocont.oxcontents__oxtitle.value }}</a>
+                                        </h3>
+                                        <ul class="content"></ul>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
+                            {% set iconUrl = category.getIconUrl() %}
+                            <div class="col-12 col-sm-6 col-md-4 mb-3">
+                                <div class="list-group">
+                                    <a href="{{ category.getLink() }}" class="list-group-item list-group-item-action list-group-item-primary">
+                                        {{ category.oxcategories__oxtitle.value }}{% if oView.showCategoryArticlesCount() and (category.getNrOfArticles() > 0) %} ({{ category.getNrOfArticles() }}){% endif %}
+                                    </a>
+                                    {% if category.getHasVisibleSubCats() %}
+
+                                        {% for subcategory in category.getSubCats() %}
+                                            {% if subcategory.getIsVisible() %}
+                                                {# CMS subcategories #}
+                                                {% for ocont in subcategory.getContentCats() %}
+                                                    <a href="{{ ocont.getLink() }}" class="list-group-item list-group-item-action">{{ ocont.oxcontents__oxtitle.value }}</a>
+                                                {% endfor %}
+                                                <a href="{{ subcategory.getLink() }}" class="list-group-item list-group-item-action">
+                                                    {{ subcategory.oxcategories__oxtitle.value }}
+
+                                                    {% if oView.showCategoryArticlesCount() and (subcategory.getNrOfArticles() > 0) %}
+                                                        <span class="badge bg-primary rounded-pill">{{ subcategory.getNrOfArticles() }}</span>
+                                                    {% endif %}
+                                                </a>
+
+
+                                                {% for subsubcategory in subcategory.getSubCats() %}
+                                                    {% if subsubcategory.getIsVisible() %}
+                                                        <a href="{{ subsubcategory.getLink() }}" class="list-group-item list-group-item-action ps-5">
+                                                            {{ subsubcategory.oxcategories__oxtitle.value }}
+                                                            {% if oView.showCategoryArticlesCount() and (subsubcategory.getNrOfArticles() > 0) %}
+                                                                <span class="badge bg-primary rounded-pill">{{ subsubcategory.getNrOfArticles() }}</span>
+                                                            {% endif %}
+                                                        </a>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endcapture %}
+
+
+{% include "layout/page.html.twig" %}

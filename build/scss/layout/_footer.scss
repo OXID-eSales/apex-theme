@@ -1,0 +1,33 @@
+//
+// Footer
+// --------------------------------------------------
+
+// General footer styles
+
+.footer {
+  background-color: $ox-footer-bg;
+  color: $ox-footer-color;
+
+  .nav-link {
+    color: $ox-footer-link-color;
+    padding: 5px 0;
+
+    @include media-breakpoint-up(md) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .social-links {
+    .nav-link {
+      padding: 5px 10px;
+    }
+  }
+}
+
+.vat-info-text {
+  a {
+    color: $ox-footer-color;
+  }
+}

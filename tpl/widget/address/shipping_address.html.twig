@@ -1,0 +1,18 @@
+{% if delivadr %}
+    <div class="mb-2">
+        {% if delivadr.oxaddress__oxcompany.value %} {{ delivadr.oxaddress__oxcompany.value }}<br>{% endif %}
+        {% if delivadr.oxaddress__oxaddinfo.value %} {{ delivadr.oxaddress__oxaddinfo.value }}<br>{% endif %}
+        {% if delivadr.oxaddress__oxsal.value %}
+            {{ delivadr.oxaddress__oxsal.value|translate_salutation }}&nbsp;
+        {% endif %}
+        {% if delivadr.oxaddress__oxfname.value or delivadr.oxaddress__oxlname.value %}
+            {{ delivadr.oxaddress__oxfname.value }}&nbsp;{{ delivadr.oxaddress__oxlname.value }}<br>
+        {% endif %}
+        {% if delivadr.oxaddress__oxstreet.value or delivadr.oxaddress__oxstreetnr.value %}{{ delivadr.oxaddress__oxstreet.value }}&nbsp;{{ delivadr.oxaddress__oxstreetnr.value }}<br>{% endif %}
+        {% if delivadr.oxaddress__oxstateid.value %}{{ delivadr.oxaddress__oxstateid.value }} {% endif %}
+        {% if delivadr.oxaddress__oxzip.value or delivadr.oxaddress__oxcity.value %}{{ delivadr.oxaddress__oxzip.value }}&nbsp;{{ delivadr.oxaddress__oxcity.value }}<br>{% endif %}
+        {% if delivadr.oxaddress__oxcountry.value %}{{ delivadr.oxaddress__oxcountry.value }}<br>{% endif %}
+        {% if delivadr.oxaddress__oxfon.value %}{{ translate({ ident: "PHONE" }) }} {{ delivadr.oxaddress__oxfon.value }}<br>{% endif %}
+        {% if delivadr.oxaddress__oxfax.value %}{{ translate({ ident: "FAX" }) }} {{ delivadr.oxaddress__oxfax.value }}<br>{% endif %}
+    </div>
+{% endif %}

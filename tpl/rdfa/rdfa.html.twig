@@ -1,0 +1,5 @@
+{% if oView.getClassName() == "details" %}
+    {% include "rdfa/details/details.html.twig" %}
+{% elseif oView.getClassName() == "content" %}
+    {% include "rdfa/content/content.html.twig" %}
+{% endif %}

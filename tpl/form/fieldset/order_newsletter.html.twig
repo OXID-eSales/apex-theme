@@ -1,0 +1,14 @@
+{% if blSubscribeNews %}
+    <div class="mb-3">
+        {% block user_billing_newsletter %}
+            <input type="hidden" name="blnewssubscribed" value="0">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="blnewssubscribed" id="subscribeNewsletter"{% if oView.isNewsSubscribed() %} checked{% endif %} value="1">
+                <label for="subscribeNewsletter" class="form-check-label">
+                    {{ translate({ ident: "NEWSLETTER_SUBSCRIPTION" }) }}
+                </label>
+            </div>
+            <span class="help-block">{{ translate({ ident: "MESSAGE_NEWSLETTER_SUBSCRIPTION" }) }}</span>
+        {% endblock %}
+    </div>
+{% endif %}

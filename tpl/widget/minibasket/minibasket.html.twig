@@ -1,0 +1,117 @@
+{% if oxcmp_basket.getProductsCount() >= 5 %}
+    {% set blScrollable = true %}
+{% endif %}
+
+{% block widget_minibasket %}
+
+        {% hasrights { ident: "TOBASKET" } %}
+            {% set currency = oView.getActCurrency() %}
+
+
+            <div class="modal fade basketFlyout modal-sidebar-right" id="basketModal" tabindex="-1" role="dialog" aria-labelledby="basketModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        {% block widget_minibasket_modal_header %}
+                        <div class="modal-header">
+                            <div class="h4 modal-title" id="basketModalLabel">{{ oxcmp_basket.getItemsCount() }} {{ translate({ ident: "ITEMS_IN_BASKET" }) }}</div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                <span aria-hidden="true"></span>
+                                <span class="visually-hidden-focusable">{{ translate({ ident: "CLOSE" }) }}</span>
+                            </button>
+                        </div>
+                        {% endblock %}
+                        {% if oxcmp_basket.getProductsCount() %}
+                            {% block widget_minibasket_modal_content %}
+                                <div class="modal-body">
+                                    {% if oxcmp_basket.getProductsCount() %}
+                                        {% hasrights { ident: "TOBASKET" } %}
+
+                                        {% for _product in oxcmp_basket.getContents() %}
+                                            {% block widget_minibasket_product %}{% endblock %}
+                                        {% endfor %}
+
+                                        {% block widget_minibasket_total %}
+
+                                        {% endblock %}
+
+                                        {% block minibasket_top_functions %}
+                                        {% if oxcmp_user %}
+                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=payment") }) }}" class="btn btn-primary btn-lg w-100 mb-2">{{ translate({ ident: "CHECKOUT" }) }}</a>
+                                        {% else %}
+                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=user") }) }}" class="btn btn-primary btn-lg w-100 mb-2">{{ translate({ ident: "CHECKOUT" }) }}</a>
+                                        {% endif %}
+                                        {% endblock %}
+
+                                        <div class="minibasket-menu-box">
+                                            {% block dd_layout_page_header_icon_menu_minibasket_table %}
+                                                <div class="minibasket-items">
+                                                    {% for _product in oxcmp_basket.getContents() %}
+                                                        {% block widget_minibasket_product %}
+                                                            {% set minibasketItemTitle = _product.getTitle() %}
+                                                            <div class="my-1">
+                                                                <a class="minibasket-link" href="{{ _product.getLink() }}" title="{{ minibasketItemTitle|striptags }}">
+                                                                <span>
+                                                                     {% if oViewConf.isModuleActive('cnc / imagebutler') %}
+                                                                        <picture>
+                                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(_product.getIconUrl(), 40, 40, 'webp', true) }}">
+                                                                            <img loading="lazy" class="minibasket-img" src="{{ oViewConf.getDynamicImage(_product.getIconUrl(), 40, 40, '', true) }}" alt="{{ minibasketItemTitle|striptags }}" width="40" height="40">
+                                                                        </picture>
+                                                                     {% else %}
+                                                                        <img loading="lazy" class="minibasket-img img-fluid" src="{{ _product.getIconUrl() }}" alt="{{ minibasketItemTitle|striptags }}" width="40" height="40">
+                                                                     {% endif %}
+                                                                </span>
+                                                                    <span>
+                                                                    {{ _product.getAmount() }} x {{ minibasketItemTitle|striptags }}<br>
+                                                                    {{ format_price(_product.getPrice(), { currency: currency }) }}
+                                                                </span>
+                                                                </a>
+                                                            </div>
+                                                        {% endblock %}
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="row minibasket-total-row my-3">
+                                                    <div class="col-8 minibasket-total-col h5">
+                                                        {{ translate({ ident: "TOTAL" }) }}
+                                                    </div>
+                                                    <div class="col-4 minibasket-total-col text-end  h5">
+                                                        {% if oxcmp_basket.isPriceViewModeNetto() %}
+                                                        {{ format_price(oxcmp_basket.getNettoSum(), { currency: currency }) }}
+                                                        {% else %}
+                                                        {{ format_price(oxcmp_basket.getBruttoSum(), { currency: currency }) }}
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+
+                                                {% block widget_minibasket_total %}{% endblock %}
+                                            {% endblock %}
+                                        </div>
+
+                                        {% include "widget/minibasket/countdown.html.twig" %}
+
+                                        {% block dd_layout_page_header_icon_menu_minibasket_functions %}
+                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=basket") }) }}" class="btn btn-outline-primary w-100">{{ translate({ ident: "DISPLAY_BASKET" }) }}</a>
+                                        {% endblock %}
+
+                                        {% endhasrights %}
+                                    {% endif %}
+                                </div>
+                            {% endblock %}
+                        {% else %}
+                            {% block dd_layout_page_header_icon_menu_minibasket_alert_empty %}
+                                <div class="p-3 text-center">
+                                    <div class="emoji h1"> 🤷‍♂️</div>
+                                    {{ translate({ ident: "BASKET_EMPTY" }) }}
+                                </div>
+                            {% endblock %}
+                        {% endif %}
+                        {% block widget_minibasket_modal_footer %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            {% if _prefix == 'modal' %}
+                {{ script({ add: "var basketModal = new bootstrap.Modal(document.getElementById('basketModal')); basketModal.show()", dynamic: __oxid_include_dynamic }) }}
+            {% endif %}
+        {% endhasrights %}
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% set _oProduct = oView.getProduct() %}
+{% set editval = oView.getSuggestData() %}
+{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+
+<form class="max-600 suggest" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
+    {{ oViewConf.getHiddenSid() }}
+    {{ oViewConf.getNavFormParams() }}
+    <input type="hidden" name="fnc" value="send">
+    <input type="hidden" name="cl" value="suggest">
+    <input type="hidden" name="anid" value="{{ _oProduct.oxarticles__oxnid.value }}">
+    <input type="hidden" name="CustomError" value='suggest'>
+
+    <h3>{{ translate({ ident: "CARD_TO", suffix: "COLON" }) }}</h3>
+    <div class="mb-3 form-floating">
+        <input class="form-control" id="rec_name" type="text" name="editval[rec_name]" size="73" maxlength="73" value="{{ editval.rec_name }}" required>
+        <label class="form-label req" for="rec_name">{{ translate({ ident: "RECIPIENT_NAME", suffix: "COLON" }) }}</label>
+        <div class="help-block"></div>
+    </div>
+    <div class="mb-3 form-floating">
+        <input id="rec_mail" class="form-control" type="email" name="editval[rec_email]" size="73" maxlength="73" value="{{ editval.rec_email }}" required>
+        <label for="rec_mail" class="form-label req">{{ translate({ ident: "RECIPIENT_EMAIL", suffix: "COLON" }) }}</label>
+        <div class="help-block"></div>
+    </div>
+
+    <h3>{{ translate({ ident: "FROM", suffix: "COLON" }) }}</h3>
+    <div class="mb-3 form-floating">
+        <input id="send_name" class="form-control" type="text" name="editval[send_name]" size=73 maxlength=73 value="{{ editval.send_name }}" required>
+        <label for="send_name" class="form-label req">{{ translate({ ident: "SENDER_NAME", suffix: "COLON" }) }}</label>
+        <div class="help-block"></div>
+    </div>
+    <div class="mb-3 form-floating">
+        <input id="send_email" class="form-control" type="email" name="editval[send_email]" size=73 maxlength=73 value="{{ editval.send_email }}" required>
+        <label for="send_email" class="form-label req">{{ translate({ ident: "SENDER_EMAIL", suffix: "COLON" }) }}</label>
+        <div class="help-block"></div>
+    </div>
+    <div class="mb-3 form-floating">
+        <input id="send_subject" class="form-control" type="text" name="editval[send_subject]" size=73 maxlength=73 value="{% if editval.send_subject %}{{ editval.send_subject }}{% else %}{{ translate({ ident: "HAVE_A_LOOK", suffix: "COLON" }) }} {{ _oProduct.oxarticles__oxtitle.value|striptags }}{% endif %}" required>
+        <label for="send_subject" class="form-label req">{{ translate({ ident: "SUBJECT", suffix: "COLON" }) }}</label>
+        <div class="help-block"></div>
+    </div>
+    <div class="mb-3 form-floating">
+        <textarea id="send_message" cols="70" rows="15" name="editval[send_message]" class="areabox form-control" required>{% if editval.send_message %}{{ editval.send_message }}{% else %}{{ translate({ ident: "SHOP_SUGGEST_MESSAGE", args: oxcmp_shop.oxshops__oxname.value }) }}{% endif %}</textarea>
+        <label for="send_message" class="form-label req">{{ translate({ ident: "MESSAGE", suffix: "COLON" }) }}</label>
+        <div class="help-block"></div>
+    </div>
+
+    {% block captcha_form %}{% endblock %}
+
+    <div class="mb-3 form-floating">
+        <p class="req-waring">{{ translate({ ident: "COMPLETE_MARKED_FIELDS" }) }}</p>
+        <button class="btn btn-primary" type="submit">
+            {{ translate({ ident: "SEND" }) }}
+        </button>
+    </div>
+</form>

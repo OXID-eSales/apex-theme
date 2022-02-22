@@ -1,0 +1,9 @@
+{% if oViewConf.getShowBasketTimeout() %}
+    <p class="totals">
+        <span class="item">
+            {{ translate({ ident: "EXPIRES_IN" }) }}
+            {% set mini_basket_countdown_nr = ( mini_basket_countdown_nr | default(0) ) + 1 %} {% set countdown_nr = mini_basket_countdown_nr %}
+        </span>
+        <strong class="price" id="countdown">{{ oViewConf.getBasketTimeLeft()|format_time }}</strong>
+    </p>
+{% endif %}

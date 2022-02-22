@@ -1,0 +1,17 @@
+{{ include_widget({ cl: "oxwCookieNote", _parent: oView.getClassName(), nocookie: 1 }) }}
+{% capture append = "oxidBlock_content" %}
+    <h1>{{ oView.getTitle() }}</h1>
+    {% if not oView.getInviteSendStatus() %}
+        <ul>
+            <li>{{ translate({ ident: "MESSAGE_INVITE_YOUR_FRIENDS" }) }}</li>
+            <li>{{ translate({ ident: "MESSAGE_INVITE_YOUR_FRIENDS_EMAIL" }) }}</li>
+        </ul>
+        {% ifcontent ident "oxsecurityinfo" set oCont %}
+            <p>{{ translate({ ident: "MESSAGE_READ_DETAILS" }) }} <a href="{{ oCont.getLink() }}" rel="nofollow">{{  oCont.oxcontents__oxtitle.value  }}</a></p>
+        {% endifcontent %}
+        {% include "form/privatesales/invite.html.twig" %}
+    {% else %}
+        {{ translate({ ident: "MESSAGE_INVITE_YOUR_FRIENDS_INVITATION_SENT" }) }}<br><br>
+    {% endif %}
+{% endcapture %}
+{% include "layout/page.html.twig" with {sidebar: "Left"} %}

@@ -1,0 +1,18 @@
+{% capture append = "oxidBlock_content" %}
+    <div class="container-xxl py-5">
+        <div class="row">
+            <h3 class="page-header col pl-0 ml-3">
+                {{ oView.getTitle() }}
+            </h3>
+            <div class="col-12 col-sm-3 button-col">
+                {% include "page/account/inc/account_menu.html.twig" with {active_link: "billship"} %}
+            </div>
+        </div>
+
+        {% block account_user_form %}
+            {% include "form/user.html.twig" %}
+        {% endblock %}
+    </div>
+{% endcapture %}
+
+{% include "layout/page.html.twig" %}

@@ -1,0 +1,33 @@
+{% set manufacturerWidth = oViewConf.getViewThemeParam('sManufacturerWidth') %}
+{% if manufacturerWidth == 'container' %}
+<div class="container-xxl">
+{% endif %}
+
+    <div id="manufacturer" class="text-center py-5">
+        <div class="container{% if manufacturerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
+            <h2>{{ translate({ ident: "OUR_BRANDS" }) }}</h2>
+            <span class="subhead">{{ translate({ ident: "MANUFACTURERSLIDER_SUBHEAD" }) }}</span>
+
+            <div class="row justify-content-center py-5">
+                {% for oManufacturer in oView.getManufacturerForSlider() %}
+                {% if oManufacturer.oxmanufacturers__oxicon.value %}
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <a href="{{ oManufacturer.getLink() }}" title="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}" class="d-block">
+                        {% if oViewConf.isModuleActive('cnc / imagebutler') %}
+                        <picture>
+                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oManufacturer.getIconUrl(), 100, 100, 'webp') }}">
+                            <img loading="lazy" src="{{ oViewConf.getDynamicImage(oManufacturer.getIconUrl(), 100, 100,'') }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="img-fluid">
+                        </picture>
+                        {% else %}
+                            <img loading="lazy" class="img-fluid" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                        {% endif %}
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% if manufacturerWidth == 'container' %}
+</div>
+{% endif %}

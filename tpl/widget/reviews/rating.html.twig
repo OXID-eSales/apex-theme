@@ -1,0 +1,47 @@
+<div class="ratings">
+    {% set iRatingValue = oView.getRatingValue() %}
+    {% if not oxcmp_user %}
+        {% set _star_title = "MESSAGE_LOGIN_TO_RATE"|translate %}
+    {% elseif not oView.canRate() %}
+        {% set _star_title = "MESSAGE_ALREADY_RATED"|translate %}
+    {% else %}
+        {% set _star_title = "MESSAGE_RATE_THIS_ARTICLE"|translate %}
+    {% endif %}
+
+
+    {% for starRatings in 0..5 %}
+        {% if iRatingValue == 0 %}
+            <i class="moga-star ratings-star-empty"></i>
+        {% else %}
+            {% if iRatingValue > 1 %}
+                <i class="moga-star ratings-star-filled"></i>
+                {% set iRatingValue = iRatingValue-1 %}
+            {% else %}
+                {% if iRatingValue < 0.5 %}
+                    {% if iRatingValue < 0.3 %}
+                        <i class="moga-star ratings-star-empty"></i>
+                    {% else %}
+                        <i class="moga-star-half-o ratings-star-filled"></i>
+                    {% endif %}
+                    {% set iRatingValue = 0 %}
+                {% elseif iRatingValue > 0.8 %}
+                    <i class="moga-star ratings-star-filled"></i>
+                    {% set iRatingValue = 0 %}
+                {% else %}
+                    <i class="moga-star-half-o ratings-star-filled"></i>
+                    {% set iRatingValue = 0 %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    <a class="{% if oView.canRate() %}ox-write-review{% endif %}"
+        {% if not oxcmp_user %}
+            href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=`$oDetailsProduct.oxarticles__oxnid.value`"|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}"
+        {% elseif oView.canRate() %}
+            href="#review" data-bs-toggle="collapse" data-bs-target="#review_form"
+        {% endif %}
+       title="{{ _star_title }}">
+        <small>({{ oView.getRatingCount() }} {{ translate({ ident: "DD_RATING_CUSTOMERRATINGS" }) }})</small>
+    </a>
+</div>

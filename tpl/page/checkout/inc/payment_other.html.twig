@@ -1,0 +1,38 @@
+<dl>
+    <dt>
+        <input class="form-check-input" id="payment_{{ sPaymentID }}" type="radio" name="paymentid" value="{{ sPaymentID }}"{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} checked{% endif %}>
+        <label class="form-check-label" for="payment_{{ sPaymentID }}">{{ paymentmethod.oxpayments__oxdesc.value }}</label>
+    </dt>
+    <div class="payment-option{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} activePayment{% endif %}">
+        {% if paymentmethod.getPrice() %}
+            {% set oPaymentPrice = paymentmethod.getPrice() %}
+            {% if oViewConf.isFunctionalityEnabled('blShowVATForPayCharge')  %}
+                {% spaceless %}
+                    ({{ format_price(oPaymentPrice.getNettoPrice(), { currency: currency }) }}
+                    {% if oPaymentPrice.getVatValue() > 0 %}
+                        {{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(oPaymentPrice.getVatValue(), { currency: currency }) }}
+                    {% endif %})
+                {% endspaceless %}
+            {% else %}
+                ({{ format_price(oPaymentPrice.getBruttoPrice(), { currency: currency }) }})
+            {% endif %}
+        {% endif %}
+
+        {% for value in paymentmethod.getDynValues() %}
+            <div class="mb-3">
+                <label class="form-label col-lg-3" for="{{ sPaymentID }}_{{ loop.index }}">{{ value.name }}</label>
+                <div class="col-lg-9">
+                    <input id="{{ sPaymentID }}_{{ loop.index }}" type="text" class="form-control textbox" size="20" maxlength="64" name="dynvalue[{{ value.name }}]" value="{{ value.value }}">
+                </div>
+            </div>
+        {% endfor %}
+
+        {% block checkout_payment_longdesc %}
+            {% if paymentmethod.oxpayments__oxlongdesc.value|striptags|trim %}
+                <div class="desc">
+                    {{ paymentmethod.oxpayments__oxlongdesc.getRawValue() }}
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+</dl>

@@ -1,0 +1,30 @@
+{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+
+{% set currency = oView.getActCurrency() %}
+<p class="alert alert-info">{{ translate({ ident: "MESSAGE_PRICE_ALARM_PRICE_CHANGE" }) }}</p>
+<form class="max-600" name="pricealarm" action="{{ oViewConf.getSelfActionLink() }}" method="post" novalidate>
+    <div>
+        {{ oViewConf.getHiddenSid() }}
+        {{ oViewConf.getNavFormParams() }}
+        <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
+        {% if oDetailsProduct %}
+            <input type="hidden" name="anid" value="{{ oDetailsProduct.oxarticles__oxid.value }}">
+        {% endif %}
+        <input type="hidden" name="fnc" value="addme">
+    </div>
+    <div class="mb-3 form-floating">
+        <input class="form-control" id="pa[price]" type="text" placeholder=" " name="pa[price]" value="{% hasrights { ident: "SHOWARTICLEPRICE" } %}{% if product %}{{ product.getFPrice() }}{% endif %}{% endhasrights %}" maxlength="32" required>
+        <label for="pa[price]" class="req form-label">{{ translate({ ident: "YOUR_PRICE" }) }} ({{ currency.sign }}):</label>
+    </div>
+    <div class="mb-3 form-floating">
+        <input class="form-control" id="pa[email]" type="email" name="pa[email]" placeholder=" " value="{% if oxcmp_user %}{{ oxcmp_user.oxuser__oxusername.value }}{% endif %}" maxlength="128" required>
+        <label for="pa[email]" class="req form-label">{{ translate({ ident: "EMAIL" }) }}:</label>
+    </div>
+
+    {% block captcha_form %}{% endblock %}
+
+    <div class="mb-3">
+        <button class="submitButton btn btn-primary" type="submit">{{ translate({ ident: "SEND" }) }}</button>
+    </div>
+</form>

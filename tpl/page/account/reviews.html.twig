@@ -1,0 +1,85 @@
+{% capture append = "oxidBlock_content" %}
+
+    {{ script({ include: "js/widgets/oxlistremovebutton.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
+    <div class="container-xxl py-5">
+        <div class="row">
+            {% block account_reviewlist_header %}
+            {% set template_title = "MY_REVIEWS"|translate %}
+            <h3 class="page-header col pl-0 ml-3">{{ translate({ ident: "MY_REVIEWS" }) }}</h3>
+            {% endblock %}
+            <div class="col-12 col-sm-3 button-col">
+                {% include "page/account/inc/account_menu.html.twig" with {active_link: "reviewlist"} %}
+            </div>
+        </div>
+    {% block account_reviewlist_list %}
+        <div id="review">
+            {% if oView.getReviewAndRatingItemsCount()  %}
+                <div class="reviews-landscape">
+                    {% for review in oView.getReviewList() %}
+                        {% block account_reviewlist_item %}
+                            <div class="card" id="reviewName_{{ loop.index }}">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-md-3 date">
+                                            <span>
+                                                <time datetime="{{ review.getCreatedAt()|date_format("%Y-%m- % d") }}">{{ review.getCreatedAt()|date_format("%d.%m. % Y") }}</time>
+                                            </span>
+                                        </div>
+                                        <div class="col-md-5 articleTitle">
+                                            {{ review.getObjectTitle()|truncate(60) }}
+                                        </div>
+                                        <div class="col-md-3 rating text-end">
+                                            {% if review.getRating() %}
+                                                {% for starRatings in 0..5 %}
+                                                    {% if review.getRating() >= smarty.section.starRatings.iteration %}
+                                                        <i class="moga-star"></i>
+                                                    {% else %}
+                                                        <i class="moga-star"></i>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                        {% block account_reviewlist_item_action %}
+                                            <div class="col-md-1">
+                                                <div class="actions text-center">
+                                                    <div class="btn-group">
+                                                        <button
+                                                                type="submit"
+                                                                class="btn btn-danger w-100"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#delete_review_{{ loop.index }}"
+                                                        >
+                                                            <i class="moga-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+                                </div>
+                                {% if review.getReviewText() %}
+                                    <div class="card-body" id="reviewText_{{ loop.index }}">{{ review.getReviewText() }}</div>
+                                {% endif %}
+                            </div>
+                        {% endblock %}
+                        {% include "page/account/delete_review_confirmation.html.twig" with {reviewId: review.getReviewId(), ratingId: review.getRatingId(), reviewCounterIteration: loop.index} %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                {% block account_reviewlist_no_reviews_available %}
+                    <div class="alert alert-info">
+                        {{ translate({ ident: "DD_REVIEWS_NOT_AVAILABLE" }) }}
+                    </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+    {% endblock %}
+
+    {% block account_reviewlist_locator %}
+        {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigation(), place: "bottom"} %}
+    {% endblock %}
+
+    </div>
+{% endcapture %}
+
+{% include "layout/page.html.twig" %}

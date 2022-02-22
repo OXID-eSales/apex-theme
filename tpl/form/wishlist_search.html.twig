@@ -1,0 +1,29 @@
+<form name="wishlist_searchbox" action="{{ oViewConf.getSelfActionLink() }}" method="post" class="max-600">
+    {{ oViewConf.getHiddenSid() }}
+    <input type="hidden" name="cl" value="{{ searchClass }}">
+    <input type="hidden" name="fnc" value="searchforwishlist">
+
+    <div class="mb-3">
+        <div class="input-group">
+            <div class="form-floating">
+                <input type="text" name="search" id="input_{{ searchClass }}" value="{{ oView.getWishListSearchParam() }}" class="form-control" placeholder="{{ translate({ ident: "ENTER_EMAIL_OR_NAME" }) }}">
+                <label for="input_{{ searchClass }}">{{ translate({ ident: "SEARCH_GIFT_REGISTRY" }) }}</label>
+            </div>
+            <button class="btn btn-primary" type="submit">{{ translate({ ident: "SEARCH" }) }}</button>
+        </div>
+    </div>
+</form>
+
+{% if oView.getWishListUsers() %}
+    <hr>
+    <p class="lead">{{ translate({ ident: "GIFT_REGISTRY_SEARCH_RESULTS" }) }}</p>
+    <ul class="wishlistResults">
+        {% for wishres in oView.getWishListUsers() %}
+            <li>
+                <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=wishlist"), params: "wishid=`$wishres->oxuser__oxid->value`" }) }}">
+                    {{ translate({ ident: "GIFT_REGISTRY_OF" }) }} {{ wishres.oxuser__oxfname.value }}&nbsp;{{ wishres.oxuser__oxlname.value }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

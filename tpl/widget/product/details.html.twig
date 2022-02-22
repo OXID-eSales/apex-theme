@@ -1,0 +1,5 @@
+{% include "page/details/details.html.twig" with {blWorkaroundInclude: true} %}
+
+{% set oDetailsProduct = oView.getProduct() %}
+
+{{ script({ widget: oView.getClassName(), dynamic: __oxid_include_dynamic }) }}

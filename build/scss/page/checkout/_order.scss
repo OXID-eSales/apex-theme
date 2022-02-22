@@ -1,0 +1,150 @@
+@import 'inc/basketcontents_list';
+@import 'inc/payments';
+
+.voucher-code {
+  max-width: 250px;
+}
+
+.is-checkout {
+  .card {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  .disabled {
+    color: #bbb;
+  }
+
+  .done {
+    .card-header {
+      background: lighten($primary, 30%);
+      color: #fff;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      &:after {
+        font-family: "icons";
+        content: map-get($icons, 'check');
+        position: absolute;
+        right: 0;
+        width: 50px;
+        text-align: center;
+      }
+    }
+  }
+
+  .done-2 {
+    .card-header {
+      background: lighten($primary, 20%);
+    }
+  }
+
+  .done-3 {
+    .card-header {
+      background: lighten($primary, 10%);
+    }
+  }
+}
+
+.card-header-edit {
+  padding: 0 $card-cap-padding-x;
+  line-height: 50px;
+  text-transform: none;
+}
+
+button.card-header-edit {
+  text-align: left;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+
+  color: $primary;
+  position: relative;
+  transition: background-color 150ms;
+
+  &:after {
+    font-family: "icons";
+    content: map-get($icons, 'check');
+    position: absolute;
+    right: 0;
+    width: 50px;
+    text-align: center;
+  }
+
+  &:hover {
+    background: #f1f1f1;
+
+    &:after {
+      content: map-get($icons, 'pencil');
+    }
+  }
+}
+
+.wrapping-select {
+  .btn {
+    text-align: left;
+    height: 40px;
+    padding: 0 0 0 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    .img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      border: 1px solid #ccc;
+      padding: 1px;
+    }
+
+    .wrappingTargetImg {
+      width: 36px;
+      height: 36px;
+      object-fit: cover;
+    }
+
+    strong {
+      position: absolute;
+      right: 10px;
+      font-family: $font-family-price;
+    }
+
+    &:hover {
+      color: $success;
+    }
+  }
+
+  .btn-check:active+.btn,
+  .btn-check:checked+.btn {
+    color: $success;
+
+    .img {
+      border-color: $success;
+
+      &:before {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border-style: solid;
+        border-width: 0 0 16px 16px;
+        border-color: transparent transparent $success transparent;
+      }
+
+      &:after {
+        position: absolute;
+        right: -2px;
+        bottom: -1px;
+        content: map-get($icons, 'check');
+        font-family: icons;
+        line-height: 10px;
+        font-size: 12px;
+        color: #fff;
+      }
+    }
+  }
+}

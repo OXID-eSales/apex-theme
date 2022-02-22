@@ -1,0 +1,38 @@
+{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+{% set aRegParams = oView.getRegParams() %}
+<form class="max-600" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
+    {{ oViewConf.getHiddenSid() }}
+    <input type="hidden" name="fnc" value="send">
+    <input type="hidden" name="cl" value="newsletter">
+    <input type="hidden" name="editval[oxuser__oxcountryid]" value="{{ oView.getHomeCountryId() }}">
+
+    <div class="mb-3 form-floating">
+        {% include "form/fieldset/salutation.html.twig" with {id: "editval[oxuser__oxsal]", name: "editval[oxuser__oxsal]", value: aRegParams.oxuser__oxsal} %}
+        <label for="editval[oxuser__oxsal]">{{ translate({ ident: "TITLE" }) }}</label>
+    </div>
+    <div class="mb-3 form-floating">
+        <input class="form-control" id="newsletterFname" placeholder=" " type="text" name="editval[oxuser__oxfname]" maxlength="40" value="{% if aRegParams.oxuser__oxfname %}{{ aRegParams.oxuser__oxfname }}{% endif %}">
+        <label for="newsletterFname">{{ translate({ ident: "FIRST_NAME" }) }}</label>
+    </div>
+    <div class="mb-3 form-floating">
+        <input class="form-control" placeholder=" " id="newsletterLname" type="text" name="editval[oxuser__oxlname]" maxlength="40" value="{% if aRegParams.oxuser__oxlname %}{{ aRegParams.oxuser__oxlname }}{% endif %}">
+        <label for="newsletterLname">{{ translate({ ident: "LAST_NAME" }) }}</label>
+    </div>
+    <div class="mb-3 form-floating{% if aErrors %} oxInValid{% endif %}">
+        <input id="newsletterUserName" type="email" placeholder=" " class="form-control" name="editval[oxuser__oxusername]" maxlength="40" value="{% if aRegParams.oxuser__oxusername %}{{ aRegParams.oxuser__oxusername }}{% endif %}" required>
+        <label for="newsletterUserName" class="req">{{ translate({ ident: "EMAIL" }) }}</label>
+    </div>
+    <div class="form-check">
+        <input id="newsletterSubscribeOn" class="form-check-input" type="radio" name="subscribeStatus" value="1" checked>
+        <label for="newsletterSubscribeOn" class="form-check-label">{{ translate({ ident: "SUBSCRIBE" }) }}</label>
+    </div>
+    <div class="form-check">
+        <input id="newsletterSubscribeOff" class="form-check-input" type="radio" name="subscribeStatus" value="0">
+        <label for="newsletterSubscribeOff" class="form-check-label">{{ translate({ ident: "UNSUBSCRIBE" }) }}</label>
+    </div>
+    <div class="mb-3">
+         <p class="req-waring">{{ translate({ ident: "COMPLETE_MARKED_FIELDS" }) }}</p>
+        <button id="newsLetterSubmit" class="btn btn-primary" type="submit">{{ translate({ ident: "SUBMIT" }) }}</button>
+    </div>
+</form>

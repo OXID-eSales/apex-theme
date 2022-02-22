@@ -1,0 +1,122 @@
+//
+// Header
+// --------------------------------------------------
+// Import header modules
+@import '../widget/header/categorylist';
+@import '../widget/header/minibasket';
+@import '../widget/header/search';
+
+.header {
+  background-color: $ox-header-bg;
+  color: $ox-header-color;
+  padding: 5px 0;
+  z-index: 1010;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+
+  @include media-breakpoint-up(lg) {
+    padding: 10px 0;
+  }
+
+  .logo-link {
+    align-items: center;
+  }
+
+  .logo-img {
+    max-width: 140px;
+    height: auto;
+    @include media-breakpoint-up(sm) {
+      max-width: unset;
+    }
+    &.default {
+      width: auto;
+      height: 37px;
+      fill: $primary;
+    }
+  }
+
+  .menu-dropdowns {
+    margin-left: auto;
+    padding: 0;
+    text-align: right;
+    justify-content: flex-end;
+
+    @include media-breakpoint-up(lg) {
+      order: 3;
+    }
+  }
+
+  .btn {
+    padding: 4px 8px;
+    border: 3px solid #fff;
+    min-height: 50px;
+    line-height: 33px;
+
+    &-minibasket {
+      position: relative;
+
+      .badge {
+        position: absolute;
+        font-size: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        top: 13px;
+        color: $primary;
+      }
+    }
+
+    &:hover {
+      border: 3px solid #f1f1f1;
+    }
+
+    &.show,register_success
+    &.show:hover,
+    &.show:focus,
+    &.show:active {
+      border: 3px solid #f1f1f1;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        height: 10px;
+        z-index: 1010;
+      }
+    }
+  }
+
+  .dropdown-toggle {
+    color: $ox-header-color;
+  }
+
+  .dropdown-menu {
+    border: 3px solid #f1f1f1;
+    background: #fff;
+  }
+
+  i {
+    font-size: 1.4rem;
+    color: $primary;
+  }
+
+  .btn-primary i {
+    color: #fff;
+  }
+
+  .nav-link {
+    color: $ox-header-link-color;
+
+    &:hover {
+      background: $ox-header-link-color;
+      color: $ox-header-bg
+    }
+  }
+
+  &-container {
+    display: flex;
+    position: relative;
+  }
+}

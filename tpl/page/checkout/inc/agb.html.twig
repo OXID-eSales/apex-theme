@@ -1,0 +1,75 @@
+<div class="agb card mb-3">
+    {% if not hideButtons %}
+
+        {% if not oView.isActive('PsLogin') %}
+            {% if oView.isConfirmAGBActive() %}
+                {% ifcontent ident "oxrighttocancellegend" set oContent %}
+                   <h3 class="card-header card-title card-header-edit">{{ oContent.oxcontents__oxtitle.value }}</h3>
+                {% endifcontent %}
+            {% else %}
+                {% ifcontent ident "oxrighttocancellegend2" set oContent %}
+                    <h3 class="card-header card-title card-header-edit">{{ oContent.oxcontents__oxtitle.value }}</h3>
+                {% endifcontent %}
+            {% endif %}
+        {% endif %}
+
+        <div class="card-body">
+            {% if not oView.isActive('PsLogin') %}
+                {% if oView.isConfirmAGBActive() %}
+                    {% ifcontent ident "oxrighttocancellegend" set oContent %}
+                        <div class="form-check">
+                            <input id="checkAgbTop" class="form-check-input" type="checkbox" name="ord_agb" value="1">
+                            <label for="checkAgbTop" class="form-check-label">
+                                 {{ oContent.oxcontents__oxcontent.value }}
+                            </label>
+                        </div>
+                    {% endifcontent %}
+                {% else %}
+                    {% ifcontent ident "oxrighttocancellegend2" set oContent %}
+                        <p class="agbConfirmation">
+                            {{ oContent.oxcontents__oxcontent.value }}
+                        </p>
+                    {% endifcontent %}
+                {% endif %}
+            {% endif %}
+
+            {% if oViewConf.isFunctionalityEnabled('blEnableIntangibleProdAgreement')  %}
+                {% set oExplanationMarks = oView.getBasketContentMarkGenerator() %}
+                {% if oxcmp_basket.hasArticlesWithDownloadableAgreement()  %}
+                    {% ifcontent ident "oxdownloadableproductsagreement" set oContent %}
+                        <p id="noteForDownloadableArticles" class="agbConfirmation checkbox">
+                            <label>
+                                <input id="oxdownloadableproductsagreement" type="checkbox" name="oxdownloadableproductsagreement" value="1">
+                                {{ oExplanationMarks.getMark('downloadable') }} {{ oContent.oxcontents__oxcontent.value }}
+                            </label>
+                        </p>
+                    {% endifcontent %}
+                {% endif %}
+                {% if oxcmp_basket.hasArticlesWithIntangibleAgreement()  %}
+                    {% ifcontent ident "oxserviceproductsagreement" set oContent %}
+                        <p id="noteForIntangibleArticles" class="agbConfirmation checkbox">
+                            <label>
+                                <input id="oxserviceproductsagreement" type="checkbox" name="oxserviceproductsagreement" value="1">
+                                {{ oExplanationMarks.getMark('intangible') }} {{ oContent.oxcontents__oxcontent.value }}
+                            </label>
+                        </p>
+                    {% endifcontent %}
+                {% endif %}
+            {% endif %}
+
+            {% if oViewConf.isFunctionalityEnabled("blShowTSInternationalFeesMessage") %}
+                {% ifcontent ident "oxtsinternationalfees" set oTSIFContent %}
+                    {{ oTSIFContent.oxcontents__oxcontent.value }}
+                {% endifcontent %}
+            {% endif %}
+
+            {% if payment.oxpayments__oxid.value == "oxidcashondel" and oViewConf.isFunctionalityEnabled("blShowTSCODMessage") %}
+                {% ifcontent ident "oxtscodmessage" set oTSCODContent %}
+                    {{ oTSCODContent.oxcontents__oxcontent.value }}
+                {% endifcontent %}
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+{{ script({ include: "js/agb.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}

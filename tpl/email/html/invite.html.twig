@@ -1,0 +1,41 @@
+{% set shop = oEmailView.getShop() %}
+{% set oViewConf = oEmailView.getViewConfig() %}
+{% set userinfo = oEmailView.getUser() %}
+
+{% include "email/html/header.html.twig" with {title: "DD_INVITE_HEADING"|translate} %}
+
+<table border="0" width="100%" cellspacing="10" cellpadding="0" bgcolor="#FFFFFF">
+    <tr>
+        <td style="white-space:nowrap;">
+            <b style="white-space:nowrap;">{{ translate({ ident: "FROM" }) }}</b>
+        </td>
+        <td style="white-space:nowrap;">{{ userinfo.send_name|escape }}</td>
+    </tr>
+    <tr>
+        <td style="white-space:nowrap;">
+            <b style="white-space:nowrap;">{{ translate({ ident: "EMAIL" }) }}</b>
+        </td>
+        <td style="white-space:nowrap;">{{ userinfo.send_email|escape }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ userinfo.send_message|escape|nl2br }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ translate({ ident: "DD_INVITE_LINK" }) }}: <a href="{{ sHomeUrl }}">{{ shop.oxshops__oxname.value }}</a></td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ translate({ ident: "MANY_GREETINGS" }) }} {{ userinfo.send_name|escape }}</td>
+    </tr>
+</table>
+<br/>
+
+{% include "email/html/footer.html.twig" %}

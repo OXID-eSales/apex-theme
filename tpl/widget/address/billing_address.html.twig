@@ -1,0 +1,16 @@
+<div class="mb-3">
+    {% if oxcmp_user.oxuser__oxcompany.value %} {{ oxcmp_user.oxuser__oxcompany.value }}<br> {% endif %}
+    {% if oxcmp_user.oxuser__oxaddinfo.value %} {{ oxcmp_user.oxuser__oxaddinfo.value }}<br>{% endif %}
+    {% if oxcmp_user.oxuser__oxustid.value %} {{ translate({ ident: "VAT_ID_NUMBER" }) }} {{ oxcmp_user.oxuser__oxustid.value }}<br> {% endif %}
+    {% if oxcmp_user.oxuser__oxsal.value or oxcmp_user.oxuser__oxfname.value or oxcmp_user.oxuser__oxlname.value %}{{ oxcmp_user.oxuser__oxsal.value|translate_salutation }}&nbsp;{{ oxcmp_user.oxuser__oxfname.value }}&nbsp;{{ oxcmp_user.oxuser__oxlname.value }}<br>{% endif %}
+    {% if oxcmp_user.oxuser__oxstreet.value or oxcmp_user.oxuser__oxstreetnr.value %}{{ oxcmp_user.oxuser__oxstreet.value }}&nbsp;{{ oxcmp_user.oxuser__oxstreetnr.value }}<br>{% endif %}
+    {% if oxcmp_user.oxuser__oxstateid.value %}{{ oxcmp_user.oxuser__oxstateid.value }} {% endif %}
+    {% if oxcmp_user.oxuser__oxzip.value or oxcmp_user.oxuser__oxcity.value %}{{ oxcmp_user.oxuser__oxzip.value }}&nbsp;{{ oxcmp_user.oxuser__oxcity.value }}<br>{% endif %}
+    {% if oxcmp_user.oxuser__oxcountry.value %}{{ oxcmp_user.oxuser__oxcountry.value }}<br>{% endif %}
+    {% if oxcmp_user.oxuser__oxusername.value %}{{ oxcmp_user.oxuser__oxusername.value }}<br>{% endif %}
+    {% if oxcmp_user.oxuser__oxfon.value %}{{ translate({ ident: "PHONE" }) }} {{ oxcmp_user.oxuser__oxfon.value }}{% endif %}
+    {% if oxcmp_user.oxuser__oxfon.value and oxcmp_user.oxuser__oxfax.value %} | {% else %}<br>{% endif %}
+    {% if oxcmp_user.oxuser__oxfax.value %}{{ translate({ ident: "FAX" }) }} {{ oxcmp_user.oxuser__oxfax.value }}<br>{% endif %}
+    {% if oxcmp_user.oxuser__oxmobfon.value %}{{ translate({ ident: "CELLUAR_PHONE" }) }} {{ oxcmp_user.oxuser__oxmobfon.value }}<br>{% endif %}
+    {% if oxcmp_user.oxuser__oxprivfon.value %}{{ translate({ ident: "PERSONAL_PHONE" }) }} {{ oxcmp_user.oxuser__oxprivfon.value }}<br>{% endif %}
+</div>

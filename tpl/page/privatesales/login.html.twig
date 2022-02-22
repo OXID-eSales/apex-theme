@@ -1,0 +1,26 @@
+{% capture append = "oxidBlock_pageBody" %}
+    {{ include_widget({ cl: "oxwCookieNote", _parent: oView.getClassName(), nocookie: 1 }) }}
+{% endcapture %}
+{% capture append = "oxidBlock_content" %}
+    <div class="accountLoginView" style="margin-top: 25px;">
+
+        {% block dd_layout_page_header_logo %}
+            {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
+            {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
+            {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
+            <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}">
+                <img src="{{ oViewConf.getImageUrl(slogoImg) }}" alt="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" style="{% if sLogoWidth %}width:auto;max-width:{{ sLogoWidth }}px;{% endif %}{% if sLogoHeight %}height:auto;max-height:{{ sLogoHeight }}px;{% endif %}">
+            </a>
+        {% endblock %}
+
+        <h1 id="loginAccount">{{ oView.getTitle() }}</h1>
+        {% if oView.confirmTerms() %}
+            {% include "form/privatesales/accept_terms.html.twig" %}
+        {% else %}
+            {% include "widget/header/languages.html.twig" %}
+            {% include "message/errors.html.twig" %}
+            {% include "form/login_account.html.twig" %}
+        {% endif %}
+    </div>
+{% endcapture %}
+{% include "layout/popup.html.twig" %}

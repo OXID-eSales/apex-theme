@@ -1,0 +1,79 @@
+{{ *oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
+{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) }}
+
+<form class="max-600" action="{{ oViewConf.getSslSelfLink() }}" name="order" method="post" novalidate>
+    {% set aErrors = oView.getFieldValidationErrors() %}
+    {{ oViewConf.getHiddenSid() }}
+    {{ oViewConf.getNavFormParams() }}
+    <input type="hidden" name="fnc" value="registeruser">
+    <input type="hidden" name="cl" value="register">
+    <input type="hidden" name="lgn_cook" value="0">
+    <input type="hidden" id="reloadAddress" name="reloadaddress" value="">
+    <input type="hidden" name="option" value="3">
+
+    <fieldset>
+        <legend>{{ translate({ ident: "ACCOUNT_INFORMATION" }) }}</legend>
+        {% include "form/fieldset/user_account.html.twig" %}
+
+        {% if oView.isActive('PsLogin') %}
+            <div class="mb-3 row">
+                <label>{{ translate({ ident: "TERMS_AND_CONDITIONS" }) }}</label>
+                <input type="hidden" name="ord_agb" value="0">
+                <div class="form-check">
+                    <input id="orderConfirmAgbBottom" type="checkbox" class="checkbox" name="ord_agb" value="1">
+                    <label for="orderConfirmAgbBottom">
+                        {% ifcontent ident "oxagb" set oCont %}
+                            {{ translate({ ident: "FORM_REGISTER_IAGREETOTERMS1" }) }}
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#popup1">{{ translate({ ident: "TERMS_AND_CONDITIONS" }) }}</a>
+                            {{ translate({ ident: "FORM_REGISTER_IAGREETOTERMS3" }) }},&nbsp;
+                        {% endifcontent %}
+                        {% ifcontent ident "oxrightofwithdrawal" set oCont %}
+                            {{ translate({ ident: "FORM_REGISTER_IAGREETORIGHTOFWITHDRAWAL1" }) }}
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#popup2">{{ oCont.oxcontents__oxtitle.value }}</a>
+                            {{ translate({ ident: "FORM_REGISTER_IAGREETORIGHTOFWITHDRAWAL3" }) }}
+                        {% endifcontent %}
+                    </label>
+                </div>
+            </div>
+        {% endif %}
+    </fieldset>
+    <fieldset>
+        <legend>{{ translate({ ident: "BILLING_ADDRESS" }) }}</legend>
+        {% include "form/fieldset/user_billing.html.twig" %}
+    </fieldset>
+</form>
+{% if oView.isActive('PsLogin') %}
+    {% ifcontent ident "oxagb" set oContent %}
+        <div class="modal fade" id="popup1" tabindex="-1" role="dialog" aria-labelledby="popup1Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="h4 modal-title" id="popup1Label">{{ oContent.oxcontents__oxtitle.value }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">{{ oContent.oxcontents__oxcontent.value }}</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">{{ translate({ ident: "CLOSE" }) }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endifcontent %}
+
+    {% ifcontent ident "oxrightofwithdrawal" set oContent %}
+        <div class="modal fade" id="popup2" tabindex="-1" role="dialog" aria-labelledby="popup2Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="h4 modal-title" id="popup2Label">{{ oContent.oxcontents__oxtitle.value }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">{{ oContent.oxcontents__oxcontent.value }}</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">{{ translate({ ident: "CLOSE" }) }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endifcontent %}
+{% endif %}

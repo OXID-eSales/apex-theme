@@ -1,0 +1,62 @@
+.minibasket-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 5px;
+}
+
+.minibasket-link {
+  display: flex;
+  text-decoration: none;
+  background: #fff;
+}
+
+.minibasket-items {
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $primary;
+  }
+}
+
+.modal.fade.basketFlyout {
+  .modal-dialog {
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: translate(50px, 0);
+
+    @include media-breakpoint-up(md) {
+      width: 400px;
+    }
+
+    .modal-content {
+      height: 100%;
+    }
+
+    .modal-body {
+      background: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 71px);
+
+      .btn-outline-primary {
+        margin-top: auto;
+      }
+    }
+  }
+
+  &.show .modal-dialog {
+    transform: none;
+  }
+}

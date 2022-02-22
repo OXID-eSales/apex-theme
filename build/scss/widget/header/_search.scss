@@ -1,0 +1,40 @@
+.search {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  right: 140px;
+  padding: 5px;
+  background: #fff;
+  z-index: 140;
+
+  @include media-breakpoint-up(md) {
+    padding-left: 10px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: 10px 8px;
+    top: -10px;
+  }
+
+  .input-group {
+    height: 46px;
+  }
+
+  .btn.btn-primary,
+  .btn.btn-primary:hover {
+    border: none;
+  }
+
+  &-toggler {
+    .moga-search:before {
+      content: map-get($icons, 'times');
+    }
+
+    &.collapsed {
+      .moga-search:before {
+        content: map-get($icons, 'search');
+      }
+    }
+  }
+}
+

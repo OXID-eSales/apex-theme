@@ -1,0 +1,62 @@
+{% set shop = oEmailView.getShop() %}
+{% set oViewConf = oEmailView.getViewConfig() %}
+{% set userInfo = oEmailView.getUser() %}
+
+{% include "email/html/header.html.twig" with {title: "DD_INVITE_HEADING"|translate} %}
+
+<table border="0" width="100%" cellspacing="10" cellpadding="0">
+    <tr>
+        <td style="white-space:nowrap;">
+            <b style="white-space:nowrap;">{{ translate({ ident: "FROM" }) }}</b>
+        </td>
+        <td style="white-space:nowrap;">{{ userInfo.send_name|escape }}</td>
+    </tr>
+    <tr>
+        <td style="white-space:nowrap;">
+            <b style="white-space:nowrap;">{{ translate({ ident: "EMAIL" }) }}</b>
+        </td>
+        <td style="white-space:nowrap;">{{ userInfo.send_email|escape }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="white-space:nowrap;">
+            <b style="white-space:nowrap;">{{ translate({ ident: "TO" }) }}</b>
+        </td>
+        <td style="white-space:nowrap;">{{ userInfo.rec_name|escape }}</td>
+    </tr>
+    <tr>
+        <td style="white-space:nowrap;">
+            <b style="white-space:nowrap;">{{ translate({ ident: "EMAIL" }) }}</b>
+        </td>
+        <td style="white-space:nowrap;">{{ userInfo.rec_email|escape }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ userInfo.send_message|escape|nl2br }}</td>
+    </tr>
+</table>
+<br>
+
+<p>{{ translate({ ident: "MANY_GREETINGS" }) }} {{ userInfo.send_name|escape }}</p>
+<br>
+
+<p class="lead">
+    <a href="{{ sArticleUrl }}"><b>{{ product.oxarticles__oxtitle.value }}</b></a>
+    {% if product.oxarticles__oxshortdesc.value %}
+        <br>{{ product.oxarticles__oxshortdesc.value }}
+    {% endif %}
+</p>
+<br>
+
+<p>
+    <a href="{{ sArticleUrl }}">
+        <img src="{{ product.getThumbnailUrl() }}" border="0" hspace="0" vspace="0" alt="{{ product.oxarticles__oxtitle.value|striptags }}">
+    </a>
+</p>
+<br>
+
+{% include "email/html/footer.html.twig" %}

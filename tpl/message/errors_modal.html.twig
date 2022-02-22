@@ -1,0 +1,21 @@
+<div class="modal fade" id="error-popup" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                    <span class="visually-hidden-focusable">Close</span>
+                </button>
+                <div class="h4 modal-title" id="basketModalLabel">Error</div>
+            </div>
+            <div class="modal-body">
+                <div id="modalbasketFlyout" class="basketFlyout">
+                    {% for key, oEr in Errors.popup %}
+                    <p class="alert alert-danger">{{ oEr.getOxMessage() }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ script({ add: "$('#error-popup').modal('show');", dynamic: __oxid_include_dynamic }) }}

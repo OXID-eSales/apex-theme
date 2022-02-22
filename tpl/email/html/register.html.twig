@@ -1,0 +1,9 @@
+{% set shop = oEmailView.getShop() %}
+{% set oViewConf = oEmailView.getViewConfig() %}
+{% set user = oEmailView.getUser() %}
+
+{% include "email/html/header.html.twig" with {title: "DD_REGISTER_HEADING"|translate} %}
+
+{% include 'content::ident::contentident|default("oxregisteremail")' %}<br/>
+
+{% include "email/html/footer.html.twig" %}

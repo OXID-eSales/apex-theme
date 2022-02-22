@@ -1,0 +1,86 @@
+.payment {
+  border-top: 1px solid rgba(0, 0, 0, .125);
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.payment-option {
+  display: none;
+}
+
+.popupBox {
+  display: none;
+  position: absolute;
+  padding: 5px;
+  left: 0;
+  text-align: left;
+  z-index: 100;
+}
+
+.paypalExpressCheckoutBox {
+  text-align: right !important;
+  margin-bottom: 10px;
+
+  .popupBox {
+    left: auto;
+    right: 0;
+    top: 15px;
+    border: 1px solid #333;
+  }
+}
+
+.paypalHelpIcon {
+  border-radius: 50%;
+  border: 1px solid #333;
+  width: 18px;
+  display: inline-block;
+  height: 18px;
+  text-align: center;
+  margin: 0 8px;
+}
+
+.paypalHelpBox {
+  @extend .alert;
+  display: none;
+  position: absolute;
+}
+
+#paypalExpressCheckoutDetailsBox {
+  width: 100%;
+  float: none !important;
+
+  &.paypalExpressCheckoutDetailsBox .paypalExpressCheckoutMsg {
+    float: none;
+  }
+
+}
+
+.paypalExpressCheckoutBox {
+  padding-right: 15px !important;
+  margin: 0 15px 0 0 !important;
+
+  .paypalExpressCheckoutMsg {
+    clear: both;
+  }
+}
+
+#paypalExpressCheckoutMiniBasketImage {
+  float: right !important;
+}
+
+#paypalExpressCheckoutMiniBasketBox {
+  &.paypalExpressCheckoutBox {
+    float: right;
+    padding-right: 0 !important;
+    margin: 0 0 15px 0 !important;
+
+    .paypalExpressCheckoutMsg {
+      padding-top: 5px;
+    }
+
+    .paypalHelpIcon {
+      left: -30px;
+      top: 5px;
+    }
+  }
+}

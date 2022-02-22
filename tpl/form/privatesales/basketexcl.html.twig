@@ -1,0 +1,25 @@
+<h3>{{ translate({ ident: "ROOT_CATEGORY_CHANGED" }) }}</h3>
+{{ translate({ ident: "MESSAGE_DENIED_BY_SHOP_RULES" }) }}<br><br>
+<div class="introtext">
+{{ translate({ ident: "MESSAGE_BASKET_EXCLUDE_INFO" }) }}<br><br>
+</div>
+<form action="{{ oViewConf.getCurrentHomeDir() }}index.php" method="post">
+        {{ oViewConf.getHiddenSid() }}
+        {{ oViewConf.getNavFormParams() }}
+        <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
+        <input type="hidden" name="fnc" value="executeuserchoice">
+        <input type="hidden" name="tpl" value="{{ oViewConf.getActTplName() }}">
+        <input type="hidden" name="oxloadid" value="{{ oViewConf.getActContentLoadId() }}">
+        {% if oView.getArticleId() %}
+          <input type="hidden" name="aid" value="{{ oView.getArticleId() }}">
+        {% endif %}
+        {% if oView.getProduct() %}
+          {% set product = oView.getProduct() %}
+          <input type="hidden" name="anid" value="{{ product.oxarticles__oxnid.value }}">
+        {% endif %}
+        {% hasrights { ident: "TOBASKET" } %}
+        <button name="tobasket" value="1" class="submitButton" type="submit">{{ translate({ ident: "CHECKOUT" }) }}</button>
+        {% endhasrights %}
+        <button class="submitButton" type="submit">{{ translate({ ident: "CONTINUE_SHOPPING" }) }}</button>
+</form>
+

@@ -1,0 +1,46 @@
+{% set currency = oView.getActCurrency() %}
+{% for oNewDeliveryMethod in oView.getNotMappedToRDFaDeliverySets() %}
+    <div about="{{ sRDFaUrl }}#{{ oNewDeliveryMethod.oxdeliveryset__oxtitle.value|strip('')|cat('_')|cat(oNewDeliveryMethod.oxdeliveryset__oxid.value) }}" typeof="gr:DeliveryMethod">
+        <div property="rdfs:label" content="{{ oNewDeliveryMethod.oxdeliveryset__oxtitle.value }}"></div>
+    </div>
+{% endfor %}
+
+{% set oDelChargeSpecs = oView.getDeliveryChargeSpecs() %}
+{% for oDelChargeSpec in oDelChargeSpecs %}
+    <div typeof="gr:DeliveryChargeSpecification" about="{{ sRDFaUrl }}#{{ oDelChargeSpec.getId() }}">
+        <div property="rdfs:comment" content="{{ oDelChargeSpec.oxdelivery__oxtitle.value }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
+        {% set oPriceValidity = oView.getRdfaPriceValidity() %}
+        <div property="gr:validFrom" content="{{ oPriceValidity.validfrom }}" datatype="xsd:dateTime"></div>
+        <div property="gr:validThrough" content="{{ oPriceValidity.validthrough }}" datatype="xsd:dateTime"></div>
+{% if oView.getRdfaVAT() %}
+        <div property="gr:valueAddedTaxIncluded" content="{% if oView.getRdfaVAT() == 1 %}true{% else %}false{% endif %}" datatype="xsd:boolean"></div>
+{% endif %}
+        <div property="gr:hasCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
+        <div property="gr:hasCurrencyValue" content="{{ oDelChargeSpec.oxdelivery__oxaddsum.value }}" datatype="xsd:float"></div>
+{% if oDelChargeSpec.oxdelivery__oxdeltype.value == "p" %}
+        <div rel="gr:eligibleTransactionVolume">
+            <div typeof="gr:UnitPriceSpecification">
+                <div property="gr:hasUnitOfMeasurement" content="C62" datatype="xsd:string"></div>
+                <div property="gr:hasCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
+{% if oDelChargeSpec.oxdelivery__oxparam.value %}
+                <div property="gr:hasMinCurrencyValue" content="{{ oDelChargeSpec.oxdelivery__oxparam.value }}" datatype="xsd:float"></div>
+{% endif %}
+{% if oDelChargeSpec.oxdelivery__oxparamend.value %}
+                <div property="gr:hasMaxCurrencyValue" content="{{ oDelChargeSpec.oxdelivery__oxparamend.value }}" datatype="xsd:float"></div>
+{% endif %}
+            </div>
+        </div>
+{% endif %}
+{% set oDeliverySetMethods = oDelChargeSpec.deliverysetmethods %}
+{% for oDelSetMethod in oDeliverySetMethods %}
+    {% if oDelSetMethod.oxdeliveryset__oxobjectid.value %}
+        <div rel="gr:appliesToDeliveryMethod" resource="http://purl.org/goodrelations/v1#{{ oDelSetMethod.oxdeliveryset__oxobjectid.value }}"></div>
+    {% else %}
+        <div rel="gr:availableDeliveryMethods" resource="{{ sRDFaUrl }}#{{ oDelSetMethod.oxdeliveryset__oxtitle.value|strip('')|cat('_')|cat(oDelSetMethod.oxdeliveryset__oxid.value) }}"></div>
+    {% endif %}
+{% endfor %}
+{% for sRegion in oDelChargeSpec.getCountriesISO() %}
+        <div rel="gr:eligibleRegions" content="{{ sRegion }}" datatype="xsd:string"></div>
+{% endfor %}
+    </div>
+{% endfor %}

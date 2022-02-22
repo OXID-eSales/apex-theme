@@ -1,0 +1,18 @@
+{% set shop = oEmailView.getShop() %}
+{% set oViewConf = oEmailView.getViewConfig() %}
+{% set user = oEmailView.getUser() %}
+
+
+{{ translate({ ident: "GIFT_REGISTRY_OF" }) }} {{ shop.oxshops__oxname.getRawValue() }}
+
+{{ userinfo.send_message }}
+
+{{ translate({ ident: "TO_MY_WISHLIST" }) }} {{ translate({ ident: "CLICK_HERE" }) }}
+
+{{ oViewConf.getBaseDir() }}index.php?cl=wishlist&wishid={{ userinfo.send_id }}
+
+{{ translate({ ident: "WITH_LOVE" }) }}
+
+{{ userinfo.send_name }}
+
+{% include 'content::ident::oxemailfooterplain' %}

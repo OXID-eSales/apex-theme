@@ -1,0 +1,18 @@
+{% set _additionalParams = oView.getAdditionalParams() %}
+{% set listType = oView.getListDisplayType() %}
+
+<button type="button" class="btn btn-outline-primary btn-sm btn-icon dropdown-toggle" data-bs-toggle="dropdown">
+    <strong>{{ translate({ ident: "PRODUCTS_PER_PAGE" }) }}</strong>
+    {% if oViewConf.getArtPerPageCount() %}
+        {{ oViewConf.getArtPerPageCount() }}
+    {% else %}
+        {{ translate({ ident: "CHOOSE" }) }}
+    {% endif %}
+</button>
+<ul class="dropdown-menu" role="menu">
+    {% for iItemsPerPage in oViewConf.getNrOfCatArticles() %}
+        <li class="filter-item{% if oViewConf.getArtPerPageCount() == iItemsPerPage %} selected{% endif %}">
+            <a href="{{ oView.getLink()|add_url_parameters("ldtype=$listType&amp;_artperpage=$iItemsPerPage&amp;pgNr=0&amp;$_additionalParams") }}" class="filter-link{% if oViewConf.getArtPerPageCount() == iItemsPerPage %} selected{% endif %}">{{ iItemsPerPage }}</a>
+        </li>
+    {% endfor %}
+</ul>

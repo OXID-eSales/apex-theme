@@ -1,0 +1,22 @@
+{% capture append = "oxidBlock_content" %}
+    {% set template_title = "MY_WISH_LIST"|translate %}
+    <div class="container-xxl py-5">
+        <div class="row">
+            <h3 class="page-header col pl-0 ml-3">
+                {{ translate({ ident: "MY_WISH_LIST" }) }}
+            </h3>
+            <div class="col-12 col-sm-3 button-col">
+                {% include "page/account/inc/account_menu.html.twig" with {active_link: "noticelist"} %}
+            </div>
+        </div>
+
+        {% if oView.getNoticeProductList() %}
+            {% include "widget/product/list.html.twig" with {type: "line", listId: "noticelistProductList", title: "", products: oView.getNoticeProductList(), removeFunction: "tonoticelist", owishid: oxcmp_user.oxuser__oxid.value} %}
+        {% else %}
+            <p class="alert alert-info">{{ translate({ ident: "WISH_LIST_EMPTY" }) }}</p>
+        {% endif %}
+    </div>
+
+{% endcapture %}
+
+{% include "layout/page.html.twig" %}

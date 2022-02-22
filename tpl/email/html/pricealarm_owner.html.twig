@@ -1,0 +1,10 @@
+{% set shop = oEmailView.getShop() %}
+{% set oViewConf = oEmailView.getViewConfig() %}
+{% set currency = oEmailView.getCurrency() %}
+{% set user = oEmailView.getUser() %}
+
+{% include "email/html/header.html.twig" with {title: "DD_PRICEALARM_HEADING"|translate} %}
+
+{% include 'content::ident::oxpricealarmemail' %}<br/>
+
+{% include "email/html/footer.html.twig" %}

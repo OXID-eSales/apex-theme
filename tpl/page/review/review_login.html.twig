@@ -1,0 +1,12 @@
+{% set template_title = "LOGIN"|translate %}
+{% capture append = "oxidBlock_content" %}
+    <div class="accountLoginView">
+        <h1 id="loginAccount">{{ translate({ ident: "LOGIN" }) }}</h1>
+        <p>{{ translate({ ident: "MESSAGE_LOGIN_TO_WRITE_REVIEW" }) }}</p>
+
+        {% include "form/login_account.html.twig" %}
+    </div>
+
+{% endcapture %}
+
+{% include "layout/page.html.twig" %}

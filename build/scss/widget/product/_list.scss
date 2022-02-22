@@ -1,0 +1,65 @@
+@import 'list/listitem-grid';
+@import 'list/listitem-line';
+
+.article-list {
+  background: $ox-list-bg;
+}
+
+.manufacturer-item {
+  .card-img {
+    margin-top: 40px;
+    object-fit: contain;
+    width: auto;
+    height: auto;
+  }
+}
+
+.pop-img {
+  img {
+    opacity: .7;
+  }
+
+  .pop-header {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+.no-img {
+  text-align: center;
+  padding: 20px;
+
+  .pop-header {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.manufacturer-header {
+  .breadcrumb-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.list-filter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #fff;
+  top: 42px;
+  z-index: 123;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}

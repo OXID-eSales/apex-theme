@@ -1,0 +1,10 @@
+{% set oDetailsProduct = oView.getProduct() %}
+{% set currency = oView.getActCurrency() %}
+{% set oPictureProduct = oView.getPicturesProduct() %}
+
+{% block fullproductinfo_init_details_page %}{% endblock %}
+
+{# {{ script({ add: "$( '#variants' ).oxArticleVariant();", dynamic: __oxid_include_dynamic }) }} #}
+{% include "page/details/inc/fullproductinfo.html.twig" %}
+
+{{ script({ dynamic: __oxid_include_dynamic }) }}

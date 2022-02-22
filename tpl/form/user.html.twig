@@ -1,0 +1,78 @@
+{{ script({ include: "js/changeaddress.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
+
+{% block user %}
+    <form class="max-600" action="{{ oViewConf.getSelfActionLink() }}" name="order" method="post" novalidate>
+        {% block user_form %}
+            {% set aErrors = oView.getFieldValidationErrors() %}
+            <div class="addressCollumns">
+                {{ oViewConf.getHiddenSid() }}
+                {{ oViewConf.getNavFormParams() }}
+                <input type="hidden" name="fnc" value="changeuser_testvalues">
+                <input type="hidden" name="cl" value="account_user">
+                <input type="hidden" name="CustomError" value='user'>
+                <input type="hidden" name="blshowshipaddress" value="1">
+
+                {# Rechnungsadresse #}
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        {% block user_billing_address_head %}
+                            <button id="userChangeAddress" class="btn btn-outline-dark btn-sm float-end edit-button" name="changeBillAddress" type="button">
+                                <i class="moga-pencil"></i>
+                            </button>
+                            <h4>{{ translate({ ident: "BILLING_ADDRESS" }) }}</h4>
+                        {% endblock %}
+                    </div>
+                    <div class="card-body">
+                        {% block user_billing_address %}
+                            {% block user_billing_address_text %}
+                                <div id="addressText">
+                                    {% include "widget/address/billing_address.html.twig" %}
+                                </div>
+                            {% endblock %}
+                            {% block user_billing_address_form %}
+                                <div style="display: none;" id="addressForm">
+                                    {% include "form/fieldset/user_email.html.twig" %}
+                                    {% include "form/fieldset/user_billing.html.twig" with {noFormSubmit: true} %}
+                                </div>
+                            {% endblock %}
+                        {% endblock %}
+                    </div>
+                </div>
+
+                {# oxscript add="$('#userChangeAddress').click( function() { $('#addressForm, #addressText').toggle();return false;});" #}
+
+                {# Lieferadresse #}
+                {% block user_shipping_address %}
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            {% block user_shipping_address_head %}
+                            <h4>{{ translate({ ident: "SHIPPING_ADDRESSES" }) }}</h4>
+                            {% endblock %}
+                        </div>
+                        <div class="card-body">
+                            <div class="checkbox">
+                                {% block user_shipping_address_choice %}
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="blshowshipaddress" id="showShipAddress"{% if not oView.showShipAddress() %} checked{% endif %} value="0">
+                                        <label class="form-check-label" for="showShipAddress">
+                                            {{ translate({ ident: "USE_BILLINGADDRESS_FOR_SHIPPINGADDRESS" }) }}
+                                        </label>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                        {% block user_shipping_address_form %}
+                            <div class="list-group list-group-flush" id="shippingAddress"{% if not oView.showShipAddress() %} style="display: none;"{% endif %}>
+                                {% include "form/fieldset/user_shipping.html.twig" with {noFormSubmit: true} %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+            <div class="my-3 d-lg-flex">
+                <button id="accUserSaveTop" class="btn btn-primary ms-lg-auto" name="userform" type="submit">{{ translate({ ident: "SAVE" }) }}</button>
+            </div>
+        {% endblock %}
+    </form>
+    {% include "form/fieldset/delete_shipping_address_modal.html.twig" %}
+{% endblock %}

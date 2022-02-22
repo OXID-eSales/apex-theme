@@ -1,0 +1,7 @@
+{% capture append = "oxidBlock_content" %}
+<h1 class="pageHead">{{ translate({ ident: "ERROR" }) }}</h1>
+
+{% include "message/error.html.twig" with {statusMessage: "ERROR_MESSAGE_ACCESS_DENIED"|translate} %}.
+
+{% endcapture %}
+{% include "layout/page.html.twig" with {blHideBreadcrumb: true} %}

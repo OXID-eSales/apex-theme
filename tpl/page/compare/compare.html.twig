@@ -1,0 +1,64 @@
+{% capture append = "oxidBlock_content" %}
+    {% set template_title = "COMPARE"|translate %}
+
+    {{ oView.setNoPaging() }}
+
+    {% set articleList = oView.getCompArtList() %}
+    {% set atributeList = oView.getAttributeList() %}
+    <div class="container-xxl py-5">
+        {# oxscript include="js/pages/compare.min.js" #}
+        <div class="row">
+            <h3 class="page-header col pl-0 ml-3">{{ template_title }}</h3>
+
+            {% if oxcmp_user.oxuser__oxpassword.value %}
+            <div class="col-12 col-sm-3 button-col">
+                {% include "page/account/inc/account_menu.html.twig" with {active_link: "dashboard"} %}
+            </div>
+            {% endif %}
+        </div>
+
+
+
+        {% if oView.getCompareItemsCnt() >= 1 %}
+            <div id="comparePlayground" class="compare">
+                <div id="compareLandscape" class="table-responsive">
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr class="compare-products">
+                                {% for iProdNr, product in articleList %}
+                                    {% if loop.first %}
+                                        <th class="attrib-title no-border" scope="row">&nbsp;</th>
+                                    {% endif %}
+
+                                    <td class="item-wrapper text-center compare-item-wrapper">
+                                        {% include "page/compare/inc/compareitem.html.twig" with {product: product, testid: loop.index} %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                            {% for iProdNr, oAttrib in atributeList %}
+                                <tr>
+                                    <th class="attrib-title" scope="row">{{ oAttrib.title }}:</th>
+
+                                    {% for iProdNr, product in articleList %}
+                                        <td class="attrib-text">
+                                            {% if oAttrib.aProd.$iProdNr and oAttrib.aProd.$iProdNr.value %}
+                                                {{ oAttrib.aProd.$iProdNr.value }}
+                                            {% else %}
+                                                -
+                                            {% endif %}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% else %}
+            <p class="alert alert-danger">{{ translate({ ident: "MESSAGE_SELECT_AT_LEAST_ONE_PRODUCT" }) }}</p>
+        {% endif %}
+    </div>
+{% endcapture %}
+
+
+{% include "layout/page.html.twig" %}

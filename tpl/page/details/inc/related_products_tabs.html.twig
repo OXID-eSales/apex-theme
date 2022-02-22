@@ -1,0 +1,72 @@
+{% set blFirstTab = true %}
+
+{% block details_relatedproducts_accessoires %}
+    {% if oView.getAccessoires() %}
+        {% capture append = "reltabs" %}
+            <a class="nav-link{% if blFirstTab %} active{% endif %}" id="accessoires-tab" href="#accessoires" data-bs-toggle="tab" role="tab" aria-controls="nav-accesoires" aria-selected="false">{{ translate({ ident: "ACCESSORIES" }) }}</a>
+        {% endcapture %}
+        {% capture append = "reltabsContent" %}
+            <div id="accessoires" class="container-xxl tab-pane{% if blFirstTab %} active{% endif %}" role="tabpanel" aria-labelledby="home-tab">
+                {% include "widget/product/list.html.twig" with {type: "grid", listId: "accessories", products: oView.getAccessoires(), subhead: "WIDGET_PRODUCT_RELATED_PRODUCTS_ACCESSORIES_SUBHEADER"|translate} %}
+            </div>
+        {% endcapture %}
+    {% set blFirstTab = false %}
+    {% endif %}
+{% endblock %}
+
+{% block details_relatedproducts_also_bought %}
+    {% if oView.getAlsoBoughtTheseProducts() %}
+        {% capture append = "reltabs" %}
+            <a class="nav-link{% if blFirstTab %} active{% endif %}" href="#also" id="also-tab" data-bs-toggle="tab" role="tab" aria-controls="nav-also" aria-selected="true">{{ translate({ ident: "CUSTOMERS_ALSO_BOUGHT" }) }}</a>
+        {% endcapture %}
+        {% capture append = "reltabsContent" %}
+            <div id="also" class="container-xxl tab-pane{% if blFirstTab %} active{% endif %}" role="tabpanel" aria-labelledby="also-tab">
+                {% include "widget/product/list.html.twig" with {type: "grid", listId: "also", subhead: "PAGE_DETAILS_CUSTOMERS_ALSO_BOUGHT_SUBHEADER"|translate, products: oView.getAlsoBoughtTheseProducts()} %}
+            </div>
+        {% endcapture %}
+    {% set blFirstTab = false %}
+    {% endif %}
+{% endblock %}
+
+{% block details_relatedproducts_similarproducts %}
+    {% if oView.getSimilarProducts() %}
+        {% capture append = "reltabs" %}
+            <a class="nav-link{% if blFirstTab %} active{% endif %}" href="#similars" id="similars-tab" data-bs-toggle="tab" role="tab" aria-controls="nav-similars" aria-selected="false">{{ translate({ ident: "SIMILAR_PRODUCTS" }) }}</a>
+        {% endcapture %}
+        {% capture append = "reltabsContent" %}
+            <div id="similars" class="container-xxl tab-pane{% if blFirstTab %} active{% endif %}" role="tabpanel" aria-labelledby="similars-tab">
+                {% include "widget/product/list.html.twig" with {type: "grid", listId: "similars", products: oView.getSimilarProducts(), subhead: "WIDGET_PRODUCT_RELATED_PRODUCTS_SIMILAR_SUBHEADER"|translate} %}
+            </div>
+        {% endcapture %}
+    {% set blFirstTab = false %}
+    {% endif %}
+{% endblock %}
+
+{% block details_relatedproducts_crossselling %}
+    {% if oView.getCrossSelling() %}
+        {% capture append = "reltabs" %}
+            <a class="nav-link{% if blFirstTab %} active{% endif %}" href="#cross" id="cross-tab" data-bs-toggle="tab" role="tab" aria-controls="nav-cross" aria-selected="false">{{ translate({ ident: "HAVE_YOU_SEEN" }) }}</a>
+        {% endcapture %}
+        {% capture append = "reltabsContent" %}
+        <div id="cross" class="container-xxl tab-pane{% if blFirstTab %} active{% endif %}" role="tabpanel" aria-labelledby="cross-tab">
+            {% include "widget/product/list.html.twig" with {type: "grid", listId: "cross", products: oView.getCrossSelling(), subhead: "WIDGET_PRODUCT_RELATED_PRODUCTS_CROSSSELING_SUBHEADER"|translate} %}
+        </div>
+        {% endcapture %}
+    {% set blFirstTab = false %}
+    {% endif %}
+{% endblock %}
+
+{% if reltabs %}
+<div class="related-tabs">
+    <ul class="nav nav-tabs" role="tablist">
+        {% for reltab in reltabs %}
+            <li class="nav-item" role="presentation">{{ reltab }}</li>
+        {% endfor %}
+    </ul>
+    <div class="tab-content py-5">
+        {% for reltabContent in reltabsContent %}
+        {{ reltabContent }}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

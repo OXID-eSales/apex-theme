@@ -1,0 +1,70 @@
+{% capture append = "oxidBlock_pageBody" %}
+    {% if oView.isEnabledPrivateSales() %}
+        {{ include_widget({ cl: "oxwCookieNote", _parent: oView.getClassName(), nocookie: 1 }) }}
+    {% endif %}
+{% endcapture %}
+{% capture append = "oxidBlock_content" %}
+
+    {% if oView.showUpdateScreen() %}
+        {% set template_title = "NEW_PASSWORD"|translate %}
+    {% elseif oView.updateSuccess() %}
+        {% set template_title = "CHANGE_PASSWORD"|translate %}
+    {% else %}
+        {% set template_title = "FORGOT_PASSWORD"|translate %}
+    {% endif %}
+    <div class="container-xxl py-5">
+        <div class="row">
+            <h3 class="page-header col pl-0 ml-3">
+                {{ template_title }}
+            </h3>
+            <div class="col-12 col-sm-3 button-col">
+                {% include "page/account/inc/account_menu.html.twig" with {active_link: "password"} %}
+            </div>
+        </div>
+
+        {% if oView.isExpiredLink() %}
+            <div class="alert alert-danger">{{ translate({ ident: "ERROR_MESSAGE_PASSWORD_LINK_EXPIRED" }) }}</div>
+        {% elseif oView.showUpdateScreen() %}
+            {% include "form/forgotpwd_change_pwd.html.twig" %}
+        {% elseif oView.updateSuccess() %}
+            <div class="alert alert-success">{{ translate({ ident: "PASSWORD_CHANGED" }) }}</div>
+
+            <form action="{{ oViewConf.getSelfActionLink() }}" name="forgotpwd" method="post" >
+                <div>
+                    {{ oViewConf.getHiddenSid() }}
+                    <input type="hidden" name="cl" value="start">
+                    <button id="backToShop" class="btn btn-primary" type="submit">
+                        <i class="moga-left"></i> {{ translate({ ident: "BACK_TO_SHOP" }) }}
+                    </button>
+                </div>
+            </form>
+        {% else %}
+            {% if oView.getForgotEmail() %}
+                <div class="alert alert-info">{{ translate({ ident: "PASSWORD_WAS_SEND_TO" }) }} {{ oView.getForgotEmail() }}</div>
+                <div class="bar">
+                    <form action="{{ oViewConf.getSelfActionLink() }}" name="forgotpwd" method="post">
+                        <div>
+                            {{ oViewConf.getHiddenSid() }}
+                            <input type="hidden" name="cl" value="start">
+                            <button id="backToShop" class="btn btn-primary" type="submit">
+                                <i class="moga-left"></i> {{ translate({ ident: "BACK_TO_SHOP" }) }}
+                            </button>
+                        </div>
+                     </form>
+                 </div>
+            {% else %}
+                {% include "form/forgotpwd_email.html.twig" %}
+            {% endif %}
+        {% endif %}
+
+        {% if not oView.isActive('PsLogin') %}
+
+        {% endif %}
+    </div>
+{% endcapture %}
+{% if oView.isActive('PsLogin') %}
+    {% include "layout/popup.html.twig" %}
+{% else %}
+    {% include "layout/page.html.twig" %}
+{% endif %}
+

@@ -1,0 +1,56 @@
+{% block delete_shipping_address_modal %}
+    {% if oxcmp_user %}
+        {% set userAddresses = oxcmp_user.getUserAddresses() %}
+    {% endif %}
+    {% for shippingAddress in userAddresses %}
+    {% set shippingAddressNumber = loop.index %}
+        <div class="modal fade"
+             id="delete_shipping_address_{{ shippingAddressNumber }}"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="delete_shipping_address_modal_label_{{ shippingAddressNumber }}"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        {% block delete_shipping_address_modal_header %}
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                            <span class="h4 modal-title" id="delete_shipping_address_modal_label_{{ shippingAddressNumber }}">{{ translate({ ident: "DD_DELETE_SHIPPING_ADDRESS" }) }}</span>
+                        {% endblock %}
+                    </div>
+                    <div class="modal-body">
+                        {% block delete_shipping_address_modal_contents %}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form name="delete_shipping_address_modal_form_{{ shippingAddressNumber }}"
+                                          action="{{ oViewConf.getSelfActionLink() }}"
+                                          method="post">
+                                            {{ oViewConf.getHiddenSid() }}
+                                            <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
+                                            <input type="hidden" name="fnc" value="deleteShippingAddress">
+                                            <input type="hidden" name="oxaddressid"
+                                                   value="{{ shippingAddress.oxaddress__oxid.value }}">
+                                        {% include "widget/address/shipping_address.html.twig" with {delivadr: shippingAddress} %}
+                                    </form>
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+                    <div class="modal-footer">
+                        {% block delete_shipping_address_modal_footer %}
+                            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
+                                {{ translate({ ident: "CANCEL" }) }}
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="window.delete_shipping_address_modal_form_{{ shippingAddressNumber }}.submit();return false;">
+                                {{ translate({ ident: "DD_DELETE" }) }}
+                            </button>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+

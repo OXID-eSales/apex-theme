@@ -1,0 +1,176 @@
+{% block dd_widget_header_categorylist %}
+
+    {% if oxcmp_categories %}
+        {% set homeSelected = "false" %}
+        {% if oViewConf.getTopActionClassName() == 'start' %}
+            {% set homeSelected = "true" %}
+        {% endif %}
+        {% set oxcmp_categories = oxcmp_categories %}
+        {% set blFullwidth = oViewConf.getViewThemeParam('blFullwidthLayout') %}
+
+        {% if navStyle == "MegaMenu" %}
+            <nav id="mainnav" class="navbar navbar-mega navbar-expand-lg p-0 order-lg-2">
+            {% block dd_widget_header_categorylist_navbar %}
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <div id="navigation" class="navbar-nav navbar-nav-mega">
+                        {% block dd_widget_header_categorylist_navbar_list %}
+                            {% for catkey, ocat in oxcmp_categories %}
+                                {% if ocat.getIsVisible() %}
+                                    {% for oTopCont in ocat.getContentCats() %}
+                                        <div class="nav-item">
+                                            <a class="nav-link nav-link-1{% if oContent.oxcontents__oxloadid.value is same as(oTopCont.oxcontents__oxloadid.value) %} active{% endif %}"{% if oContent.oxcontents__oxloadid.value is same as(oTopCont.oxcontents__oxloadid.value) %} aria-current="page"{% endif %} href="{{ oTopCont.getLink() }}">{{ oTopCont.oxcontents__oxtitle.value }}</a>
+                                        </div>
+                                    {% endfor %}
+
+                                    <div class="nav-item{% if ocat.getSubCats() %} has-subs{% endif %}">
+                                        <a class="nav-link nav-link-1{% if homeSelected == 'false' and ocat.expanded %} active{% endif %}"{% if homeSelected == 'false' and ocat.expanded %} aria-current="page"{% endif %} href="{{ ocat.getLink() }}">
+                                            {{ ocat.oxcategories__oxtitle.value }}
+                                        </a>
+
+                                        {# EBENE 2 #}
+                                        {% if ocat.getSubCats() %}
+                                            <div class="nav-level-2">
+                                                <div class="container{% if headerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
+                                                    <div class="columns">
+                                                        {% for subcatkey, osubcat in ocat.getSubCats() %}
+                                                            {% if osubcat.getIsVisible() %}
+                                                                {% for ocont in osubcat.getContentCats() %}
+                                                                    <div class="nav-item nav-item-2">
+                                                                        <a class="nav-link{% if oViewConf.getContentId() == ocont.getId() %} active{% endif %}" href="{{ ocont.getLink() }}">{{ ocont.oxcontents__oxtitle.value }}</a>
+                                                                    </div>
+                                                                {% endfor %}
+
+                                                                {% if osubcat.getIsVisible() %}
+                                                                    <div class="nav-item nav-item-2">
+                                                                        <a class="nav-link{% if homeSelected == 'false' and osubcat.expanded %} active{% endif %}" href="{{ osubcat.getLink() }}">{{ osubcat.oxcategories__oxtitle.value }}</a>
+
+                                                                        {# EBENE 3 #}
+                                                                        {% if osubcat.getSubCats() %}
+                                                                            <div class="nav-level-3">
+                                                                                {% for subsubcatkey, osubsubcat in osubcat.getSubCats() %}
+                                                                                    {% if osubsubcat.getIsVisible() %}
+                                                                                        {% for ocont in osubsubcat.getContentCats() %}
+                                                                                            <div class="nav-item">
+                                                                                                <a class="nav-link{% if oViewConf.getContentId() == ocont.getId() %} active{% endif %}" href="{{ ocont.getLink() }}">{{ ocont.oxcontents__oxtitle.value }}</a>
+                                                                                            </div>
+                                                                                        {% endfor %}
+
+                                                                                        {% if osubsubcat.getIsVisible() %}
+                                                                                            <div class="nav-item">
+                                                                                                <a class="nav-link{% if homeSelected == 'false' and osubsubcat.expanded %} active{% endif %}" href="{{ osubsubcat.getLink() }}">{{ osubsubcat.oxcategories__oxtitle.value }}</a>
+
+                                                                                                {# EBENE 4 #}
+                                                                                                {% if osubsubcat.getSubCats() %}
+                                                                                                    <div class="nav-level-4">
+                                                                                                        {% for subsubsubcatkey, osubsubsubcat in osubsubcat.getSubCats() %}
+                                                                                                            {% if osubsubsubcat.getIsVisible() %}
+                                                                                                                {% for ocont in osubsubsubcat.getContentCats() %}
+                                                                                                                    <div class="nav-item">
+                                                                                                                        <a class="nav-link{% if oViewConf.getContentId() == ocont.getId() %} active{% endif %}" href="{{ ocont.getLink() }}">{{ ocont.oxcontents__oxtitle.value }}</a>
+                                                                                                                    </div>
+                                                                                                                {% endfor %}
+
+                                                                                                                {% if osubsubsubcat.getIsVisible() %}
+                                                                                                                    <div class="nav-item">
+                                                                                                                        <a class="nav-link{% if homeSelected == 'false' and osubsubsubcat.expanded %} active{% endif %}" href="{{ osubsubsubcat.getLink() }}">{{ osubsubsubcat.oxcategories__oxtitle.value }}</a>
+                                                                                                                    </div>
+                                                                                                                {% endif %}
+                                                                                                            {% endif %}
+                                                                                                        {% endfor %}
+                                                                                                    </div>
+                                                                                                {% endif %}
+
+                                                                                            </div>
+                                                                                        {% endif %}
+                                                                                    {% endif %}
+                                                                                {% endfor %}
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                {% endif %}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endblock %}
+                    </div>
+                    <div class="d-md-none">
+                        {% block dd_layout_page_header_icon_menu_languages %}
+                        {# Language Dropdown #}
+                        {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassName(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                        {% endblock %}
+                        {% block dd_layout_page_header_icon_menu_currencies %}
+                        {# Currency Dropdown #}
+                        {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassName(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+        </nav>
+        {% else %}
+            <nav id="mainnav" class="navbar navbar-expand-lg p-0 order-lg-2">
+                {% block dd_widget_header_categorylist_navbar %}
+
+                    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                        <ul id="navigation" class="navbar-nav">
+                            {% block dd_widget_header_categorylist_navbar_list %}
+                                {% for catkey, ocat in oxcmp_categories %}
+                                    {% if ocat.getIsVisible() %}
+                                        {% for oTopCont in ocat.getContentCats() %}
+                                            <li class="nav-item">
+                                                <a class="nav-link{% if oContent.oxcontents__oxloadid.value is same as(oTopCont.oxcontents__oxloadid.value) %} active{% endif %}"{% if oContent.oxcontents__oxloadid.value is same as(oTopCont.oxcontents__oxloadid.value) %} aria-current="page"{% endif %} href="{{ oTopCont.getLink() }}">{{ oTopCont.oxcontents__oxtitle.value }}</a>
+                                            </li>
+                                        {% endfor %}
+
+                                        <li class="nav-item{% if ocat.getSubCats() %} dropdown{% endif %}">
+                                            <a class="nav-link{% if homeSelected == 'false' and ocat.expanded %} active{% endif %}{% if ocat.getSubCats() %} dropdown-toggle{% endif %}"{% if homeSelected == 'false' and ocat.expanded %} aria-current="page"{% endif %}{% if ocat.getSubCats() %} href="#" data-href="{{ ocat.getLink() }}"  data-bs-toggle="dropdown" aria-expanded="false"{% else %} href="{{ ocat.getLink() }}"{% endif %}>
+                                                {{ ocat.oxcategories__oxtitle.value }}
+                                            </a>
+
+                                            {% if ocat.getSubCats() %}
+                                                <ul class="dropdown-menu">
+                                                    {% for subcatkey, osubcat in ocat.getSubCats() %}
+                                                        {% if osubcat.getIsVisible() %}
+                                                            {% for ocont in osubcat.getContentCats() %}
+                                                                <li>
+                                                                    <a class="dropdown-item{% if oViewConf.getContentId() == ocont.getId() %} active{% endif %}" href="{{ ocont.getLink() }}">{{ ocont.oxcontents__oxtitle.value }}</a>
+                                                                </li>
+                                                            {% endfor %}
+
+                                                            {% if osubcat.getIsVisible() %}
+                                                                <li>
+                                                                    <a class="dropdown-item{% if homeSelected == 'false' and osubcat.expanded %} active{% endif %}" href="{{ osubcat.getLink() }}">{{ osubcat.oxcategories__oxtitle.value }}</a>
+                                                                </li>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endblock %}
+                        </ul>
+                        <div class="d-md-none">
+                            {% block dd_layout_page_header_icon_menu_languages %}
+                            {# Language Dropdown #}
+                            {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassName(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                            {% endblock %}
+                            {% block dd_layout_page_header_icon_menu_currencies %}
+                            {# Currency Dropdown #}
+                            {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassName(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                            {% endblock %}
+                        </div>
+                    </div>
+                {% endblock %}
+            </nav>
+        {% endif %}
+
+
+    {% endif %}
+{% endblock %}

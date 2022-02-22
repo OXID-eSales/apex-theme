@@ -1,0 +1,107 @@
+{% block dd_widget_promoslider %}
+    {% set oBanners = oView.getBanners() %}
+    {% set currency = oView.getActCurrency() %}
+
+    {% if oBanners|length %}
+        {% set promosliderWidth = oViewConf.getViewThemeParam('sPromoWidth') %}
+        {% set promoSliderBg = oViewConf.getViewThemeParam('sPromoBg') %}
+        {% set promoSliderRowPadding = oViewConf.getViewThemeParam('sPromoRowPadding') %}
+
+        {% if promosliderWidth == 'container' %}
+            <div class="container-xxl">
+        {% endif %}
+                <div class="promoslider {% if promoSliderRowPadding %} py-3 py-lg-5{% endif %} bg-{{ promoSliderBg }}">
+                    {% if promosliderWidth == 'w100cContainer' %}
+                    <div class="container-xxl">
+                    {% endif %}
+                        <div id="promoCarousel" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                {% for iPicNr, oBanner in oBanners %}
+                                    <li data-bs-target="#promoCarousel" data-bs-slide-to="{{ loop.index - 1 }}"{% if loop.first %} class="active"{% endif %}></li>
+                                {% endfor %}
+                            </ol>
+                            <div class="carousel-inner">
+                                {% block dd_widget_promoslider_list %}
+                                    {% for iPicNr, oBanner in oBanners %}
+                                        {% set oArticle = oBanner.getBannerArticle() %}
+                                        {% set sBannerPictureUrl = oBanner.getBannerPictureUrl() %}
+                                        {% if sBannerPictureUrl %}
+                                            <div class="carousel-item{% if loop.first %} active{% endif %}">
+                                                {% set sBannerLink = oBanner.getBannerLink() %}
+                                                {% if sBannerLink %}
+                                                    <a class="d-block" href="{{ sBannerLink }}" title="{{ oBanner.oxactions__oxtitle.value }}">
+                                                {% endif %}
+                                                {% if oViewConf.isModuleActive('cnc / imagebutler') %}
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 375, 200, 'webp') }}" media="(max-width: 375px)">
+
+                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 750, 300, 'webp') }}" media="(max-width: 767px)">
+                                                        <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 750, 300, 'jpg') }}" media="(max-width: 767px)">
+
+                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 970, 370, 'webp') }}" media="(max-width: 991px)">
+                                                        <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 970, 370, 'jpg') }}" media="(max-width: 991px)">
+
+                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1170, 400, 'webp') }}" media="(max-width: 1199px)">
+                                                        <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1170, 400, 'jpg') }}" media="(max-width: 1199px)">
+
+                                                        {% if promosliderWidth == 'w100c100' %}
+                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1400, 450, 'webp') }}" media="(max-width: 1399px)">
+                                                            <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1400, 450, 'jpg') }}" media="(max-width: 1399px)">
+
+                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1600, 500, 'webp') }}" media="(max-width: 1599px)">
+                                                            <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1600, 500, 'jpg') }}" media="(max-width: 1599px)">
+
+                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1800, 600, 'webp') }}" media="(min-width: 1600px)">
+                                                            <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1800, 600, 'jpg') }}" media="(min-width: 1600px)">
+                                                        {% else %}
+                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1400, 450, 'webp') }}" media="(min-width: 1200px)">
+                                                            <source srcset="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 1400, 450, 'jpg') }}" media="(min-width: 1200px)">
+                                                        {% endif %}
+                                                        <img loading="lazy" src="{{ oViewConf.getDynamicImage($sBannerPictureUrl, 375, 200, 'jpg') }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="w-100">
+                                                    </picture>
+                                                {% else %}
+                                                    <img loading="lazy" src="{{ sBannerPictureUrl }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="w-100">
+                                                {% endif %}
+
+                                                {% if sBannerLink %}
+                                                    </a>
+                                                {% endif %}
+                                                {% if oViewConf.getViewThemeParam('blSliderShowImageCaption') and oArticle %}
+                                                {% if sBannerLink %}
+                                                <a href="{{ sBannerLink }}" class="d-block" title="{{ oBanner.oxactions__oxtitle.value }}">
+                                                    {% endif %}
+                                                    <div class="carousel-caption d-none d-md-block">
+
+                                                        <h5 class="title h2">{{ oArticle.oxarticles__oxtitle.value }}</h5>
+                                                        {% if oArticle.oxarticles__oxshortdesc.value|trim %}
+                                                                <p class="shortdesc">{{ oArticle.oxarticles__oxshortdesc.value|trim }}</p>
+                                                        {% endif %}
+
+                                                    </div>
+                                                {% if sBannerLink %}
+                                                </a>
+                                                {% endif %}
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endblock %}
+                            </div>
+                            <a class="carousel-control-prev" href="#promoCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden-focusable">{{ translate({ ident: "PREVIOUS" }) }}</span>
+                            </a>
+                            <a class="carousel-control-next" href="#promoCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden-focusable">{{ translate({ ident: "NEXT" }) }}</span>
+                            </a>
+                        </div>
+                    {% if promosliderWidth == 'w100cContainer' %}
+                    </div>
+                    {% endif %}
+                </div>
+        {% if promosliderWidth == 'container' %}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

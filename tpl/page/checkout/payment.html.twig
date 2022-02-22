@@ -1,0 +1,184 @@
+{% capture append = "oxidBlock_content" %}
+
+<div class="container-xxl py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-9">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card done done-1">
+                        <h4 class="card-header card-title disabled">
+                            <a href="{{ seo_url({ ident: oViewConf.getOrderLink() }) }}">{{ translate({ ident: "MY_ACCOUNT" }) }}</a>
+                        </h4>
+                    </div>
+                    <div class="card mt-n2 done done-2">
+                        <h4 class="card-header card-title disabled">
+                            <a href="{{ seo_url({ ident: oViewConf.getOrderLink() }) }}">{{ translate({ ident: "ADDRESSES" }) }}</a>
+                        </h4>
+                    </div>
+                    <div class="card mt-n2 active">
+                        <h4 class="card-header card-title">
+                            {{ translate({ ident: "DELIVERY_PAYMENT" }) }}
+                        </h4>
+                        <div class="card-body">
+                            {% block checkout_payment_main %}
+                                {% set currency = oView.getActCurrency() %}
+                                {% block change_shipping %}
+                                    {% if oView.getAllSets() %}
+                                        {% set aErrors = oView.getFieldValidationErrors() %}
+                                        <form action="{{ oViewConf.getSslSelfLink() }}" name="shipping" id="shipping" method="post">
+                                            {{ oViewConf.getHiddenSid() }}
+                                            {{ oViewConf.getNavFormParams() }}
+                                            <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
+                                            <input type="hidden" name="fnc" value="changeshipping">
+
+
+                                            <h3 class="h4">{% if oView.getAllSetsCnt() > 1 %}{{ translate({ ident: "SELECT_SHIPPING_METHOD" }) }}{% else %}{{ translate({ ident: "SELECTED_SHIPPING_CARRIER" }) }}{% endif %}</h3>
+
+                                            {% block act_shipping %}
+                                                <div class="mb-3">
+                                                    <select class="form-select" name="sShipSet" onchange="this.form.submit();">
+                                                        {% for sShipID, oShippingSet in oView.getAllSets() %}
+                                                            <option value="{{ sShipID }}" {% if oShippingSet.blSelected %}SELECTED{% endif %}>{{ oShippingSet.oxdeliveryset__oxtitle.value }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                                <noscript>
+                                                    <div class="mb-3">
+                                                        <button type="submit" class="btn btn-success">{{ translate({ ident: "UPDATE_SHIPPING_CARRIER" }) }}</button>
+                                                    </div>
+                                                </noscript>
+                                            {% endblock %}
+
+                                            {% set oDeliveryCostPrice = oxcmp_basket.getDeliveryCost() %}
+                                            {% if oDeliveryCostPrice and oDeliveryCostPrice.getPrice() > 0 %}
+                                                <div id="shipSetCost">
+                                                    {% if oViewConf.isFunctionalityEnabled('blShowVATForDelivery')  %}
+                                                        {{ translate({ ident: "CHARGES", suffix: "COLON" }) }} {{ format_price(oDeliveryCostPrice.getNettoPrice(), { currency: currency }) }}
+                                                        ({{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(oDeliveryCostPrice.getVatValue(), { currency: currency }) }})
+                                                    {% else %}
+                                                        {{ translate({ ident: "CHARGES", suffix: "COLON" }) }} {{ format_price(oDeliveryCostPrice.getBruttoPrice(), { currency: currency }) }}
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        </form>
+                                    {% endif %}
+                                {% endblock %}
+
+                                {% block checkout_payment_errors %}
+                                    {% set iPayError = oView.getPaymentError() %}
+
+                                    {% if iPayError == 1 %}
+                                        <div class="alert alert-danger">{{ translate({ ident: "ERROR_MESSAGE_COMPLETE_FIELDS_CORRECTLY" }) }}</div>
+                                    {% elseif iPayError == 2 %}
+                                        <div class="alert alert-danger">{{ translate({ ident: "MESSAGE_PAYMENT_AUTHORIZATION_FAILED" }) }}</div>
+                                    {% elseif iPayError == 4 %}
+                                        <div class="alert alert-danger">{{ translate({ ident: "MESSAGE_UNAVAILABLE_SHIPPING_METHOD" }) }}</div>
+                                    {% elseif iPayError == 5 %}
+                                        <div class="alert alert-danger">{{ translate({ ident: "MESSAGE_PAYMENT_AUTHORIZATION_FAILED" }) }}</div>
+                                    {% elseif iPayError >= 6 %}
+                                        <!--Add custom error message here-->
+                                        <div class="alert alert-danger">{{ translate({ ident: "MESSAGE_PAYMENT_AUTHORIZATION_FAILED" }) }}</div>
+                                    {% elseif iPayError == -1 %}
+                                        <div class="alert alert-danger">{{ translate({ ident: "MESSAGE_PAYMENT_UNAVAILABLE_PAYMENT_ERROR" }) }} "{{ oView.getPaymentErrorText() }}").</div>
+                                    {% elseif iPayError == -2 %}
+                                        <div class="alert alert-danger">{{ translate({ ident: "MESSAGE_NO_SHIPPING_METHOD_FOUND" }) }}</div>
+                                    {% elseif iPayError == -3 %}
+                                        <div class="alert alert-danger">{{ translate({ ident: "MESSAGE_PAYMENT_SELECT_ANOTHER_PAYMENT" }) }}</div>
+                                    {% elseif iPayError == -4 %}
+                                        <div class="alert alert-danger">{{ translate({ ident: "MESSAGE_PAYMENT_BANK_CODE_INVALID" }) }}</div>
+                                    {% elseif iPayError == -5 %}
+                                        <div class="alert alert-danger">{{ translate({ ident: "MESSAGE_PAYMENT_ACCOUNT_NUMBER_INVALID" }) }}</div>
+                                    {% endif %}
+                                {% endblock %}
+
+                                {% block change_payment %}
+                                    {{ script({ include: "js/payment.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
+                                    <form action="{{ oViewConf.getSslSelfLink() }}" class="payment" id="payment" name="order" method="post" novalidate>
+                                        {{ oViewConf.getHiddenSid() }}
+                                        {{ oViewConf.getNavFormParams() }}
+                                        <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
+                                        <input type="hidden" name="fnc" value="validatepayment">
+
+                                        {% if oView.getPaymentList() %}
+                                            <h3 class="h4">{{ translate({ ident: "PAYMENT_METHOD" }) }}</h3>
+
+                                            {% set inptcounter = "-1" %}
+                                            {% for sPaymentID, paymentmethod in oView.getPaymentList() %}
+                                                {% set inptcounter = "`$inptcounter+1`" %}
+                                                {% block select_payment %}
+                                                    {% if sPaymentID == "oxidcashondel" %}
+                                                        {% include "page/checkout/inc/payment_oxidcashondel.html.twig" %}
+                                                    {% elseif sPaymentID == "oxidcreditcard" %}
+                                                        {% include "page/checkout/inc/payment_oxidcreditcard.html.twig" %}
+                                                    {% elseif sPaymentID == "oxiddebitnote" %}
+                                                        {% include "page/checkout/inc/payment_oxiddebitnote.html.twig" %}
+                                                    {% else %}
+                                                        {% include "page/checkout/inc/payment_other.html.twig" %}
+                                                    {% endif %}
+                                                {% endblock %}
+                                            {% endfor %}
+
+
+                                            {% block checkout_payment_nextstep %}
+                                                {% if oView.isLowOrderPrice() %}
+                                                    <div class="alert alert-info">
+                                                        {{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ oView.getMinOrderPrice() }} {{ currency.sign }}
+                                                    </div>
+                                                {% else %}
+
+                                                    {{ * }}<a href="{{ seo_url({ ident: oViewConf.getOrderLink() }) }}" class="btn btn-outline-primary float-left prevStep submitButton largeButton" id="paymentBackStepBottom"><i class="moga-left"></i> {{ translate({ ident: "PREVIOUS_STEP" }) }}</a>{{ * }}
+
+                                                    <button type="submit" name="userform" class="btn btn-primary btn-lg w-100 mt-3" id="paymentNextStepBottom">{{ translate({ ident: "CONTINUE_TO_NEXT_STEP" }) }}</button>
+
+                                                {% endif %}
+                                            {% endblock %}
+
+                                        {% elseif oView.getEmptyPayment() %}
+                                            {% block checkout_payment_nopaymentsfound %}
+                                                <div class="lineBlock"></div>
+                                                <h3 id="paymentHeader" class="blockHead">{{ translate({ ident: "PAYMENT_INFORMATION" }) }}</h3>
+                                                {% ifcontent ident "oxnopaymentmethod" set oCont %}
+                                                    {{ oCont.oxcontents__oxcontent.value }}
+                                                {% endifcontent %}
+                                                <input type="hidden" name="paymentid" value="oxempty">
+                                                <div class="lineBox">
+                                                    <div class="card bg-light cart-buttons">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-6">
+                                                                    <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=user") }) }}" class="btn btn-outline-primary"><i class="moga-left"></i> {{ translate({ ident: "PREVIOUS_STEP" }) }}</a>
+                                                                </div>
+                                                                <div class="col-12 col-md-6 text-end">
+                                                                    <button type="submit" name="userform" class="btn btn-primary" id="paymentNextStepBottom">{{ translate({ ident: "CONTINUE_TO_NEXT_STEP" }) }} <i class="moga-right"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endblock %}
+                                        {% endif %}
+                                    </form>
+                                {% endblock %}
+                            {% endblock %}
+                        </div>
+                    </div>
+
+                    <div class="card mt-n2">
+                        <h4 class="card-header card-title disabled">
+                            {{ translate({ ident: "CHECK_ORDER" }) }}
+                        </h4>
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    {% include "page/checkout/inc/summary_sidebar.html.twig" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    {% endcapture %}
+
+{% include "layout/page.html.twig" %}

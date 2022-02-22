@@ -1,0 +1,41 @@
+{% set shop = oEmailView.getShop() %}
+{% set oViewConf = oEmailView.getViewConfig() %}
+{% set sOrderId = order.getId() %}
+{% set oOrderFileList = oEmailView.getOrderFileList(sOrderId) %}
+
+{% include "email/html/header.html.twig" with {title: "DD_DOWNLOADLINKS_HEADING"|translate|cat("), cat:$order->oxorder__oxordernr->value: cat:$order.oxorder__oxordernr.value} %}
+
+{% block email_html_senddownloadlinks_infoheader %}
+    {{ translate({ ident: "EMAIL_SENDDOWNLOADS_GREETING" }) }} {{ order.oxorder__oxbillsal.value|translate_salutation }} {{ order.oxorder__oxbillfname.value }} {{ order.oxorder__oxbilllname.value }},<br>
+    <br>
+{% endblock %}
+
+{% block email_html_senddownloadlinks_oxordernr %}{% endblock %}
+
+{% if oOrderFileList %}
+    {% block email_html_senddownloadlinks_download_header %}
+        <h3 class="underline">{{ translate({ ident: "MY_DOWNLOADS_DESC" }) }}</h3>
+    {% endblock %}
+    {% block email_html_senddownloadlinks_download_link %}
+        {% for oOrderFile in oOrderFileList %}
+            <ul>
+                <li>
+                    {% if order.oxorder__oxpaid.value != "0000-00 - 00 00:00:00" or not oOrderFile.oxorderfiles__oxpurchasedonly.value %}
+                        <a href="{{ seo_url({ ident: oViewConf.getBaseDir()|cat("index.php?cl=download"), params: "sorderfileid="|cat(oOrderFile.getId()) }) }}">{{ oOrderFile.oxorderfiles__oxfilename.value }}</a> {{ oOrderFile.getFileSize()|file_size }}
+                    {% else %}
+                        <span>{{ oOrderFile.oxorderfiles__oxfilename.value }}</span>
+                        <strong>{{ translate({ ident: "DOWNLOADS_PAYMENT_PENDING" }) }}</strong>
+                    {% endif %}
+                </li>
+            </ul>
+        {% endfor %}
+        <br/>
+    {% endblock %}
+{% endif %}
+
+{% block email_html_senddownloadlinks_infofooter %}
+    <p>{{ translate({ ident: "YOUR_TEAM", args: shop.oxshops__oxname.value }) }}</p>
+    <br/>
+{% endblock %}
+
+{% include "email/html/footer.html.twig" %}

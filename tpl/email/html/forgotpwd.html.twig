@@ -1,0 +1,10 @@
+{% set shop = oEmailView.getShop() %}
+{% set oViewConf = oEmailView.getViewConfig() %}
+{% set user = oEmailView.getUser() %}
+
+
+{% include "email/html/header.html.twig" with {title: "DD_FORGOT_PASSWORD_HEADING"|translate} %}
+
+<p>{% include 'content::ident::oxupdatepassinfoemail' %}</p>
+
+{% include "email/html/footer.html.twig" %}

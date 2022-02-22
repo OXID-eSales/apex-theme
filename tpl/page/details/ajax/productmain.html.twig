@@ -1,0 +1,14 @@
+{% set oDetailsProduct = oView.getProduct() %}
+{% set currency = oView.getActCurrency() %}
+{% set oPictureProduct = oView.getPicturesProduct() %}
+
+{% block productmain_init_details_page %}{% endblock %}
+
+{{ *if oView.showZoomPics() }}
+    {{ script({ add: "if( !window.isMobileDevice() ) $('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();", dynamic: __oxid_include_dynamic }) }}
+{{ /if* }}
+
+{# oxscript add="$( '#variants' ).oxArticleVariant();" #}
+{% include "page/details/inc/productmain.html.twig" %}
+
+{# oxscript widget=$oView->getClassName() #}

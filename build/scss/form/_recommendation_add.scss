@@ -1,0 +1,13 @@
+.listmania{
+  &-add {
+    .areabox {
+      max-width: 100%;
+    }
+  }
+
+  &-desc-add{
+    label {
+      display: block;
+    }
+  }
+}

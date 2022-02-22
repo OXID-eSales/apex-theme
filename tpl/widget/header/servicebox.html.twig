@@ -1,0 +1,45 @@
+{% block widget_header_servicebox_flyoutbox %}
+    {% block widget_header_servicebox_items %}
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+                <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSslSelfLink()|cat("cl=account") }) }}">{{ translate({ ident: "MY_ACCOUNT" }) }}</a>
+            </li>
+            {% if oViewConf.getShowCompareList() %}
+                <li>
+                    <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=compare") }) }}">
+                        {{ translate({ ident: "MY_PRODUCT_COMPARISON" }) }}
+                        {% if oView.getCompareItemsCnt() %}<span class="badge bg-secondary rounded-pill">{{ oView.getCompareItemsCnt() }}</span>{% endif %}
+                    </a>
+                </li>
+            {% endif %}
+            <li>
+                <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+                    {{ translate({ ident: "MY_WISH_LIST" }) }}
+                    {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+                </a>
+            </li>
+            {% if oViewConf.getShowWishlist() %}
+                <li>
+                    <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_wishlist") }) }}">
+                        {{ translate({ ident: "MY_GIFT_REGISTRY" }) }}
+                        {% if oxcmp_user and oxcmp_user.getWishListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getWishListArtCnt() }}</span>{% endif %}
+                    </a>
+                </li>
+            {% endif %}
+
+            {% if oViewConf.isFunctionalityEnabled( "blEnableDownloads" ) %}
+                <li>
+                    <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_downloads") }) }}">
+                        {{ translate({ ident: "MY_DOWNLOADS" }) }}
+                    </a>
+                </li>
+            {% endif %}
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <a class="dropdown-item" href="{{ oViewConf.getLogoutLink() }}" title="{{ translate({ ident: "LOGOUT" }) }}">
+                    {{ translate({ ident: "LOGOUT" }) }}
+                </a>
+            </li>
+        </ul>
+    {% endblock %}
+{% endblock %}

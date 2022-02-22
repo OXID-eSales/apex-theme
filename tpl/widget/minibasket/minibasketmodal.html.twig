@@ -1,0 +1,3 @@
+{% if oxcmp_basket.isNewItemAdded() and oView.getNewBasketItemMsgType() == 2 %}
+    {% include "widget/minibasket/minibasket.html.twig" with {_prefix: "modal"} %}
+{% endif %}

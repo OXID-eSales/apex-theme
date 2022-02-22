@@ -1,0 +1,18 @@
+.compare-item {
+  margin-top: 15px;
+  text-align: left;
+
+  .picture {
+    height: 250px;
+    align-items: center;
+  }
+
+  .title {
+    min-height: 40px;
+    display: block;
+  }
+
+  .add-to-basket {
+    margin-bottom: 10px;
+  }
+}

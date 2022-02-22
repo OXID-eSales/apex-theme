@@ -1,0 +1,6 @@
+<dl class="attributes dl-horizontal">
+    {% for oAttr in oView.getAttributes() %}
+        <dt id="attrTitle_{{ loop.index }}">{{ oAttr.title }}</dt>
+        <dd id="attrValue_{{ loop.index }}">{{ oAttr.value }}</dd>
+    {% endfor %}
+</dl>

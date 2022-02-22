@@ -1,0 +1,8 @@
+.account-menu {
+  font-size: 14px;
+  margin-bottom: 30px;
+
+  @include media-breakpoint-up(xl) {
+    font-size: 16px;
+  }
+}

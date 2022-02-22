@@ -1,0 +1,25 @@
+{% capture append = "oxidBlock_content" %}
+    {% set template_title = "NEWSLETTER_SETTINGS"|translate %}
+    {% if oView.getSubscriptionStatus() != 0 %}
+        {% if oView.getSubscriptionStatus() == 1 %}
+            <div class="alert alert-success">{{ translate({ ident: "MESSAGE_NEWSLETTER_SUBSCRIPTION_SUCCESS" }) }}</div>
+        {% else %}
+            <div class="alert alert-success">{{ translate({ ident: "MESSAGE_NEWSLETTER_SUBSCRIPTION_CANCELED" }) }}</div>
+        {% endif %}
+    {% endif %}
+    <div class="container-xxl py-5">
+        <div class="row">
+            <h3 class="page-header col pl-0 ml-3">
+                {{ translate({ ident: "NEWSLETTER_SETTINGS" }) }}
+            </h3>
+            <div class="col-12 col-sm-3 button-col">
+                {% include "page/account/inc/account_menu.html.twig" with {active_link: "newsletter"} %}
+            </div>
+        </div>
+
+        {% include "form/account_newsletter.html.twig" %}
+    </div>
+
+{% endcapture %}
+
+{% include "layout/page.html.twig" %}

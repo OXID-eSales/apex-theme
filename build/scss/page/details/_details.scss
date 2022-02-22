@@ -1,0 +1,128 @@
+.details {
+  &-pager {
+    display: none;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+    }
+  }
+
+  &-top {
+    padding-top: 20px;
+  }
+
+  .carousel {
+    text-align: center;
+    margin: 0 (-$grid-gutter-width);
+
+    @include media-breakpoint-up(md) {
+      margin: 0;
+    }
+
+    img {
+      max-width: 100vw;
+      max-height: 100vh;
+      width: auto;
+      height: auto;
+    }
+
+    &-close {
+      display: none;
+    }
+
+    @include media-breakpoint-up(md) {
+      &.carousel-desktop-zoom {
+        display: none;
+      }
+
+      &.fullsize {
+        display: block;
+        background: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 2100;
+
+        .carousel-close {
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 3310;
+          font-size: 40px;
+          padding: 10px 20px;
+          color: #fff;
+          cursor: pointer;
+          background: rgba(0, 0, 0, 0.5);
+          transition: background-color 150ms;
+
+          &:hover {
+            background: #000;
+          }
+        }
+      }
+    }
+
+    &.slide-only {
+      .carousel-indicators li {
+        background-color: #555;
+      }
+
+      img {
+        max-height: 80vh;
+        max-width: 100%;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-image: none;
+        color: $body-color;
+        font-size: 40px;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    &-thumb-img {
+      display: block;
+      cursor: zoom-in;
+      transition: opacity 150ms;
+      object-fit: contain;
+      margin: 0 auto;
+      max-width: 100%;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .product-links {
+    margin-top: 10px;
+
+    a {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .nav-tabs {
+    overflow-y: hidden;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+
+    @include media-breakpoint-up(md) {
+      justify-content: center;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .sticky-md-top {
+    top: 66px;
+  }
+}

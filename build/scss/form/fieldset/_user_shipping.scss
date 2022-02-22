@@ -1,0 +1,19 @@
+.req {
+  &:after {
+    content: ' *';
+    color: $danger;
+  }
+}
+
+.req-waring {
+  color: $text-muted;
+
+  &:before {
+    content: '* ';
+    color: $danger;
+  }
+}
+
+.text-danger .invalid-feedback {
+  display: block;
+}

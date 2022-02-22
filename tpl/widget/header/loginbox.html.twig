@@ -1,0 +1,49 @@
+{% set bIsError = 0 %}
+{% capture name = "loginErrors" %}
+    {% for key, oEr in Errors.loginBoxErrors %}
+        <p id="errorBadLogin" class="alert alert-danger">{{ oEr.getOxMessage() }}</p>
+        {% set bIsError = 1 %}
+    {% endfor %}
+{% endcapture %}
+<div class="dropdown-menu dropdown-menu-end">
+    <form class="px-3 py-2" name="login" action="{{ oViewConf.getSslSelfLink() }}" method="post" style="width: 270px">
+        {{ oViewConf.getHiddenSid() }}
+        {{ oViewConf.getNavFormParams() }}
+        <input type="hidden" name="fnc" value="login_noredirect">
+        <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
+        {% if oViewConf.getTopActiveClassName() == "content" %}
+            <input type="hidden" name="oxcid" value="{{ oViewConf.getContentId() }}">
+        {% endif %}
+        <input type="hidden" name="pgNr" value="{{ oView.getActPage() }}">
+        <input type="hidden" name="CustomError" value="loginBoxErrors">
+        {% if oViewConf.getActArticleId() %}
+            <input type="hidden" name="anid" value="{{ oViewConf.getActArticleId() }}">
+        {% endif %}
+
+        <div class="mb-3 form-floating">
+            <input id="loginEmail" type="email" name="lgn_usr" autocomplete="email" class="form-control" placeholder="{{ translate({ ident: "EMAIL_ADDRESS" }) }}">
+            <label for="loginEmail">{{ translate({ ident: "EMAIL_ADDRESS" }) }}</label>
+        </div>
+
+        <div class="mb-3 form-floating">
+            <input id="loginPasword" type="password" name="lgn_pwd" autocomplete="current-password" class="form-control" placeholder="{{ translate({ ident: "PASSWORD" }) }}">
+            <label for="loginPasword">{{ translate({ ident: "PASSWORD" }) }}</label>
+        </div>
+        <a class="small forgotPasswordOpener" href="{{ seo_url({ ident: oViewConf.getSslSelfLink()|cat("cl=forgotpwd") }) }}" title="{{ translate({ ident: "FORGOT_PASSWORD" }) }}">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
+
+        {% if oViewConf.isFunctionalityEnabled( "blShowRememberMe" ) %}
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" value="1" name="lgn_cook" id="remember">
+                <label class="form-check-label" for="remember">
+                    {{ translate({ ident: "REMEMBER_ME" }) }}
+                </label>
+            </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary">{{ translate({ ident: "LOGIN" }) }}</button>
+
+        <a class="btn btn-outline-primary" id="registerLink"  href="{{ seo_url({ ident: oViewConf.getSslSelfLink()|cat("cl=register") }) }}" title="{{ translate({ ident: "REGISTER" }) }}">{{ translate({ ident: "REGISTER" }) }}</a>
+
+        {% block thirdparty_login %}{% endblock %}
+    </form>
+</div>

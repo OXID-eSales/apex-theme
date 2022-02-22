@@ -1,0 +1,19 @@
+{% capture append = "oxidBlock_content" %}
+    {% set template_title = "MY_DOWNLOADS"|translate %}
+    <div class="errorBox">
+          {% if Errors|is_array and Errors.default|is_array and not empty(Errors.default) %}
+          <div class="status error corners">
+              {% for key, oEr in Errors.default %}
+                  <p>{{ oEr.getOxMessage() }}</p>
+
+                  <p class="stackTrace">{{ oEr.getStackTrace()|nl2br }};</p>
+              {% endfor %}
+          </div>
+          {% endif %}
+    </div>
+{% endcapture %}
+
+{% capture append = "oxidBlock_sidebar" %}
+    {% include "page/account/inc/account_menu.html.twig" with {active_link: "downloads"} %}
+{% endcapture %}
+{% include "layout/page.html.twig" with {sidebar: "Left"} %}
