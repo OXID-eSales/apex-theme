@@ -6,7 +6,8 @@ Use composer to install theme
 The theme is compatible with e-Shop b-6.3.x branch
 
 ```bash
-composer require -n oxid-esales/moga-twig-theme:dev-main
+composer config repositories.oxid-esales/moga-twig-theme vcs https://github.com/OXID-eSales/moga-twig-theme
+composer require oxid-esales/moga-twig-theme:dev-main
 ```
 
 or simply clone the repository
