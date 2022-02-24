@@ -9,7 +9,7 @@
                 {% for _mnf in manufacturers %}
                     {% if loop.index0 < iManufacturerLimit and _mnf.oxmanufacturers__oxnrofarticles != "0" %}
                     <a class="nav-link" href="{{ _mnf.getLink() }}">
-                        {{ _mnf.oxmanufacturers__oxtitle.value }}
+                        {{ _mnf.oxmanufacturers__oxtitle.value|raw }}
                     </a>
                     {% endif %}
                 {% endfor %}

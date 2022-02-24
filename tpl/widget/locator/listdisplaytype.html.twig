@@ -4,10 +4,10 @@
 
 {% if oView.canSelectDisplayType() %}
     <div class="btn-group" role="group" aria-label="Basic example">
-        <a title="{{ translate({ ident: "grid" }) }}" href="{{ oView.getLink()|add_url_parameters("ldtype=grid&amp;_artperpage=$_artPerPage&amp;pgNr=0&amp;$_additionalParams") }}" class="btn btn-outline-primary btn-icon{% if listType == 'grid' %} active{% endif %}">
+        <a title="{{ translate({ ident: "grid" }) }}" href="{{ oView.getLink()|add_url_parameters("ldtype=grid&amp;_artperpage=" ~ _artPerPage ~ "&amp;pgNr=0&amp;" ~ _additionalParams) }}" class="btn btn-outline-primary btn-icon{% if listType == 'grid' %} active{% endif %}">
             <i class="moga-grid-fill"></i>
         </a>
-        <a title="{{ translate({ ident: "line" }) }}" href="{{ oView.getLink()|add_url_parameters("ldtype=line&amp;_artperpage=$_artPerPage&amp;pgNr=0&amp;$_additionalParams") }}" class="btn btn-outline-primary btn-icon{% if listType == 'line' %} active{% endif %}">
+        <a title="{{ translate({ ident: "line" }) }}" href="{{ oView.getLink()|add_url_parameters("ldtype=line&amp;_artperpage=" ~ _artPerPage ~ "&amp;pgNr=0&amp;" ~ _additionalParams) }}" class="btn btn-outline-primary btn-icon{% if listType == 'line' %} active{% endif %}">
             <i class="moga-list-ul"></i>
         </a>
     </div>
