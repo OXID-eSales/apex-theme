@@ -2,7 +2,7 @@
     <div id="wrapper">
         <div id="content" class="container">
             <div class="main-container">
-                {% for _block in oxidBlock_content %}{{ _block }}{% endfor %}
+                {% for _block in oxidBlock_content %}{{ _block|raw }}{% endfor %}
              </div>
         </div>
     </div>

@@ -116,13 +116,13 @@
         <div class="details-tabs my-5">
             <ul class="nav nav-tabs" role="tablist">
                 {% for tab in tabs %}
-                    <li class="nav-item" role="presentation">{{ tab }}</li>
+                    <li class="nav-item" role="presentation">{{ tab|raw }}</li>
                 {% endfor %}
                 {% block details_tabs_social_navigation %}{% endblock %}
             </ul>
             <div class="tab-content py-5">
                 {% for tabContent in tabsContent %}
-                    {{ tabContent }}
+                    {{ tabContent|raw }}
                 {% endfor %}
                 {% block details_tabs_social_content %}{% endblock %}
             </div>

@@ -30,7 +30,7 @@
     {% if oxidBlock_productbar %}
         <div id="relProducts" class="relatedProducts">
             {% for _block in oxidBlock_productbar %}
-                {{ _block }}
+                {{ _block|raw }}
             {% endfor %}
         </div>
     {% endif %}

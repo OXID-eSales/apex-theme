@@ -150,7 +150,7 @@
 
         {% block head_css %}
             {% for _block in oxidBlock_head %}
-                {{ _block }}
+                {{ _block|raw }}
             {% endfor %}
         {% endblock %}
     {% endspaceless %}
@@ -195,7 +195,7 @@
     {% endif %}
 
     {% for _block in oxidBlock_pageScript %}
-        {{ _block }}
+        {{ _block|raw }}
     {% endfor %}
     </body>
 </html>
