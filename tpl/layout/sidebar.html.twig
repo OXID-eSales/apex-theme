@@ -4,7 +4,7 @@
 
 {% block sidebar %}
     {% block sidebar_categoriestree %}
-        {% if oView.getClassName() == 'alist'  %}
+        {% if oView.getClassKey() == 'alist'  %}
             <div class="box card categorytree">
                 <div class="page-header h3">
                     <div class="visible-sm">
@@ -21,7 +21,7 @@
     {% endblock %}
 
     {% block sidebar_partners %}
-        {% if oView.getClassName() == "start" %}
+        {% if oView.getClassKey() == "start" %}
             {% include "widget/sidebar/partners.html.twig" %}
         {% endif %}
     {% endblock %}
@@ -39,4 +39,3 @@
     {% block sidebar_social %}
     {% endblock %}
 {% endblock %}
-

@@ -165,7 +165,7 @@
         {{ style() }}
     </head>
 
-    <body class="cl-{{ oView.getClassName() }}{% if get_global_get("plain") == '1' %} popup{% endif %}{% if blIsCheckout %} is-checkout{% endif %}{% if oxcmp_user and oxcmp_user.oxuser__oxpassword.value %} is-logged-in{% endif %}">
+    <body class="cl-{{ oView.getClassKey() }}{% if get_global_get("plain") == '1' %} popup{% endif %}{% if blIsCheckout %} is-checkout{% endif %}{% if oxcmp_user and oxcmp_user.oxuser__oxpassword.value %} is-logged-in{% endif %}">
 
     {# Theme SVG icons block #}
     {% block theme_svg_icons %}{% endblock %}

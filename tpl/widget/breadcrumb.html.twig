@@ -10,8 +10,8 @@
                         </a>
                     </li>
                     {% for sCrum in oView.getBreadCrumb() %}
-                        <li class="breadcrumb-item{% if loop.last and oView.getClassName() != "details" %} active{% endif %}">
-                            {% if loop.last and oView.getClassName() != "details" %}
+                        <li class="breadcrumb-item{% if loop.last and oView.getClassKey() != "details" %} active{% endif %}">
+                            {% if loop.last and oView.getClassKey() != "details" %}
                                 {{ sCrum.title }}
                             {% else %}
                                 <a href="{% if sCrum.link %}{{ sCrum.link }}{% else %}#{% endif %}" class="breadcrumb-link" title="{{ sCrum.title|escape('html') }}">
@@ -20,7 +20,7 @@
                             {% endif %}
                         </li>
                     {% endfor %}
-                    {% if oView.getClassName() == "details" %}
+                    {% if oView.getClassKey() == "details" %}
                     <li class="breadcrumb-item active">
                         {{ oDetailsProduct.oxarticles__oxtitle.value }}
                     </li>
