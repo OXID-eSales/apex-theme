@@ -1,6 +1,5 @@
 {% set shop = oEmailView.getShop() %}
 {% set oViewConf = oEmailView.getViewConfig() %}
-{% set oConf = oViewConf.getConfig() %}
 {% set currency = oEmailView.getCurrency() %}
 {% set user = oEmailView.getUser() %}
 {% set oDelSet = order.getDelSet() %}
@@ -168,7 +167,7 @@
 
                             {% if blShowReviewLink %}
                                 <p>
-                                    <a href="{{ oConf.getShopURL() }}index.php?shp={{ shop.oxshops__oxid.value }}&amp;anid={{ basketitem.getProductId() }}&amp;cl=review&amp;reviewuserhash={{ user.getReviewUserHash(user.getId()) }}" style="" target="_blank">{{ translate({ ident: "PRODUCT_REVIEW" }) }}</a>
+                                    <a href="{{ shopUrl }}index.php?shp={{ shop.oxshops__oxid.value }}&amp;anid={{ basketitem.getProductId() }}&amp;cl=review&amp;reviewuserhash={{ user.getReviewUserHash(user.getId()) }}" style="" target="_blank">{{ translate({ ident: "PRODUCT_REVIEW" }) }}</a>
                                 </p>
                             {% endif %}
                         </p>

@@ -2,11 +2,6 @@
     {% set delivadr = oxcmp_user.getSelectedAddress() %}
 {% endif %}
 
-{% if not deladr %}
-    {% set oConfig = oView.getConfig() %}
-    {% set deladr = oConfig.getRequestParameter('deladr') %}
-{% endif %}
-
 {% if oxcmp_user %}
     {% set aUserAddresses = oxcmp_user.getUserAddresses() %}
 

@@ -1,7 +1,5 @@
 {{ script({ dynamic: __oxid_include_dynamic }) }}
 
-{% set oConfig = oViewConf.getConfig() %}
-
 <script>{% spaceless %}
     var sBaseUrl = '{{ oViewConf.getSelfActionLink() }}';
     var sActCl = '{{ oViewConf.getTopActiveClassName() }}';
@@ -138,8 +136,7 @@
                     {% set oOrder = oView.getOrder() %}
                 {% endif %}
 
-                {% set sShopURL = oConfig.getConfigParam('sShopURL') %}
-                {% set aShopDomain = sShopURL|parse_url %}
+                {% set aShopDomain = shopURLParam|parse_url %}
                 {% set blHasPreOrder = false %}
                 {% set oBasket = oView.getBasket() %}
                 {% set oCountry = "oxCountry"|oxNew %}

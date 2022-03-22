@@ -1,6 +1,5 @@
 {# oxscript include="js/details.min.js" priority=10 #}
 
-{% set oConfig = oViewConf.getConfig() %}
 {% set oManufacturer = oView.getManufacturer() %}
 {% set aVariantSelections = oView.getVariantSelections() %}
 {% set imageStyle = oViewConf.getViewThemeParam('sImageStyle') %}
@@ -29,8 +28,8 @@
         <input type="hidden" name="cnid" value="{{ oView.getCategoryId() }}">
         <input type="hidden" name="anid" value="{% if not oDetailsProduct.oxarticles__oxparentid.value %}{{ oDetailsProduct.oxarticles__oxid.value }}{% else %}{{ oDetailsProduct.oxarticles__oxparentid.value }}{% endif %}">
         <input type="hidden" name="actcontrol" value="{{ oViewConf.getTopActiveClassName() }}">
-        {% if oConfig.getRequestParameter('preview') %}
-            <input type="hidden" name="preview" value="{{ oConfig.getRequestParameter('preview') }}">
+        {% if config.getRequestParameter('preview') %}
+            <input type="hidden" name="preview" value="{{ config.getRequestParameter('preview') }}">
         {% endif %}
     </form>
 {% endif %}
@@ -114,7 +113,7 @@
 
                         {% for iPicNr, oArtIcon in oView.getIcons() %}
                             {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
-                            {% set aPictureInfo = oConfig.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
+                            {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
                             <div class="carousel-item{% if loop.first %} active{% endif %}">
                                 <div class="ratio ratio-1x1">
                                     {% if oViewConf.isModuleActive('cnc / imagebutler') %}
@@ -183,7 +182,7 @@
                         {% if imageCount > 1 %}
                             {% for iPicNr, oArtIcon in oView.getIcons() %}
                                 {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
-                                {% set aPictureInfo = oConfig.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
+                                {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
                                 <div class="carousel-item{% if loop.first %} active{% endif %}">
                                     {% if oViewConf.isModuleActive('cnc / imagebutler') %}
                                         <picture>

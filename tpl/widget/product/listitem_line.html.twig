@@ -1,7 +1,6 @@
 {{ script({ include: "js/listremovebutton.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
 {% block widget_product_listitem_line %}
-    {% set oConfig = oViewConf.getConfig() %}
     {% set product = oView.getProduct() %}
     {% set blDisableToCart = oView.getDisableToCart() %}
     {% set iIndex = oView.getIndex() %}
@@ -142,7 +141,7 @@
 
                                             {% if oUnitPrice %}
                                                 <span id="productPricePerUnit_{{ testid }}" class="pricePerUnit text-nowrap">{{ product.oxarticles__oxunitquantity.value }} {{ product.getUnitName() }} | {{ format_price(oUnitPrice, { currency: currency }) }}/{{ product.getUnitName() }}</span>
-                                            {% elseif product.oxarticles__oxweight.value and oConfig.getConfigParam('blShowWeightInList')  %}
+                                            {% elseif product.oxarticles__oxweight.value and config.getConfigParam('blShowWeightInList')  %}
                                                 <span id="productPricePerUnit_Weight_{{ testid }}" class="pricePerUnit text-nowrap">
                                                     <span title="weight">{{ translate({ ident: "WEIGHT" }) }}</span>
                                                     <span class="value">{{ product.oxarticles__oxweight.value }} {{ translate({ ident: "KG" }) }}</span>

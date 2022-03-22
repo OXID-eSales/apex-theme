@@ -64,9 +64,8 @@
 
         {% block head_link_hreflang %}
             {% if oView.isLanguageLoaded() %}
-                {% set oConfig = oViewConf.getConfig() %}
                 {% for _lng in oxcmp_lang %}
-                    {% if _lng.id == oConfig.getConfigParam('sDefaultLang') %}
+                    {% if _lng.id == defaultLang %}
                         <link rel="alternate" hreflang="x-default" href="{{ _lng.link }}">
                     {% endif %}
                     <link rel="alternate" hreflang="{{ _lng.abbr }}" href="{{ _lng.link|add_url_parameters(oView.getDynUrlParams()) }}">

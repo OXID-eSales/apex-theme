@@ -11,10 +11,9 @@
         {# SEARCHSUGGESTIONS #}
         <div id="searchSuggestions" class="extendedsearch suggestions-wrapper container-xl">
             {# include file="suggestions.tpl" oCategories=$oView->getCategoryList() #}
-            {% set oConfig = oViewConf.getConfig() %}
-            {% set iShowMaxProductSuggestions = oConfig.getConfigParam('iShowMaxProductSuggestions') %}
-            {% set iShowMaxCategorySuggestions = oConfig.getConfigParam('iShowMaxCategorySuggestions') %}
-            {% set iShowMaxContentSuggestions = oConfig.getConfigParam('iShowMaxContentSuggestions') %}
+            {% set iShowMaxProductSuggestions = config.getConfigParam('iShowMaxProductSuggestions') %}
+            {% set iShowMaxCategorySuggestions = config.getConfigParam('iShowMaxCategorySuggestions') %}
+            {% set iShowMaxContentSuggestions = config.getConfigParam('iShowMaxContentSuggestions') %}
             <div class="left">
                 <div class="categories">
                     {% if oView.getCategoryList()|length %}
