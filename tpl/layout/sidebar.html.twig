@@ -28,14 +28,6 @@
 
     {% block sidebar_boxproducts %}{% endblock %}
 
-    {% block sidebar_news %}
-        {% if oxcmp_news %}
-            {% if oxcmp_news %}
-                {% include "widget/sidebar/news.html.twig" with {oNews: oxcmp_news} %}
-            {% endif %}
-        {% endif %}
-    {% endblock %}
-
     {% block sidebar_social %}
     {% endblock %}
 {% endblock %}

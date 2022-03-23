@@ -39,7 +39,7 @@
 {{ translate({ ident: "YOUR_TEAM", args: shop.oxshops__oxname.getRawValue() }) }}
 {% endblock %}
 
-{% block email_html_ordershipped_shipmenttrackingurl %}
+{% block email_plain_ordershipped_shipmenttrackingurl %}
 {% if order.getShipmentTrackingUrl() %}{{ translate({ ident: "SHIPMENT_TRACKING", suffix: "COLON" }) }} {{  order.getShipmentTrackingUrl() }}{% endif %}
 {% endblock %}
 

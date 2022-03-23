@@ -28,8 +28,8 @@
         <input type="hidden" name="cnid" value="{{ oView.getCategoryId() }}">
         <input type="hidden" name="anid" value="{% if not oDetailsProduct.oxarticles__oxparentid.value %}{{ oDetailsProduct.oxarticles__oxid.value }}{% else %}{{ oDetailsProduct.oxarticles__oxparentid.value }}{% endif %}">
         <input type="hidden" name="actcontrol" value="{{ oViewConf.getTopActiveClassName() }}">
-        {% if config.getRequestParameter('preview') %}
-            <input type="hidden" name="preview" value="{{ config.getRequestParameter('preview') }}">
+        {% if preview %}
+            <input type="hidden" name="preview" value="{{ preview }}">
         {% endif %}
     </form>
 {% endif %}
@@ -458,12 +458,6 @@
                             {% if oViewConf.getShowCompareList() %}
                             <div class="col-md-6">
                                 {% include_dynamic "page/details/inc/compare_links.html.twig" with {testid: "", type: "compare", aid: oDetailsProduct.oxarticles__oxid.value, anid: oDetailsProduct.oxarticles__oxnid.value, in_list: oDetailsProduct.isOnComparisonList(), page: oView.getActPage(), text_to_id: "COMPARE", text_from_id: "REMOVE_FROM_COMPARE_LIST"} %}
-                            </div>
-                            {% endif %}
-
-                            {% if oViewConf.getShowSuggest() %}
-                            <div class="col-md-6">
-                                <a class="btn btn-sm btn-light w-100" id="suggest" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=suggest"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "RECOMMEND" }) }}</a>
                             </div>
                             {% endif %}
 

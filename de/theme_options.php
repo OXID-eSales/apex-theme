@@ -78,7 +78,6 @@ $aLang = array(
     'SHOP_THEME_blFooterShowLinks'          => 'Links-Link aktivieren',
     'SHOP_THEME_blFooterShowNewsletter'     => 'Newsletter-Link aktivieren',
     'SHOP_THEME_blFooterShowNewsletterForm' => 'Newsletter-Formular aktivieren',
-    'SHOP_THEME_blFooterShowNews'           => 'Neuigkeiten-Link aktivieren (im OXID eShop admin "Nachrichten" genannt)',
     'SHOP_THEME_bl_showGiftWrapping'        => 'Geschenkverpackungen aktivieren',
     //SHOP_CONFIG_SHOWGIFTWRAPPING
     'SHOP_THEME_bl_showVouchers'            => 'Gutscheine aktivieren',
