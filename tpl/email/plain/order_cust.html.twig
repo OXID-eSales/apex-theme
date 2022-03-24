@@ -10,9 +10,9 @@
 
 {% block email_plain_order_cust_orderemail %}
 {% if payment.oxuserpayments__oxpaymentsid.value == "oxempty" %}
-{% include 'content::ident::oxuserordernpplainemail' %}
+{#{% include 'content::ident::oxuserordernpplainemail' %}#}{# TODO: uncomment after fixing #}
 {% else %}
-{% include 'content::ident::oxuserorderplainemail' %}
+{#{% include 'content::ident::oxuserorderplainemail' %}#}{# TODO: uncomment after fixing #}
 {% endif %}
 {% endblock %}
 
@@ -250,7 +250,7 @@
 {% endblock %}
 
 {% block email_plain_order_cust_orderemailend %}
-{% include 'content::ident::oxuserorderemailendplain' %}
+{#{% include 'content::ident::oxuserorderemailendplain' %}#}{# TODO: uncomment after fixing #}
 {% endblock %}
 
-{% include 'content::ident::oxemailfooterplain' %}
+{#{% include 'content::ident::oxemailfooterplain' %}#}{# TODO: uncomment after fixing #}

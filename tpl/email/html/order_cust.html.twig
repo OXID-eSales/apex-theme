@@ -37,9 +37,9 @@
 {% block email_html_order_cust_orderemail %}
     <p>
         {% if payment.oxuserpayments__oxpaymentsid.value == "oxempty" %}
-            {% include 'content::ident::oxuserordernpemail' %}
+{#            {% include 'content::ident::oxuserordernpemail' %}#}{# TODO: uncomment after fixing #}
         {% else %}
-            {% include 'content::ident::oxuserorderemail' %}
+{#            {% include 'content::ident::oxuserorderemail' %}#}{# TODO: uncomment after fixing #}
         {% endif %}
     </p>
 {% endblock %}
@@ -534,7 +534,7 @@
 {% endblock %}
 
 {% block email_html_order_cust_orderemailend %}
-    <p>{% include 'content::ident::oxuserorderemailend' %}</p>
+    <p>{#{% include 'content::ident::oxuserorderemailend' %}#}{# TODO: uncomment after fixing #}</p>
 {% endblock %}
 
 {% include "email/html/footer.html.twig" %}
