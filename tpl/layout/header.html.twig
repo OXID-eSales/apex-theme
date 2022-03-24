@@ -72,7 +72,7 @@
                         {% block dd_layout_page_header_icon_menu_account %}
                             {% if oxcmp_user or oView.getCompareItemCount() or Errors.loginBoxErrors %}
                                 {% set blAnon = 0 %}
-                                {% set force_sid = oViewConf.getSidForWidget() %}
+                                {% set force_sid = oView.getSidForWidget() %}
                             {% else %}
                                 {% set blAnon = 1 %}
                             {% endif %}
@@ -84,7 +84,7 @@
                             {# Minibasket Dropdown #}
                             {% if oxcmp_basket.getProductsCount() %}
                                 {% set blAnon = 0 %}
-                                {% set force_sid = oViewConf.getSidForWidget() %}
+                                {% set force_sid = oView.getSidForWidget() %}
                             {% else %}
                                 {% set blAnon = 1 %}
                             {% endif %}
