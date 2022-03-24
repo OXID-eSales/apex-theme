@@ -1,6 +1,6 @@
 {% capture append = "oxidBlock_pageBody" %}
     {% if oView.isEnabledPrivateSales() %}
-        {{ include_widget({ cl: "oxwCookieNote", _parent: oView.getClassName(), nocookie: 1 }) }}
+        {{ include_widget({ cl: "oxwCookieNote", _parent: oView.getClassKey(), nocookie: 1 }) }}
     {% endif %}
 {% endcapture %}
 

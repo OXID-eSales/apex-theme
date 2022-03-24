@@ -2,7 +2,7 @@
 {% set oViewConf = oEmailView.getViewConfig() %}
 
 {% block email_plain_ordershipped_sendemail %}
-{% include 'content::ident::oxordersendplainemail' %}
+{#{% include 'content::ident::oxordersendplainemail' %}#}{# TODO: uncomment after fixing #}
 {% endblock %}
 
 {% block email_plain_ordershipped_infoheader %}
@@ -39,8 +39,8 @@
 {{ translate({ ident: "YOUR_TEAM", args: shop.oxshops__oxname.getRawValue() }) }}
 {% endblock %}
 
-{% block email_html_ordershipped_shipmenttrackingurl %}
+{% block email_plain_ordershipped_shipmenttrackingurl %}
 {% if order.getShipmentTrackingUrl() %}{{ translate({ ident: "SHIPMENT_TRACKING", suffix: "COLON" }) }} {{  order.getShipmentTrackingUrl() }}{% endif %}
 {% endblock %}
 
-{% include 'content::ident::oxemailfooterplain' %}
+{#{% include 'content::ident::oxemailfooterplain' %}#}{# TODO: uncomment after fixing #}

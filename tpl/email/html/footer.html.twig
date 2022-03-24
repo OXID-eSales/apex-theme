@@ -5,13 +5,13 @@
                                                     <tr>
                                                         <td class="left-text-pad">
                                                             <h5>{{ translate({ ident: "CONTACT", suffix: "COLON" }) }}</h5>
-                                                            {% include 'content::ident::oxemailfooter' %}
+{#                                                            {% include 'content::ident::oxemailfooter' %}#}{# TODO: uncomment after fixing #}
                                                         </td>
                                                         <td class="expander"></td>
                                                     </tr>
                                                 </table>
                                             </td>
-                                            {% if oViewConf.getViewThemeParam('sFacebookUrl') or oViewConf.getViewThemeParam('sGooglePlusUrl') or oViewConf.getViewThemeParam('sTwitterUrl') or oViewConf.getViewThemeParam('sYouTubeUrl') or oViewConf.getViewThemeParam('sBlogUrl') %}
+                                            {% if oViewConf.getViewThemeParam('sFacebookUrl') or oViewConf.getViewThemeParam('sTwitterUrl') or oViewConf.getViewThemeParam('sYouTubeUrl') or oViewConf.getViewThemeParam('sBlogUrl') %}
                                                 <td class="wrapper last">
                                                     <table class="six columns">
                                                         <tr>
@@ -35,17 +35,6 @@
                                                                         <tr>
                                                                             <td>
                                                                                 <a href="{{ oViewConf.getViewThemeParam('sTwitterUrl') }}" target="_blank">Twitter</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                    <br>
-                                                                {% endif %}
-
-                                                                {% if oViewConf.getViewThemeParam('sGooglePlusUrl') %}
-                                                                    <table class="tiny-button google-plus">
-                                                                        <tr>
-                                                                            <td>
-                                                                                <a href="{{ oViewConf.getViewThemeParam('sGooglePlusUrl') }}" target="_blank">Google+</a>
                                                                             </td>
                                                                         </tr>
                                                                     </table>

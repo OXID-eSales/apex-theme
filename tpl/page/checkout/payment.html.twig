@@ -108,8 +108,6 @@
                                                 {% block select_payment %}
                                                     {% if sPaymentID == "oxidcashondel" %}
                                                         {% include "page/checkout/inc/payment_oxidcashondel.html.twig" %}
-                                                    {% elseif sPaymentID == "oxidcreditcard" %}
-                                                        {% include "page/checkout/inc/payment_oxidcreditcard.html.twig" %}
                                                     {% elseif sPaymentID == "oxiddebitnote" %}
                                                         {% include "page/checkout/inc/payment_oxiddebitnote.html.twig" %}
                                                     {% else %}

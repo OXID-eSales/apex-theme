@@ -43,7 +43,7 @@
                                         <div class="h4 text-uppercase">{{ translate({ ident: "OUR_BRANDS" }) }}</div>
                                         <div class="footer-content">
                                             {% block dd_footer_manufacturerlist_inner %}
-                                            {{ include_widget({ cl: "oxwManufacturerList", _parent: oView.getClassName(), noscript: 1, nocookie: 1 }) }}
+                                            {{ include_widget({ cl: "oxwManufacturerList", _parent: oView.getClassKey(), noscript: 1, nocookie: 1 }) }}
                                             {% endblock %}
                                         </div>
                                     </div>
@@ -53,7 +53,7 @@
                                         <div class="h4 text-uppercase">{{ translate({ ident: "CATEGORIES" }) }}</div>
                                         <div class="footer-content">
                                             {% block dd_footer_categorytree_inner %}
-                                            {{ include_widget({ cl: "oxwCategoryTree", _parent: oView.getClassName(), sWidgetType: "footer", noscript: 1, nocookie: 1 }) }}
+                                            {{ include_widget({ cl: "oxwCategoryTree", _parent: oView.getClassKey(), sWidgetType: "footer", noscript: 1, nocookie: 1 }) }}
                                             {% endblock %}
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
                     {% endblock %}
                     {# <<START>> Social Links #}
                     {% block dd_footer_social_links %}
-                        {% if oViewConf.getViewThemeParam('sFacebookUrl') or oViewConf.getViewThemeParam('sGooglePlusUrl') or oViewConf.getViewThemeParam('sTwitterUrl') or oViewConf.getViewThemeParam('sYouTubeUrl') or oViewConf.getViewThemeParam('sBlogUrl') %}
+                        {% if oViewConf.getViewThemeParam('sFacebookUrl') or oViewConf.getViewThemeParam('sTwitterUrl') or oViewConf.getViewThemeParam('sYouTubeUrl') or oViewConf.getViewThemeParam('sBlogUrl') %}
                             <div class="social-links">
                                 {% block dd_footer_social_links_inner %}
                                 <nav class="nav justify-content-center">

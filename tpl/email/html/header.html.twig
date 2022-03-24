@@ -809,9 +809,8 @@
         {{ style }}
     </style>
 </head>
-<body bgcolor="#ffffff">
+<body bgcolor="">
     {% block email_html_header %}{% endblock %}
-    {% set oConfig = oViewConf.getConfig() %}
     <table class="body">
         <tr>
             <td class="center" align="center" valign="top">
@@ -829,7 +828,7 @@
                                                         <tr>
                                                             <td class="six sub-columns text-pad-left">
                                                                 {% set sEmailLogo = oViewConf.getViewThemeParam('sEmailLogo') %}
-                                                                <a href="{{ oConfig.getShopUrl("null", false) }}" title="{{ shop.oxshops__oxtitleprefix.value }}">
+                                                                <a href="{{ shopUrl }}" title="{{ shop.oxshops__oxtitleprefix.value }}">
                                                                     <img src="{{ oViewConf.getImageUrl(sEmailLogo, false) }}" border="0" hspace="0" vspace="0" alt="{{ shop.oxshops__oxname.value }}" align="texttop">
                                                                 </a>
                                                             </td>

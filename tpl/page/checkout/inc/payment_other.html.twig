@@ -7,12 +7,12 @@
         {% if paymentmethod.getPrice() %}
             {% set oPaymentPrice = paymentmethod.getPrice() %}
             {% if oViewConf.isFunctionalityEnabled('blShowVATForPayCharge')  %}
-                {% spaceless %}
+                {% apply spaceless %}
                     ({{ format_price(oPaymentPrice.getNettoPrice(), { currency: currency }) }}
                     {% if oPaymentPrice.getVatValue() > 0 %}
                         {{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(oPaymentPrice.getVatValue(), { currency: currency }) }}
                     {% endif %})
-                {% endspaceless %}
+                {% endapply %}
             {% else %}
                 ({{ format_price(oPaymentPrice.getBruttoPrice(), { currency: currency }) }})
             {% endif %}

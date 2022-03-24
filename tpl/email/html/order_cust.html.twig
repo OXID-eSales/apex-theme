@@ -1,6 +1,5 @@
 {% set shop = oEmailView.getShop() %}
 {% set oViewConf = oEmailView.getViewConfig() %}
-{% set oConf = oViewConf.getConfig() %}
 {% set currency = oEmailView.getCurrency() %}
 {% set user = oEmailView.getUser() %}
 {% set oDelSet = order.getDelSet() %}
@@ -38,9 +37,9 @@
 {% block email_html_order_cust_orderemail %}
     <p>
         {% if payment.oxuserpayments__oxpaymentsid.value == "oxempty" %}
-            {% include 'content::ident::oxuserordernpemail' %}
+{#            {% include 'content::ident::oxuserordernpemail' %}#}{# TODO: uncomment after fixing #}
         {% else %}
-            {% include 'content::ident::oxuserorderemail' %}
+{#            {% include 'content::ident::oxuserorderemail' %}#}{# TODO: uncomment after fixing #}
         {% endif %}
     </p>
 {% endblock %}
@@ -168,7 +167,7 @@
 
                             {% if blShowReviewLink %}
                                 <p>
-                                    <a href="{{ oConf.getShopURL() }}index.php?shp={{ shop.oxshops__oxid.value }}&amp;anid={{ basketitem.getProductId() }}&amp;cl=review&amp;reviewuserhash={{ user.getReviewUserHash(user.getId()) }}" style="" target="_blank">{{ translate({ ident: "PRODUCT_REVIEW" }) }}</a>
+                                    <a href="{{ shopUrl }}index.php?shp={{ shop.oxshops__oxid.value }}&amp;anid={{ basketitem.getProductId() }}&amp;cl=review&amp;reviewuserhash={{ user.getReviewUserHash(user.getId()) }}" style="" target="_blank">{{ translate({ ident: "PRODUCT_REVIEW" }) }}</a>
                                 </p>
                             {% endif %}
                         </p>
@@ -535,7 +534,7 @@
 {% endblock %}
 
 {% block email_html_order_cust_orderemailend %}
-    <p>{% include 'content::ident::oxuserorderemailend' %}</p>
+    <p>{#{% include 'content::ident::oxuserorderemailend' %}#}{# TODO: uncomment after fixing #}</p>
 {% endblock %}
 
 {% include "email/html/footer.html.twig" %}

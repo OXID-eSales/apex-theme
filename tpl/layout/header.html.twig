@@ -1,5 +1,5 @@
 {% if oViewConf.getTopActionClassName() != 'clearcookies' and oViewConf.getTopActionClassName() != 'mallstart' %}
-    {{ include_widget({ cl: "oxwCookieNote", _parent: oView.getClassName(), nocookie: 1 }) }}
+    {{ include_widget({ cl: "oxwCookieNote", _parent: oView.getClassKey(), nocookie: 1 }) }}
 {% endif %}
 {% block header_main %}
     {% set headerWidth = oViewConf.getViewThemeParam('sHeaderWidth') %}
@@ -49,7 +49,7 @@
                 {% endblock %}
 
                 {% block layout_header_bottom %}
-                {{ include_widget({ cl: "oxwCategoryTree", cnid: oView.getCategoryId(), sWidgetType: "header", style: "", _parent: oView.getClassName(), nocookie: 1 }) }}
+                {{ include_widget({ cl: "oxwCategoryTree", cnid: oView.getCategoryId(), sWidgetType: "header", style: "", _parent: oView.getClassKey(), nocookie: 1 }) }}
                 {% endblock %}
 
                 {% block layout_header_top %}
@@ -57,11 +57,11 @@
                         <div class="d-none d-md-inline-flex">
                             {% block dd_layout_page_header_icon_menu_languages %}
                                 {# Language Dropdown #}
-                                {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassName(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
                             {% endblock %}
                             {% block dd_layout_page_header_icon_menu_currencies %}
                                 {# Currency Dropdown #}
-                                {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassName(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
                             {% endblock %}
                         </div>
                         {% if showSearch and oView.showSearch() %}
@@ -72,19 +72,19 @@
                         {% block dd_layout_page_header_icon_menu_account %}
                             {% if oxcmp_user or oView.getCompareItemCount() or Errors.loginBoxErrors %}
                                 {% set blAnon = 0 %}
-                                {% set force_sid = oViewConf.getSessionId() %}
+                                {% set force_sid = oView.getSidForWidget() %}
                             {% else %}
                                 {% set blAnon = 1 %}
                             {% endif %}
                             {# Account Dropdown #}
-                            {{ include_widget({ cl: "oxwServiceMenu", _parent: oView.getClassName(), force_sid: force_sid, nocookie: blAnon, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                            {{ include_widget({ cl: "oxwServiceMenu", _parent: oView.getClassKey(), force_sid: force_sid, nocookie: blAnon, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
                         {% endblock %}
 
                         {% block dd_layout_page_header_icon_menu_minibasket %}
                             {# Minibasket Dropdown #}
                             {% if oxcmp_basket.getProductsCount() %}
                                 {% set blAnon = 0 %}
-                                {% set force_sid = oViewConf.getSessionId() %}
+                                {% set force_sid = oView.getSidForWidget() %}
                             {% else %}
                                 {% set blAnon = 1 %}
                             {% endif %}
