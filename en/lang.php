@@ -141,7 +141,8 @@ $aLang = array(
     'DD_CATEGORY_RESET_BUTTON'                              => 'Reset',
     'MOVE_TO_WISH_LIST'                                     => 'Move to wishlist',
     'SUMMARY'                                               => 'Summary',
-
+    'LANGUAGE'                                              => 'Language',
+    'CURRENCY'                                              => 'Currency',
 );
 
 /*

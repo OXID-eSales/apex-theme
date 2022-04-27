@@ -6,76 +6,29 @@
     {% set categoriesTilesRowPadding = oViewConf.getViewThemeParam('showCategoryTilesRowPadding') %}
 
     {% if categoriesTilesWidth == 'container' %}
-    <div class="container-xxl">
+        <div class="container-xxl">
     {% endif %}
-        <div class="categories-tiles{% if categoriesTilesRowPadding %} py-3 py-lg-5{% endif %} bg-{{ categoriesTilesBg }}">
-            <h2 class="text-center mb-4{% if categoriesTilesBg == "dark" or categoriesTilesBg == "primary" %} text-white{% endif %}">{{ translate({ ident: "CATEGORIES" }) }}</h2>
-            {% if categoriesTilesWidth == 'w100cContainer' %}
-            <div class="container-xxl p-0">
+    <div class="categories my-4">
+        {% if categoriesTilesWidth == 'w100cContainer' %}
+        <div class="container-xxl">
             {% endif %}
-                <div class="px-{{ categoriesTilesSpacing }}">
-                    <div class="row g-{{ categoriesTilesSpacing }}">
 
-                        {% set categories = oxcmp_categories %}
-                        {% for _cat in categories %}
-                            {% set image = false %}
-                            {% if _cat.getIconUrl() %}
-                                {% set image = _cat.getIconUrl() %}
-                            {% endif %}
-                            {% if _cat.getThumbUrl() %}
-                                {% set image = _cat.getThumbUrl() %}
-                            {% endif %}
-                            {% if _cat.getIsVisible() %}
-                                {% if categoriesTilesGrid == '50' %}
-                                    {% set gridClass = "6" %}
-                                {% endif %}
-                                {% if categoriesTilesGrid == '33' %}
-                                    {% set gridClass = "4" %}
-                                {% endif %}
-                                {% if categoriesTilesGrid == '25' %}
-                                    {% set gridClass = "3" %}
-                                {% endif %}
-                                <div class="col-lg-{{ gridClass }}">
-                                    <a class="card bg-dark text-white" href="{{ _cat.getLink() }}"{% if not image %} style="height: 100%"{% endif %} >
-                                        {% if image %}
-                                            {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                                <picture>
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(image, 375, 220, 'webp') }}" media="(max-width: 375px)">
-
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(image, 320, 200, 'webp') }}" media="(max-width: 767px)">
-                                                    <source srcset="{{ oViewConf.getDynamicImage(image, 320, 200, 'jpg') }}" media="(max-width: 767px)">
-
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(image, 320, 200, 'webp') }}" media="(min-width: 992px)">
-                                                    <source srcset="{{ oViewConf.getDynamicImage(image, 320, 200, 'jpg') }}" media="(min-width: 992px)">
-
-                                                    <img loading="lazy" src="{{ oViewConf.getDynamicImage(image, 375, 220, 'jpg') }}" alt="{{ _cat.oxcategories__oxtitle.value }}" class="card-img">
-                                                </picture>
-                                            {% else %}
-                                                <img loading="lazy" src="{{ image }}" alt="{{ _cat.oxcategories__oxtitle.value }}" class="card-img">
-                                            {% endif %}
-                                        {% else %}
-                                            <div class="bg-primary">
-
-                                            </div>
-                                        {% endif %}
-                                        <div class="card-img-overlay">
-                                            <h3 class="card-title">
-                                                {{ _cat.oxcategories__oxtitle.value }} {% if oView.showCategoryArticlesCount() and ( _cat.getNrOfArticles() > 0 ) %} ({{ _cat.getNrOfArticles() }}){% endif %}
-                                            </h3>
-                                        </div>
-                                    </a>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-
-                    </div>
-                </div>
-            {% if categoriesTilesWidth == 'w100cContainer' %}
+            {% set categories = oxcmp_categories %}
+            <div class="category-list pb-4 border-bottom">
+                {% for _cat in categories %}
+                    {% if _cat.getIsVisible() %}
+                        <a class="btn btn-light btn-rounded" href="{{ _cat.getLink() }}">
+                            {{ _cat.oxcategories__oxtitle.value }}
+                        </a>
+                    {% endif %}
+                {% endfor %}
             </div>
-            {% endif %}
+            {% if categoriesTilesWidth == 'w100cContainer' %}
         </div>
-    {% if categoriesTilesWidth == 'container' %}
+        {% endif %}
     </div>
+    {% if categoriesTilesWidth == 'container' %}
+        </div>
     {% endif %}
 
 

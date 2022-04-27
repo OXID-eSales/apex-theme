@@ -2,12 +2,22 @@
     (function () {
         'use strict'
 
-        var myCollapsible = document.getElementById('searchCollapse');
-        if(myCollapsible) {
-            myCollapsible.addEventListener('shown.bs.collapse', function () {
-                document.getElementById('searchParam').focus();
-            })
-        }
+        const sliders = document.querySelectorAll('.article-slider');
+        Array.prototype.slice.call(sliders)
+            .forEach(function (slider) {
+                const container = slider.querySelector('.slider-container');
+                const right = slider.querySelector('.slide-left');
+                const left = slider.querySelector('.slide-right');
+
+                left.addEventListener('click', function(e){
+                    container.scrollLeft += 300;
+                });
+
+                right.addEventListener('click', function(e){
+                    container.scrollLeft -= 300;
+                });
+            });
+
 
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.querySelectorAll('.needs-validation')

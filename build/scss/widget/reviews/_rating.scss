@@ -2,21 +2,17 @@
   margin-top: 5px;
   margin-bottom: $hr-margin-y;
 
-  .moga-star {
-    font-size: 22px;
-  }
-
   &-star-filled {
-    color: $ox-page-details-rating-star-filled-color;
+    color: $ox-rating-star-filled-color;
   }
 
   &-star-empty {
-    color: $ox-page-details-rating-star-empty-color;
+    color: $ox-rating-star-empty-color;
   }
 }
 
 .rating {
-  color: $ox-page-details-rating-star-empty-color;
+  color: $ox-rating-star-empty-color;
 
   &-star {
     display: inline-block;
@@ -24,7 +20,7 @@
   }
 
   .active {
-    color: $ox-page-details-rating-star-filled-color;
+    color: $ox-rating-star-filled-color;
   }
 
   .ox-write-review {
@@ -35,21 +31,16 @@
     }
   }
 
-
-  .moga-star {
-    font-size: 22px;
-  }
-
   &.stars1 {
     .s1 {
-      color: $ox-page-details-rating-star-filled-color;
+      color: $ox-rating-star-filled-color;
     }
   }
 
   &.stars2 {
     .s1,
     .s2 {
-      color: $ox-page-details-rating-star-filled-color;
+      color: $ox-rating-star-filled-color;
     }
   }
 
@@ -57,7 +48,7 @@
     .s1,
     .s2,
     .s3 {
-      color: $ox-page-details-rating-star-filled-color;
+      color: $ox-rating-star-filled-color;
     }
   }
 
@@ -66,7 +57,7 @@
     .s2,
     .s3,
     .s4 {
-      color: $ox-page-details-rating-star-filled-color;
+      color: $ox-rating-star-filled-color;
     }
   }
 
@@ -76,7 +67,7 @@
     .s3,
     .s4,
     .s5 {
-      color: $ox-page-details-rating-star-filled-color;
+      color: $ox-rating-star-filled-color;
     }
   }
 }

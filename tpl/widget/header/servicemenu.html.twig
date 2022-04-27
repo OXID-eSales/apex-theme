@@ -16,7 +16,9 @@
             {% else %}
                 {{ translate({ ident: "MY_ACCOUNT" }) }}
             {{ /if #}
-            <i class="moga-person d-inline-block"></i>
+            <svg>
+                <use xlink:href="#person"></use>
+            </svg>
         {% endblock %}
     </button>
     {% if not oxcmp_user.oxuser__oxpassword.value %}

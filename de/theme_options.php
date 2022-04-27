@@ -26,7 +26,6 @@ $aLang = array(
     'SHOP_THEME_GROUP_images'          => 'Bilder',
     'SHOP_THEME_GROUP_features'        => 'Funktionen',
     'SHOP_THEME_GROUP_display'         => 'Anzeige',
-    'SHOP_THEME_GROUP_header'          => 'Header',
     'SHOP_THEME_GROUP_startpage'       => 'Startseite',
     'SHOP_THEME_GROUP_pop'             => 'Produktübersichtsseite',
     'SHOP_THEME_GROUP_pdp'             => 'Produktdetailseite',

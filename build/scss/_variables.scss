@@ -2,163 +2,73 @@
 // Theme Variables
 // --------------------------------------------------
 
-$font-family-base: Raleway, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$headings-font-family: 'Barlow Condensed', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$headings-font-weight: 600 !default;
-$font-size-base: 1rem !default;
-$line-height-base: 1.5 !default;
-$legend-font-size: 1.2rem !default;
+$font-family-base: Roboto, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$headings-font-family: $font-family-base;
+$headings-font-weight: 700;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+$legend-font-size: 1.2rem;
 
-$font-family-price: $headings-font-family !default;
+$font-family-price: $headings-font-family;
 
-$primary: #e0281c !default;
-$secondary: #6c757d !default;
-$success: #28a745 !default;
-$danger: #dc3545 !default;
-$warning: #ffc107 !default;
-$info: #17a2b8 !default;
+$primary: #000;
+$secondary: #6c757d;
+$success: #28a745;
+$danger: #dc3545;
+$warning: #ffc107;
+$info: #17a2b8;
+$light: #E2E7EA;
 
+$body-color: #000;
+$body-bg: #EAECED;
 
-$body-color: #333 !default;
-$body-bg: #fff !default;
-$row-padding: 3rem !default;
-
-$fa-font-path: '../fonts/' !default;
-
-// stylelint-disable
-$white: #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #333333 !default;
-$gray-900: #212529 !default;
-$black: #000 !default;
-
-$zindex-sticky: 999 !default;
-$light: $gray-200 !default;
-$gray-dark: $gray-800 !default;
-$ox-header-bg: #fff !default;
-$ox-header-color: $primary !default;
-$ox-header-link-color: $ox-header-color !default;
-$ox-footer-bg: $gray-800 !default;
-$ox-footer-color: #fff !default;
-$ox-footer-link-color: $ox-footer-color !default;
-$dropdown-padding-y: 0 !default;
-
-//$ox-footer-bg:                          #F2F2F2 !default;
-//$ox-footer-border:                      #E7E7E7 !default;
-//$ox-footer-color:                       #666666 !default;
-
-$grid-gutter-width: 1rem !default;
-
-//== Home page
-
-$ox-start-manufacturer-bg: #F2F2F2 !default;
-
-//== Lists
-
-$ox-list-bg: $light !default;
-
-//== Details page
-
-$ox-page-details-rating-star-filled-color: $warning !default;
-$ox-page-details-rating-star-empty-color: #C7C7C7 !default;
-
-//== Checkout (Global)
-
-$ox-checkout-steps-bg: $primary !default;
-$ox-checkout-steps-color: #fff !default;
-$ox-checkout-steps-active-bg: $secondary !default;
-$ox-checkout-steps-active-color: #fff !default;
-$ox-checkout-steps-passed-bg: #5cb85c !default;
-$ox-checkout-steps-passed-color: #fff !default;
-
-$progress-height: 0.5rem !default;
-
-
+// Options
 //
-// Custom Variables
-// --------------------------------------------------
+// Quickly modify global styling by enabling or disabling optional features.
 
-//== Typography
-//
-//## Font, line-height, and color for body text, headings, and more.
+$enable-caret:                false;
+$enable-rounded:              false;
+$enable-shadows:              true;
+$enable-gradients:            false;
+$enable-transitions:          true;
+$enable-reduced-motion:       true;
+$enable-smooth-scroll:        true;
+$enable-grid-classes:         true;
+$enable-cssgrid:              false;
+$enable-button-pointers:      true;
+$enable-rfs:                  true;
+$enable-validation-icons:     true;
+$enable-negative-margins:     false;
+$enable-deprecation-messages: true;
+$enable-important-utilities:  true;
 
-//## Headings
+/// Header
+$ox-header-bg: #fff;
+$ox-header-color: #000;
+$ox-header-link-color: #000;
 
-$h1-font-size: $font-size-base * 2.5 !default;
-$h2-font-size: $font-size-base * 2 !default;
-$h3-font-size: $font-size-base * 1.75 !default;
-$h4-font-size: $font-size-base * 1.5 !default;
-$h5-font-size: $font-size-base * 1.25 !default;
-$h6-font-size: $font-size-base !default;
+$ox-meta-bg: $primary;
+$ox-meta-color: #9F9F9F;
+$ox-meta-link-color: #fff;
 
-$headings-font-weight: 600 !default;
-$input-btn-focus-box-shadow: 0 0 0 #fff !default;
+$dropdown-border-color: #fff;
 
-//## Line Height
-$line-height-computed: floor(($font-size-base * $line-height-base)) !default; // ~20px
+/// Footer
+$ox-footer-bg: #fff;
+$ox-footer-color: #000;
+$ox-footer-link-color: #000;
 
-//== Scaffolding
-//
-//## Settings for some of the most global styles.
+/// Ratings
+$ox-rating-star-filled-color: $warning;
+$ox-rating-star-empty-color: $secondary;
 
-$link-color: $gray-dark !default;
-$link-hover-color: $primary !default;
-$link-disabled-color: #C7C7C7 !default;
+/// Forms
+$input-bg: #fff;
+$form-label-margin-bottom:              .25rem;
+$form-label-font-size:                  12px;
+$form-label-color:                      #91A0A8;
 
-
-//== Navbar
-//
-//##
-
-$navbar-height: 40px !default;
-$navbar-margin-bottom: 0 !default;
-$navbar-border-radius: 0 !default;
-$navbar-default-bg: #FFF !default;
-$navbar-default-color: $primary !default;
-$navbar-default-link-active-bg: transparent !default;
-$navbar-default-link-hover-bg: $navbar-default-link-active-bg !default;
-$navbar-default-link-active-color: $secondary !default;
-$navbar-default-link-hover-color: $navbar-default-link-active-color !default;
-
-$dropdown-border-color: #ccc !default;
-
-
-
-//== Breadcrumbs
-//
-//##
-
-$breadcrumb-bg: transparent !default;
-$breadcrumb-active-color: $secondary !default;
-$breadcrumb-padding-horizontal: 0 !default;
-$breadcrumb-padding-y: 0 !default;
-$breadcrumb-padding-x: 0 !default;
-
-
-$enable-caret: false !default;
-$enable-rounded: false !default;
-$enable-shadows: false !default;
-$enable-gradients: false !default;
-$enable-transitions: true !default;
-$enable-reduced-motion: true !default;
-$enable-grid-classes: true !default;
-$enable-button-pointers: true !default;
-$enable-rfs: true !default;
-$enable-validation-icons: true !default;
-$enable-negative-margins: true !default;
-$enable-deprecation-messages: false !default;
-$enable-important-utilities: false !default;
-
-$carousel-control-color: #fff !default;
-$carousel-control-prev-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 16 16'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>") !default;
-$carousel-control-next-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 16 16'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/></svg>") !default;
-
-$card-cap-bg: #fff !default;
-$card-cap-padding-y: 1rem !default;
-$card-cap-padding-x: 1rem !default;
+/// Cards
+$card-bg: #fff;
+$card-border-width: 0;
+$card-cap-bg: $card-bg;

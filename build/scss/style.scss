@@ -4,7 +4,7 @@
 
 //all bootstrap stuff you may need
 /*!
- * Bootstrap v5.1.0 (https://getbootstrap.com/)
+ * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
@@ -24,7 +24,7 @@
 @import "../vendor/bootstrap/images";
 @import "../vendor/bootstrap/containers";
 @import "../vendor/bootstrap/grid";
-@import "../vendor/bootstrap/tables";
+//@import "../vendor/bootstrap/tables";
 @import "../vendor/bootstrap/forms";
 @import "../vendor/bootstrap/buttons";
 @import "../vendor/bootstrap/transitions";
@@ -57,12 +57,12 @@
 @import "../vendor/bootstrap/utilities/api";
 // scss-docs-end import-stack
 
-
-@import 'icons';
 @import 'webfont';
 
 @import 'layout/base';
+
 @import 'layout/header';
+
 @import 'layout/footer';
 @import 'layout/sidebar';
 
@@ -71,69 +71,15 @@
 @import 'form/recommendation_add';
 @import 'form/suggest';
 
-@import 'message/err-404';
-
 @import 'page/details/details';
 @import 'page/checkout/order';
 @import 'page/compare/compare';
 @import 'page/account/inc/account_menu';
 @import 'page/account/user';
 @import 'page/shop/start';
-
 @import 'widget/breadcrumb';
 @import 'widget/product/list';
 @import 'widget/locator/paging';
 @import 'widget/locator/attributes';
 @import 'widget/reviews/rating';
 @import 'widget/minibasket/minibasket';
-
-.moga-oxtitle-down {
-  @extend .moga-sort-alpha-down;
-}
-
-.moga-oxtitle-up {
-  @extend .moga-sort-alpha-up;
-}
-
-.moga-oxvarminprice-down {
-  @extend .moga-sort-numeric-down;
-}
-
-.moga-oxvarminprice-up {
-  @extend .moga-sort-numeric-up;
-}
-
-.fa-shopping-cart {
-  font-family: icons;
-  display: inline-block;
-  line-height: 1;
-  font-weight: 400;
-  font-style: normal;
-  speak: none;
-  text-decoration: inherit;
-  text-transform: none;
-  text-rendering: auto;
-  @extend .moga-bag;
-}
-
-.btn-icon {
-  padding-top: 0;
-  padding-bottom: 0;
-  line-height: 43px;
-  height: 45px;
-
-  i {
-    font-size: 24px;
-  }
-}
-
-.btn-reset {
-  padding-top: 0;
-  padding-bottom: 0;
-  line-height: 43px;
-  height: 45px;
-}
-
-.btn-outline-primary {
-  background: #fff;
-}

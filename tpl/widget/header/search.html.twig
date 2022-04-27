@@ -1,6 +1,6 @@
 {% block widget_header_search_form %}
     {% if oView.showSearch() %}
-        <form class="search collapse order-xl-1" id="searchCollapse" action="{{ oViewConf.getSelfActionLink() }}" method="get" name="search">
+        <form class="search mx-auto" action="{{ oViewConf.getSelfActionLink() }}" method="get" name="search">
             {{ oViewConf.getHiddenSid()|raw }}
             <input type="hidden" name="cl" value="search">
 
@@ -12,7 +12,9 @@
                     {% endblock %}
 
                     {% block dd_header_search_button %}
-                        <button class="btn btn-primary" type="submit" title="{{ translate({ ident: "SEARCH_SUBMIT" }) }}"><i class="moga-search"></i></button>
+                        <button class="btn" type="submit" title="{{ translate({ ident: "SEARCH_SUBMIT" }) }}">
+                            {% include "icons/search.svg" %}
+                        </button>
                     {% endblock %}
                 </div>
             {% endblock %}
