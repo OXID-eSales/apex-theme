@@ -26,13 +26,4 @@
   text-decoration: none;
   display: flex;
   justify-content: space-between;
-
-  &:after {
-    font-family: 'icons';
-    content: map-get($icons, 'up');
-  }
-
-  &.collapsed:after {
-    content: map-get($icons, 'down');
-  }
 }

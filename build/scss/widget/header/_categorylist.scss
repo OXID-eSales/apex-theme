@@ -17,21 +17,6 @@
 
     &.dropdown-toggle {
       position: relative;
-
-      &:after {
-        position: absolute;
-        right: 15px;
-        font-family: "icons";
-        content: map-get($icons, 'down');
-
-        @include media-breakpoint-up(lg) {
-          display: none;
-        }
-      }
-
-      &.show:after {
-        content: map-get($icons, 'up');
-      }
     }
   }
 
@@ -56,18 +41,6 @@
   transform: translateX(0);
 }
 
-.btn-toggle {
-  .moga-bars:before {
-    content: map-get($icons, 'times')
-  }
-
-  &.collapsed {
-    .moga-bars:before {
-      content: map-get($icons, 'bars')
-    }
-  }
-}
-
 @include media-breakpoint-up(md) {
   .navbar-collapse {
     width: 300px;
@@ -83,20 +56,12 @@
     margin-left: 0;
 
     &-collapse {
-      justify-content: center;
       position: static;
       width: auto;
       height: auto;
       transform: inherit;
       overflow: inherit;
-      margin: 0 auto;
     }
-  }
-}
-
-@include media-breakpoint-up(xl) {
-  .navbar-nav {
-    margin: 0 auto;
   }
 }
 
@@ -107,24 +72,25 @@
 }
 
 
-.navbar-nav-mega {
+.navbar-nav.navbar-nav-mega {
   @include media-breakpoint-up(lg) {
-    padding: 0 15px;
-
-    .nav-link-1 {
-      border: 3px solid transparent;
-    }
+    position: relative;
 
     .nav-level-2 {
       display: none;
-      border: 3px solid #f1f1f1;
       padding: 25px;
       position: absolute;
-      left: 8px;
-      right: 8px;
+      width: 100%;
+      max-width: 1200px;
+      left: 0;
       background: #fff;
       box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
       text-align: center;
+    }
+
+    .nav-link-1 {
+      padding: 1.5rem 0;
+      margin-right: 4rem;
     }
 
     .columns {
@@ -173,7 +139,6 @@
     .nav-item {
       &:hover {
         .nav-link-1 {
-          border: 3px solid #f1f1f1;
           background: #fff;
           color: $body-color;
           position: relative;

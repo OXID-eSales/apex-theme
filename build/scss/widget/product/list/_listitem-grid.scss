@@ -1,61 +1,99 @@
-.grid-view {
-  .card {
-    height: 100%;
-    text-decoration: none;
-    border: none;
+.product-card {
+  text-decoration: none;
+  border: none;
+  margin-bottom: $grid-gutter-width/2;
+
+  @include media-breakpoint-up(md) {
+    transition: all 150ms;
+  }
+
+  .card-picture {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
 
     @include media-breakpoint-up(md) {
-      transition: all 150ms;
-
-      &:hover {
-        z-index: 10;
-        transform: scale(1.01);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
+      height: 200px;
     }
 
-    &-picture {
-      height: 150px;
-      display: flex;
-      justify-content: center;
-      object-fit: contain;
+    @include media-breakpoint-up(lg) {
+      height: 300px;
+    }
+  }
 
-      @include media-breakpoint-up(md) {
-        height: 200px;
-      }
+  .product-img {
+    max-height: 150px;
+    object-fit: contain;
+    width: 100%;
 
-      @include media-breakpoint-up(lg) {
-        height: 300px;
-      }
+    @include media-breakpoint-up(md) {
+      max-height: 200px;
     }
 
-    .product-img {
-      max-height: 150px;
-      max-width: 100%;
-      object-fit: contain;
+    @include media-breakpoint-up(lg) {
+      max-height: 300px;
+    }
+  }
 
-      @include media-breakpoint-up(md) {
-        max-height: 200px;
+  .variant-dropdown {
+    padding-right: 1rem;
+  }
+
+  .card-title {
+    margin: 0;
+  }
+
+  .product-img-wrapper {
+    overflow: hidden;
+  }
+
+  @include media-breakpoint-up(lg) {
+    :is(.bottom, .right) {
+      position: absolute;
+      opacity: 0;
+      transition: $transition-base;
+      z-index: 2;
+    }
+  }
+
+  .badges {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  .bottom {
+    @include media-breakpoint-up(lg) {
+      bottom: -50px;
+      left: 10px;
+      right: 10px;
+    }
+
+    .form-control {
+      flex: 0 0 80px;
+    }
+  }
+
+  .right {
+    @include media-breakpoint-up(lg) {
+      right: -50px;
+      top: 10px;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &:hover,
+    &:focus-within {
+      .bottom {
+        opacity: 1;
+        bottom: 10px;
       }
 
-      @include media-breakpoint-up(lg) {
-        max-height: 300px;
-      }
-    }
-
-    .variant-dropdown {
-      padding-right: 1rem;
-    }
-
-    &-body {
-      background: #fff;
-    }
-
-    &-title {
-      margin: 0;
-
-      @include media-breakpoint-up(md) {
-        text-transform: uppercase;
+      .right {
+        opacity: 1;
+        right: 10px;
       }
     }
   }

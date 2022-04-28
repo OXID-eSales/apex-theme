@@ -158,6 +158,8 @@ $aLang = array(
     'ADDRESSES'                                             => 'Adressen',
     'DELIVERY_PAYMENT'                                      => 'Versand & Zahlung',
     'CHECK_ORDER'                                           => 'Überprüfen',
+    'LANGUAGE'                                              => 'Sprache',
+    'CURRENCY'                                              => 'Währung',
 );
 
 /*

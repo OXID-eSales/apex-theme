@@ -1,7 +1,46 @@
 {% capture append = "oxidBlock_content" %}
 
     {% set rsslinks = oView.getRssLinks() %}
-
+    <div class="start-teaser my-2">
+        <div class="container-fluid px-2">
+            <div class="row g-2">
+                <div class="col-lg-6">
+                    <div class="card text-white border-0 h-100">
+                        <img src="https://picsum.photos/id/1071/900/900" class="card-img card-img-full" alt="..." height="900" width="900">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <a href="#" class="stretched-link"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-2">
+                        <div class="col-12">
+                            <div class="card text-white border-0">
+                                <img src="https://picsum.photos/id/1070/900/450" class="card-img card-img-half" alt="..." width="900" height="450">
+                                <div class="card-img-overlay">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                </div>
+                                <a href="#" class="stretched-link"></a>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card text-white border-0">
+                                <img src="https://picsum.photos/id/1072/900/450" class="card-img card-img-half" alt="..." width="900" height="450">
+                                <div class="card-img-overlay">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                </div>
+                                <a href="#" class="stretched-link"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {% block start_promoslider %}
         {% set promo = oViewConf.getViewThemeParam('bl_showPromo') %}
 
@@ -39,9 +78,9 @@
                     {% if bargainWidth == 'container' %}
                         <div class="container-xxl">
                     {% endif %}
-                            <div class="py-3 py-lg-5 text-center container{% if bargainWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
-                                {% include "widget/product/list.html.twig" with {type: oViewConf.getViewThemeParam('sStartPageListDisplayType'), head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, rsslink: rsslinks.bargainArticles, rssId: "rssBargainProducts", showMainLink: true, iProductsPerLine: 4} %}
-                            </div>
+                    <div class="py-3 py-lg-5 text-center container{% if bargainWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
+                        {% include "widget/product/list.html.twig" with {type: oViewConf.getViewThemeParam('sStartPageListDisplayType'), head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, rsslink: rsslinks.bargainArticles, rssId: "rssBargainProducts", showMainLink: true, iProductsPerLine: 4} %}
+                    </div>
                     {% if bargainWidth == 'container' %}
                         </div>
                     {% endif %}
@@ -61,17 +100,9 @@
         {% if showNewest %}
             {% set oNewestArticles = oView.getNewestArticles() %}
             {% set newestWidth = oViewConf.getViewThemeParam('sNewestWidth') %}
-            <div class="article-list">
+            <div class="article-slider">
                 {% if oNewestArticles and oNewestArticles.count() %}
-                    {% if newestWidth == 'container' %}
-                        <div class="container-xxl">
-                    {% endif %}
-                            <div class="py-5 text-center container{% if newestWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
-                                {% include "widget/product/list.html.twig" with {type: oViewConf.getViewThemeParam('sStartPageListDisplayType'), head: "START_NEWEST_HEADER"|translate, subhead: "START_NEWEST_SUBHEADER"|translate, listId: "newItems", products: oNewestArticles, rsslink: rsslinks.newestArticles, rssId: "rssNewestProducts", showMainLink: true, iProductsPerLine: 4} %}
-                            </div>
-                    {% if newestWidth == 'container' %}
-                        </div>
-                    {% endif %}
+                    {% include "widget/product/list-slider.html.twig" with {type: oViewConf.getViewThemeParam('sStartPageListDisplayType'), head: "START_NEWEST_HEADER"|translate, subhead: "START_NEWEST_SUBHEADER"|translate, listId: "newItems", products: oNewestArticles, rsslink: rsslinks.newestArticles, rssId: "rssNewestProducts", showMainLink: true, iProductsPerLine: 4} %}
                 {% endif %}
             </div>
         {% endif %}
