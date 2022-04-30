@@ -2,22 +2,43 @@
 // Theme Variables
 // --------------------------------------------------
 
-$font-family-base: Roboto, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$headings-font-family: $font-family-base;
-$headings-font-weight: 700;
+$font-family-base: 'Roboto', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$headings-font-family: 'Oswald', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$headings-font-weight: 600;
 $font-size-base: 1rem;
 $line-height-base: 1.5;
 $legend-font-size: 1.2rem;
 
+$grid-gutter-width:           0.5rem;
+$spacer: $grid-gutter-width;
+$container-padding-x: $grid-gutter-width;
+
+$h1-font-size:                $font-size-base * 2.5;
+$h2-font-size:                $font-size-base * 2;
+$h3-font-size:                $font-size-base * 1.75;
+$h4-font-size:                $font-size-base * 1.5;
+$h5-font-size:                $font-size-base * 1.125;
+$h6-font-size:                $font-size-base;
+
 $font-family-price: $headings-font-family;
 
 $primary: #000;
-$secondary: #6c757d;
+$secondary: #fff;
+$highlight: #548E96;
 $success: #28a745;
 $danger: #dc3545;
 $warning: #ffc107;
 $info: #17a2b8;
 $light: #E2E7EA;
+
+$tag-bg: #E2E7EA;
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  'highlight':  $highlight
+);
 
 $body-color: #000;
 $body-bg: #EAECED;
@@ -47,8 +68,8 @@ $ox-header-bg: #fff;
 $ox-header-color: #000;
 $ox-header-link-color: #000;
 
-$ox-meta-bg: $primary;
-$ox-meta-color: #9F9F9F;
+$ox-meta-bg: #6A7281;
+$ox-meta-color: #fff;
 $ox-meta-link-color: #fff;
 
 $dropdown-border-color: #fff;

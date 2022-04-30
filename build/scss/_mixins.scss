@@ -1,0 +1,11 @@
+@mixin rotateText($items) {
+  animation: rotate ($items + 1) * 2s infinite;
+
+  @for $i from 1 through $items {
+    @if($i > 1) {
+      &:nth-of-type(#{$i}) {
+        animation-delay: ($i - 1) * 2.5s;
+      }
+    }
+  }
+}

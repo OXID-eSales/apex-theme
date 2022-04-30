@@ -5,31 +5,22 @@
     {% set categoriesTilesSpacing = oViewConf.getViewThemeParam('showCategoryTilesSpacing') %}
     {% set categoriesTilesRowPadding = oViewConf.getViewThemeParam('showCategoryTilesRowPadding') %}
 
-    {% if categoriesTilesWidth == 'container' %}
-        <div class="container-xxl">
-    {% endif %}
-    <div class="categories my-4">
-        {% if categoriesTilesWidth == 'w100cContainer' %}
-        <div class="container-xxl">
-            {% endif %}
+    <div class="container-xxl">
+        <div class="categories">
 
             {% set categories = oxcmp_categories %}
-            <div class="category-list pb-4 border-bottom">
+            <div class="category-list">
                 {% for _cat in categories %}
                     {% if _cat.getIsVisible() %}
-                        <a class="btn btn-light btn-rounded" href="{{ _cat.getLink() }}">
+                        <a class="btn btn-sm btn-tag btn-rounded" href="{{ _cat.getLink() }}">
                             {{ _cat.oxcategories__oxtitle.value }}
                         </a>
                     {% endif %}
                 {% endfor %}
             </div>
-            {% if categoriesTilesWidth == 'w100cContainer' %}
+
         </div>
-        {% endif %}
     </div>
-    {% if categoriesTilesWidth == 'container' %}
-        </div>
-    {% endif %}
 
 
 {% endif %}

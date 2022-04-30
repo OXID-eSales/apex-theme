@@ -2,125 +2,49 @@
     {% set oBanners = oView.getBanners() %}
 
     {% if oBanners|length %}
-        {% set promoTilesWidth = oViewConf.getViewThemeParam('sPromoWidth') %}
-        {% set promoTilesGrid = oViewConf.getViewThemeParam('sPromoTilesGrid') %}
-        {% set promoTilesBg = oViewConf.getViewThemeParam('sPromoBg') %}
-        {% set promoTilesSpacing = oViewConf.getViewThemeParam('sPromoTilesSpacing') %}
-        {% set promoTilesRowPadding = oViewConf.getViewThemeParam('sPromoRowPadding') %}
-        {% if promoTilesWidth == 'container' %}
-            <div class="container-xxl">
-        {% endif %}
-                <div class="promo-tiles{% if promoTilesRowPadding %} py-3 py-lg-5{% endif %} bg-{{ promoTilesBg }}">
-                    {% if promoTilesWidth == 'w100cContainer' %}
-                    <div class="container-xxl">
-                    {% endif %}
-                        <div class="row g-{{ promoTilesSpacing }}">
-                            {% block dd_widget_promoslider_list %}
-                                {% for iPicNr, oBanner in oBanners %}
-                                    {% set oArticle = oBanner.getBannerArticle() %}
-                                    {% set sBannerPictureUrl = oBanner.getBannerPictureUrl() %}
-                                    {% set gridFactor = "" %}
-                                    {% set w375 = "375" %}
-                                    {% set w767 = "767" %}
-                                    {% set w991 = "991" %}
-                                    {% set w1200 = "1200" %}
-                                    {% set w1400 = "1400" %}
-                                    {% set w1600 = "1600" %}
-                                    {% set w1800 = "1800" %}
-                                    {% set heightFaktor = "0.5625" %}
+        <div class="container-xxl">
+            <h2 class="todo">Offers and promotions</h2>
+        </div>
+        <div class="container-fluid">
+            <div class="promo-tiles mb-5">
+                <div class="row">
+                    {% block dd_widget_promoslider_list %}
+                        {% for iPicNr, oBanner in oBanners %}
+                            {% set oArticle = oBanner.getBannerArticle() %}
+                            {% set sBannerPictureUrl = oBanner.getBannerPictureUrl() %}
 
+                            {% if sBannerPictureUrl %}
+                                <div class="col-6 col-lg">
+                                    {% set sBannerLink = oBanner.getBannerLink() %}
 
-                                    {% if sBannerPictureUrl %}
-                                        {% if promoTilesGrid == '100_33' %}
-                                            {% if loop.first %}
-                                                {% set gridClass = "12" %}
-                                                {% set gridFactor = "1" %}
+                                    {% if sBannerLink %}
+                                        <a href="{{ sBannerLink }}" class="card bg-dark text-white">
+                                    {% else %}
+                                        <div class="card bg-dark text-white">
+                                    {% endif %}
 
-                                            {% else %}
-                                                {% set gridClass = "4" %}
-                                                {% set gridFactor = "0.3333" %}
-                                            {% endif %}
-                                        {% endif %}
-                                        {% if promoTilesGrid == '50' %}
-                                            {% set gridClass = "6" %}
-                                            {% set gridFactor = "0.5" %}
-                                        {% endif %}
-                                        {% if promoTilesGrid == '33' %}
-                                            {% set gridClass = "4" %}
-                                            {% set gridFactor = "0.3333" %}
-                                        {% endif %}
-                                        {% if promoTilesGrid == '25' %}
-                                            {% set gridClass = "3" %}
-                                            {% set gridFactor = "0.25" %}
-                                        {% endif %}
+                                    <img loading="lazy" src="{{ sBannerPictureUrl }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="card-img">
 
-                                        {% set heightFaktor = gridFactor*0.5625 %}
-                                        <div class="col-lg-{{ gridClass }}">
-                                            {% set sBannerLink = oBanner.getBannerLink() %}
-
-                                            {% if sBannerLink %}
-                                                <a href="{{ sBannerLink }}" class="card bg-dark text-white">
-                                            {% else %}
-                                                <div class="card bg-dark text-white">
-                                            {% endif %}
-
-                                            {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                                <picture>
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, w375 * gridFactor, 200, 'webp') }}" media="(max-width: 375px)">
-
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, w767 * gridFactor, 300, 'webp') }}" media="(max-width: 767px)">
-                                                    <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, w767 * gridFactor, 300, 'jpg') }}" media="(max-width: 767px)">
-
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 500, 370, 'webp') }}" media="(max-width: 991px)">
-                                                    <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 500, 370, 'jpg') }}" media="(max-width: 991px)">
-
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 600, 400, 'webp') }}" media="(max-width: 1199px)">
-                                                    <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 600, 400, 'jpg') }}" media="(max-width: 1199px)">
-
-                                                {% if promoTilesWidth == 'w100c100' %}
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 700, 450, 'webp') }}" media="(max-width: 1399px)">
-                                                    <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 700, 450, 'jpg') }}" media="(max-width: 1399px)">
-
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 800, 500, 'webp') }}" media="(max-width: 1599px)">
-                                                    <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, 800, 500, 'jpg') }}" media="(max-width: 1599px)">
-
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, w1600 * gridFactor, 600, 'webp') }}" media="(min-width: 1600px)">
-                                                    <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, w1600 * gridFactor, 600, 'jpg') }}" media="(min-width: 1600px)">
-                                                {% else %}
-                                                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, w1200 * gridFactor, w1200 * heightFaktor, 'webp', true) }}" media="(min-width: 1200px)">
-                                                    <source srcset="{{ oViewConf.getDynamicImage(sBannerPictureUrl, w1200 * gridFactor, w1200 * heightFaktor, 'jpg', true) }}" media="(min-width: 1200px)">
-                                                {% endif %}
-                                                    <img loading="lazy" src="{{ oViewConf.getDynamicImage(sBannerPictureUrl, w375 * gridFactor, w375 * heightFaktor, 'jpg') }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="card-img">
-                                                </picture>
-                                            {% else %}
-                                                <img loading="lazy" src="{{ sBannerPictureUrl }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="card-img">
-                                            {% endif %}
-
-                                            {% if oViewConf.getViewThemeParam('blSliderShowImageCaption') and oArticle %}
-                                                <div class="card-img-overlay">
-                                                    <h5 class="card-title h2">{{ oArticle.oxarticles__oxtitle.value }}</h5>
-                                                    {% if oArticle.oxarticles__oxshortdesc.value|trim %}
-                                                    <p class="card-text">{{ oArticle.oxarticles__oxshortdesc.value|trim }}</p>
-                                                    {% endif %}
-                                                </div>
-                                            {% endif %}
-
-                                            {% if sBannerLink %}
-                                                </a>
-                                            {% else %}
-                                                </div>
+                                    {% if oViewConf.getViewThemeParam('blSliderShowImageCaption') and oArticle %}
+                                        <div class="card-img-overlay">
+                                            <h5 class="card-title h2">{{ oArticle.oxarticles__oxtitle.value }}</h5>
+                                            {% if oArticle.oxarticles__oxshortdesc.value|trim %}
+                                            <p class="card-text">{{ oArticle.oxarticles__oxshortdesc.value|trim }}</p>
                                             {% endif %}
                                         </div>
                                     {% endif %}
-                                {% endfor %}
-                            {% endblock %}
-                        </div>
-                    {% if promoTilesWidth == 'w100cContainer' %}
-                    </div>
-                    {% endif %}
+
+                                    {% if sBannerLink %}
+                                        </a>
+                                    {% else %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endblock %}
                 </div>
-        {% if promoTilesWidth == 'container' %}
             </div>
-        {% endif %}
+        </div>
     {% endif %}
 {% endblock %}

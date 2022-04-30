@@ -67,8 +67,6 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   margin-bottom: $grid-gutter-width/2;
-  padding-left: calc((100vw - 1320px) / 2);
-  padding-right: calc((100vw - 1320px) / 2);
 
   &::-webkit-scrollbar,
   &::-webkit-scrollbar-thumb {
@@ -81,10 +79,11 @@
 
   .card {
     scroll-snap-align: center;
-    min-width: 300px;
+    min-width: 220px;
     max-width: 400px;
     margin: 0 5px;
     transition: $transition-base;
+    height: auto;
 
     @include media-breakpoint-up(xl) {
       min-width: 350px;
@@ -125,16 +124,6 @@
 
     .slide-right {
       right: 20px;
-    }
-  }
-
-  @include media-breakpoint-up(xxl) {
-    .slide-left {
-      left: calc((100vw - 1320px) / 2);
-    }
-
-    .slide-right {
-      right: calc((100vw - 1320px) / 2);
     }
   }
 }

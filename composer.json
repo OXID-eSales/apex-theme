@@ -1,6 +1,6 @@
 {
   "name": "oxid-esales/moga-twig-theme",
-  "description": "MOGA Theme",
+  "description": "APEX Theme",
   "type": "oxideshop-theme",
   "homepage": "https://github.com/OXID-eSales/moga-twig-theme",
   "license": [
@@ -11,12 +11,11 @@
   },
   "authors": [
     { "name": "Tino Favetto, c&c concepts and creations GmbH" },
-    { "name": "Martin Müller, c&c concepts and creations GmbH" }
   ],
   "extra": {
     "oxideshop": {
       "target-directory": "moga-twig",
-      "assets-directory": "out/moga-twig"
+      "assets-directory": "out/apex"
     }
   }
 }

@@ -12,20 +12,25 @@
 
   .logo-link {
     align-items: center;
+    width: 50%;
+    padding-right: $spacer;
+    justify-content: center;
+
+    @include media-breakpoint-up(lg) {
+      padding: 0;
+      width: unset;
+      justify-content: unset;
+    }
   }
 
   .logo-img {
     max-width: 140px;
+    max-height: 30px;
     height: auto;
 
     @include media-breakpoint-up(sm) {
       max-width: unset;
-    }
-
-    &.default {
-      width: auto;
-      height: 56px;
-      fill: $primary;
+      max-height: unset;
     }
   }
 
@@ -36,9 +41,17 @@
   &-container {
     display: flex;
     position: relative;
-    padding: 25px 0;
     align-items: center;
-    border-bottom: 1px solid $input-border-color;
+    padding: 10px 0;
+
+    @include media-breakpoint-up(lg) {
+      padding: 25px 0;
+      border-bottom: 1px solid $input-border-color;
+    }
+
+    .btn-text {
+      display: none;
+    }
   }
 
   svg {
@@ -48,31 +61,122 @@
 }
 
 .meta {
-  display: none;
+  display: block;
+  background: $ox-meta-bg;
+  color: $ox-meta-color;
 
-  @include media-breakpoint-up(md) {
-    display: block;
+  .btn {
+    svg {
+      fill: $ox-meta-link-color;
+    }
+  }
+}
+
+.usp-list {
+  font-size: 14px;
+  line-height: 35px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  overflow: hidden;
+  width: 50%;
+  height: 50px;
+  background: $ox-meta-bg;
+  color: $ox-meta-color;
+  margin: 0;
+  padding: 0;
+
+  @include media-breakpoint-up(lg) {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+  }
+
+  svg {
+    fill: $ox-meta-color;
+    position: absolute;
+    left: 10px;
+    top: 15px;
+
+    @include media-breakpoint-up(lg) {
+      top: 6px;
+    }
+  }
+
+  .list-inline-item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    height: 50px;
+    padding: 0 10px 0 40px;
+    line-height: initial;
+    transform: translate3d(0, 50px, 0);
     background: $ox-meta-bg;
-    color: $ox-meta-color;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
 
-    .usp-list {
-      font-size: 14px;
-      line-height: 35px;
+    @include rotateText(5);
 
-      svg {
-        fill: $ox-meta-color;
-        margin-right: 5px;
-      }
-
-      .list-inline-item {
-        margin-right: 15px;
-      }
+    @include media-breakpoint-up(lg) {
+      position: relative;
+      transform: initial;
+      animation: initial;
+      height: auto;
+      font-size: 16px;
+      padding: 0 0 0 40px;
+      flex: 1 1 auto;
     }
+  }
+}
 
-    .btn {
-      svg {
-        fill: $ox-meta-link-color;
-      }
+.mobile-nav {
+  background: $ox-header-bg;
+  display: flex;
+
+  .btn {
+    flex: 1 1 auto;
+
+    &-text {
+      font-size: 10px;
+      display: block;
     }
+  }
+}
+
+@keyframes rotate {
+  /* Text is positioned below the wrap */
+  0% {
+    transform: translate3d(0, 50px, 0);
+  }
+
+  /* Move text up and make it visible */
+  2.5% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Between 2.5% and 25%, nothing changes (text is visible) */
+  25% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Move text up and out of the wrap */
+  27.5% {
+    transform: translate3d(0, -50px, 0);
+  }
+
+  /* Between 27.5% and 99%, nothing changes (text is invisible) */
+  99.9999% {
+    transform: translate3d(0, -50px, 0);
+  }
+
+  /* Move text to it's original position (loop starts over) */
+  100% {
+    transform: translate3d(0, 50px, 0);
   }
 }

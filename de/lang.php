@@ -160,6 +160,9 @@ $aLang = array(
     'CHECK_ORDER'                                           => 'Überprüfen',
     'LANGUAGE'                                              => 'Sprache',
     'CURRENCY'                                              => 'Währung',
+    'SHOW_NAVIGATION'                                       => 'Navigation anzeigen',
+    'MENU'                                                  => 'Menü',
+    'FAVOURITES'                                            => 'Favoriten',
 );
 
 /*

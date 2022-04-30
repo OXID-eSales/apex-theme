@@ -8,24 +8,30 @@
     {% set recommListCount = "0" %}
 {% endif %}
 {% set notificationsCounter = oView.getCompareItemsCnt()+noticeListCount+wishListCount+recommListCount %}
-<div class="btn-group" role="group">
-    <button type="button" aria-label="Usercenter" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account") }) }}">
-        {% block dd_layout_page_header_icon_menu_account_button %}
-            {# if not oxcmp_user.oxuser__oxpassword.value }}
+
+<a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+    <svg aria-label="{{ translate({ ident: "MY_WISH_LIST" }) }}">
+        <use xlink:href="#star"></use>
+    </svg>
+    {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+</a>
+
+<button type="button" aria-label="Usercenter" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account") }) }}">
+    {% block dd_layout_page_header_icon_menu_account_button %}
+        <svg aria-label="
+            {% if not oxcmp_user.oxuser__oxpassword.value %}
                 {{ translate({ ident: "LOGIN" }) }}
             {% else %}
                 {{ translate({ ident: "MY_ACCOUNT" }) }}
-            {{ /if #}
-            <svg>
-                <use xlink:href="#person"></use>
-            </svg>
-        {% endblock %}
-    </button>
-    {% if not oxcmp_user.oxuser__oxpassword.value %}
-        {% include "widget/header/loginbox.html.twig" %}
-    {% else %}
-        {% block dd_layout_page_header_icon_menu_account_list %}
-            {% include "widget/header/servicebox.html.twig" %}
-        {% endblock %}
-    {% endif %}
-</div>
+            {% endif %}">
+            <use xlink:href="#person"></use>
+        </svg>
+    {% endblock %}
+</button>
+{% if not oxcmp_user.oxuser__oxpassword.value %}
+    {% include "widget/header/loginbox.html.twig" %}
+{% else %}
+    {% block dd_layout_page_header_icon_menu_account_list %}
+        {% include "widget/header/servicebox.html.twig" %}
+    {% endblock %}
+{% endif %}

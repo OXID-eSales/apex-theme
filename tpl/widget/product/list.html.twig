@@ -25,7 +25,7 @@
         {% set colClass = 'row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5' %}
     {% endif %}
 
-    <div class="list-container" id="{{ listId }}">
+    <div class="list-container px-1" id="{{ listId }}">
         <div class="row{% if type != 'line' %} {{ colClass }}{% endif %} {{ type }}-view g-1">
         {% for _product in products %}
             {% set testid = listId|cat("_")|cat(loop.index) %}

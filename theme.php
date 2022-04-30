@@ -1,11 +1,11 @@
 <?php
 $aTheme = array(
-    'id' => 'moga-twig',
-    'title' => 'moga-twig',
-    'description' => 'moga - Bootstrap 5 playground.',
-    'thumbnail' => 'moga.png',
+    'id' => 'APEX',
+    'title' => 'APEX Theme',
+    'description' => 'APEX - Bootstrap 5 TWIG Theme',
+    'thumbnail' => 'apex_green.svg',
     'version' => '1.1.0',
-    'author' => '<a href="http://www.con-creat.de" title="con-creat">concepts and creations</a>',
+    'author' => 'Tino Favetto, c&c concepts and creations GmbH',
     'settings' => array(
 //DISPLAY
         array(
@@ -59,135 +59,14 @@ $aTheme = array(
             'constraints' => 'line|grid',
         ),
 
-//HEADER
-        array(
-            'group' => 'header',
-            'name' => 'sHeaderWidth',
-            'type' => 'select',
-            'value' => 'w100cContainer',
-            'constraints' => 'w100cContainer|w100c100|container',
-        ),
-        array(
-            'group' => 'header',
-            'name' => 'sHeaderSticky',
-            'type' => 'bool',
-            'value' => 1,
-        ),
-        array(
-            'group' => 'header',
-            'name' => 'sHeaderShowSearch',
-            'type' => 'bool',
-            'value' => 1,
-        ),
-        array(
-            'group' => 'header',
-            'name' => 'sHeaderMenu',
-            'type' => 'select',
-            'value' => 'Dropdowns',
-            'constraints' => 'Dropdowns|MegaMenu',
-        ),
-
 //STARTPAGE
-        array(
-            'group' => 'startpage',
-            'name' => 'bl_showPromo',
-            'type' => 'select',
-            'value' => 'Tiles',
-            'constraints' => 'Tiles|Slider|None',
-            'position' => 1,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'sPromoWidth',
-            'type' => 'select',
-            'value' => 'w100cContainer',
-            'constraints' => 'w100cContainer|w100c100|container',
-            'position' => 2,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'sPromoTilesGrid',
-            'type' => 'select',
-            'value' => '100_33',
-            'constraints' => '100_33|50|33|25',
-            'position' => 3,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'sPromoTilesSpacing',
-            'type' => 'select',
-            'value' => '2',
-            'constraints' => '0|1|2|3|4|5',
-            'position' => 4,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'sPromoRowPadding',
-            'type' => 'bool',
-            'value' => 0,
-            'position' => 5,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'sPromoBg',
-            'type' => 'select',
-            'value' => 'white',
-            'constraints' => 'white|light|dark|primary',
-            'position' => 6,
-        ),
+
         array(
             'group' => 'startpage',
             'name' => 'showCategoryTiles',
             'type' => 'bool',
             'value' => 1,
             'position' => 21,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'showCategoryTilesWidth',
-            'type' => 'select',
-            'value' => 'w100cContainer',
-            'constraints' => 'w100cContainer|w100c100|container',
-            'position' => 22,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'showCategoryTilesGrid',
-            'type' => 'select',
-            'value' => '33',
-            'constraints' => '50|33|25',
-            'position' => 23,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'showCategoryTilesSpacing',
-            'type' => 'select',
-            'value' => '2',
-            'constraints' => '0|1|2|3|4|5',
-            'position' => 25,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'showCategoryTilesRowPadding',
-            'type' => 'bool',
-            'value' => 1,
-            'position' => 26,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'showCategoryTilesBg',
-            'type' => 'select',
-            'value' => 'light',
-            'constraints' => 'white|light|dark|primary',
-            'position' => 27,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'sWelcomeTextWidth',
-            'type' => 'select',
-            'value' => 'container',
-            'constraints' => 'w100c100|container',
-            'position' => 29,
         ),
         array(
             'group' => 'startpage',
@@ -198,26 +77,10 @@ $aTheme = array(
         ),
         array(
             'group' => 'startpage',
-            'name' => 'sManufacturerWidth',
-            'type' => 'select',
-            'value' => 'w100cContainer',
-            'constraints' => 'w100cContainer|w100c100|container',
-            'position' => 31,
-        ),
-        array(
-            'group' => 'startpage',
             'name' => 'sShowBargainArticles',
             'type' => 'bool',
             'value' => 1,
             'position' => 35,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'sBargainWidth',
-            'type' => 'select',
-            'value' => 'w100cContainer',
-            'constraints' => 'w100cContainer|w100c100|container',
-            'position' => 36,
         ),
         array(
             'group' => 'startpage',
@@ -228,26 +91,10 @@ $aTheme = array(
         ),
         array(
             'group' => 'startpage',
-            'name' => 'sNewestWidth',
-            'type' => 'select',
-            'value' => 'w100cContainer',
-            'constraints' => 'w100cContainer|w100c100|container',
-            'position' => 41,
-        ),
-        array(
-            'group' => 'startpage',
             'name' => 'sShowTopArticles',
             'type' => 'bool',
             'value' => 1,
             'position' => 50,
-        ),
-        array(
-            'group' => 'startpage',
-            'name' => 'sTopWidth',
-            'type' => 'select',
-            'value' => 'w100cContainer',
-            'constraints' => 'w100cContainer|w100c100|container',
-            'position' => 51,
         ),
 //DETAIL
         array(
