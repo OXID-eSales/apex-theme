@@ -10,7 +10,7 @@
     "oxid-esales/twig-component": "*"
   },
   "authors": [
-    { "name": "Tino Favetto, c&c concepts and creations GmbH" },
+    { "name": "Tino Favetto, c&c concepts and creations GmbH" }
   ],
   "extra": {
     "oxideshop": {
