@@ -1,6 +1,8 @@
 @import 'variables';
 @import 'custom_variables';
 @import 'custom_styles';
+@import 'webfont';
+@import 'mixins';
 
 //all bootstrap stuff you may need
 /*!
@@ -38,13 +40,13 @@
 @import "../vendor/bootstrap/pagination";
 @import "../vendor/bootstrap/badge";
 @import "../vendor/bootstrap/alert";
-@import "../vendor/bootstrap/progress";
+//@import "../vendor/bootstrap/progress";
 @import "../vendor/bootstrap/list-group";
 @import "../vendor/bootstrap/close";
 @import "../vendor/bootstrap/toasts";
 @import "../vendor/bootstrap/modal";
 @import "../vendor/bootstrap/tooltip";
-@import "../vendor/bootstrap/popover";
+//@import "../vendor/bootstrap/popover";
 @import "../vendor/bootstrap/carousel";
 @import "../vendor/bootstrap/spinners";
 @import "../vendor/bootstrap/offcanvas";
@@ -56,8 +58,6 @@
 // Utilities
 @import "../vendor/bootstrap/utilities/api";
 // scss-docs-end import-stack
-
-@import 'webfont';
 
 @import 'layout/base';
 

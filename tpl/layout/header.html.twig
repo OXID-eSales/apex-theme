@@ -2,150 +2,154 @@
     {{ include_widget({ cl: "oxwCookieNote", _parent: oView.getClassKey(), nocookie: 1 }) }}
 {% endif %}
 {% block header_main %}
-    {% set headerWidth = oViewConf.getViewThemeParam('sHeaderWidth') %}
-    {% set headerSticky = oViewConf.getViewThemeParam('sHeaderSticky') %}
-    {% set showSearch = oViewConf.getViewThemeParam('sHeaderShowSearch') %}
-    {% if headerWidth == 'container' %}
-<div class="container-xxl{% if headerSticky %} sticky-top{% endif %}">
-    {% endif %}
-    <header class="header{% if headerSticky and headerWidth != 'container' %} sticky-top{% endif %}">
-        <div class="meta">
-            <div class="container{% if headerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
-                <div class="meta-wrapper d-flex justify-content-between">
-                    <ul class="usp-list list-inline m-0">
-                        <li class="list-inline-item">
-                            <svg aria-hidden="true">
-                                <use xlink:href="#box2-fill"></use>
-                            </svg>
-                            Schnelle Lieferung
-                        </li>
-                        <li class="list-inline-item">
-                            <svg aria-hidden="true">
-                                <use xlink:href="#headset"></use>
-                            </svg>
-                            Individuelle Beratung
-                        </li>
-                        <li class="list-inline-item">
-                            <svg aria-hidden="true">
-                                <use xlink:href="#truck"></use>
-                            </svg>
-                            Express Lieferung
-                        </li>
-                        <li class="list-inline-item">
-                            <svg aria-hidden="true">
-                                <use xlink:href="#shield-fill-check"></use>
-                            </svg>
-                            Top Qualität
-                        </li>
-                        <li class="list-inline-item">
-                            <svg aria-hidden="true">
-                                <use xlink:href="#hand-thumbs-up-fill"></use>
-                            </svg>
-                            Hohe Kundenzufriedenheit
-                        </li>
-                    </ul>
 
-                    <div class="dropdowns">
-                        <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg aria-hidden="true">
-                                <use xlink:href="#globe"></use>
-                            </svg>
-                        </button>
-                        <form class="dropdown-menu dropdown-menu-end p-3">
-                            {% block dd_layout_page_header_icon_menu_languages %}
-                                {# Language Dropdown #}
-                                {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
-                            {% endblock %}
-                            {% block dd_layout_page_header_icon_menu_currencies %}
-                                {# Currency Dropdown #}
-                                {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
-                            {% endblock %}
-                        </form>
+    <header class="header">
+        <div class="header-wrapper">
+            <div class="meta">
+                <div class="container-xxl">
+                    <div class="meta-wrapper d-flex justify-content-between">
+                        <ul class="usp-list todo">
+                            <li class="list-inline-item">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#box2-fill"></use>
+                                </svg>
+                                <span class="usp-text">Schnelle Lieferung</span>
+                            </li>
+                            <li class="list-inline-item">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#headset"></use>
+                                </svg>
+                                <span class="usp-text">Individuelle Beratung</span>
+                            </li>
+                            <li class="list-inline-item">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#truck"></use>
+                                </svg>
+                                <span class="usp-text">Express Lieferung</span>
+                            </li>
+                            <li class="list-inline-item">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#shield-fill-check"></use>
+                                </svg>
+                                <span class="usp-text">Top Qualität</span>
+                            </li>
+                            <li class="list-inline-item">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#hand-thumbs-up-fill"></use>
+                                </svg>
+                                <span class="usp-text">Hohe Kundenzufriedenheit</span>
+                            </li>
+                        </ul>
+
+                        <div class="dropdowns d-none d-lg-inline-block">
+                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#globe"></use>
+                                </svg>
+                            </button>
+                            <form class="dropdown-menu dropdown-menu-end p-3">
+                                {% block dd_layout_page_header_icon_menu_languages %}
+                                    {# Language Dropdown #}
+                                    {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                {% endblock %}
+                                {% block dd_layout_page_header_icon_menu_currencies %}
+                                    {# Currency Dropdown #}
+                                    {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                {% endblock %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-box position-relative">
+                <div class="container-xxl">
+                    <div class="header-container">
+
+                        {% block layout_header_logo %}
+                            {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
+                            {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
+                            {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
+                            <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxname.value }}" class="logo-link d-flex">
+                                {% if slogoImg %}
+                                    <img src="{{ oViewConf.getImageUrl(slogoImg) }}" alt="{{ oxcmp_shop.oxshops__oxname.value }}" width="{{ sLogoWidth }}" height="{{ sLogoHeight }}" class="logo-img">
+                                {% else %}
+                                    <span class="h1">{{ oxcmp_shop.oxshops__oxname.value }}</span>
+                                {% endif %}
+                            </a>
+                        {% endblock %}
+
+                        {% include "widget/header/search.html.twig" %}
+
+                        {% block layout_header_top %}
+                            <div class="menu-dropdowns btn-group d-none d-lg-block" role="group">
+                                {% block dd_layout_page_header_icon_menu_account %}
+                                    {% if oxcmp_user or oView.getCompareItemCount() or Errors.loginBoxErrors %}
+                                        {% set blAnon = 0 %}
+                                        {% set force_sid = oView.getSidForWidget() %}
+                                    {% else %}
+                                        {% set blAnon = 1 %}
+                                    {% endif %}
+                                    {# Account Dropdown #}
+                                    {{ include_widget({ cl: "oxwServiceMenu", _parent: oView.getClassKey(), force_sid: force_sid, nocookie: blAnon, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                {% endblock %}
+
+                                {% block dd_layout_page_header_icon_menu_minibasket %}
+                                    {# Minibasket Dropdown #}
+                                    {% if oxcmp_basket.getProductsCount() %}
+                                        {% set blAnon = 0 %}
+                                        {% set force_sid = oView.getSidForWidget() %}
+                                    {% else %}
+                                        {% set blAnon = 1 %}
+                                    {% endif %}
+                                    {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="header-box position-relative">
-            <div class="container{% if headerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
-                <div class="header-container">
-                    {% block dd_widget_header_categorylist_navbar_header %}
-                        <button class="btn btn-toggle d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            {% include "icons/bars.svg" %}
-                        </button>
-                    {% endblock %}
-                    {% block layout_header_logo %}
-                        {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
-                        {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
-                        {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
-                        <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxname.value }}" class="logo-link d-flex">
-                            {% if slogoImg %}
-                                {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                    <picture>
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oViewConf.getImageUrl(slogoImg), 200, '', 'webp') }}">
-                                        <img src="{{ oViewConf.getDynamicImage(oViewConf.getImageUrl(slogoImg), 200, '', 'png') }}" alt="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" class="logo-img">
-                                    </picture>
-                                {% else %}
-                                    <img src="{{ oViewConf.getImageUrl(slogoImg) }}" alt="{{ oxcmp_shop.oxshops__oxname.value }}" width="{{ sLogoWidth }}" height="{{ sLogoHeight }}" class="logo-img">
-                                {% endif %}
-                            {% else %}
-                                <svg version="1.1" class="logo-img default" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 113.4 113.4" style="enable-background:new 0 0 113.4 113.4;" xml:space="preserve">
-                                <style type="text/css">
-                                    .st0{fill:#E1251B;}
-                                    .st1{fill:#FFFFFF;}
-                                </style>
-                                    <rect class="st0" width="113.4" height="113.4"></rect>
-                                    <g>
-                                        <path class="st1" d="M58.4,17.8c7.1,0,14,6.7,14,14.3c0,13.1-5.3,19.3-10.3,19.3c-3.9,0-6.1-2.5-6.1-6.7v-0.8c0,0,4.8-5.2,4.8-14.4
-                                    c0-2.1-0.8-3.4-2.5-3.4C50.9,26,44,48,44,69.3c0,13,3.9,17.1,9.8,17.1c11.5,0,19.7-17.9,20.5-26.6c0,0,1.4-0.1,2.2-0.1
-                                    c1.7,0,4.3,1.3,4.3,7.8c0,4.9-5.5,28.1-24.6,28.1c-14.3,0-23.9-12.4-23.9-30.8C32.4,47.4,40.7,17.8,58.4,17.8z"></path>
-                                    </g>
-                            </svg>
-                            {% endif %}
-                        </a>
-                    {% endblock %}
+        {% block layout_header_bottom %}
+            {{ include_widget({ cl: "oxwCategoryTree", cnid: oView.getCategoryId(), sWidgetType: "header", style: "", _parent: oView.getClassKey(), nocookie: 1 }) }}
+        {% endblock %}
 
-                    {% if showSearch %}
-                        {% include "widget/header/search.html.twig" %}
-                    {% endif %}
+        <div class="fixed-bottom mobile-nav d-lg-none">
+            {% block dd_widget_header_categorylist_navbar_header %}
+                <button class="btn btn-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    {% include "icons/bars.svg" %}
+                    <span class="btn-text">{{ translate({ ident: "MENU" }) }}</span>
+                </button>
+            {% endblock %}
 
-                    {% block layout_header_top %}
-                        <div class="menu-dropdowns btn-group">
+            <a href="#" class="btn btn-toggle btn-search">
+                <svg aria-hidden="true">
+                    <use xlink:href="#search"></use>
+                </svg>
+                <span class="btn-text">{{ translate({ ident: "SEARCH" }) }}</span>
+            </a>
 
-                            {% block dd_layout_page_header_icon_menu_account %}
-                                {% if oxcmp_user or oView.getCompareItemCount() or Errors.loginBoxErrors %}
-                                    {% set blAnon = 0 %}
-                                    {% set force_sid = oView.getSidForWidget() %}
-                                {% else %}
-                                    {% set blAnon = 1 %}
-                                {% endif %}
-                                {# Account Dropdown #}
-                                {{ include_widget({ cl: "oxwServiceMenu", _parent: oView.getClassKey(), force_sid: force_sid, nocookie: blAnon, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
-                            {% endblock %}
+            <a href="#" class="btn btn-toggle btn-search">
+                <svg aria-hidden="true">
+                    <use xlink:href="#person"></use>
+                </svg>
+                <span class="btn-text">
+                    {{ translate({ ident: "ACCOUNT" }) }}
+                </span>
+            </a>
 
-                            {% block dd_layout_page_header_icon_menu_minibasket %}
-                                {# Minibasket Dropdown #}
-                                {% if oxcmp_basket.getProductsCount() %}
-                                    {% set blAnon = 0 %}
-                                    {% set force_sid = oView.getSidForWidget() %}
-                                {% else %}
-                                    {% set blAnon = 1 %}
-                                {% endif %}
-                                {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
-                            {% endblock %}
-                        </div>
-                    {% endblock %}
-                </div>
-            </div>
-            <div class="container{% if headerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
-                {% block layout_header_bottom %}
-                    {{ include_widget({ cl: "oxwCategoryTree", cnid: oView.getCategoryId(), sWidgetType: "header", style: "", _parent: oView.getClassKey(), nocookie: 1 }) }}
-                {% endblock %}
-            </div>
+            <a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+                <svg aria-hidden="true">
+                    <use xlink:href="#star"></use>
+                </svg>
+                <span class="btn-text">{{ translate({ ident: "FAVOURITES" }) }}</span>
+                {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+            </a>
+
+            {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
+
         </div>
     </header>
-    {% if headerWidth == 'container' %}
-</div>
-    {% endif %}
 {% endblock %}
 
 {{ insert_new_basket_item({tpl: "widget/minibasket/newbasketitemmsg.html.twig", type: "message"}) }}

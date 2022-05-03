@@ -143,6 +143,8 @@ $aLang = array(
     'SUMMARY'                                               => 'Summary',
     'LANGUAGE'                                              => 'Language',
     'CURRENCY'                                              => 'Currency',
+    'SHOW_NAVIGATION'                                       => 'Show navigation',
+    'FAVOURITES'                                            => 'Favourites',
 );
 
 /*

@@ -12,12 +12,6 @@
                     </a>
                 </li>
             {% endif %}
-            <li>
-                <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
-                    {{ translate({ ident: "MY_WISH_LIST" }) }}
-                    {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
-                </a>
-            </li>
             {% if oViewConf.getShowWishlist() %}
                 <li>
                     <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_wishlist") }) }}">

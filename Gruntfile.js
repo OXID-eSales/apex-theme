@@ -13,7 +13,7 @@ module.exports = function (grunt) {
          * Set project object
          */
         project: {
-            theme: 'moga-twig',
+            theme: 'apex',
             dev: './',
             out: './out/',
             tmp: './../../../tmp/',
@@ -209,7 +209,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         src: [
-                            '<%= project.dev %>node_modules/roboto-fontface/fonts/roboto/Roboto-Bold.woff*',
+                            '<%= project.dev %>node_modules/@fontsource/oswald/files/oswald-latin-600-normal.woff*',
                             '<%= project.dev %>node_modules/roboto-fontface/fonts/roboto/Roboto-Regular.woff*'
                         ],
                         flatten: true,
