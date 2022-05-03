@@ -96,13 +96,7 @@
 
   svg {
     fill: $ox-meta-color;
-    position: absolute;
-    left: 10px;
-    top: 15px;
-
-    @include media-breakpoint-up(lg) {
-      top: 6px;
-    }
+    margin-right: 10px;
   }
 
   .list-inline-item {
@@ -113,13 +107,14 @@
     bottom: 0;
     margin: 0;
     height: 50px;
-    padding: 0 10px 0 40px;
+    padding: 0 10px;
     line-height: initial;
     transform: translate3d(0, 50px, 0);
     background: $ox-meta-bg;
     font-size: 12px;
     display: flex;
     align-items: center;
+    justify-content: center;
 
     @include rotateText(5);
 

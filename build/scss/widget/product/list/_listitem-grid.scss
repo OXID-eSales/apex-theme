@@ -3,13 +3,18 @@
   border: none;
   height: 100%;
 
+  @include media-breakpoint-up(md) {
+    transition: all 150ms;
+  }
+
   .card-body {
     padding-bottom: 60px;
     position: relative;
-  }
 
-  @include media-breakpoint-up(md) {
-    transition: all 150ms;
+    @include media-breakpoint-up(md) {
+      padding-bottom: $spacer;
+      padding-top: 2 * $spacer;
+    }
   }
 
   .short-desc {
