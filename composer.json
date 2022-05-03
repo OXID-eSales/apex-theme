@@ -1,8 +1,8 @@
 {
-  "name": "oxid-esales/moga-twig-theme",
+  "name": "oxid-esales/apex-theme",
   "description": "APEX Theme",
   "type": "oxideshop-theme",
-  "homepage": "https://github.com/OXID-eSales/moga-twig-theme",
+  "homepage": "https://github.com/OXID-eSales/apex-theme",
   "license": [
     "GPL-3.0"
   ],
@@ -14,7 +14,7 @@
   ],
   "extra": {
     "oxideshop": {
-      "target-directory": "moga-twig",
+      "target-directory": "apex",
       "assets-directory": "out/apex"
     }
   }
