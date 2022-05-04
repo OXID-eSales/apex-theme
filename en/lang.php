@@ -145,6 +145,9 @@ $aLang = array(
     'CURRENCY'                                              => 'Currency',
     'SHOW_NAVIGATION'                                       => 'Show navigation',
     'FAVOURITES'                                            => 'Favourites',
+    'MOVE_CAROUSEL_LEFT'                                    => 'Move carousel left',
+    'MOVE_CAROUSEL_RIGHT'                                   => 'Move carousel right',
+    'WATCH_NOW'                                             => 'Watch now',
 );
 
 /*

@@ -163,6 +163,9 @@ $aLang = array(
     'SHOW_NAVIGATION'                                       => 'Navigation anzeigen',
     'MENU'                                                  => 'Menü',
     'FAVOURITES'                                            => 'Favoriten',
+    'MOVE_CAROUSSEL_LEFT'                                   => 'Karussell nach links verschieben',
+    'MOVE_CAROUSSEL_RIGHT'                                  => 'Karussell nach rechts verschieben',
+    'WATCH_NOW'                                             => 'Jetzt anschauen',
 );
 
 /*

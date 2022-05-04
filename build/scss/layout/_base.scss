@@ -14,18 +14,14 @@
     color: #fff;
   }
 
-  &-white {
-    background: white;
+  &-rounded {
+    border-radius: 20px;
     fill: color-contrast(white);
 
     svg {
       width: 20px;
       height: 20px;
     }
-  }
-
-  &-rounded {
-    border-radius: 20px;
   }
 
   &-outline-primary {
@@ -47,10 +43,18 @@
   background: $highlight;
 }
 
+.text-danger {
+  color: $danger;
+}
+
+.bg-danger {
+  background: $danger;
+}
+
 .todo {
-  //color: deeppink !important;
+  color: deeppink !important;
 }
 
 .bg-todo {
-  //background: deeppink !important;
+  background: deeppink !important;
 }

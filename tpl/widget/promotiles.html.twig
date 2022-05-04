@@ -2,6 +2,7 @@
     {% set oBanners = oView.getBanners() %}
 
     {% if oBanners|length %}
+        {# TODO: We should turn this into vCMS content #}
         <div class="container-xxl">
             <h2 class="todo">Offers and promotions</h2>
         </div>
@@ -30,6 +31,9 @@
                                             <h5 class="card-title h2">{{ oArticle.oxarticles__oxtitle.value }}</h5>
                                             {% if oArticle.oxarticles__oxshortdesc.value|trim %}
                                             <p class="card-text">{{ oArticle.oxarticles__oxshortdesc.value|trim }}</p>
+                                            {% endif %}
+                                            {% if sBannerLink %}
+                                                <span class="btn btn-secondary btn-todo me-auto">{{ translate({ ident: "WATCH_NOW" }) }}</span>
                                             {% endif %}
                                         </div>
                                     {% endif %}

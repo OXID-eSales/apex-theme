@@ -20,20 +20,20 @@
 {% endif %}
 
 {% if products and not empty(products) %}
-    <div class="slider-container d-flex flex-nowrap" id="{{ listId }}">
+    <div class="slider-container d-flex flex-nowrap mb-5" id="{{ listId }}">
         {% for _product in products %}
             {% set testid = listId|cat("_")|cat(loop.index) %}
             {{ include_widget({ cl: "oxwArticleBox", _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), iLinkType: _product.getLinkType(), _object: _product, anid: _product.getId(), sWidgetType: "product", sListType: "listitem_" ~ type, iIndex: testid, blDisableToCart: blDisableToCart, isVatIncluded: oView.isVatIncluded(), showMainLink: showMainLink, recommid: recommid, owishid: owishid, toBasketFunction: toBasketFunction, removeFunction: removeFunction, altproduct: altproduct, inlist: _product.isInList(), skipESIforUser: 1, testid: testid }) }}
         {% endfor %}
     </div>
     <div class="slider-nav">
-        <a class="btn btn-white slide-left">
+        <a class="btn btn-secondary slide-left" aria-label="{{ translate({ ident: "MOVE_CAROUSEL_LEFT" }) }}">
             <svg aria-hidden="true">
                 <use xlink:href="#left"></use>
             </svg>
         </a>
 
-        <a class="btn btn-white slide-right">
+        <a class="btn btn-secondary slide-right" aria-label="{{ translate({ ident: "MOVE_CAROUSEL_RIGHT" }) }}">
             <svg aria-hidden="true">
                 <use xlink:href="#right"></use>
             </svg>

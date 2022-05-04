@@ -1,6 +1,7 @@
 {% capture append = "oxidBlock_content" %}
 
     {% set rsslinks = oView.getRssLinks() %}
+    {# TODO: We should turn this into vCMS content #}
     <div class="start-teaser">
         <div class="container-fluid">
             <div class="row g-0">
@@ -8,14 +9,14 @@
                     <div class="card text-white todo big-tile">
                         <img src="https://picsum.photos/id/1071/900/900" class="card-img card-img-full" alt="..." height="900" width="900">
                         <div class="card-img-overlay">
-                            <h2 class="card-title">
+                            <h1 class="card-title">
                                 Card title
                                 <svg aria-hidden="true" class="d-lg-none">
                                     <use xlink:href="#right"></use>
                                 </svg>
-                            </h2>
+                            </h1>
                             <p class="d-none d-md-block card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <span class="d-none d-md-block btn btn-secondary me-auto">Watch now</span>
+                            <span class="d-none d-md-block btn btn-secondary me-auto bg-todo">Watch now</span>
                         </div>
                         <a href="#" class="stretched-link"></a>
                     </div>
@@ -25,14 +26,14 @@
                         <div class="card text-white todo small-tile">
                             <img src="https://picsum.photos/id/1070/900/450" class="card-img card-img-half" alt="..." width="900" height="450">
                             <div class="card-img-overlay">
-                                <h3 class="card-title">
+                                <h2 class="card-title">
                                     Card title
                                     <svg aria-hidden="true" class="d-lg-none">
                                         <use xlink:href="#right"></use>
                                     </svg>
-                                </h3>
+                                </h2>
                                 <p class="d-none d-md-block card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <span class="d-none d-md-block btn btn-secondary me-auto">Watch now</span>
+                                <span class="d-none d-md-block btn btn-secondary me-auto bg-todo">Watch now</span>
                             </div>
                             <a href="#" class="stretched-link"></a>
                         </div>
@@ -47,7 +48,7 @@
                                     </svg>
                                 </h3>
                                 <p class="d-none d-md-block card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <span class="d-none d-md-block btn btn-secondary me-auto">Watch now</span>
+                                <span class="d-none d-md-block btn btn-secondary me-auto bg-todo">Watch now</span>
                             </div>
                             <a href="#" class="stretched-link"></a>
                         </div>
@@ -76,25 +77,6 @@
         {% endifcontent %}
     {% endblock %}
 #}
-    {% block start_bargain_articles %}
-        {% set showBargain = oViewConf.getViewThemeParam('sShowBargainArticles') %}
-        {% if showBargain %}
-            {% set oBargainArticles = oView.getBargainArticleList() %}
-            {% set bargainWidth = oViewConf.getViewThemeParam('sBargainWidth') %}
-            <div class="article-slider">
-                {% if oBargainArticles and oBargainArticles.count() %}
-                    {% include "widget/product/list-slider.html.twig" with {head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, rsslink: rsslinks.bargainArticles, rssId: "rssBargainProducts", showMainLink: true, iProductsPerLine: 4} %}
-                {% endif %}
-            </div>
-        {% endif %}
-    {% endblock %}
-
-    {% block start_manufacturer_slider %}
-        {% if oViewConf.getViewThemeParam('bl_showManufacturer') %}
-            {% include "widget/manufacturer.html.twig" %}
-        {% endif %}
-    {% endblock %}
-
     {% block start_newest_articles %}
         {% set showNewest = oViewConf.getViewThemeParam('sShowNewestArticles') %}
         {% if showNewest %}
@@ -118,6 +100,25 @@
                     {% include "widget/product/list-slider.html.twig" with {head: "START_TOP_PRODUCTS_HEADER"|translate, subhead: "START_TOP_PRODUCTS_SUBHEADER"|translate(oTopArticles.count()), listId: "topBox", products: oTopArticles, rsslink: rsslinks.topArticles, rssId: "rssTopProducts", showMainLink: true, iProductsPerLine: 2} %}
                 {% endif %}
             </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block start_bargain_articles %}
+        {% set showBargain = oViewConf.getViewThemeParam('sShowBargainArticles') %}
+        {% if showBargain %}
+            {% set oBargainArticles = oView.getBargainArticleList() %}
+            {% set bargainWidth = oViewConf.getViewThemeParam('sBargainWidth') %}
+            <div class="article-slider">
+                {% if oBargainArticles and oBargainArticles.count() %}
+                    {% include "widget/product/list-slider.html.twig" with {head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, rsslink: rsslinks.bargainArticles, rssId: "rssBargainProducts", showMainLink: true, iProductsPerLine: 4} %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block start_manufacturer_slider %}
+        {% if oViewConf.getViewThemeParam('bl_showManufacturer') %}
+            {% include "widget/manufacturer.html.twig" %}
         {% endif %}
     {% endblock %}
 {% endcapture %}

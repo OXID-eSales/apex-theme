@@ -89,14 +89,26 @@
 }
 
 .brand-card {
-  img {
+  .card-img {
     opacity: .7;
+  }
+
+  .card-title {
+    margin-bottom: 2 * $spacer;
+  }
+
+  .logo {
+    filter: invert(1);
+    width: 60%;
+    height: auto;
+    margin-bottom: 2 * $spacer;
   }
 
   .card-img-overlay {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
   }
 
   .btn {
@@ -142,6 +154,10 @@
     padding: $spacer * 4 $spacer;
     margin-bottom: 3rem;
   }
+}
+
+.manufacturer-list-logo {
+  filter: grayscale(100%) brightness(70%) contrast(2);
 }
 
 .card-img-overlay {

@@ -8,7 +8,7 @@
   }
 
   .card-body {
-    padding-bottom: 60px;
+    padding-bottom: 40px;
     position: relative;
 
     @include media-breakpoint-up(md) {
@@ -56,10 +56,6 @@
     padding-right: 1rem;
   }
 
-  .card-title {
-    margin: 0;
-  }
-
   .price {
     position: absolute;
     bottom: $spacer;
@@ -75,7 +71,7 @@
     font-family: $font-family-base;
     font-size: 0.875rem;
     position: absolute;
-    top: -$spacer;
+    top: -2 * $spacer;
 
     @include media-breakpoint-up(lg) {
       top: 0;
