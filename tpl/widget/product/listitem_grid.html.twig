@@ -36,12 +36,11 @@
 
 
             {# TODO: We should have an attribute here #}
-            <div class="badges">
-                <div class="badge bg-todo">New</div>
-                {% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %}
+            {% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %}
+                <div class="badges">
                     <div class="badge bg-danger">sale</div>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
 
             {% block widget_product_listitem_grid_tobasket %}
                 <div class="actions d-none d-lg-block">
