@@ -64,6 +64,24 @@ $enable-negative-margins:     false;
 $enable-deprecation-messages: true;
 $enable-important-utilities:  true;
 
+/// Grid
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1700px
+);
+
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+        xxl: 1620px
+);
+
 /// Header
 $ox-header-bg: #fff;
 $ox-header-color: #000;

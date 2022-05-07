@@ -15,9 +15,11 @@
     width: 50%;
     padding-right: $spacer;
     justify-content: center;
+    height: 30px;
 
     @include media-breakpoint-up(lg) {
       padding: 0;
+      height: auto;
       width: unset;
       justify-content: unset;
     }

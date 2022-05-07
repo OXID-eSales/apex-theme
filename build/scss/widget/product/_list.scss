@@ -64,7 +64,9 @@
   overflow-y: hidden;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-snap-align: center;
   scroll-behavior: smooth;
+  scroll-margin-inline-start: 50px;
   -webkit-overflow-scrolling: touch;
   margin-bottom: $grid-gutter-width/2;
 

@@ -21,16 +21,10 @@
     <div class="card product-card">
         {% block widget_product_listitem_grid_gridpicture %}
         <div class="product-img-wrapper">
-            {% if oViewConf.isModuleActive('cnc / imagebutler') and product.getMasterZoomPictureUrl(1) %}
-                <picture class="card-picture">
-                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(product.getMasterZoomPictureUrl(1), '160', '160', 'webp', true) }}" media="(max-width: 375px)">
 
-                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(product.getMasterZoomPictureUrl(1), '300', '300', 'webp', true) }}">
-                    <source srcset="{{ oViewConf.getDynamicImage(product.getMasterZoomPictureUrl(1), '300', '300', 'jpg', true) }}">
-                    <img loading="lazy" width="300" height="300" src="{{ oViewConf.getDynamicImage(product.getMasterZoomPictureUrl(1), '160', '160', 'jpg', true) }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
-                </picture>
-            {% else %}
-                <img loading="lazy" width="300" height="300" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
+            <img loading="lazy" width="300" height="300" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
+            {% if product.getMasterZoomPictureUrl(2) %}
+                <img loading="lazy" width="300" height="300" src="{{ product.getMasterZoomPictureUrl(2) }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img img-2">
             {% endif %}
             <a href="{{ _productLink }}" class="stretched-link"></a>
 
@@ -163,7 +157,7 @@
             <div class="short-desc">
                 {{ product.oxarticles__oxshortdesc.value }}
             </div>
-            <a href="{{ _productLink }}" class="stretched-link"></a>
+            <a href="{{ _productLink }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }}"></a>
         </div>
     </div>
 {% endblock %}

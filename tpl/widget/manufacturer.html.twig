@@ -8,57 +8,35 @@
 
             <div class="top-brands my-5 todo">
                 <div class="row row-cols-2 row-cols-lg-4">
+                    {% for i in 1..4 %}
                     <div class="col">
                         <div class="card brand-card bg-dark text-white">
-                            <img src="https://picsum.photos/id/1071/400/400" class="card-img" alt="Brand">
+                            <picture>
+                                <source srcset="{{ oViewConf.getImageUrl('content/promo.webp') }}" media="(min-width: 768px)" type="image/webp">
+                                <img src="{{ oViewConf.getImageUrl('content/promo-sm.webp') }}" class="card-img" alt="Promotion" width="460" height="460" type="image/webp">
+                            </picture>
                             <div class="card-img-overlay">
-                                <img loading="lazy" class="logo" src="http://localhost.local/out/pictures/generated/manufacturer/icon/100_100_75/big_matsol_1_mico.png" alt="Brand Logo">
+                                <img loading="lazy" class="logo" src="/out/pictures/master/manufacturer/icon/wooolf.svg" alt="Wooolf Fashion">
                                 <a href="#" class="btn btn-secondary stretched-link bg-todo">Marke entdecken</a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col">
-                        <div class="card brand-card bg-dark text-white">
-                            <img src="https://picsum.photos/id/1071/400/400" class="card-img" alt="Brand">
-                            <div class="card-img-overlay">
-                                <img loading="lazy" class="logo" src="http://localhost.local/out/pictures/generated/manufacturer/icon/100_100_75/big_matsol_1_mico.png" alt="Brand Logo">
-                                <a href="#" class="btn btn-secondary stretched-link bg-todo">Marke entdecken</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card brand-card bg-dark text-white">
-                            <img src="https://picsum.photos/id/1071/400/400" class="card-img" alt="Brand">
-                            <div class="card-img-overlay">
-                                <img loading="lazy" class="logo" src="http://localhost.local/out/pictures/generated/manufacturer/icon/100_100_75/big_matsol_1_mico.png" alt="Brand Logo">
-                                <a href="#" class="btn btn-secondary stretched-link bg-todo">Marke entdecken</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card brand-card bg-dark text-white">
-                            <img src="https://picsum.photos/id/1071/400/400" class="card-img" alt="Brand">
-                            <div class="card-img-overlay">
-                                <img loading="lazy" class="logo" src="http://localhost.local/out/pictures/generated/manufacturer/icon/100_100_75/big_matsol_1_mico.png" alt="Brand Logo">
-                                <a href="#" class="btn btn-secondary stretched-link bg-todo">Marke entdecken</a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
 
             <div class="row manufacturer-list">
-                {% set counter = 0 %}
                 {% for oManufacturer in oView.getManufacturerForSlider() %}
                     {% if oManufacturer.oxmanufacturers__oxicon.value %}
-                        {% set counter = counter + 1 %}
-                        {% if counter <= 8 %}
+                        {% if loop.index <= 8 %}
                             <div class="col-sm-6 col-md-4 col-lg">
                                 <a href="{{ oManufacturer.getLink() }}" title="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}" class="d-block text-center">
-                                    <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                                    {% if oManufacturer.oxmanufacturers__oxicon.value |split('.')|last == 'svg' %}
+                                        {% set path = oViewConf.getPictureDir() ~ "master/manufacturer/icon/" ~ oManufacturer.oxmanufacturers__oxicon.value %}
+                                        <img loading="lazy" class="manufacturer-list-logo" src="{{ path }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                                    {% else %}
+                                        <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                                    {% endif %}
                                 </a>
                             </div>
                         {% endif %}
