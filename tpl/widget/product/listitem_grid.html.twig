@@ -22,9 +22,12 @@
         {% block widget_product_listitem_grid_gridpicture %}
         <div class="product-img-wrapper">
 
-            <img loading="lazy" width="300" height="300" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
+            <img loading="lazy" width="350" height="220" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
             {% if product.getMasterZoomPictureUrl(2) %}
-                <img loading="lazy" width="300" height="300" src="{{ product.getMasterZoomPictureUrl(2) }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img img-2">
+                <picture>
+                    <source type="image/webp" srcset="{{ product.getMasterZoomPictureUrl(2) }}" media="(min-width: 1024px)">
+                    <img class="product-img img-2" width="350" height="220" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
+                </picture>
             {% endif %}
             <a href="{{ _productLink }}" class="stretched-link"></a>
 

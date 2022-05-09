@@ -126,8 +126,9 @@
       animation: initial;
       height: auto;
       font-size: 16px;
-      padding: 0 0 0 40px;
+      padding: 0;
       flex: 1 1 auto;
+      justify-content: flex-start;
     }
   }
 }
@@ -135,6 +136,7 @@
 .mobile-nav {
   background: $ox-header-bg;
   display: flex;
+  box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
 
   .btn {
     flex: 1 1 auto;
