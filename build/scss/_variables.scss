@@ -43,6 +43,8 @@ $theme-colors: (
 $body-color: #000;
 $body-bg: #EAECED;
 
+$rfs-base-value: 0.7rem;
+
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -75,9 +77,9 @@ $ox-meta-link-color: #fff;
 $dropdown-border-color: #fff;
 
 /// Footer
-$ox-footer-bg: #fff;
-$ox-footer-color: #000;
-$ox-footer-link-color: #000;
+$ox-footer-bg: #474C58;
+$ox-footer-color: #C7CBD0;
+$ox-footer-link-color: #C7CBD0;
 
 /// Ratings
 $ox-rating-star-filled-color: $warning;

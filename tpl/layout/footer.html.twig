@@ -10,57 +10,33 @@
     {% if footerWidth == 'container' %}
         <div class="container-xxl">
     {% endif %}
-            <footer class="footer text-center text-md-start small py-5">
-                <div class="container{% if footerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
+            <footer class="footer py-5">
+                <div class="container-xxl">
                     {% block footer_main_row %}
                         <div class="row mb-4">
-                            <div class="col-12{% if oView.showNewsletter() %} col-lg-8{% endif %}">
-                                <div class="row">
-                                    {% block dd_footer_servicelist %}
-                                    <div class="col-12 {% if blShowFullFooter %}col-md-6 col-lg-3{% else %}col-lg-6{% endif %} mb-3">
-                                        <div class="h4 text-uppercase">{{ translate({ ident: "SERVICES" }) }}</div>
-                                        <div class="footer-content">
-                                            {% block dd_footer_servicelist_inner %}
-                                            {{ include_widget({ cl: "oxwServiceList", noscript: 1, nocookie: 1, force_sid: force_sid }) }}
-                                            {% endblock %}
-                                        </div>
-                                    </div>
+
+                            {% block dd_footer_servicelist %}
+                            <div class="col-6 {% if blShowFullFooter %}col-md-6 col-lg-3{% else %}col-lg-6{% endif %} mb-3">
+                                <div class="h4 text-uppercase">{{ translate({ ident: "SERVICES" }) }}</div>
+                                <div class="footer-content">
+                                    {% block dd_footer_servicelist_inner %}
+                                    {{ include_widget({ cl: "oxwServiceList", noscript: 1, nocookie: 1, force_sid: force_sid }) }}
                                     {% endblock %}
-                                    {% block dd_footer_information %}
-                                    <div
-                                            class="col-12 {% if blShowFullFooter %}col-md-6 col-lg-3{% else %}col-lg-6{% endif %} mb-3 footer-information">
-                                        <div class="h4 text-uppercase">{{ translate({ ident: "INFORMATION" }) }}</div>
-                                        <div class="footer-content">
-                                            {% block dd_footer_information_inner %}
-                                            {{ include_widget({ cl: "oxwInformation", noscript: 1, nocookie: 1, force_sid: force_sid }) }}
-                                            {% endblock %}
-                                        </div>
-                                    </div>
-                                    {% endblock %}
-                                    {% if blShowFullFooter %}
-                                    {% block dd_footer_manufacturerlist %}
-                                    <div class="col-12 col-md-6 col-lg-3 mb-3">
-                                        <div class="h4 text-uppercase">{{ translate({ ident: "OUR_BRANDS" }) }}</div>
-                                        <div class="footer-content">
-                                            {% block dd_footer_manufacturerlist_inner %}
-                                            {{ include_widget({ cl: "oxwManufacturerList", _parent: oView.getClassKey(), noscript: 1, nocookie: 1 }) }}
-                                            {% endblock %}
-                                        </div>
-                                    </div>
-                                    {% endblock %}
-                                    {% block dd_footer_categorytree %}
-                                    <div class="col-12 col-md-6 col-lg-3 mb-3">
-                                        <div class="h4 text-uppercase">{{ translate({ ident: "CATEGORIES" }) }}</div>
-                                        <div class="footer-content">
-                                            {% block dd_footer_categorytree_inner %}
-                                            {{ include_widget({ cl: "oxwCategoryTree", _parent: oView.getClassKey(), sWidgetType: "footer", noscript: 1, nocookie: 1 }) }}
-                                            {% endblock %}
-                                        </div>
-                                    </div>
-                                    {% endblock %}
-                                    {% endif %}
                                 </div>
                             </div>
+                            {% endblock %}
+                            {% block dd_footer_information %}
+                            <div
+                                    class="col-6 {% if blShowFullFooter %}col-md-6 col-lg-3{% else %}col-lg-6{% endif %} mb-3 footer-information">
+                                <div class="h4 text-uppercase">{{ translate({ ident: "INFORMATION" }) }}</div>
+                                <div class="footer-content">
+                                    {% block dd_footer_information_inner %}
+                                    {{ include_widget({ cl: "oxwInformation", noscript: 1, nocookie: 1, force_sid: force_sid }) }}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                            {% endblock %}
+
                         {% if oView.showNewsletter() %}
                             <div class="col-12 col-lg-4">
                                 <div class="mb-3 footer-newsletter">

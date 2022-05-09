@@ -1,3 +1,7 @@
+body {
+  @include font-size(1rem);
+}
+
 .btn {
   svg {
     width: 16px;

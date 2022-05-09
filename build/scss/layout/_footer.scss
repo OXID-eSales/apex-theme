@@ -24,10 +24,10 @@
       padding: 5px 10px;
     }
   }
-}
 
-.vat-info-text {
-  a {
-    color: $ox-footer-color;
+  &-newsletter {
+    padding-top: 35px;
+    margin-top: 35px;
+    border-top: 1px solid $ox-footer-color;
   }
 }
