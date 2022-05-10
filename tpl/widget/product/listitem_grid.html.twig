@@ -4,6 +4,9 @@
     {% set iIndex = oView.getIndex() %}
     {% set showMainLink = oView.getShowMainLink() %}
     {% set currency = oView.getActCurrency() %}
+    {% set oUnitPrice = product.getUnitPrice() %}
+    {% set tprice = product.getTPrice() %}
+    {% set price = product.getPrice() %}
     {% if showMainLink %}
         {% set _productLink = product.getMainLink() %}
     {% else %}
@@ -18,23 +21,23 @@
     <div class="card product-card">
         {% block widget_product_listitem_grid_gridpicture %}
         <div class="product-img-wrapper">
-            {% if oViewConf.isModuleActive('cnc / imagebutler') and product.getMasterZoomPictureUrl(1) %}
-                <picture class="card-picture">
-                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(product.getMasterZoomPictureUrl(1), '160', '160', 'webp', true) }}" media="(max-width: 375px)">
 
-                    <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(product.getMasterZoomPictureUrl(1), '300', '300', 'webp', true) }}">
-                    <source srcset="{{ oViewConf.getDynamicImage(product.getMasterZoomPictureUrl(1), '300', '300', 'jpg', true) }}">
-                    <img loading="lazy" width="300" height="300" src="{{ oViewConf.getDynamicImage(product.getMasterZoomPictureUrl(1), '160', '160', 'jpg', true) }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
+            <img loading="lazy" width="350" height="220" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
+            {% if product.getMasterZoomPictureUrl(2) %}
+                <picture>
+                    <source type="image/webp" srcset="{{ product.getMasterZoomPictureUrl(2) }}" media="(min-width: 1024px)">
+                    <img class="product-img img-2" width="350" height="220" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
                 </picture>
-            {% else %}
-                <img loading="lazy" width="300" height="300" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
             {% endif %}
             <a href="{{ _productLink }}" class="stretched-link"></a>
 
-            <div class="badges">
-                <div class="badge bg-todo">New</div>
-                <div class="badge bg-todo">vegan</div>
-            </div>
+
+            {# TODO: We should have an attribute here #}
+            {% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %}
+                <div class="badges">
+                    <div class="badge bg-danger">sale</div>
+                </div>
+            {% endif %}
 
             {% block widget_product_listitem_grid_tobasket %}
                 <div class="actions d-none d-lg-block">
@@ -83,7 +86,7 @@
                                 </form>
                             {% endhasrights %}
                         {% else %}
-                            <a class="btn btn-white w-100" href="{{ _productLink }}">{{ translate({ ident: "DETAILS" }) }}</a>
+                            <a class="btn btn-secondary w-100" href="{{ _productLink }}">{{ translate({ ident: "DETAILS" }) }}</a>
                         {% endif %}
                     </div>
                     <div class="right">
@@ -100,8 +103,6 @@
                     </div>
                 </div>
             {% endblock %}
-
-
         </div>
         {% endblock %}
 
@@ -115,10 +116,6 @@
                 <div class="d-flex flex-column price h5{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} sale{% endif %}">
                     {% block widget_product_listitem_grid_price %}
                         {% hasrights { ident: "SHOWARTICLEPRICE" } %}
-                            {% set oUnitPrice = product.getUnitPrice() %}
-                            {% set tprice = product.getTPrice() %}
-                            {% set price = product.getPrice() %}
-
                             {% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %}
                                 <span class="oldPrice text-muted">
                                 <del>{{ product.getFTPrice() }} {{ currency.sign }}</del>
@@ -163,7 +160,7 @@
             <div class="short-desc">
                 {{ product.oxarticles__oxshortdesc.value }}
             </div>
-            <a href="{{ _productLink }}" class="stretched-link"></a>
+            <a href="{{ _productLink }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }}"></a>
         </div>
     </div>
 {% endblock %}

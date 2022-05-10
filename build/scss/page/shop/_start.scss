@@ -31,7 +31,6 @@
   }
 
   .card {
-    overflow: hidden;
     background: #000;
     border: none;
 
@@ -43,24 +42,10 @@
       }
     }
 
-    img {
-      transition: $transition-base;
-    }
-
     svg {
       fill: currentColor;
       width: 18px;
       height: 18px;
-    }
-
-    @include media-breakpoint-up(lg) {
-      &:focus-within,
-      &:hover {
-        img {
-          transform: scale(1.1);
-          opacity: 0.7;
-        }
-      }
     }
   }
 
@@ -89,14 +74,26 @@
 }
 
 .brand-card {
-  img {
+  .card-img {
     opacity: .7;
+  }
+
+  .card-title {
+    margin-bottom: 2 * $spacer;
+  }
+
+  .logo {
+    filter: invert(1);
+    width: 60%;
+    height: auto;
+    margin-bottom: 2 * $spacer;
   }
 
   .card-img-overlay {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
   }
 
   .btn {
@@ -144,6 +141,16 @@
   }
 }
 
+.manufacturer-list {
+  .col-lg {
+    max-width: 200px;
+  }
+
+  &-logo {
+    filter: grayscale(100%) brightness(70%) contrast(2);
+  }
+}
+
 .card-img-overlay {
   display: flex;
   flex-direction: column;
@@ -164,6 +171,7 @@
     &-img {
       aspect-ratio: 3/4;
       object-fit: cover;
+      height: auto;
     }
   }
 }

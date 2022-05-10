@@ -21,6 +21,7 @@ $h5-font-size:                $font-size-base * 1.125;
 $h6-font-size:                $font-size-base;
 
 $font-family-price: $headings-font-family;
+$headings-margin-bottom: 2 * $spacer;
 
 $primary: #000;
 $secondary: #fff;
@@ -62,6 +63,24 @@ $enable-validation-icons:     true;
 $enable-negative-margins:     false;
 $enable-deprecation-messages: true;
 $enable-important-utilities:  true;
+
+/// Grid
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1700px
+);
+
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+        xxl: 1620px
+);
 
 /// Header
 $ox-header-bg: #fff;

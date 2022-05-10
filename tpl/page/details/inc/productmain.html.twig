@@ -237,23 +237,14 @@
                 {% if oManufacturer %}
                     <div class="brandLogo d-none d-md-block">
                         <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
-                            {% if oManufacturer.oxmanufacturers__oxicon.value %}
-                                <picture>
-                                    {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oManufacturer.getIconUrl(), 100, '', 'webp') }}" media="(min-width: 768px)">
-                                        <img class="d-none d-md-block" loading="lazy" src="{{ oViewConf.getDynamicImage(oManufacturer.getIconUrl(), 100, '', '') }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
-                                    {% else %}
-                                        <img class="d-none d-md-block" loading="lazy" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
-                                    {% endif %}
-                                </picture>
-                            {% endif %}
+                            {{ oManufacturer.oxmanufacturers__oxtitle.value }}
                         </a>
                     </div>
                 {% endif %}
             {% endblock %}
 
             {% block details_productmain_title %}
-                <h1 class="details-title">
+                <h1 class="h1 details-title">
                     {{ oDetailsProduct.oxarticles__oxtitle.value }} {{ oDetailsProduct.oxarticles__oxvarselect.value }}
                 </h1>
             {% endblock %}

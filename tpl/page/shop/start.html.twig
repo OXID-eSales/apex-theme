@@ -1,55 +1,65 @@
 {% capture append = "oxidBlock_content" %}
 
     {% set rsslinks = oView.getRssLinks() %}
+    {# TODO: We should turn this into vCMS content #}
     <div class="start-teaser">
         <div class="container-fluid">
             <div class="row g-0">
                 <div class="col-lg-6">
-                    <div class="card text-white todo big-tile">
-                        <img src="https://picsum.photos/id/1071/900/900" class="card-img card-img-full" alt="..." height="900" width="900">
+                    <div class="card text-white todo big-tile zoom-in">
+                        <picture>
+                            <source srcset="{{ oViewConf.getImageUrl('content/Sportscar.webp') }}" media="(min-width: 768px)" type="image/webp">
+                            <img src="{{ oViewConf.getImageUrl('content/Sportscar-sm.webp') }}" class="card-img card-img-full" alt="Sportscar" width="900" height="900">
+                        </picture>
                         <div class="card-img-overlay">
-                            <h2 class="card-title">
-                                Card title
+                            <h1 class="card-title">
+                                Sportscar
                                 <svg aria-hidden="true" class="d-lg-none">
                                     <use xlink:href="#right"></use>
                                 </svg>
-                            </h2>
+                            </h1>
                             <p class="d-none d-md-block card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <span class="d-none d-md-block btn btn-secondary me-auto">Watch now</span>
+                            <span class="d-none d-md-block btn btn-secondary me-auto bg-todo">Watch now</span>
                         </div>
-                        <a href="#" class="stretched-link"></a>
+                        <a href="#" class="stretched-link" aria-label="Watch now"></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="d-flex flex-row d-lg-block slider-container">
-                        <div class="card text-white todo small-tile">
-                            <img src="https://picsum.photos/id/1070/900/450" class="card-img card-img-half" alt="..." width="900" height="450">
+                        <div class="card text-white todo small-tile zoom-in">
+                            <picture>
+                                <source srcset="{{ oViewConf.getImageUrl('content/Transporter.webp') }}" media="(min-width: 768px)" type="image/webp">
+                                <img src="{{ oViewConf.getImageUrl('content/Transporter-sm.webp') }}" class="card-img card-img-half" alt="Transporter" width="900" height="450">
+                            </picture>
                             <div class="card-img-overlay">
-                                <h3 class="card-title">
-                                    Card title
+                                <h2 class="card-title">
+                                    All you need for your business
                                     <svg aria-hidden="true" class="d-lg-none">
                                         <use xlink:href="#right"></use>
                                     </svg>
-                                </h3>
+                                </h2>
                                 <p class="d-none d-md-block card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <span class="d-none d-md-block btn btn-secondary me-auto">Watch now</span>
+                                <span class="d-none d-md-block btn btn-secondary me-auto bg-todo">Watch now</span>
                             </div>
-                            <a href="#" class="stretched-link"></a>
+                            <a href="#" class="stretched-link" aria-label="Watch now"></a>
                         </div>
 
-                        <div class="card text-white todo small-tile">
-                            <img src="https://picsum.photos/id/1072/900/450" class="card-img card-img-half" alt="..." width="900" height="450">
+                        <div class="card text-white todo small-tile zoom-in">
+                            <picture>
+                                <source srcset="{{ oViewConf.getImageUrl('content/Mood.webp') }}" media="(min-width: 768px)" type="image/webp">
+                                <img src="{{ oViewConf.getImageUrl('content/Mood-sm.webp') }}" class="card-img card-img-half" alt="Mood" width="900" height="450">
+                            </picture>
                             <div class="card-img-overlay">
                                 <h3 class="card-title">
-                                    Card title
+                                    Get your Faminy into our SUV
                                     <svg aria-hidden="true" class="d-lg-none">
                                         <use xlink:href="#right"></use>
                                     </svg>
                                 </h3>
                                 <p class="d-none d-md-block card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <span class="d-none d-md-block btn btn-secondary me-auto">Watch now</span>
+                                <span class="d-none d-md-block btn btn-secondary me-auto bg-todo">Watch now</span>
                             </div>
-                            <a href="#" class="stretched-link"></a>
+                            <a href="#" class="stretched-link" aria-label="Watch now"></a>
                         </div>
                     </div>
                 </div>
@@ -61,11 +71,37 @@
         {% include "widget/categories.html.twig" %}
     {% endif %}
 
-    {% block start_promoslider %}
+    <div class="container-xxl">
+        <h2 class="todo">Offers and promotions</h2>
+    </div>
+    <div class="container-fluid">
+        <div class="promo-tiles row-spacer">
+            <div class="row">
+                {% for i in 1..4 %}
+                    <div class="col-6 col-lg">
+                        <div class="card text-white zoom-in">
+                            <picture>
+                                <source srcset="{{ oViewConf.getImageUrl('content/promo.webp') }}" media="(min-width: 768px)" type="image/webp">
+                                <img src="{{ oViewConf.getImageUrl('content/promo-sm.webp') }}" class="card-img card-img-half" alt="Promotion" width="460" height="580">
+                            </picture>
+
+                            <div class="card-img-overlay text-center">
+                                <h5 class="card-title h2">Now in blue</h5>
+
+                                <a href="#" class="btn btn-secondary mx-auto stretched-link">{{ translate({ ident: "WATCH_NOW" }) }}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {# % block start_promoslider %}
         {% if oView.getBanners() and not empty(oView.getBanners()) %}
             {% include "widget/promotiles.html.twig" %}
         {% endif %}
-    {% endblock %}
+    {% endblock %#}
 {#
     {% block start_welcome_text %}
         {% ifcontent ident "oxstartwelcome" set oCont %}
@@ -76,31 +112,12 @@
         {% endifcontent %}
     {% endblock %}
 #}
-    {% block start_bargain_articles %}
-        {% set showBargain = oViewConf.getViewThemeParam('sShowBargainArticles') %}
-        {% if showBargain %}
-            {% set oBargainArticles = oView.getBargainArticleList() %}
-            {% set bargainWidth = oViewConf.getViewThemeParam('sBargainWidth') %}
-            <div class="article-slider">
-                {% if oBargainArticles and oBargainArticles.count() %}
-                    {% include "widget/product/list-slider.html.twig" with {head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, rsslink: rsslinks.bargainArticles, rssId: "rssBargainProducts", showMainLink: true, iProductsPerLine: 4} %}
-                {% endif %}
-            </div>
-        {% endif %}
-    {% endblock %}
-
-    {% block start_manufacturer_slider %}
-        {% if oViewConf.getViewThemeParam('bl_showManufacturer') %}
-            {% include "widget/manufacturer.html.twig" %}
-        {% endif %}
-    {% endblock %}
-
     {% block start_newest_articles %}
         {% set showNewest = oViewConf.getViewThemeParam('sShowNewestArticles') %}
         {% if showNewest %}
             {% set oNewestArticles = oView.getNewestArticles() %}
             {% set newestWidth = oViewConf.getViewThemeParam('sNewestWidth') %}
-            <div class="article-slider">
+            <div class="article-slider row-spacer">
                 {% if oNewestArticles and oNewestArticles.count() %}
                     {% include "widget/product/list-slider.html.twig" with {head: "START_NEWEST_HEADER"|translate, subhead: "START_NEWEST_SUBHEADER"|translate, listId: "newItems", products: oNewestArticles, rsslink: rsslinks.newestArticles, rssId: "rssNewestProducts", showMainLink: true, iProductsPerLine: 4} %}
                 {% endif %}
@@ -113,11 +130,30 @@
         {% if showTop %}
             {% set topWidth = oViewConf.getViewThemeParam('sTopWidth') %}
             {% set oTopArticles = oView.getTop5ArticleList() %}
-            <div class="article-slider">
+            <div class="article-slider row-spacer">
                 {% if oTopArticles and oTopArticles.count() %}
                     {% include "widget/product/list-slider.html.twig" with {head: "START_TOP_PRODUCTS_HEADER"|translate, subhead: "START_TOP_PRODUCTS_SUBHEADER"|translate(oTopArticles.count()), listId: "topBox", products: oTopArticles, rsslink: rsslinks.topArticles, rssId: "rssTopProducts", showMainLink: true, iProductsPerLine: 2} %}
                 {% endif %}
             </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block start_bargain_articles %}
+        {% set showBargain = oViewConf.getViewThemeParam('sShowBargainArticles') %}
+        {% if showBargain %}
+            {% set oBargainArticles = oView.getBargainArticleList() %}
+            {% set bargainWidth = oViewConf.getViewThemeParam('sBargainWidth') %}
+            <div class="article-slider row-spacer">
+                {% if oBargainArticles and oBargainArticles.count() %}
+                    {% include "widget/product/list-slider.html.twig" with {head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, rsslink: rsslinks.bargainArticles, rssId: "rssBargainProducts", showMainLink: true, iProductsPerLine: 4} %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block start_manufacturer_slider %}
+        {% if oViewConf.getViewThemeParam('bl_showManufacturer') %}
+            {% include "widget/manufacturer.html.twig" %}
         {% endif %}
     {% endblock %}
 {% endcapture %}
