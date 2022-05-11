@@ -261,17 +261,17 @@ $aLang = array(
     'SHOP_THEME_blGAAnonymizeIPs'              => 'IP-Adressen anonymisieren (in DE Pflicht!)',
 
     'SHOP_THEME_sLogoFile'        => 'Dateiname des Logos im Header',
-    'HELP_SHOP_THEME_sLogoFile'   => 'Relativ zu dem Pfad <code>/out/moga/img/</code>.',
+    'HELP_SHOP_THEME_sLogoFile'   => 'Relativ zu dem Pfad <code>/out/apex/img/</code>.',
     'SHOP_THEME_sLogoWidth'       => 'Breite des Header-Logos',
     'HELP_SHOP_THEME_sLogoWidth'  => 'Angaben in Pixel.',
     'SHOP_THEME_sLogoHeight'      => 'Höhe des Header-Logos',
     'HELP_SHOP_THEME_sLogoHeight' => 'Angaben in Pixel.',
 
     'SHOP_THEME_sEmailLogo'      => 'Dateiname des Logos im E-Mail-Kopf',
-    'HELP_SHOP_THEME_sEmailLogo' => 'Relativ zu dem Pfad <code>/out/moga/img/</code>.',
+    'HELP_SHOP_THEME_sEmailLogo' => 'Relativ zu dem Pfad <code>/out/apex/img/</code>.',
 
     'SHOP_THEME_sFaviconFile'             => 'Dateiname des Favicons',
-    'HELP_SHOP_THEME_sFaviconFile'        => 'Hiermit ist das Favicon gemeint, welches im Browser auch beim Tab angezeigt wird.<br>In der Regel handelt es sich hier um eine .ico-Datei.<br>Relativ zu dem Pfad <code>/out/moga/img/favicons/</code>.',
+    'HELP_SHOP_THEME_sFaviconFile'        => 'Hiermit ist das Favicon gemeint, welches im Browser auch beim Tab angezeigt wird.<br>In der Regel handelt es sich hier um eine .ico-Datei.<br>Relativ zu dem Pfad <code>/out/apex/img/favicons/</code>.',
     'SHOP_THEME_sFavicon16File'           => 'Dateiname des Favicons mit den Maßen 16*16px.',
     'SHOP_THEME_sFavicon32File'           => 'Dateiname des Favicons mit den Maßen 32*32px.',
     'SHOP_THEME_aAppleTouchIcon'          => 'Apple Home-Screen Icon 310*310px.',
