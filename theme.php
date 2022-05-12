@@ -380,7 +380,7 @@ $aTheme = array(
             'group' => 'favicons',
             'name' => 'aOGImage',
             'type' => 'str',
-            'value' => 'moga.png',
+            'value' => 'apex.png',
         ),
         [
             'group' => 'favicons',
