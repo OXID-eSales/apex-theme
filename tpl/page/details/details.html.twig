@@ -41,36 +41,6 @@
         {% endif %}
 
         {% set actCategory = oView.getActiveCategory() %}
-        <div class="row d-md-flex" id="detailsItemsPager">
-            <div class="col-3 details-pager-overview">
-                <a href="{{ actCategory.toListLink }}" class="details-pager-link d-flex">
-                    <i class="moga-bars"></i>
-                    <span class="details-pager d-none">{{ translate({ ident: "BACK_TO_OVERVIEW" }) }}</span>
-                </a>
-            </div>
-            <div class="col-3 details-pager-prev">
-                {% if actCategory.prevProductLink %}
-                    <a id="linkPrevArticle" class="details-pager-link d-flex" href="{{ actCategory.prevProductLink }}">
-                        <i class="moga-left"></i>
-                        <span class="details-pager d-none">{{ translate({ ident: "PREVIOUS_PRODUCT" }) }}</span>
-                    </a>
-                {% endif %}
-            </div>
-            <div class="col-3 text-center details-pager-current-page">
-                {% if actCategory.iProductPos %}
-                    {{ translate({ ident: "PRODUCT" }) }} {{ actCategory.iProductPos }} {{ translate({ ident: "OF" }) }} {{ actCategory.iCntOfProd }}
-                {% endif %}
-            </div>
-            <div class="col-3 details-pager-next">
-                {% if actCategory.nextProductLink %}
-                    <a id="linkNextArticle" class="details-pager-link d-flex" href="{{ actCategory.nextProductLink }}" style="float: right">
-                        <span class="d-md-flex d-none nowrap">{{ translate({ ident: "NEXT_PRODUCT" }) }}</span>
-                        <i class="moga-right"></i>
-                    </a>
-                {% endif %}
-            </div>
-        </div>
-        {# details locator #}
         {% include "page/details/inc/fullproductinfo.html.twig" %}
     </div>
 {% endif %}
