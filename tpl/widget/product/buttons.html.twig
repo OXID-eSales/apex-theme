@@ -7,7 +7,7 @@
         {% endif %}
         <div class="dropdown">
             {% set oActiveSelection = oSelectionList.getActiveSelection() %}
-            {% if editable != false %}
+            {% if editable == true or editable is not defined %}
                 <input type="hidden" name="{{ sFieldName|default("varselid") }}[{{ iKey }}]" value="{% if oActiveSelection %}{{ oActiveSelection.getValue() }}{% endif %}">
 
                 {% for oSelection in oSelections %}
