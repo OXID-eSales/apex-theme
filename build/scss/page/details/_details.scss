@@ -1,14 +1,14 @@
+.cl-details {
+
+}
+
 .details {
-  &-pager {
-    display: none;
-
-    @include media-breakpoint-up(md) {
-      display: flex;
-    }
-  }
-
   &-top {
     padding-top: 20px;
+  }
+
+  .brand-name {
+    text-decoration: none;
   }
 
   .carousel {
@@ -121,8 +121,284 @@
   }
 }
 
-@include media-breakpoint-up(md) {
-  .sticky-md-top {
-    top: 66px;
+.cta-wrapper {
+  position: fixed;
+  bottom: 53px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  display: flex;
+  box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+
+  @include media-breakpoint-up(md) {
+    position: static;
+    box-shadow: none;
+  }
+}
+
+.details-title-fixed {
+  padding: $grid-gutter-width;
+  font-weight: bold;
+}
+
+.price-wrapper {
+  padding: $grid-gutter-width;
+  margin: 0 0 0 auto;
+}
+
+.delivery-availability {
+  flex: 100%;
+  font-size: 0.75rem;
+  padding: 0 $grid-gutter-width $grid-gutter-width;
+}
+
+$thumb-size: 120px;
+
+.gallery {
+  position: relative;
+
+  input[name$="control"] {
+    display: none;
+  }
+
+  .carousel {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    position: relative;
+    height: 70vh;
+    width: 100%;
+  }
+
+  .wrap {
+    width: 100%;
+    height: 100%;
+    position: static;
+    overflow: hidden;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    figure {
+      padding: 10px;
+      height: 100%;
+      min-width: 100%;
+      transition: opacity 0.25s ease-in-out 0.05s;
+      position: relative;
+      left: 0;
+      transform: translateX(0%);
+      box-sizing: border-box;
+      text-align: center;
+      margin: 0;
+      display: block;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+
+      label {
+        cursor: zoom-in;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: block;
+      }
+
+      img {
+        cursor: inherit;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 3px;
+        margin: 0 auto;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .thumbnails {
+    -ms-flex: 1;
+    flex: 1;
+    min-width: $thumb-size + 4px;
+    max-height: 100%;
+    height: auto;
+    flex-grow: 0;
+    align-self: center;
+    flex-basis: auto;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    padding: 0 2px;
+    z-index: 20;
+
+    .thumb {
+      min-width: 120px;
+      height: 120px;
+      background-position: center center;
+      background-size: cover;
+      box-sizing: border-box;
+      margin: 5px 0;
+      -ms-flex-negative: 0;
+      flex-shrink: 0;
+      left: 0;
+      cursor: pointer;
+      background-repeat: no-repeat;
+
+      img {
+        width: 112px;
+        height: 112px;
+        padding: 2px;
+        border: 2px solid #bbb;
+        transition: border-color 0.3s ease-in-out;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .fullscreen:checked {
+    & ~ .wrap {
+      figure {
+        position: fixed;
+        z-index: 9910;
+        height: 100vh;
+        width: 100vw;
+        padding: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+        opacity: 0;
+        background: #fff;
+
+        label {
+          cursor: zoom-out;
+
+          img {
+            animation: shadow 0.2s;
+            animation-timing-function: ease-in-out;
+            animation-direction: forwards;
+            animation-fill-mode: forwards;
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @for $i from 0 through 9 {
+    $temp: $i + 1;
+    .gallery-helper:nth-child(#{$temp}):checked {
+      & ~ .wrap figure {
+        transform: translateX($i * (-100%));
+      }
+
+      & ~ .wrap figure:not(:nth-of-type(#{$temp})) {
+        opacity: 0;
+      }
+
+      & ~ .wrap figure:nth-of-type(#{$temp}) {
+        opacity: 1;
+      }
+
+      & ~ .thumbnails  {
+        .slider {
+          transform: translateY($i * (100%));
+        }
+
+        .thumb:nth-of-type(#{$temp}) {
+          cursor: default;
+          img {
+            border-color: $primary;
+          }
+        }
+      }
+    }
+  }
+/*
+  input#image2:checked ~ .wrap figure {
+    transform: translateX(-100%);
+  }
+
+  input#image2:checked ~ .wrap figure:not(:nth-of-type(2)) {
+    opacity: 0;
+  }
+
+  input#image2:checked ~ .thumbnails .slider {
+    transform: translateY(100%);
+  }
+
+  input#image2:checked ~ .thumbnails .thumb:nth-of-type(2) {
+    opacity: 1;
+    cursor: default;
+  }
+
+  input#image3:checked ~ .wrap figure {
+    transform: translateX(-200%);
+  }
+
+  input#image3:checked ~ .wrap figure:not(:nth-of-type(3)) {
+    opacity: 0;
+  }
+
+  input#image3:checked ~ .thumbnails .slider {
+    transform: translateY(200%);
+  }
+
+  input#image3:checked ~ .thumbnails .thumb:nth-of-type(3) {
+    opacity: 1;
+    cursor: default;
+  }
+
+  input#image4:checked ~ .wrap figure {
+    transform: translateX(-300%);
+  }
+
+  input#image4:checked ~ .wrap figure:not(:nth-of-type(4)) {
+    opacity: 0;
+  }
+
+  input#image4:checked ~ .thumbnails .slider {
+    transform: translateY(300%);
+  }
+
+  input#image4:checked ~ .thumbnails .thumb:nth-of-type(4) {
+    opacity: 1;
+    cursor: default;
+  }
+ */
+}
+
+@keyframes full {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes shadow {
+  from {
+    box-shadow: 0 0 0 100vmin rgba(24, 33, 45, 0), 0 0 10vmin rgba(13, 21, 31, 0);
+  }
+  to {
+    box-shadow: 0 0 0 100vmin rgba(24, 33, 45, 0.6), 0 0 10vmin rgba(13, 21, 31, 0.6);
   }
 }

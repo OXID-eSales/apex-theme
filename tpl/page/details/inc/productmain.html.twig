@@ -48,203 +48,57 @@
             {% endif %}
 {% endhasrights %}
 
-<div class="details-top container-fluid">
+<div class="details-top">
     <div class="row row-cols-md-2">
         <div class="col-12 col-md-6 col-lg-8 col-xl-9">
             {# article picture with zoom #}
             {% block details_productmain_zoom %}
-            {% set imageCount = oView.getIcons()|length %}
-
-            {% if imageStyle == "grid" %}
-                <div class="row g-1">
-                    {% set colClass = 'col-6' %}
-                    {% if imageCount > 0 %}
+                {% set imageCount = oView.getIcons()|length %}
+                <section class="gallery">
+                    <div class="carousel">
                         {% for iPicNr, oArtIcon in oView.getIcons() %}
-                            {% if loop.index > 2 %}
-                                {% set colClass = 'col-6 col-md-3' %}
-                            {% endif %}
-                            <div data-bs-target="#details-slider" data-bs-slide-to="{{ iPicNr - 1 }}" class="{{ colClass }} d-none d-md-block details-thumb">
-
-                                {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                    <picture>
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, 375, 'webp', true) }}" media="(max-width: 375px)">
-
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, 750, 'webp', true) }}" media="(max-width: 767px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, 750, '', true) }}" media="(max-width: 767px)">
-
-                                        {% if loop.index > 2 %}
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 114, 114, 'webp', true) }}" media="(max-width: 991px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 114, 114, '', true) }}" media="(max-width: 991px)">
-
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 190, 190, 'webp', true) }}" media="(max-width: 1199px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 190, 190, '', true) }}" media="(max-width: 1199px)">
-
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 300, 300, 'webp', true) }}" media="(min-width: 1200px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 300, 300, '', true) }}" media="(min-width: 1200px)">
-                                        {% else %}
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 230, 230, 'webp', true) }}" media="(max-width: 991px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 230, 230, '', true) }}" media="(max-width: 991px)">
-
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 440, 440, 'webp', true) }}" media="(max-width: 1199px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 440, 440, '', true) }}" media="(max-width: 1199px)">
-
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 600, 600, 'webp', true) }}" media="(min-width: 1200px)">
-                                        <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 600, 600, '', true) }}" media="(min-width: 1200px)">
-                                        {% endif %}
-                                        <img class="details-thumb-img" loading="lazy" src="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, 375, '', true) }}" alt="morepic-{{ loop.index }}">
-                                    </picture>
-                                {% else %}
-                                    <img class="details-thumb-img" loading="lazy" src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}" alt="morepic-{{ loop.index }}">
-                                {% endif %}
-                            </div>
+                            <input type="radio" class="gallery-helper" id="image{{ iPicNr}}" name="gallery-control"{% if loop.first %} checked{% endif %}>
                         {% endfor %}
-                    {% else %}
-                        <img class="details-thumb-img" loading="lazy"  src="{{ oView.getActPicture() }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}" itemprop="image">
-                    {% endif %}
 
-                </div>
-                <div id="details-slider" class="carousel slide carousel-desktop-zoom" data-ride="carousel" data-interval="false">
-                    <div class="carousel-inner">
-                        <ol class="carousel-indicators">
-                            {% for iPicNr, oArtIcon in oView.getIcons() %}
-                                <li data-bs-target="#details-slider" data-bs-slide-to="{{ iPicNr - 1 }}"{% if loop.first %} class="active"{% endif %}></li>
-                            {% endfor %}
-                        </ol>
-
-                        {% for iPicNr, oArtIcon in oView.getIcons() %}
-                            {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
-                            {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
-                            <div class="carousel-item{% if loop.first %} active{% endif %}">
-                                <div class="ratio ratio-1x1">
-                                    {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                        <picture>
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, '', 'webp') }}" media="(max-width: 375px)">
-
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, '', 'webp') }}" media="(max-width: 767px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, '', 'jpg') }}" media="(max-width: 767px)">
-
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 970, '', 'webp') }}" media="(max-width: 991px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 970, '', 'jpg') }}" media="(max-width: 991px)">
-
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1170, '', 'webp') }}" media="(max-width: 1199px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1170, '', 'jpg') }}" media="(max-width: 1199px)">
-
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1600, '', 'webp') }}" media="(min-width: 1200px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1600, '', 'jpg') }}" media="(min-width: 1200px)">
-
-                                            <img loading="lazy" src="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, '', 'jpg') }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}">
-                                        </picture>
-                                    {% else %}
-                                        <img loading="lazy" src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}">
-                                    {% endif %}
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    {% if imageCount > 1 %}
-                        <a class="carousel-control-prev" href="#details-slider" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden-focusable">{{ translate({ ident: "PREVIOUS" }) }}</span>
-                        </a>
-                        <a class="carousel-control-next" href="#details-slider" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden-focusable">{{ translate({ ident: "NEXT" }) }}</span>
-                        </a>
-                    {% endif %}
-                    <div class="carousel-close" id="carousel-close">
-                        <i class="moga-times"></i>
-                    </div>
-                </div>
-                <script>
-                    var elements = document.getElementsByClassName("details-thumb-img");
-                    for (var i = 0; i < elements.length; i++) {
-                        elements[i].addEventListener('click', function () {
-                            var slider = document.getElementById('details-slider')
-                            slider.classList.add('fullsize');
-                        })
-                    }
-
-                    document.getElementById('carousel-close').addEventListener('click', function () {
-                        var slider = document.getElementById('details-slider')
-                        slider.classList.remove('fullsize');
-                    });
-                </script>
-            {% else %}
-                <div id="details-slider" class="carousel slide slide-only" data-ride="carousel" data-interval="false">
-                    <div class="carousel-inner">
+                        <input type="checkbox" class="fullscreen" id="fullscreen" name="gallery-fullscreen-control">
                         {% if imageCount > 1 %}
-                        <ol class="carousel-indicators">
-                            {% for iPicNr, oArtIcon in oView.getIcons() %}
-                            <li data-bs-target="#details-slider" data-bs-slide-to="{{ iPicNr - 1 }}"{% if loop.first %} class="active"{% endif %}></li>
-                            {% endfor %}
-                        </ol>
+                            <div class="thumbnails">
+                                {% for iPicNr, oArtIcon in oView.getIcons() %}
+                                    <label for="image{{ iPicNr}}" class="thumb">
+                                        <img loading="lazy" src="{{ oPictureProduct.getIconUrl(iPicNr) }}" alt="{{ translate({ ident: "IMAGE" }) }}{{ iPicNr}}" width="112" height="112">
+                                    </label>
+                                {% endfor %}
+                            </div>
                         {% endif %}
-                        {% if imageCount > 1 %}
+
+                        <div class="wrap">
                             {% for iPicNr, oArtIcon in oView.getIcons() %}
                                 {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
                                 {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
-                                <div class="carousel-item{% if loop.first %} active{% endif %}">
-                                    {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                        <picture>
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, '', 'webp') }}" media="(max-width: 375px)">
 
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, '', 'webp') }}" media="(max-width: 767px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 750, '', 'jpg') }}" media="(max-width: 767px)">
-
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 970, '', 'webp') }}" media="(max-width: 991px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 970, '', 'jpg') }}" media="(max-width: 991px)">
-
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1170, '', 'webp') }}" media="(max-width: 1199px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1170, '', 'jpg') }}" media="(max-width: 1199px)">
-
-                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1600, '', 'webp') }}" media="(min-width: 1200px)">
-                                            <source srcset="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 1600, '', 'jpg') }}" media="(min-width: 1200px)">
-
-                                            <img loading="lazy" src="{{ oViewConf.getDynamicImage(oPictureProduct.getMasterZoomPictureUrl(iPicNr), 375, '', 'jpg') }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}">
-                                        </picture>
-                                    {% else %}
-                                        <img loading="lazy" src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}">
-                                    {% endif %}
-                                </div>
+                                <figure>
+                                    <label for="fullscreen">
+                                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}"/>
+                                    </label>
+                                </figure>
                             {% endfor %}
-                        {% else %}
-                            <img class="details-thumb-img" loading="lazy"  src="{{ oView.getActPicture() }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}" itemprop="image">
-                        {% endif %}
+                        </div>
                     </div>
-                    {% if imageCount > 1 %}
-                        <a class="carousel-control-prev" href="#details-slider" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true">
-                                <span class="moga-left"></span>
-                            </span>
-                            <span class="visually-hidden-focusable">{{ translate({ ident: "PREVIOUS" }) }}</span>
-                        </a>
-                        <a class="carousel-control-next" href="#details-slider" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true">
-                                <span class="moga-right"></span>
-                            </span>
-                            <span class="visually-hidden-focusable">{{ translate({ ident: "NEXT" }) }}</span>
-                        </a>
-                    {% endif %}
-                </div>
-            {% endif %}
-
+                </section>
             {% endblock %}
-
         </div>
 
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
             {% block details_productmain_manufacturersicon %}
                 {% if oManufacturer %}
-                    <div class="brandLogo d-none d-md-block">
-                        <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
-                            {{ oManufacturer.oxmanufacturers__oxtitle.value }}
-                        </a>
-                    </div>
+                    <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" class="brand-name">
+                        {{ oManufacturer.oxmanufacturers__oxtitle.value }}
+                    </a>
                 {% endif %}
             {% endblock %}
 
             {% block details_productmain_title %}
-                <h1 class="h1 details-title">
+                <h1 class="h2 details-title">
                     {{ oDetailsProduct.oxarticles__oxtitle.value }} {{ oDetailsProduct.oxarticles__oxvarselect.value }}
                 </h1>
             {% endblock %}
@@ -345,140 +199,145 @@
                 {% endif %}
             {% endblock %}
 
-            <div class="price-wrapper h4 mb-3">
-                {% block details_productmain_tprice %}
-                    {% hasrights { ident: "SHOWARTICLEPRICE" } %}
-                        {% if oDetailsProduct.getTPrice() %}
-                            <del class="small text-muted price-old">{{ format_price(oDetailsProduct.getTPrice(), { currency: currency }) }}</del>
-                        {% endif %}
-                    {% endhasrights %}
-                {% endblock %}
+            {# pers params #}
+            {% block details_productmain_persparams %}
+                {% if oView.isPersParam() %}
+                    <div class="mb-3">
+                        <label for="persistentParam" class="form-label">{{ translate({ ident: "LABEL" }) }}</label>
+                        <input type="text" id="persistentParam" name="persparam[details]" value="{{ oDetailsProduct.aPersistParam.text }}" size="35" class="form-control">
+                    </div>
+                {% endif %}
+            {% endblock %}
 
-                {% block details_productmain_watchlist %}{% endblock %}
+            <div class="cta-wrapper">
+                <span class="details-title-fixed">
+                    {{ oDetailsProduct.oxarticles__oxtitle.value }} {{ oDetailsProduct.oxarticles__oxvarselect.value }}
+                </span>
+                <div class="price-wrapper h4">
+                    {% block details_productmain_tprice %}
+                        {% hasrights { ident: "SHOWARTICLEPRICE" } %}
+                            {% if oDetailsProduct.getTPrice() %}
+                                <del class="small text-muted price-old">{{ format_price(oDetailsProduct.getTPrice(), { currency: currency }) }}</del>
+                            {% endif %}
+                        {% endhasrights %}
+                    {% endblock %}
 
-                {% block details_productmain_price %}
-                    {% hasrights { ident: "SHOWARTICLEPRICE" } %}
-                        {% block details_productmain_price_value %}
-                            {% if oDetailsProduct.getFPrice() %}
-                                <div id="productPrice" class="price-label">
-                                    {% set sFrom = "" %}
-                                    {% set oPrice = oDetailsProduct.getPrice() %}
-                                    {% if oDetailsProduct.isParentNotBuyable() %}
-                                        {% set oPrice = oDetailsProduct.getVarMinPrice() %}
-                                        {% if oDetailsProduct.isRangePrice() %}
-                                            {% set sFrom = "PRICE_FROM"|translate %}
+                    {% block details_productmain_watchlist %}{% endblock %}
+
+                    {% block details_productmain_price %}
+                        {% hasrights { ident: "SHOWARTICLEPRICE" } %}
+                            {% block details_productmain_price_value %}
+                                {% if oDetailsProduct.getFPrice() %}
+                                    <div id="productPrice" class="price-label">
+                                        {% set sFrom = "" %}
+                                        {% set oPrice = oDetailsProduct.getPrice() %}
+                                        {% if oDetailsProduct.isParentNotBuyable() %}
+                                            {% set oPrice = oDetailsProduct.getVarMinPrice() %}
+                                            {% if oDetailsProduct.isRangePrice() %}
+                                                {% set sFrom = "PRICE_FROM"|translate %}
+                                            {% endif %}
                                         {% endif %}
-                                    {% endif %}
-                                    <span {% if oDetailsProduct.getTPrice() %} class="text-danger"{% endif %}>
-                                        <span class="price-from">{{ sFrom }}</span>
-                                        <span class="price">{{ format_price(oPrice, { currency: currency }) }}</span>
-                                        {% if oView.isVatIncluded() %}
-                                            <span class="price-markup">*</span>
-                                        {% endif %}
-                                    </span>
-                                </div>
-                            {% endif %}
-                        {% endblock %}
-                    {% endhasrights %}
-                {% endblock %}
-            </div>
+                                        <span {% if oDetailsProduct.getTPrice() %} class="text-danger"{% endif %}>
+                                            <span class="price-from">{{ sFrom }}</span>
+                                            <span class="price">{{ format_price(oPrice, { currency: currency }) }}</span>
+                                        </span>
+                                    </div>
+                                {% endif %}
+                            {% endblock %}
+                        {% endhasrights %}
+                    {% endblock %}
+                </div>
 
-            {% if oDetailsProduct.loadAmountPriceInfo() %}
-                {% include "page/details/inc/priceinfo.html.twig" %}
-            {% endif %}
-
-            <div class="tobasket">
-                {# pers params #}
-                {% block details_productmain_persparams %}
-                    {% if oView.isPersParam() %}
-                        <div class="mb-3">
-                            <label for="persistentParam" class="form-label">{{ translate({ ident: "LABEL" }) }}</label>
-                            <input type="text" id="persistentParam" name="persparam[details]" value="{{ oDetailsProduct.aPersistParam.text }}" size="35" class="form-control">
-                        </div>
-                    {% endif %}
-                {% endblock %}
-
-                {% block details_productmain_stockstatus %}
-                    <small class="stockFlag">
-                        {% if oDetailsProduct.getStockStatus() == -1 %}
-                            <span class="text-danger">●</span>
-                            {% if oDetailsProduct.oxarticles__oxnostocktext.value %}
-                                {{ oDetailsProduct.oxarticles__oxnostocktext.value }}
-                            {% elseif oViewConf.getStockOffDefaultMessage() %}
-                                {{ translate({ ident: "MESSAGE_NOT_ON_STOCK" }) }}
-                            {% endif %}
-                            {% if oDetailsProduct.getDeliveryDate() %}
-                                {{ translate({ ident: "AVAILABLE_ON" }) }} {{ oDetailsProduct.getDeliveryDate() }}
-                            {% endif %}
-                        {% elseif oDetailsProduct.getStockStatus() == 1 %}
-                            <span class="text-warning">●</span> {{ translate({ ident: "LOW_STOCK" }) }}
-                        {% elseif oDetailsProduct.getStockStatus() == 0 %}
-                            <span class="text-success">●</span>
-                            {% if oDetailsProduct.oxarticles__oxstocktext.value %}
-                                {{ oDetailsProduct.oxarticles__oxstocktext.value }}
-                            {% elseif oViewConf.getStockOnDefaultMessage() %}
-                                {{ translate({ ident: "READY_FOR_SHIPPING" }) }}
-                            {% endif %}
-                        {% endif %}
-                    </small>
-                {% endblock %}
-
-                {% block details_productmain_deliverytime %}
-                    {% hasrights { ident: "TOBASKET" } %}
-                        {% if oDetailsProduct.isBuyable() %}
-                            {% include "page/details/inc/deliverytime.html.twig" %}
-                        {% endif %}
-                    {% endhasrights %}
-                {% endblock %}
+                {% if oDetailsProduct.loadAmountPriceInfo() %}
+                    {% include "page/details/inc/priceinfo.html.twig" %}
+                {% endif %}
 
                 {% block details_productmain_tobasket %}
                     {% hasrights { ident: "TOBASKET" } %}
                         {% if not oDetailsProduct.isNotBuyable() %}
-                            <div class="tobasket-function my-3 my-lg-5 d-grid">
+                            <div class="tobasket-function">
                                 <input id="amountToBasket" type="hidden" name="am" value="1">
-                                <button id="toBasket" type="submit"{% if not blCanBuy %} disabled{% endif %} class="btn btn-primary btn-lg">{{ translate({ ident: "TO_CART" }) }}</button>
+                                <button id="toBasket" type="submit"{% if not blCanBuy %} disabled{% endif %} class="btn btn-primary">
+                                    <svg aria-label="{{ translate({ ident: "HOME" }) }}">
+                                        <use xlink:href="#bag"></use>
+                                    </svg>
+                                    <span class="d-none">
+                                        {{ translate({ ident: "TO_CART" }) }}
+                                    </span>
+                                </button>
                             </div>
                         {% endif %}
                     {% endhasrights %}
                 {% endblock %}
 
-                {% block details_productmain_productlinksselector %}
-                    {% block details_productmain_productlinks %}
-                        <div class="row g-1 product-links">
+                <div class="delivery-availability">
+                    {% block details_productmain_stockstatus %}
+                        <small class="stockFlag">
+                            {% if oDetailsProduct.getStockStatus() == -1 %}
+                                <span class="text-danger">●</span>
+                                {% if oDetailsProduct.oxarticles__oxnostocktext.value %}
+                                    {{ oDetailsProduct.oxarticles__oxnostocktext.value }}
+                                {% elseif oViewConf.getStockOffDefaultMessage() %}
+                                    {{ translate({ ident: "MESSAGE_NOT_ON_STOCK" }) }}
+                                {% endif %}
+                                {% if oDetailsProduct.getDeliveryDate() %}
+                                    {{ translate({ ident: "AVAILABLE_ON" }) }} {{ oDetailsProduct.getDeliveryDate() }}
+                                {% endif %}
+                            {% elseif oDetailsProduct.getStockStatus() == 1 %}
+                                <span class="text-warning">●</span> {{ translate({ ident: "LOW_STOCK" }) }}
+                            {% elseif oDetailsProduct.getStockStatus() == 0 %}
+                                <span class="text-success">●</span>
+                                {% if oDetailsProduct.oxarticles__oxstocktext.value %}
+                                    {{ oDetailsProduct.oxarticles__oxstocktext.value }}
+                                {% elseif oViewConf.getStockOnDefaultMessage() %}
+                                    {{ translate({ ident: "READY_FOR_SHIPPING" }) }}
+                                {% endif %}
+                            {% endif %}
+                        </small>
+                    {% endblock %}
 
-                            {% if oViewConf.getShowCompareList() %}
+                    {% block details_productmain_deliverytime %}
+                        {% hasrights { ident: "TOBASKET" } %}
+                            {% if oDetailsProduct.isBuyable() %}
+                                {% include "page/details/inc/deliverytime.html.twig" %}
+                            {% endif %}
+                        {% endhasrights %}
+                    {% endblock %}
+                </div>
+            </div>
+
+            {% block details_productmain_productlinksselector %}
+                {% block details_productmain_productlinks %}
+                    <div class="row g-1 product-links">
+
+                        {% if oViewConf.getShowCompareList() %}
                             <div class="col-md-6">
                                 {% include_dynamic "page/details/inc/compare_links.html.twig" with {testid: "", type: "compare", aid: oDetailsProduct.oxarticles__oxid.value, anid: oDetailsProduct.oxarticles__oxnid.value, in_list: oDetailsProduct.isOnComparisonList(), page: oView.getActPage(), text_to_id: "COMPARE", text_from_id: "REMOVE_FROM_COMPARE_LIST"} %}
                             </div>
-                            {% endif %}
+                        {% endif %}
 
+                        <div class="col-md-6">
+                            {% if oxcmp_user %}
+                                <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                            {% else %}
+                                <a class="btn btn-sm btn-light w-100" id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                            {% endif %}
+                        </div>
+
+                        {% if oViewConf.getShowWishlist() %}
                             <div class="col-md-6">
                                 {% if oxcmp_user %}
-                                    <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                    <a class="btn btn-sm btn-light w-100" id="linkToWishList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=towishlist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                 {% else %}
-                                    <a class="btn btn-sm btn-light w-100" id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                    <a class="btn btn-sm btn-light w-100" id="loginToWish" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                 {% endif %}
                             </div>
-
-                            {% if oViewConf.getShowWishlist() %}
-                                <div class="col-md-6">
-                                    {% if oxcmp_user %}
-                                        <a class="btn btn-sm btn-light w-100" id="linkToWishList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=towishlist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
-                                    {% else %}
-                                        <a class="btn btn-sm btn-light w-100" id="loginToWish" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
-                                    {% endif %}
-                                </div>
-                            {% endif %}
-
-                            <div class="col-md-6">
-                                {{ mailto(oDetailsProduct.oxarticles__oxquestionemail.value|default(oxcmp_shop.oxshops__oxinfoemail.value), { extra: 'id="questionMail" class="btn btn-sm btn-light w-100"', subject: 'QUESTIONS_ABOUT_THIS_PRODUCT'|translate|cat(" ")|cat(oDetailsProduct.oxarticles__oxartnum.value), text: 'QUESTIONS_ABOUT_THIS_PRODUCT'|translate }) }}
-                            </div>
-                        </div>
-                    {% endblock %}
+                        {% endif %}
+                    </div>
                 {% endblock %}
+            {% endblock %}
 
-                {% block details_productmain_social %}{% endblock %}
-            </div>
+            {% block details_productmain_social %}{% endblock %}
         </div>
     </div>
 </div>

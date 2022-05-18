@@ -22,9 +22,7 @@
 
                 {% if oView.getClassKey() == "details" or oView.getClassKey() == "content" and not blHideBreadcrumb %}
                     {% block layout_breadcrumb %}
-                        <div class="container-xxl d-none d-md-block pt-3">
-                            {% include "widget/breadcrumb.html.twig" %}
-                        </div>
+                        {% include "widget/breadcrumb.html.twig" %}
                     {% endblock %}
                 {% endif %}
 

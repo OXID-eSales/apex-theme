@@ -33,4 +33,13 @@
   &:hover {
     text-decoration: underline;
   }
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.breadcrumb-wrapper {
+  background: #fff;
 }
