@@ -2,9 +2,9 @@
     {% apply spaceless %}
         {% block dd_widget_breadcrumb_list_inner %}
             <div class="breadcrumb-wrapper">
-                <div class="container-xxl d-none d-md-block">
+                <div class="container-xxl">
                     <nav aria-label="breadcrumb">
-                        <ol class="d-flex">
+                        <ol class="breadcrumb">
                             {% block dd_widget_breadcrumb_list %}
                                 <li class="breadcrumb-item">
                                     <a href="{{ oViewConf.getHomeLink() }}" class="breadcrumb-link" title="{{ translate({ ident: "HOME" }) }}">

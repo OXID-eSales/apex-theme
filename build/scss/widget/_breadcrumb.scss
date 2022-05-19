@@ -1,37 +1,13 @@
-.pop-header {
-  @include media-breakpoint-up(md) {
-    min-height: 80px;
-  }
-
-  .breadcrumb-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-}
-
-.pop-img {
-  .breadcrumb {
-    &-link {
-      color: #fff;
-    }
-  }
-
-  .breadcrumb-item.active {
-    color: rgba(255, 255, 255, 0.5);
-  }
-
-  .breadcrumb-item + .breadcrumb-item::before {
-    color: #fff;
-  }
-}
-
 .breadcrumb-link {
   text-decoration: none;
+  font-size: $breadcrumb-font-size * 0.75;
 
-  &:hover {
-    text-decoration: underline;
+  @include media-breakpoint-up(md) {
+    font-size: $breadcrumb-font-size;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   svg {
@@ -42,4 +18,5 @@
 
 .breadcrumb-wrapper {
   background: #fff;
+  padding-bottom: 1rem;
 }
