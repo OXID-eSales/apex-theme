@@ -31,7 +31,7 @@
 {% endblock %}
 
 {% block details_tabs_attributes %}
-    {% if oView.getAttributes() %}
+    {% if oView.getAttributes() or oDetailsProduct.oxarticles__oxartnum.value %}
         {% capture append = "tabs" %}
             <a id="attributes-tab" class="nav-link{% if blFirstTab %} active{% endif %}" href="#attributes" data-bs-toggle="tab" role="tab" aria-controls="attributes" aria-selected="false">
             {{ translate({ ident: "SPECIFICATION" }) }}
@@ -40,6 +40,12 @@
         {% capture append = "tabsContent" %}
             <div id="attributes" class="tab-pane{% if blFirstTab %} active{% endif %}" role="tabpanel" aria-labelledby="attributes-tab">
                 <div class="container-xxl">
+                    {# article number #}
+                    {% if oDetailsProduct.oxarticles__oxartnum.value %}
+                        {% block details_productmain_artnumber %}
+                            <span class="small text-muted">{{ translate({ ident: "ARTNUM", suffix: "COLON" }) }} {{ oDetailsProduct.oxarticles__oxartnum.value }}</span>
+                        {% endblock %}
+                    {% endif %}
                     {% include "page/details/inc/attributes.html.twig" %}
                 </div>
             </div>

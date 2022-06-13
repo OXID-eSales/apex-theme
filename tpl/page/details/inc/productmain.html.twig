@@ -104,13 +104,6 @@
                     </h1>
                 {% endblock %}
 
-                {# article number #}
-                {% if oDetailsProduct.oxarticles__oxartnum.value %}
-                    {% block details_productmain_artnumber %}
-                        <span class="small text-muted">{{ translate({ ident: "ARTNUM", suffix: "COLON" }) }} {{ oDetailsProduct.oxarticles__oxartnum.value }}</span>
-                    {% endblock %}
-                {% endif %}
-
                 {# ratings #}
                 {% if oView.ratingIsActive() %}
                     {% block details_productmain_ratings %}
@@ -252,15 +245,13 @@
                 {% block details_productmain_tobasket %}
                     {% hasrights { ident: "TOBASKET" } %}
                         {% if not oDetailsProduct.isNotBuyable() %}
-                            <div class="tobasket-function">
-                                <input id="amountToBasket" type="hidden" name="am" value="1">
-                                <button id="toBasket" type="submit"{% if not blCanBuy %} disabled{% endif %} class="btn btn-primary">
+                            <div class="tobasket-function input-group input-group-lg mb-3">
+                                <input id="amountToBasket" name="am" value="1">
+                                <button id="toBasket" type="submit"{% if not blCanBuy %} disabled{% endif %} class="btn btn-highlight">
                                     <svg aria-label="{{ translate({ ident: "HOME" }) }}">
                                         <use xlink:href="#bag"></use>
                                     </svg>
-                                    <span class="d-none">
-                                        {{ translate({ ident: "TO_CART" }) }}
-                                    </span>
+                                    {{ translate({ ident: "TO_CART" }) }}
                                 </button>
                             </div>
                         {% endif %}
