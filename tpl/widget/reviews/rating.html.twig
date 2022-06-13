@@ -9,39 +9,44 @@
     {% endif %}
 
 
-    {% for starRatings in 0..5 %}
+    {% for starRatings in 1..5 %}
         {% if iRatingValue == 0 %}
-            <i class="moga-star ratings-star-empty"></i>
+            <svg aria-hidden="true" class="star">
+                <use xlink:href="#star"></use>
+            </svg>
         {% else %}
             {% if iRatingValue > 1 %}
-                <i class="moga-star ratings-star-filled"></i>
+                <svg aria-hidden="true" class="star-fill">
+                    <use xlink:href="#star-fill"></use>
+                </svg>
                 {% set iRatingValue = iRatingValue-1 %}
             {% else %}
                 {% if iRatingValue < 0.5 %}
                     {% if iRatingValue < 0.3 %}
-                        <i class="moga-star ratings-star-empty"></i>
+                        <svg aria-hidden="true" class="star-fill">
+                            <use xlink:href="#star-fill"></use>
+                        </svg>
                     {% else %}
-                        <i class="moga-star-half-o ratings-star-filled"></i>
+                        <svg aria-hidden="true" class="star-half">
+                            <use xlink:href="#star-half"></use>
+                        </svg>
                     {% endif %}
                     {% set iRatingValue = 0 %}
                 {% elseif iRatingValue > 0.8 %}
-                    <i class="moga-star ratings-star-filled"></i>
+                    <svg aria-hidden="true" class="star-fill">
+                        <use xlink:href="#star-fill"></use>
+                    </svg>
                     {% set iRatingValue = 0 %}
                 {% else %}
-                    <i class="moga-star-half-o ratings-star-filled"></i>
+                    <svg aria-hidden="true" class="star-half">
+                        <use xlink:href="#star-half"></use>
+                    </svg>
                     {% set iRatingValue = 0 %}
                 {% endif %}
             {% endif %}
         {% endif %}
     {% endfor %}
 
-    <a class="{% if oView.canRate() %}ox-write-review{% endif %}"
-        {% if not oxcmp_user %}
-            href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}"
-        {% elseif oView.canRate() %}
-            href="#review" data-bs-toggle="collapse" data-bs-target="#review_form"
-        {% endif %}
-       title="{{ _star_title }}">
-        <small>({{ oView.getRatingCount() }} {{ translate({ ident: "DD_RATING_CUSTOMERRATINGS" }) }})</small>
-    </a>
+
+    <span class="total">({{ oView.getRatingCount() }})</span>
 </div>
