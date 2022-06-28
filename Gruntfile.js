@@ -63,7 +63,7 @@ module.exports = function (grunt) {
                         removeDuplicateFontRules: true, // controls duplicate `@font-face` removing; defaults to true
                         removeDuplicateMediaBlocks: true, // controls duplicate `@media` removing; defaults to true
                         removeDuplicateRules: true, // controls duplicate rules removing; defaults to true
-                        removeUnusedAtRules: true, // controls unused at rule removing; defaults to false (available since 4.1.0)
+                        removeUnusedAtRules: false, // controls unused at rule removing; defaults to false (available since 4.1.0)
                         restructureRules: false, // controls rule restructuring; defaults to false
                     }
                 }
@@ -166,22 +166,11 @@ module.exports = function (grunt) {
          * Watch files for changes
          */
         watch: {
-            clean: {
-                files: [
-                    '<%= project.dev %>de/**/*.*','<%= project.dev %>en/**/*.*','<%= project.dev %>tpl/**/*.twig'],
-                tasks:
-                    ['clean'],
-                options:
-                    {
-                        spawn: false,
-                        livereload: true
-                    }
-            },
             sass: {
                 files: [
                     '<%= project.dev %>build/scss/**/*.scss','<%= project.dev %>tpl/**/*.tpl'],
                 tasks:
-                    ['sass', 'cmq', 'cssmin', 'clean'],
+                    ['sass', 'cssmin'],
                 options:
                     {
                         spawn: false,
@@ -245,7 +234,6 @@ module.exports = function (grunt) {
         'copy',
         'svg_symbols',
         'sass',
-        'cmq',
         'cssmin',
         'concat:js',
         'uglify',
