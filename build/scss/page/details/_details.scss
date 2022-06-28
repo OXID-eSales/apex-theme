@@ -28,6 +28,11 @@
       justify-content: center;
     }
   }
+
+  &-information {
+    background: #EFF1F2;
+    padding: $spacer;
+  }
 }
 
 .details-title-fixed {
@@ -204,7 +209,6 @@ $thumb-size: 120px;
         transform: translate(-50%, -50%) !important;
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;
-        opacity: 0;
         background: #fff;
 
         label {
