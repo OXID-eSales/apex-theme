@@ -4,6 +4,11 @@
     background: #fff;
   }
 
+  &-shortdesc {
+    color: #6A7281
+
+  }
+
   .brand-name {
     text-decoration: none;
   }
@@ -32,7 +37,44 @@
   &-information {
     background: #EFF1F2;
     padding: $spacer;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacer;
+
+    > div {
+      width: 48%;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
+}
+
+.stockFlag {
+  position: relative;
+  padding-left: 20px;
+
+  span {
+    position: absolute;
+    left: 0;
+    top: -2px;
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+.text-success {
+  color: $success;
+}
+
+.text-danger {
+  color: $danger;
+}
+
+.text-warning {
+  color: $warning;
 }
 
 .details-title-fixed {
@@ -41,8 +83,32 @@
 }
 
 .price-wrapper {
-  padding: $grid-gutter-width;
-  margin: 0 0 0 auto;
+  display: flex;
+  font-size: 28px;
+  align-items: center;
+  flex-wrap: wrap;
+
+  del {
+    font-size: 16px;
+    color: #6D7583;
+    padding-left: 20px;
+  }
+
+  .vat-info-text {
+    width: 100%;
+    font-size: 14px;
+    font-family: $font-family-base;
+  }
+}
+
+.tobasket-function {
+  input.form-control {
+    max-width: 90px;
+  }
+
+  .btn {
+    flex: 1 1 auto;
+  }
 }
 
 .delivery-availability {

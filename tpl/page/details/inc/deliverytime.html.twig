@@ -1,5 +1,8 @@
 {% if oDetailsProduct.oxarticles__oxmindeltime.value or oDetailsProduct.oxarticles__oxmaxdeltime.value %}
-    <span class="deliverytime">
+    <div class="deliverytime">
+        <svg aria-label="{{ translate({ ident: "DELIVERYTIME_DELIVERYTIME" }) }}">
+            <use xlink:href="#truck"></use>
+        </svg>
         {{ translate({ ident: "DELIVERYTIME_DELIVERYTIME", suffix: "COLON" }) }}
         {% if oDetailsProduct.oxarticles__oxmindeltime.value and oDetailsProduct.oxarticles__oxmindeltime.value != oDetailsProduct.oxarticles__oxmaxdeltime.value %}
             {{ oDetailsProduct.oxarticles__oxmindeltime.value }} -
@@ -12,5 +15,5 @@
             {% endif %}
             {{ oDetailsProduct.oxarticles__oxmaxdeltime.value }} {{ translate({ ident: ident }) }}
         {% endif %}
-    </span>
+    </div>
 {% endif %}

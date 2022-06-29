@@ -209,12 +209,6 @@ module.exports = function (grunt) {
                         src: 'bootstrap.bundle.min.js',
                         cwd: '<%= project.dev %>build/js/',
                         dest: '<%= project.out %><%= project.theme %>src/js/'
-                    },
-                    {
-                        expand: true,
-                        cwd: '<%= project.dev %>node_modules/bootstrap/scss/',
-                        src: '**',
-                        dest: '<%= project.dev %>build/vendor/bootstrap/'
                     }
                 ]
             },

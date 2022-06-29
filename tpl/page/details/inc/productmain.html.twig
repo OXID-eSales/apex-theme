@@ -120,64 +120,29 @@
                     {% endhasrights %}
                 {% endblock %}
 
-                {# article main info block #}
-                <div class="details-information">
+                {% set blCanBuy = true %}
+                {# variants | md variants #}
+                {% block details_productmain_variantselections %}
+                    {% if aVariantSelections and aVariantSelections.selections %}
+                        {{ script({ include: "js/variants.min.js", priority: 11, dynamic: __oxid_include_dynamic }) }}
 
-                    {# additional info #}
-                    {% hasrights { ident: "SHOWARTICLEPRICE" } %}
-                        {% set oUnitPrice = oDetailsProduct.getUnitPrice() %}
-                        {% block details_productmain_priceperunit %}
-                            {% if oUnitPrice %}
-                                <div class="details-additional-information">
-                                    <span id="productPriceUnit">{{ format_price(oUnitPrice, { currency: currency }) }}/{{ oDetailsProduct.getUnitName() }}</span>
-                                </div>
+                        {% set blCanBuy = aVariantSelections.blPerfectFit %}
+                        {% if not blHasActiveSelections %}
+                            {% if not blCanBuy and not oDetailsProduct.isParentNotBuyable() %}
+                                {% set blCanBuy = true %}
                             {% endif %}
-                        {% endblock %}
-                    {% endhasrights %}
-
-                    {% if oDetailsProduct.oxarticles__oxweight.value %}
-                        <div class="weight">
-                            {% block details_productmain_weight %}
-                                {{ translate({ ident: "WEIGHT", suffix: "COLON" }) }} {{ oDetailsProduct.oxarticles__oxweight.value }} {{ translate({ ident: "KG" }) }}
-                            {% endblock %}
+                        {% endif %}
+                        <div id="variants" class="variant-dropdown">
+                            {% set blHasActiveSelections = false %}
+                            {% for iKey, oList in aVariantSelections.selections %}
+                                {% if oList.getActiveSelection() %}
+                                    {% set blHasActiveSelections = true %}
+                                {% endif %}
+                                {% include "widget/product/selectbox.html.twig" with {oSelectionList: oList, iKey: iKey, blInDetails: true} %}
+                            {% endfor %}
                         </div>
                     {% endif %}
-
-                    {% block details_productmain_vpe %}
-                        {% if oDetailsProduct.oxarticles__oxvpe.value > 1 %}
-                            <span class="vpe small">{{ translate({ ident: "DETAILS_VPE_MESSAGE_1" }) }} {{ oDetailsProduct.oxarticles__oxvpe.value }} {{ translate({ ident: "DETAILS_VPE_MESSAGE_2" }) }}</span>
-                        {% endif %}
-                    {% endblock %}
-
-                    {% set blCanBuy = true %}
-                    {# variants | md variants #}
-                    {% block details_productmain_variantselections %}
-                        {% if aVariantSelections and aVariantSelections.selections %}
-                            {# oxscript include="js / jquery.min.js" priority=4  }}
-                            {{ script({ include: "js/jquery-ui.js", priority: 4, dynamic: __oxid_include_dynamic }) }}
-                            {# oxscript include="js/widgets/oxajax.min.js" priority=10 #}
-                            {# oxscript include="js/widgets/oxarticlevariant.min.js" priority=10 #}
-                            {# oxscript add="$( '#variants' ).oxArticleVariant();" #}
-                            {{ script({ include: "js/variants.min.js", priority: 11, dynamic: __oxid_include_dynamic }) }}
-
-                            {% set blCanBuy = aVariantSelections.blPerfectFit %}
-                            {% if not blHasActiveSelections %}
-                                {% if not blCanBuy and not oDetailsProduct.isParentNotBuyable() %}
-                                    {% set blCanBuy = true %}
-                                {% endif %}
-                            {% endif %}
-                            <div id="variants" class="variant-dropdown">
-                                {% set blHasActiveSelections = false %}
-                                {% for iKey, oList in aVariantSelections.selections %}
-                                    {% if oList.getActiveSelection() %}
-                                        {% set blHasActiveSelections = true %}
-                                    {% endif %}
-                                    {% include "widget/product/buttons.html.twig" with {oSelectionList: oList, iKey: iKey, blInDetails: true} %}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    {% endblock %}
-                </div>
+                {% endblock %}
 
                 {# selection lists #}
                 {% block details_productmain_selectlists %}
@@ -193,6 +158,84 @@
                     {% endif %}
                 {% endblock %}
 
+                {# article main info block #}
+                <div class="details-information mb-3">
+
+                    {# Weight #}
+                    {% if oDetailsProduct.oxarticles__oxweight.value %}
+                        <div class="weight">
+                            <svg aria-label="{{ translate({ ident: "WEIGHT" }) }}">
+                                <use xlink:href="#weight-hanging"></use>
+                            </svg>
+                            {% block details_productmain_weight %}
+                                {{ translate({ ident: "WEIGHT", suffix: "COLON" }) }}
+                                {{ oDetailsProduct.oxarticles__oxweight.value }} {{ translate({ ident: "KG" }) }}
+                            {% endblock %}
+                        </div>
+                    {% endif %}
+
+                    {# Delivery time #}
+                    {% block details_productmain_deliverytime %}
+                        {% hasrights { ident: "TOBASKET" } %}
+                            {% if oDetailsProduct.isBuyable() %}
+                                {% include "page/details/inc/deliverytime.html.twig" %}
+                            {% endif %}
+                        {% endhasrights %}
+                    {% endblock %}
+
+                    {# Unit Price #}
+                    {% hasrights { ident: "SHOWARTICLEPRICE" } %}
+                        {% set oUnitPrice = oDetailsProduct.getUnitPrice() %}
+                        {% block details_productmain_priceperunit %}
+                            {% if oUnitPrice %}
+                                <div class="ppu">
+                                    <svg aria-label="{{ translate({ ident: "WEIGHT" }) }}">
+                                        <use xlink:href="#tag"></use>
+                                    </svg>
+                                    {{ format_price(oUnitPrice, { currency: currency }) }}/{{ oDetailsProduct.getUnitName() }}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    {% endhasrights %}
+
+                    {# Stock flag #}
+                    {% block details_productmain_stockstatus %}
+                        <div class="stockFlag">
+                            {% if oDetailsProduct.getStockStatus() == -1 %}
+                                <span class="text-danger">●</span>
+                                {% if oDetailsProduct.oxarticles__oxnostocktext.value %}
+                                    {{ oDetailsProduct.oxarticles__oxnostocktext.value }}
+                                {% elseif oViewConf.getStockOffDefaultMessage() %}
+                                    {{ translate({ ident: "MESSAGE_NOT_ON_STOCK" }) }}
+                                {% endif %}
+                                {% if oDetailsProduct.getDeliveryDate() %}
+                                    {{ translate({ ident: "AVAILABLE_ON" }) }} {{ oDetailsProduct.getDeliveryDate() }}
+                                {% endif %}
+                            {% elseif oDetailsProduct.getStockStatus() == 1 %}
+                                <span class="text-warning">●</span> {{ translate({ ident: "LOW_STOCK" }) }}
+                            {% elseif oDetailsProduct.getStockStatus() == 0 %}
+                                <span class="text-success">●</span>
+                                {% if oDetailsProduct.oxarticles__oxstocktext.value %}
+                                    {{ oDetailsProduct.oxarticles__oxstocktext.value }}
+                                {% elseif oViewConf.getStockOnDefaultMessage() %}
+                                    {{ translate({ ident: "READY_FOR_SHIPPING" }) }}
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+
+                    {# vpe #}
+                    {% block details_productmain_vpe %}
+                        {% if oDetailsProduct.oxarticles__oxvpe.value > 1 %}
+                            <div class="vpe">
+                                <svg aria-label="{{ translate({ ident: "DETAILS_VPE_MESSAGE_1" }) }}">
+                                    <use xlink:href="#boxes-stacked"></use>
+                                </svg>
+                                {{ translate({ ident: "DETAILS_VPE_MESSAGE_1" }) }} {{ oDetailsProduct.oxarticles__oxvpe.value }} {{ translate({ ident: "DETAILS_VPE_MESSAGE_2" }) }}</div>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+
                 {# pers params #}
                 {% block details_productmain_persparams %}
                     {% if oView.isPersParam() %}
@@ -203,15 +246,7 @@
                     {% endif %}
                 {% endblock %}
 
-                <div class="price-wrapper h4">
-                    {% block details_productmain_tprice %}
-                        {% hasrights { ident: "SHOWARTICLEPRICE" } %}
-                            {% if oDetailsProduct.getTPrice() %}
-                                <del class="small text-muted price-old">{{ format_price(oDetailsProduct.getTPrice(), { currency: currency }) }}</del>
-                            {% endif %}
-                        {% endhasrights %}
-                    {% endblock %}
-
+                <div class="price-wrapper h1">
                     {% block details_productmain_watchlist %}{% endblock %}
 
                     {% block details_productmain_price %}
@@ -236,6 +271,24 @@
                             {% endblock %}
                         {% endhasrights %}
                     {% endblock %}
+
+                    {% block details_productmain_tprice %}
+                        {% hasrights { ident: "SHOWARTICLEPRICE" } %}
+                            {% if oDetailsProduct.getTPrice() %}
+                                <del class="price-old">{{ format_price(oDetailsProduct.getTPrice(), { currency: currency }) }}</del>
+                            {% endif %}
+                        {% endhasrights %}
+                    {% endblock %}
+
+                    {% if oView.isVatIncluded() %}
+                        <div class="vat-info-text">
+                            {{ translate({ ident: "PLUS_SHIPPING" }) }}
+                        </div>
+                    {% else %}
+                        <div class="vat-info-text">
+                            {{ translate({ ident: "PLUS" }) }}
+                        </div>
+                    {% endif %}
                 </div>
 
                 {% if oDetailsProduct.loadAmountPriceInfo() %}
@@ -246,47 +299,11 @@
                     {% hasrights { ident: "TOBASKET" } %}
                         {% if not oDetailsProduct.isNotBuyable() %}
                             <div class="tobasket-function input-group input-group-lg mb-3">
-                                <input id="amountToBasket" name="am" value="1">
+                                <input type="text" class="form-control" id="amountToBasket" name="am" value="1">
                                 <button id="toBasket" type="submit"{% if not blCanBuy %} disabled{% endif %} class="btn btn-highlight">
-                                    <svg aria-label="{{ translate({ ident: "HOME" }) }}">
-                                        <use xlink:href="#bag"></use>
-                                    </svg>
                                     {{ translate({ ident: "TO_CART" }) }}
                                 </button>
                             </div>
-                        {% endif %}
-                    {% endhasrights %}
-                {% endblock %}
-
-                {% block details_productmain_stockstatus %}
-                    <small class="stockFlag">
-                        {% if oDetailsProduct.getStockStatus() == -1 %}
-                            <span class="text-danger">●</span>
-                            {% if oDetailsProduct.oxarticles__oxnostocktext.value %}
-                                {{ oDetailsProduct.oxarticles__oxnostocktext.value }}
-                            {% elseif oViewConf.getStockOffDefaultMessage() %}
-                                {{ translate({ ident: "MESSAGE_NOT_ON_STOCK" }) }}
-                            {% endif %}
-                            {% if oDetailsProduct.getDeliveryDate() %}
-                                {{ translate({ ident: "AVAILABLE_ON" }) }} {{ oDetailsProduct.getDeliveryDate() }}
-                            {% endif %}
-                        {% elseif oDetailsProduct.getStockStatus() == 1 %}
-                            <span class="text-warning">●</span> {{ translate({ ident: "LOW_STOCK" }) }}
-                        {% elseif oDetailsProduct.getStockStatus() == 0 %}
-                            <span class="text-success">●</span>
-                            {% if oDetailsProduct.oxarticles__oxstocktext.value %}
-                                {{ oDetailsProduct.oxarticles__oxstocktext.value }}
-                            {% elseif oViewConf.getStockOnDefaultMessage() %}
-                                {{ translate({ ident: "READY_FOR_SHIPPING" }) }}
-                            {% endif %}
-                        {% endif %}
-                    </small>
-                {% endblock %}
-
-                {% block details_productmain_deliverytime %}
-                    {% hasrights { ident: "TOBASKET" } %}
-                        {% if oDetailsProduct.isBuyable() %}
-                            {% include "page/details/inc/deliverytime.html.twig" %}
                         {% endif %}
                     {% endhasrights %}
                 {% endblock %}
