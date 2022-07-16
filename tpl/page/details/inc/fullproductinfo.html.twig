@@ -1,17 +1,40 @@
-<div id="detailsMain">
+<div id="detailsMain" class="details">
     {% include "page/details/inc/productmain.html.twig" %}
+
+    {% include "page/details/inc/accordeon.html.twig" %}
+
+    <!-- CMS -->
+
+    {% if oView.isReviewActive() %}
+        {% include "widget/reviews/reviews.html.twig" %}
+    {% endif %}
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            {% set oManufacturer = oView.getManufacturer() %}
+            {% if oManufacturer and oManufacturer.oxmanufacturers__oxshortdesc.value %}
+                <a class="nav-link{% if blFirstTab %} active{% endif %}" href="#manufacturer-tab" data-bs-toggle="tab">
+                    {{ translate({ ident: "MORE_ABOUT" }) }} {{ oManufacturer.oxmanufacturers__oxtitle.value }}
+                </a>
+                <div id="manufacturer-tab" class="tab-pane{% if blFirstTab %} active{% endif %}">
+                    <div class="container-xxl">
+                        <p>
+                            {{ oManufacturer.oxmanufacturers__oxshortdesc.value }}
+                        </p>
+                        <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                            {{ translate({ ident: "SHOW_ME_MORE" }) }}
+                        </a>
+                    </div>
+                </div>
+                {% set blFirstTab = false %}
+            {% endif %}
+        </div>
+        <div class="col-12 col-md-6">
+            <!-- CMS -->
+        </div>
+    </div>
 </div>
 
 <div id="detailsRelated" class="details-related">
-    <div class="details-related-info{% if not oView.getSimilarProducts() and not oView.getCrossSelling() and not oView.getAccessoires() %} details-related-info-full{% endif %}">
-        {% include "page/details/inc/tabs.html.twig" %}
-
-        {% if oView.isReviewActive() %}
-            <div class="reviews my-5 container">
-                {% include "widget/reviews/reviews.html.twig" %}
-            </div>
-        {% endif %}
-    </div>
-
     {% include "page/details/inc/related_products_tabs.html.twig" %}
 </div>

@@ -1,12 +1,13 @@
 .details {
-  &-top {
+  background: #fff;
+
+  &-top,
+  &-related {
     padding-top: 20px;
-    background: #fff;
   }
 
   &-shortdesc {
     color: #6A7281
-
   }
 
   .brand-name {
@@ -14,8 +15,6 @@
   }
 
   .product-links {
-    margin-top: 10px;
-
     a {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -43,11 +42,28 @@
 
     > div {
       width: 48%;
+      padding-left: 20px;
+      position: relative;
     }
 
     svg {
-      width: 20px;
-      height: 20px;
+      position: absolute;
+      left: 0;
+      top: 3px;
+      width: 12px;
+      height: 12px;
+
+      @include media-breakpoint-up(md) {
+        top: 5px;
+      }
+    }
+  }
+
+  .accordeon {
+    .h4 {
+      margin: 0;
+      padding: $spacer 0;
+      border-bottom: 1px solid #999;
     }
   }
 }
@@ -103,7 +119,7 @@
 
 .tobasket-function {
   input.form-control {
-    max-width: 90px;
+    max-width: 70px;
   }
 
   .btn {
@@ -257,36 +273,6 @@ $thumb-size: 120px;
           border: 2px solid #bbb;
           transition: border-color 0.3s ease-in-out;
           object-fit: contain;
-        }
-      }
-    }
-  }
-
-  .fullscreen:checked {
-    & ~ .wrap {
-      figure {
-        position: fixed;
-        z-index: 9910;
-        height: 100vh;
-        width: 100vw;
-        padding: 0;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) !important;
-        animation-timing-function: ease-in-out;
-        animation-fill-mode: forwards;
-        background: #fff;
-
-        label {
-          cursor: zoom-out;
-
-          img {
-            animation: shadow 0.2s;
-            animation-timing-function: ease-in-out;
-            animation-direction: forwards;
-            animation-fill-mode: forwards;
-            border-radius: 0;
-          }
         }
       }
     }

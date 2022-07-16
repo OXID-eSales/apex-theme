@@ -61,7 +61,6 @@
                                 <input type="radio" class="gallery-helper" id="image{{ iPicNr}}" name="gallery-control"{% if loop.first %} checked{% endif %}>
                             {% endfor %}
 
-                            <input type="checkbox" class="fullscreen" id="fullscreen" name="gallery-fullscreen-control">
                             {% if imageCount > 1 %}
                                 <div class="thumbnails">
                                     {% for iPicNr, oArtIcon in oView.getIcons() %}
@@ -78,9 +77,7 @@
                                     {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
 
                                     <figure>
-                                        <label for="fullscreen">
-                                            <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}"/>
-                                        </label>
+                                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}"/>
                                     </figure>
                                 {% endfor %}
                             </div>
@@ -99,7 +96,7 @@
                 {% endblock %}
 
                 {% block details_productmain_title %}
-                    <h1 class="h2 details-title">
+                    <h1 class="h2 details-title mb-2">
                         {{ oDetailsProduct.oxarticles__oxtitle.value }} {{ oDetailsProduct.oxarticles__oxvarselect.value }}
                     </h1>
                 {% endblock %}
@@ -159,7 +156,7 @@
                 {% endblock %}
 
                 {# article main info block #}
-                <div class="details-information mb-3">
+                <div class="details-information mb-3 mb-md-5">
 
                     {# Weight #}
                     {% if oDetailsProduct.oxarticles__oxweight.value %}
@@ -310,15 +307,15 @@
 
                 {% block details_productmain_productlinksselector %}
                     {% block details_productmain_productlinks %}
-                        <div class="row g-1 product-links">
+                        <div class="row g-3 product-links mb-md-5">
 
                             {% if oViewConf.getShowCompareList() %}
-                                <div class="col-md-6">
+                                <div class="col-6">
                                     {% include_dynamic "page/details/inc/compare_links.html.twig" with {testid: "", type: "compare", aid: oDetailsProduct.oxarticles__oxid.value, anid: oDetailsProduct.oxarticles__oxnid.value, in_list: oDetailsProduct.isOnComparisonList(), page: oView.getActPage(), text_to_id: "COMPARE", text_from_id: "REMOVE_FROM_COMPARE_LIST"} %}
                                 </div>
                             {% endif %}
 
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 {% if oxcmp_user %}
                                     <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
                                 {% else %}
@@ -327,7 +324,7 @@
                             </div>
 
                             {% if oViewConf.getShowWishlist() %}
-                                <div class="col-md-6">
+                                <div class="col-6">
                                     {% if oxcmp_user %}
                                         <a class="btn btn-sm btn-light w-100" id="linkToWishList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=towishlist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                     {% else %}
@@ -339,7 +336,6 @@
                     {% endblock %}
                 {% endblock %}
             </div>
-
             {% block details_productmain_social %}{% endblock %}
         </div>
     </div>

@@ -183,6 +183,7 @@
 
     {% block base_js %}
         {# include file="i18n/js_vars.tpl" #}
+        <script src="{{ oViewConf.getResourceUrl('js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ oViewConf.getResourceUrl('js/scripts.min.js') }}"></script>
 
     {% endblock %}

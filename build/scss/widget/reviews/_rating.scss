@@ -1,12 +1,17 @@
 @if($details-ratings) {
   .ratings {
     display: flex;
-    margin-bottom: .5rem;
+    align-items: center;
 
     svg {
       fill: $rating-star-color;
       width: 14px;
       height: 14px;
+      margin-left: 4px;
+    }
+
+    .total {
+      margin-left: 4px;
     }
   }
 }
