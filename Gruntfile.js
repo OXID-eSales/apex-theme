@@ -82,7 +82,7 @@ module.exports = function (grunt) {
                 },
                 files: {
                     '<%= project.out %><%= project.theme %>/src/js/scripts.min.js': [
-                        '<%= project.dev %>node_modules/@popperjs/core/dist/umd/popper-lite.js',
+                        /*'<%= project.dev %>node_modules/@popperjs/core/dist/umd/popper-lite.js',
                         '<%= project.dev %>node_modules/bootstrap/js/dist/dom/data.js',
                         '<%= project.dev %>node_modules/bootstrap/js/dist/dom/event-handler.js',
                         '<%= project.dev %>node_modules/bootstrap/js/dist/dom/selector-engine.js',
@@ -93,7 +93,7 @@ module.exports = function (grunt) {
 //                        '<%= project.dev %>node_modules/bootstrap/js/dist/carousel.js',
                         '<%= project.dev %>node_modules/bootstrap/js/dist/collapse.js',
                         '<%= project.dev %>node_modules/bootstrap/js/dist/dropdown.js',
-                        '<%= project.dev %>node_modules/bootstrap/js/dist/modal.js',
+                        '<%= project.dev %>node_modules/bootstrap/js/dist/modal.js',*/
 //                        '<%= project.dev %>node_modules/bootstrap/js/dist/tab.js',
                         '<%= project.dev %>build/js/main.js'
                     ],

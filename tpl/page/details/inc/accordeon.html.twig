@@ -1,0 +1,70 @@
+<div class="container-xxl mt-5 mb-3 accordeon">
+    <div class="row">
+        {% block details_longdescription %}
+            {% hasrights { ident: "SHOWLONGDESCRIPTION" } %}
+                {% set oLongdesc = oDetailsProduct.getLongDescription() %}
+                {% if oLongdesc.value %}
+                    <div class="col-12 col-md-6">
+                        <div id="description-collapsible" class="h4" data-bs-target="#description" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="description">
+                            {{ translate({ ident: "DESCRIPTION" }) }}
+                        </div>
+                        <div id="description" class="collapse" aria-labelledby="description-collapsible">
+                            {{ include(template_from_string(oLongdesc)) }}
+                            {% if oDetailsProduct.oxarticles__oxexturl.value %}
+                                <a id="productExturl" class="js-external" href="{{ oDetailsProduct.oxarticles__oxexturl.value }}">
+                                {% if oDetailsProduct.oxarticles__oxurldesc.value %}
+                                    {{ oDetailsProduct.oxarticles__oxurldesc.value }}
+                                {% else %}
+                                    {{ oDetailsProduct.oxarticles__oxexturl.value }}
+                                {% endif %}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endhasrights %}
+        {% endblock %}
+
+        {% block details_attributes %}
+            {% if oView.getAttributes() or oDetailsProduct.oxarticles__oxartnum.value %}
+                <div class="col-12 col-md-3">
+                    <div id="attributes-collapsible" class="h4" data-bs-target="#attributes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="attributes">
+                        {{ translate({ ident: "SPECIFICATION" }) }}
+                    </div>
+                    <div id="attributes" class="collapse" aria-labelledby="attributes-collapsible">
+                        {# article number #}
+                        {% if oDetailsProduct.oxarticles__oxartnum.value %}
+                            {% block details_productmain_artnumber %}
+                                <span class="small text-muted">{{ translate({ ident: "ARTNUM", suffix: "COLON" }) }} {{ oDetailsProduct.oxarticles__oxartnum.value }}</span>
+                            {% endblock %}
+                        {% endif %}
+                        {% include "page/details/inc/attributes.html.twig" %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+        <div class="col-12 col-md-3">
+            {% block details_tags %}
+            {% endblock %}
+
+            {% block details_media %}
+                {% if oView.getMediaFiles() or oDetailsProduct.oxarticles__oxfile.value %}
+                    <div id="media-collapsible" class="h4" data-bs-target="#media" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="media">
+                        {{ translate({ ident: "MEDIA" }) }}
+                    </div>
+                    <div id="media" class="collapse" aria-labelledby="media-collapsible">
+                        <div class="container-xxl">
+                            {% include "page/details/inc/media.html.twig" %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+            {% block details_comments %}
+            {% endblock %}
+
+            {% block details_invite %}
+            {% endblock %}
+        </div>
+    </div>
+</div>

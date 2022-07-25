@@ -18,6 +18,10 @@
         {% set blShowToBasket = false %}
     {% endif %}
 
+    {% if testid == null %}
+        {% set testid = oView.getViewParameter('testid') %}
+    {% endif %}
+
     <div class="card product-card">
         {% block widget_product_listitem_grid_gridpicture %}
         <div class="product-img-wrapper">
