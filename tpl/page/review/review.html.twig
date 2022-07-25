@@ -5,7 +5,7 @@
         {% set product = oView.getProduct() %}
         {% set _productLink = product.getLink() %}
 
-        <div class="list-container" id="{{ listId }}">
+        <div class="container-xxl" id="{{ listId }}">
             <div class="row lineView newItems">
                 {% block widget_product_listitem_line_picturebox %}
                     <div class="productData col-12 productBox">
@@ -17,10 +17,17 @@
     {% endif %}
 
     {% if oView.isReviewActive() %}
-        <div class="widgetBox reviews">
-            <h4>{{ translate({ ident: "WRITE_PRODUCT_REVIEW" }) }}</h4>
-            {% include "widget/reviews/reviews.html.twig" with {sReviewUserHash: oView.getReviewUserHash(), oDetailsProduct: oView.getProduct(), oReviewUser: oView.getReviewUser()} %}
+        <div class="container-xxl">
+            <div class="row">
+                <div class="col-12">
+                    <div class="reviews">
+                        <h4>{{ translate({ ident: "WRITE_PRODUCT_REVIEW" }) }}</h4>
+                        {% include "widget/reviews/reviews.html.twig" with {sReviewUserHash: oView.getReviewUserHash(), oDetailsProduct: oView.getProduct(), oReviewUser: oView.getReviewUser()} %}
+                    </div>
+                </div>
+            </div>
         </div>
+
     {% endif %}
 {% endcapture %}
 {% include "layout/page.html.twig" with {sidebar: "Left"} %}

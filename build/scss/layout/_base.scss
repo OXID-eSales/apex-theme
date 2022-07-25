@@ -91,10 +91,6 @@
 
 .wrapper .container-xxl {
   padding: 0 $spacer;
-
-  @include media-breakpoint-up(md) {
-    padding: inherit;
-  }
 }
 
 /*

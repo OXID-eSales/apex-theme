@@ -1,4 +1,4 @@
-@if($details-ratings) {
+@if ($details-ratings) {
   .ratings {
     display: flex;
     align-items: center;
@@ -12,6 +12,46 @@
 
     .total {
       margin-left: 4px;
+    }
+  }
+
+  .rating {
+    svg {
+      width: 14px;
+      height: 14px;
+
+      @include media-breakpoint-up(md) {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  @for $i from 1 through 5 {
+    .stars#{$i} {
+      @for $j from 1 through 5 {
+        .s#{$j} {
+          @if $j <= $i {
+            fill: $ox-rating-star-filled-color;
+          } @else {
+            fill: $rating-star-color;
+          }
+        }
+      }
+    }
+  }
+
+  .review {
+    border-left: 3px solid $gray-600;
+    padding-left: 9px;
+
+    .d-flex {
+      margin-bottom: 5px;
+      color: $gray-600;
+    }
+
+    .rating {
+      margin-right: 5px;
     }
   }
 }

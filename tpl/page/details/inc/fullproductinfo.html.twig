@@ -8,29 +8,30 @@
     {% if oView.isReviewActive() %}
         {% include "widget/reviews/reviews.html.twig" %}
     {% endif %}
-
-    <div class="row">
-        <div class="col-12 col-md-6">
-            {% set oManufacturer = oView.getManufacturer() %}
-            {% if oManufacturer and oManufacturer.oxmanufacturers__oxshortdesc.value %}
-                <a class="nav-link{% if blFirstTab %} active{% endif %}" href="#manufacturer-tab" data-bs-toggle="tab">
-                    {{ translate({ ident: "MORE_ABOUT" }) }} {{ oManufacturer.oxmanufacturers__oxtitle.value }}
-                </a>
-                <div id="manufacturer-tab" class="tab-pane{% if blFirstTab %} active{% endif %}">
-                    <div class="container-xxl">
-                        <p>
-                            {{ oManufacturer.oxmanufacturers__oxshortdesc.value }}
-                        </p>
-                        <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
-                            {{ translate({ ident: "SHOW_ME_MORE" }) }}
-                        </a>
+    <div class="container-xxl">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                {% set oManufacturer = oView.getManufacturer() %}
+                {% if oManufacturer and oManufacturer.oxmanufacturers__oxshortdesc.value %}
+                    <a class="nav-link{% if blFirstTab %} active{% endif %}" href="#manufacturer-tab" data-bs-toggle="tab">
+                        {{ translate({ ident: "MORE_ABOUT" }) }} {{ oManufacturer.oxmanufacturers__oxtitle.value }}
+                    </a>
+                    <div id="manufacturer-tab" class="tab-pane{% if blFirstTab %} active{% endif %}">
+                        <div class="container-xxl">
+                            <p>
+                                {{ oManufacturer.oxmanufacturers__oxshortdesc.value }}
+                            </p>
+                            <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                                {{ translate({ ident: "SHOW_ME_MORE" }) }}
+                            </a>
+                        </div>
                     </div>
-                </div>
-                {% set blFirstTab = false %}
-            {% endif %}
-        </div>
-        <div class="col-12 col-md-6">
-            <!-- CMS -->
+                    {% set blFirstTab = false %}
+                {% endif %}
+            </div>
+            <div class="col-12 col-md-6">
+                <!-- CMS -->
+            </div>
         </div>
     </div>
 </div>
