@@ -89,10 +89,6 @@
             {% if aAppleTouchIcon %}
                 {% set appleTouchIcon72 = appleTouchIcon %}
                 {% set appleTouchIcon144 = appleTouchIcon %}
-                {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                    {% set appleTouchIcon72 = oViewConf.getDynamicImage(appleTouchIcon, 72, 72) %}
-                    {% set appleTouchIcon144 = oViewConf.getDynamicImage(appleTouchIcon, 144, 144) %}
-                {% endif %}
                 <link rel="apple-touch-icon-precomposed" href="{{ appleTouchIcon }}" />
                 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ appleTouchIcon72 }}" />
                 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ appleTouchIcon144 }}" />

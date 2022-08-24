@@ -69,14 +69,7 @@
                                         {% set oPCategory = product.getCategory() %}
                                         <span class="picture">
                                             {% block widget_product_listitem_line_picturebox %}
-                                                {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                                    <picture>
-                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(product.getThumbnailUrl(), 80, 80, 'webp', true) }}">
-                                                        <img loading="lazy" src="{{ oViewConf.getDynamicImage(product.getThumbnailUrl(), 80, 80, '', true) }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="img-fluid">
-                                                    </picture>
-                                                {% else %}
-                                                    <img loading="lazy" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="img-fluid">
-                                                {% endif %}
+                                                <img loading="lazy" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="img-fluid">
                                             {% endblock %}
                                         </span>
                                         <span class="content">
