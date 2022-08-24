@@ -53,14 +53,7 @@
                 <div class="col-3 col-lg-1">
                     {% block widget_product_listitem_line_picturebox %}
                         <a class="d-block text-center py-2" href="{{ _productLink }}" title="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
-                            {% if oViewConf.isModuleActive('cnc / imagebutler') and product.getMasterZoomPictureUrl(1) %}
-                            <picture>
-                                <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(product.getThumbnailUrl(), 80, 80, 'webp', true) }}">
-                                <img loading="lazy" src="{{ oViewConf.getDynamicImage(product.getThumbnailUrl(), 80, 80, '', true) }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="card-img">
-                            </picture>
-                            {% else %}
-                                <img loading="lazy" width="100" height="100" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="card-img">
-                            {% endif %}
+                            <img loading="lazy" width="100" height="100" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="card-img">
                         </a>
                     {% endblock %}
                 </div>

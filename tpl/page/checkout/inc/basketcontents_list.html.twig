@@ -19,15 +19,8 @@
 
                             {% if editable %}<a class="d-block text-center" href="{{ basketitem.getLink() }}">{% endif %}
 
-                                {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                    <picture>
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oBasketitemArticle.getIconUrl(), 100, 100, 'webp', true) }}">
-                                        <img loading="lazy" src="{{ oViewConf.getDynamicImage(oBasketitemArticle.getIconUrl(), 100, 100, '', true) }}" alt="{{ basketitem.getTitle()|striptags }}" class="cart-img img-fluid">
-                                    </picture>
-                                {% else %}
-                                    <img loading="lazy" src="{{ oBasketitemArticle.getIconUrl() }}" alt="{{ basketitem.getTitle()|striptags }} {{ product.oxarticles__oxvarselect.value }}" class="cart-img img-fluid">
-                                {% endif %}
-
+                                <img loading="lazy" src="{{ oBasketitemArticle.getIconUrl() }}" alt="{{ basketitem.getTitle()|striptags }} {{ product.oxarticles__oxvarselect.value }}" class="cart-img img-fluid">
+                            
                             {% if editable %}</a>{% endif %}
 
                             {% endblock %}
@@ -168,11 +161,9 @@
                                             {% if not basketitem.isBundle() or not basketitem.isDiscountArticle() %}
                                                 <div class="input-group justify-content-end">
                                                     <input id="am_{{ loop.index }}" type="number" class="form-control text-center" name="aproducts[{{ basketindex }}][am]" value="{{ basketitem.getAmount() }}" size="3" min="0" style="width:60px;float:right;"{% if blAllowUnevenAmounts %} step="any"{% endif %}>
-                                                    {% if not oViewConf.isModuleActive('cnc / dynamicshopping') %}
                                                     <button class="btn btn-outline-primary" id="basketUpdate-{{ loop.index }}" type="submit" name="updateBtn" title="{{ translate({ ident: "UPDATE" }) }}">
                                                         <i class="moga-sync"></i>
                                                     </button>
-                                                    {% endif %}
                                                 </div>
                                             {% endif %}
                                         {% else %}
@@ -287,14 +278,7 @@
                     <div class="list-group-item">
                         <div class="row">
                             <div class="col-md-5 col-lg-2">
-                                {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                    <picture>
-                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(oCard.getPictureUrl(), 80, 100, 'webp', false) }}">
-                                        <img loading="lazy" src="{{ oViewConf.getDynamicImage(oCard.getPictureUrl(), 80, 100, '', false) }}" alt="{{ oCard.oxwrapping__oxname.value }}">
-                                    </picture>
-                                {% else %}
-                                    <img loading="lazy" src="{{ oCard.getPictureUrl() }}" alt="{{ card.oxwrapping__oxname.value }}">
-                                {% endif %}
+                                <img loading="lazy" src="{{ oCard.getPictureUrl() }}" alt="{{ card.oxwrapping__oxname.value }}">
                             </div>
                             <div class="col-md-7 col-lg-10">
                                 <div class="d-flex justify-content-between align-items-center">

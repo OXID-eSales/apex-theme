@@ -37,14 +37,7 @@
                                             <div class="row">
                                                 {% set basketproduct = basketitemlist[basketindex] %}
                                                 <div class="col-4 col-md-3 col-lg-2">
-                                                    {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                                        <picture>
-                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(basketproduct.getIconUrl(), 100, 100, 'webp', true) }}">
-                                                            <img loading="lazy" src="{{ oViewConf.getDynamicImage(basketproduct.getIconUrl(), 100, 100, '', true) }}" alt="{{ basketitem.getTitle()|striptags }}" class="cart-img img-fluid">
-                                                        </picture>
-                                                    {% else %}
-                                                        <img loading="lazy" src="{{ basketproduct.getIconUrl() }}" alt="{{ basketitem.getTitle()|striptags }}" class="cart-img img-fluid">
-                                                    {% endif %}
+                                                    <img loading="lazy" src="{{ basketproduct.getIconUrl() }}" alt="{{ basketitem.getTitle()|striptags }}" class="cart-img img-fluid">
                                                 </div>
 
                                                 <div class="col-8 col-md-9 col-lg-10">
@@ -63,14 +56,7 @@
                                                             <label class="btn" for="wrapping_[{{ basketindex }}]{{ wrapping.oxwrapping__oxid.value }}">
                                                                 {% if wrapping.oxwrapping__oxpic.value %}
                                                                 <span class="img">
-                                                                    {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                                                        <picture>
-                                                                            <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(wrapping.getPictureUrl(), 50, 50, 'webp', false) }}">
-                                                                            <img data-bs-target="wrapping_{{ wrapping.oxwrapping__oxid.value }}" loading="lazy" src="{{ oViewConf.getDynamicImage(wrapping.getPictureUrl(), 50, 50, '', false) }}" alt="{{ wrapping.oxwrapping__oxname.value }}" class="wrappingTargetImg">
-                                                                        </picture>
-                                                                    {% else %}
-                                                                        <img data-bs-target="wrapping_{{ wrapping.oxwrapping__oxid.value }}" loading="lazy" src="{{ wrapping.getPictureUrl() }}" alt="{{ wrapping.oxwrapping__oxname.value }}" class="wrappingTargetImg">
-                                                                    {% endif %}
+                                                                    <img data-bs-target="wrapping_{{ wrapping.oxwrapping__oxid.value }}" loading="lazy" src="{{ wrapping.getPictureUrl() }}" alt="{{ wrapping.oxwrapping__oxname.value }}" class="wrappingTargetImg">
                                                                 </span>
                                                                 {% endif %}
                                                                 {{ wrapping.oxwrapping__oxname.value }}
@@ -115,14 +101,7 @@
                                             {% if card.oxwrapping__oxpic.value %}
 
                                             <div class="col-4 col-md-3 col-lg-2">
-                                                {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                                    <picture>
-                                                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(card.getPictureUrl(), 80, 100, 'webp', false) }}">
-                                                        <img loading="lazy" src="{{ oViewConf.getDynamicImage(card.getPictureUrl(), 80, 100, '', false) }}" alt="{{ card.oxwrapping__oxname.value }}">
-                                                    </picture>
-                                                {% else %}
-                                                    <img loading="lazy" src="{{ card.getPictureUrl() }}" alt="{{ card.oxwrapping__oxname.value }}">
-                                                {% endif %}
+                                                <img loading="lazy" src="{{ card.getPictureUrl() }}" alt="{{ card.oxwrapping__oxname.value }}">
                                             </div>
                                             <div class="col-8 col-md-9 col-lg-10">
 

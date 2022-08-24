@@ -76,37 +76,7 @@
                 {% set height1600 = height*500 %}
                 {% set height1800 = height*600 %}
 
-                {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                    <picture class="d-block">
-                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 375, height375, 'webp', false) }}" media="(max-width: 375px)">
-
-                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 750, height750, 'webp', false) }}" media="(max-width: 767px)">
-                        <source srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 750, height750, 'jpg', false) }}" media="(max-width: 767px)">
-
-                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 970, height970, 'webp', false) }}" media="(max-width: 991px)">
-                        <source srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 970, height970, 'jpg', false) }}" media="(max-width: 991px)">
-
-                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 1170, height1170, 'webp', false) }}" media="(max-width: 1199px)">
-                        <source srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 1170, height1170, 'jpg', false) }}" media="(max-width: 1199px)">
-
-                        {% if headerImageWidth == 'w100c100' %}
-                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 1400, height1400, 'webp', false) }}" media="(max-width: 1399px)">
-                        <source srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 1400, height1400, 'jpg', false) }}" media="(max-width: 1399px)">
-
-                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 1600, height1600, 'webp', false) }}" media="(max-width: 1599px)">
-                        <source srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 1600, height1600, 'jpg', false) }}" media="(max-width: 1599px)">
-
-                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 1800, height1800, 'webp', false) }}" media="(min-width: 1600px)">
-                        <source srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 1800, height1800, 'jpg', false) }}" media="(min-width: 1600px)">
-                        {% else %}
-                        <source type="image/webp" srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 1400, height1400, 'webp', false) }}">
-                        <source srcset="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 1400, height1400, 'jpg', false) }}">
-                        {% endif %}
-                        <img loading="lazy" src="{{ oViewConf.getDynamicImage(actCategory.getThumbUrl(), 375, height375, 'jpg', false) }}" alt="{{ actCategory.oxcategories__oxtitle.value }}" class="w-100 img-fluid">
-                    </picture>
-                {% else %}
-                    <img loading="lazy" src="{{ actCategory.getThumbUrl() }}" alt="{{ actCategory.oxcategories__oxtitle.value }}" class="w-100 img-fluid">
-                {% endif %}
+                <img loading="lazy" src="{{ actCategory.getThumbUrl() }}" alt="{{ actCategory.oxcategories__oxtitle.value }}" class="w-100 img-fluid">
             {% endif %}
 
             <div class="pop-header">
@@ -172,11 +142,7 @@
                             <div class="col-12 col-sm-4 col-md-3{% if listType=='manufacturer' %} col-lg-2 manufacturer-item{% endif %}">
                                 <a href="{{ category.getLink() }}" class="card {% if listType=='manufacturer' %}bg-light{% else %}bg-dark text-white{% endif %}">
                                     {% if iconUrl %}
-                                        {% if oViewConf.isModuleActive('cnc / imagebutler') %}
-                                            <img loading="lazy" src="{{ oViewConf.getDynamicImage(category.getIconUrl(), 400, 200, 'webp', false) }}" alt="{{ category.oxcategories__oxtitle.value }}" class="card-img">
-                                        {% else %}
-                                            <img loading="lazy" src="{{ category.getIconUrl() }}" alt="{{ category.oxcategories__oxtitle.value }}" class="card-img">
-                                        {% endif %}
+                                        <img loading="lazy" src="{{ category.getIconUrl() }}" alt="{{ category.oxcategories__oxtitle.value }}" class="card-img">
                                     {% else %}
                                             <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat - placeholder.png') }}" alt="{{ category.oxcategories__oxtitle.value }}" class="card-img">
                                     {% endif %}
