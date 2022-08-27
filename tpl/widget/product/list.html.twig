@@ -7,7 +7,9 @@
         {{ head }}
         {% if rsslink %}
             <a class="rss" id="{{ rssId }}" aria-label="RSS" href="{{ rsslink.link }}" target="_blank">
-                <i class="moga-rss"></i>
+                <svg>
+                    <use xlink:href="#rss"></use>
+                </svg>
             </a>
         {% endif %}
     </h2>
@@ -18,20 +20,13 @@
 {% endif %}
 
 {% if products and not empty(products) %}
-    {% set categoryWidth = oViewConf.getViewThemeParam('sCategoryWidth') %}
-    {% if categoryWidth != 'w100c100' %}
-        {% set colClass = 'row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xxl-4' %}
-    {% else %}
-        {% set colClass = 'row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5' %}
-    {% endif %}
-
-    <div class="list-container px-1" id="{{ listId }}">
-        <div class="row{% if type != 'line' %} {{ colClass }}{% endif %} {{ type }}-view g-1">
+    <div class="list-container" id="{{ listId }}">
+        <div class="row{% if type != 'line' %} grid-row{% endif %} {{ type }}-view">
         {% for _product in products %}
             {% set testid = listId|cat("_")|cat(loop.index) %}
 
             {% if type != 'line' %}
-            <div class="col">
+            <div class="col mb-3">
             {% endif %}
             
                 {{ include_widget({ cl: "oxwArticleBox", _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), iLinkType: _product.getLinkType(), _object: _product, anid: _product.getId(), sWidgetType: "product", sListType: "listitem_" ~ type, iIndex: testid, blDisableToCart: blDisableToCart, isVatIncluded: oView.isVatIncluded(), showMainLink: showMainLink, recommid: recommid, owishid: owishid, toBasketFunction: toBasketFunction, removeFunction: removeFunction, altproduct: altproduct, inlist: _product.isInList(), skipESIforUser: 1, testid: testid }) }}

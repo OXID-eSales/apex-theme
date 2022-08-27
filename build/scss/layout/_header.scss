@@ -9,6 +9,12 @@
 .header {
   background-color: $ox-header-bg;
   color: $ox-header-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+
+  .cl-start & {
+    box-shadow: none;
+  }
 
   .logo-link {
     align-items: center;
@@ -47,7 +53,7 @@
     padding: 10px 0;
 
     @include media-breakpoint-up(lg) {
-      padding: 25px 0;
+      padding: 20px 0;
       border-bottom: 1px solid $input-border-color;
     }
 

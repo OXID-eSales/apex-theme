@@ -10,43 +10,22 @@
   }
 }
 
-.pop-img {
-  img {
-    opacity: .7;
-  }
-
-  .pop-header {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-
-}
-
-.no-img {
-  text-align: center;
-  padding: 20px;
-
-  .pop-header {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 .manufacturer-header {
   .breadcrumb-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
+  }
+}
+
+.list-header {
+  .rss {
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: $warning;
+    }
   }
 }
 
@@ -126,6 +105,101 @@
 
     .slide-right {
       right: 20px;
+    }
+  }
+}
+
+.cat-list {
+  display: flex;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid #B7C1C6;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  &-item {
+    display: block;
+    width: 160px;
+    padding: 0 $spacer;
+    text-decoration: none;
+    text-align: center;
+
+    &-name {
+      display: block;
+    }
+
+    &-img {
+      border-radius: 50%;
+      width: 66px;
+      height: 66px;
+      object-fit: cover;
+      border: 2px solid #B7C1C6;
+      margin-bottom: 5px;
+      transition: border-color 150ms;
+    }
+
+    &:hover,
+    &:focus {
+      .cat-list-item-img {
+        border-color: $primary;
+      }
+    }
+  }
+}
+
+.sort-list {
+  font-size: 14px;
+
+  @include media-breakpoint-up(md) {
+    .nav-link {
+      padding-right: 0;
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.dropdown-toggle.arrow {
+  border-color: transparent;
+  background: transparent;
+
+  &:after {
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    content: '';
+    display: inline-block;
+    height: 10px;
+    left: 5px;
+    position: relative;
+    vertical-align: top;
+    width: 10px;
+    top: 0;
+    transform: rotate(135deg);
+    transition: all 150ms;
+  }
+
+  &.show:after {
+    transform: rotate(-45deg);
+    top: 5px;
+  }
+}
+
+.grid-row {
+  .col {
+    flex: 0 1 50%;
+
+    @include media-breakpoint-up(md) {
+      flex: 0 1 33.33333%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex: 0 1 25%;
+    }
+
+    @include media-breakpoint-up(xl) {
+      flex: 0 1 20%;
     }
   }
 }
