@@ -1,168 +1,205 @@
-.product-card {
-  text-decoration: none;
-  border: none;
-  height: 100%;
-
-  @include media-breakpoint-up(md) {
-    transition: all 150ms;
-  }
-
-  .card-body {
-    padding-bottom: 40px;
-    position: relative;
+@if ($grid-view) {
+  .product-card {
+    text-decoration: none;
+    border: none;
+    height: 100%;
 
     @include media-breakpoint-up(md) {
-      padding-bottom: $spacer;
-      padding-top: 2 * $spacer;
-    }
-  }
-
-  .short-desc {
-    color: #8E9296;
-    font-size: 0.875rem;
-  }
-
-  .card-picture {
-    height: 150px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    object-fit: contain;
-
-    @include media-breakpoint-up(md) {
-      height: 180px;
+      transition: all 150ms;
     }
 
-    @include media-breakpoint-up(lg) {
-      height: 220px;
-    }
-  }
+    .card-body {
+      padding-bottom: 40px;
+      position: relative;
 
-  .product-img {
-    max-height: 150px;
-    object-fit: contain;
-    width: 100%;
+      &.sale {
+        padding-bottom: 50px;
+      }
 
-    @include media-breakpoint-up(md) {
-      max-height: 180px;
-    }
-
-    @include media-breakpoint-up(lg) {
-      max-height: 220px;
-    }
-  }
-
-  .variant-dropdown {
-    padding-right: 1rem;
-  }
-
-  .price {
-    position: absolute;
-    bottom: $spacer;
-    left: $spacer;
-    margin: 0;
-
-    @include media-breakpoint-up(lg) {
-      position: static;
-    }
-  }
-
-  .text-muted {
-    font-family: $font-family-base;
-    font-size: 0.875rem;
-    position: absolute;
-    top: -2 * $spacer;
-
-    @include media-breakpoint-up(lg) {
-      top: 0;
-      right: $spacer;
-    }
-  }
-
-  .product-img-wrapper {
-    overflow: hidden;
-    position: relative;
-  }
-
-  @include media-breakpoint-up(lg) {
-    :is(.bottom, .right) {
-      position: absolute;
-      opacity: 0;
-      transition: $transition-base;
-      z-index: 2;
-    }
-  }
-
-  .badges {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-  }
-
-  @include media-breakpoint-up(lg) {
-    .bottom {
-      padding: 0 10px;
-      bottom: -50px;
+      @include media-breakpoint-up(md) {
+        &,
+        &.sale {
+          padding-bottom: $spacer;
+          padding-top: 2 * $spacer;
+        }
+      }
     }
 
-    .form-control {
-      flex: 0 0 80px;
+    .short-desc,
+    .pricePerUnit,
+    .qty_weight {
+      color: #8E9296;
+      font-size: 0.875rem;
+      margin: 0;
     }
 
-    .btn {
-      flex: 1 1 auto;
+    .short-desc {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-  }
 
-  @include media-breakpoint-up(lg) {
-    .right {
-      position: absolute;
-      right: -50px;
-      top: 10px;
+    .card-picture {
+      height: 150px;
+      width: 100%;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+      object-fit: contain;
+
+      @include media-breakpoint-up(md) {
+        height: 180px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        height: 220px;
+      }
+    }
+
+    .product-img {
+      max-height: 150px;
+      object-fit: contain;
+      width: 100%;
+
+      @include media-breakpoint-up(md) {
+        max-height: 180px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        max-height: 220px;
+      }
+    }
+
+    .variant-dropdown {
+      padding-right: 1rem;
+    }
+
+    .price {
+      position: absolute;
+      bottom: $spacer;
+      left: $spacer;
+      right: $spacer;
+      margin: 0;
+
+      @include media-breakpoint-up(lg) {
+        position: static;
+      }
+
+      .pricePerUnit {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        @include media-breakpoint-up(lg) {
+          position: static;
+        }
+      }
+
+      .h5 {
+        margin-bottom: 0;
+
+        @include media-breakpoint-up(lg) {
+          margin-left: auto;
+        }
+      }
+    }
+
+    .text-muted {
+      font-size: 0.875rem;
+      position: absolute;
+      top: -2 * $spacer;
+
+      @include media-breakpoint-up(lg) {
+        top: 0;
+        right: $spacer;
+      }
+    }
+
+    .product-img-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    @include media-breakpoint-up(lg) {
+      :is(.bottom, .right) {
+        position: absolute;
+        opacity: 0;
+        transition: $transition-base;
+        z-index: 2;
+      }
+    }
+
+    .badges {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      .bottom {
+        padding: 0 10px;
+        bottom: -50px;
+      }
+
+      .form-control {
+        flex: 0 0 80px;
+      }
 
       .btn {
-        margin-bottom: 0.5rem;
+        flex: 1 1 auto;
       }
     }
-  }
-
-  @include media-breakpoint-up(lg) {
-    &:hover,
-    &:focus-within {
-      .bottom {
-        opacity: 1;
-        bottom: 10px;
-      }
-
-      .right {
-        opacity: 1;
-        right: 10px;
-      }
-
-      .img-2 {
-        opacity: 1;
-        width: 100%;
-        height: 300px;
-
-      }
-    }
-  }
-
-  .img-2 {
-    display: none;
 
     @include media-breakpoint-up(lg) {
-      background: #fff;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      opacity: 0;
-      transition: $transition-fade;
+      .right {
+        position: absolute;
+        right: -50px;
+        top: 10px;
+        display: flex;
+        flex-direction: column;
+
+        .btn {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      &:hover,
+      &:focus-within {
+        .bottom {
+          opacity: 1;
+          bottom: 10px;
+        }
+
+        .right {
+          opacity: 1;
+          right: 10px;
+        }
+
+        .img-2 {
+          opacity: 1;
+          width: 100%;
+          height: 300px;
+
+        }
+      }
+    }
+
+    .img-2 {
+      display: none;
+
+      @include media-breakpoint-up(lg) {
+        background: #fff;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        transition: $transition-fade;
+      }
     }
   }
 }

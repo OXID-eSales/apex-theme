@@ -1,44 +1,41 @@
 {% block widget_locator_attributes %}
     {% if attributes %}
-        <div class="sidebar-filter mb-3">
-            <div class="sidebar-header"><strong>{{ translate({ ident: "DD_LISTLOCATOR_FILTER_ATTRIBUTES" }) }}</strong></div>
-            {% for sAttrID, oFilterAttr in attributes %}
-                {% set sActiveValue = oFilterAttr.getActiveValue() %}
-                {% if sActiveValue %}
-                    {% set hasActiveValue = sActiveValue %}
-                {% endif %}
-            {% endfor %}
-
-            {% if hasActiveValue %}
-                <form method="get" action="{{ oViewConf.getSelfActionLink() }}" name="_resetFilter" id="resetFilter">
-                    {{ oViewConf.getHiddenSid()|raw }}
-                    {{ oViewConf.getNavFormParams()|raw }}
-                    <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
-                    <input type="hidden" name="fnc" value="resetFilter">
-                    <button type="submit" class="btn btn-outline-primary mb-3 btn-reset">{{ translate({ ident: "DD_CATEGORY_RESET_BUTTON" }) }}</button>
-                </form>
+        {% for sAttrID, oFilterAttr in attributes %}
+            {% set sActiveValue = oFilterAttr.getActiveValue() %}
+            {% if sActiveValue %}
+                {% set hasActiveValue = sActiveValue %}
             {% endif %}
+        {% endfor %}
 
-            {% set categoryWidth = oViewConf.getViewThemeParam('sCategoryWidth') %}
-
-            <form method="get" action="{{ oViewConf.getSelfActionLink() }}" name="_filterlist">
+        {% if hasActiveValue %}
+            <form method="get" action="{{ oViewConf.getSelfActionLink() }}" name="_resetFilter" id="resetFilter">
                 {{ oViewConf.getHiddenSid()|raw }}
                 {{ oViewConf.getNavFormParams()|raw }}
                 <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
-                <input type="hidden" name="tpl" value="{{ oViewConf.getActTplName() }}">
-                <input type="hidden" name="oxloadid" value="{{ oViewConf.getActContentLoadId() }}">
-                <input type="hidden" name="fnc" value="executefilter">
-                <input type="hidden" name="fname" value="">
-                {% for sAttrID, oFilterAttr in attributes %}
-                    {% set sActiveValue = oFilterAttr.getActiveValue() %}
-                    <select class="form-select mb-3" aria-label="{{ oFilterAttr.getTitle() }}" name="attrfilter[{{ sAttrID }}]" onchange="this.form.submit()">
-                        <option{% if not sActiveValue %} selected{% endif %} value="">{{ oFilterAttr.getTitle() }}</option>
-                        {% for sValue in oFilterAttr.getValues() %}
-                        <option{% if sActiveValue == sValue %} selected{% endif %} value="{{ sValue }}">{{ sValue }}</option>
-                        {% endfor %}
-                    </select>
-                {% endfor %}
+                <input type="hidden" name="fnc" value="resetFilter">
+                <button type="submit" class="btn btn-outline-primary mb-3 btn-reset">{{ translate({ ident: "DD_CATEGORY_RESET_BUTTON" }) }}</button>
             </form>
-        </div>
+        {% endif %}
+
+        {% set categoryWidth = oViewConf.getViewThemeParam('sCategoryWidth') %}
+
+        <form method="get" action="{{ oViewConf.getSelfActionLink() }}" name="_filterlist">
+            {{ oViewConf.getHiddenSid()|raw }}
+            {{ oViewConf.getNavFormParams()|raw }}
+            <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
+            <input type="hidden" name="tpl" value="{{ oViewConf.getActTplName() }}">
+            <input type="hidden" name="oxloadid" value="{{ oViewConf.getActContentLoadId() }}">
+            <input type="hidden" name="fnc" value="executefilter">
+            <input type="hidden" name="fname" value="">
+            {% for sAttrID, oFilterAttr in attributes %}
+                {% set sActiveValue = oFilterAttr.getActiveValue() %}
+                <select class="form-select mb-3" aria-label="{{ oFilterAttr.getTitle() }}" name="attrfilter[{{ sAttrID }}]" onchange="this.form.submit()">
+                    <option{% if not sActiveValue %} selected{% endif %} value="">{{ oFilterAttr.getTitle() }}</option>
+                    {% for sValue in oFilterAttr.getValues() %}
+                    <option{% if sActiveValue == sValue %} selected{% endif %} value="{{ sValue }}">{{ sValue }}</option>
+                    {% endfor %}
+                </select>
+            {% endfor %}
+        </form>
     {% endif %}
 {% endblock %}

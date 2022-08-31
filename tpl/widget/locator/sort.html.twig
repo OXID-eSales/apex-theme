@@ -1,34 +1,53 @@
 {% block widget_locator_sort %}
     {% if oView.showSorting() %}
-        {% set _listType = oView.getListDisplayType() %}
-        {% set _additionalParams = oView.getAdditionalParams() %}
-        {% set _artPerPage = oViewConf.getArtPerPageCount() %}
-        {% set _sortColumnVarName = oView.getSortOrderByParameterName() %}
-        {% set _sortDirectionVarName = oView.getSortOrderParameterName() %}
-        <button type="button" class="btn btn-outline-primary btn-icon dropdown-toggle" id="sort" data-bs-toggle="dropdown" aria-expanded="false">
-            {% if oView.getListOrderBy() %}
-                {% if oView.getListOrderBy()=='oxtitle' or oView.getListOrderBy()=='oxvarminprice' %}
-                    <i class="moga-{{ oView.getListOrderBy() }}{% if oView.getListOrderDirection() == 'asc' %}-up{% else %}-down{% endif %}"></i>
-                {% else %}
-                    {{ translate({ ident: oView.getListOrderBy()|upper }) }}
-                {% endif %}
+        <div class="sort-list ms-auto">
+            {% set _listType = oView.getListDisplayType() %}
+            {% set _additionalParams = oView.getAdditionalParams() %}
+            {% set _artPerPage = oViewConf.getArtPerPageCount() %}
+            {% set _sortColumnVarName = oView.getSortOrderByParameterName() %}
+            {% set _sortDirectionVarName = oView.getSortOrderParameterName() %}
+
+            {% if oView.getSortColumns()|length > 1 %}
+                <div class="ms-auto">
+                    <button type="button" class="dropdown-toggle arrow" id="sort" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% if oView.getListOrderBy() %}
+                            {{ translate({ ident: oView.getListOrderBy()|upper }) }}
+                            {% if oView.getListOrderDirection() == 'desc'%}
+                                {{ translate({ ident: "DD_SORT_DESC" }) }}
+                            {% else %}
+                                {{ translate({ ident: "DD_SORT_ASC" }) }}
+                            {% endif %}
+                        {% else %}
+                            {{ translate({ ident: "SORT" }) }}
+                        {% endif %}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="sort" role="menu">
+                        {% for sColumnName in oView.getSortColumns() %}
+                            <li>
+                                <a class="dropdown-item{% if oView.getListOrderDirection() == 'desc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ "_artPerPage&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=desc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}">
+                                    {{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item{% if oView.getListOrderDirection() == 'asc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ _artPerPage ~ "&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=asc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_ASC" }) }}">
+                                    {{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_ASC" }) }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             {% else %}
-                {{ translate({ ident: "SORT" }) }}
+                <nav class="nav">
+                    {% for sColumnName in oView.getSortColumns() %}
+                        <a class="nav-link{% if oView.getListOrderDirection() == 'desc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ "_artPerPage&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=desc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}">
+                            {{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}
+                        </a>
+                        <a class="nav-link{% if oView.getListOrderDirection() == 'asc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ _artPerPage ~ "&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=asc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_ASC" }) }}">
+                            {{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_ASC" }) }}
+                        </a>
+                    {% endfor %}
+                </nav>
             {% endif %}
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="sort" role="menu">
-            {% for sColumnName in oView.getSortColumns() %}
-                <li>
-                    <a class="dropdown-item{% if oView.getListOrderDirection() == 'desc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ "_artPerPage&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=desc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}">
-                        {{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item{% if oView.getListOrderDirection() == 'asc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ _artPerPage ~ "&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=asc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_ASC" }) }}">
-                        {{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_ASC" }) }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+        </div>
     {% endif %}
 {% endblock %}

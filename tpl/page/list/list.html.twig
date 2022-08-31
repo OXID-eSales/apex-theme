@@ -54,60 +54,44 @@
             {% endif %}
         </div>
     {% else %}
-        {% if headerImageWidth == 'container' %}
+        <div class="bg-white list-header mb-4">
             <div class="container-xxl">
-        {% endif %}
+                <div class="row">
+                    <div class="col-12{% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %} col-md-6 order-2 order-md-1 {% endif %}">
+                        {% if showPopBreadcrump %}
+                            <div class="row">
+                                {% include "widget/breadcrumb.html.twig" %}
+                            </div>
+                        {% endif %}
 
-        <div class="position-relative{% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %} bg-dark pop-img{% else %} no-img{% endif %}">
-            {% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %}
-                {% set headerImageWidth = oViewConf.getViewThemeParam('sHeaderImageWidth') %}
-                {% set headerImageheight = oViewConf.getViewThemeParam('sHeaderImageHeight') %}
-                {% set height = 1 %}
+                        {% set rsslinks = oView.getRssLinks() %}
+                        <h1 class="h2">
+                            {{ oView.getTitle() }}
+                            {% if rsslinks.activeCategory %}
+                                <a class="rss" id="rssActiveCategory" aria-label="{{ rsslinks.activeCategory.title }}" href="{{ rsslinks.activeCategory.link }}" title="{{ rsslinks.activeCategory.title }}" target="_blank">
+                                    <svg>
+                                        <use xlink:href="#rss"></use>
+                                    </svg>
+                                </a>
+                            {% endif %}
+                        </h1>
 
-                {% if headerImageheight == 'small' %}
-                    {% set height = 0.5 %}
-                {% endif %}
-
-                {% set height375 = height*220 %}
-                {% set height750 = height*350 %}
-                {% set height970 = height*400 %}
-                {% set height1170 = height*400 %}
-                {% set height1400 = height*450 %}
-                {% set height1600 = height*500 %}
-                {% set height1800 = height*600 %}
-
-                <img loading="lazy" src="{{ actCategory.getThumbUrl() }}" alt="{{ actCategory.oxcategories__oxtitle.value }}" class="w-100 img-fluid">
-            {% endif %}
-
-            <div class="pop-header">
-                {% set rsslinks = oView.getRssLinks() %}
-                <h1{% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %} class="text-white"{% endif %}>
-                    {{ oView.getTitle() }}
-                    {% if rsslinks.activeCategory %}
-                        <a class="rss" id="rssActiveCategory" aria-label="{{ rsslinks.activeCategory.title }}" href="{{ rsslinks.activeCategory.link }}" title="{{ rsslinks.activeCategory.title }}" target="_blank">
-                            <i class="moga-rss"></i>
-                        </a>
-                    {% endif %}
-                </h1>
-                {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 and actCategory.oxcategories__oxdesc.rawValue %}
-                <div id="catDescLocator" class="categoryDescription{% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %} text-white{% endif %}">
-                    {{ actCategory.oxcategories__oxdesc.rawValue }}
-                </div>
-                {% endif %}
-
-                {% if showPopBreadcrump %}
-                <div class="breadcrumb-wrapper">
-                    <div class="container-xxl pt-3">
-                        {% include "widget/breadcrumb.html.twig" %}
+                        {% if actCategory.oxcategories__oxlongdesc.value and oPageNavigation.actPage == 1 and sCategoryDescPosition == 'bottom' %}
+                            {% block page_list_long_desc_bottom %}
+                                <div id="catLongDescLocator" class="categoryDescription">
+                                    {{ include(template_from_string(actCategory.oxcategories__oxlongdesc)) }}
+                                </div>
+                            {% endblock %}
+                        {% endif %}
                     </div>
+                    {% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %}
+                        <div class="col-12 col-md-6 order-1 order-md-1 py-4">
+                            <img src="{{ actCategory.getThumbUrl() }}" alt="{{ actCategory.oxcategories__oxtitle.value }}" class="w-100 img-fluid">
+                        </div>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
         </div>
-
-        {% if headerImageWidth == 'container' %}
-        </div>
-        {% endif %}
     {% endif %}
 
     {% if actCategory.oxcategories__oxlongdesc.value and oPageNavigation.actPage == 1 and sCategoryDescPosition == 'top' %}
@@ -119,60 +103,32 @@
     {% endif %}
 
     {% if oView.hasVisibleSubCats() %}
-        <div class="container-{% if headerImageWidth == 'container' %}fluid{% else %}xxl{% endif %}">
+        <div class="container-xxl">
             {% set iSubCategoriesCount = 0 %}
-            <div class="my-3">
-                <div class="row g-2">
-                    {% for category in oView.getSubCatList() %}
-                        {% if category.getContentCats() %}
-                            {% for ocont in category.getContentCats() %}
-                                <div class="col-12 col-sm-4 col-md-3 col-xl-2">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <a href="{{ ocont.getLink() }}">{{ ocont.oxcontents__oxtitle.value }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
+            <div class="cat-list mb-4">
+                {% for category in oView.getSubCatList() %}
+                    {% if category.getIsVisible() %}
+                        {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
+                        {% set iconUrl = category.getIconUrl() %}
+                            <a href="{{ category.getLink() }}" class="cat-list-item">
+                                {% if iconUrl %}
+                                    <img loading="lazy" src="{{ category.getIconUrl() }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
+                                {% else %}
+                                    <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat-placeholder.png') }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
+                                {% endif %}
+                                <span class="cat-list-item-name">{{ category.oxcategories__oxtitle.value }}</span>
+                            </a>
+                    {% endif %}
 
-                        {% if category.getIsVisible() %}
-                            {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
-                            {% set iconUrl = category.getIconUrl() %}
-                            <div class="col-12 col-sm-4 col-md-3{% if listType=='manufacturer' %} col-lg-2 manufacturer-item{% endif %}">
-                                <a href="{{ category.getLink() }}" class="card {% if listType=='manufacturer' %}bg-light{% else %}bg-dark text-white{% endif %}">
-                                    {% if iconUrl %}
-                                        <img loading="lazy" src="{{ category.getIconUrl() }}" alt="{{ category.oxcategories__oxtitle.value }}" class="card-img">
-                                    {% else %}
-                                            <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat - placeholder.png') }}" alt="{{ category.oxcategories__oxtitle.value }}" class="card-img">
-                                    {% endif %}
-                                    <div class="card-img-overlay">
-                                        <div class="h5 card-title">{{ category.oxcategories__oxtitle.value }}</div>
-                                        {# if oView.showCategoryArticlesCount() and (category.getNrOfArticles() > 0) }} ({{ category.getNrOfArticles() }}){% endif %}
-                                        {% if category.getHasVisibleSubCats() %}
-                                        <ul class="list-unstyled">
-                                            {% for subcategory in category.getSubCats() %}
-                                            {% if subcategory.getIsVisible() %}
-                                            {% for ocont in subcategory.getContentCats() %}
-                                            <li>
-                                                <a href="{{ ocont.getLink() }}"><strong>{{ ocont.oxcontents__oxtitle.value }}</strong></a>
-                                            </li>
-                                            {% endfor %}
-
-                                            <li>
-                                                <a href="{{ subcategory.getLink() }}">{{ subcategory.oxcategories__oxtitle.value }}</a>
-                                                {% if oView.showCategoryArticlesCount() and (subcategory.getNrOfArticles() > 0) %}&nbsp;({{ subcategory.getNrOfArticles() }}){% endif %}
-                                            </li>
-                                            {% endif %}
-                                            {% endfor %}
-                                        </ul>
-                                        {{ /if #}
-                                    </div>
-                                </a>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
+                    {% if category.getContentCats() %}
+                        {% for ocont in category.getContentCats() %}
+                            <a href="{{ ocont.getLink() }}" class="cat-list-item">
+                                <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat-placeholder.png') }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
+                                <span class="cat-list-item-name">{{ ocont.oxcontents__oxtitle.value }}</span>
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     {% endif %}
@@ -184,66 +140,28 @@
         {% if oView.getArticleList() %}
 
             {% set categoryWidth = oViewConf.getViewThemeParam('sCategoryWidth') %}
-            {% if categoryWidth == 'container' %}
-                <div class="container-xxl">
-            {% endif %}
-                    <div class="article-list pb-5">
-                        <div class="container{% if categoryWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
+                <div class="article-list pb-5">
+                    <div class="container-xxl">
+                        {% if oView.getArticleList() %}
+                            {% block page_list_upperlocator %}
+                                {% include "widget/locator/listlocator.html.twig" with {attributes: oView.getAttributes(), sort: true} %}
+                            {% endblock %}
+                        {% endif %}
+                        <div class="row">
                             {% if oView.getArticleList() %}
-                                <div class="d-flex py-3">
-                                    <button type="button" class="btn btn-outline-primary btn-icon" data-bs-toggle="modal" data-bs-target="#filter" aria-label="{{ translate({ ident: "DD_LISTLOCATOR_FILTER_ATTRIBUTES" }) }}">
-                                        <i class="moga-sliders"></i>
-                                    </button>
-
-                                    <div class="sidebar-display ms-auto">
-                                        {% block page_list_upperlocator %}
-                                            {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedTop(), attributes: false, listDisplayType: true, sort: true, itemsPerPage: true} %}
-                                        {% endblock %}
-                                    </div>
-                                </div>
+                                {# List types: grid|line #}
+                                {% block page_list_productlist %}
+                                    {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "productList", products: oView.getArticleList()} %}
+                                {% endblock %}
+                                {% block page_list_bottomlocator %}
+                                    {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedBottom(), place: "bottom"} %}
+                                {% endblock %}
                             {% endif %}
-                            <div class="row">
-                                {% if oView.getArticleList() %}
-                                    {# List types: grid|line #}
-                                    {% block page_list_productlist %}
-                                        {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "productList", products: oView.getArticleList()} %}
-                                    {% endblock %}
-                                    {% block page_list_bottomlocator %}
-                                        {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedBottom(), place: "bottom"} %}
-                                    {% endblock %}
-                                {% endif %}
-                            </div>
                         </div>
                     </div>
-
-            {% if categoryWidth == 'container' %}
                 </div>
-            {% endif %}
         {% endif %}
     {% endblock %}
 
-    {% if actCategory.oxcategories__oxlongdesc.value and oPageNavigation.actPage == 1 and sCategoryDescPosition == 'bottom' %}
-        {% block page_list_long_desc_bottom %}
-            <div id="catLongDescLocator" class="container-{% if headerImageWidth == 'container' %}fluid{% else %}xxl{% endif %} categoryDescription">
-                {{ include(template_from_string(actCategory.oxcategories__oxlongdesc)) }}
-            </div>
-        {% endblock %}
-    {% endif %}
-
-    <div class="modal fade modal-sidebar-left" id="filter">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    {% if oView.getArticleList() %}
-                    {% block page_list_upperlocator_sidebar %}
-                    {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedTop(), attributes: oView.getAttributes(), listDisplayType: false, sort: false} %}
-                    {% endblock %}
-                    {% endif %}
-
-                    {{ include_widget({ cl: "oxwCategoryTree", cnid: oView.getCategoryId(), deepLevel: 0, noscript: 1, nocookie: 1 }) }}
-                </div>
-            </div>
-        </div>
-    </div>
 {% endcapture %}
 {% include "layout/page.html.twig" with {tree_path: oView.getTreePath()} %}

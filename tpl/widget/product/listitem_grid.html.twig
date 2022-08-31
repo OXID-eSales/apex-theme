@@ -110,25 +110,25 @@
         </div>
         {% endblock %}
 
-        <div class="card-body">
-            <div class="d-Íflex justify-content-between">
+        <div class="card-body{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} sale{% endif %}">
+            <div class="d-flex justify-content-between">
                 {% block widget_product_listitem_infogrid_titlebox %}
                     <div class="h5 card-title">
                         {{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value }}
                     </div>
                 {% endblock %}
-                <div class="d-flex flex-column price h5{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} sale{% endif %}">
+                <div class="d-flex flex-column price{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} sale{% endif %}">
                     {% block widget_product_listitem_grid_price %}
                         {% hasrights { ident: "SHOWARTICLEPRICE" } %}
                             {% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %}
                                 <span class="oldPrice text-muted">
-                                <del>{{ product.getFTPrice() }} {{ currency.sign }}</del>
-                            </span>
+                                    <del>{{ product.getFTPrice() }} {{ currency.sign }}</del>
+                                </span>
                             {% endif %}
 
                             {% block widget_product_listitem_grid_price_value %}
                                 {% if product.getFPrice() %}
-                                    <span class="text-nowrap{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} text-danger{% endif %}">
+                                    <span class="h5 text-nowrap{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} text-danger{% endif %}">
                                     {% if product.isRangePrice() %}
                                         {{ translate({ ident: "PRICE_FROM" }) }}
                                         {% if not product.isParentNotBuyable() %}
@@ -147,20 +147,28 @@
                                 </span>
                                 {% endif %}
                             {% endblock %}
-                            {% if oUnitPrice %}
-                                <span id="productPricePerUnit_{{ testid }}" class="pricePerUnit">
-                                    {{ product.oxarticles__oxunitquantity.value }} {{ product.getUnitName() }} | {{ format_price(oUnitPrice, { currency: currency }) }}/{{ product.getUnitName() }}
-                            </span>
-                            {% elseif product.oxarticles__oxweight.value and config.getConfigParam('blShowWeightInList')  %}
-                                <span id="productPricePerUnit_Weight_{{ testid }}" class="pricePerUnit">
-                                    <span title="weight">{{ translate({ ident: "WEIGHT" }) }}</span>
-                                    <span class="value">{{ product.oxarticles__oxweight.value }} {{ translate({ ident: "KG" }) }}</span>
-                            </span>
-                            {% endif %}
                         {% endhasrights %}
+
+                        {% if oUnitPrice %}
+                            <p id="productPricePerUnit_{{ testid }}" class="pricePerUnit">
+                                {{ format_price(oUnitPrice, { currency: currency }) }}/{{ product.getUnitName() }}
+                            </p>
+                        {% endif %}
                     {% endblock %}
                 </div>
             </div>
+            {% if oUnitPrice or (product.oxarticles__oxweight.value and config.getConfigParam('blShowWeightInList'))%}
+                <div class="qty_weight">
+                    {% if oUnitPrice %}
+                        {{ product.oxarticles__oxunitquantity.value }} {{ product.getUnitName() }} <br>
+                    {% elseif product.oxarticles__oxweight.value and config.getConfigParam('blShowWeightInList')  %}
+                        <span id="productPricePerUnit_Weight_{{ testid }}" class="pricePerUnit">
+                                <span title="weight">{{ translate({ ident: "WEIGHT" }) }}</span>
+                                <span class="value">{{ product.oxarticles__oxweight.value }} {{ translate({ ident: "KG" }) }}</span>
+                            </span>
+                    {% endif %}
+                </div>
+            {% endif %}
             <div class="short-desc">
                 {{ product.oxarticles__oxshortdesc.value }}
             </div>
