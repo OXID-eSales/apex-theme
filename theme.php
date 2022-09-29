@@ -307,6 +307,12 @@ $aTheme = array(
         ),
         array(
             'group' => 'images',
+            'name' => 'sManufacturerPromotionsize',
+            'type' => 'str',
+            'value' => '370*107',
+        ),
+        array(
+            'group' => 'images',
             'name' => 'sThumbnailsize',
             'type' => 'str',
             'value' => '500*500',
