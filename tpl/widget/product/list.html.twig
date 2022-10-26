@@ -5,13 +5,6 @@
 {% if head %}
     <h2>
         {{ head }}
-        {% if rsslink %}
-            <a class="rss" id="{{ rssId }}" aria-label="RSS" href="{{ rsslink.link }}" target="_blank">
-                <svg>
-                    <use xlink:href="#rss"></use>
-                </svg>
-            </a>
-        {% endif %}
     </h2>
 
     {% if subhead %}
@@ -28,7 +21,7 @@
             {% if type != 'line' %}
             <div class="col mb-3">
             {% endif %}
-            
+
                 {{ include_widget({ cl: "oxwArticleBox", _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), iLinkType: _product.getLinkType(), _object: _product, anid: _product.getId(), sWidgetType: "product", sListType: "listitem_" ~ type, iIndex: testid, blDisableToCart: blDisableToCart, isVatIncluded: oView.isVatIncluded(), showMainLink: showMainLink, recommid: recommid, owishid: owishid, toBasketFunction: toBasketFunction, removeFunction: removeFunction, altproduct: altproduct, inlist: _product.isInList(), skipESIforUser: 1, testid: testid }) }}
 
             {% if type != 'line' %}

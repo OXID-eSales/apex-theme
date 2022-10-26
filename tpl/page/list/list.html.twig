@@ -64,16 +64,8 @@
                             </div>
                         {% endif %}
 
-                        {% set rsslinks = oView.getRssLinks() %}
                         <h1 class="h2">
                             {{ oView.getTitle() }}
-                            {% if rsslinks.activeCategory %}
-                                <a class="rss" id="rssActiveCategory" aria-label="{{ rsslinks.activeCategory.title }}" href="{{ rsslinks.activeCategory.link }}" title="{{ rsslinks.activeCategory.title }}" target="_blank">
-                                    <svg>
-                                        <use xlink:href="#rss"></use>
-                                    </svg>
-                                </a>
-                            {% endif %}
                         </h1>
 
                         {% if actCategory.oxcategories__oxlongdesc.value and oPageNavigation.actPage == 1 and sCategoryDescPosition == 'bottom' %}
