@@ -3,7 +3,7 @@
 {% set user = oEmailView.getUser() %}
 
 
-{{ translate({ ident: "GIFT_REGISTRY_OF" }) }} {{ shop.oxshops__oxname.getRawValue() }}
+{{ translate({ ident: "GIFT_REGISTRY_OF" }) }} {{ shop.oxshops__oxname.value }}
 
 {{ userinfo.send_message }}
 

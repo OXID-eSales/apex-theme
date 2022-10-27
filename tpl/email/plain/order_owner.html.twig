@@ -29,14 +29,14 @@
 {% for basketindex, basketitem in basket.getContents() %}
 {% block email_plain_order_ownerbasketitem %}
 {% set basketproduct = basketitemlist[basketindex] %}
-{{ basketproduct.oxarticles__oxtitle.getRawValue()|striptags }}{% if basketproduct.oxarticles__oxvarselect.value %}, {{ basketproduct.oxarticles__oxvarselect.value }}{% endif %}
+{{ basketproduct.oxarticles__oxtitle.value|striptags }}{% if basketproduct.oxarticles__oxvarselect.value %}, {{ basketproduct.oxarticles__oxvarselect.value }}{% endif %}
 {% if basketitem.getChosenSelList() %}{% for oList in basketitem.getChosenSelList() %}{{ oList.name }} {{ oList.value }}{% endfor %}{% endif %}
 {% if basketitem.getPersParams() %}{% for sVar, aParam in basketitem.getPersParams() %}{{ sVar }} : {{ aParam }}{% endfor %}{% endif %}
 {% if oViewConf.getShowGiftWrapping() %}
 {% set oWrapping = basketitem.getWrapping() %}
-{{ translate({ ident: "GIFT_WRAPPING" }) }} {% if not basketitem.getWrappingId() %}{{ translate({ ident: "NONE" }) }}{% else %}{{ oWrapping.oxwrapping__oxname.getRawValue() }}{% endif %}
+{{ translate({ ident: "GIFT_WRAPPING" }) }} {% if not basketitem.getWrappingId() %}{{ translate({ ident: "NONE" }) }}{% else %}{{ oWrapping.oxwrapping__oxname.value }}{% endif %}
 {% endif %}
-{% if basketproduct.oxarticles__oxorderinfo.value %}{{ basketproduct.oxarticles__oxorderinfo.getRawValue() }}{% endif %}
+{% if basketproduct.oxarticles__oxorderinfo.value %}{{ basketproduct.oxarticles__oxorderinfo.value }}{% endif %}
 
 {% set dRegUnitPrice = basketitem.getRegularUnitPrice() %}
 {% set dUnitPrice = basketitem.getUnitPrice() %}
@@ -168,13 +168,13 @@
 
 {% block email_plain_order_owneruserremark %}
 {% if order.oxorder__oxremark.value %}
-{{ translate({ ident: "MESSAGE" }) }} {{ order.oxorder__oxremark.getRawValue() }}
+{{ translate({ ident: "MESSAGE" }) }} {{ order.oxorder__oxremark.value }}
 {% endif %}
 {% endblock %}
 
 {% block email_plain_order_ownerpaymentinfo %}
 {% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "PAYMENT_INFORMATION" }) }}
-{{ translate({ ident: "PAYMENT_METHOD" }) }}{{ payment.oxpayments__oxdesc.getRawValue() }} {% if basket.getPaymentCosts() %}({{ basket.getFPaymentCosts() }} {{ currency.sign }}){% endif %}
+{{ translate({ ident: "PAYMENT_METHOD" }) }}{{ payment.oxpayments__oxdesc.value }} {% if basket.getPaymentCosts() %}({{ basket.getFPaymentCosts() }} {{ currency.sign }}){% endif %}
 {% endif %}
 {% endblock %}
 
@@ -184,29 +184,29 @@
 
 {% block email_plain_order_owneraddress %}
 {{ translate({ ident: "BILLING_ADDRESS" }) }}
-{{ order.oxorder__oxbillcompany.getRawValue() }}
-{{ order.oxorder__oxbillsal.value|translate_salutation }} {{ order.oxorder__oxbillfname.getRawValue() }} {{ order.oxorder__oxbilllname.getRawValue() }}
-{% if order.oxorder__oxbilladdinfo.value %}{{ order.oxorder__oxbilladdinfo.getRawValue() }}{% endif %}
-{{ order.oxorder__oxbillstreet.getRawValue() }} {{ order.oxorder__oxbillstreetnr.value }}
+{{ order.oxorder__oxbillcompany.value }}
+{{ order.oxorder__oxbillsal.value|translate_salutation }} {{ order.oxorder__oxbillfname.value }} {{ order.oxorder__oxbilllname.value }}
+{% if order.oxorder__oxbilladdinfo.value %}{{ order.oxorder__oxbilladdinfo.value }}{% endif %}
+{{ order.oxorder__oxbillstreet.value }} {{ order.oxorder__oxbillstreetnr.value }}
 {{ order.oxorder__oxbillstateid.value }}
-{{ order.oxorder__oxbillzip.value }} {{ order.oxorder__oxbillcity.getRawValue() }}
-{{ order.oxorder__oxbillcountry.getRawValue() }}
+{{ order.oxorder__oxbillzip.value }} {{ order.oxorder__oxbillcity.value }}
+{{ order.oxorder__oxbillcountry.value }}
 {% if order.oxorder__oxbillustid.value %}{{ translate({ ident: "VAT_ID_NUMBER" }) }} {{ order.oxorder__oxbillustid.value }}{% endif %}
 {{ translate({ ident: "PHONE" }) }} {{ order.oxorder__oxbillfon.value }}
 
 {% if order.oxorder__oxdellname.value %}{{ translate({ ident: "SHIPPING_ADDRESS" }) }}
-{{ order.oxorder__oxdelcompany.getRawValue() }}
-{{ order.oxorder__oxdelsal.value|translate_salutation }} {{ order.oxorder__oxdelfname.getRawValue() }} {{ order.oxorder__oxdellname.getRawValue() }}
-{% if order.oxorder__oxdeladdinfo.value %}{{ order.oxorder__oxdeladdinfo.getRawValue() }}{% endif %}
-{{ order.oxorder__oxdelstreet.getRawValue() }} {{ order.oxorder__oxdelstreetnr.value }}
-{{ order.oxorder__oxdelstateid.getRawValue() }}
-{{ order.oxorder__oxdelzip.value }} {{ order.oxorder__oxdelcity.getRawValue() }}
-{{ order.oxorder__oxdelcountry.getRawValue() }}
+{{ order.oxorder__oxdelcompany.value }}
+{{ order.oxorder__oxdelsal.value|translate_salutation }} {{ order.oxorder__oxdelfname.value }} {{ order.oxorder__oxdellname.value }}
+{% if order.oxorder__oxdeladdinfo.value %}{{ order.oxorder__oxdeladdinfo.value }}{% endif %}
+{{ order.oxorder__oxdelstreet.value }} {{ order.oxorder__oxdelstreetnr.value }}
+{{ order.oxorder__oxdelstateid.value }}
+{{ order.oxorder__oxdelzip.value }} {{ order.oxorder__oxdelcity.value }}
+{{ order.oxorder__oxdelcountry.value }}
 {% endif %}
 {% endblock %}
 
 {% block email_plain_order_ownerdeliveryinfo %}
-{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ oDelSet.oxdeliveryset__oxtitle.getRawValue() }}
+{% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "SHIPPING_CARRIER", suffix: "COLON" }) }} {{ oDelSet.oxdeliveryset__oxtitle.value }}
 {% endif %}
 {% endblock %}
 

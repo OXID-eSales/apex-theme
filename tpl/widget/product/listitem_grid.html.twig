@@ -114,7 +114,7 @@
             <div class="d-flex justify-content-between">
                 {% block widget_product_listitem_infogrid_titlebox %}
                     <div class="h5 card-title">
-                        {{ product.oxarticles__oxtitle.value|raw }} {{ product.oxarticles__oxvarselect.value }}
+                        {{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}
                     </div>
                 {% endblock %}
                 <div class="d-flex flex-column price{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} sale{% endif %}">

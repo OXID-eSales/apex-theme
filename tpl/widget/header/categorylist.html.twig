@@ -23,7 +23,7 @@
 
                                     <div class="nav-item{% if ocat.getSubCats() %} has-subs{% endif %}">
                                         <a class="nav-link nav-link-1{% if homeSelected == 'false' and ocat.expanded %} active{% endif %}"{% if homeSelected == 'false' and ocat.expanded %} aria-current="page"{% endif %} href="{{ ocat.getLink() }}">
-                                            {{ ocat.oxcategories__oxtitle.value|raw }}
+                                            {{ ocat.oxcategories__oxtitle.value }}
                                         </a>
 
                                         {# EBENE 2 #}
