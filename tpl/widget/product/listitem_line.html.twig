@@ -71,7 +71,7 @@
                                     {{ product.text }}
                                     {% else %}
                                     {% hasrights { ident: "SHOWSHORTDESCRIPTION" } %}
-                                    {{ product.oxarticles__oxshortdesc.rawValue }}
+                                    {{ product.oxarticles__oxshortdesc.value }}
                                     {% endhasrights %}
                                     {% endif %}
                                 </div>
