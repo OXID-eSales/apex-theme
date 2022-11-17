@@ -31,11 +31,15 @@
                     <input id="loginUser" class="form-control" type="text" name="lgn_usr" role="loginUser" required placeholder=" ">
                     <label class="req">{{ translate({ ident: "EMAIL" }) }}</label>
                 </div>
-                <div class="mb-3 form-floating{% if aErrors %} oxInValid{% endif %}">
-                    <input id="loginPwd" class="form-control" type="password" name="lgn_pwd" role="loginPwd" required placeholder=" ">
-                    <label class="req">{{ translate({ ident: "PASSWORD" }) }}</label>
-                    <a id="forgotPasswordLink" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=forgotpwd") }) }}" class="btn btn-link px-0">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
-                </div>
+
+                {% block checkout_options_loginaccount_passwordfield %}
+                    <div class="mb-3 form-floating{% if aErrors %} oxInValid{% endif %}">
+                        <input id="loginPwd" class="form-control" type="password" name="lgn_pwd" role="loginPwd" required placeholder=" ">
+                        <label class="req">{{ translate({ ident: "PASSWORD" }) }}</label>
+                        <a id="forgotPasswordLink" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=forgotpwd") }) }}" class="btn btn-link px-0">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
+                    </div>
+                {% endblock %}
+
                 {% if oView.showRememberMe() %}
                     <div class="form-check mb-3">
                         <input type="checkbox" class="form-check-input" id="lgn_cook" name="lgn_cook" value="1">
@@ -45,9 +49,11 @@
                     </div>
                 {% endif %}
 
-                <div class="mb-3">
-                    <button id="loginButton" type="submit" class="btn btn-primary">{{ translate({ ident: "LOGIN" }) }}</button>
-                </div>
+                {% block checkout_options_loginaccount_submitbutton %}
+                    <div class="mb-3">
+                        <button id="loginButton" type="submit" class="btn btn-primary">{{ translate({ ident: "LOGIN" }) }}</button>
+                    </div>
+                {% endblock %}
             </form>
         </div>
     </div>
