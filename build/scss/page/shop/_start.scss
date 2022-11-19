@@ -88,15 +88,3 @@
     padding: 4rem 4*$spacer 4*$spacer;
   }
 }
-
-.promo-tiles {
-  .card {
-    margin-bottom: $spacer;
-
-    &-img {
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      height: auto;
-    }
-  }
-}
