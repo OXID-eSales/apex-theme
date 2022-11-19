@@ -1,7 +1,11 @@
-.dd-shortcode-image-teaser-row {
-  @include media-breakpoint-up(lg) {
-    padding-top: $spacer;
+.dd-ve-container.dd-ve-container {
+  padding: 0 $grid-gutter-width/2;
+}
 
+.dd-shortcode-image-teaser-row {
+  margin: 0 (-$spacer * 0.5);
+
+  @include media-breakpoint-up(lg) {
     .row {
       margin: 0 (-$spacer * 0.5);
     }
@@ -71,5 +75,35 @@
         }
       }
     }
+  }
+
+  &.style-2 {
+    .card {
+      margin-bottom: $spacer;
+
+      &-img {
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        height: auto;
+      }
+    }
+  }
+}
+
+.space {
+  &-0 {
+    padding: 0;
+  }
+
+  &-t {
+    padding-top: var(--row-spacing);
+  }
+
+  &-b {
+    padding-bottom: var(--row-spacing);
+  }
+
+  &-tb {
+    padding: var(--row-spacing) 0;
   }
 }

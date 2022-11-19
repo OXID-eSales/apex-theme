@@ -1,5 +1,6 @@
 {% if oView.isLanguageLoaded() %}
     {% if oxcmp_lang|length > 1 %}
+        {{ oxcmp_lang|length }}
         <div class="btn-group" role="group">
             <button type="button" aria-label="Language" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-display="static">
                 {% set sLangImg = "lang/"|cat(oViewConf.getActLanguageAbbr())|cat(".png") %}
@@ -18,7 +19,7 @@
                         {% endif %}
                         <li class="dropdown-item{% if _lng.selected %} active{% endif %}">
                             <a class="flag dropdown-link {{ _lng.abbr }}" title="{{ _lng.name }}" href="{{ _lng.link|add_url_parameters(oView.getDynUrlParams()) }}" hreflang="{{ _lng.abbr }}">
-                                <img src="{{ oViewConf.getImageUrl(sLangImg) }}" alt="{{ sLangImg }}"> {{ _lng.name }}
+                                <img src="{{ oViewConf.getImageUrl(sLangImg) }}" alt="{{ sLangImg }}" width="14" height="10"> {{ _lng.name }}
                             </a>
                         </li>
                     {% endfor %}

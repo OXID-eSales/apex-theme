@@ -1,26 +1,28 @@
 {% set manufacturerWidth = oViewConf.getViewThemeParam('sManufacturerWidth') %}
 <div class="container-xxl">
-
-    <div id="manufacturer" class="py-5">
+    <div class="py-5 manufacturer">
         <div class="container{% if manufacturerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
             <h2>{{ translate({ ident: "OUR_BRANDS" }) }}</h2>
             <span class="subhead">{{ translate({ ident: "MANUFACTURERSLIDER_SUBHEAD" }) }}</span>
 
-            <div class="top-brands my-5 todo">
+            <div class="top-brands my-5">
                 <div class="row row-cols-2 row-cols-lg-4">
-                    {% for i in 1..4 %}
-                    <div class="col">
-                        <div class="card brand-card text-white">
-                            <picture>
-                                <source srcset="{{ oViewConf.getImageUrl('content/promo.webp') }}" media="(min-width: 768px)" type="image/webp">
-                                <img src="{{ oViewConf.getImageUrl('content/promo-sm.webp') }}" class="card-img" alt="Promotion" width="460" height="460" type="image/webp">
-                            </picture>
-                            <div class="card-img-overlay">
-                                <img loading="lazy" class="logo" src="/out/pictures/master/manufacturer/icon/wooolf.svg" alt="Wooolf Fashion">
-                                <a href="#" class="btn btn-secondary stretched-link bg-todo">Marke entdecken</a>
+                    {% for oManufacturer in oView.getManufacturerForSlider() %}
+                        {% if loop.index <= 4 %}
+                            <div class="col">
+                                <div class="card brand-card text-white">
+                                    <picture>
+                                        <source srcset="{{ oViewConf.getImageUrl('content/promo.webp') }}" media="(min-width: 768px)" type="image/webp">
+                                        <img src="{{ oViewConf.getImageUrl('content/promo-sm.webp') }}" class="card-img" alt="Promotion" width="460" height="460" type="image/webp">
+                                    </picture>
+                                    <div class="card-img-overlay">
+                                        <img loading="lazy" class="logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                                        <span class="btn btn-secondary">{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}</span>
+                                    </div>
+                                    <a href="#" class="stretched-link" aria-label="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}"></a>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -28,15 +30,11 @@
             <div class="row manufacturer-list">
                 {% for oManufacturer in oView.getManufacturerForSlider() %}
                     {% if oManufacturer.oxmanufacturers__oxicon.value %}
-                        {% if loop.index <= 8 %}
+                        {% if loop.index > 8 %}
                             <div class="col-sm-6 col-md-4 col-lg">
                                 <a href="{{ oManufacturer.getLink() }}" title="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}" class="d-block text-center">
-                                    {% if oManufacturer.oxmanufacturers__oxicon.value |split('.')|last == 'svg' %}
-                                        {% set path = oViewConf.getPictureDir() ~ "master/manufacturer/icon/" ~ oManufacturer.oxmanufacturers__oxicon.value %}
-                                        <img loading="lazy" class="manufacturer-list-logo" src="{{ path }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
-                                    {% else %}
-                                        <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
-                                    {% endif %}
+
+                                    <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
                                 </a>
                             </div>
                         {% endif %}

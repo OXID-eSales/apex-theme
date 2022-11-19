@@ -63,8 +63,22 @@
   }
 
   svg {
-    width: 18px;
-    height: 18px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .menu-dropdowns {
+    .btn {
+      &:hover {
+        border-color: transparent;
+        color: $highlight;
+      }
+
+      .badge {
+        position: absolute;
+        right: 0;
+      }
+    }
   }
 }
 
@@ -73,9 +87,19 @@
   background: $ox-meta-bg;
   color: $ox-meta-color;
 
+  svg {
+    fill: $ox-meta-link-color;
+    width: 18px;
+    height: 18px;
+  }
+
   .btn {
-    svg {
-      fill: $ox-meta-link-color;
+    &:hover {
+      border-color: transparent;
+
+      svg {
+        fill: $highlight;
+      }
     }
   }
 }
