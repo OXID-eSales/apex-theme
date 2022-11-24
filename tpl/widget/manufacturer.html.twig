@@ -1,12 +1,11 @@
 {% set manufacturerWidth = oViewConf.getViewThemeParam('sManufacturerWidth') %}
 <div class="container-xxl">
-
-    <div id="manufacturer" class="py-5">
+    <div class="py-5 manufacturer">
         <div class="container{% if manufacturerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
             <h2>{{ translate({ ident: "OUR_BRANDS" }) }}</h2>
             <span class="subhead">{{ translate({ ident: "MANUFACTURERSLIDER_SUBHEAD" }) }}</span>
 
-            <div class="top-brands my-5 todo">
+            <div class="top-brands my-5">
                 <div class="row row-cols-2 row-cols-lg-4">
                     {% for i in 1..4 %}
                     <div class="col">

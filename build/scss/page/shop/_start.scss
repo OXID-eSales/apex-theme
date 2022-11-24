@@ -29,7 +29,7 @@
 
 .categories {
   position: relative;
-  margin: 0 (-$spacer);
+  margin: 0 (-$spacer*0.5);
 
   &:after {
     content: '';
@@ -87,4 +87,8 @@
   @include media-breakpoint-up(lg) {
     padding: 4rem 4*$spacer 4*$spacer;
   }
+}
+
+.manufacturer {
+  margin: 0 (-$spacer * 0.5);
 }

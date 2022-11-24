@@ -5,21 +5,6 @@
         {% include "widget/categories.html.twig" %}
     {% endif %}
 
-    {# % block start_promoslider %}
-        {% if oView.getBanners() and not empty(oView.getBanners()) %}
-            {% include "widget/promotiles.html.twig" %}
-        {% endif %}
-    {% endblock %#}
-{#
-    {% block start_welcome_text %}
-        {% ifcontent ident "oxstartwelcome" set oCont %}
-            {% set welcomeTextWidth = oViewConf.getViewThemeParam('sWelcomeTextWidth') %}
-            <div class="container{% if welcomeTextWidth == 'container' %}-xxl {% else %}-fluid {% endif %}welcome-teaser py-5">
-                {{ oCont.oxcontents__oxcontent.value }}
-            </div>
-        {% endifcontent %}
-    {% endblock %}
-#}
     {% block start_newest_articles %}
         {% set showNewest = oViewConf.getViewThemeParam('sShowNewestArticles') %}
         {% if showNewest %}
