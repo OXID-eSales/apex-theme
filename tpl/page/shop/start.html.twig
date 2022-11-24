@@ -1,9 +1,12 @@
 {% capture append = "oxidBlock_content" %}
-{% include_content 'oxstartwelcome' %}
+
+    {% include_content 'oxstartslot1' ignore missing  %}
 
     {% if oViewConf.getViewThemeParam('showCategoryTiles') %}
         {% include "widget/categories.html.twig" %}
     {% endif %}
+
+    {% include_content 'oxstartslot2' ignore missing  %}
 
     {% block start_newest_articles %}
         {% set showNewest = oViewConf.getViewThemeParam('sShowNewestArticles') %}
@@ -44,10 +47,15 @@
         {% endif %}
     {% endblock %}
 
+    {% include_content 'oxstartslot3' ignore missing  %}
+
     {% block start_manufacturer_slider %}
         {% if oViewConf.getViewThemeParam('bl_showManufacturer') %}
             {% include "widget/manufacturer.html.twig" %}
         {% endif %}
     {% endblock %}
+
+    {% include_content 'oxstartslot4' ignore missing %}
+
 {% endcapture %}
 {% include "layout/page.html.twig" %}
