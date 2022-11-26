@@ -78,15 +78,7 @@
 }
 
 .row-spacer {
-  margin-bottom: 3rem;
-
-  @include media-breakpoint-up(md) {
-    margin-bottom: 4rem;
-  }
-
-  @include media-breakpoint-up(lg) {
-    margin-bottom: 5rem;
-  }
+  margin-bottom: var(--row-spacing);
 }
 
 /*

@@ -8,7 +8,6 @@
   }
 
   .logo {
-    filter: invert(1);
     width: 60%;
     height: auto;
     margin-bottom: 2 * $spacer;
@@ -69,10 +68,6 @@
 .manufacturer-list {
   .col-lg {
     max-width: 200px;
-  }
-
-  &-logo {
-    filter: grayscale(100%) brightness(70%) contrast(2);
   }
 }
 
