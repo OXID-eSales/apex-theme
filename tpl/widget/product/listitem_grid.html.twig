@@ -26,7 +26,7 @@
         {% block widget_product_listitem_grid_gridpicture %}
         <div class="product-img-wrapper">
 
-            <img loading="lazy" width="350" height="220" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
+            <img {% if slider %}loading="lazy" {% endif %}width="350" height="220" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
             {% if product.getMasterZoomPictureUrl(2) %}
                 <picture>
                     <source type="image/webp" srcset="{{ product.getMasterZoomPictureUrl(2) }}" media="(min-width: 1024px)">

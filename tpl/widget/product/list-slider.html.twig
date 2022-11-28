@@ -18,7 +18,7 @@
     <div class="slider-container d-flex flex-nowrap" id="{{ listId }}">
         {% for _product in products %}
             {% set testid = listId|cat("_")|cat(loop.index) %}
-            {{ include_widget({ cl: "oxwArticleBox", _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), iLinkType: _product.getLinkType(), _object: _product, anid: _product.getId(), sWidgetType: "product", sListType: "listitem_" ~ type, iIndex: testid, blDisableToCart: blDisableToCart, isVatIncluded: oView.isVatIncluded(), showMainLink: showMainLink, recommid: recommid, owishid: owishid, toBasketFunction: toBasketFunction, removeFunction: removeFunction, altproduct: altproduct, inlist: _product.isInList(), skipESIforUser: 1, testid: testid }) }}
+            {{ include_widget({ cl: "oxwArticleBox", _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), iLinkType: _product.getLinkType(), _object: _product, anid: _product.getId(), sWidgetType: "product", sListType: "listitem_" ~ type, iIndex: testid, blDisableToCart: blDisableToCart, isVatIncluded: oView.isVatIncluded(), showMainLink: showMainLink, recommid: recommid, owishid: owishid, toBasketFunction: toBasketFunction, removeFunction: removeFunction, altproduct: altproduct, inlist: _product.isInList(), skipESIforUser: 1, testid: testid, slider: true }) }}
         {% endfor %}
     </div>
     <div class="slider-nav">
