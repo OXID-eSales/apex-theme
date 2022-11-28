@@ -2,8 +2,6 @@
   margin: 0 (-$spacer * 0.5);
 
   @include media-breakpoint-up(lg) {
-    padding-top: $spacer;
-
     .row {
       margin: 0 (-$spacer * 0.5);
     }
@@ -22,7 +20,7 @@
         top: 0;
         bottom: 0;
         right: 0;
-        background: linear-gradient(-90deg,#00000000 0,#00000000 50%,#000000B9 100%);
+        background: linear-gradient(-90deg, #00000000 0, #00000000 50%, #000000B9 100%);
         justify-content: center;
       }
     }
@@ -30,5 +28,46 @@
 
   .card-img-overlay-content {
     max-width: 350px;
+  }
+
+  &.style-2,
+  &.style-3 {
+    .card-body {
+      padding: 2rem;
+    }
+  }
+
+  &.style-4,
+  &.style-5 {
+    .card {
+      background: transparent;
+
+      @include media-breakpoint-up(lg) {
+        &-body {
+          background: #fff;
+          padding: 2rem;
+          width: 120%;
+          margin-left: -20%;
+          position: relative;
+          z-index: 1;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      .col-lg-5 {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &.style-5 {
+      .card-body {
+        margin-left: 0;
+        margin-right: -20%;
+      }
+    }
   }
 }

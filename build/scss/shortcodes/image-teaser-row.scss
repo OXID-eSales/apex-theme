@@ -6,8 +6,6 @@
   margin: 0 (-$spacer * 0.5);
 
   @include media-breakpoint-up(lg) {
-    padding-top: $spacer;
-
     .row {
       margin: 0 (-$spacer * 0.5);
     }
