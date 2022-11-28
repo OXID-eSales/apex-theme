@@ -162,7 +162,9 @@
                                                 <div class="input-group justify-content-end">
                                                     <input id="am_{{ loop.index }}" type="number" class="form-control text-center" name="aproducts[{{ basketindex }}][am]" value="{{ basketitem.getAmount() }}" size="3" min="0" style="width:60px;float:right;"{% if blAllowUnevenAmounts %} step="any"{% endif %}>
                                                     <button class="btn btn-outline-primary" id="basketUpdate-{{ loop.index }}" type="submit" name="updateBtn" title="{{ translate({ ident: "UPDATE" }) }}">
-                                                        <i class="moga-sync"></i>
+                                                        <svg aria-hidden="true">
+                                                            <use xlink:href="#sync"></use>
+                                                        </svg>
                                                     </button>
                                                 </div>
                                             {% endif %}

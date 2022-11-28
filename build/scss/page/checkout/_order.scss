@@ -6,8 +6,16 @@
 }
 
 .is-checkout {
-  .card {
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+  .card-body {
+    padding: 0 20px 20px;
+  }
+
+  .card-header {
+    padding: 20px;
+  }
+
+  .list-group {
+    padding: 0 10px;
   }
 
   .disabled {

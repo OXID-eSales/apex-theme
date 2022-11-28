@@ -23,18 +23,15 @@
                 {% block checkout_basket_next_step_top %}
                 {% endblock %}
 
-                    <div class="row justify-content-center">
-                        <div class="col-md-12 col-lg-10 col-xl-9">
-                            <div class="row">
-                                <div class="col-lg-8">
-                            {% include "page/checkout/inc/basketcontents.html.twig" with {editable: true} %}
-                                </div>
-                                <div class="col-lg-4">
-                                    {% include "page/checkout/inc/summary_sidebar.html.twig" with {btn: true} %}
-                                </div>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-8 col-xl-9">
+                {% include "page/checkout/inc/basketcontents.html.twig" with {editable: true} %}
                     </div>
+                    <div class="col-lg-4 col-xl-3">
+                        {% include "page/checkout/inc/summary_sidebar.html.twig" with {btn: true} %}
+                    </div>
+                </div>
+
             {% endif %}
         {% endblock %}
     </div>
