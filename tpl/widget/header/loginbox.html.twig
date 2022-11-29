@@ -5,7 +5,7 @@
         {% set bIsError = 1 %}
     {% endfor %}
 {% endcapture %}
-<div class="dropdown-menu dropdown-menu-end">
+<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
     <form class="px-3 py-2" name="login" action="{{ oViewConf.getSslSelfLink() }}" method="post" style="width: 270px">
         {{ oViewConf.getHiddenSid()|raw }}
         {{ oViewConf.getNavFormParams()|raw }}

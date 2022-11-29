@@ -176,6 +176,17 @@
                                         {% endif %}
                                     </div>
                                     {% endblock %}
+
+                                    {% block checkout_basketcontents_basketitem_removecheckbox %}
+                                        {% if editable %}
+                                            <input type="hidden" name="aproducts[{{ basketindex }}][remove]" id="aproducts_{{ basketindex }}_remove" value="0">
+                                            <button type="submit" name="removeBtn" class="btn btn-remove me-3" aria-label="{{ translate({ ident: "REMOVE" }) }}" onclick="document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
+                                                <svg aria-hidden="true">
+                                                    <use xlink:href="#trash"></use>
+                                                </svg>
+                                            </button>
+                                        {% endif %}
+                                    {% endblock %}
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
@@ -210,21 +221,6 @@
                                         {% endif %}
                                     </div>
                                 {% endif %}
-                                {% endblock %}
-
-                                {% block checkout_basketcontents_basketitem_removecheckbox %}
-                                    {% if editable %}
-                                        <input type="hidden" name="aproducts[{{ basketindex }}][remove]" id="aproducts_{{ basketindex }}_remove" value="0">
-                                        <button type="submit" name="removeBtn" class="btn btn-remove me-3" onclick="document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
-                                            <i class="moga-trash"></i> {{ translate({ ident: "REMOVE" }) }}
-                                        </button>
-
-                                        {% if oxcmp_user %}
-                                            <button type="submit" name="removeBtn" class="btn btn-remove" onclick="addToNoticelist('{{ oArticle.getId() }}');document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
-                                                <i class="moga-heart-fill"></i> {{ translate({ ident: "MOVE_TO_WISH_LIST" }) }}
-                                            </button>
-                                        {% endif %}
-                                    {% endif %}
                                 {% endblock %}
                                 </div>
                                 {% block checkout_basketcontents_basketitem_totalprice %}
