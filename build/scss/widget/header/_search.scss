@@ -3,16 +3,28 @@
     min-width: 500px;
   }
 
-  svg {
-    width: 20px;
-    height: 20px;
-    fill: $ox-header-color;
-  }
-
   .btn {
     position: absolute;
     right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 0 10px;
+    display: flex;
     border: 1px solid $input-border-color;
     border-left: none;
+    align-items: center;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: $ox-header-color;
+    }
+
+    &:hover {
+      svg {
+        fill: $highlight
+      }
+    }
   }
 }

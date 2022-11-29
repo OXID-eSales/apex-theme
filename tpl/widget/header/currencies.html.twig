@@ -1,13 +1,18 @@
 {% if oView.loadCurrency() %}
     {% if oxcmp_cur|length > 1 %}
         {% set currency = oView.getActCurrency() %}
-        <div class="btn-group">
-            <button type="button" aria-label="Currencys" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-display="static">
+        <label>{{ translate({ ident: "CURRENCY" }) }}</label>
+        <div class="btn-group w-100">
+            <button class="btn dropdown-toggle" type="button" aria-label="{{ translate({ ident: "CURRENCY" }) }}" data-bs-toggle="dropdown" aria-expanded="false">
                 {% block dd_layout_page_header_icon_menu_currencies_button %}
                     {{ currency.name }}
                 {% endblock %}
+
+                <svg aria-hidden="true">
+                    <use xlink:href="#down"></use>
+                </svg>
             </button>
-            <ul class="dropdown-menu dropdown-menu-md-end">
+            <div class="dropdown-menu dropdown-menu-md-end">
                 {% block dd_layout_page_header_icon_menu_currencies_list %}
                     {% for _cur in oxcmp_cur %}
                         {% if _cur.selected %}
@@ -16,12 +21,11 @@
                                 <a class="dropdown-item" href="{{ _cur.link|add_url_parameters(oView.getDynUrlParams()) }}" title="{{ _cur.name }}"><span>{{ _cur.name }}</span></a>
                             {% endcapture %}
                         {% endif %}
-                        <li>
-                            <a class="dropdown-item{% if _cur.selected %} active{% endif %}" href="{{ _cur.link|add_url_parameters(oView.getDynUrlParams()) }}" title="{{ _cur.name }}">{{ _cur.name }}</a>
-                        </li>
+                        <a class="dropdown-item{% if _cur.selected %} active{% endif %}" href="{{ _cur.link|add_url_parameters(oView.getDynUrlParams()) }}" title="{{ _cur.name }}">{{ _cur.name }}</a>
                     {% endfor %}
                 {% endblock %}
-            </ul>
+            </div>
         </div>
+
     {% endif %}
 {% endif %}
