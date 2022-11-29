@@ -6,6 +6,7 @@
     {# TODO: We should turn this into vCMS content, or put it to Theme settings #}
     <header class="header">
         <div class="header-wrapper">
+            {% if not oView.getIsOrderStep() %}
             <div class="meta">
                 <div class="container-xxl">
                     <div class="meta-wrapper d-flex justify-content-between">
@@ -43,12 +44,13 @@
                         </ul>
 
                         <div class="dropdowns d-none d-lg-inline-block">
-                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                                 <svg aria-hidden="true">
                                     <use xlink:href="#globe"></use>
                                 </svg>
                             </button>
-                            <form class="dropdown-menu dropdown-menu-end p-3">
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <form>
                                 {% block dd_layout_page_header_icon_menu_languages %}
                                     {# Language Dropdown #}
                                     {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
@@ -57,12 +59,13 @@
                                     {# Currency Dropdown #}
                                     {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
                                 {% endblock %}
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            {% endif %}
             <div class="header-box position-relative">
                 <div class="container-xxl">
                     <div class="header-container">
@@ -141,7 +144,7 @@
 
             <a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
                 <svg aria-hidden="true">
-                    <use xlink:href="#star"></use>
+                    <use xlink:href="#star-fill"></use>
                 </svg>
                 <span class="btn-text">{{ translate({ ident: "FAVOURITES" }) }}</span>
                 {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
