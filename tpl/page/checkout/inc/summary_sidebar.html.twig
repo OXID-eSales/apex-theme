@@ -92,12 +92,12 @@
                 {% if oViewConf.getShowVouchers() and oxcmp_basket.getVoucherDiscValue() %}
                 {% for key, sVoucher in oxcmp_basket.getVouchers() %}
                 <div class="list-group-item d-flex justify-content-between align-items-center">
-                                        <span>
-                                            {{ translate({ ident: "COUPON" }) }}&nbsp;({{ sVoucher.sVoucherNr }})
-                                            {% if editable %}
-                                            <a href="{{ oViewConf.getSelfLink() }}&amp;cl=basket&amp;fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}" class="removeFn" title="{{ translate({ ident: "REMOVE" }) }}"><i class="moga-trash"></i> </a>
-                                            {% endif %}
-                                        </span>
+                    <span>
+                        {{ translate({ ident: "COUPON" }) }}&nbsp;({{ sVoucher.sVoucherNr }})
+                        {% if editable %}
+                        <a href="{{ oViewConf.getSelfLink() }}&amp;cl=basket&amp;fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}" class="removeFn" title="{{ translate({ ident: "REMOVE" }) }}"><i class="moga-trash"></i> </a>
+                        {% endif %}
+                    </span>
                     <span class="text-danger">{{ format_price(sVoucher.dVoucherdiscount*-1, { currency: currency }) }}</span>
                 </div>
                 {% endfor %}
@@ -228,6 +228,10 @@
             <div class="card mb-3">
                 <h4 class="card-header card-title collapsed card-collapse" data-bs-toggle="collapse" href="#voucherCollapse" aria-expanded="false" aria-controls="voucherCollapse">
                     {{ translate({ ident: "COUPON" }) }}
+
+                    <svg aria-hidden="true">
+                        <use xlink:href="#down"></use>
+                    </svg>
                 </h4>
                 <div class="collapse" id="voucherCollapse">
                     <div class="card-body">

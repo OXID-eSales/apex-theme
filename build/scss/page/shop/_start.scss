@@ -1,6 +1,7 @@
 .brand-card {
   .card-img {
     opacity: .7;
+    height: auto;
   }
 
   .card-title {
@@ -69,6 +70,10 @@
   .col-lg {
     max-width: 200px;
   }
+
+  img {
+    max-width: 100%;
+  }
 }
 
 .card-img-overlay {
@@ -90,16 +95,35 @@
 
 .usp-list-content {
   padding: 40px 0;
+  font-size: 14px;
+  line-height: 35px;
+  background: $ox-meta-bg;
+  color: $ox-meta-color;
+  margin: 0;
 
   .list-inline-item {
     display: flex;
     flex-direction: column;
     font-family: $headings-font-family;
+    width: 160px;
+    min-width: 160px;
+    align-items: center;
+
+    @include media-breakpoint-up(md) {
+      width: auto;
+      min-width: auto;
+      flex: 0 1 100%;
+    }
 
     svg {
       width: 40px;
       height: 40px;
       margin-bottom: 20px;
     }
+  }
+
+  svg {
+    fill: $ox-meta-color;
+    margin-right: 10px;
   }
 }

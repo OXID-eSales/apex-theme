@@ -5,124 +5,51 @@
   max-width: 250px;
 }
 
-.is-checkout {
-  .card-body {
-    padding: 0 20px 20px;
-  }
+.col-img {
+  width: 90px;
+}
 
+.is-checkout {
   .menu-dropdowns {
     margin-left: auto;
   }
 
+  .card-body {
+    padding: 0 10px 10px;
+
+    @include media-breakpoint-up(md) {
+      padding: 0 20px 20px;
+    }
+  }
+
   .card-header {
-    padding: 20px;
+    padding: 10px;
+
+    @include media-breakpoint-up(md) {
+      padding: 20px;
+    }
   }
 
   .list-group {
     padding: 0 10px;
   }
-
-  .disabled {
-    color: #bbb;
-  }
-
-  .done {
-    .card-header {
-      background: lighten($primary, 30%);
-      color: #fff;
-
-      a {
-        color: #fff;
-        text-decoration: none;
-      }
-    }
-  }
-
-  .done-2 {
-    .card-header {
-      background: lighten($primary, 20%);
-    }
-  }
-
-  .done-3 {
-    .card-header {
-      background: lighten($primary, 10%);
-    }
-  }
 }
 
-.card-header-edit {
-  padding: 0 $card-cap-padding-x;
-  line-height: 50px;
-  text-transform: none;
-}
-
-button.card-header-edit {
-  text-align: left;
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  color: $primary;
+h4.card-header {
   position: relative;
-  transition: background-color 150ms;
+  margin-bottom: 20px;
 
-  &:hover {
-    background: #f1f1f1;
-  }
-}
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    border-bottom: 1px solid #B7C1C6;
 
-.wrapping-select {
-  .btn {
-    text-align: left;
-    height: 40px;
-    padding: 0 0 0 50px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-
-    .img {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 40px;
-      height: 40px;
-      border: 1px solid #ccc;
-      padding: 1px;
-    }
-
-    .wrappingTargetImg {
-      width: 36px;
-      height: 36px;
-      object-fit: cover;
-    }
-
-    strong {
-      position: absolute;
-      right: 10px;
-      font-family: $font-family-price;
-    }
-
-    &:hover {
-      color: $success;
-    }
-  }
-
-  .btn-check:active+.btn,
-  .btn-check:checked+.btn {
-    color: $success;
-
-    .img {
-      border-color: $success;
-
-      &:before {
-        content: '';
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        border-style: solid;
-        border-width: 0 0 16px 16px;
-        border-color: transparent transparent $success transparent;
-      }
+    @include media-breakpoint-up(md) {
+      left: 20px;
+      right: 20px;
     }
   }
 }

@@ -118,41 +118,43 @@
             {{ include_widget({ cl: "oxwCategoryTree", cnid: oView.getCategoryId(), sWidgetType: "header", style: "", _parent: oView.getClassKey(), nocookie: 1 }) }}
         {% endblock %}
 
-        <div class="fixed-bottom mobile-nav d-lg-none">
-            {% block dd_widget_header_categorylist_navbar_header %}
-                <button class="btn btn-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    {% include "icons/bars.svg" %}
-                    <span class="btn-text">{{ translate({ ident: "MENU" }) }}</span>
-                </button>
-            {% endblock %}
+        {% if not oView.getIsOrderStep() %}
+            <div class="fixed-bottom mobile-nav d-lg-none">
+                {% block dd_widget_header_categorylist_navbar_header %}
+                    <button class="btn btn-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        {% include "icons/bars.svg" %}
+                        <span class="btn-text">{{ translate({ ident: "MENU" }) }}</span>
+                    </button>
+                {% endblock %}
 
-            <a href="#" class="btn btn-toggle btn-search">
-                <svg aria-hidden="true">
-                    <use xlink:href="#search"></use>
-                </svg>
-                <span class="btn-text">{{ translate({ ident: "SEARCH" }) }}</span>
-            </a>
+                <a href="#" class="btn btn-toggle btn-search">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#search"></use>
+                    </svg>
+                    <span class="btn-text">{{ translate({ ident: "SEARCH" }) }}</span>
+                </a>
 
-            <a href="#" class="btn btn-toggle btn-search">
-                <svg aria-hidden="true">
-                    <use xlink:href="#person"></use>
-                </svg>
-                <span class="btn-text">
-                    {{ translate({ ident: "ACCOUNT" }) }}
-                </span>
-            </a>
+                <a href="#" class="btn btn-toggle btn-search">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#person"></use>
+                    </svg>
+                    <span class="btn-text">
+                        {{ translate({ ident: "ACCOUNT" }) }}
+                    </span>
+                </a>
 
-            <a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
-                <svg aria-hidden="true">
-                    <use xlink:href="#star-fill"></use>
-                </svg>
-                <span class="btn-text">{{ translate({ ident: "FAVOURITES" }) }}</span>
-                {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
-            </a>
+                <a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#star-fill"></use>
+                    </svg>
+                    <span class="btn-text">{{ translate({ ident: "FAVOURITES" }) }}</span>
+                    {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+                </a>
 
-            {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
+                {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
 
-        </div>
+            </div>
+        {% endif %}
     </header>
 {% endblock %}
 
