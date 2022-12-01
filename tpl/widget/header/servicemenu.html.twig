@@ -9,13 +9,6 @@
 {% endif %}
 {% set notificationsCounter = oView.getCompareItemsCnt()+noticeListCount+wishListCount+recommListCount %}
 
-<a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
-    <svg aria-label="{{ translate({ ident: "MY_WISH_LIST" }) }}">
-        <use xlink:href="#star"></use>
-    </svg>
-    {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
-</a>
-
 <button type="button" aria-label="Usercenter" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account") }) }}">
     {% block dd_layout_page_header_icon_menu_account_button %}
         <svg aria-label="
@@ -35,3 +28,10 @@
         {% include "widget/header/servicebox.html.twig" %}
     {% endblock %}
 {% endif %}
+
+<a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+    <svg aria-label="{{ translate({ ident: "MY_WISH_LIST" }) }}">
+        <use xlink:href="#star-fill"></use>
+    </svg>
+    {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+</a>

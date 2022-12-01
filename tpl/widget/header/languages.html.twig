@@ -1,29 +1,35 @@
 {% if oView.isLanguageLoaded() %}
     {% if oxcmp_lang|length > 1 %}
-        <div class="btn-group" role="group">
-            <button type="button" aria-label="Language" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-display="static">
-                {% set sLangImg = "lang/"|cat(oViewConf.getActLanguageAbbr())|cat(".png") %}
-                {% block dd_layout_page_header_icon_menu_languages_button %}
-                    <img src="{{ oViewConf.getImageUrl(sLangImg) }}" alt="{{ sLangImg }}">
-                {% endblock %}
+        <label>{{ translate({ ident: "LANGUAGE" }) }}</label>
+        <div class="btn-group w-100" role="group">
+            <button class="btn dropdown-toggle" type="button" aria-label="{{ translate({ ident: "LANGUAGE" }) }}" data-bs-toggle="dropdown" aria-expanded="false">
+                {% for _lng in oxcmp_lang %}
+                    {% if _lng.selected %}
+                        {{ _lng.name }}
+                    {% endif %}
+                {% endfor %}
+
+                <svg aria-hidden="true">
+                    <use xlink:href="#down"></use>
+                </svg>
             </button>
-            <ul class="dropdown-menu dropdown-menu-md-end">
+
+            <div class="dropdown-menu dropdown-menu-md-end">
                 {% block dd_layout_page_header_icon_menu_languages_list %}
                     {% for _lng in oxcmp_lang %}
                         {% set sLangImg = "lang/"|cat(_lng.abbr)|cat(".png") %}
                         {% if _lng.selected %}
                             {% capture name = "languageSelected" %}
-                                <a class="flag dropdown-link {{ _lng.abbr }}" title="{{ _lng.name }}" href="{{ _lng.link|add_url_parameters(oView.getDynUrlParams()) }}" hreflang="{{ _lng.abbr }}"><span style="background-image:url('{{ oViewConf.getImageUrl(sLangImg) }}')" >{{ _lng.name }}</span></a>
+                                <a class="dropdown-item {{ _lng.abbr }}" title="{{ _lng.name }}" href="{{ _lng.link|add_url_parameters(oView.getDynUrlParams()) }}" hreflang="{{ _lng.abbr }}">
+                                    {{ _lng.name }}</a>
                             {% endcapture %}
                         {% endif %}
-                        <li class="dropdown-item{% if _lng.selected %} active{% endif %}">
-                            <a class="flag dropdown-link {{ _lng.abbr }}" title="{{ _lng.name }}" href="{{ _lng.link|add_url_parameters(oView.getDynUrlParams()) }}" hreflang="{{ _lng.abbr }}">
-                                <img src="{{ oViewConf.getImageUrl(sLangImg) }}" alt="{{ sLangImg }}"> {{ _lng.name }}
+                            <a class="dropdown-item{% if _lng.selected %} active{% endif %} {{ _lng.abbr }}" title="{{ _lng.name }}" href="{{ _lng.link|add_url_parameters(oView.getDynUrlParams()) }}" hreflang="{{ _lng.abbr }}">
+                                {{ _lng.name }}
                             </a>
-                        </li>
                     {% endfor %}
                 {% endblock %}
-            </ul>
+            </div>
         </div>
     {% endif %}
 {% endif %}

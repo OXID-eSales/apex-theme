@@ -6,10 +6,11 @@
     {# TODO: We should turn this into vCMS content, or put it to Theme settings #}
     <header class="header">
         <div class="header-wrapper">
+            {% if not oView.getIsOrderStep() %}
             <div class="meta">
                 <div class="container-xxl">
                     <div class="meta-wrapper d-flex justify-content-between">
-                        <ul class="usp-list todo">
+                        <ul class="usp-list">
                             <li class="list-inline-item">
                                 <svg aria-hidden="true">
                                     <use xlink:href="#box2-fill"></use>
@@ -43,12 +44,13 @@
                         </ul>
 
                         <div class="dropdowns d-none d-lg-inline-block">
-                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                                 <svg aria-hidden="true">
                                     <use xlink:href="#globe"></use>
                                 </svg>
                             </button>
-                            <form class="dropdown-menu dropdown-menu-end p-3">
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <form>
                                 {% block dd_layout_page_header_icon_menu_languages %}
                                     {# Language Dropdown #}
                                     {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
@@ -57,12 +59,13 @@
                                     {# Currency Dropdown #}
                                     {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
                                 {% endblock %}
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            {% endif %}
             <div class="header-box position-relative">
                 <div class="container-xxl">
                     <div class="header-container">
@@ -115,41 +118,43 @@
             {{ include_widget({ cl: "oxwCategoryTree", cnid: oView.getCategoryId(), sWidgetType: "header", style: "", _parent: oView.getClassKey(), nocookie: 1 }) }}
         {% endblock %}
 
-        <div class="fixed-bottom mobile-nav d-lg-none">
-            {% block dd_widget_header_categorylist_navbar_header %}
-                <button class="btn btn-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    {% include "icons/bars.svg" %}
-                    <span class="btn-text">{{ translate({ ident: "MENU" }) }}</span>
-                </button>
-            {% endblock %}
+        {% if not oView.getIsOrderStep() %}
+            <div class="fixed-bottom mobile-nav d-lg-none">
+                {% block dd_widget_header_categorylist_navbar_header %}
+                    <button class="btn btn-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        {% include "icons/bars.svg" %}
+                        <span class="btn-text">{{ translate({ ident: "MENU" }) }}</span>
+                    </button>
+                {% endblock %}
 
-            <a href="#" class="btn btn-toggle btn-search">
-                <svg aria-hidden="true">
-                    <use xlink:href="#search"></use>
-                </svg>
-                <span class="btn-text">{{ translate({ ident: "SEARCH" }) }}</span>
-            </a>
+                <a href="#" class="btn btn-toggle btn-search">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#search"></use>
+                    </svg>
+                    <span class="btn-text">{{ translate({ ident: "SEARCH" }) }}</span>
+                </a>
 
-            <a href="#" class="btn btn-toggle btn-search">
-                <svg aria-hidden="true">
-                    <use xlink:href="#person"></use>
-                </svg>
-                <span class="btn-text">
-                    {{ translate({ ident: "ACCOUNT" }) }}
-                </span>
-            </a>
+                <a href="#" class="btn btn-toggle btn-search">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#person"></use>
+                    </svg>
+                    <span class="btn-text">
+                        {{ translate({ ident: "ACCOUNT" }) }}
+                    </span>
+                </a>
 
-            <a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
-                <svg aria-hidden="true">
-                    <use xlink:href="#star"></use>
-                </svg>
-                <span class="btn-text">{{ translate({ ident: "FAVOURITES" }) }}</span>
-                {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
-            </a>
+                <a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#star-fill"></use>
+                    </svg>
+                    <span class="btn-text">{{ translate({ ident: "FAVOURITES" }) }}</span>
+                    {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+                </a>
 
-            {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
+                {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
 
-        </div>
+            </div>
+        {% endif %}
     </header>
 {% endblock %}
 

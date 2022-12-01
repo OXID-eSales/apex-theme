@@ -1,6 +1,7 @@
 .brand-card {
   .card-img {
     opacity: .7;
+    height: auto;
   }
 
   .card-title {
@@ -8,7 +9,6 @@
   }
 
   .logo {
-    filter: invert(1);
     width: 60%;
     height: auto;
     margin-bottom: 2 * $spacer;
@@ -29,7 +29,7 @@
 
 .categories {
   position: relative;
-  margin: 0 (-$spacer);
+  margin: 0 (-$spacer*0.5);
 
   &:after {
     content: '';
@@ -71,8 +71,8 @@
     max-width: 200px;
   }
 
-  &-logo {
-    filter: grayscale(100%) brightness(70%) contrast(2);
+  img {
+    max-width: 100%;
   }
 }
 
@@ -89,14 +89,41 @@
   }
 }
 
-.promo-tiles {
-  .card {
-    margin-bottom: $spacer;
+.manufacturer {
+  margin: 0 (-$spacer * 0.5);
+}
 
-    &-img {
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      height: auto;
+.usp-list-content {
+  padding: 40px 0;
+  font-size: 14px;
+  line-height: 35px;
+  background: $ox-meta-bg;
+  color: $ox-meta-color;
+  margin: 0;
+
+  .list-inline-item {
+    display: flex;
+    flex-direction: column;
+    font-family: $headings-font-family;
+    width: 160px;
+    min-width: 160px;
+    align-items: center;
+
+    @include media-breakpoint-up(md) {
+      width: auto;
+      min-width: auto;
+      flex: 0 1 100%;
     }
+
+    svg {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 20px;
+    }
+  }
+
+  svg {
+    fill: $ox-meta-color;
+    margin-right: 10px;
   }
 }

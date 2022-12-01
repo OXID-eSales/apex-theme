@@ -86,6 +86,9 @@ $container-max-widths: (
         xxl: 1620px
 );
 
+/// Buttons
+$btn-box-shadow: none;
+
 /// Header
 $ox-header-bg: #fff;
 $ox-header-color: #000;
@@ -107,10 +110,12 @@ $ox-rating-star-filled-color: $warning;
 $ox-rating-star-empty-color: $secondary;
 
 /// Forms
-$input-bg: #fff;
+$input-bg: #EFF1F2;
+$input-border-color: $input-bg;
+$input-box-shadow: none;
 $form-label-margin-bottom:              .25rem;
 $form-label-font-size:                  12px;
-$form-label-color:                      #91A0A8;
+$form-label-color:                      #6A7281;
 
 /// Cards
 $card-bg: #fff;

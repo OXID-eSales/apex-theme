@@ -10,15 +10,6 @@
   }
 }
 
-.manufacturer-header {
-  .breadcrumb-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-}
-
 .list-filter {
   position: absolute;
   left: 0;
@@ -38,6 +29,7 @@
   scroll-margin-inline-start: 50px;
   -webkit-overflow-scrolling: touch;
   margin-bottom: $grid-gutter-width/2;
+  display: flex;
 
   &::-webkit-scrollbar,
   &::-webkit-scrollbar-thumb {
@@ -48,7 +40,7 @@
     background: transparent;
   }
 
-  .card {
+  > div {
     scroll-snap-align: center;
     min-width: 220px;
     max-width: 400px;

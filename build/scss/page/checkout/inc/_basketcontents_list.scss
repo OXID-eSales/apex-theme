@@ -1,29 +1,76 @@
-.cl-basket {
-  .wrapper {
-    background: #f1f1f1;
+.basket {
+  .list-group-item {
+    padding: 5px 0;
   }
-}
 
-.btn-remove {
-  text-decoration: none;
-  font-size: 12px;
-  padding: 0;
+  .basket-item-desc {
+    color: #6A7281;
+    font-size: 10px;
+    line-height: 1.6;
 
-  @include media-breakpoint-up(md) {
-    i {
-      transition: color 150ms;
-    }
+    ul {
+      margin-bottom: 0;
 
-    &:hover {
-      i {
-        color: $danger;
+      li {
+        display: flex;
+      }
+
+      .attribute {
+        min-width: 80px;
       }
     }
   }
-}
 
-.card-collapse {
-  text-decoration: none;
-  display: flex;
-  justify-content: space-between;
+  .h5 {
+    margin-bottom: 5px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .quantity {
+    border: 1px solid #000;
+    margin-top: 10px;
+    max-width: 100px;
+
+    @include media-breakpoint-up(md){
+      margin-top: 0;
+    }
+
+    input {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    button, input {
+      border: none;
+    }
+  }
+
+  .totalPrice {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    flex-direction: column;
+
+    .h5 {
+      margin: 0;
+    }
+
+    del {
+      font-size: 12px;
+
+      @include media-breakpoint-up(md) {
+        font-size: 14px;
+      }
+    }
+  }
 }

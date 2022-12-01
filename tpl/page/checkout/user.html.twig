@@ -1,39 +1,16 @@
 {% capture append = "oxidBlock_content" %}
     {% set template_title = "" %}
     {% if not oView.getLoginOption() and not oxcmp_user %}
-        <div class="container-xxl py-5">
+        <div class="container-md py-5">
             <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-10 col-xl-9">
+                <div class="col-md-12 col-lg-8 col-xl-6">
                     <div class="row">
-                        <div class="col-lg-8">
-                            <div class="card">
-                                <h4 class="card-header card-title">
-                                    {{ translate({ ident: "MY_ACCOUNT" }) }}
-                                </h4>
-                                <div class="card-body">
-                                    {% block checkout_user_main %}
-                                        {% include "page/checkout/inc/options.html.twig" %}
-                                    {% endblock %}
-                                </div>
-                            </div>
-
-                            <div class="card mt-n2">
-                                <h4 class="card-header card-title disabled">
-                                    {{ translate({ ident: "ADDRESSES" }) }}
-                                </h4>
-                            </div>
-                            <div class="card mt-n2">
-                                <h4 class="card-header card-title disabled">
-                                    {{ translate({ ident: "DELIVERY_PAYMENT" }) }}
-                                </h4>
-                            </div>
-                            <div class="card mt-n2">
-                                <h4 class="card-header card-title disabled">
-                                    {{ translate({ ident: "CHECK_ORDER" }) }}
-                                </h4>
-                            </div>
+                        <div class="col-lg-7">
+                            {% block checkout_user_main %}
+                                {% include "page/checkout/inc/options.html.twig" %}
+                            {% endblock %}
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-5">
                             {% include "page/checkout/inc/summary_sidebar.html.twig" %}
                         </div>
                     </div>
@@ -47,7 +24,7 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="card done done-1">
-                                <h4 class="card-header card-title disabled">
+                                <h4 class="card-header card-title">
                                     {{ translate({ ident: "MY_ACCOUNT" }) }}
                                 </h4>
                             </div>

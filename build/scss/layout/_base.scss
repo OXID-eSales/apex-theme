@@ -78,22 +78,41 @@
 }
 
 .row-spacer {
-  margin-bottom: 3rem;
+  margin-bottom: var(--row-spacing);
+}
 
-  @include media-breakpoint-up(md) {
-    margin-bottom: 4rem;
+.btn.dropdown-toggle {
+  svg {
+    fill: $body-color;
+    position: relative;
+    transition: transform 150ms;
   }
 
-  @include media-breakpoint-up(lg) {
-    margin-bottom: 5rem;
+  &.show {
+    svg {
+      transform: rotate(180deg);
+    }
   }
 }
 
-/*
-.todo {
-  color: deeppink !important;
-}
+.card-collapse {
+  position: relative;
+  cursor: pointer;
 
-.bg-todo {
-  background: deeppink !important;
-}*/
+  svg {
+    fill: $body-color;
+    position: absolute;
+    right: 20px;
+    top: 26px;
+    transition: transform 150ms;
+    transform: rotate(180deg);
+    width: 18px;
+    height: 18px;
+  }
+
+  &.collapsed {
+    svg {
+      transform: rotate(0deg);
+    }
+  }
+}
