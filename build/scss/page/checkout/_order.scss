@@ -5,6 +5,10 @@
   max-width: 250px;
 }
 
+.col-img {
+  width: 90px;
+}
+
 .is-checkout {
   .card-body {
     padding: 0 20px 20px;
@@ -15,7 +19,11 @@
   }
 
   .card-header {
-    padding: 20px;
+    padding: 10px;
+
+    @include media-breakpoint-up(md) {
+      padding: 20px;
+    }
   }
 
   .list-group {
@@ -107,8 +115,8 @@ button.card-header-edit {
     }
   }
 
-  .btn-check:active+.btn,
-  .btn-check:checked+.btn {
+  .btn-check:active + .btn,
+  .btn-check:checked + .btn {
     color: $success;
 
     .img {

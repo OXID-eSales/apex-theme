@@ -31,7 +31,7 @@
                 {% for oManufacturer in oView.getManufacturerForSlider() %}
                     {% if oManufacturer.oxmanufacturers__oxicon.value %}
                         {% if loop.index > 8 %}
-                            <div class="col-sm-6 col-md-4 col-lg">
+                            <div class="col-6 col-md-4 col-lg">
                                 <a href="{{ oManufacturer.getLink() }}" title="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}" class="d-block text-center">
 
                                     <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">

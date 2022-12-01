@@ -59,5 +59,18 @@
     display: flex;
     align-items: flex-end;
     justify-content: end;
+    flex-direction: column;
+
+    .h5 {
+      margin: 0;
+    }
+
+    del {
+      font-size: 12px;
+
+      @include media-breakpoint-up(md) {
+        font-size: 14px;
+      }
+    }
   }
 }

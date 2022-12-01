@@ -1,20 +1,4 @@
-.dd-ve-container.dd-ve-container {
-  padding: 0 $grid-gutter-width/2;
-}
-
 .dd-shortcode-image-teaser-row {
-  margin: 0 (-$spacer * 0.5);
-
-  @include media-breakpoint-up(lg) {
-    .row {
-      margin: 0 (-$spacer * 0.5);
-    }
-
-    .col-lg-6 {
-      padding: 0 $spacer * 0.5;
-    }
-  }
-
   .big-tile {
     height: 100%;
     margin: 0 (-$spacer);

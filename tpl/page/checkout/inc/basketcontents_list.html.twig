@@ -13,21 +13,21 @@
                     {% set oArticle = basketitem.getArticle() %}
                     {% set oAttributes = oArticle.getAttributes() %}
                     <div class="row" id="list_cartItem_{{ loop.index }}">
-                        <div class="col-3 col-lg-2">
+                        <div class="col-img">
                             {% block checkout_basketcontents_basketitem_image %}
                                 {% set oBasketitemArticle = basketitem.getArticle() %}
 
                                 {% if editable %}<a class="d-block" href="{{ basketitem.getLink() }}">{% endif %}
 
                                 <img loading="lazy" src="{{ oBasketitemArticle.getIconUrl() }}"
-                                     alt="{{ basketitem.getTitle()|striptags }} {{ product.oxarticles__oxvarselect.value }}">
+                                     alt="{{ basketitem.getTitle()|striptags }} {{ product.oxarticles__oxvarselect.value }}" width="70" height="70">
 
                                 {% if editable %}</a>{% endif %}
 
                             {% endblock %}
                         </div>
 
-                        <div class="col-9 col-lg-10">
+                        <div class="col">
                             <div class="row">
                                 {% block checkout_basketcontents_basketitem_titlenumber %}
                                     {# Product Title #}
@@ -41,12 +41,12 @@
                                         {% if basketitem.isSkipDiscount() %} <sup><a
                                                     href="#SkipDiscounts_link">**</a></sup>{% endif %}
                                     {% endblock %}
-                                    <div class="basket-item-desc col-12{% if editable %} col-md-6{% endif %}">
+                                    <div class="basket-item-desc col-12{% if editable %} col-md-8 col-lg-5 col-xl-6{% endif %}">
                                         <div class="row">
                                             {# Attributes #}
                                             {% block checkout_basketcontents_basketitem_attributes %}
                                                 {% if oAttributes|length %}
-                                                    <div class="col-12 col-lg-6">
+                                                    <div class="col-12 col-xl-6">
                                                         <ul class="list-unstyled attributes">
                                                             {% for oAttr in oAttributes %}
                                                                 <li>
@@ -59,7 +59,7 @@
                                                 {% endif %}
                                             {% endblock %}
 
-                                            <div class="col-12{% if oAttributes|length %} col-lg-6{% endif %}">
+                                            <div class="col-12{% if oAttributes|length %} col-xl-6{% endif %}">
                                                 {% block checkout_basketcontents_basketitem_artnum %}
                                                     <ul class="list-unstyled serial-no">
                                                         <li>
@@ -168,9 +168,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6 {% if not editable %} d-none{% endif %}">
+                                    <div class="col-12 col-md-4 col-lg-7 col-xl-6{% if not editable %} d-none{% endif %}">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-6 col-md-8">
                                                 <div class="d-flex">
                                                     {% block checkout_basketcontents_basketitem_quantity %}
                                                         <div class="quantity">
@@ -214,7 +214,7 @@
 
                                                     {% block checkout_basketcontents_basketitem_removecheckbox %}
                                                         {% if editable %}
-                                                            <div class="d-none d-md-block">
+                                                            <div class="d-none d-lg-block">
                                                                 <input type="hidden" name="aproducts[{{ basketindex }}][remove]"
                                                                        id="aproducts_{{ basketindex }}_remove" value="0">
                                                                 <button type="submit" name="removeBtn" class="btn btn-remove me-3"
@@ -235,10 +235,11 @@
                                                     {% endblock %}
                                                 </div>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-6 col-md-4">
                                                 {% block checkout_basketcontents_basketitem_totalprice %}
                                                     {# product quantity * price #}
                                                     <div class="totalPrice text-end">
+                                                        <del class="text-nowrap text-danger">{{ format_price(basketitem.getPrice(), { currency: currency }) }}</del>
                                                         <strong class="text-nowrap h5">{{ format_price(basketitem.getPrice(), { currency: currency }) }}</strong>
                                                     </div>
                                                 {% endblock %}

@@ -81,11 +81,38 @@
   margin-bottom: var(--row-spacing);
 }
 
-/*
-.todo {
-  color: deeppink !important;
+.btn.dropdown-toggle {
+  svg {
+    fill: $body-color;
+    position: relative;
+    transition: transform 150ms;
+  }
+
+  &.show {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
 }
 
-.bg-todo {
-  background: deeppink !important;
-}*/
+.card-collapse {
+  position: relative;
+  cursor: pointer;
+
+  svg {
+    fill: $body-color;
+    position: absolute;
+    right: 20px;
+    top: 26px;
+    transition: transform 150ms;
+    transform: rotate(180deg);
+    width: 18px;
+    height: 18px;
+  }
+
+  &.collapsed {
+    svg {
+      transform: rotate(0deg);
+    }
+  }
+}
