@@ -3,7 +3,7 @@
     {% if not oView.getLoginOption() and not oxcmp_user %}
         <div class="container-md py-5">
             <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-8 col-xl-6">
+                <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
                     <div class="row">
                         <div class="col-lg-7">
                             {% block checkout_user_main %}
@@ -18,55 +18,51 @@
             </div>
         </div>
     {% else %}
-        <div class="container-xxl py-5">
+        <div class="container-md py-5">
             <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-10 col-xl-9">
+                <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
                     <div class="row">
-                        <div class="col-lg-8">
-                            <div class="card done done-1">
-                                <h4 class="card-header card-title">
-                                    {{ translate({ ident: "MY_ACCOUNT" }) }}
-                                </h4>
-                            </div>
+                        <div class="col-lg-7">
                             <div class="card mt-n2 active">
-                                <h4 class="card-header card-title">
-                                    Adressen
-                                </h4>
-                                <div class="card-body">
-                                    {% block checkout_user_noregistration %}
-                                        {% if oView.getLoginOption() == 1 %}
+
+                                {% block checkout_user_noregistration %}
+                                    {% if oView.getLoginOption() == 1 %}
+                                        <h4 class="card-header card-title">
+                                            {{ translate({ ident: "PURCHASE_WITHOUT_REGISTRATION" }) }}
+                                        </h4>
+                                        <div class="card-body">
                                             {% include "form/user_checkout_noregistration.html.twig" %}
-                                        {% endif %}
-                                    {% endblock %}
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
 
-                                    {% block checkout_user_registration %}
-                                        {% if oView.getLoginOption() == 3 %}
+                                {% block checkout_user_registration %}
+                                    {% if oView.getLoginOption() == 3 %}
+                                        <h4 class="card-header card-title">
+                                            {{ translate({ ident: "OPEN_ACCOUNT" }) }}
+                                        </h4>
+                                        <div class="card-body">
                                             {% include "form/user_checkout_registration.html.twig" %}
-                                        {% endif %}
-                                    {% endblock %}
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
 
-                                    {% block checkout_user_change %}
-                                        {% if oxcmp_user %}
+                                {% block checkout_user_change %}
+                                    {% if oxcmp_user %}
+                                        <h4 class="card-header card-title">
+                                            {{ translate({ ident: "ADDRESSES" }) }}
+                                        </h4>
+                                        <div class="card-body">
                                             {% include "form/user_checkout_change.html.twig" %}
-                                        {% endif %}
-                                    {% endblock %}
-                                </div>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
                             </div>
-                            <div class="card mt-n2">
-                                <h4 class="card-header card-title disabled">
-                                    Versand & Zahlung
-                                </h4>
-                            </div>
-
-                            <div class="card mt-n2">
-                                <h4 class="card-header card-title disabled">
-                                    Überprüfen
-                                </h4>
-                            </div>
-
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-5">
                             {% include "page/checkout/inc/summary_sidebar.html.twig" %}
+
+                            <button type="button" class="btn btn-highlight btn-lg w-100" onclick="document.getElementById('user_form').submit();">Weiter</button>
                         </div>
                     </div>
                 </div>
@@ -75,5 +71,5 @@
     {% endif %}
 {% endcapture %}
 
-{% include "layout/page.html.twig" %}
+{% include "layout/page.html.twig" with {active_step: 1}%}
 

@@ -6,7 +6,7 @@
     {# TODO: We should turn this into vCMS content, or put it to Theme settings #}
     <header class="header">
         <div class="header-wrapper">
-            {% if not oView.getIsOrderStep() %}
+            {% if not oView.getIsOrderStep() or oView.getClassKey() == "basket" %}
             <div class="meta">
                 <div class="container-xxl">
                     <div class="meta-wrapper d-flex justify-content-between">
@@ -68,49 +68,63 @@
             {% endif %}
             <div class="header-box position-relative">
                 <div class="container-xxl">
-                    <div class="header-container">
+                    {% if oView.getIsOrderStep() and oView.getClassKey() != "basket" %}
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+                    {% endif %}
 
-                        {% block layout_header_logo %}
-                            {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
-                            {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
-                            {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
-                            <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxname.value }}" class="logo-link d-flex">
-                                {% if slogoImg %}
-                                    <img src="{{ oViewConf.getImageUrl(slogoImg) }}" alt="{{ oxcmp_shop.oxshops__oxname.value }}" width="{{ sLogoWidth }}" height="{{ sLogoHeight }}" class="logo-img">
+                            <div class="header-container">
+
+                                {% block layout_header_logo %}
+                                    {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
+                                    {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
+                                    {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
+                                    <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxname.value }}" class="logo-link d-flex">
+                                        {% if slogoImg %}
+                                            <img src="{{ oViewConf.getImageUrl(slogoImg) }}" alt="{{ oxcmp_shop.oxshops__oxname.value }}" width="{{ sLogoWidth }}" height="{{ sLogoHeight }}" class="logo-img">
+                                        {% else %}
+                                            <span class="h1">{{ oxcmp_shop.oxshops__oxname.value }}</span>
+                                        {% endif %}
+                                    </a>
+                                {% endblock %}
+
+                                {% include "widget/header/search.html.twig" %}
+
+                                {% if not oView.getIsOrderStep() or oView.getClassKey() == "basket" %}
+                                    {% block layout_header_top %}
+                                        <div class="menu-dropdowns btn-group d-none d-lg-block" role="group">
+                                            {% block dd_layout_page_header_icon_menu_account %}
+                                                {% if oxcmp_user or oView.getCompareItemCount() or Errors.loginBoxErrors %}
+                                                    {% set blAnon = 0 %}
+                                                    {% set force_sid = oView.getSidForWidget() %}
+                                                {% else %}
+                                                    {% set blAnon = 1 %}
+                                                {% endif %}
+                                                {# Account Dropdown #}
+                                                {{ include_widget({ cl: "oxwServiceMenu", _parent: oView.getClassKey(), force_sid: force_sid, nocookie: blAnon, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                            {% endblock %}
+
+                                            {% block dd_layout_page_header_icon_menu_minibasket %}
+                                                {# Minibasket Dropdown #}
+                                                {% if oxcmp_basket.getProductsCount() %}
+                                                    {% set blAnon = 0 %}
+                                                    {% set force_sid = oView.getSidForWidget() %}
+                                                {% else %}
+                                                    {% set blAnon = 1 %}
+                                                {% endif %}
+                                                {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %}
                                 {% else %}
-                                    <span class="h1">{{ oxcmp_shop.oxshops__oxname.value }}</span>
+                                    {% include "page/checkout/inc/steps.html.twig" with {active: active_step} %}
                                 {% endif %}
-                            </a>
-                        {% endblock %}
-
-                        {% include "widget/header/search.html.twig" %}
-
-                        {% block layout_header_top %}
-                            <div class="menu-dropdowns btn-group d-none d-lg-block" role="group">
-                                {% block dd_layout_page_header_icon_menu_account %}
-                                    {% if oxcmp_user or oView.getCompareItemCount() or Errors.loginBoxErrors %}
-                                        {% set blAnon = 0 %}
-                                        {% set force_sid = oView.getSidForWidget() %}
-                                    {% else %}
-                                        {% set blAnon = 1 %}
-                                    {% endif %}
-                                    {# Account Dropdown #}
-                                    {{ include_widget({ cl: "oxwServiceMenu", _parent: oView.getClassKey(), force_sid: force_sid, nocookie: blAnon, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
-                                {% endblock %}
-
-                                {% block dd_layout_page_header_icon_menu_minibasket %}
-                                    {# Minibasket Dropdown #}
-                                    {% if oxcmp_basket.getProductsCount() %}
-                                        {% set blAnon = 0 %}
-                                        {% set force_sid = oView.getSidForWidget() %}
-                                    {% else %}
-                                        {% set blAnon = 1 %}
-                                    {% endif %}
-                                    {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
-                                {% endblock %}
                             </div>
-                        {% endblock %}
+
+                    {% if oView.getIsOrderStep() and oView.getClassKey() != "basket" %}
+                        </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

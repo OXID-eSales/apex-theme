@@ -25,7 +25,7 @@
 {{ script({ include: "js/changeaddress.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
 {% block user_checkout_change %}
-    <form class="max-600" action="{{ oViewConf.getSslSelfLink() }}" name="order" method="post" novalidate>
+    <form action="{{ oViewConf.getSslSelfLink() }}" name="order" method="post" novalidate id="user_form">
         {% block user_checkout_change_form %}
             {% set aErrors = oView.getFieldValidationErrors() %}
             {{ oViewConf.getHiddenSid()|raw }}
@@ -42,10 +42,12 @@
 
             {% block user_checkout_billing %}
                 {% block user_checkout_billing_head %}
-                    <h3 class="h4">
+                    <h3 class="h5 d-flex justify-content-between align-items-center">
                         {{ translate({ ident: "BILLING_ADDRESS" }) }}
-                        <button id="userChangeAddress" class="btn btn-sm btn-outline-primary float-end edit-button" name="changeBillAddress" type="submit" title="{{ translate({ ident: "CHANGE" }) }}">
-                            <i class="moga-pencil"></i>
+                        <button id="userChangeAddress" class="btn edit-button" name="changeBillAddress" type="submit" title="{{ translate({ ident: "CHANGE" }) }}">
+                            <svg aria-hidden="true">
+                                <use xlink:href="#pencil"></use>
+                            </svg>
                         </button>
                     </h3>
                 {% endblock %}
@@ -67,7 +69,7 @@
 
             {% block user_checkout_shipping %}
                 {% block user_checkout_shipping_head %}
-                    <h3 class="h4">
+                    <h3 class="h5">
                         {{ translate({ ident: "SHIPPING_ADDRESS" }) }}
                         {% if oView.showShipAddress() and oxcmp_user.getSelectedAddress() %}
                             <button id="userChangeShippingAddress" class="btn btn-sm btn-outline-primary float-end edit-button" name="changeShippingAddress" type="submit"{% if not oView.showShipAddress() and oxcmp_user.getSelectedAddress() %} style="display: none;" {% endif %} title="{{ translate({ ident: "CHANGE" }) }}">
@@ -99,9 +101,9 @@
             {% endblock %}
 
 
-            {% block user_checkout_change_next_step_bottom %}
+            {# % block user_checkout_change_next_step_bottom %}
                 <button id="userNextStepBottom" class="btn btn-primary w-100 btn-lg" name="userform" type="submit">{{ translate({ ident: "CONTINUE_TO_NEXT_STEP" }) }}</button>
-            {% endblock %}
+            {% endblock %#}
         {% endblock %}
     </form>
     {% include "form/fieldset/delete_shipping_address_modal.html.twig" %}

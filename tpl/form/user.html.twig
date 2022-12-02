@@ -1,7 +1,7 @@
 {{ script({ include: "js/changeaddress.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
 {% block user %}
-    <form class="max-600" action="{{ oViewConf.getSelfActionLink() }}" name="order" method="post" novalidate>
+    <form action="{{ oViewConf.getSelfActionLink() }}" name="order" method="post" novalidate>
         {% block user_form %}
             {% set aErrors = oView.getFieldValidationErrors() %}
             <div class="addressCollumns">
@@ -14,14 +14,17 @@
 
                 {# Rechnungsadresse #}
                 <div class="card mb-3">
-                    <div class="card-header bg-light">
-                        {% block user_billing_address_head %}
-                            <button id="userChangeAddress" class="btn btn-outline-dark btn-sm float-end edit-button" name="changeBillAddress" type="button">
-                                <i class="moga-pencil"></i>
+                    {% block user_billing_address_head %}
+                        <h4 class="card-header card-title card-header-edit">
+                            {{ translate({ ident: "BILLING_ADDRESS" }) }}
+
+                            <button id="userChangeAddress" class="btn edit-button" name="changeBillAddress" type="button">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#pencil"></use>
+                                </svg>
                             </button>
-                            <h4>{{ translate({ ident: "BILLING_ADDRESS" }) }}</h4>
-                        {% endblock %}
-                    </div>
+                        </h4>
+                    {% endblock %}
                     <div class="card-body">
                         {% block user_billing_address %}
                             {% block user_billing_address_text %}

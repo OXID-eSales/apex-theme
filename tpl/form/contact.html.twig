@@ -1,7 +1,7 @@
 {# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
 {{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();", dynamic: __oxid_include_dynamic }) #}
 {% set editval = oView.getUserData() %}
-<form class="max-600 needs-validation" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
+<form class="needs-validation" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
     {{ oViewConf.getHiddenSid()|raw }}
     <input type="hidden" name="fnc" value="send">
     <input type="hidden" name="cl" value="contact">

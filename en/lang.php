@@ -108,6 +108,10 @@ $aLang = array(
 
     // Checkout
     'DD_BASKET_BACK_TO_SHOP'                                => 'back to shop',
+    'MOVE_TO_NOTICELIST'                                    => 'Mode to noticelist',
+    'STEPS_SEND'                                            => 'Address',
+    'STEPS_PAY'                                             => 'Payment & delivery',
+    'STEPS_ORDER'                                           => 'Order',
 
     // E-Mails
     'DD_FOOTER_FOLLOW_US'                                   => 'Follow us:',

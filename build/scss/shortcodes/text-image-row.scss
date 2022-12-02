@@ -1,4 +1,8 @@
 .dd-shortcode-text-image-row {
+  .container-fluid {
+    padding: 0;
+  }
+
   &.style-1 {
     .card {
       .card-img-full {

@@ -32,14 +32,41 @@
                                 {% block checkout_basketcontents_basketitem_titlenumber %}
                                     {# Product Title #}
                                     {% block checkout_basketcontents_basketitem_title %}
-                                        <div class="h5">
-                                            {% if not editable %}
-                                                {{ basketitem.getAmount() }} x
+                                        <div class="d-flex align-items-center">
+                                            <div class="h5">
+                                                {% if not editable %}
+                                                    {{ basketitem.getAmount() }} x
+                                                {% endif %}
+                                                {{ basketitem.getTitle() }}
+
+                                                {% if basketitem.isSkipDiscount() %}
+                                                    <sup><a href="#SkipDiscounts_link">**</a></sup>
+                                                {% endif %}
+                                            </div>
+
+                                            {% if editable %}
+                                                <div class="btn-group d-lg-none ms-auto">
+                                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <svg aria-hidden="true">
+                                                            <use xlink:href="#three-dots-vertical"></use>
+                                                        </svg>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <button type="submit" name="removeBtn" class="dropdown-item"
+                                                                    onclick="document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
+                                                                {{ translate({ ident: "REMOVE" }) }}
+                                                            </button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="submit" name="removeBtn" class="dropdown-item" onclick="addToNoticelist('{{ oArticle.getId() }}');document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
+                                                                {{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             {% endif %}
-                                            {{ basketitem.getTitle() }}
                                         </div>
-                                        {% if basketitem.isSkipDiscount() %} <sup><a
-                                                    href="#SkipDiscounts_link">**</a></sup>{% endif %}
                                     {% endblock %}
                                     <div class="basket-item-desc col-12{% if editable %} col-md-8 col-lg-5 col-xl-6{% endif %}">
                                         <div class="row">
@@ -217,7 +244,7 @@
                                                             <div class="d-none d-lg-block">
                                                                 <input type="hidden" name="aproducts[{{ basketindex }}][remove]"
                                                                        id="aproducts_{{ basketindex }}_remove" value="0">
-                                                                <button type="submit" name="removeBtn" class="btn btn-remove me-3"
+                                                                <button type="submit" name="removeBtn" class="btn btn-remove"
                                                                         aria-label="{{ translate({ ident: "REMOVE" }) }}"
                                                                         onclick="document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
                                                                     <svg aria-hidden="true">

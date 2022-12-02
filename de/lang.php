@@ -108,6 +108,11 @@ $aLang = array(
 
     // Checkout
     'DD_BASKET_BACK_TO_SHOP'                                => 'zurück zum Shop',
+    'MOVE_TO_NOTICELIST'                                    => 'Auf die Merkliste',
+    'STEPS_SEND'                                            => 'Adresse',
+    'STEPS_PAY'                                             => 'Zahlung & Versand',
+    'STEPS_ORDER'                                           => 'Bestellen',
+    'SELECT_SHIPPING_METHOD'                                => 'Versandart',
 
     // E-Mails
     'DD_FOOTER_FOLLOW_US'                                    => 'Folgen Sie uns',
@@ -140,7 +145,7 @@ $aLang = array(
 
     'DD_CATEGORY_RESET_BUTTON'                              => 'Zurücksetzen',
     'MOVE_TO_WISH_LIST'                                     => 'Auf Merkzettel verschieben',
-    'SUMMARY'                                               => 'Zusammenfassung',
+    'SUMMARY'                                               => 'Übersicht',
     'COMPLETE_MARKED_FIELDS'                                => 'Pflichtfelder bitte ausfüllen',
     'WRITE_REVIEW'                                          => 'Bewertung schreiben',
     'PRODUCT_REVIEW'                                        => 'Kundenmeinungen',

@@ -1,232 +1,235 @@
 <div class="sticky-md-top">
     {% block checkout_basketcontents_summary %}
-    <div class="card mb-3">
-        <h4 class="card-header card-title">{{ translate({ ident: "SUMMARY" }) }}</h4>
+        <div class="card mb-3">
+            <h4 class="card-header card-title">{{ translate({ ident: "SUMMARY" }) }}</h4>
 
-        <div class="list-group mb-3 list-group-flush">
+            <div class="list-group mb-3 list-group-flush border-0">
                 {% block checkout_basketcontents_summary_table_inner %}
-                {% if not oxcmp_basket.getDiscounts() %}
-                {% block checkout_basketcontents_nodiscounttotalnet %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "TOTAL_NET" }) }}
-                    <span>{{ format_price(oxcmp_basket.getNettoSum(), { currency: currency }) }}</span>
-                </div>
-                {% endblock %}
+                    {% if not oxcmp_basket.getDiscounts() %}
+                        {% block checkout_basketcontents_nodiscounttotalnet %}
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ translate({ ident: "TOTAL_NET" }) }}
+                                <span>{{ format_price(oxcmp_basket.getNettoSum(), { currency: currency }) }}</span>
+                            </div>
+                        {% endblock %}
 
-                {% block checkout_basketcontents_nodiscountproductvats %}
-                {% for key, VATitem in oxcmp_basket.getProductVats(false) %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", args: key }) }}
-                    <span>{{ format_price(VATitem, { currency: currency }) }}</span>
-                </div>
-                {% endfor %}
-                {% endblock %}
+                        {% block checkout_basketcontents_nodiscountproductvats %}
+                            {% for key, VATitem in oxcmp_basket.getProductVats(false) %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", args: key }) }}
+                                    <span>{{ format_price(VATitem, { currency: currency }) }}</span>
+                                </div>
+                            {% endfor %}
+                        {% endblock %}
 
-                {% block checkout_basketcontents_nodiscounttotalgross %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "TOTAL_GROSS" }) }}
-                    <span>{{ format_price(oxcmp_basket.getBruttoSum(), { currency: currency }) }}</span>
-                </div>
-                {% endblock %}
-                {% else %}
-                {% if oxcmp_basket.isPriceViewModeNetto() %}
-                {% block checkout_basketcontents_discounttotalnet %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "TOTAL_NET" }) }}
-                    <span>{{ format_price(oxcmp_basket.getNettoSum(), { currency: currency }) }}</span>
-                </div>
-                {% endblock %}
-                {% else %}
-                {% block checkout_basketcontents_discounttotalgross %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "TOTAL_GROSS" }) }}
-                    <span>{{ format_price(oxcmp_basket.getBruttoSum(), { currency: currency }) }}</span>
-                </div>
-                {% endblock %}
-                {% endif %}
+                        {% block checkout_basketcontents_nodiscounttotalgross %}
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ translate({ ident: "TOTAL_GROSS" }) }}
+                                <span>{{ format_price(oxcmp_basket.getBruttoSum(), { currency: currency }) }}</span>
+                            </div>
+                        {% endblock %}
+                    {% else %}
+                        {% if oxcmp_basket.isPriceViewModeNetto() %}
+                            {% block checkout_basketcontents_discounttotalnet %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ translate({ ident: "TOTAL_NET" }) }}
+                                    <span>{{ format_price(oxcmp_basket.getNettoSum(), { currency: currency }) }}</span>
+                                </div>
+                            {% endblock %}
+                        {% else %}
+                            {% block checkout_basketcontents_discounttotalgross %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ translate({ ident: "TOTAL_GROSS" }) }}
+                                    <span>{{ format_price(oxcmp_basket.getBruttoSum(), { currency: currency }) }}</span>
+                                </div>
+                            {% endblock %}
+                        {% endif %}
 
-                {% block checkout_basketcontents_discounts %}
-                {% for oDiscount in oxcmp_basket.getDiscounts() %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
+                        {% block checkout_basketcontents_discounts %}
+                            {% for oDiscount in oxcmp_basket.getDiscounts() %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
 
-                    <b>{% if oDiscount.dDiscount < 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DISCOUNT" }) }}{% endif %}&nbsp;</b>
-                    {{ oDiscount.sDiscount }}
+                                    <b>{% if oDiscount.dDiscount < 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DISCOUNT" }) }}{% endif %}
+                                        &nbsp;</b>
+                                    {{ oDiscount.sDiscount }}
 
-                    <span>
+                                    <span>
                                         {{ format_price(oDiscount.dDiscount*-1, { currency: currency }) }}
                                     </span>
-                </div>
-                {% endfor %}
-                {% endblock %}
+                                </div>
+                            {% endfor %}
+                        {% endblock %}
 
-                {% if not oxcmp_basket.isPriceViewModeNetto() %}
-                {% block checkout_basketcontents_totalnet %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "TOTAL_NET" }) }}
-                    <span>{{ format_price(oxcmp_basket.getNettoSum(), { currency: currency }) }}</span>
-                </div>
-                {% endblock %}
-                {% endif %}
+                        {% if not oxcmp_basket.isPriceViewModeNetto() %}
+                            {% block checkout_basketcontents_totalnet %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ translate({ ident: "TOTAL_NET" }) }}
+                                    <span>{{ format_price(oxcmp_basket.getNettoSum(), { currency: currency }) }}</span>
+                                </div>
+                            {% endblock %}
+                        {% endif %}
 
-                {% block checkout_basketcontents_productvats %}
-                {% for key, VATitem in oxcmp_basket.getProductVats(false) %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", args: key }) }}
-                    <span>{{ format_price(VATitem, { currency: currency }) }}</span>
-                </div>
-                {% endfor %}
-                {% endblock %}
+                        {% block checkout_basketcontents_productvats %}
+                            {% for key, VATitem in oxcmp_basket.getProductVats(false) %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", args: key }) }}
+                                    <span>{{ format_price(VATitem, { currency: currency }) }}</span>
+                                </div>
+                            {% endfor %}
+                        {% endblock %}
 
-                {% if oxcmp_basket.isPriceViewModeNetto() %}
-                {% block checkout_basketcontents_totalgross %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "TOTAL_GROSS" }) }}
-                    <span>{{ format_price(oxcmp_basket.getBruttoSum(), { currency: currency }) }}</span>
-                </div>
-                {% endblock %}
-                {% endif %}
-                {% endif %}
+                        {% if oxcmp_basket.isPriceViewModeNetto() %}
+                            {% block checkout_basketcontents_totalgross %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ translate({ ident: "TOTAL_GROSS" }) }}
+                                    <span>{{ format_price(oxcmp_basket.getBruttoSum(), { currency: currency }) }}</span>
+                                </div>
+                            {% endblock %}
+                        {% endif %}
+                    {% endif %}
                 {% endblock %}
 
                 {% block checkout_basketcontents_voucherdiscount %}
-                {% if oViewConf.getShowVouchers() and oxcmp_basket.getVoucherDiscValue() %}
-                {% for key, sVoucher in oxcmp_basket.getVouchers() %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    {% if oViewConf.getShowVouchers() and oxcmp_basket.getVoucherDiscValue() %}
+                        {% for key, sVoucher in oxcmp_basket.getVouchers() %}
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
                     <span>
                         {{ translate({ ident: "COUPON" }) }}&nbsp;({{ sVoucher.sVoucherNr }})
                         {% if editable %}
-                        <a href="{{ oViewConf.getSelfLink() }}&amp;cl=basket&amp;fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}" class="removeFn" title="{{ translate({ ident: "REMOVE" }) }}"><i class="moga-trash"></i> </a>
+                            <a href="{{ oViewConf.getSelfLink() }}&amp;cl=basket&amp;fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}"
+                               class="removeFn" title="{{ translate({ ident: "REMOVE" }) }}"><i class="moga-trash"></i> </a>
                         {% endif %}
                     </span>
-                    <span class="text-danger">{{ format_price(sVoucher.dVoucherdiscount*-1, { currency: currency }) }}</span>
-                </div>
-                {% endfor %}
-                {% endif %}
+                                <span class="text-danger">{{ format_price(sVoucher.dVoucherdiscount*-1, { currency: currency }) }}</span>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 {% endblock %}
 
                 {% block checkout_basketcontents_delcosts %}
-                {% set deliveryCost = oxcmp_basket.getDeliveryCost() %}
-                {% if deliveryCost and (oxcmp_basket.getBasketUser() or oViewConf.isFunctionalityEnabled('blCalculateDelCostIfNotLoggedIn') )  %}
-                {% if oViewConf.isFunctionalityEnabled('blShowVATForDelivery')  %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "SHIPPING_NET" }) }}
-                    <span>{{ format_price(deliveryCost.getNettoPrice(), { currency: currency }) }}</span>
-                </div>
-                {% if deliveryCost.getVatValue() %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {% if oxcmp_basket.isProportionalCalculationOn()  %}
-                    {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}
-                    {% else %}
-                    {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", args: deliveryCost.getVat() }) }}
+                    {% set deliveryCost = oxcmp_basket.getDeliveryCost() %}
+                    {% if deliveryCost and (oxcmp_basket.getBasketUser() or oViewConf.isFunctionalityEnabled('blCalculateDelCostIfNotLoggedIn') ) %}
+                        {% if oViewConf.isFunctionalityEnabled('blShowVATForDelivery') %}
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ translate({ ident: "SHIPPING_NET" }) }}
+                                <span>{{ format_price(deliveryCost.getNettoPrice(), { currency: currency }) }}</span>
+                            </div>
+                            {% if deliveryCost.getVatValue() %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {% if oxcmp_basket.isProportionalCalculationOn() %}
+                                        {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}
+                                    {% else %}
+                                        {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", args: deliveryCost.getVat() }) }}
+                                    {% endif %}
+                                    <span>{{ format_price(deliveryCost.getVatValue(), { currency: currency }) }}</span>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ translate({ ident: "SHIPPING_COST" }) }}
+                                <span>{{ format_price(deliveryCost.getBruttoPrice(), { currency: currency }) }}</span>
+                            </div>
+                        {% endif %}
                     {% endif %}
-                    <span>{{ format_price(deliveryCost.getVatValue(), { currency: currency }) }}</span>
-                </div>
-                {% endif %}
-                {% else %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "SHIPPING_COST" }) }}
-                    <span>{{ format_price(deliveryCost.getBruttoPrice(), { currency: currency }) }}</span>
-                </div>
-                {% endif %}
-                {% endif %}
                 {% endblock %}
 
                 {% block checkout_basketcontents_paymentcosts %}
-                {% set paymentCost = oxcmp_basket.getPaymentCost() %}
-                {% if paymentCost and paymentCost.getPrice()  %}
-                {% if oViewConf.isFunctionalityEnabled('blShowVATForPayCharge')  %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {% if paymentCost.getPrice() >= 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DEDUCTION" }) }}{% endif %} {{ translate({ ident: "PAYMENT_METHOD" }) }}
-                    <span>{{ format_price(paymentCost.getNettoPrice(), { currency: currency }) }}</span>
-                </div>
-                {% if paymentCost.getVatValue() %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {% if oxcmp_basket.isProportionalCalculationOn()  %}
-                    {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}
-                    {% else %}
-                    {{ translate({ ident: "SURCHARGE_PLUS_PERCENT_AMOUNT", args: paymentCost.getVat() }) }}
+                    {% set paymentCost = oxcmp_basket.getPaymentCost() %}
+                    {% if paymentCost and paymentCost.getPrice() %}
+                        {% if oViewConf.isFunctionalityEnabled('blShowVATForPayCharge') %}
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                {% if paymentCost.getPrice() >= 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DEDUCTION" }) }}{% endif %} {{ translate({ ident: "PAYMENT_METHOD" }) }}
+                                <span>{{ format_price(paymentCost.getNettoPrice(), { currency: currency }) }}</span>
+                            </div>
+                            {% if paymentCost.getVatValue() %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {% if oxcmp_basket.isProportionalCalculationOn() %}
+                                        {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}
+                                    {% else %}
+                                        {{ translate({ ident: "SURCHARGE_PLUS_PERCENT_AMOUNT", args: paymentCost.getVat() }) }}
+                                    {% endif %}
+                                    <span>{{ format_price(paymentCost.getVatValue(), { currency: currency }) }}</span>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                {% if paymentCost.getPrice() >= 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DEDUCTION" }) }}{% endif %} {{ translate({ ident: "PAYMENT_METHOD" }) }}
+                                <span>{{ format_price(paymentCost.getBruttoPrice(), { currency: currency }) }}</span>
+                            </div>
+                        {% endif %}
                     {% endif %}
-                    <span>{{ format_price(paymentCost.getVatValue(), { currency: currency }) }}</span>
-                </div>
-                {% endif %}
-                {% else %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {% if paymentCost.getPrice() >= 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DEDUCTION" }) }}{% endif %} {{ translate({ ident: "PAYMENT_METHOD" }) }}
-                    <span>{{ format_price(paymentCost.getBruttoPrice(), { currency: currency }) }}</span>
-                </div>
-                {% endif %}
-                {% endif %}
                 {% endblock %}
 
                 {% block checkout_basketcontents_wrappingcosts %}
-                {% if oViewConf.getShowGiftWrapping()  %}
+                    {% if oViewConf.getShowGiftWrapping() %}
 
-                {% set wrappingCost = oxcmp_basket.getWrappingCost() %}
-                {% if wrappingCost and wrappingCost.getPrice() > 0  %}
-                {% if oViewConf.isFunctionalityEnabled('blShowVATForWrapping')  %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "BASKET_TOTAL_WRAPPING_COSTS_NET" }) }}
-                    <span>{{ format_price(wrappingCost.getNettoPrice(), { currency: currency }) }}</span>
-                </div>
-                {% if oxcmp_basket.getWrappCostVat()  %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "PLUS_VAT" }) }}
-                    <span>{{ format_price(wrappingCost.getVatValue(), { currency: currency }) }}</span>
-                </div>
-                {% endif %}
-                {% else %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "GIFT_WRAPPING" }) }}
-                    <span>{{ format_price(wrappingCost.getBruttoPrice(), { currency: currency }) }}</span>
-                </div>
-                {% endif %}
-                {% endif %}
+                        {% set wrappingCost = oxcmp_basket.getWrappingCost() %}
+                        {% if wrappingCost and wrappingCost.getPrice() > 0 %}
+                            {% if oViewConf.isFunctionalityEnabled('blShowVATForWrapping') %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ translate({ ident: "BASKET_TOTAL_WRAPPING_COSTS_NET" }) }}
+                                    <span>{{ format_price(wrappingCost.getNettoPrice(), { currency: currency }) }}</span>
+                                </div>
+                                {% if oxcmp_basket.getWrappCostVat() %}
+                                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ translate({ ident: "PLUS_VAT" }) }}
+                                        <span>{{ format_price(wrappingCost.getVatValue(), { currency: currency }) }}</span>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ translate({ ident: "GIFT_WRAPPING" }) }}
+                                    <span>{{ format_price(wrappingCost.getBruttoPrice(), { currency: currency }) }}</span>
+                                </div>
+                            {% endif %}
+                        {% endif %}
 
-                {% set giftCardCost = oxcmp_basket.getGiftCardCost() %}
-                {% if giftCardCost and giftCardCost.getPrice() > 0  %}
-                {% if oViewConf.isFunctionalityEnabled('blShowVATForWrapping')  %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "BASKET_TOTAL_GIFTCARD_COSTS_NET" }) }}
-                    <span>{{ format_price(giftCardCost.getNettoPrice(), { currency: currency }) }}</span>
-                </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {% if oxcmp_basket.isProportionalCalculationOn()  %}
-                    {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}
-                    {% else %}
-                    {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", args: giftCardCost.getVat() }) }}
+                        {% set giftCardCost = oxcmp_basket.getGiftCardCost() %}
+                        {% if giftCardCost and giftCardCost.getPrice() > 0 %}
+                            {% if oViewConf.isFunctionalityEnabled('blShowVATForWrapping') %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ translate({ ident: "BASKET_TOTAL_GIFTCARD_COSTS_NET" }) }}
+                                    <span>{{ format_price(giftCardCost.getNettoPrice(), { currency: currency }) }}</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {% if oxcmp_basket.isProportionalCalculationOn() %}
+                                        {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}
+                                    {% else %}
+                                        {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", args: giftCardCost.getVat() }) }}
+                                    {% endif %}
+                                    <span>{{ format_price(giftCardCost.getVatValue(), { currency: currency }) }}</span>
+                                </div>
+                            {% else %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ translate({ ident: "GREETING_CARD" }) }}
+                                    <span>{{ format_price(giftCardCost.getBruttoPrice(), { currency: currency }) }}</span>
+                                </div>
+                            {% endif %}
+                        {% endif %}
                     {% endif %}
-                    <span>{{ format_price(giftCardCost.getVatValue(), { currency: currency }) }}</span>
-                </div>
-                {% else %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ translate({ ident: "GREETING_CARD" }) }}
-                    <span>{{ format_price(giftCardCost.getBruttoPrice(), { currency: currency }) }}</span>
-                </div>
-                {% endif %}
-                {% endif %}
-                {% endif %}
                 {% endblock %}
 
                 {% block checkout_basketcontents_grandtotal %}
-                <div class="list-group-item d-flex justify-content-between align-items-center mb-0 mt-2 h4">
-                    {{ translate({ ident: "GRAND_TOTAL" }) }}
-                    <span>{{ format_price(oxcmp_basket.getPrice(), { currency: currency }) }}</span>
-                </div>
+                    <div class="list-group-item d-flex justify-content-between align-items-center mb-0 mt-2 h4">
+                        {{ translate({ ident: "GRAND_TOTAL" }) }}
+                        <span>{{ format_price(oxcmp_basket.getPrice(), { currency: currency }) }}</span>
+                    </div>
                 {% endblock %}
 
                 {% if oxcmp_basket.hasSkipedDiscount() %}
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    <span class="note">**</span> {{ translate({ ident: "MESSAGE_COUPON_NOT_APPLIED_FOR_ARTICLES" }) }}</span>
-                </div>
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="note">**</span> {{ translate({ ident: "MESSAGE_COUPON_NOT_APPLIED_FOR_ARTICLES" }) }}</span>
+                    </div>
                 {% endif %}
             </div>
-    </div>
+        </div>
     {% endblock %}
 
     {% if oViewConf.getShowVouchers() and oViewConf.getActiveClassName() == 'basket' %}
         {% block checkout_basket_vouchers %}
             <div class="card mb-3">
-                <h4 class="card-header card-title collapsed card-collapse" data-bs-toggle="collapse" href="#voucherCollapse" aria-expanded="false" aria-controls="voucherCollapse">
+                <h4 class="card-header card-title collapsed card-collapse" data-bs-toggle="collapse"
+                    href="#voucherCollapse" aria-expanded="false" aria-controls="voucherCollapse">
                     {{ translate({ ident: "COUPON" }) }}
 
                     <svg aria-hidden="true">
@@ -241,10 +244,13 @@
                             <input type="hidden" name="fnc" value="addVoucher">
                             <input type="hidden" name="CustomError" value="basket">
 
-                            <label class="visually-hidden" for="input_voucherNr">{{ translate({ ident: "ENTER_COUPON_NUMBER" }) }}</label>
+                            <label class="visually-hidden"
+                                   for="input_voucherNr">{{ translate({ ident: "ENTER_COUPON_NUMBER" }) }}</label>
                             <div class="input-group">
-                                <input type="text" name="voucherNr" size="30" class="form-control" id="input_voucherNr" required>
-                                <button type="submit" class="btn btn-primary" title="{{ translate({ ident: "REDEEM_COUPON" }) }}">
+                                <input type="text" name="voucherNr" size="30" class="form-control" id="input_voucherNr"
+                                       required>
+                                <button type="submit" class="btn btn-primary"
+                                        title="{{ translate({ ident: "REDEEM_COUPON" }) }}">
                                     <svg aria-hidden="true">
                                         <use xlink:href="#right"></use>
                                     </svg>
@@ -265,16 +271,15 @@
             {% endfor %}
         {% endblock %}
     {% endif %}
-
-    {% if not oView.isLowOrderPrice() and btn %}
-        {% block basket_btn_next_bottom %}
-        <form action="{{ oViewConf.getSslSelfLink() }}" method="post">
-            {{ oViewConf.getHiddenSid()|raw }}
-            <input type="hidden" name="cl" value="user">
-            <button type="submit" class="btn btn-highlight btn-lg w-100">
-                {{ translate({ ident: "CHECKOUT" }) }}
-            </button>
-        </form>
-        {% endblock %}
-    {% endif %}
+    {% block basket_btn_next_bottom %}
+        {% if not oView.isLowOrderPrice() and btn %}
+            <form action="{{ oViewConf.getSslSelfLink() }}" method="post">
+                {{ oViewConf.getHiddenSid()|raw }}
+                <input type="hidden" name="cl" value="user">
+                <button type="submit" class="btn btn-highlight btn-lg w-100">
+                    {{ translate({ ident: "CHECKOUT" }) }}
+                </button>
+            </form>
+        {% endif %}
+    {% endblock %}
 </div>
