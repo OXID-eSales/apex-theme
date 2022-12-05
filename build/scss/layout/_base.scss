@@ -116,3 +116,57 @@
     }
   }
 }
+
+.dropdown {
+  .dropdown-toggle {
+    border: 1px solid #B7C1C6;
+    justify-content: space-between;
+    display: flex;
+    background: #fff;
+
+    &:hover,
+    &.show,
+    &:focus {
+      border-color: #000;
+    }
+  }
+}
+
+.sticky-md-top {
+  z-index: 10;
+}
+
+.max-600 {
+  max-width: 600px;
+}
+
+.card-lg {
+  .card-body {
+    padding: 10px;
+
+    @include media-breakpoint-up(md) {
+      padding: 20px;
+    }
+  }
+
+  .card-header {
+    padding: 10px;
+    transition: all 150ms;
+
+    @include media-breakpoint-up(md) {
+      padding: 20px;
+    }
+
+    & + .card-body {
+      padding-top: 0;
+    }
+
+    &.collapsed {
+      margin-bottom: 0;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
