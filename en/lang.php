@@ -29,8 +29,6 @@ $aLang = array(
     'DD_SORT_ASC'                                           => 'ascending',
     'DD_DEMO_ADMIN_TOOL'                                    => 'Open admin interface',
     'DD_DELETE'                                             => 'Delete',
-    'MOVE_CAROUSEL_LEFT'                          => 'Left',
-    'MOVE_CAROUSEL_RIGHT'                          => 'Right',
 
     // Form validation
     'DD_FORM_VALIDATION_VALIDEMAIL'                         => 'Please enter a valid email address.',

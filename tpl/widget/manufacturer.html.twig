@@ -1,4 +1,5 @@
 {% set manufacturerWidth = oViewConf.getViewThemeParam('sManufacturerWidth') %}
+
 <div class="container-xxl">
     <div class="py-5 manufacturer">
         <div class="container{% if manufacturerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
@@ -9,6 +10,7 @@
                 <div class="row row-cols-2 row-cols-lg-4">
                     {% for oManufacturer in oView.getManufacturerForSlider() %}
                         {% if loop.index <= 4 %}
+                            {% set aImgDimensions = oManufacturer.getIconUrl()|getimagesize %}
                             <div class="col">
                                 <div class="card brand-card text-white">
                                     <picture>
@@ -16,7 +18,7 @@
                                         <img src="{{ oViewConf.getImageUrl('content/promo-sm.webp') }}" class="card-img" alt="Promotion" width="460" height="460" type="image/webp">
                                     </picture>
                                     <div class="card-img-overlay">
-                                        <img loading="lazy" class="logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                                        <img loading="lazy" class="logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}" height="{{ aImgDimensions.1 }}">
                                         <span class="btn btn-secondary">{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}</span>
                                     </div>
                                     <a href="#" class="stretched-link" aria-label="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}"></a>
@@ -31,10 +33,11 @@
                 {% for oManufacturer in oView.getManufacturerForSlider() %}
                     {% if oManufacturer.oxmanufacturers__oxicon.value %}
                         {% if loop.index > 8 %}
+                            {% set aImgDimensions = oManufacturer.getIconUrl()|getimagesize %}
+
                             <div class="col-6 col-md-4 col-lg">
                                 <a href="{{ oManufacturer.getLink() }}" title="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}" class="d-block text-center">
-
-                                    <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                                    <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}" height="{{ aImgDimensions.1 }}">
                                 </a>
                             </div>
                         {% endif %}
