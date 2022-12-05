@@ -13,3 +13,13 @@ function addToNoticelist(articleid) {
 
     request.send();
 }
+
+function removeFromBasket(basketindex) {
+    var basketitemRemoveInput = document.getElementById('aproducts_' + basketindex + '_remove');
+    basketitemRemoveInput ? basketitemRemoveInput.value = '1' : null;
+}
+
+function moveToNoticelist(articleid, basketindex) {
+    addToNoticelist(articleid);
+    removeFromBasket(basketindex);
+}
