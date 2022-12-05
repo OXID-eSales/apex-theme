@@ -138,6 +138,7 @@ $aLang = array(
     'DD_DELETE_REVIEW_AND_RATING'                           => 'Delete review and star rating',
     'DD_REVIEWS_NOT_AVAILABLE'                              => 'No reviews available',
     'DD_DELETE_REVIEW_CONFIRMATION_QUESTION'                => 'Are you sure you want to delete the review?',
+    'WHERE_DO_YOU_WANT_TO_GO'                => 'Where do you want to go?',
 
     // Contact page
     'DD_SELECT_SALUTATION'                                  => 'Please choose',

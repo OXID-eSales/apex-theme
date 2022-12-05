@@ -13,9 +13,9 @@
                 <input type="hidden" name="blshowshipaddress" value="1">
 
                 {# Rechnungsadresse #}
-                <div class="card mb-3">
+                <div class="card card-lg mb-3">
                     {% block user_billing_address_head %}
-                        <h4 class="card-header card-title card-header-edit">
+                        <h4 class="card-header card-title d-flex card-header-edit justify-content-between">
                             {{ translate({ ident: "BILLING_ADDRESS" }) }}
 
                             <button id="userChangeAddress" class="btn edit-button" name="changeBillAddress" type="button">
@@ -46,12 +46,12 @@
 
                 {# Lieferadresse #}
                 {% block user_shipping_address %}
-                    <div class="card">
-                        <div class="card-header bg-light">
+                    <div class="card card-lg">
+                        <h4 class="card-header bg-light">
                             {% block user_shipping_address_head %}
-                            <h4>{{ translate({ ident: "SHIPPING_ADDRESSES" }) }}</h4>
+                            {{ translate({ ident: "SHIPPING_ADDRESSES" }) }}
                             {% endblock %}
-                        </div>
+                        </h4>
                         <div class="card-body">
                             <div class="checkbox">
                                 {% block user_shipping_address_choice %}

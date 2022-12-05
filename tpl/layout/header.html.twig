@@ -67,7 +67,7 @@
             </div>
             {% endif %}
             <div class="header-box position-relative">
-                <div class="container-xxl">
+                <div class="container-{% if oView.getIsOrderStep() and oView.getClassKey() != "basket" %}md{% else %}xxl{% endif %}">
                     {% if oView.getIsOrderStep() and oView.getClassKey() != "basket" %}
                     <div class="row justify-content-center">
                         <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">

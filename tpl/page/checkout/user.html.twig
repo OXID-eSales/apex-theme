@@ -11,7 +11,9 @@
                             {% endblock %}
                         </div>
                         <div class="col-lg-5">
-                            {% include "page/checkout/inc/summary_sidebar.html.twig" %}
+                            <div class="sticky-md-top">
+                                {% include "page/checkout/inc/summary_sidebar.html.twig" %}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -60,9 +62,13 @@
                             </div>
                         </div>
                         <div class="col-lg-5">
-                            {% include "page/checkout/inc/summary_sidebar.html.twig" %}
+                            <div class="sticky-md-top">
+                                {% include "page/checkout/inc/summary_sidebar.html.twig" %}
 
-                            <button type="button" class="btn btn-highlight btn-lg w-100" onclick="document.getElementById('user_form').submit();">Weiter</button>
+                                <button type="button" class="btn btn-highlight btn-lg w-100" onclick="document.getElementById('user_form').submit();">
+                                    {{ translate({ ident: "NEXT" }) }}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

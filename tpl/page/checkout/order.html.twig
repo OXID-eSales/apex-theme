@@ -26,7 +26,7 @@
                                         {% endblock %}
                                     {% else %}
                                         {% set currency = oView.getActCurrency() %}
-                                            {# % block checkout_order_next_step_top %}
+                                        {# % block checkout_order_next_step_top %}
                                                 {% if oView.isLowOrderPrice() %}
                                                     {% block checkout_order_loworderprice_top %}
                                                         <div class="alert alert-info">{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ oView.getMinOrderPrice() }} {{ currency.sign }}</div>
@@ -58,7 +58,7 @@
                                                         {% endfor %}
                                                     </div>
                                                 {% endif %}
-                                            {% endblock %#}
+                                            {% endblock % #}
                                         {% block checkout_order_address %}
                                             <div id="orderAddress">
                                                 <form action="{{ oViewConf.getSslSelfLink() }}" method="post">
@@ -82,18 +82,23 @@
                                                     {{ oViewConf.getHiddenSid()|raw }}
                                                     <input type="hidden" name="cl" value="user">
                                                     <input type="hidden" name="fnc" value="">
-
-                                                    <button type="submit"
-                                                            class="card-header card-title card-header-edit"
-                                                            title="{{ translate({ ident: "EDIT" }) }}">
+                                                    <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                         {{ translate({ ident: "SHIPPING_ADDRESS" }) }}
-                                                    </button>
-                                                    {% set oDelAdress = oView.getDelAddress() %}
-                                                    {% if oDelAdress %}
-                                                        {% include "widget/address/shipping_address.html.twig" with {delivadr: oDelAdress} %}
-                                                    {% else %}
-                                                        {% include "widget/address/billing_address.html.twig" %}
-                                                    {% endif %}
+                                                        <button type="submit" class="btn"
+                                                                title="{{ translate({ ident: "EDIT" }) }}">
+                                                            <svg aria-hidden="true">
+                                                                <use xlink:href="#pencil"></use>
+                                                            </svg>
+                                                        </button>
+                                                    </h4>
+                                                    <div class="card-body">
+                                                        {% set oDelAdress = oView.getDelAddress() %}
+                                                        {% if oDelAdress %}
+                                                            {% include "widget/address/shipping_address.html.twig" with {delivadr: oDelAdress} %}
+                                                        {% else %}
+                                                            {% include "widget/address/billing_address.html.twig" %}
+                                                        {% endif %}
+                                                    </div>
                                                 </form>
                                             </div>
                                         {% endblock %}
@@ -104,26 +109,38 @@
                                                 {{ oViewConf.getHiddenSid()|raw }}
                                                 <input type="hidden" name="cl" value="payment">
                                                 <input type="hidden" name="fnc" value="">
-
-                                                <button type="submit" class="card-header card-title card-header-edit"
-                                                        title="{{ translate({ ident: "EDIT" }) }}">
+                                                <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                     {{ translate({ ident: "SHIPPING_CARRIER" }) }}
-                                                </button>
+                                                    <button type="submit" class="btn"
+                                                            title="{{ translate({ ident: "EDIT" }) }}">
+                                                        <svg aria-hidden="true">
+                                                            <use xlink:href="#pencil"></use>
+                                                        </svg>
+                                                    </button>
+                                                </h4>
                                                 {% set oShipSet = oView.getShipSet() %}
-                                                {{ oShipSet.oxdeliveryset__oxtitle.value }}
+                                                <div class="card-body">
+                                                    {{ oShipSet.oxdeliveryset__oxtitle.value }}
+                                                </div>
                                             </form>
                                             <form action="{{ oViewConf.getSslSelfLink() }}" method="post"
                                                   id="orderPayment">
                                                 {{ oViewConf.getHiddenSid()|raw }}
                                                 <input type="hidden" name="cl" value="payment">
                                                 <input type="hidden" name="fnc" value="">
-
-                                                <button type="submit" class="card-header card-title card-header-edit"
-                                                        title="{{ translate({ ident: "EDIT" }) }}">
+                                                <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                     {{ translate({ ident: "PAYMENT_METHOD" }) }}
-                                                </button>
-                                                {% set payment = oView.getPayment() %}
-                                                {{ payment.oxpayments__oxdesc.value }}
+                                                    <button type="submit" class="btn"
+                                                            title="{{ translate({ ident: "EDIT" }) }}">
+                                                        <svg aria-hidden="true">
+                                                            <use xlink:href="#pencil"></use>
+                                                        </svg>
+                                                    </button>
+                                                </h4>
+                                                <div class="card-body">
+                                                    {% set payment = oView.getPayment() %}
+                                                    {{ payment.oxpayments__oxdesc.value }}
+                                                </div>
                                             </form>
                                         {% endblock %}
 
@@ -133,13 +150,18 @@
                                                     {{ oViewConf.getHiddenSid()|raw }}
                                                     <input type="hidden" name="cl" value="user">
                                                     <input type="hidden" name="fnc" value="">
-
-                                                    <button type="submit"
-                                                            class="card-header card-title card-header-edit"
-                                                            title="{{ translate({ ident: "EDIT" }) }}">
+                                                    <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                         {{ translate({ ident: "WHAT_I_WANTED_TO_SAY" }) }}
-                                                    </button>
-                                                    {{ oView.getOrderRemark()|nl2br }}
+                                                        <button type="submit" class="btn"
+                                                                title="{{ translate({ ident: "EDIT" }) }}">
+                                                            <svg aria-hidden="true">
+                                                                <use xlink:href="#pencil"></use>
+                                                            </svg>
+                                                        </button>
+                                                    </h4>
+                                                    <div class="card-body">
+                                                        {{ oView.getOrderRemark()|nl2br }}
+                                                    </div>
                                                 </form>
                                             {% endif %}
                                         {% endblock %}
@@ -149,33 +171,22 @@
                                                 {{ oViewConf.getHiddenSid()|raw }}
                                                 <input type="hidden" name="cl" value="basket">
                                                 <input type="hidden" name="fnc" value="">
-
-                                                <button type="submit" class="card-header card-title card-header-edit"
-                                                        title="{{ translate({ ident: "EDIT" }) }}">
+                                                <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                     {{ translate({ ident: "CART" }) }}
-                                                </button>
+                                                    <button type="submit" class="btn"
+                                                            title="{{ translate({ ident: "EDIT" }) }}">
+                                                        <svg aria-hidden="true">
+                                                            <use xlink:href="#pencil"></use>
+                                                        </svg>
+                                                    </button>
+                                                </h4>
                                                 {% block order_basket %}
-                                                    {% include "page/checkout/inc/basketcontents.html.twig" with {editable: false} %}
+                                                    <div class="card-body">
+                                                        {% include "page/checkout/inc/basketcontents.html.twig" with {editable: false} %}
+                                                    </div>
                                                 {% endblock %}
                                             </form>
                                         </div>
-
-                                        {% if not oView.isLowOrderPrice() %}
-                                            <div id="orderAgbTop">
-                                                <form action="{{ oViewConf.getSslSelfLink() }}" method="post"
-                                                      id="orderConfirmAgbTop">
-                                                    {{ oViewConf.getHiddenSid()|raw }}
-                                                    {{ oViewConf.getNavFormParams()|raw }}
-                                                    <input type="hidden" name="cl" value="order">
-                                                    <input type="hidden" name="fnc" value="{{ oView.getExecuteFnc() }}">
-                                                    <input type="hidden" name="challenge" value="{{ challenge }}">
-                                                    <input type="hidden" name="sDeliveryAddressMD5"
-                                                           value="{{ oView.getDeliveryAddressMD5() }}">
-
-                                                    {% include "page/checkout/inc/agb.html.twig" %}
-                                                </form>
-                                            </div>
-                                        {% endif %}
                                     {% endif %}
 
                                     {% block checkout_order_next_step_bottom %}
@@ -207,11 +218,11 @@
                                                     <input type="hidden" name="oxserviceproductsagreement" value="0">
 
 
-                                                    {% block checkout_order_btn_submit_bottom %}
+                                                    {# % block checkout_order_btn_submit_bottom %}
                                                         <button type="submit" class="btn btn-lg btn-primary w-100">
                                                             {{ translate({ ident: "SUBMIT_ORDER" }) }}
                                                         </button>
-                                                    {% endblock %}
+                                                    {% endblock %#}
                                                 </form>
                                             {% endblock %}
                                         {% endif %}
@@ -221,7 +232,31 @@
                         </div>
                     </div>
                     <div class="col-lg-5">
-                        {% include "page/checkout/inc/summary_sidebar.html.twig" %}
+                        <div class="sticky-md-top">
+                            {% include "page/checkout/inc/summary_sidebar.html.twig" %}
+
+                            {% if not oView.isLowOrderPrice() %}
+                                <div id="orderAgbTop">
+                                    <form action="{{ oViewConf.getSslSelfLink() }}" method="post"
+                                          id="orderConfirmAgbTop">
+                                        {{ oViewConf.getHiddenSid()|raw }}
+                                        {{ oViewConf.getNavFormParams()|raw }}
+                                        <input type="hidden" name="cl" value="order">
+                                        <input type="hidden" name="fnc" value="{{ oView.getExecuteFnc() }}">
+                                        <input type="hidden" name="challenge" value="{{ challenge }}">
+                                        <input type="hidden" name="sDeliveryAddressMD5"
+                                               value="{{ oView.getDeliveryAddressMD5() }}">
+
+                                        {% include "page/checkout/inc/agb.html.twig" %}
+                                    </form>
+                                </div>
+                            {% endif %}
+
+                            <button type="button" class="btn btn-highlight btn-lg w-100"
+                                    onclick="document.getElementById('orderConfirmAgbBottom').submit();">
+                                {{ translate({ ident: "SUBMIT_ORDER" }) }}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

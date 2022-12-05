@@ -1,6 +1,10 @@
 <div class="dropdown">
-    <button class="btn btn-outline-primary btn-sm dropdown-toggle float-end" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Wo Willst du hin?
+    <button class="btn btn-sm dropdown-toggle float-end" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ translate({ ident: "WHERE_DO_YOU_WANT_TO_GO" }) }}
+
+        <svg aria-hidden="true">
+            <use xlink:href="#down"></use>
+        </svg>
     </button>
     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
         {% block account_menu %}

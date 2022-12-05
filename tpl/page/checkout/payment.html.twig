@@ -1,6 +1,6 @@
 {% capture append = "oxidBlock_content" %}
 
-    <div class="container-xxl py-5">
+    <div class="container-md py-5">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
                 <div class="row">
@@ -152,12 +152,14 @@
 
                     </div>
                     <div class="col-lg-5">
-                        {% include "page/checkout/inc/summary_sidebar.html.twig" %}
+                        <div class="sticky-md-top">
+                            {% include "page/checkout/inc/summary_sidebar.html.twig" %}
 
-                        <button type="button" class="btn btn-highlight btn-lg w-100"
-                                onclick="document.getElementById('payment').submit();">Weiter
-                        </button>
-
+                            <button type="button" class="btn btn-highlight btn-lg w-100"
+                                    onclick="document.getElementById('payment').submit();">
+                                {{ translate({ ident: "NEXT" }) }}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

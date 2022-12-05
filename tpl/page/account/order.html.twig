@@ -15,10 +15,8 @@
     {% block account_order_history %}
         {% if oOrders and not empty(oOrders) %}
             {% set oArticleList = oView.getOrderArticleList() %}
-            <ol class="list-unstyled">
                 {% for order in oOrders %}
-                    <li>
-                        <div class="card">
+                    <div class="card card-lg mb-3">
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-3">
@@ -99,9 +97,7 @@
                                 {% endblock %}
                             </div>
                         </div>
-                    </li>
                 {% endfor %}
-            </ol>
             {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigation(), place: "bottom"} %}
         {% else %}
             {{ translate({ ident: "ORDER_EMPTY_HISTORY" }) }}
