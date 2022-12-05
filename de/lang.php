@@ -55,6 +55,8 @@ $aLang = array(
     'START_BARGAIN_SUBHEADER'                               => 'Sparen Sie bares Geld mit unseren aktuellen Schnäppchen!',
     'START_NEWEST_SUBHEADER'                                => 'Frischer geht es nicht. Gerade noch in der Kiste und nun schon im Shop.',
     'START_TOP_PRODUCTS_SUBHEADER'                          => 'Nur %s Produkte, dafür aber die besten, die wir Euch bieten können.',
+    'MOVE_CAROUSEL_LEFT'                          => 'nach Links',
+    'MOVE_CAROUSEL_RIGHT'                          => 'nach Rechts',
 
     // Kontaktformular
     'DD_CONTACT_PAGE_HEADING'                               => 'Kontaktieren Sie uns!',
