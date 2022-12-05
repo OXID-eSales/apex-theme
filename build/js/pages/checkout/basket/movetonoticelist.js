@@ -1,6 +1,6 @@
-function addToNoticelist(articleid) {
+function addToNoticelistAjax(articleid) {
     var stoken = document.querySelector('input[name=stoken]').value;
-    var url = '/index.php?cl=details&aid=' + articleid + '&fnc=tonoticelist&am=1&stoken=' + stoken;
+    var url = '/index.php?cl=details&aid=' + articleid + '&anid=' + articleid + '&fnc=tonoticelist&am=1&stoken=' + stoken;
 
     // perform ajax call
     var request = new XMLHttpRequest();
@@ -12,14 +12,4 @@ function addToNoticelist(articleid) {
     };
 
     request.send();
-}
-
-function removeFromBasket(basketindex) {
-    var basketitemRemoveInput = document.getElementById('aproducts_' + basketindex + '_remove');
-    basketitemRemoveInput ? basketitemRemoveInput.value = '1' : null;
-}
-
-function moveToNoticelist(articleid, basketindex) {
-    addToNoticelist(articleid);
-    removeFromBasket(basketindex);
 }

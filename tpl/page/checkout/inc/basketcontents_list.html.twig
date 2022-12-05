@@ -226,7 +226,7 @@
                                                                 </button>
 
                                                                 {% if oxcmp_user %}
-                                                                    <button type="submit"  name="removeBtn" class="btn btn-remove" onclick="moveToNoticelist('{{ oArticle.getId() }}', '{{ basketindex }}');">
+                                                                    <button type="submit"  name="removeBtn" class="btn btn-remove" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');document.getElementById('aproducts_{{ basketindex }}_remove').value = '1';">
                                                                         <svg aria-hidden="true">
                                                                             <use xlink:href="#star"></use>
                                                                         </svg>
