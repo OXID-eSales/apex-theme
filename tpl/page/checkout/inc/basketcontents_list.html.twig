@@ -286,7 +286,7 @@
                                                         <a href="#" class="btn btn-remove btn-sm"
                                                            title="{{ translate({ ident: "ADD" }) }}"
                                                            data-bs-toggle="modal" data-bs-target="#giftoptions">
-                                                            <i class="moga-gift"></i> {{ translate({ ident: "WRAPPING" }) }} {{ translate({ ident: "ADD" }) }}
+                                                           {{ translate({ ident: "WRAPPING" }) }} {{ translate({ ident: "ADD" }) }}
                                                         </a>
                                                     {% else %}
                                                         <small>{{ translate({ ident: "WRAPPING" }) }}
@@ -299,7 +299,9 @@
                                                         <a class="btn btn-remove" href="#"
                                                            title="{{ translate({ ident: "ADD" }) }}"
                                                            data-bs-toggle="modal" data-bs-target="#giftoptions">
-                                                            <i class="moga-pencil"></i>
+                                                            <svg>
+                                                                <use xlink:href="#pencil"></use>
+                                                            </svg>
                                                             {% if oWrap.oxwrapping__oxname %}
                                                                 {{ oWrap.oxwrapping__oxname.value }}
                                                             {% else %}
@@ -384,7 +386,10 @@
                                             <a href="#" class="btn btn-remove btn-sm"
                                                title="{{ translate({ ident: "ADD" }) }}" data-bs-toggle="modal"
                                                data-bs-target="#giftoptions">
-                                                <i class="moga-pencil"></i> {{ translate({ ident: "EDIT" }) }}
+                                                <svg>
+                                                    <use xlink:href="#pencil"></use>
+                                                </svg>
+                                                {{ translate({ ident: "EDIT" }) }}
                                             </a>
                                         {% endif %}
 

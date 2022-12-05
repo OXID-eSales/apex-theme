@@ -126,7 +126,9 @@
                         <div class="input-group">
                             <input id="amountToBasket_{{ testid }}" type="text" name="am" value="1" autocomplete="off" class="form-control amount">
                             <button type="submit" class="btn btn-primary" title="{{ translate({ ident: "TO_CART" }) }}">
-                                <i class="moga-bag"></i>
+                                <svg>
+                                    <use xlink:href="#bag"></use>
+                                </svg>
                             </button>
                         </div>
                     {% endhasrights %}
@@ -186,7 +188,10 @@
             <input type="hidden" name="removecompare" value="1">
         {% hasrights { ident: "TOBASKET" } %}
             <button class="btn btn-outline-dark btn-sm" id="remove_cmp_{{ product.oxarticles__oxid.value }}" type="submit" title="{{ translate({ ident: "REMOVE" }) }}" name="send">
-                <i class="moga-trash"></i> {{ translate({ ident: "REMOVE" }) }}
+                <svg>
+                    <use xlink:href="#trash"></use>
+                </svg>
+                {{ translate({ ident: "REMOVE" }) }}
             </button>
         {% endhasrights %}
     </form>

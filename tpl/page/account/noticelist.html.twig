@@ -10,15 +10,15 @@
             </div>
         </div>
 
-        <div class="card card-lg">
-            <div class="card-body">
-                {% if oView.getNoticeProductList() %}
-                    {% include "widget/product/list.html.twig" with {type: "line", listId: "noticelistProductList", title: "", products: oView.getNoticeProductList(), removeFunction: "tonoticelist", owishid: oxcmp_user.oxuser__oxid.value} %}
-                {% else %}
+        {% if oView.getNoticeProductList() %}
+            {% include "widget/product/list.html.twig" with {type: "line", listId: "noticelistProductList", title: "", products: oView.getNoticeProductList(), removeFunction: "tonoticelist", owishid: oxcmp_user.oxuser__oxid.value} %}
+        {% else %}
+            <div class="card card-lg">
+                <div class="card-body">
                     <p class="alert alert-info">{{ translate({ ident: "WISH_LIST_EMPTY" }) }}</p>
-                {% endif %}
+                </div>
             </div>
-        </div>
+        {% endif %}
 
     </div>
 

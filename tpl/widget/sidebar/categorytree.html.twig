@@ -27,7 +27,9 @@
                                         {% set oSubCats = _cat.getSubCats() %}
                                         <li class="nav-item{% if not oContentCat and act and act.getId()==_cat.getId() %} active{% elseif _cat.expanded %} exp{% endif %}{% if not _cat.hasVisibleSubCats %} end{% endif %}">
                                             <a class="nav-link" href="{{ _cat.getLink() }}" title="{{ _cat.oxcategories__oxtitle.value }}">
-                                                <i class="moga-{% if _cat.expanded and oSubCats %}down{% else %}right{% endif %}"></i> {{ _cat.oxcategories__oxtitle.value }} {% if oView.showCategoryArticlesCount() and (_cat.getNrOfArticles() > 0) %} ({{ _cat.getNrOfArticles() }}){% endif %}
+                                                <svg>
+                                                    <use xlink:href="#{% if _cat.expanded and oSubCats %}down{% else %}right{% endif %}"></use>
+                                                </svg>
                                             </a>
                                             {% if oSubCats and _cat.expanded %}
                                                 <ul class="nav flex-column">{% import _self as self %}{{ self.tree(oSubCats) }}</ul>

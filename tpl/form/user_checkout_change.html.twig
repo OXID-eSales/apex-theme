@@ -73,7 +73,9 @@
                         {{ translate({ ident: "SHIPPING_ADDRESS" }) }}
                         {% if oView.showShipAddress() and oxcmp_user.getSelectedAddress() %}
                             <button id="userChangeShippingAddress" class="btn btn-sm btn-outline-primary float-end edit-button" name="changeShippingAddress" type="submit"{% if not oView.showShipAddress() and oxcmp_user.getSelectedAddress() %} style="display: none;" {% endif %} title="{{ translate({ ident: "CHANGE" }) }}">
-                                <i class="moga-pencil"></i>
+                                <svg>
+                                    <use xlink:href="#pencil"></use>
+                                </svg>
                             </button>
                         {% endif %}
                     </h3>

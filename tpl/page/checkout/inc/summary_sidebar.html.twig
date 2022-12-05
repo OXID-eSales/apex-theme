@@ -97,7 +97,11 @@
                         {{ translate({ ident: "COUPON" }) }}&nbsp;({{ sVoucher.sVoucherNr }})
                         {% if editable %}
                             <a href="{{ oViewConf.getSelfLink() }}&amp;cl=basket&amp;fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}"
-                               class="removeFn" title="{{ translate({ ident: "REMOVE" }) }}"><i class="moga-trash"></i> </a>
+                               class="removeFn" title="{{ translate({ ident: "REMOVE" }) }}">
+                                <svg>
+                                    <use xlink:href="#trash"></use>
+                                </svg>
+                            </a>
                         {% endif %}
                     </span>
                                 <span class="text-danger">{{ format_price(sVoucher.dVoucherdiscount*-1, { currency: currency }) }}</span>

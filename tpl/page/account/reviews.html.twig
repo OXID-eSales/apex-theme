@@ -32,9 +32,13 @@
                                             {% if review.getRating() %}
                                                 {% for starRatings in 0..5 %}
                                                     {% if review.getRating() >= smarty.section.starRatings.iteration %}
-                                                        <i class="moga-star"></i>
+                                                        <svg>
+                                                            <use xlink:href="#star"></use>
+                                                        </svg>
                                                     {% else %}
-                                                        <i class="moga-star"></i>
+                                                        <svg>
+                                                            <use xlink:href="#star"></use>
+                                                        </svg>
                                                     {% endif %}
                                                 {% endfor %}
                                             {% endif %}
@@ -49,7 +53,9 @@
                                                                 data-bs-toggle="modal"
                                                                 data-bs-target="#delete_review_{{ loop.index }}"
                                                         >
-                                                            <i class="moga-trash"></i>
+                                                            <svg>
+                                                                <use xlink:href="#trash"></use>
+                                                            </svg>
                                                         </button>
                                                     </div>
                                                 </div>

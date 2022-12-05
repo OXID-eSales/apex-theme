@@ -23,7 +23,12 @@
                                 <input type="radio" class="btn-check" name="oxaddressid" value="{{ address.oxaddress__oxid.value }}" autocomplete="off" {% if address.isSelected() %}checked{% endif %}>
 
                                 {% if address.isSelected() %}
-                                <span class="invisible"><i class="moga-check"></i> {{ translate({ ident: "USER_SHIPPING_SELECTED" }) }}</span>
+                                <span class="invisible">
+                                     <svg>
+                                        <use xlink:href="#check"></use>
+                                    </svg>
+
+                                    {{ translate({ ident: "USER_SHIPPING_SELECTED" }) }}</span>
                                 {% else %}
                                 <span class="invisible">{{ translate({ ident: "DD_USER_SHIPPING_SELECT_ADDRESS" }) }}</span>
                                 {% endif %}
@@ -34,7 +39,9 @@
                             {% if address.isSelected() %}
                                 {% block form_user_shipping_address_edit_action %}
                                 <button class="btn btn-outline-dark btn-sm float-end dd-action dd-edit-shipping-address edit-button">
-                                    <i class="moga-pencil"></i>
+                                    <svg>
+                                        <use xlink:href="#pencil"></use>
+                                    </svg>
                                 </button>
                                 {% endblock %}
                                 {% block form_user_shipping_address_delete_action %}
@@ -42,7 +49,9 @@
                                         data-bs-toggle="modal"
                                         data-bs-target="#delete_shipping_address_{{ loop.index }}"
                                         type="button">
-                                    <i class="moga-trash"></i>
+                                    <svg>
+                                        <use xlink:href="#trash"></use>
+                                    </svg>
                                 </button>
                                 {% endblock %}
                             {% endif %}

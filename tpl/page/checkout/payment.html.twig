@@ -147,8 +147,11 @@
                             {% endblock %}
                         </div>
                         <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=user") }) }}"
-                           class="btn btn-outline-primary"><i
-                                    class="moga-left"></i> {{ translate({ ident: "PREVIOUS_STEP" }) }}</a>
+                           class="btn btn-outline-primary">
+                            <svg>
+                                <use xlink:href="#left"></use>
+                            </svg>
+                            {{ translate({ ident: "PREVIOUS_STEP" }) }}</a>
 
                     </div>
                     <div class="col-lg-5">
