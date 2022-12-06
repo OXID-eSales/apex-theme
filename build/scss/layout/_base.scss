@@ -56,6 +56,8 @@
 
 .badge {
   background: $highlight;
+  font-size: 10px;
+  border-radius: 50%;
 }
 
 .text-danger {
@@ -175,5 +177,17 @@
         display: none;
       }
     }
+  }
+}
+
+.dropdown-item {
+  display: flex;
+
+  .badge {
+    background: $body-bg;
+    color: $body-color;
+    margin-left: auto;
+    line-height: 13px;
+    max-height: 20px;
   }
 }

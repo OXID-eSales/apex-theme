@@ -169,7 +169,7 @@
                     </svg>
                     <span class="btn-text">{{ translate({ ident: "FAVOURITES" }) }}</span>
                     {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span
-                            class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+                            class="badge">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
                 </a>
 
                 {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}

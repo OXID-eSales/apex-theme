@@ -125,7 +125,7 @@
                     {% hasrights { ident: "TOBASKET" } %}
                         <div class="input-group">
                             <input id="amountToBasket_{{ testid }}" type="text" name="am" value="1" autocomplete="off" class="form-control amount">
-                            <button type="submit" class="btn btn-primary" title="{{ translate({ ident: "TO_CART" }) }}">
+                            <button type="submit" class="btn btn-outline-primary" title="{{ translate({ ident: "TO_CART" }) }}">
                                 <svg>
                                     <use xlink:href="#bag"></use>
                                 </svg>
@@ -134,7 +134,7 @@
                     {% endhasrights %}
                 {% else %}
                     <span >
-                        <a id="variantMoreInfo_{{ testid }}" class="btn btn-primary w-100" href="{{ _productLink }}" onclick="oxid.mdVariants.getMdVariantUrl('mdVariant_{{ testid }}'); return false;">{{ translate({ ident: "MORE_INFO" }) }}</a>
+                        <a id="variantMoreInfo_{{ testid }}" class="btn btn-outline-primary" href="{{ _productLink }}" onclick="oxid.mdVariants.getMdVariantUrl('mdVariant_{{ testid }}'); return false;">{{ translate({ ident: "MORE_INFO" }) }}</a>
                     </span>
                 {% endif %}
             </div>
