@@ -17,11 +17,11 @@
 
                     <div class="d-none d-md-block ms-auto">
                         {% if oxcmp_user %}
-                            <a class="btn btn-light" id="writeNewReview" data-bs-toggle="collapse" href="#review_form">
+                            <a class="btn btn-light" data-bs-toggle="collapse" href="#review_form">
                                 {{ translate({ ident: "WRITE_REVIEW" }) }}
                             </a>
                         {% else %}
-                            <a class="btn btn-light" id="reviewsLogin" rel="nofollow"
+                            <a class="btn btn-light" rel="nofollow"
                                href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=details" ~ oViewConf.getNavUrlParams() }) }}">
                                 {{ translate({ ident: "WRITE_REVIEW" }) }}
                             </a>
@@ -157,11 +157,11 @@
                 <div class="row mb-5 d-md-none">
                     <div class="col-6">
                         {% if oxcmp_user %}
-                            <a class="btn btn-light" id="writeNewReview" data-bs-toggle="collapse" href="#review_form">
+                            <a class="btn btn-light" data-bs-toggle="collapse" href="#review_form">
                                 {{ translate({ ident: "WRITE_REVIEW" }) }}
                             </a>
                         {% else %}
-                            <a class="btn btn-light" id="reviewsLogin" rel="nofollow"
+                            <a class="btn btn-light" rel="nofollow"
                                href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=details" ~ oViewConf.getNavUrlParams() }) }}">
                                 {{ translate({ ident: "WRITE_REVIEW" }) }}
                             </a>

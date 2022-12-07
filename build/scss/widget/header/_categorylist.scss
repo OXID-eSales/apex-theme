@@ -140,6 +140,7 @@
     }
 
     .nav-item.has-subs {
+      &:focus-within,
       &:hover {
         .nav-link-1 {
           &:after {

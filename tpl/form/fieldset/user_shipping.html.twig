@@ -129,7 +129,7 @@
             <div class="col-8">
                 <div class="form-floating">
                     <input class="form-control" type="text" data-fieldsize="pair-xsmall" placeholder="{{ translate({ ident: "STREET" }) }}" maxlength="255" id="deladr[oxaddress__oxstreet]" name="deladr[oxaddress__oxstreet]" value="{% if isset( deladr.oxaddress__oxstreet ) %}{{ deladr.oxaddress__oxstreet }}{% else %}{{ delivadr.oxaddress__oxstreet.value }}{% endif %}"{% if oView.isFieldRequired("oxaddress__oxstreet") %} required{% endif %}>
-                    <label for="deladr[oxuser__oxstreet]" class="{% if oView.isFieldRequired("oxaddress__oxstreet") %} req{% endif %}">{{ translate({ ident: "STREET" }) }}</label>
+                    <label for="deladr[oxaddress__oxstreet]" class="{% if oView.isFieldRequired("oxaddress__oxstreet") %} req{% endif %}">{{ translate({ ident: "STREET" }) }}</label>
                 </div>
             </div>
             <div class="col-4">
@@ -149,14 +149,14 @@
             <div class="col-5">
                 <div class="form-floating">
                     <input class="form-control" type="text" placeholder="{{ translate({ ident: "POSTAL_CODE" }) }}" data-fieldsize="small" maxlength="50" id="deladr[oxaddress__oxzip]" name="deladr[oxaddress__oxzip]" value="{% if isset( deladr.oxaddress__oxzip ) %}{{ deladr.oxaddress__oxzip }}{% else %}{{ delivadr.oxaddress__oxzip.value }}{% endif %}"{% if oView.isFieldRequired("oxaddress__oxzip") %} required{% endif %}>
-                    <label for="deladr[oxuser__oxzip]" class="{% if oView.isFieldRequired("oxaddress__oxzip") %} req{% endif %}">{{ translate({ ident: "POSTAL_CODE" }) }}</label>
+                    <label for="deladr[oxaddress__oxzip]" class="{% if oView.isFieldRequired("oxaddress__oxzip") %} req{% endif %}">{{ translate({ ident: "POSTAL_CODE" }) }}</label>
                 </div>
                 {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxaddress__oxzip} %}
             </div>
             <div class="col-7">
                 <div class="form-floating">
                     <input class="form-control" type="text" data-fieldsize="pair-small" placeholder="{{ translate({ ident: "CITY" }) }}" maxlength="255" id="deladr[oxaddress__oxcity]" name="deladr[oxaddress__oxcity]" value="{% if isset( deladr.oxaddress__oxcity ) %}{{ deladr.oxaddress__oxcity }}{% else %}{{ delivadr.oxaddress__oxcity.value }}{% endif %}"{% if oView.isFieldRequired("oxaddress__oxcity") %} required{% endif %}>
-                    <label for="deladr[oxuser__oxcity]" class="{% if oView.isFieldRequired("oxaddress__oxcity") %} req{% endif %}">{{ translate({ ident: "CITY" }) }}</label>
+                    <label for="deladr[oxaddress__oxcity]" class="{% if oView.isFieldRequired("oxaddress__oxcity") %} req{% endif %}">{{ translate({ ident: "CITY" }) }}</label>
                 </div>
                 {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxaddress__oxcity} %}
             </div>
