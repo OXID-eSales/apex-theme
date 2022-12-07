@@ -140,6 +140,9 @@ $aLang = array(
     'DD_REVIEWS_NOT_AVAILABLE'                              => 'Es liegen keine Bewertungen vor',
     'DD_DELETE_REVIEW_CONFIRMATION_QUESTION'                => 'Sind Sie sicher, dass Sie die Bewertung löschen wollen?',
     'WHERE_DO_YOU_WANT_TO_GO'                => 'Wo willst du hin?',
+    'YOUR_REVIEW'                => 'Deine Bewertung',
+    'ON'                => 'am',
+    'BY'                => 'von',
 
     // Contact page
     'DD_SELECT_SALUTATION'                                  => 'Bitte auswählen',

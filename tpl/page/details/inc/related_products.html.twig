@@ -1,4 +1,4 @@
-<div class="container-xxl">
+<div class="container-xxl row-spacer">
     {% block details_relatedproducts_also_bought %}
         {% if oView.getAlsoBoughtTheseProducts() %}
             {% include "widget/product/list.html.twig" with {type: "grid", listId: "alsoBought", head: "CUSTOMERS_ALSO_BOUGHT"|translate, subhead: "PAGE_DETAILS_CUSTOMERS_ALSO_BOUGHT_SUBHEADER"|translate, products: oView.getAlsoBoughtTheseProducts()} %}
