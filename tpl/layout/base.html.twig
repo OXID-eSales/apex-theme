@@ -179,7 +179,7 @@
         {{ script({ add: "$( 'body' ).oxBlockDebug();", dynamic: __oxid_include_dynamic }) }}
     {% endif %}
 
-    {{ script({ dynamic: __oxid_include_dynamic })|replace({ 'type="text/javascript"': '' }) }}
+    {{ script({ dynamic: __oxid_include_dynamic })|replace({ 'type="text/javascript"': '' })|raw }}
 
     {% if not oView.isDemoShop() %}
         {% include_dynamic "widget/dynscript.html.twig" %}
