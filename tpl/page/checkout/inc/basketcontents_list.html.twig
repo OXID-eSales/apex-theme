@@ -188,8 +188,8 @@
                                                                 {% endif %}
 
                                                                 {% if not basketitem.isBundle() or not basketitem.isDiscountArticle() %}
-                                                                    <div class="input-group justify-content-end">
-                                                                        <button class="btn btn-outline-primary btn-less" type="button"
+                                                                    <div class="input-group justify-content-end js-amount">
+                                                                        <button class="btn btn-outline-primary btn-less js-decreaseAmount" type="button"
                                                                                 name="less">
                                                                             -
                                                                         </button>
@@ -197,7 +197,7 @@
                                                                                class="form-control text-center"
                                                                                name="aproducts[{{ basketindex }}][am]"
                                                                                value="{{ basketitem.getAmount() }}" min="0" {% if blAllowUnevenAmounts %} step="any"{% endif %}>
-                                                                        <button class="btn btn-outline-primary btn-more"
+                                                                        <button class="btn btn-outline-primary btn-more js-increaseAmount"
                                                                                 name="more">
                                                                             +
                                                                         </button>
@@ -383,4 +383,5 @@
         {% if editable %}
     </div>
 </div>
+{{ script({ include: "js/changeamount.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 {% endif %}
