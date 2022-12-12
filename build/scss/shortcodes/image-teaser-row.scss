@@ -1,4 +1,8 @@
 .dd-shortcode-image-teaser-row {
+  .container-fluid {
+    padding: 0;
+  }
+
   .big-tile {
     height: 100%;
     margin: 0 (-$spacer);

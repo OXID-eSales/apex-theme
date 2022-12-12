@@ -6,111 +6,129 @@
     {# TODO: We should turn this into vCMS content, or put it to Theme settings #}
     <header class="header">
         <div class="header-wrapper">
-            {% if not oView.getIsOrderStep() %}
-            <div class="meta">
-                <div class="container-xxl">
-                    <div class="meta-wrapper d-flex justify-content-between">
-                        <ul class="usp-list">
-                            <li class="list-inline-item">
-                                <svg aria-hidden="true">
-                                    <use xlink:href="#box2-fill"></use>
-                                </svg>
-                                <span class="usp-text">Schnelle Lieferung</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <svg aria-hidden="true">
-                                    <use xlink:href="#headset"></use>
-                                </svg>
-                                <span class="usp-text">Individuelle Beratung</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <svg aria-hidden="true">
-                                    <use xlink:href="#truck"></use>
-                                </svg>
-                                <span class="usp-text">Express Lieferung</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <svg aria-hidden="true">
-                                    <use xlink:href="#shield-fill-check"></use>
-                                </svg>
-                                <span class="usp-text">Top Qualität</span>
-                            </li>
-                            <li class="list-inline-item">
-                                <svg aria-hidden="true">
-                                    <use xlink:href="#hand-thumbs-up-fill"></use>
-                                </svg>
-                                <span class="usp-text">Hohe Kundenzufriedenheit</span>
-                            </li>
-                        </ul>
+            {% if not oView.getIsOrderStep() or oView.getClassKey() == "basket" %}
+                <div class="meta">
+                    <div class="container-xxl">
+                        <div class="meta-wrapper d-flex justify-content-between">
+                            <ul class="usp-list">
+                                <li class="list-inline-item">
+                                    <svg aria-hidden="true">
+                                        <use xlink:href="#box2-fill"></use>
+                                    </svg>
+                                    <span class="usp-text">Schnelle Lieferung</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <svg aria-hidden="true">
+                                        <use xlink:href="#headset"></use>
+                                    </svg>
+                                    <span class="usp-text">Individuelle Beratung</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <svg aria-hidden="true">
+                                        <use xlink:href="#truck"></use>
+                                    </svg>
+                                    <span class="usp-text">Express Lieferung</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <svg aria-hidden="true">
+                                        <use xlink:href="#shield-fill-check"></use>
+                                    </svg>
+                                    <span class="usp-text">Top Qualität</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <svg aria-hidden="true">
+                                        <use xlink:href="#hand-thumbs-up-fill"></use>
+                                    </svg>
+                                    <span class="usp-text">Hohe Kundenzufriedenheit</span>
+                                </li>
+                            </ul>
 
-                        <div class="dropdowns d-none d-lg-inline-block">
-                            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                                <svg aria-hidden="true">
-                                    <use xlink:href="#globe"></use>
-                                </svg>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <form>
-                                {% block dd_layout_page_header_icon_menu_languages %}
-                                    {# Language Dropdown #}
-                                    {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
-                                {% endblock %}
-                                {% block dd_layout_page_header_icon_menu_currencies %}
-                                    {# Currency Dropdown #}
-                                    {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
-                                {% endblock %}
-                                </form>
+                            <div class="dropdowns d-none d-lg-inline-block">
+                                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                        data-bs-auto-close="outside" aria-label="{{ translate({ ident: "CHANGE" }) }}">
+                                    <svg aria-hidden="true">
+                                        <use xlink:href="#globe"></use>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <form>
+                                        {% block dd_layout_page_header_icon_menu_languages %}
+                                            {# Language Dropdown #}
+                                            {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                        {% endblock %}
+                                        {% block dd_layout_page_header_icon_menu_currencies %}
+                                            {# Currency Dropdown #}
+                                            {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                        {% endblock %}
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             {% endif %}
             <div class="header-box position-relative">
-                <div class="container-xxl">
-                    <div class="header-container">
+                <div class="container-{% if oView.getIsOrderStep() and oView.getClassKey() != "basket" %}md{% else %}xxl{% endif %}">
+                    {% if oView.getIsOrderStep() and oView.getClassKey() != "basket" %}
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+                            {% endif %}
 
-                        {% block layout_header_logo %}
-                            {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
-                            {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
-                            {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
-                            <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxname.value }}" class="logo-link d-flex">
-                                {% if slogoImg %}
-                                    <img src="{{ oViewConf.getImageUrl(slogoImg) }}" alt="{{ oxcmp_shop.oxshops__oxname.value }}" width="{{ sLogoWidth }}" height="{{ sLogoHeight }}" class="logo-img">
+                            <div class="header-container">
+
+                                {% block layout_header_logo %}
+                                    {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
+                                    {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
+                                    {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
+                                    <a href="{{ oViewConf.getHomeLink() }}"
+                                       title="{{ oxcmp_shop.oxshops__oxname.value }}" class="logo-link d-flex">
+                                        {% if slogoImg %}
+                                            <img src="{{ oViewConf.getImageUrl(slogoImg) }}"
+                                                 alt="{{ oxcmp_shop.oxshops__oxname.value }}" width="{{ sLogoWidth }}"
+                                                 height="{{ sLogoHeight }}" class="logo-img">
+                                        {% else %}
+                                            <span class="h1">{{ oxcmp_shop.oxshops__oxname.value }}</span>
+                                        {% endif %}
+                                    </a>
+                                {% endblock %}
+
+                                {% include "widget/header/search.html.twig" %}
+
+                                {% if not oView.getIsOrderStep() or oView.getClassKey() == "basket" %}
+                                    {% block layout_header_top %}
+                                        <div class="menu-dropdowns btn-group d-none d-lg-block" role="group">
+                                            {% block dd_layout_page_header_icon_menu_account %}
+                                                {% if oxcmp_user or oView.getCompareItemCount() or Errors.loginBoxErrors %}
+                                                    {% set blAnon = 0 %}
+                                                    {% set force_sid = oView.getSidForWidget() %}
+                                                {% else %}
+                                                    {% set blAnon = 1 %}
+                                                {% endif %}
+                                                {# Account Dropdown #}
+                                                {{ include_widget({ cl: "oxwServiceMenu", _parent: oView.getClassKey(), force_sid: force_sid, nocookie: blAnon, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                            {% endblock %}
+
+                                            {% block dd_layout_page_header_icon_menu_minibasket %}
+                                                {# Minibasket Dropdown #}
+                                                {% if oxcmp_basket.getProductsCount() %}
+                                                    {% set blAnon = 0 %}
+                                                    {% set force_sid = oView.getSidForWidget() %}
+                                                {% else %}
+                                                    {% set blAnon = 1 %}
+                                                {% endif %}
+                                                {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %}
                                 {% else %}
-                                    <span class="h1">{{ oxcmp_shop.oxshops__oxname.value }}</span>
+                                    {% include "page/checkout/inc/steps.html.twig" with {active: active_step} %}
                                 {% endif %}
-                            </a>
-                        {% endblock %}
-
-                        {% include "widget/header/search.html.twig" %}
-
-                        {% block layout_header_top %}
-                            <div class="menu-dropdowns btn-group d-none d-lg-block" role="group">
-                                {% block dd_layout_page_header_icon_menu_account %}
-                                    {% if oxcmp_user or oView.getCompareItemCount() or Errors.loginBoxErrors %}
-                                        {% set blAnon = 0 %}
-                                        {% set force_sid = oView.getSidForWidget() %}
-                                    {% else %}
-                                        {% set blAnon = 1 %}
-                                    {% endif %}
-                                    {# Account Dropdown #}
-                                    {{ include_widget({ cl: "oxwServiceMenu", _parent: oView.getClassKey(), force_sid: force_sid, nocookie: blAnon, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
-                                {% endblock %}
-
-                                {% block dd_layout_page_header_icon_menu_minibasket %}
-                                    {# Minibasket Dropdown #}
-                                    {% if oxcmp_basket.getProductsCount() %}
-                                        {% set blAnon = 0 %}
-                                        {% set force_sid = oView.getSidForWidget() %}
-                                    {% else %}
-                                        {% set blAnon = 1 %}
-                                    {% endif %}
-                                    {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
-                                {% endblock %}
                             </div>
-                        {% endblock %}
+
+                            {% if oView.getIsOrderStep() and oView.getClassKey() != "basket" %}
+                        </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -121,7 +139,9 @@
         {% if not oView.getIsOrderStep() %}
             <div class="fixed-bottom mobile-nav d-lg-none">
                 {% block dd_widget_header_categorylist_navbar_header %}
-                    <button class="btn btn-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="btn btn-toggle collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
                         {% include "icons/bars.svg" %}
                         <span class="btn-text">{{ translate({ ident: "MENU" }) }}</span>
                     </button>
@@ -148,7 +168,8 @@
                         <use xlink:href="#star-fill"></use>
                     </svg>
                     <span class="btn-text">{{ translate({ ident: "FAVOURITES" }) }}</span>
-                    {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+                    {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span
+                            class="badge">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
                 </a>
 
                 {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}

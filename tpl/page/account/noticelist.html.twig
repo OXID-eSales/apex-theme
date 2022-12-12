@@ -13,8 +13,13 @@
         {% if oView.getNoticeProductList() %}
             {% include "widget/product/list.html.twig" with {type: "line", listId: "noticelistProductList", title: "", products: oView.getNoticeProductList(), removeFunction: "tonoticelist", owishid: oxcmp_user.oxuser__oxid.value} %}
         {% else %}
-            <p class="alert alert-info">{{ translate({ ident: "WISH_LIST_EMPTY" }) }}</p>
+            <div class="card card-lg">
+                <div class="card-body">
+                    <p class="alert alert-info">{{ translate({ ident: "WISH_LIST_EMPTY" }) }}</p>
+                </div>
+            </div>
         {% endif %}
+
     </div>
 
 {% endcapture %}

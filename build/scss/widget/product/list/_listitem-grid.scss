@@ -28,7 +28,7 @@
     .short-desc,
     .pricePerUnit,
     .qty_weight {
-      color: #8E9296;
+      color: #6C7475;
       font-size: 0.875rem;
       margin: 0;
     }
@@ -110,7 +110,7 @@
       top: -2 * $spacer;
 
       @include media-breakpoint-up(lg) {
-        top: 0;
+        top: -$spacer;
         right: $spacer;
       }
     }

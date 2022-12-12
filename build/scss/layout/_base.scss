@@ -43,12 +43,21 @@
   }
 
   &-light {
-    border: 1px solid #000       ;
+    border: 1px solid #000;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: 1px solid #000;
+      background: $gray-200;
+    }
   }
 }
 
 .badge {
   background: $highlight;
+  font-size: 10px;
+  border-radius: 50%;
 }
 
 .text-danger {
@@ -115,4 +124,74 @@
       transform: rotate(0deg);
     }
   }
+}
+
+.dropdown {
+  .dropdown-toggle {
+    border: 1px solid #B7C1C6;
+    justify-content: space-between;
+    display: flex;
+    background: #fff;
+
+    &:hover,
+    &.show,
+    &:focus {
+      border-color: #000;
+    }
+  }
+}
+
+.sticky-md-top {
+  z-index: 10;
+}
+
+.max-600 {
+  max-width: 600px;
+}
+
+.card-lg {
+  .card-body {
+    padding: 10px;
+
+    @include media-breakpoint-up(md) {
+      padding: 20px;
+    }
+  }
+
+  .card-header {
+    padding: 10px;
+    transition: all 150ms;
+
+    @include media-breakpoint-up(md) {
+      padding: 20px;
+    }
+
+    & + .card-body {
+      padding-top: 0;
+    }
+
+    &.collapsed {
+      margin-bottom: 0;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.dropdown-item {
+  display: flex;
+
+  .badge {
+    background: $body-bg;
+    color: $body-color;
+    margin-left: auto;
+    line-height: 13px;
+    max-height: 20px;
+  }
+}
+
+.badge.badge-sale {
+  border-radius: 0;
 }

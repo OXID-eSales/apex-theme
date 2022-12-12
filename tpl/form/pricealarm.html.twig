@@ -3,7 +3,7 @@
 
 {% set currency = oView.getActCurrency() %}
 <p class="alert alert-info">{{ translate({ ident: "MESSAGE_PRICE_ALARM_PRICE_CHANGE" }) }}</p>
-<form class="max-600" name="pricealarm" action="{{ oViewConf.getSelfActionLink() }}" method="post" novalidate>
+<form name="pricealarm" action="{{ oViewConf.getSelfActionLink() }}" method="post" novalidate>
     <div>
         {{ oViewConf.getHiddenSid()|raw }}
         {{ oViewConf.getNavFormParams()|raw }}

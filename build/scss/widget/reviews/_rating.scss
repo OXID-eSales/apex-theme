@@ -15,6 +15,20 @@
     }
   }
 
+  .ox-write-review {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .rater {
+    font-size: 12px;
+
+    @include media-breakpoint-up(md) {
+      font-size: 14px;
+    }
+  }
+
   .rating {
     svg {
       width: 14px;
@@ -48,6 +62,7 @@
     .d-flex {
       margin-bottom: 5px;
       color: $gray-600;
+      align-items: center;
     }
 
     .rating {

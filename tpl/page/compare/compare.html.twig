@@ -12,17 +12,16 @@
 
             {% if oxcmp_user.oxuser__oxpassword.value %}
             <div class="col-12 col-sm-3 button-col">
-                {% include "page/account/inc/account_menu.html.twig" with {active_link: "dashboard"} %}
+                {% include "page/account/inc/account_menu.html.twig" with {active_link: "compare"} %}
             </div>
             {% endif %}
         </div>
 
 
-
         {% if oView.getCompareItemsCnt() >= 1 %}
             <div id="comparePlayground" class="compare">
                 <div id="compareLandscape" class="table-responsive">
-                    <table class="table table-sm">
+                    <table class="table">
                         <tbody>
                             <tr class="compare-products">
                                 {% for iProdNr, product in articleList %}
@@ -55,7 +54,11 @@
                 </div>
             </div>
         {% else %}
-            <p class="alert alert-danger">{{ translate({ ident: "MESSAGE_SELECT_AT_LEAST_ONE_PRODUCT" }) }}</p>
+            <div class="card card-lg">
+                <div class="card-body">
+                    <p class="alert alert-danger">{{ translate({ ident: "MESSAGE_SELECT_AT_LEAST_ONE_PRODUCT" }) }}</p>
+                </div>
+            </div>
         {% endif %}
     </div>
 {% endcapture %}

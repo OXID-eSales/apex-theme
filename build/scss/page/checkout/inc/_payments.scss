@@ -1,11 +1,21 @@
-.payment {
-  border-top: 1px solid rgba(0, 0, 0, .125);
-  margin-top: 1rem;
-  padding-top: 1rem;
-}
-
 .payment-option {
-  display: none;
+  position: relative;
+
+  .payment-option-info {
+    display: none;
+  }
+
+  input:checked ~ label ~ .payment-option-info {
+    display: block;
+    padding-top: 10px;
+  }
+
+  .payment-option-price {
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
 
 .popupBox {

@@ -1,45 +1,61 @@
-<dl>
+<div class="payment-option">
     {% set dynvalue = oView.getDynValue() %}
-    <dt>
-        <input class="form-check-input" id="payment_{{ sPaymentID }}" type="radio" name="paymentid" value="{{ sPaymentID }}"{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} checked{% endif %}>
-        <label class="form-check-label" for="payment_{{ sPaymentID }}">{{ paymentmethod.oxpayments__oxdesc.value }}</label>
-    </dt>
-    <div class="payment-option{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} activePayment{% endif %}">
-        <div class="mb-3">
-            <label class="req form-label col-lg-3">{{ translate({ ident: "BANK" }) }}</label>
-            <div class="col-lg-9">
-                <input id="payment_{{ sPaymentID }}_1" class="form-control" type="text" size="20" maxlength="64" name="dynvalue[lsbankname]" value="{{ dynvalue.lsbankname }}" required>
+    <div class="payment-option-form">
+        <input class="form-check-input" id="payment_{{ sPaymentID }}" type="radio" name="paymentid"
+               value="{{ sPaymentID }}"{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} checked{% endif %}>
+        <label
+                for="payment_{{ sPaymentID }}">{{ paymentmethod.oxpayments__oxdesc.value }}</label>
+
+        <div class="payment-option-info{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} activePayment{% endif %}">
+            <div class="form-floating mb-3">
+                <input id="payment_{{ sPaymentID }}_1" class="form-control" type="text" size="20" maxlength="64"
+                       placeholder="{{ translate({ ident: "BANK" }) }}"
+                       name="dynvalue[lsbankname]" value="{{ dynvalue.lsbankname }}" required>
+                <label>{{ translate({ ident: "BANK" }) }}</label>
             </div>
-        </div>
-        <div class="mb-3">
-            <label class="req form-label col-lg-3">{{ translate({ ident: "BANK_CODE" }) }}</label>
-            <div class="col-lg-9">
-                <input type="text" class="form-control" size="20" maxlength="64" name="dynvalue[lsblz]" value="{{ dynvalue.lsblz }}" required>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" size="20" maxlength="64" name="dynvalue[lsblz]"
+                       placeholder="{{ translate({ ident: "BANK_CODE" }) }}"
+                       value="{{ dynvalue.lsblz }}" required>
+                <label>{{ translate({ ident: "BANK_CODE" }) }}</label>
             </div>
-        </div>
-        <div class="mb-3">
-            <label class="req form-label col-lg-3">{{ translate({ ident: "BANK_ACCOUNT_NUMBER" }) }}</label>
-            <div class="col-lg-9">
-                <input type="text" class="form-control" size="20" maxlength="64" name="dynvalue[lsktonr]" value="{{ dynvalue.lsktonr }}" required>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" size="20" maxlength="64" name="dynvalue[lsktonr]"
+                       placeholder="{{ translate({ ident: "BANK_ACCOUNT_NUMBER" }) }}"
+                       value="{{ dynvalue.lsktonr }}" required>
+                <label>{{ translate({ ident: "BANK_ACCOUNT_NUMBER" }) }}</label>
             </div>
-        </div>
-        <div class="mb-3">
-            <label class="req form-label col-lg-3">{{ translate({ ident: "BANK_ACCOUNT_HOLDER" }) }}</label>
-            <div class="col-lg-9">
-                <input type="text" class="form-control" size="20" maxlength="64" name="dynvalue[lsktoinhaber]" value="{% if dynvalue.lsktoinhaber %}{{ dynvalue.lsktoinhaber }}{% else %}{{ oxcmp_user.oxuser__oxfname.value }} {{ oxcmp_user.oxuser__oxlname.value }}{% endif %}" required>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" size="20" maxlength="64" name="dynvalue[lsktoinhaber]"
+                       placeholder="{{ translate({ ident: "BANK_ACCOUNT_HOLDER" }) }}"
+                       value="{% if dynvalue.lsktoinhaber %}{{ dynvalue.lsktoinhaber }}{% else %}{{ oxcmp_user.oxuser__oxfname.value }} {{ oxcmp_user.oxuser__oxlname.value }}{% endif %}"
+                       required>
+                <label>{{ translate({ ident: "BANK_ACCOUNT_HOLDER" }) }}</label>
             </div>
+
+            {% block checkout_payment_longdesc %}
+                {% if paymentmethod.oxpayments__oxlongdesc.value %}
+
+                    <div class="alert alert-info desc">
+                        {{ paymentmethod.oxpayments__oxlongdesc.value }}
+                    </div>
+
+                {% endif %}
+            {% endblock %}
         </div>
 
-        {% block checkout_payment_longdesc %}
-            {% if paymentmethod.oxpayments__oxlongdesc.value %}
-                <div class="row">
-                    <div class="col-12 col-lg-9 offset-lg-3">
-                        <div class="alert alert-info desc">
-                            {{ paymentmethod.oxpayments__oxlongdesc.value }}
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-        {% endblock %}
     </div>
-</dl>
+    {% if paymentmethod.getPrice() %}
+        <div class="payment-option-price">
+            {% set oPaymentPrice = paymentmethod.getPrice() %}
+            {% if oViewConf.isFunctionalityEnabled('blShowVATForPayCharge') %}
+                {{ format_price(oPaymentPrice.getNettoPrice(), { currency: currency }) }}
+                {% if oPaymentPrice.getVatValue() > 0 %}
+                    {{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(oPaymentPrice.getVatValue(), { currency: currency }) }}
+                {% endif %})
+            {% else %}
+                {{ format_price(oPaymentPrice.getBruttoPrice(), { currency: currency }) }}
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

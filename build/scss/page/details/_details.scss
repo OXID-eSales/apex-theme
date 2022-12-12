@@ -1,5 +1,6 @@
 .details {
   background: #fff;
+  overflow: hidden;
 
   &-top,
   &-related {
@@ -64,6 +65,41 @@
       margin: 0;
       padding: $spacer 0;
       border-bottom: 1px solid #999;
+    }
+  }
+
+  .accordeon .collapse {
+    display: block;
+    padding: 20px 0;
+  }
+
+  &-more {
+    padding-bottom: var(--row-spacing);
+    text-align: center;
+
+    @include media-breakpoint-up(md) {
+      text-align: left;
+      background: #fff;
+    }
+
+    &-cms,
+    &-manufacturer {
+      background: #fff;
+      padding: 18px;
+      margin-top: $spacer;
+
+      @include media-breakpoint-up(md) {
+        padding: 0 40px 0 0;
+      }
+    }
+
+    &-cms {
+      height: 100%;
+
+      @include media-breakpoint-up(md) {
+        border-left: 1px solid #ccc;
+        padding-left: 40px;
+      }
     }
   }
 }
