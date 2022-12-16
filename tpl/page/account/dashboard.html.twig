@@ -22,9 +22,9 @@
         {% endblock %}
 
         <div class="col mb-3">
-            <div class="card h-100">
+            <div class="card card-lg h-100">
+                <h4 class="card-header card-title">{{ translate({ ident: "ORDER_HISTORY" }) }}</h4>
                 <div class="card-body">
-                    <div class="card-title">{{ translate({ ident: "ORDER_HISTORY" }) }}</div>
                     <div class="card-text mb-3">
                         {{ translate({ ident: "ORDERS" }) }} {{ oView.getOrderCnt() }}
                     </div>
@@ -37,11 +37,11 @@
 
         {% if oView.isEnabledDownloadableFiles() %}
             <div class="col mb-3">
-                <div class="card h-100">
+                <div class="card card-lg h-100">
+                    <h4 class="card-header card-title">
+                        {{ translate({ ident: "MY_DOWNLOADS" }) }}
+                    </h4>
                     <div class="card-body">
-                        <div class="card-title">
-                            {{ translate({ ident: "MY_DOWNLOADS" }) }}
-                        </div>
                         <div class="card-text mb-3">
                             {{ translate({ ident: "MY_DOWNLOADS_DESC" }) }}
                         </div>
@@ -54,11 +54,11 @@
         {% endif %}
 
         <div class="col mb-3">
-            <div class="card h-100">
+            <div class="card card-lg h-100">
+                <h4 class="card-header card-title">
+                    {{ translate({ ident: "MY_WISH_LIST" }) }}
+                </h4>
                 <div class="card-body">
-                    <div class="card-title">
-                        {{ translate({ ident: "MY_WISH_LIST" }) }}
-                    </div>
                     <div class="card-text mb-3">
                         {{ translate({ ident: "PRODUCT" }) }} {% if oxcmp_user %}{{ oxcmp_user.getNoticeListArtCnt() }}{% else %}0{% endif %}
                     </div>
@@ -70,11 +70,11 @@
         </div>
         {% if oViewConf.getShowWishlist() %}
             <div class="col mb-3">
-                <div class="card h-100">
+                <div class="card card-lg h-100">
+                    <h4 class="card-header card-title">
+                        {{ translate({ ident: "MY_GIFT_REGISTRY" }) }}
+                    </h4>
                     <div class="card-body">
-                        <div class="card-title">
-                            {{ translate({ ident: "MY_GIFT_REGISTRY" }) }}
-                        </div>
                         <div class="card-text mb-3">
                             {{ translate({ ident: "PRODUCT" }) }} {% if oxcmp_user %}{{ oxcmp_user.getWishListArtCnt() }}{% else %}0{% endif %}
                         </div>
@@ -87,11 +87,11 @@
         {% endif %}
         {% if oViewConf.getShowCompareList() %}
             <div class="col mb-3">
-                <div class="card h-100">
+                <div class="card card-lg h-100">
+                    <h4 class="card-header card-title">
+                        {{ translate({ ident: "MY_PRODUCT_COMPARISON" }) }}
+                    </h4>
                     <div class="card-body">
-                        <div class="card-title">
-                            {{ translate({ ident: "MY_PRODUCT_COMPARISON" }) }}
-                        </div>
                         <div class="card-text mb-3">
                             {{ translate({ ident: "PRODUCT" }) }} {% if oView.getCompareItemsCnt() %}{{ oView.getCompareItemsCnt() }}{% else %}0{% endif %}
                         </div>
@@ -105,11 +105,11 @@
 
         {% if oView.isUserAllowedToManageOwnReviews() %}
             <div class="col mb-3">
-                <div class="card h-100">
+                <div class="card card-lg h-100">
+                    <h4 class="card-header card-title">
+                        {{ translate({ ident: "MY_REVIEWS" }) }}
+                    </h4>
                     <div class="card-body">
-                        <div class="card-title">
-                            {{ translate({ ident: "MY_REVIEWS" }) }}
-                        </div>
                         <div class="card-text mb-3">
                             {{ translate({ ident: "MY_REVIEWS" }) }} {% if oView.getReviewAndRatingItemsCount() %}{{ oView.getReviewAndRatingItemsCount() }}{% else %}0{% endif %}
                         </div>
@@ -131,7 +131,9 @@
                     data-bs-toggle="modal"
                     data-bs-target="#delete_my_account_confirmation"
             >
-                <i class="moga-trash"></i>
+                <svg aria-hidden="true">
+                    <use xlink:href="#trash"></use>
+                </svg>
                 {{ translate({ ident: "DD_DELETE_MY_ACCOUNT" }) }}
             </button>
             {% include "page/account/delete_my_account_confirmation.html.twig" %}

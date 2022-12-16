@@ -8,34 +8,44 @@
     {% if oView.isReviewActive() %}
         {% include "widget/reviews/reviews.html.twig" %}
     {% endif %}
+
+    {% include_content 'oxstartslot4' ignore missing %}
+</div>
+
+<div class="details-more row-spacer">
     <div class="container-xxl">
         <div class="row">
-            <div class="col-12 col-md-6">
-                {% set oManufacturer = oView.getManufacturer() %}
-                {% if oManufacturer and oManufacturer.oxmanufacturers__oxshortdesc.value %}
-                    <a class="nav-link{% if blFirstTab %} active{% endif %}" href="#manufacturer-tab" data-bs-toggle="tab">
-                        {{ translate({ ident: "MORE_ABOUT" }) }} {{ oManufacturer.oxmanufacturers__oxtitle.value }}
-                    </a>
-                    <div id="manufacturer-tab" class="tab-pane{% if blFirstTab %} active{% endif %}">
-                        <div class="container-xxl">
-                            <p>
-                                {{ oManufacturer.oxmanufacturers__oxshortdesc.value }}
-                            </p>
-                            <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
-                                {{ translate({ ident: "SHOW_ME_MORE" }) }}
-                            </a>
-                        </div>
+            {% set oManufacturer = oView.getManufacturer() %}
+            {% if oManufacturer and oManufacturer.oxmanufacturers__oxshortdesc.value %}
+                <div class="col-12 col-md-6">
+                    <div class="details-more-manufacturer">
+                        {% if oManufacturer and oManufacturer.getIconUrl() %}
+                            {% set aImgDimensions = oManufacturer.getIconUrl()|getimagesize %}
+                            <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}"
+                                 alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}"
+                                 height="{{ aImgDimensions.1 }}">
+                        {% else %}
+                            <div class="h5">{{ oManufacturer.oxmanufacturers__oxtitle.value }}</div>
+                        {% endif %}
+                        <p>{{ oManufacturer.oxmanufacturers__oxshortdesc.value }}</p>
+                        <a class="btn btn-outline-primary" href="{{ oManufacturer.getLink() }}"
+                           title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+                            {{ translate({ ident: "SHOW_ME_MORE" }) }}
+                        </a>
                     </div>
-                    {% set blFirstTab = false %}
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
+
             <div class="col-12 col-md-6">
-                <!-- CMS -->
+                <div class="details-more-cms">
+                    <!-- CMS -->
+                    CMS Content
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <div id="detailsRelated" class="details-related">
-    {% include "page/details/inc/related_products_tabs.html.twig" %}
+    {% include "page/details/inc/related_products.html.twig" %}
 </div>

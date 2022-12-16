@@ -34,7 +34,10 @@
                     {{ oViewConf.getHiddenSid()|raw }}
                     <input type="hidden" name="cl" value="start">
                     <button id="backToShop" class="btn btn-primary" type="submit">
-                        <i class="moga-left"></i> {{ translate({ ident: "BACK_TO_SHOP" }) }}
+                        <svg>
+                            <use xlink:href="#left"></use>
+                        </svg>
+                        {{ translate({ ident: "BACK_TO_SHOP" }) }}
                     </button>
                 </div>
             </form>
@@ -47,7 +50,10 @@
                             {{ oViewConf.getHiddenSid()|raw }}
                             <input type="hidden" name="cl" value="start">
                             <button id="backToShop" class="btn btn-primary" type="submit">
-                                <i class="moga-left"></i> {{ translate({ ident: "BACK_TO_SHOP" }) }}
+                                <svg>
+                                    <use xlink:href="#left"></use>
+                                </svg>
+                                {{ translate({ ident: "BACK_TO_SHOP" }) }}
                             </button>
                         </div>
                      </form>

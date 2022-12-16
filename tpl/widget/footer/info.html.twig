@@ -18,9 +18,6 @@
         {% ifcontent ident "oxorderinfo" set oCont %}
             <a class="nav-link" href="{{ oCont.getLink() }}">{{ oCont.oxcontents__oxtitle.value }}</a>
         {% endifcontent %}
-        {% ifcontent ident "oxcredits" set oCont %}
-            <a class="nav-link" href="{{ oCont.getLink() }}">{{ oCont.oxcontents__oxtitle.value }}</a>
-        {% endifcontent %}
         {% if oViewConf.getViewThemeParam('blFooterShowNewsletter') %}
             <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=newsletter") }) }}">{{ translate({ ident: "NEWSLETTER" }) }}</a>
         {% endif %}

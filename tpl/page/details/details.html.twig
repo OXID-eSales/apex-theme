@@ -28,7 +28,7 @@
         {% include "message/error.html.twig" with { statusMessage: _statusMessage1 ~ _statusMessage2 } %}
     {% endif %}
 
-    <div id="details_container" class="details">
+    <div id="details_container">
         {# details locator #}
         {% if oView.getSearchTitle() %}
             {% set detailsLocation = oView.getSearchTitle() %}

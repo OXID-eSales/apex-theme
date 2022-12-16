@@ -1,23 +1,45 @@
 {# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
 {{ script({ add: "$('input,select,textarea').not('[type=submit]').jqBootstrapValidation();", dynamic: __oxid_include_dynamic }) }}
 {{ script({ add: "$('.ox-write-review').on('click', function () { $('html, body').animate({scrollTop: $('#review').offset().top*0.75}, 1000) })"*, dynamic: __oxid_include_dynamic }) #}
-<div class="container-xxl">
+<div class="container-xxl row-spacer">
     <div class="row">
         <div class="col-12">
             <div id="review">
-                <div class="h2 mb-3">
-                    {{ translate({ ident: "WRITE_PRODUCT_REVIEW" }) }}
+                <div class="d-flex mb-3">
+                    <div class="h4">
+                        {{ translate({ ident: "WRITE_PRODUCT_REVIEW" }) }}
+                    </div>
+                    {% if oView.ratingIsActive() %}
+                        {% block details_productmain_ratings %}
+                            {% include "widget/reviews/rating.html.twig" with {itemid: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value, sRateUrl: oDetailsProduct.getLink()} %}
+                        {% endblock %}
+                    {% endif %}
+
+                    <div class="d-none d-md-block ms-auto">
+                        {% if oxcmp_user %}
+                            <a class="btn btn-light" data-bs-toggle="collapse" href="#review_form">
+                                {{ translate({ ident: "WRITE_REVIEW" }) }}
+                            </a>
+                        {% else %}
+                            <a class="btn btn-light" rel="nofollow"
+                               href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=details" ~ oViewConf.getNavUrlParams() }) }}">
+                                {{ translate({ ident: "WRITE_REVIEW" }) }}
+                            </a>
+                        {% endif %}
+                    </div>
                 </div>
+
 
                 {% if oxcmp_user %}
                     <div id="review_form" class="collapse">
                         {% block widget_reviews_form %}
-                            <form action="{{ oViewConf.getSelfActionLink() }}" method="post" id="rating" class="max-600" novalidate>
-                                <div id="writeReview" class="product-review">
+                            <form action="{{ oViewConf.getSelfActionLink() }}" method="post" id="rating" novalidate>
+                                <div id="writeReview" class="product-review mb-5">
                                     <div class="d-none">
                                         {% if oView.canRate() %}
                                             <input id="productRating" type="hidden" name="artrating" value="0">
-                                            <input id="recommListRating" type="hidden" name="recommlistrating" value="0">
+                                            <input id="recommListRating" type="hidden" name="recommlistrating"
+                                                   value="0">
                                         {% endif %}
                                         {{ oViewConf.getHiddenSid()|raw }}
                                         {{ oViewConf.getNavFormParams()|raw }}
@@ -25,10 +47,12 @@
                                         <input type="hidden" name="fnc" value="savereview">
                                         <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
                                         {% if oDetailsProduct %}
-                                            <input type="hidden" name="anid" value="{{ oDetailsProduct.oxarticles__oxid.value }}">
+                                            <input type="hidden" name="anid"
+                                                   value="{{ oDetailsProduct.oxarticles__oxid.value }}">
                                         {% else %}
                                             {% set _actvrecommlist = oView.getActiveRecommList() %}
-                                            <input type="hidden" name="recommid" value="{{ _actvrecommlist.oxrecommlists__oxid.value }}">
+                                            <input type="hidden" name="recommid"
+                                                   value="{{ _actvrecommlist.oxrecommlists__oxid.value }}">
                                         {% endif %}
 
                                         {% if sReviewUserHash %}
@@ -39,7 +63,7 @@
                                     {% block widget_reviews_form_rating %}
                                         {% if oView.canRate() %}
                                             <script>
-                                                function change(value){
+                                                function change(value) {
                                                     document.getElementById("productRating").value = value;
                                                     document.getElementById("recommListRating").value = value;
                                                     document.getElementById("reviewRating").className = "rating list-inline stars" + value;
@@ -47,12 +71,15 @@
                                             </script>
                                             <ul id="reviewRating" class="rating list-inline">
                                                 {% for star in 1..5 %}
-                                                    <li class="list-inline-item rating-star s{{ loop.index }}" data-rate-value="{{ loop.index }}">
-                                                        <a onclick="change({{ loop.index }});" class="ox-write-review ox-rateindex-{{ loop.index }}" title="{{ loop.index }} {% if loop.index == 1 %}{{ "STAR"|translate }}{% else %}{{ "STARS"|translate }}{% endif %}">
+                                                    <li class="list-inline-item rating-star s{{ loop.index }}"
+                                                        data-rate-value="{{ loop.index }}">
+                                                        <button type="button" onclick="change({{ loop.index }});"
+                                                                class="ox-write-review ox-rateindex-{{ loop.index }}"
+                                                                title="{{ loop.index }} {% if loop.index == 1 %}{{ "STAR"|translate }}{% else %}{{ "STARS"|translate }}{% endif %}">
                                                             <svg>
                                                                 <use xlink:href="#star"></use>
                                                             </svg>
-                                                        </a>
+                                                        </button>
                                                     </li>
                                                 {% endfor %}
                                                 <li class="rating-star" id="reviewRatingText"></li>
@@ -63,7 +90,12 @@
                                     {% block widget_reviews_form_fields %}
                                         <div class="mb-3">
                                             <div class="col-12">
-                                                <textarea  rows="7" name="rvw_txt" class="form-control"></textarea>
+                                                <div class="form-floating">
+                                                    <textarea class="form-control" placeholder="Leave a comment here"
+                                                              id="yourReview" style="height: 100px;"
+                                                              name="rvw_txt"></textarea>
+                                                    <label for="yourReview">{{ translate({ ident: "YOUR_REVIEW" }) }}</label>
+                                                </div>
                                             </div>
                                         </div>
                                     {% endblock %}
@@ -71,7 +103,8 @@
                                     {% block widget_reviews_form_buttons %}
                                         <div class="mb-3">
                                             <div class="col-12">
-                                                <button id="reviewSave" type="submit" class="submitButton btn btn-primary">{{ translate({ ident: "SAVE_RATING_AND_REVIEW" }) }}</button>
+                                                <button id="reviewSave" type="submit"
+                                                        class="submitButton btn btn-primary">{{ translate({ ident: "SAVE_RATING_AND_REVIEW" }) }}</button>
                                             </div>
                                         </div>
                                     {% endblock %}
@@ -82,7 +115,7 @@
                 {% endif %}
 
                 {% if oView.getReviews() %}
-                    <div class="reviews">
+                    <div class="reviews mb-5">
                         {% for review in oView.getReviews() %}
                             <div class="review mb-3" id="reviewName_{{ loop.index }}">
                                 {% block widget_reviews_record %}
@@ -90,20 +123,22 @@
                                         <div class="rating">
                                             {% if review.oxreviews__oxrating.value %}
                                                 {% for starRatings in 1..5 %}
-                                                {% if review.oxreviews__oxrating.value >= smarty.section.starRatings.iteration %}
-                                                    <svg class="star active">
-                                                        <use xlink:href="#star"></use>
-                                                    </svg>
-                                                {% else %}
-                                                    <svg class="star">
-                                                        <use xlink:href="#star"></use>
-                                                    </svg>
-                                                {% endif %}
+                                                    {% if review.oxreviews__oxrating.value >= smarty.section.starRatings.iteration %}
+                                                        <svg class="star active">
+                                                            <use xlink:href="#star-fill"></use>
+                                                        </svg>
+                                                    {% else %}
+                                                        <svg class="star">
+                                                            <use xlink:href="#star"></use>
+                                                        </svg>
+                                                    {% endif %}
                                                 {% endfor %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ translate({ ident: "WRITES" }) }} <time datetime="{{ review.oxreviews__oxcreate.value|date_format("%Y-%m- % d") }}">{{ review.oxreviews__oxcreate.value|date_format("%d.%m. %Y") }}</time>
+                                        <div class="rater">
+                                            {{ translate({ ident: "ON" }) }}
+                                            <time datetime="{{ review.oxreviews__oxcreate.value|date_format("%Y-%m- % d") }}">{{ review.oxreviews__oxcreate.value|date_format("%d.%m.%Y") }}</time>
+                                            {{ translate({ ident: "BY" }) }}
                                             <span>{{ review.oxuser__oxfname.value }}</span>
                                         </div>
                                     </div>
@@ -119,14 +154,15 @@
                         <strong>{{ translate({ ident: "NO_REVIEW_AVAILABLE" }) }}</strong>
                     </div>
                 {% endif %}
-                <div class="row mb-5">
+                <div class="row mb-5 d-md-none">
                     <div class="col-6">
                         {% if oxcmp_user %}
-                            <a class="btn btn-light" id="writeNewReview" data-bs-toggle="collapse" href="#review_form">
+                            <a class="btn btn-light" data-bs-toggle="collapse" href="#review_form">
                                 {{ translate({ ident: "WRITE_REVIEW" }) }}
                             </a>
                         {% else %}
-                            <a class="btn btn-light" id="reviewsLogin" rel="nofollow" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=details" ~ oViewConf.getNavUrlParams() }) }}">
+                            <a class="btn btn-light" rel="nofollow"
+                               href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=details" ~ oViewConf.getNavUrlParams() }) }}">
                                 {{ translate({ ident: "WRITE_REVIEW" }) }}
                             </a>
                         {% endif %}

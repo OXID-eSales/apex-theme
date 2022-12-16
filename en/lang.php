@@ -101,6 +101,9 @@ $aLang = array(
     'WIDGET_PRODUCT_RELATED_PRODUCTS_CROSSSELING_SUBHEADER' => 'Customers who viewed this product also viewed the following products.',
     'DETAILS_VPE_MESSAGE_1'                                 => "This product can only be ordered in packaging units of ",
     'DETAILS_VPE_MESSAGE_2'                                 => "",
+    'YOUR_REVIEW'                => 'Your Review',
+    'ON'                => 'on',
+    'BY'                => 'by',
 
     // Modal basket
     'DD_MINIBASKET_MODAL_TABLE_PRICE'                       => 'Total',
@@ -108,6 +111,10 @@ $aLang = array(
 
     // Checkout
     'DD_BASKET_BACK_TO_SHOP'                                => 'back to shop',
+    'MOVE_TO_NOTICELIST'                                    => 'Mode to noticelist',
+    'STEPS_SEND'                                            => 'Address',
+    'STEPS_PAY'                                             => 'Payment & delivery',
+    'STEPS_ORDER'                                           => 'Order',
 
     // E-Mails
     'DD_FOOTER_FOLLOW_US'                                   => 'Follow us:',
@@ -134,6 +141,7 @@ $aLang = array(
     'DD_DELETE_REVIEW_AND_RATING'                           => 'Delete review and star rating',
     'DD_REVIEWS_NOT_AVAILABLE'                              => 'No reviews available',
     'DD_DELETE_REVIEW_CONFIRMATION_QUESTION'                => 'Are you sure you want to delete the review?',
+    'WHERE_DO_YOU_WANT_TO_GO'                => 'Where do you want to go?',
 
     // Contact page
     'DD_SELECT_SALUTATION'                                  => 'Please choose',

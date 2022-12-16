@@ -2,6 +2,8 @@
   .card-img {
     opacity: .7;
     height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
   }
 
   .card-title {

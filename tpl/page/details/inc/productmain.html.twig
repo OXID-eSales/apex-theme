@@ -55,7 +55,7 @@
                 {# article picture with zoom #}
                 {% block details_productmain_zoom %}
                     {% set imageCount = oView.getIcons()|length %}
-                    <section class="gallery">
+                    <div class="gallery">
                         <div class="carousel">
                             {% for iPicNr, oArtIcon in oView.getIcons() %}
                                 <input type="radio" class="gallery-helper" id="image{{ iPicNr}}" name="gallery-control"{% if loop.first %} checked{% endif %}>
@@ -82,7 +82,7 @@
                                 {% endfor %}
                             </div>
                         </div>
-                    </section>
+                    </div>
                 {% endblock %}
             </div>
 
