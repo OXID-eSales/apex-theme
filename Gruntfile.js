@@ -120,6 +120,9 @@ module.exports = function (grunt) {
                     ],
                     '<%= project.out %><%= project.theme %>/src/js/changeaddress.min.js': [
                         '<%= project.dev %>build/js/form/changeaddress.js'
+                    ],
+                    '<%= project.out %><%= project.theme %>/src/js/changeamount.min.js': [
+                        '<%= project.dev %>build/js/pages/checkout/basket/changeamount.js'
                     ]
                 }
             }
@@ -137,7 +140,8 @@ module.exports = function (grunt) {
                     '<%= project.out %><%= project.theme %>/src/js/agb.min.js': ['<%= project.out %><%= project.theme %>/src/js/agb.min.js'],
                     '<%= project.out %><%= project.theme %>/src/js/payment.min.js': ['<%= project.out %><%= project.theme %>/src/js/payment.min.js'],
                     '<%= project.out %><%= project.theme %>/src/js/listremovebutton.min.js': ['<%= project.out %><%= project.theme %>/src/js/listremovebutton.min.js'],
-                    '<%= project.out %><%= project.theme %>/src/js/changeaddress.min.js': ['<%= project.out %><%= project.theme %>/src/js/changeaddress.min.js']
+                    '<%= project.out %><%= project.theme %>/src/js/changeaddress.min.js': ['<%= project.out %><%= project.theme %>/src/js/changeaddress.min.js'],
+                    '<%= project.out %><%= project.theme %>/src/js/changeamount.min.js': ['<%= project.out %><%= project.theme %>/src/js/changeamount.min.js']
                 }
             }
         },
