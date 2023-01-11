@@ -23,7 +23,7 @@
 
             <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
                 {{ translate({ ident: "WISH_LIST" }) }}
-                {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+                {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge bg-secondary rounded-pill js-noticeListCnt">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
             </a>
 
             {% if oViewConf.getShowWishlist() %}
