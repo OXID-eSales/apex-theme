@@ -16,8 +16,11 @@
                 {% include "page/account/inc/account_menu.html.twig" with {active_link: "newsletter"} %}
             </div>
         </div>
-
-        {% include "form/account_newsletter.html.twig" %}
+        <div class="card card-lg">
+            <div class="card-body">
+                {% include "form/account_newsletter.html.twig" %}
+            </div>
+        </div>
     </div>
 
 {% endcapture %}

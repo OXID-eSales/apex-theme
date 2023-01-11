@@ -13,7 +13,11 @@
                 {% block checkout_basket_emptyshippingcart %}
                     <div id="empty-basket-warning">
                         <div class="h1 mb-3">{{ translate({ ident: "BASKET_EMPTY" }) }} 😢</div>
-                        <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" class="btn btn-outline-primary"><i class="moga-left"></i> {{ translate({ ident: "DD_BASKET_BACK_TO_SHOP" }) }}</a>
+                        <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" class="btn btn-outline-primary">
+                            <svg>
+                                <use xlink:href="#left"></use>
+                            </svg>
+                            {{ translate({ ident: "DD_BASKET_BACK_TO_SHOP" }) }}</a>
 
                     </div>
                 {% endblock %}
@@ -23,10 +27,12 @@
 
                 <div class="row">
                     <div class="col-lg-8 col-xl-9">
-                {% include "page/checkout/inc/basketcontents.html.twig" with {editable: true} %}
+                        {% include "page/checkout/inc/basketcontents.html.twig" with {editable: true} %}
                     </div>
                     <div class="col-lg-4 col-xl-3">
-                        {% include "page/checkout/inc/summary_sidebar.html.twig" with {btn: true} %}
+                        <div class="sticky-md-top">
+                            {% include "page/checkout/inc/summary_sidebar.html.twig" with {btn: true} %}
+                        </div>
                     </div>
                 </div>
 

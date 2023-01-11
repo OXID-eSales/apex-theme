@@ -1,38 +1,46 @@
-<dl>
-    <dt>
-        <input class="form-check-input" id="payment_{{ sPaymentID }}" type="radio" name="paymentid" value="{{ sPaymentID }}"{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} checked{% endif %}>
-        <label class="form-check-label" for="payment_{{ sPaymentID }}">{{ paymentmethod.oxpayments__oxdesc.value }}</label>
-    </dt>
-    <div class="payment-option{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} activePayment{% endif %}">
-        {% if paymentmethod.getPrice() %}
+<div class="payment-option">
+    <div class="payment-option-form">
+        <input class="form-check-input" id="payment_{{ sPaymentID }}" type="radio" name="paymentid"
+               value="{{ sPaymentID }}"{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} checked{% endif %}>
+        <label class="form-check-label"
+               for="payment_{{ sPaymentID }}">{{ paymentmethod.oxpayments__oxdesc.value }}</label>
+
+        {% if paymentmethod.getDynValues() or paymentmethod.oxpayments__oxlongdesc.value|striptags|trim %}
+            <div class="payment-option-info{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} activePayment{% endif %}">
+                {% for value in paymentmethod.getDynValues() %}
+                    <div class="form-floating mb-3">
+                        <input type="text" size="20"
+                               maxlength="64" name="dynvalue[{{ value.name }}]" value="{{ value.value }}"
+                               class="form-control" id="{{ sPaymentID }}_{{ loop.index }}"
+                               placeholder="name@example.com">
+                        <label for="{{ sPaymentID }}_{{ loop.index }}">{{ value.name }}</label>
+                    </div>
+                {% endfor %}
+
+                {% block checkout_payment_longdesc %}
+                    {% if paymentmethod.oxpayments__oxlongdesc.value|striptags|trim %}
+                        <div class="desc">
+                            {{ paymentmethod.oxpayments__oxlongdesc.value }}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endif %}
+    </div>
+    {% if paymentmethod.getPrice() %}
+        <div class="payment-option-price">
             {% set oPaymentPrice = paymentmethod.getPrice() %}
-            {% if oViewConf.isFunctionalityEnabled('blShowVATForPayCharge')  %}
+            {% if oViewConf.isFunctionalityEnabled('blShowVATForPayCharge') %}
                 {% apply spaceless %}
-                    ({{ format_price(oPaymentPrice.getNettoPrice(), { currency: currency }) }}
+                    {{ format_price(oPaymentPrice.getNettoPrice(), { currency: currency }) }}
                     {% if oPaymentPrice.getVatValue() > 0 %}
                         {{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(oPaymentPrice.getVatValue(), { currency: currency }) }}
-                    {% endif %})
+                    {% endif %}
                 {% endapply %}
             {% else %}
-                ({{ format_price(oPaymentPrice.getBruttoPrice(), { currency: currency }) }})
+                {{ format_price(oPaymentPrice.getBruttoPrice(), { currency: currency }) }}
             {% endif %}
-        {% endif %}
+        </div>
 
-        {% for value in paymentmethod.getDynValues() %}
-            <div class="mb-3">
-                <label class="form-label col-lg-3" for="{{ sPaymentID }}_{{ loop.index }}">{{ value.name }}</label>
-                <div class="col-lg-9">
-                    <input id="{{ sPaymentID }}_{{ loop.index }}" type="text" class="form-control textbox" size="20" maxlength="64" name="dynvalue[{{ value.name }}]" value="{{ value.value }}">
-                </div>
-            </div>
-        {% endfor %}
-
-        {% block checkout_payment_longdesc %}
-            {% if paymentmethod.oxpayments__oxlongdesc.value|striptags|trim %}
-                <div class="desc">
-                    {{ paymentmethod.oxpayments__oxlongdesc.value }}
-                </div>
-            {% endif %}
-        {% endblock %}
-    </div>
-</dl>
+    {% endif %}
+</div>

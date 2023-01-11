@@ -4,7 +4,7 @@
     {% endif %}
 
     {% block layout_header %}
-        {% include "layout/header.html.twig" %}
+        {% include "layout/header.html.twig"  with {active_step: active_step} %}
     {% endblock %}
 
     <div id="wrapper" class="wrapper{% if sidebar %} sidebar{{ sidebar }}{% endif %}">

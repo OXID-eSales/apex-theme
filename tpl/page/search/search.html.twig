@@ -7,47 +7,50 @@
     {% set search_head = oView.getArticleCount() ~ " " ~ search_head ~ " &quot;" ~ oView.getSearchParamForHtml() ~ "&quot;" %}
     {% set showPopBreadcrump = oViewConf.getViewThemeParam('sShowPopBreadcrump') %}
 
-    <div class="bg-light position-relative">
-        {% block search_header %}
+    {% block search_header %}
+        <div class="bg-white list-header mb-4">
             <div class="container-xxl">
-                {% if showPopBreadcrump %}
-                    <div class="breadcrumb-wrapper">
-                        <div class="container-xxl pt-3">
-                            {% include "widget/breadcrumb.html.twig" %}
-                        </div>
-                    </div>
-                {% endif %}
+                <div class="row">
+                    <div class="col-12{% if actCategory.getIconUrl() %} col-md-6 order-2 order-md-1 {% endif %}">
+                        {% if showPopBreadcrump %}
+                            <div class="row">
+                                {% include "widget/breadcrumb.html.twig" %}
+                            </div>
+                        {% endif %}
 
-                <div class="pop-header">
-                    <h1 class="list-heading">{{ search_head }}</h1>
+                        <h1 class="h2">
+                            {{ search_head }}
+                        </h1>
+                    </div>
                 </div>
             </div>
-        {% endblock %}
-        {% block search_results %}
-            <div class="container-xxl">
-                {% if oView.getArticleCount() %}
-                    <div class="d-flex py-3">
-                        <div class="sidebar-display ms-auto">
+        </div>
+    {% endblock %}
+    {% block search_results %}
+        <div class="container-xxl">
+            {% if oView.getArticleCount() %}
+                <div class="d-flex py-3">
+                    <div class="sidebar-display ms-auto">
                         {% block search_top_listlocator %}
-                            {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedTop(), listDisplayType: true, itemsPerPage: true, sort: true} %}
+                            {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedTop(), sort: true} %}
                         {% endblock %}
-                        </div>
                     </div>
-                {% else %}
-                    <p class="alert alert-info">{{ translate({ ident: "NO_ITEMS_FOUND" }) }}</p>
-                {% endif %}
-                {% if oView.getArticleList() %}
-                    {% for product in oView.getArticleList() %}
-                        {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "searchList", products: oView.getArticleList(), showMainLink: true} %}
-                    {% endfor %}
-                {% endif %}
-                {% if oView.getArticleCount() %}
-                    {% block search_bottom_listlocator %}
-                        {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedBottom(), place: "bottom"} %}
-                    {% endblock %}
-                {% endif %}
-            </div>
-        {% endblock %}
+                </div>
+            {% else %}
+                <p class="alert alert-info">{{ translate({ ident: "NO_ITEMS_FOUND" }) }}</p>
+            {% endif %}
+            {% if oView.getArticleList() %}
+                {% for product in oView.getArticleList() %}
+                    {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "searchList", products: oView.getArticleList(), showMainLink: true} %}
+                {% endfor %}
+            {% endif %}
+            {% if oView.getArticleCount() %}
+                {% block search_bottom_listlocator %}
+                    {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedBottom(), place: "bottom"} %}
+                {% endblock %}
+            {% endif %}
+        </div>
+    {% endblock %}
     </div>
 {% endcapture %}
 {% set template_title = "SEARCH"|translate %}

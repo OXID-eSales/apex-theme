@@ -1,6 +1,15 @@
 .search {
+  &:focus-within {
+    outline: 1px solid #000;
+  }
+
   @include media-breakpoint-up(lg) {
     min-width: 500px;
+  }
+
+  .form-control {
+    background: #fff;
+    border-color: #000;
   }
 
   .btn {
@@ -11,9 +20,10 @@
     z-index: 10;
     padding: 0 10px;
     display: flex;
-    border: 1px solid $input-border-color;
+    border: 1px solid #000;
     border-left: none;
     align-items: center;
+    background: #fff;
 
     svg {
       width: 20px;

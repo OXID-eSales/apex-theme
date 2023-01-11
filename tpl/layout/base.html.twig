@@ -89,9 +89,9 @@
             {% if aAppleTouchIcon %}
                 {% set appleTouchIcon72 = appleTouchIcon %}
                 {% set appleTouchIcon144 = appleTouchIcon %}
-                <link rel="apple-touch-icon-precomposed" href="{{ appleTouchIcon }}" />
-                <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ appleTouchIcon72 }}" />
-                <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ appleTouchIcon144 }}" />
+                <link rel="apple-touch-icon-precomposed" href="{{ appleTouchIcon }}">
+                <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ appleTouchIcon72 }}">
+                <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ appleTouchIcon144 }}">
             {% endif %}
 
             <!-- Shortcut Icons -->
@@ -103,23 +103,23 @@
             {% set sThemeColor = oViewConf.getViewThemeParam('sThemeColor') %}
 
             {% if sFaviconFile %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconFile) }}" type="image/x-icon" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconFile) }}" type="image/x-icon">
             {% endif %}
             {% if sFavicon16File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon16File) }}" sizes="16x16" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon16File) }}" sizes="16x16">
             {% endif %}
             {% if sFavicon32File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon32File) }}" sizes="32x32" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon32File) }}" sizes="32x32">
             {% endif %}
             {% if sFaviconSvg %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconSvg) }}" />
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconSvg) }}">
                 <link rel="mask-icon" color="{{ sThemeColor }}" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconSvg) }}">
             {% endif %}
             {% if sSiteManifestFile %}
-                <link rel="manifest" href="{{ oViewConf.getImageUrl("favicons/" ~ sSiteManifestFile) }}" />
+                <link rel="manifest" href="{{ oViewConf.getImageUrl("favicons/" ~ sSiteManifestFile) }}">
             {% endif %}
             {% if sThemeColor %}
-                <meta name="theme-color" content="{{ sThemeColor }}" />
+                <meta name="theme-color" content="{{ sThemeColor }}">
             {% endif %}
         {% endblock %}
 
@@ -179,7 +179,7 @@
         {{ script({ add: "$( 'body' ).oxBlockDebug();", dynamic: __oxid_include_dynamic }) }}
     {% endif %}
 
-    {{ script({ dynamic: __oxid_include_dynamic })|replace({ 'type="text/javascript"': '' }) }}
+    {{ script({ dynamic: __oxid_include_dynamic })|replace({ 'type="text/javascript"': '' })|raw }}
 
     {% if not oView.isDemoShop() %}
         {% include_dynamic "widget/dynscript.html.twig" %}

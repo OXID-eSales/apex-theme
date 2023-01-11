@@ -10,7 +10,11 @@
                 <span class="h4 modal-title float-start" id="giftoptions_modal_label">{{ translate({ ident: "GIFT_OPTION" }) }}</span>
                 {% endblock %}
 
-                <span class="close float-end" data-bs-dismiss="modal" aria-hidden="true"><i class="moga-times"></i> </span>
+                <span class="close float-end" data-bs-dismiss="modal" aria-hidden="true">
+                    <svg>
+                        <use xlink:href="#times"></use>
+                    </svg>
+                </span>
             </div>
             <div class="modal-body">
                 <p>{{ translate({ ident: "WRAPPING_DESCRIPTION" }) }}</p>

@@ -33,13 +33,13 @@
                     <img class="product-img img-2" width="350" height="220" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
                 </picture>
             {% endif %}
-            <a href="{{ _productLink }}" class="stretched-link"></a>
+            <a href="{{ _productLink }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }}"></a>
 
 
             {# TODO: We should have an attribute here #}
             {% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %}
                 <div class="badges">
-                    <div class="badge bg-danger">sale</div>
+                    <div class="badge bg-danger badge-sale">sale</div>
                 </div>
             {% endif %}
 
@@ -94,16 +94,21 @@
                         {% endif %}
                     </div>
                     <div class="right">
-                        <a href="#" class="btn btn-outline-primary bg-todo">
-                            <svg>
-                                <use xlink:href="#eye-fill"></use>
-                            </svg>
-                        </a>
-                        <a href="#" class="btn btn-outline-primary bg-todo">
-                            <svg>
-                                <use xlink:href="#star"></use>
-                            </svg>
-                        </a>
+                        {% block widget_product_listitem_grid_addtowishlist %}
+                            {% if oxcmp_user %}
+                                <a aria-label="{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}" class="btn btn-sm btn-light w-100" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ product.oxarticles__oxnid.value ~ "&amp;anid=" ~ product.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">
+                                    <svg>
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </a>
+                            {% else %}
+                                <a aria-label="{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}" class="btn btn-sm btn-light w-100" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">
+                                    <svg>
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </a>
+                            {% endif %}
+                        {% endblock %}
                     </div>
                 </div>
             {% endblock %}

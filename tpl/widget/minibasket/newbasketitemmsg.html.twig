@@ -4,7 +4,10 @@
             {% block dd_widget_minibasket_new_item_msg %}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true"></button>
                 <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=basket") }) }}" class="btn btn-outline-primary btn-sm" style="margin-right:15px;">
-                    <i class="moga-bag"></i> {{ translate({ ident: "DISPLAY_BASKET" }) }}
+                    <svg>
+                        <use xlink:href="#bag"></use>
+                    </svg>
+                    {{ translate({ ident: "DISPLAY_BASKET" }) }}
                 </a>
 
                 {{ translate({ ident: "NEW_BASKET_ITEM_MSG" }) }}

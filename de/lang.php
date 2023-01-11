@@ -108,6 +108,11 @@ $aLang = array(
 
     // Checkout
     'DD_BASKET_BACK_TO_SHOP'                                => 'zurück zum Shop',
+    'MOVE_TO_NOTICELIST'                                    => 'Auf die Merkliste',
+    'STEPS_SEND'                                            => 'Adresse',
+    'STEPS_PAY'                                             => 'Zahlung & Versand',
+    'STEPS_ORDER'                                           => 'Bestellen',
+    'SELECT_SHIPPING_METHOD'                                => 'Versandart',
 
     // E-Mails
     'DD_FOOTER_FOLLOW_US'                                    => 'Folgen Sie uns',
@@ -134,13 +139,17 @@ $aLang = array(
     'DD_DELETE_REVIEW_AND_RATING'                           => 'Bewertung und Sterne-Rating löschen',
     'DD_REVIEWS_NOT_AVAILABLE'                              => 'Es liegen keine Bewertungen vor',
     'DD_DELETE_REVIEW_CONFIRMATION_QUESTION'                => 'Sind Sie sicher, dass Sie die Bewertung löschen wollen?',
+    'WHERE_DO_YOU_WANT_TO_GO'                => 'Wo willst du hin?',
+    'YOUR_REVIEW'                => 'Deine Bewertung',
+    'ON'                => 'am',
+    'BY'                => 'von',
 
     // Contact page
     'DD_SELECT_SALUTATION'                                  => 'Bitte auswählen',
 
     'DD_CATEGORY_RESET_BUTTON'                              => 'Zurücksetzen',
     'MOVE_TO_WISH_LIST'                                     => 'Auf Merkzettel verschieben',
-    'SUMMARY'                                               => 'Zusammenfassung',
+    'SUMMARY'                                               => 'Übersicht',
     'COMPLETE_MARKED_FIELDS'                                => 'Pflichtfelder bitte ausfüllen',
     'WRITE_REVIEW'                                          => 'Bewertung schreiben',
     'PRODUCT_REVIEW'                                        => 'Kundenmeinungen',
@@ -163,8 +172,8 @@ $aLang = array(
     'SHOW_NAVIGATION'                                       => 'Navigation anzeigen',
     'MENU'                                                  => 'Menü',
     'FAVOURITES'                                            => 'Favoriten',
-    'MOVE_CAROUSSEL_LEFT'                                   => 'Karussell nach links verschieben',
-    'MOVE_CAROUSSEL_RIGHT'                                  => 'Karussell nach rechts verschieben',
+    'MOVE_CAROUSEL_LEFT'                                   => 'Karussell nach links verschieben',
+    'MOVE_CAROUSEL_RIGHT'                                  => 'Karussell nach rechts verschieben',
     'WATCH_NOW'                                             => 'Jetzt anschauen',
 );
 
