@@ -59,7 +59,7 @@
                                                             </button>
                                                         </li>
                                                         <li>
-                                                            <button type="submit" name="removeBtn" class="dropdown-item" onclick="addToNoticelist('{{ oArticle.getId() }}');document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
+                                                            <button type="submit" name="removeBtn" class="dropdown-item" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
                                                                 {{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}
                                                             </button>
                                                         </li>
@@ -252,7 +252,7 @@
                                                                     </svg>
                                                                 </button>
 
-                                                                <button type="submit"  name="removeBtn" class="btn btn-remove" onclick="addToNoticelist('{{ oArticle.getId() }}');document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
+                                                                <button type="submit"  name="removeBtn" class="btn btn-remove" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
                                                                     <svg aria-hidden="true">
                                                                         <use xlink:href="#star"></use>
                                                                     </svg>
