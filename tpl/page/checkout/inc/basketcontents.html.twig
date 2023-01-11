@@ -3,7 +3,7 @@
 {# oxscript include="js/libs/jqBootstrapValidation.min.js" priority=10 #}
 {# oxscript add="$('#checkAll, #basketRemoveAll').oxBasketChecks();" #}
 {# oxscript add="$('input,select,textarea').not('[type=submit]').jqBootstrapValidation();" #}
-<script src="{{ oViewConf.getResourceUrl('js/movetonoticelist.min.js') }}"></script>
+{{ script({ include: "js/movetonoticelist.min.js", dynamic: __oxid_include_dynamic }) }}
 
 {% set currency = oView.getActCurrency() %}
 
