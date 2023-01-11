@@ -316,11 +316,13 @@
                             {% endif %}
 
                             <div class="col-6">
-                                {% if oxcmp_user %}
-                                    <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
-                                {% else %}
-                                    <a class="btn btn-sm btn-light w-100" id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
-                                {% endif %}
+                                {% block details_productmain_addtowishlist %}
+                                    {% if oxcmp_user %}
+                                        <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                    {% else %}
+                                        <a class="btn btn-sm btn-light w-100" id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                    {% endif %}
+                                {% endblock %}
                             </div>
 
                             {% if oViewConf.getShowWishlist() %}
