@@ -5,6 +5,12 @@
     {% set blDisableToCart = oView.getDisableToCart() %}
     {% set iIndex = oView.getIndex() %}
     {% set showMainLink = oView.getShowMainLink() %}
+    {% set owishid = oView.getWishId() %}
+    {% set removeFunction = oView.getRemoveFunction() %}
+    {% set recommid = oView.getRecommId() %}
+    {% set toBasketFunction = oView.getToBasketFunction() %}
+    {% set altproduct = oView.getAltProduct() %}
+    {% set testid = oView.getIndex() %}
 
     {% set currency = oView.getActCurrency() %}
     {% if showMainLink %}
@@ -226,10 +232,10 @@
                                                 </form>
                                             {% endhasrights %}
                                         {% else %}
-                                            <a class="btn btn-primary" href="{{ _productLink }}">{{ translate({ ident: "MORE_INFO" }) }}</a>
+                                            <a class="btn btn-primary w-100 mb-3" href="{{ _productLink }}">{{ translate({ ident: "MORE_INFO" }) }}</a>
 
                                             {% if removeFunction and ((owishid and (owishid==oxcmp_user.oxuser__oxid.value)) or (wishid==oxcmp_user.oxuser__oxid.value) or recommid) %}
-                                                <button triggerForm="remove_{{ removeFunction }}{{ testid }}" type="submit" class="btn btn-danger w-100 removeButton">
+                                                <button triggerForm="remove_{{ removeFunction }}{{ testid }}" type="submit" class="btn btn-light w-100 removeButton listRemoveButton">
                                                     <svg>
                                                         <use xlink:href="#trash"></use>
                                                     </svg>

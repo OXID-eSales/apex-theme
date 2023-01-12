@@ -39,6 +39,7 @@ $aLang = array(
     'SHOP_THEME_GROUP_background'      => 'Hintergrundbild',
     'SHOP_THEME_GROUP_econda'          => 'econda Web Shop Controlling',
     'SHOP_THEME_GROUP_emails'          => 'E-Mails',
+    'SHOP_THEME_GROUP_basket'          => 'Warenkorb',
 
     'SHOP_THEME_sIconsize'      => 'Größe des Icons in Pixeln (Breite*Höhe)',
     //SHOP_CONFIG_ICONSIZE
@@ -326,5 +327,10 @@ $aLang = array(
     'SHOP_THEME_sImageStyle'          => 'Bild-Style',
     'SHOP_THEME_sImageStyle_grid'     => 'Raster',
     'SHOP_THEME_sImageStyle_carousel' => 'Karussel',
+
+    'SHOP_THEME_sBasketNoticeListButtonFunction' => 'Funktion des Merklisten-Buttons im Warenkorb',
+    'SHOP_THEME_sBasketNoticeListButtonFunction_hide' => 'Button ausblenden',
+    'SHOP_THEME_sBasketNoticeListButtonFunction_move' => 'Artikel auf Merkliste verschieben (aus Warenkorb löschen)',
+    'SHOP_THEME_sBasketNoticeListButtonFunction_copy' => 'Artikel auf Merkliste kopieren',
 
 );
