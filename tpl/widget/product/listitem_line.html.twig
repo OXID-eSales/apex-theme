@@ -18,6 +18,13 @@
         {% set blShowToBasket = false %}
     {% endif %}
 
+    {% set owishid = oView.getWishId() %}
+    {% set removeFunction = oView.getRemoveFunction() %}
+    {% set recommid = oView.getRecommId() %}
+    {% set toBasketFunction = oView.getToBasketFunction() %}
+    {% set altproduct = oView.getAltProduct() %}
+    {% set testid = oView.getIndex() %}
+
         {{ oViewConf.getNavFormParams()|raw }}
         {{ oViewConf.getHiddenSid()|raw }}
         <input type="hidden" name="pgNr" value="{{ oView.getActPage() }}">
