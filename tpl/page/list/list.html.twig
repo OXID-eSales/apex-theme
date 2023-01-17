@@ -41,7 +41,7 @@
                     </h1>
                     {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 and actCategory.oxcategories__oxdesc.value %}
                     <div id="catDescLocator" class="categoryDescription pb-5">
-                        {{ actCategory.oxcategories__oxdesc.value }}
+                        {{ actCategory.getShortDescription()|raw() }}
                     </div>
                     {% endif %}
                 </div>
