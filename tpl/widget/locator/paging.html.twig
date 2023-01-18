@@ -3,7 +3,7 @@
         <ul class="pagination justify-content-center">
             <li class="page-item{% if not pages.previousPage %} disabled{% endif %}">
                 {% if pages.previousPage %}
-                <a class="page-link" href="{{ pages.previousPage }}" aria-label="{{ translate({ ident: "PREVIOUS" }) }}">
+                <a class="page-link" href="{{ pages.previousPage|raw }}" aria-label="{{ translate({ ident: "PREVIOUS" }) }}">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="visually-hidden-focusable">{{ translate({ ident: "PREVIOUS" }) }}</span>
                 </a>
@@ -16,7 +16,7 @@
             {% for iPage, page in pages.changePage %}
                 {% if iPage == i %}
                     <li class="page-item {% if iPage == pages.actPage %} active{% endif %}">
-                        <a href="{{ page.url }}" class="page-link">{{ iPage }}</a>
+                        <a href="{{ page.url|raw }}" class="page-link">{{ iPage }}</a>
                     </li>
                     {% set i = i+1 %}
                 {% elseif iPage > i %}
@@ -24,12 +24,12 @@
                         <span>...</span>
                     </li>
                     <li class="page-item {% if iPage == pages.actPage %} active{% endif %}">
-                        <a href="{{ page.url }}" class="page-link">{{ iPage }}</a>
+                        <a href="{{ page.url|raw }}" class="page-link">{{ iPage }}</a>
                     </li>
                     {% set i = iPage+1 %}
                 {% elseif iPage < i %}
                     <li class="page-item {% if iPage == pages.actPage %} active{% endif %}">
-                        <a href="{{ page.url }}" class="page-link">{{ iPage }}</a>
+                        <a href="{{ page.url|raw }}" class="page-link">{{ iPage }}</a>
                     </li>
                     <li class="page-item disabled">
                         <span>...</span>
@@ -40,7 +40,7 @@
 
             <li class="page-item{% if not pages.nextPage %} disabled{% endif %}">
                 {% if pages.nextPage %}
-                    <a class="page-link" href="{{ pages.nextPage }}" aria-label="{{ translate({ ident: "NEXT" }) }}">
+                    <a class="page-link" href="{{ pages.nextPage|raw }}" aria-label="{{ translate({ ident: "NEXT" }) }}">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="visually-hidden-focusable">{{ translate({ ident: "NEXT" }) }}</span>
                     </a>

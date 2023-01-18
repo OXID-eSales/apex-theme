@@ -5,6 +5,6 @@
 
 {% include "email/html/header.html.twig" with {title: "DD_PRICEALARM_HEADING"|translate} %}
 
-{#{% include 'content::ident::oxpricealarmemail' %}#}{# TODO: uncomment after fixing #}<br/>
+{% include_content 'oxpricealarmemail' %}<br/>
 
 {% include "email/html/footer.html.twig" %}

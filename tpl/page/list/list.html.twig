@@ -25,7 +25,7 @@
 
 {% capture append = "oxidBlock_content" %}
     {% block page_list_listhead %}
-    {% if listType=='manufacturer' %}
+    {% if listType=='manufacturer' or listType=='vendor'%}
     <div class="bg-white list-header mb-4">
         <div class="container-xxl">
             <div class="row">
@@ -39,7 +39,7 @@
                     <h1{% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %} class="text-white"{% endif %}>
                         {{ actCategory.getTitle() }}
                     </h1>
-                    {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 and actCategory.oxcategories__oxdesc.value %}
+                    {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 and actCategory.getShortDescription() %}
                     <div id="catDescLocator" class="categoryDescription pb-5">
                         {{ actCategory.getShortDescription()|raw() }}
                     </div>
@@ -136,7 +136,7 @@
                     <div class="container-xxl">
                         {% if oView.getArticleList() %}
                             {% block page_list_upperlocator %}
-                                {% include "widget/locator/listlocator.html.twig" with {attributes: oView.getAttributes(), sort: true} %}
+                                {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedTop(), attributes: oView.getAttributes(), listDisplayType: true, itemsPerPage: true, sort: true} %}
                             {% endblock %}
                         {% endif %}
                         <div class="row">

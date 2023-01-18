@@ -79,7 +79,7 @@
 {% endif %}
 {% block email_plain_order_ownerdiscounts %}
   {% for oDiscount in basket.getDiscounts() %}
-  {% if oDiscount.dDiscount < 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DISCOUNT" }) }}{% endif %} {{ oDiscount.sDiscount }}: {% if oDiscount.dDiscount < 0 %}{{ oDiscount.fDiscount|replace(" - ", "") }}{% else %}-{{ oDiscount.fDiscount }}{% endif %} {{ currency.name }}
+  {% if oDiscount.dDiscount < 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DISCOUNT" }) }}{% endif %} {{ oDiscount.sDiscount }}: {% if oDiscount.dDiscount < 0 %}{{ oDiscount.fDiscount|replace({"-": ""}) }}{% else %}-{{ oDiscount.fDiscount }}{% endif %} {{ currency.name }}
   {% endfor %}
 {% endblock %}
 {% if not order.isNettoMode() %}
@@ -104,7 +104,7 @@
 {% block email_plain_order_owner_voucherdiscount %}
 {# voucher discounts #}
 {% if oViewConf.getShowVouchers() and basket.getVoucherDiscValue() %}
-{{ translate({ ident: "COUPON" }) }} {% if basket.getFVoucherDiscountValue() > 0 %}-{% endif %}{{ basket.getFVoucherDiscountValue()|replace(" - ", "") }} {{ currency.name }}
+{{ translate({ ident: "COUPON" }) }} {% if basket.getFVoucherDiscountValue() > 0 %}-{% endif %}{{ basket.getFVoucherDiscountValue()|replace({"-": ""}) }} {{ currency.name }}
 {% endif %}
 {% endblock %}
 {% block email_plain_order_ownerdelcosts %}

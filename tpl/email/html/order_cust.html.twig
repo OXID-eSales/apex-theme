@@ -37,9 +37,9 @@
 {% block email_html_order_cust_orderemail %}
     <p>
         {% if payment.oxuserpayments__oxpaymentsid.value == "oxempty" %}
-{#            {% include 'content::ident::oxuserordernpemail' %}#}{# TODO: uncomment after fixing #}
+            {% include_content 'oxuserordernpemail' %}
         {% else %}
-{#            {% include 'content::ident::oxuserorderemail' %}#}{# TODO: uncomment after fixing #}
+            {% include_content 'oxuserorderemail' %}
         {% endif %}
     </p>
 {% endblock %}
@@ -285,7 +285,7 @@
                 {% for oDiscount in basket.getDiscounts() %}
                     <tr valign="top" bgcolor="#ebebeb">
                         <td align="right" colspan="{{ iFooterColspan }}" class="odd text-right">{% if oDiscount.dDiscount < 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DISCOUNT" }) }}{% endif %} <em>{{ oDiscount.sDiscount }}</em> :</td>
-                        <td align="right" class="odd text-right">{% if oDiscount.dDiscount < 0 %}{{ oDiscount.fDiscount|replace(" - ", "") }}{% else %}-{{ oDiscount.fDiscount }}{% endif %} {{ currency.sign }}</td>
+                        <td align="right" class="odd text-right">{% if oDiscount.dDiscount < 0 %}{{ oDiscount.fDiscount|replace({"-": ""}) }}{% else %}-{{ oDiscount.fDiscount }}{% endif %} {{ currency.sign }}</td>
                     </tr>
                 {% endfor %}
             {% endblock %}
@@ -326,7 +326,7 @@
             {% if oViewConf.getShowVouchers() and basket.getVoucherDiscValue() %}
                 <tr valign="top" bgcolor="#ebebeb">
                     <td align="right" colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "COUPON" }) }}</td>
-                    <td align="right" class="odd text-right">{% if basket.getFVoucherDiscountValue() > 0 %}-{% endif %}{{ basket.getFVoucherDiscountValue()|replace(" - ", "") }} {{ currency.sign }}</td>
+                    <td align="right" class="odd text-right">{% if basket.getFVoucherDiscountValue() > 0 %}-{% endif %}{{ basket.getFVoucherDiscountValue()|replace({"-": ""}) }} {{ currency.sign }}</td>
                 </tr>
             {% endif %}
         {% endblock %}
@@ -534,7 +534,7 @@
 {% endblock %}
 
 {% block email_html_order_cust_orderemailend %}
-    <p>{#{% include 'content::ident::oxuserorderemailend' %}#}{# TODO: uncomment after fixing #}</p>
+    <p>{% include_content 'oxuserorderemailend' %}</p>
 {% endblock %}
 
 {% include "email/html/footer.html.twig" %}

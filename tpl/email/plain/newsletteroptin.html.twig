@@ -2,6 +2,6 @@
 {% set oViewConf = oEmailView.getViewConfig() %}
 {% set user = oEmailView.getUser() %}
 
-{#{% include 'content::ident::oxnewsletterplainemail' %}#}{# TODO: uncomment after fixing #}
+{% include_content 'oxnewsletterplainemail' %}
 
-{#{% include 'content::ident::oxemailfooterplain' %}#}{# TODO: uncomment after fixing #}
+{% include_content 'oxemailfooterplain' %}
