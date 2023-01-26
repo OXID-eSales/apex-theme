@@ -236,7 +236,7 @@
                                             <a class="btn btn-primary" href="{{ _productLink }}">{{ translate({ ident: "MORE_INFO" }) }}</a>
 
                                             {% if removeFunction and ((owishid and (owishid==oxcmp_user.oxuser__oxid.value)) or (wishid==oxcmp_user.oxuser__oxid.value) or recommid) %}
-                                                <button triggerForm="remove_{{ removeFunction }}{{ testid }}" type="submit" class="btn btn-danger w-100 removeButton">
+                                                <button data-triggerForm="remove_{{ removeFunction }}{{ testid }}" type="submit" class="btn btn-light removeButton listRemoveButton">
                                                     <svg>
                                                         <use xlink:href="#trash"></use>
                                                     </svg>
