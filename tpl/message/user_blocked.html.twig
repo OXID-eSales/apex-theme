@@ -1,7 +1,5 @@
 {% capture append = "oxidBlock_content" %}
-    <p>{% ifcontent ident "oxblocked" set oCont %}
-           {{ oCont.oxcontents__oxcontent.value }}
-      {% endifcontent %}</p>
+    <p>{% include_content "oxblocked" ignore missing %}</p>
 {% endcapture %}
 
 {% include "layout/page.html.twig" %}

@@ -3,9 +3,7 @@
     <h1>{{ oView.getTitle() }}</h1>
     <div class="cmsContent">
         <p>
-            {% ifcontent ident "oxcookiesexplanation" set oCont %}
-                {{ oCont.oxcontents__oxcontent.value }}
-            {% endifcontent %}
+            {% include_content "oxcookiesexplanation" ignore missing %}
         </p>
     </div>
 {% endcapture %}

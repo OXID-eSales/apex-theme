@@ -7,9 +7,7 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <article>
-                                {% ifcontent ident "oxnewstlerinfo" set oCont %}
-                                    {{ oCont.oxcontents__oxcontent.value }}
-                                {% endifcontent %}
+                                {% include_content "oxnewstlerinfo" ignore missing %}
                             </article>
                         </div>
                         <div class="col-lg-5"></div>
