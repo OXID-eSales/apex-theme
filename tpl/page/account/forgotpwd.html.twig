@@ -64,7 +64,7 @@
         {% endif %}
 
         {% if not oView.isActive('PsLogin') %}
-
+            {{ insert_tracker({title: template_title}) }}
         {% endif %}
     </div>
 {% endcapture %}

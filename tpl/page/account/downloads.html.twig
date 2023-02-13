@@ -55,6 +55,6 @@
             <p class="alert alert-info">{{ translate({ ident: "DOWNLOADS_EMPTY" }) }}</p>
         {% endif %}
     </div>
-
+    {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 {% include "layout/page.html.twig" %}

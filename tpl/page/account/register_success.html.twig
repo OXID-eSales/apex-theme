@@ -18,6 +18,7 @@
             </div>
         </div>
     </div>
+    {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 {% if oView.isActive('PsLogin') %}
     {% include "layout/popup.html.twig" %}

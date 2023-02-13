@@ -158,6 +158,6 @@
             {% include_content 'oxstartslot4' ignore missing  %}
         {% endif %}
     {% endblock %}
-
+    {{ insert_tracker() }}
 {% endcapture %}
 {% include "layout/page.html.twig" with {tree_path: oView.getTreePath()} %}

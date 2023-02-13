@@ -2,4 +2,5 @@
 
 {% set oDetailsProduct = oView.getProduct() %}
 
+{{ insert_tracker({title: "PRODUCT_DETAILS"|translate, product: oDetailsProduct, cpath: oView.getCatTreePath()}) }}
 {{ script({ widget: oView.getClassKey(), dynamic: __oxid_include_dynamic }) }}

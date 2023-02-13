@@ -1,5 +1,6 @@
 {% capture append = "oxidBlock_content" %}
     <p>{% include_content "oxblocked" ignore missing %}</p>
+    {{ insert_tracker() }}
 {% endcapture %}
 
 {% include "layout/page.html.twig" %}

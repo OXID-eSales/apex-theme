@@ -75,6 +75,7 @@
             </div>
         </div>
     {% endif %}
+    {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 
 {% include "layout/page.html.twig" with {active_step: 1}%}
