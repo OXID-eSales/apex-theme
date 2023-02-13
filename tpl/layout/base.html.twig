@@ -170,8 +170,8 @@
 
     {% block base_js %}
         {# include file="i18n/js_vars.tpl" #}
-        <script src="{{ oViewConf.getResourceUrl('js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ oViewConf.getResourceUrl('js/scripts.min.js') }}"></script>
+        {{ script({ include: 'js/bootstrap.bundle.min.js', dynamic: __oxid_include_dynamic }) }}
+        {{ script({ include: 'js/scripts.min.js', dynamic: __oxid_include_dynamic }) }}
 
     {% endblock %}
     {% if oViewConf.isTplBlocksDebugMode() %}
