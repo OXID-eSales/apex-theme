@@ -130,7 +130,9 @@
 }
 
 .sort-list {
-  font-size: 14px;
+  .dropdown-toggle.form-select {
+    text-align: left;
+  }
 
   @include media-breakpoint-up(md) {
     .nav-link {
@@ -182,6 +184,24 @@
 
     @include media-breakpoint-up(xl) {
       flex: 0 1 20%;
+    }
+  }
+}
+
+.locator {
+  font-size: 14px;
+
+  .form-select {
+    font-size: 14px;
+    background-color: transparent;
+    border: 2px solid $primary;
+    margin-bottom: $grid-gutter-width/2;
+
+    @include media-breakpoint-up(md) {
+      max-width: 150px;
+      border: none;
+      padding-left: 0;
+      margin-bottom: 0;
     }
   }
 }
