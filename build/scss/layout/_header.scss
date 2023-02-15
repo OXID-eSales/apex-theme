@@ -12,6 +12,15 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   position: relative;
 
+  .h1 {
+    font-size: 24px;
+    text-decoration: none;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+  }
+
   .cl-start & {
     box-shadow: none;
   }

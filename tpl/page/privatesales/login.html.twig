@@ -2,25 +2,59 @@
     {{ include_widget({ cl: "oxwCookieNote", _parent: oView.getClassKey(), nocookie: 1 }) }}
 {% endcapture %}
 {% capture append = "oxidBlock_content" %}
-    <div class="accountLoginView" style="margin-top: 25px;">
+    <div class="private-sales">
+        <div class="header">
+            <div class="container-xxl">
+                <div class="d-flex justify-content-between">
+                    {% block dd_layout_page_header_logo %}
+                        {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
+                        {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
+                        {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
+                        {% if slogoImg %}
+                            <img src="{{ oViewConf.getImageUrl(slogoImg) }}"
+                                 alt="{{ oxcmp_shop.oxshops__oxname.value }}" width="{{ sLogoWidth }}"
+                                 height="{{ sLogoHeight }}" class="logo-img">
+                        {% else %}
+                            <span class="h1">{{ oxcmp_shop.oxshops__oxname.value }}</span>
+                        {% endif %}
+                    {% endblock %}
+                    {% if not oView.confirmTerms() %}
+                        <div class="dropdowns d-flex">
+                            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                    data-bs-auto-close="outside" aria-label="{{ translate({ ident: "CHANGE" }) }}">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#globe"></use>
+                                </svg>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <form>
+                                    {% block dd_layout_page_header_icon_menu_languages %}
+                                        {# Language Dropdown #}
+                                        {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                    {% endblock %}
+                                </form>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
 
-        {% block dd_layout_page_header_logo %}
-            {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
-            {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
-            {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
-            <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}">
-                <img src="{{ oViewConf.getImageUrl(slogoImg) }}" alt="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" style="{% if sLogoWidth %}width:auto;max-width:{{ sLogoWidth }}px;{% endif %}{% if sLogoHeight %}height:auto;max-height:{{ sLogoHeight }}px;{% endif %}">
-            </a>
-        {% endblock %}
+        <div class="container-xxl mt-5">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 col-xl-6 offset-md-1 offset-lg-2 offset-xl-3">
+                    <div class="accountLoginView">
 
-        <h1 id="loginAccount">{{ oView.getTitle() }}</h1>
-        {% if oView.confirmTerms() %}
-            {% include "form/privatesales/accept_terms.html.twig" %}
-        {% else %}
-            {% include "widget/header/languages.html.twig" %}
-            {% include "message/errors.html.twig" %}
-            {% include "form/login_account.html.twig" %}
-        {% endif %}
+                        {% if oView.confirmTerms() %}
+                            {% include "form/privatesales/accept_terms.html.twig" %}
+                        {% else %}
+                            {% include "message/errors.html.twig" %}
+                            {% include "form/login_account.html.twig" %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endcapture %}
 {% include "layout/popup.html.twig" %}
