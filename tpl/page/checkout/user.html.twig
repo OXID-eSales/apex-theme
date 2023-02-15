@@ -25,7 +25,7 @@
                 <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
                     <div class="row">
                         <div class="col-lg-7">
-                            <div class="card mt-n2 active">
+                            <div class="card mt-n2 mb-3 active">
 
                                 {% block checkout_user_noregistration %}
                                     {% if oView.getLoginOption() == 1 %}
@@ -60,6 +60,12 @@
                                     {% endif %}
                                 {% endblock %}
                             </div>
+                            <a href="/?cl=basket" class="btn btn-outline-primary">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#left"></use>
+                                </svg>
+                                {{ translate({ ident: "BACK" }) }}
+                            </a>
                         </div>
                         <div class="col-lg-5">
                             <div class="sticky-md-top">
