@@ -3,7 +3,8 @@
 {% set _artPerPage = oViewConf.getArtPerPageCount() %}
 
 {% if oView.canSelectDisplayType() %}
-    <div class="btn-group" role="group" aria-label="Basic example">
+
+<div class="btn-group mb-auto d-none d-md-block ms-md-3" role="group">
         <a title="{{ translate({ ident: "grid" }) }}" href="{{ oView.getLink()|add_url_parameters("ldtype=grid&amp;_artperpage=" ~ _artPerPage ~ "&amp;pgNr=0&amp;" ~ _additionalParams) }}" class="btn btn-outline-primary btn-icon{% if listType == 'grid' %} active{% endif %}">
             <svg>
                 <use xlink:href="#grid-fill"></use>

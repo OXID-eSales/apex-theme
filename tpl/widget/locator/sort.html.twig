@@ -8,8 +8,7 @@
             {% set _sortDirectionVarName = oView.getSortOrderParameterName() %}
 
             {% if oView.getSortColumns()|length > 1 %}
-                <div class="ms-auto">
-                    <button type="button" class="dropdown-toggle arrow" id="sort" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="dropdown-toggle form-select" id="sort" data-bs-toggle="dropdown" aria-expanded="false">
                         {% if oView.getListOrderBy() %}
                             {{ translate({ ident: oView.getListOrderBy()|upper }) }}
                             {% if oView.getListOrderDirection() == 'desc'%}
@@ -35,7 +34,6 @@
                             </li>
                         {% endfor %}
                     </ul>
-                </div>
             {% else %}
                 <nav class="nav">
                     {% for sColumnName in oView.getSortColumns() %}
