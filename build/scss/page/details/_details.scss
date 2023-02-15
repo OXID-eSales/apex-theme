@@ -365,3 +365,36 @@ $thumb-size: 120px;
     box-shadow: 0 0 0 100vmin rgba(24, 33, 45, 0.6), 0 0 10vmin rgba(13, 21, 31, 0.6);
   }
 }
+
+.product-list-navigation {
+  background: #fff;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin: 0 5px 0 0;
+  }
+
+  .pager-current-page {
+    text-align: center;
+  }
+
+  .pager-next {
+    text-align: right;
+
+    svg {
+      margin-left: 5px;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

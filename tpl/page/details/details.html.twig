@@ -12,6 +12,7 @@
     {% set currency = oView.getActCurrency() %}
     {% set sPageHeadTitle = oDetailsProduct.oxarticles__oxtitle.value|cat(' ')|cat(oDetailsProduct.oxarticles__oxvarselect.value) %}
     {% set headerImageWidth = oViewConf.getViewThemeParam('sHeaderImageWidth') %}
+    {% set productListNavigation = oViewConf.getViewThemeParam('sProductListNavigation') %}
 
     {% if oView.getPriceAlarmStatus() == 1 %}
         {% set _statusMessage1 = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate|cat(" ")|cat(oxcmp_shop.oxshops__oxname.value) %}
@@ -29,17 +30,56 @@
     {% endif %}
 
     <div id="details_container">
-        {# details locator #}
-        {% if oView.getSearchTitle() %}
-            {% set detailsLocation = oView.getSearchTitle() %}
-        {% else %}
-            {% for oCatPath in oView.getCatTreePath() %}
-                {% if loop.last %}
-                    {% set detailsLocation = oCatPath.oxcategories__oxtitle.value %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+        {% if productListNavigation %}
+            {# details locator #}
+            {% set actCategory = oView.getActiveCategory() %}
 
+            <div class="detailsParams listRefine bottomRound product-list-navigation">
+                <div class="container-xxl">
+                    <div class="row refineParams clear" id="detailsItemsPager">
+                        <div class="col-3 pager-overview-link">
+                            <a href="{{ actCategory.toListLink|raw }}">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#bars"></use>
+                                </svg>
+                                {{ translate({ ident: "BACK_TO_OVERVIEW" }) }}
+                            </a>
+                        </div>
+                        <div class="col-3 pager-prev">
+                            {% if actCategory.prevProductLink %}
+
+                                <a id="linkPrevArticle" href="{{ actCategory.prevProductLink }}">
+                                    <svg aria-hidden="true">
+                                        <use xlink:href="#left"></use>
+                                    </svg>
+                                    {{ translate({ ident: "PREVIOUS_PRODUCT" }) }}
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="col-3 pager-current-page">
+                            {% if actCategory.iProductPos %}
+                                {{ translate({ ident: "PRODUCT" }) }} {{ actCategory.iProductPos }} {{ translate({ ident: "OF" }) }} {{ actCategory.iCntOfProd }}
+                            {% endif %}
+                        </div>
+                        <div class="col-3 pager-next">
+                            {% if actCategory.nextProductLink %}
+                                <a id="linkNextArticle"
+                                   href="{{ actCategory.nextProductLink }}">
+                                    {{ translate({ ident: "NEXT_PRODUCT" }) }}
+                                    <svg aria-hidden="true">
+                                        <use xlink:href="#right"></use>
+                                    </svg>
+                                </a>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if blFullwidth %}
+                        <hr>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
         {% set actCategory = oView.getActiveCategory() %}
         {% include "page/details/inc/fullproductinfo.html.twig" %}
     </div>

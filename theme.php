@@ -99,11 +99,10 @@ $aTheme = array(
 //DETAIL
         array(
             'group' => 'pdp',
-            'name' => 'sImageStyle',
-            'type' => 'select',
-            'value' => 'carousel',
-            'constraints' => 'grid|carousel',
-            'position' => 1,
+            'name' => 'sProductListNavigation',
+            'type' => 'bool',
+            'value' => 0,
+            'position' => 40,
         ),
 
 //KATEGORIEN

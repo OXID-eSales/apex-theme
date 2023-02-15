@@ -113,6 +113,9 @@ $aLang = array(
     'SHOP_THEME_sStartPageListDisplayType_infogrid' => 'Double grid',
     'SHOP_THEME_blShowWeightInList'                 => 'Display weight in list',
 
+    'SHOP_THEME_sProductListNavigation'         => 'Display product list navigation',
+
+
     'SHOP_THEME_aNrofCatArticlesInGrid' => 'Grid view: Number of products which can be shown in a product lists (category pages, search results)<br><br>Attention: A large number of products per page (above 100) can cause performance loss!',
     'SHOP_THEME_aNrofCatArticles'       => 'Number of products which can be shown in a product lists (category pages, search results)<br><br>Attention: A large number of products per page (above 100) can cause performance loss!',
 
