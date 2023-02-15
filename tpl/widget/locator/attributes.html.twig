@@ -7,16 +7,6 @@
             {% endif %}
         {% endfor %}
 
-        {% if hasActiveValue %}
-            <form method="get" action="{{ oViewConf.getSelfActionLink() }}" name="_resetFilter" id="resetFilter">
-                {{ oViewConf.getHiddenSid()|raw }}
-                {{ oViewConf.getNavFormParams()|raw }}
-                <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
-                <input type="hidden" name="fnc" value="resetFilter">
-                <button type="submit" class="btn btn-outline-primary mb-3 btn-reset">{{ translate({ ident: "DD_CATEGORY_RESET_BUTTON" }) }}</button>
-            </form>
-        {% endif %}
-
         {% set categoryWidth = oViewConf.getViewThemeParam('sCategoryWidth') %}
 
         <form method="get" action="{{ oViewConf.getSelfActionLink() }}" name="_filterlist" class="d-md-flex mb-auto">
@@ -27,15 +17,34 @@
             <input type="hidden" name="oxloadid" value="{{ oViewConf.getActContentLoadId() }}">
             <input type="hidden" name="fnc" value="executefilter">
             <input type="hidden" name="fname" value="">
+
+            {% set hasActiveValue = null %}
             {% for sAttrID, oFilterAttr in attributes %}
                 {% set sActiveValue = oFilterAttr.getActiveValue() %}
-                <select class="form-select" aria-label="{{ oFilterAttr.getTitle() }}" name="attrfilter[{{ sAttrID }}]" onchange="this.form.submit()">
+                {% if sActiveValue %}{% set hasActiveValue = sActiveValue %}{% endif %}
+                <select class="form-select" aria-label="{{ oFilterAttr.getTitle() }}" name="attrfilter[{{ sAttrID }}]"
+                        onchange="this.form.submit()">
                     <option{% if not sActiveValue %} selected{% endif %} value="">{{ oFilterAttr.getTitle() }}</option>
                     {% for sValue in oFilterAttr.getValues() %}
-                    <option{% if sActiveValue == sValue %} selected{% endif %} value="{{ sValue }}">{{ sValue }}</option>
+                        <option{% if sActiveValue == sValue %} selected{% endif %}
+                                value="{{ sValue }}">{{ sValue }}</option>
                     {% endfor %}
                 </select>
             {% endfor %}
         </form>
+
+        {% if hasActiveValue %}
+            <form method="get" action="{{ oViewConf.getSelfActionLink()|raw() }}" name="_resetFilter"
+                  id="resetFilter" class="pull-left">
+                {{ oViewConf.getHiddenSid()|raw() }}
+                {{ oViewConf.getNavFormParams()|raw() }}
+                <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
+                <input type="hidden" name="fnc" value="resetFilter">
+
+                <button type="submit"
+                        class="btn btn-default btn-sm ml-2">{{ translate({ ident: "DD_CATEGORY_RESET_BUTTON" }) }}</button>
+            </form>
+        {% endif %}
+
     {% endif %}
 {% endblock %}
