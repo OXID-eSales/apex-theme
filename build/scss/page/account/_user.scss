@@ -48,3 +48,16 @@
 .address-info {
   flex: 1;
 }
+
+.private-sales {
+  .header {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn {
+      margin: auto 0;
+    }
+  }
+}
