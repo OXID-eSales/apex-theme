@@ -37,6 +37,7 @@ $aLang = array(
     'SHOP_THEME_GROUP_background'      => 'Background-image',
     'SHOP_THEME_GROUP_econda'          => 'econda Web Shop Controlling',
     'SHOP_THEME_GROUP_emails'          => 'E-mails',
+    'SHOP_THEME_GROUP_basket'          => 'Basket',
 
     'SHOP_THEME_sIconsize'      => 'Icon size (width*height)',
     //SHOP_CONFIG_ICONSIZE
@@ -207,4 +208,9 @@ $aLang = array(
     'SHOP_THEME_sCategoryDescPosition'        => 'Category description position',
     'SHOP_THEME_sCategoryDescPosition_bottom' => 'bottom',
     'SHOP_THEME_sCategoryDescPosition_top'    => 'top',
+
+    'SHOP_THEME_sBasketNoticeListButtonFunction' => 'Behaviour of Noticelist-Button in Basket',
+    'SHOP_THEME_sBasketNoticeListButtonFunction_hide' => 'Hide Button',
+    'SHOP_THEME_sBasketNoticeListButtonFunction_move' => 'Move Product to Noticelist (delete from Basket)',
+    'SHOP_THEME_sBasketNoticeListButtonFunction_copy' => 'Copy Product to Noticelist',
 );

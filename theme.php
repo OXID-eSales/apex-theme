@@ -494,5 +494,14 @@ $aTheme = array(
             'type' => 'str',
             'value' => 'OXID eSales AG, Bertoldstraße 48, 79098 Freiburg',
         ),
+
+// BASKET
+        array(
+            'group' => 'basket',
+            'name' => 'sBasketNoticeListButtonFunction',
+            'type' => 'select',
+            'value' => 'move',
+            'constraints' => 'hide|move|copy',
+        ),
     ),
 );
