@@ -19,9 +19,7 @@
         <div class="form-check">
             <input type="checkbox" id="ord_agb" name="ord_agb" value="1" class="form-check-input agb-check">
             <label class="form-check-label" for="ord_agb">
-                {% ifcontent ident "oxrighttocancellegend" set oContent %}
-                {{ oContent.oxcontents__oxcontent.value }}
-                {% endifcontent %}
+                {% include_content "oxrighttocancellegend" ignore missing %}
             </label>
         </div>
         <button type="submit" class="submitButton btn btn-outline-primary" disabled id="ord_agb_accept">{{ translate({ ident: "LOGIN" }) }}</button>

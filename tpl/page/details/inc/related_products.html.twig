@@ -1,37 +1,28 @@
 <div class="container-xxl row-spacer">
-    {% block details_relatedproducts_also_bought %}
-        {% if oView.getAlsoBoughtTheseProducts() %}
-            {% include "widget/product/list.html.twig" with {type: "grid", listId: "alsoBought", head: "CUSTOMERS_ALSO_BOUGHT"|translate, subhead: "PAGE_DETAILS_CUSTOMERS_ALSO_BOUGHT_SUBHEADER"|translate, products: oView.getAlsoBoughtTheseProducts()} %}
-        {% endif %}
-    {% endblock %}
+        {% block details_relatedproducts_also_bought %}
+                {% if oView.getAlsoBoughtTheseProducts() %}
+                        {% include "widget/product/list.html.twig" with {type: "grid", listId: "alsoBought", head: "CUSTOMERS_ALSO_BOUGHT"|translate, subhead: "PAGE_DETAILS_CUSTOMERS_ALSO_BOUGHT_SUBHEADER"|translate, products: oView.getAlsoBoughtTheseProducts()} %}
+                {% endif %}
+        {% endblock %}
 
-    {% block details_relatedproducts_accessoires %}
-        {% if oView.getAccessoires() %}
-            {% capture append = "oxidBlock_productbar" %}
-                {% include "widget/product/list.html.twig" with {type: "grid", listId: "accessories", products: oView.getAccessoires(), head: "ACCESSORIES"|translate, subhead: "WIDGET_PRODUCT_RELATED_PRODUCTS_ACCESSORIES_SUBHEADER"|translate} %}
-            {% endcapture %}
-        {% endif %}
-    {% endblock %}
+        {% block details_relatedproducts_similarproducts %}
+                {% if oView.getSimilarProducts() %}
+                        {% include "widget/product/list.html.twig" with {type: "grid", listId: "similar", products: oView.getSimilarProducts(), head: "SIMILAR_PRODUCTS"|translate, subhead: "WIDGET_PRODUCT_RELATED_PRODUCTS_SIMILAR_SUBHEADER"|translate} %}
+                {% endif %}
+        {% endblock %}
 
-    {% block details_relatedproducts_similarproducts %}
-        {% if oView.getSimilarProducts() %}
-            {% include "widget/product/list.html.twig" with {type: "grid", listId: "similar", products: oView.getSimilarProducts(), head: "SIMILAR_PRODUCTS"|translate, subhead: "WIDGET_PRODUCT_RELATED_PRODUCTS_SIMILAR_SUBHEADER"|translate} %}
+        {% if oView.getAccessoires() or oView.getCrossSelling() %}
+                <div id="relProducts" class="relatedProducts">
+                        {% block details_relatedproducts_accessoires %}
+                                {% if oView.getAccessoires() %}
+                                        {% include "widget/product/list.html.twig" with {type: "grid", listId: "accessories", products: oView.getAccessoires(), head: "ACCESSORIES"|translate, subhead: "WIDGET_PRODUCT_RELATED_PRODUCTS_ACCESSORIES_SUBHEADER"|translate} %}
+                                {% endif %}
+                        {% endblock %}
+                        {% block details_relatedproducts_crossselling %}
+                                {% if oView.getCrossSelling() %}
+                                        {% include "widget/product/list.html.twig" with {type: "grid", listId: "cross", products: oView.getCrossSelling(), head: "HAVE_YOU_SEEN"|translate, subhead: "WIDGET_PRODUCT_RELATED_PRODUCTS_CROSSSELING_SUBHEADER"|translate} %}
+                                {% endif %}
+                        {% endblock %}
+                </div>
         {% endif %}
-    {% endblock %}
-
-    {% block details_relatedproducts_crossselling %}
-        {% if oView.getCrossSelling() %}
-            {% capture append = "oxidBlock_productbar" %}
-                {% include "widget/product/list.html.twig" with {type: "grid", listId: "cross", products: oView.getCrossSelling(), head: "HAVE_YOU_SEEN"|translate, subhead: "WIDGET_PRODUCT_RELATED_PRODUCTS_CROSSSELING_SUBHEADER"|translate} %}
-            {% endcapture %}
-        {% endif %}
-    {% endblock %}
-
-    {% if oxidBlock_productbar %}
-        <div id="relProducts" class="relatedProducts">
-            {% for _block in oxidBlock_productbar %}
-                {{ _block|raw }}
-            {% endfor %}
-        </div>
-    {% endif %}
 </div>

@@ -1,5 +1,6 @@
 {% capture append = "oxidBlock_content" %}
     <div class="container-xxl">
+        {% set template_title = "LINKS"|translate %}
         <h1>{{ translate({ ident: "LINKS" }) }}</h1>
 
         {% set aLinkList = oView.getLinksList() %}
@@ -19,6 +20,7 @@
             <p class="alert alert-info">{{ translate({ ident: "DD_LINKS_NO_ENTRIES" }) }}</p>
         {% endif %}
     </div>
+    {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 
 {% include "layout/page.html.twig" %}

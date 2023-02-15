@@ -97,7 +97,7 @@
                         {{ translate({ ident: "COUPON" }) }}&nbsp;({{ sVoucher.sVoucherNr }})
                         {% if editable %}
                             <a href="{{ oViewConf.getSelfLink() }}&amp;cl=basket&amp;fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}"
-                               class="removeFn" title="{{ translate({ ident: "REMOVE" }) }}">
+                               class="btn removeFn" title="{{ translate({ ident: "REMOVE" }) }}">
                                 <svg>
                                     <use xlink:href="#trash"></use>
                                 </svg>

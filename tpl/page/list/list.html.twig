@@ -25,7 +25,7 @@
 
 {% capture append = "oxidBlock_content" %}
     {% block page_list_listhead %}
-    {% if listType=='manufacturer' %}
+    {% if listType=='manufacturer' or listType=='vendor'%}
     <div class="bg-white list-header mb-4">
         <div class="container-xxl">
             <div class="row">
@@ -39,9 +39,9 @@
                     <h1{% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %} class="text-white"{% endif %}>
                         {{ actCategory.getTitle() }}
                     </h1>
-                    {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 and actCategory.oxcategories__oxdesc.value %}
+                    {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 and actCategory.getShortDescription() %}
                     <div id="catDescLocator" class="categoryDescription pb-5">
-                        {{ actCategory.oxcategories__oxdesc.value }}
+                        {{ actCategory.getShortDescription()|raw() }}
                     </div>
                     {% endif %}
                 </div>
@@ -97,7 +97,7 @@
     {% if oView.hasVisibleSubCats() %}
         <div class="container-xxl">
             {% set iSubCategoriesCount = 0 %}
-            <div class="cat-list mb-4">
+            <div class="cat-list mb-4 pb-3">
                 {% for category in oView.getSubCatList() %}
                     {% if category.getIsVisible() %}
                         {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
@@ -108,7 +108,13 @@
                                 {% else %}
                                     <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat-placeholder.png') }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
                                 {% endif %}
-                                <span class="cat-list-item-name">{{ category.oxcategories__oxtitle.value }}</span>
+                                <span class="cat-list-item-name">
+                                    {{ category.oxcategories__oxtitle.value }}
+
+                                    {% if oView.showCategoryArticlesCount() and (category.getNrOfArticles() > 0) %}
+                                        <span class="text-muted">({{ category.getNrOfArticles() }})</span>
+                                    {% endif %}
+                                </span>
                             </a>
                     {% endif %}
 
@@ -116,7 +122,9 @@
                         {% for ocont in category.getContentCats() %}
                             <a href="{{ ocont.getLink() }}" class="cat-list-item">
                                 <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat-placeholder.png') }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
-                                <span class="cat-list-item-name">{{ ocont.oxcontents__oxtitle.value }}</span>
+                                <span class="cat-list-item-name">
+                                    {{ ocont.oxcontents__oxtitle.value }}
+                                </span>
                             </a>
                         {% endfor %}
                     {% endif %}
@@ -136,7 +144,7 @@
                     <div class="container-xxl">
                         {% if oView.getArticleList() %}
                             {% block page_list_upperlocator %}
-                                {% include "widget/locator/listlocator.html.twig" with {attributes: oView.getAttributes(), sort: true} %}
+                                {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedTop(), attributes: oView.getAttributes(), listDisplayType: true, itemsPerPage: true, sort: true} %}
                             {% endblock %}
                         {% endif %}
                         <div class="row">
@@ -158,6 +166,6 @@
             {% include_content 'oxstartslot4' ignore missing  %}
         {% endif %}
     {% endblock %}
-
+    {{ insert_tracker() }}
 {% endcapture %}
 {% include "layout/page.html.twig" with {tree_path: oView.getTreePath()} %}

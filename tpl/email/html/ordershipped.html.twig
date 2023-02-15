@@ -24,7 +24,7 @@
 {% include "email/html/header.html.twig" with { title: ("DD_ORDERSHIPPED_HEADING"|translate) ~ " #" ~ order.oxorder__oxordernr.value, style: style } %}
 
     {% block email_html_ordershipped_sendemail %}
-{#       {% include 'content::ident::oxordersendemail' %}#}{# TODO: uncomment after fixing #}
+        {% include_content 'oxordersendemail' %}
     {% endblock %}
 
     {% block email_html_ordershipped_infoheader %}

@@ -2,45 +2,29 @@
  * Script for Variantselection
  */
 addDropdownLinksEventListeners = () => {
-    var aVariantDropdownLinks = document.querySelectorAll('#variants .dropDown a');
+    var aVariantDropdownLinks = document.querySelectorAll('#variants .dropDown .form-select');
 
     if (aVariantDropdownLinks) {
-        aVariantDropdownLinks.forEach((a) => a.addEventListener('click', handleVariantDropdownLinkClick));
-    }
-
-    var ajaxArticleToBasketButton = document.querySelector('.js-oxProductForm #toBasket');
-
-    if (ajaxArticleToBasketButton) {
-        ajaxArticleToBasketButton.addEventListener('click', handleVariantAddToBasket);
+        aVariantDropdownLinks.forEach((select) => select.addEventListener('click', handleVariantDropdownLinkClick));
     }
 };
 
 handleVariantDropdownLinkClick = (e) => {
     e.preventDefault();
 
-    // update clicked value to input
-    let dropdownLink = e.target;
-    let dropdown = dropdownLink.closest('.dropdown');
-    let varselidInput = dropdown.querySelector("input[name^=varselid]");
-
-    // set value
-    let varselId = dropdownLink.dataset.selectionId;
-    varselidInput.value = varselId;
-
     // do ajax stuff
     let reloadForm = document.querySelector('.js-oxWidgetReload');
     let formData = serialize(reloadForm);
-    let aSelectionInputs = document.querySelectorAll('input[name^=varselid]', 'form.js-oxProductForm');
+    let aSelects = document.querySelectorAll('select[name^=varselid]', 'form.js-oxProductForm');
 
 
-    aSelectionInputs.forEach((inputField, i) => {
-        formData += '&varselid%5B' + i + '%5D=' + inputField.value;
+    aSelects.forEach((select, i) => {
+        formData += '&varselid%5B' + i + '%5D=' + select.value;
     });
-
 
     // perform ajax call
     var request = new XMLHttpRequest();
-    request.open('GET', '/index.php?' + formData, true);
+    request.open('GET', '/widget.php?' + formData, true);
 
     request.onload = function () {
         if (this.status >= 200 && this.status < 400) {
@@ -59,22 +43,7 @@ handleVariantDropdownLinkClick = (e) => {
     };
 
     request.send();
-
 };
-
-
-/** Replace cl input of form to details **/
-handleVariantAddToBasket = (e) => {
-    e.preventDefault();
-
-    // replace cl before submitting
-    var form = e.target.closest('.js-oxProductForm');
-    var cl = form.querySelector('input[name=cl]');
-    cl.value = 'details';
-
-    form.submit();
-};
-
 
 addDropdownLinksEventListeners();
 

@@ -19,5 +19,6 @@
     {% else %}
         {{ translate({ ident: "GIFT_REGISTRY_EMPTY" }) }}
     {% endif %}
+    {{ insert_tracker() }}
 {% endcapture %}
 {% include "layout/page.html.twig" with {sidebar: "Left"} %}

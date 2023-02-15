@@ -141,12 +141,13 @@
         </div>
         {% endblock %}
         <div class="col-6 text-end">
-            <a href="{{ oViewConf.getLogoutLink() }}" class="btn btn-outline-primary" role="getLogoutLink">
+            <a href="{{ oViewConf.getLogoutLink()|raw }}" class="btn btn-outline-primary" role="getLogoutLink">
                 {{ translate({ ident: "LOGOUT" }) }}
             </a>
         </div>
     </div>
 </div>
+    {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 
 

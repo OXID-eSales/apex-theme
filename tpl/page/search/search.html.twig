@@ -4,7 +4,7 @@
     {% set searchparamforhtml = oView.getSearchParamForHtml() %}
     {% set template_title = search_title ~ "-" ~ searchparamforhtml %}
     {% set search_head = "HITS_FOR"|translate %}
-    {% set search_head = oView.getArticleCount() ~ " " ~ search_head ~ " &quot;" ~ oView.getSearchParamForHtml() ~ "&quot;" %}
+    {% set search_head = oView.getArticleCount()|cat(" ")|cat(search_head)|cat(' "')|cat(oView.getSearchParamForHtml())|cat('"') %}
     {% set showPopBreadcrump = oViewConf.getViewThemeParam('sShowPopBreadcrump') %}
 
     {% block search_header %}
@@ -32,7 +32,7 @@
                 <div class="d-flex py-3">
                     <div class="sidebar-display ms-auto">
                         {% block search_top_listlocator %}
-                            {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedTop(), sort: true} %}
+                            {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedTop(), listDisplayType: true, itemsPerPage: true, sort: true} %}
                         {% endblock %}
                     </div>
                 </div>
@@ -52,6 +52,7 @@
         </div>
     {% endblock %}
     </div>
+    {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 {% set template_title = "SEARCH"|translate %}
 

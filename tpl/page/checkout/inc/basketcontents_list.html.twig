@@ -142,8 +142,7 @@
                                                                             <input type="hidden"
                                                                                    name="aproducts[{{ basketindex }}][sel][{{ loop.index0 }}]"
                                                                                    value="{{ oActiveSelection.getValue() }}">
-                                                                            <div>{{ oList.getLabel() }}
-                                                                                : {{ oActiveSelection.getName() }}</div>
+                                                                            <div>{{ oList.getLabel() }}: {{ oActiveSelection.getName() }}</div>
                                                                         {% endif %}
                                                                     {% endif %}
                                                                 {% endfor %}

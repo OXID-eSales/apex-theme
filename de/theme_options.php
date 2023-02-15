@@ -193,6 +193,8 @@ $aLang = array(
     'SHOP_THEME_sBargainWidth_w100c100'       => 'Alles 100%',
     'SHOP_THEME_sBargainWidth_container'      => 'Alles mittig',
 
+    'SHOP_THEME_sProductListNavigation'         => 'Produktlisten-Navigation anzeigen',
+
     'SHOP_THEME_sShowTopArticles'         => 'Topseller anzeigen',
     'SHOP_THEME_sTopWidth'                => 'Topseller Breite',
     'SHOP_THEME_sTopWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',

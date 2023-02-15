@@ -6,9 +6,7 @@
        <div><a id="logo" href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}"><img src="{{ oViewConf.getImageUrl('logo.png') }}" alt="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}"></a></div>
     </div>
     <div>
-        {% ifcontent ident "oxstartwelcome" set oCont %}
-            {{ oCont.oxcontents__oxcontent.value }}
-        {% endifcontent %}
+        {% include_content "oxstartwelcome" ignore missing %}
         <div>
             {{ translate({ ident: "PLEASE_CHOOSE" }) }}
             <br>
@@ -34,9 +32,7 @@
             <img src="{{ oViewConf.getImageUrl('logo_small.png') }}" alt="{{ translate({ ident: "OXID_ESALES_URL_TITLE" }) }}">
         </div>
         <div class="text">
-            {% ifcontent ident "oxstdfooter" set oCont %}
-            {{ oCont.oxcontents__oxcontent.value }}
-            {% endifcontent %}
+            {% include_content "oxstdfooter" ignore missing %}
         </div>
     </div>
 </div>

@@ -28,6 +28,4 @@
 </form>
 
 {{ translate({ ident: "REQUEST_PASSWORD_AFTERCLICK" }) }}<br><br>
-{% ifcontent ident "oxforgotpwd" set oCont %}
-    {{ oCont.oxcontents__oxcontent.value }}
-    {% endifcontent %}
+{% include_content "oxforgotpwd" ignore missing %}

@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-lg-4 col-xl-3">
                         <div class="sticky-md-top">
-                            {% include "page/checkout/inc/summary_sidebar.html.twig" with {btn: true} %}
+                            {% include "page/checkout/inc/summary_sidebar.html.twig" with {btn: true, editable: true} %}
                         </div>
                     </div>
                 </div>
@@ -42,6 +42,7 @@
     {% if oView.isWrapping() %}
     {% include "page/checkout/inc/wrapping.html.twig" %}
     {% endif %}
+    {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 
 {% include "layout/page.html.twig" %}

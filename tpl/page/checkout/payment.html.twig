@@ -85,9 +85,7 @@
                                                     {{ translate({ ident: "PAYMENT_INFORMATION" }) }}
                                                 </h4>
                                                 <div class="card-body">
-                                                    {% ifcontent ident "oxnopaymentmethod" set oCont %}
-                                                        {{ oCont.oxcontents__oxcontent.value }}
-                                                    {% endifcontent %}
+                                                    {% include_content "oxnopaymentmethod" ignore missing %}
                                                     <input type="hidden" name="paymentid" value="oxempty">
                                                 </div>
                                             {% endblock %}
@@ -168,8 +166,7 @@
             </div>
         </div>
     </div>
-
-
+    {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 
 {% include "layout/page.html.twig" with {active_step: 2} %}

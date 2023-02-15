@@ -65,7 +65,7 @@
                             <div class="sticky-md-top">
                                 {% include "page/checkout/inc/summary_sidebar.html.twig" %}
 
-                                <button type="button" class="btn btn-highlight btn-lg w-100" onclick="document.getElementById('user_form').submit();">
+                                <button type="button" id="userFormSubmit" class="btn btn-highlight btn-lg w-100" onclick="document.getElementById('user_form').submit();">
                                     {{ translate({ ident: "NEXT" }) }}
                                 </button>
                             </div>
@@ -75,6 +75,7 @@
             </div>
         </div>
     {% endif %}
+    {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 
 {% include "layout/page.html.twig" with {active_step: 1}%}

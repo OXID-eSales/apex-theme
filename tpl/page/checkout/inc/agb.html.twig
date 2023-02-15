@@ -20,7 +20,7 @@
                         <div class="form-check">
                             <input id="checkAgbTop" class="form-check-input" type="checkbox" name="ord_agb" value="1">
                             <label for="checkAgbTop" class="form-check-label">
-                                 {{ oContent.oxcontents__oxcontent.value }}
+                                 {{ include(template_from_string(oContent.oxcontents__oxcontent.value)) }}
                             </label>
                         </div>
                     {% endifcontent %}
@@ -40,7 +40,7 @@
                         <p id="noteForDownloadableArticles" class="agbConfirmation checkbox">
                             <label>
                                 <input id="oxdownloadableproductsagreement" type="checkbox" name="oxdownloadableproductsagreement" value="1">
-                                {{ oExplanationMarks.getMark('downloadable') }} {{ oContent.oxcontents__oxcontent.value }}
+                                {{ oExplanationMarks.getMark('downloadable') }} {{ include(template_from_string(oContent.oxcontents__oxcontent.value)) }}
                             </label>
                         </p>
                     {% endifcontent %}
@@ -50,7 +50,7 @@
                         <p id="noteForIntangibleArticles" class="agbConfirmation checkbox">
                             <label>
                                 <input id="oxserviceproductsagreement" type="checkbox" name="oxserviceproductsagreement" value="1">
-                                {{ oExplanationMarks.getMark('intangible') }} {{ oContent.oxcontents__oxcontent.value }}
+                                {{ oExplanationMarks.getMark('intangible') }} {{ include(template_from_string(oContent.oxcontents__oxcontent.value)) }}
                             </label>
                         </p>
                     {% endifcontent %}
@@ -58,15 +58,11 @@
             {% endif %}
 
             {% if oViewConf.isFunctionalityEnabled("blShowTSInternationalFeesMessage") %}
-                {% ifcontent ident "oxtsinternationalfees" set oTSIFContent %}
-                    {{ oTSIFContent.oxcontents__oxcontent.value }}
-                {% endifcontent %}
+                {% include_content "oxtsinternationalfees" ignore missing %}
             {% endif %}
 
             {% if payment.oxpayments__oxid.value == "oxidcashondel" and oViewConf.isFunctionalityEnabled("blShowTSCODMessage") %}
-                {% ifcontent ident "oxtscodmessage" set oTSCODContent %}
-                    {{ oTSCODContent.oxcontents__oxcontent.value }}
-                {% endifcontent %}
+                {% include_content "oxtscodmessage" ignore missing %}
             {% endif %}
         </div>
     {% endif %}

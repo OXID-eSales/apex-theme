@@ -59,7 +59,9 @@
                         <span class="h4 modal-title" id="popup1Label">{{ oContent.oxcontents__oxtitle.value }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                     </div>
-                    <div class="modal-body">{{ oContent.oxcontents__oxcontent.value }}</div>
+                    <div class="modal-body">
+                        {{ oCont.oxcontents__oxcontent.value|raw }}
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary"
                                 data-bs-dismiss="modal">{{ translate({ ident: "CLOSE" }) }}</button>
@@ -78,7 +80,7 @@
                         <span class="h4 modal-title" id="popup2Label">{{ oContent.oxcontents__oxtitle.value }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                     </div>
-                    <div class="modal-body">{{ oContent.oxcontents__oxcontent.value }}</div>
+                    <div class="modal-body">{{ oCont.oxcontents__oxcontent.value|raw }}</div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary"
                                 data-bs-dismiss="modal">{{ translate({ ident: "CLOSE" }) }}</button>
