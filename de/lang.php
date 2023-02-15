@@ -143,6 +143,7 @@ $aLang = array(
     'YOUR_REVIEW'                => 'Deine Bewertung',
     'ON'                => 'am',
     'BY'                => 'von',
+    'BACK'                => 'Zurück',
 
     // Contact page
     'DD_SELECT_SALUTATION'                                  => 'Bitte auswählen',

@@ -104,6 +104,7 @@ $aLang = array(
     'YOUR_REVIEW'                => 'Your Review',
     'ON'                => 'on',
     'BY'                => 'by',
+    'BACK'                => 'Back',
 
     // Modal basket
     'DD_MINIBASKET_MODAL_TABLE_PRICE'                       => 'Total',
