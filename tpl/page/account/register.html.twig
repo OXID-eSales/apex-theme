@@ -13,6 +13,7 @@
         <h3>{{ translate({ ident: "OPEN_ACCOUNT" }) }}</h3>
         {% include "form/register.html.twig" %}
     </div>
+    {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 
 {% if oView.isActive('PsLogin') %}
