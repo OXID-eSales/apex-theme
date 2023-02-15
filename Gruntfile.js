@@ -172,7 +172,7 @@ module.exports = function (grunt) {
         watch: {
             sass: {
                 files: [
-                    '<%= project.dev %>build/scss/**/*.scss','<%= project.dev %>tpl/**/*.twig'],
+                    '<%= project.dev %>build/scss/**/*.scss','<%= project.dev %>tpl/**/*.html.twig'],
                 tasks:
                     ['sass', 'cssmin', 'clean'],
                 options:
