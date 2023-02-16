@@ -5,7 +5,7 @@ addDropdownLinksEventListeners = () => {
     var aVariantDropdownLinks = document.querySelectorAll('#variants .dropDown .form-select');
 
     if (aVariantDropdownLinks) {
-        aVariantDropdownLinks.forEach((select) => select.addEventListener('click', handleVariantDropdownLinkClick));
+        aVariantDropdownLinks.forEach((select) => select.addEventListener('change', handleVariantDropdownLinkClick));
     }
 };
 
