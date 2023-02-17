@@ -1,7 +1,10 @@
 {% if Errors|is_array and Errors.default|is_array and not empty(Errors.default) %}
-    <div class="container-xxl">
+    <div class="container-xxl mt-5">
         {% for key, oEr in Errors.default %}
-            <p class="alert alert-danger">{{ oEr.getOxMessage() }}</p>
+            <div class="alert alert-danger alert-dismissible">
+                <p>{{ oEr.getOxMessage() }}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         {% endfor %}
     </div>
 {% endif %}

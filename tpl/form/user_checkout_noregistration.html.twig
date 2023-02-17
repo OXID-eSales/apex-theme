@@ -1,7 +1,7 @@
 {% set aErrors = oView.getFieldValidationErrors() %}
 
 {% block user_checkout_noregistration %}
-    <form action="{{ oViewConf.getSslSelfLink() }}" name="order" method="post" novalidate id="user_form">
+    <form action="{{ oViewConf.getSslSelfLink() }}" class="needs-validation" name="order" method="post" novalidate id="user_form">
         {% block user_checkout_noregistration_form %}
             {{ oViewConf.getHiddenSid()|raw }}
             {{ oViewConf.getNavFormParams()|raw }}

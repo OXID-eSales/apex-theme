@@ -1,0 +1,20 @@
+.alert {
+  &-danger {
+    @extend .bg-danger;
+    @extend .text-white;
+    padding: 30px 0;
+
+    p {
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  &-dismissible .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 1.25rem 1rem;
+  }
+}

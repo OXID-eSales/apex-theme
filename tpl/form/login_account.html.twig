@@ -10,7 +10,7 @@
     <div class="card card-lg">
         <h4 class="card-header card-title">{{ translate({ ident: "LOGIN" }) }}</h4>
         <div class="card-body">
-            <form name="login" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
+            <form name="login" class="needs-validation" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
                 {{ oViewConf.getHiddenSid()|raw }}
                 {{ oViewConf.getNavFormParams()|raw }}
                 <input type="hidden" name="fnc" value="login_noredirect">
