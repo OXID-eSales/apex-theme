@@ -1,7 +1,7 @@
 {{ script({ include: "js/changeaddress.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
 {% block user %}
-    <form action="{{ oViewConf.getSelfActionLink() }}" name="order" method="post" novalidate>
+    <form action="{{ oViewConf.getSelfActionLink() }}" class="needs-validation" name="order" method="post" novalidate>
         {% block user_form %}
             {% set aErrors = oView.getFieldValidationErrors() %}
             <div class="addressCollumns">

@@ -1,19 +1,20 @@
 <div class="mb-3 form-floating{% if aErrors.oxuser__oxusername %} oxInValid{% endif %}">
     {% block user_account_username %}
-        <input id="userLoginName" class="form-control" placeholder=" " type="email" name="lgn_usr" value="{{ oView.getActiveUsername() }}" required>
+        <input id="userLoginName" class="form-control{% if aErrors.oxuser__oxusername %} is-invalid{% endif %}" placeholder=" " type="email" name="lgn_usr" value="{{ oView.getActiveUsername() }}" required>
         <label class="req" for="userLoginName">{{ translate({ ident: "EMAIL_ADDRESS" }) }}</label>
+        {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxuser__oxusername} %}
     {% endblock %}
 </div>
 <div class="mb-3 form-floating{% if aErrors.oxuser__oxpassword %} oxInValid{% endif %}">
     {% block user_account_password %}
         <input type="hidden" id="passwordLength" value="{{ oViewConf.getPasswordLength() }}">
-        <input id="userPassword" class="form-control" placeholder=" " type="password" name="lgn_pwd" value="{{ lgn_pwd }}" required>
+        <input id="userPassword" class="form-control{% if aErrors.oxuser__oxpassword %} is-invalid{% endif %}" placeholder=" " type="password" name="lgn_pwd" value="{{ lgn_pwd }}" required>
         <label class="req" for="userPassword">{{ translate({ ident: "PASSWORD" }) }}</label>
     {% endblock %}
 </div>
 <div class="mb-3 form-floating{% if aErrors.oxuser__oxpassword %} oxInValid{% endif %}">
     {% block user_account_confirmpwd %}
-        <input id="userPasswordConfirm" class="form-control" placeholder=" " type="password" name="lgn_pwd2" value="{{ lgn_pwd2 }}" required>
+        <input id="userPasswordConfirm" class="form-control{% if aErrors.oxuser__oxpassword %} is-invalid{% endif %}" placeholder=" " type="password" name="lgn_pwd2" value="{{ lgn_pwd2 }}" required>
         <label class="req" for="userPasswordConfirm">{{ translate({ ident: "CONFIRM_PASSWORD" }) }}</label>
     {% endblock %}
 </div>

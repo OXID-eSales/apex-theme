@@ -38,7 +38,7 @@
     </div>
 </div>
 <div class="row gx-2">
-    <div class="col-md-6 mb-3{% if aErrors.oxuser__oxfname %} text-danger{% endif %}">
+    <div class="col-md-6 mb-3 px-1{% if aErrors.oxuser__oxfname %} text-danger{% endif %}">
         <div class="form-floating">
             <input class="form-control" placeholder=" " type="text" maxlength="255" id="invadr[oxuser__oxfname]" name="invadr[oxuser__oxfname]" value="{% if isset( invadr.oxuser__oxfname ) %}{{ invadr.oxuser__oxfname }}{% else %}{{ oxcmp_user.oxuser__oxfname.value }}{% endif %}"{% if oView.isFieldRequired("oxuser__oxfname") %} required{% endif %}>
             <label for="invadr[oxuser__oxfname]" class="{% if oView.isFieldRequired("oxuser__oxfname") %} req{% endif %}">{{ translate({ ident: "FIRST_NAME" }) }}</label>
@@ -46,7 +46,7 @@
         {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxuser__oxfname} %}
     </div>
 
-    <div class="col-md-6 mb-3{% if aErrors.oxuser__oxlname %} text-danger{% endif %}">
+    <div class="col-md-6 mb-3 px-1{% if aErrors.oxuser__oxlname %} text-danger{% endif %}">
         <div class="form-floating">
             <input class="form-control" placeholder=" " type="text" maxlength="255" id="invadr[oxuser__oxlname]" name="invadr[oxuser__oxlname]" value="{% if isset( invadr.oxuser__oxlname ) %}{{ invadr.oxuser__oxlname }}{% else %}{{ oxcmp_user.oxuser__oxlname.value }}{% endif %}"{% if oView.isFieldRequired("oxuser__oxlname") %} required{% endif %}>
             <label for="invadr[oxuser__oxlname]" class="{% if oView.isFieldRequired("oxuser__oxlname") %} req{% endif %}">{{ translate({ ident: "LAST_NAME" }) }}</label>
@@ -123,7 +123,7 @@
 {% endblock %}
 
 <div class="row gx-2">
-    <div class="col-md-8 mb-3{% if aErrors.oxuser__oxcompany %} text-danger{% endif %}">
+    <div class="col-md-8 mb-3 px-1{% if aErrors.oxuser__oxcompany %} text-danger{% endif %}">
         <div class="form-floating">
             <input class="form-control" placeholder=" " type="text" maxlength="255" id="invadr[oxuser__oxcompany]" name="invadr[oxuser__oxcompany]" value="{% if isset( invadr.oxuser__oxcompany ) %}{{ invadr.oxuser__oxcompany }}{% else %}{{ oxcmp_user.oxuser__oxcompany.value }}{% endif %}"{% if oView.isFieldRequired("oxuser__oxcompany") %} required{% endif %}>
             <label for="invadr[oxuser__oxcompany]" class="{% if oView.isFieldRequired("oxuser__oxcompany") %} req{% endif %}">{{ translate({ ident: "COMPANY" }) }}</label>
@@ -131,7 +131,7 @@
         {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxuser__oxcompany} %}
     </div>
 
-    <div class="col-md-4 mb-3{% if aErrors.oxuser__oxustid %} text-danger{% endif %}">
+    <div class="col-md-4 mb-3 px-1{% if aErrors.oxuser__oxustid %} text-danger{% endif %}">
         <div class="form-floating">
             <input class="form-control" placeholder=" " type="text" maxlength="255" id="invadr[oxuser__oxustid]" name="invadr[oxuser__oxustid]" value="{% if isset( invadr.oxuser__oxustid ) %}{{ invadr.oxuser__oxustid }}{% else %}{{ oxcmp_user.oxuser__oxustid.value }}{% endif %}"{% if oView.isFieldRequired("oxuser__oxustid") %} required{% endif %}>
             <label for="invadr[oxuser__oxustid]" class="{% if oView.isFieldRequired("oxuser__oxustid") %} req{% endif %}">{{ translate({ ident: "VAT_ID_NUMBER" }) }}</label>
@@ -141,7 +141,7 @@
 </div>
 
 <div class="row gx-2">
-    <div class="col-md-6 mb-3{% if aErrors.oxuser__oxfon %} text-danger{% endif %}">
+    <div class="col-md-6 mb-3 px-1{% if aErrors.oxuser__oxfon %} text-danger{% endif %}">
         <div class="form-floating">
             <input class="form-control" placeholder=" " type="text" maxlength="128" id="invadr[oxuser__oxfon]" name="invadr[oxuser__oxfon]" value="{% if isset( invadr.oxuser__oxfon ) %}{{ invadr.oxuser__oxfon }}{% else %}{{ oxcmp_user.oxuser__oxfon.value }}{% endif %}"{% if oView.isFieldRequired("oxuser__oxfon") %} required{% endif %}>
             <label for="invadr[oxuser__oxfon]" class="{% if oView.isFieldRequired("oxuser__oxfon") %} req{% endif %}">{{ translate({ ident: "PHONE" }) }}</label>
@@ -149,7 +149,7 @@
         {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxuser__oxfon} %}
     </div>
 
-    <div class="col-md-6 mb-3{% if aErrors.oxuser__oxfax %} text-danger{% endif %}">
+    <div class="col-md-6 mb-3 px-1{% if aErrors.oxuser__oxfax %} text-danger{% endif %}">
         <div class="form-floating">
             <input class="form-control" placeholder=" " type="text" maxlength="128" id="invadr[oxuser__oxfax]" name="invadr[oxuser__oxfax]" value="{% if isset( invadr.oxuser__oxfax ) %}{{ invadr.oxuser__oxfax }}{% else %}{{ oxcmp_user.oxuser__oxfax.value }}{% endif %}"{% if oView.isFieldRequired("oxuser__oxfax") %} required{% endif %}>
             <label for="invadr[oxuser__oxfax]" class="{% if oView.isFieldRequired("oxuser__oxfax") %} req{% endif %}">{{ translate({ ident: "FAX" }) }}</label>
@@ -159,7 +159,7 @@
 </div>
 
 <div class="row gx-2">
-    <div class="col-md-6 mb-3{% if aErrors.oxuser__oxmobfon %} text-danger{% endif %}">
+    <div class="col-md-6 mb-3 px-1{% if aErrors.oxuser__oxmobfon %} text-danger{% endif %}">
         <div class="form-floating">
             <input class="form-control" placeholder=" " type="text" maxlength="64" id="invadr[oxuser__oxmobfon]" name="invadr[oxuser__oxmobfon]" value="{% if isset( invadr.oxuser__oxmobfon ) %}{{ invadr.oxuser__oxmobfon }}{% else %}{{ oxcmp_user.oxuser__oxmobfon.value }}{% endif %}"{% if oView.isFieldRequired("oxuser__oxmobfon") %} required{% endif %}>
             <label for="invadr[oxuser__oxmobfon]" class="{% if oView.isFieldRequired("oxuser__oxmobfon") %} req{% endif %}">{{ translate({ ident: "CELLUAR_PHONE" }) }}</label>
@@ -167,7 +167,7 @@
         {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxuser__oxmobfon} %}
     </div>
 
-    <div class="col-md-6 mb-3{% if aErrors.oxuser__oxprivfon %} text-danger{% endif %}">
+    <div class="col-md-6 mb-3 px-1{% if aErrors.oxuser__oxprivfon %} text-danger{% endif %}">
         <div class="form-floating">
             <input class="form-control" placeholder=" " type="text" maxlength="64" id="invadr[oxuser__oxprivfon]" name="invadr[oxuser__oxprivfon]" value="{% if isset( invadr.oxuser__oxprivfon ) %}{{ invadr.oxuser__oxprivfon }}{% else %}{{ oxcmp_user.oxuser__oxprivfon.value }}{% endif %}"{% if oView.isFieldRequired("oxuser__oxprivfon") %} required{% endif %}>
             <label for="invadr[oxuser__oxprivfon]" class="{% if oView.isFieldRequired("oxuser__oxprivfon") %} req{% endif %}">{{ translate({ ident: "PERSONAL_PHONE" }) }}</label>
