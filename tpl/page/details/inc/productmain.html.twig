@@ -118,18 +118,23 @@
                 {% endblock %}
 
                 {% set blCanBuy = true %}
+
+                {% if aVariantSelections and aVariantSelections.selections %}
+                    {% set blCanBuy = aVariantSelections.blPerfectFit %}
+                    {% if not blHasActiveSelections %}
+                        {% if not blCanBuy and not oDetailsProduct.isParentNotBuyable() %}
+                            {% set blCanBuy = true %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+
                 {# variants | md variants #}
                 {% block details_productmain_variantselections %}
                     {% if aVariantSelections and aVariantSelections.selections %}
                         {{ script({ include: "js/variants.min.js", priority: 11, dynamic: __oxid_include_dynamic }) }}
 
-                        {% set blCanBuy = aVariantSelections.blPerfectFit %}
-                        {% if not blHasActiveSelections %}
-                            {% if not blCanBuy and not oDetailsProduct.isParentNotBuyable() %}
-                                {% set blCanBuy = true %}
-                            {% endif %}
-                        {% endif %}
                         <div id="variants" class="variant-dropdown">
+                            {# TODO: blHasActiveSelections is used nowhere - check if it can be removed #}
                             {% set blHasActiveSelections = false %}
                             {% for iKey, oList in aVariantSelections.selections %}
                                 {% if oList.getActiveSelection() %}
