@@ -10,11 +10,11 @@
         <input type="hidden" name="cl" value="forgotpwd">
         <input type="hidden" id="passwordLength" value="{{ oViewConf.getPasswordLength() }}">
 
-    <div class="mb-3 form-floating{% if aErrors.oxuser__oxpassword %} oxInValid{% endif %}">
+    <div class="mb-3 form-floating{% if aErrors.oxuser__oxpassword %} is-invalid{% endif %}">
         <input type="password" id="password_new" placeholder=" " name="password_new" class="form-controltextbox">
         <label for="password_new">{{ translate({ ident: "NEW_PASSWORD" }) }}</label>
     </div>
-    <div class="mb-3 form-floating{% if aErrors.oxuser__oxpassword %} oxInValid{% endif %}">
+    <div class="mb-3 form-floating{% if aErrors.oxuser__oxpassword %} is-invalid{% endif %}">
         <input type="password" name="password_new_confirm" placeholder=" " id="password_new_confirm" class="form-control textbox">
         <label for="password_new_confirm">{{ translate({ ident: "CONFIRM_PASSWORD" }) }}</label>
     </div>

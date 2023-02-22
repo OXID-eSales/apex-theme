@@ -27,13 +27,13 @@
 
                 <p>{{ translate({ ident: "LOGIN_ALREADY_CUSTOMER" }) }}</p>
 
-                <div class="mb-3 form-floating{% if aErrors %} oxInValid{% endif %}">
+                <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
                     <input id="loginUser" class="form-control" type="text" name="lgn_usr" role="loginUser" required placeholder=" ">
                     <label class="req">{{ translate({ ident: "EMAIL" }) }}</label>
                 </div>
 
                 {% block checkout_options_loginaccount_passwordfield %}
-                    <div class="mb-3 form-floating{% if aErrors %} oxInValid{% endif %}">
+                    <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
                         <input id="loginPwd" class="form-control" type="password" name="lgn_pwd" role="loginPwd" required placeholder=" ">
                         <label class="req">{{ translate({ ident: "PASSWORD" }) }}</label>
                         <a id="forgotPasswordLink" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=forgotpwd") }) }}" class="btn btn-link px-0">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
