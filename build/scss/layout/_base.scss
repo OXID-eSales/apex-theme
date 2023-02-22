@@ -195,3 +195,27 @@
 .badge.badge-sale {
   border-radius: 0;
 }
+
+.is-invalid {
+  .form-control {
+    border-color: $danger;
+  }
+
+  .req {
+    &::after {
+      color: $danger;
+    }
+  }
+}
+
+.is-valid {
+  .form-control {
+    border-color: $success;
+  }
+}
+
+.req {
+  &::after {
+    content: ' *';
+  }
+}

@@ -162,6 +162,19 @@
                         {% endblock %}
                     {% endblock %}
                 {% endif %#}
+                {% block dd_footer_copyright %}
+                    {% ifcontent ident "oxstdfooter" set oCont %}
+                        <div class="legal pt-4">
+                            <div class="container-xxl">
+                                <div class="row">
+                                    <section class="col-12">
+                                        {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) }}
+                                    </section>
+                                </div>
+                            </div>
+                        {% endifcontent %}
+                    {% endblock %}
+                </div>
             </footer>
     {% if footerWidth == 'container' %}
         </div>
