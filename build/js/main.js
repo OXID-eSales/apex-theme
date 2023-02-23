@@ -34,4 +34,25 @@
                     form.classList.add('was-validated')
                 }, false)
             })
+
+
+        var changeEmail = document.querySelector('input.oxValidate_enterPass')
+
+        if (changeEmail) {
+            var passwordElem = document.querySelector('.oxValidate_pwd');
+            var oldMail = changeEmail.value;
+            changeEmail.addEventListener('keyup', (e) => {
+                    if (passwordElem) {
+                        if (oldMail != e.target.value) {
+                            passwordElem.style.display = "block";
+                        }
+                        else {
+                            if (passwordElem.is(':visible')) {
+                                passwordElem.style.display = "none";
+                            }
+                        }
+                    }
+                }
+            );
+        }
     })()
