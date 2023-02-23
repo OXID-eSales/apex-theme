@@ -16,18 +16,16 @@
                                         <source srcset="{{ oViewConf.getImageUrl('content/promo.webp') }}" media="(min-width: 768px)" type="image/webp">
                                         <img src="{{ oViewConf.getImageUrl('content/promo-sm.webp') }}" class="card-img" alt="Promotion" width="460" height="460">
                                     </picture>
-                                    {% if oManufacturer.getIconUrl() %}
-                                        {% set aImgDimensions = oManufacturer.getIconUrl()|getimagesize %}
-                                        <div class="card-img-overlay">
-                                            <img loading="lazy" class="logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}" height="{{ aImgDimensions.1 }}">
-                                            <span class="btn btn-secondary">{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}</span>
-                                        </div>
-                                    {% endif %}
+
                                     <div class="card-img-overlay">
-                                        {{ oManufacturer.oxmanufacturers__oxtitle.value }}
+                                        {% if oManufacturer.getIconUrl() %}
+                                            {% set aImgDimensions = oManufacturer.getIconUrl()|getimagesize %}
+                                            <img loading="lazy" class="logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}" height="{{ aImgDimensions.1 }}">
+                                        {% else %}
+                                            <span class="h2 mb-5 no-img">{{ oManufacturer.oxmanufacturers__oxtitle.value }}</span>
+                                        {% endif %}
                                         <span class="btn btn-secondary">{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}</span>
                                     </div>
-                                    <a href="{{ oManufacturer.getLink() }}" class="stretched-link" aria-label="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}"></a>
                                 </div>
                             </div>
                         {% endif %}
@@ -43,7 +41,11 @@
 
                             <div class="col-6 col-md-4 col-lg">
                                 <a href="{{ oManufacturer.getLink() }}" title="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}" class="d-block text-center">
-                                    <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}" height="{{ aImgDimensions.1 }}">
+                                    {% if oManufacturer.getIconUrl() %}
+                                        <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}" height="{{ aImgDimensions.1 }}">
+                                    {% else %}
+                                        <span class="no-img">{{ oManufacturer.oxmanufacturers__oxtitle.value }}</span>
+                                    {% endif %}
                                 </a>
                             </div>
                         {% endif %}

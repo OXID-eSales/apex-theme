@@ -93,17 +93,17 @@
                     {% if oViewConf.getShowVouchers() and oxcmp_basket.getVoucherDiscValue() %}
                         {% for key, sVoucher in oxcmp_basket.getVouchers() %}
                             <div class="list-group-item d-flex justify-content-between align-items-center">
-                    <span>
-                        {{ translate({ ident: "COUPON" }) }}&nbsp;({{ sVoucher.sVoucherNr }})
-                        {% if editable %}
-                            <a href="{{ oViewConf.getSelfLink() }}&amp;cl=basket&amp;fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}"
-                               class="btn removeFn" title="{{ translate({ ident: "REMOVE" }) }}">
-                                <svg>
-                                    <use xlink:href="#trash"></use>
-                                </svg>
-                            </a>
-                        {% endif %}
-                    </span>
+                                <span class="d-flex align-items-center">
+                                    <span>{{ translate({ ident: "COUPON" }) }}&nbsp;({{ sVoucher.sVoucherNr }})</span>
+                                    {% if editable %}
+                                        <a href="{{ oViewConf.getSelfLink() }}&amp;cl=basket&amp;fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}"
+                                           class="btn removeFn py-0" title="{{ translate({ ident: "REMOVE" }) }}">
+                                            <svg>
+                                                <use xlink:href="#trash"></use>
+                                            </svg>
+                                        </a>
+                                    {% endif %}
+                                </span>
                                 <span class="text-danger">{{ format_price(sVoucher.dVoucherdiscount*-1, { currency: currency }) }}</span>
                             </div>
                         {% endfor %}
@@ -266,7 +266,7 @@
             </div>
             {% for key, oEr in Errors.basket %}
                 {% if oEr.getErrorClassType() == 'oxVoucherException' %}
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger p-4">
                         {{ translate({ ident: "COUPON_NOT_ACCEPTED", args: oEr.getValue('voucherNr') }) }}
                         <strong>{{ translate({ ident: "REASON" }) }}</strong>
                         {{ oEr.getOxMessage() }}

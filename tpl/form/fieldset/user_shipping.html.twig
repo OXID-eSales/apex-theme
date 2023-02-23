@@ -186,6 +186,19 @@
                 {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxaddress__oxcountryid} %}
             {% endif %}
         </div>
+
+        <div class="form-fieldset mb-3">
+            {% include "form/fieldset/state.html.twig" with
+                {
+                    countrySelectId: "delCountrySelect",
+                    stateSelectName: "deladr[oxaddress__oxstateid]",
+                    selectedStateIdPrim: deladr.oxaddress__oxstateid,
+                    selectedStateId: delivadr.oxaddress__oxstateid.value,
+                    class: "form-control selectpicker"
+                }
+            %}
+            <label for="{{ countrySelectId }}">{{ translate({ ident: "DD_USER_SHIPPING_LABEL_STATE" }) }}</label>
+        </div>
     {% endblock %}
     <div class="row gx-2">
         <div class="col-md-6 mb-3{% if aErrors.oxaddress__oxfon %} oxInValid{% endif %}">

@@ -120,6 +120,19 @@
         <label for="invCountrySelect" class="{% if oView.isFieldRequired("oxuser__oxcountryid") %} req{% endif %}">{{ translate({ ident: "COUNTRY" }) }}</label>
         {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxuser__oxcountryid} %}
     </div>
+
+    <div class="form-floating mb-3">
+        {% include "form/fieldset/state.html.twig" with
+            {
+                countrySelectId: "invCountrySelect",
+                stateSelectName: "invadr[oxuser__oxstateid]",
+                selectedStateIdPrim: invadr.oxuser__oxstateid,
+                selectedStateId: oxcmp_user.oxuser__oxstateid.value,
+                class: "form-control selectpicker"
+            }
+        %}
+        <label for="{{ oxcmp_user.oxuser__oxstateid.value }}">{{ translate({ ident: "DD_USER_BILLING_LABEL_STATE" }) }}</label>
+    </div>
 {% endblock %}
 
 <div class="row gx-2">
