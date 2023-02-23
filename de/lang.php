@@ -74,6 +74,8 @@ $aLang = array(
 
     // Rechnungs- und Lieferadresse
     'DD_USER_LABEL_STATE'                                   => 'Bundesland',
+    'DD_USER_BILLING_LABEL_STATE'                           => 'Bundesland:',
+    'DD_USER_SHIPPING_LABEL_STATE'                          => 'Bundesland:',
     'DD_USER_SHIPPING_SELECT_ADDRESS'                       => 'auswählen',
     'DD_USER_SHIPPING_ADD_DELIVERY_ADDRESS'                 => 'neue Adresse hinzufügen',
     'DD_DELETE_SHIPPING_ADDRESS'                            => 'Lieferadresse löschen',

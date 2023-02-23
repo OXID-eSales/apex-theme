@@ -127,6 +127,11 @@
         transition: $transition-base;
         z-index: 2;
       }
+
+      :is(.bottom) {
+        left: 10px;
+        right: 10px;
+      }
     }
 
     .badges {

@@ -1,0 +1,42 @@
+{% if selectedStateIdPrim %}
+  {% set selectedStateId = selectedStateIdPrim %}
+{% endif %}
+
+{% set divId = "oxStateDiv_" ~ stateSelectName %}
+{% set stateSelectId = "oxStateSelect_" ~ stateSelectName %}
+
+{% if currCountry %}
+  {% set showDiv = 'true' %}
+{% else %}
+  {% set showDiv = 'false' %}
+{% endif %}
+
+{{ script({ include: "js/widgets/oxcountrystateselect.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
+{{ script({ add: "$( '#" ~ countrySelectId ~ "' ).oxCountryStateSelect({selectedStateId:'" ~ selectedStateId ~ "', listItem: '.form-group', span: 'div'});", dynamic: __oxid_include_dynamic }) }}
+{{ script({ add: "$('#" ~ countrySelectId ~ "').change(function() { $( 'select[name=\"" ~ stateSelectName ~ "\"]' ).selectpicker('refresh'); } );", dynamic: __oxid_include_dynamic }) }}
+
+<script type="text/javascript"><!--
+    var allStates = new Array();
+    var allStateIds = new Array();
+    var allCountryIds = new Object();
+    var cCount = 0;
+    {% for country_id, country in oViewConf.getCountryList() %}
+
+        var states = new Array();
+        var ids = new Array();
+        var i = 0;
+
+        {% set countryStates = country.getStates() %}
+        {% for state_id, state in countryStates %}
+            states[i] = '{{ state.oxstates__oxtitle.value }}';
+            ids[i] = '{{ state.oxstates__oxid.value }}';
+            i++;
+        {% endfor %}
+        allStates[++cCount] = states;
+        allStateIds[cCount]  = ids;
+        allCountryIds['{{ country.getId() }}']  = cCount;
+    {% endfor %}
+--></script>
+<select class="form-select{% if class %} {{ class }}{% endif %}" name="{{ stateSelectName }}" id="{{ stateSelectId }}">
+    <option value="">{{ translate({ ident: "PLEASE_SELECT_STATE" }) }}</option>
+</select>

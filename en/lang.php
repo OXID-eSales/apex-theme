@@ -73,6 +73,8 @@ $aLang = array(
     'DD_LOGIN_ACCOUNT_PANEL_CREATE_BODY'                    => 'By creating an account with our store, you will be guided through the checkout process faster. In addition, you can store multiple shipping addresses and track orders in your account.',
 
     // Billing address
+    'DD_USER_BILLING_LABEL_STATE'                           => 'State:',
+    'DD_USER_SHIPPING_LABEL_STATE'                          => 'State:',
     'DD_USER_LABEL_STATE'                                    => 'State',
     'DD_USER_SHIPPING_SELECT_ADDRESS'                       => 'select',
     'DD_USER_SHIPPING_ADD_DELIVERY_ADDRESS'                 => 'add delivery address',
