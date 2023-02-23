@@ -6,7 +6,7 @@
     {# TODO: We should turn this into vCMS content, or put it to Theme settings #}
     <header class="header">
         <div class="header-wrapper">
-            {% if not oView.getIsOrderStep() or oView.getClassKey() == "basket" %}
+            {% if oView.showSearch() %}
                 <div class="meta">
                     <div class="container-xxl">
                         <div class="meta-wrapper d-flex justify-content-between">
@@ -68,14 +68,13 @@
                 </div>
             {% endif %}
             <div class="header-box position-relative">
-                <div class="container-{% if oView.getIsOrderStep() and oView.getClassKey() != "basket" %}md{% else %}xxl{% endif %}">
-                    {% if oView.getIsOrderStep() and oView.getClassKey() != "basket" %}
+                <div class="container-{% if oView.showSearch() %}xxl{% else %}md{% endif %}">
+                    {% if not oView.showSearch() %}
                     <div class="row justify-content-center">
                         <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
                             {% endif %}
 
                             <div class="header-container">
-
                                 {% block layout_header_logo %}
                                     {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
                                     {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
@@ -94,7 +93,7 @@
 
                                 {% include "widget/header/search.html.twig" %}
 
-                                {% if not oView.getIsOrderStep() or oView.getClassKey() == "basket" %}
+                                {% if oView.showSearch() %}
                                     {% block layout_header_top %}
                                         <div class="menu-dropdowns btn-group d-none d-lg-block" role="group">
                                             {% block dd_layout_page_header_icon_menu_account %}
@@ -125,7 +124,7 @@
                                 {% endif %}
                             </div>
 
-                            {% if oView.getIsOrderStep() and oView.getClassKey() != "basket" %}
+                            {% if not oView.showSearch() %}
                         </div>
                     </div>
                     {% endif %}
@@ -136,7 +135,7 @@
             {{ include_widget({ cl: "oxwCategoryTree", cnid: oView.getCategoryId(), sWidgetType: "header", style: "", _parent: oView.getClassKey(), nocookie: 1 }) }}
         {% endblock %}
 
-        {% if not oView.getIsOrderStep() %}
+        {% if oView.showSearch() %}
             <div class="fixed-bottom mobile-nav d-lg-none">
                 {% block dd_widget_header_categorylist_navbar_header %}
                     <button class="btn btn-toggle collapsed" type="button" data-bs-toggle="collapse"
@@ -177,6 +176,13 @@
             </div>
         {% endif %}
     </header>
+    {% if oView.showSearch() and oView.getIsOrderStep() and oView.getClassKey() != "basket"%}
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+                {% include "page/checkout/inc/steps.html.twig" with {active: active_step} %}
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {{ insert_new_basket_item({tpl: "widget/minibasket/newbasketitemmsg.html.twig", type: "message"}) }}
