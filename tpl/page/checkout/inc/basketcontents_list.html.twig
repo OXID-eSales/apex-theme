@@ -53,14 +53,14 @@
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li>
-                                                            <button type="submit" name="removeBtn" class="dropdown-item"
+                                                            <button type="button" name="removeBtn" class="dropdown-item"
                                                                     onclick="document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
                                                                 {{ translate({ ident: "REMOVE" }) }}
                                                             </button>
                                                         </li>
                                                         {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') != 'hide' %}
                                                         <li>
-                                                            <button type="submit" name="removeBtn" class="dropdown-item" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
+                                                            <button type="button" name="removeBtn" class="dropdown-item" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
                                                                 {{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}
                                                             </button>
                                                         </li>
@@ -226,7 +226,7 @@
                                                                                name="aproducts[{{ basketindex }}][am]"
                                                                                value="{{ basketitem.getAmount() }}" min="0" {% if blAllowUnevenAmounts %} step="any"{% endif %}>
                                                                         <button class="btn btn-outline-primary btn-more js-increaseAmount"
-                                                                                name="more">
+                                                                                name="more" type="button">
                                                                             +
                                                                         </button>
                                                                     </div>
@@ -245,7 +245,7 @@
                                                             <div class="d-none d-lg-block">
                                                                 <input type="hidden" name="aproducts[{{ basketindex }}][remove]"
                                                                        id="aproducts_{{ basketindex }}_remove" value="0">
-                                                                <button type="submit" name="removeBtn" class="btn btn-remove"
+                                                                <button type="button" name="removeBtn" class="btn btn-remove"
                                                                         aria-label="{{ translate({ ident: "REMOVE" }) }}"
                                                                         onclick="document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
                                                                     <svg aria-hidden="true">
@@ -254,7 +254,7 @@
                                                                 </button>
 
                                                             {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') != 'hide' %}
-                                                                <button type="submit"  name="removeBtn" class="btn btn-remove" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
+                                                                <button type="button"  name="removeBtn" class="btn btn-remove" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
                                                                     <svg aria-hidden="true">
                                                                         <use xlink:href="#star"></use>
                                                                     </svg>
