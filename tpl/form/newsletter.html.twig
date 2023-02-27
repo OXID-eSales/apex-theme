@@ -19,7 +19,7 @@
         <input class="form-control" placeholder=" " id="newsletterLname" type="text" name="editval[oxuser__oxlname]" maxlength="40" value="{% if aRegParams.oxuser__oxlname %}{{ aRegParams.oxuser__oxlname }}{% endif %}">
         <label for="newsletterLname">{{ translate({ ident: "LAST_NAME" }) }}</label>
     </div>
-    <div class="mb-3 form-floating{% if aErrors %} oxInValid{% endif %}">
+    <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
         <input id="newsletterUserName" type="email" placeholder=" " class="form-control" name="editval[oxuser__oxusername]" maxlength="40" value="{% if aRegParams.oxuser__oxusername %}{{ aRegParams.oxuser__oxusername }}{% endif %}" required>
         <label for="newsletterUserName" class="req">{{ translate({ ident: "EMAIL" }) }}</label>
     </div>
@@ -32,7 +32,7 @@
         <label for="newsletterSubscribeOff" class="form-check-label">{{ translate({ ident: "UNSUBSCRIBE" }) }}</label>
     </div>
     <div class="mb-3">
-         <p class="req-waring">{{ translate({ ident: "COMPLETE_MARKED_FIELDS" }) }}</p>
+         <p class="req-warning">{{ translate({ ident: "COMPLETE_MARKED_FIELDS" }) }}</p>
         <button id="newsLetterSubmit" class="btn btn-primary" type="submit">{{ translate({ ident: "SUBMIT" }) }}</button>
     </div>
 </form>

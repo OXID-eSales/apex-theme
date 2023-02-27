@@ -16,3 +16,22 @@
     min-width: 200px;
   }
 }
+
+.move-controls {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .btn {
+    position: absolute;
+  }
+
+  .movePrev {
+    left: 0;
+  }
+
+  .moveNext {
+    right: 0;
+  }
+}

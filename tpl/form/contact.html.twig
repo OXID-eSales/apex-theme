@@ -15,7 +15,7 @@
                 {{ translate({ ident: "TITLE" }) }}
             </label>
         </div>
-        <div class="mb-3 form-floating{% if aErrors.oxuser__oxfname %} oxInValid{% endif %}">
+        <div class="mb-3 form-floating{% if aErrors.oxuser__oxfname %} is-invalid{% endif %}">
             <input type="text"
                name="editval[oxuser__oxfname]"
                id="editval[oxuser__oxfname]"
@@ -26,7 +26,7 @@
                 {{ translate({ ident: "FIRST_NAME" }) }}
             </label>
         </div>
-        <div class="mb-3 form-floating{% if aErrors.oxuser__oxlname %} oxInValid{% endif %}">
+        <div class="mb-3 form-floating{% if aErrors.oxuser__oxlname %} is-invalid{% endif %}">
             <input type="text"
                name="editval[oxuser__oxlname]"
                id="editval[oxuser__oxlname]"
@@ -38,7 +38,7 @@
                 {{ translate({ ident: "LAST_NAME" }) }}
             </label>
         </div>
-        <div class="mb-3 form-floating{% if aErrors.oxuser__oxusername %} oxInValid{% endif %}">
+        <div class="mb-3 form-floating{% if aErrors.oxuser__oxusername %} is-invalid{% endif %}">
             <input id="contactEmail"
                type="email"
                name="editval[oxuser__oxusername]"
@@ -50,7 +50,7 @@
                 {{ translate({ ident: "EMAIL" }) }}
             </label>
         </div>
-        <div class="mb-3 form-floating{% if aErrors and not oView.getContactSubject() %} oxInValid{% endif %}">
+        <div class="mb-3 form-floating{% if aErrors and not oView.getContactSubject() %} is-invalid{% endif %}">
             <input type="text"
                name="c_subject"
                id="c_subject"
@@ -80,7 +80,7 @@
 
     {% block contact_form_buttons %}
         <div class="mb-3">
-            <p class="req-waring">{{ translate({ ident: "COMPLETE_MARKED_FIELDS" }) }}</p>
+            <p class="req-warning">{{ translate({ ident: "COMPLETE_MARKED_FIELDS" }) }}</p>
             <button class="btn btn-primary" type="submit">
                 {{ translate({ ident: "SEND" }) }}
             </button>

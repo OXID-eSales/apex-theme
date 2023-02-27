@@ -1,4 +1,4 @@
-<div class="mb-3 form-floating{% if aErrors.oxuser__oxusername %} oxInValid{% endif %}">
+<div class="mb-3 form-floating{% if aErrors.oxuser__oxusername %} is-invalid{% endif %}">
     {% block user_noaccount_email %}
         <input id="userLoginName" class="form-control" type="email" name="lgn_usr" value="{{ oView.getActiveUsername() }}">
         <label for="userLoginName" class="req">{{ translate({ ident: "EMAIL_ADDRESS" }) }}</label>
