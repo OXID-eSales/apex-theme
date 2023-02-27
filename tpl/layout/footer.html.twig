@@ -169,7 +169,5 @@
 {% endblock %}
 
 {% if oView.isRootCatChanged() %}
-    <div id="scRootCatChanged" class="popupBox corners FXgradGreyLight glowShadow" style="display: none;">
-        {% include "form/privatesales/basketexcl.html.twig" %}
-    </div>
+    {% include "form/privatesales/basketexcl.html.twig" %}
 {% endif %}

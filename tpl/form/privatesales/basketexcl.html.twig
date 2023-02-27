@@ -1,25 +1,37 @@
-<h3>{{ translate({ ident: "ROOT_CATEGORY_CHANGED" }) }}</h3>
-{{ translate({ ident: "MESSAGE_DENIED_BY_SHOP_RULES" }) }}<br><br>
-<div class="introtext">
-{{ translate({ ident: "MESSAGE_BASKET_EXCLUDE_INFO" }) }}<br><br>
-</div>
-<form action="{{ oViewConf.getCurrentHomeDir() }}index.php" method="post">
-        {{ oViewConf.getHiddenSid()|raw }}
-        {{ oViewConf.getNavFormParams()|raw }}
-        <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
-        <input type="hidden" name="fnc" value="executeuserchoice">
-        <input type="hidden" name="tpl" value="{{ oViewConf.getActTplName() }}">
-        <input type="hidden" name="oxloadid" value="{{ oViewConf.getActContentLoadId() }}">
-        {% if oView.getArticleId() %}
-          <input type="hidden" name="aid" value="{{ oView.getArticleId() }}">
-        {% endif %}
-        {% if oView.getProduct() %}
-          {% set product = oView.getProduct() %}
-          <input type="hidden" name="anid" value="{{ product.oxarticles__oxnid.value }}">
-        {% endif %}
-        {% hasrights { ident: "TOBASKET" } %}
-        <button name="tobasket" value="1" class="submitButton" type="submit">{{ translate({ ident: "CHECKOUT" }) }}</button>
-        {% endhasrights %}
-        <button class="submitButton" type="submit">{{ translate({ ident: "CONTINUE_SHOPPING" }) }}</button>
-</form>
+{{ script({ add: "const myModal = new bootstrap.Modal('#isRootCatChanged');myModal.show();", dynamic: __oxid_include_dynamic }) }}
 
+<div class="modal fade show" tabindex="-1" id="isRootCatChanged" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ translate({ ident: "ROOT_CATEGORY_CHANGED" }) }}</h5>
+            </div>
+            <div class="modal-body">
+                <p>{{ translate({ ident: "MESSAGE_BASKET_EXCLUDE_INFO" }) }}</p>
+            </div>
+            <div class="modal-footer">
+                <form action="{{ oViewConf.getCurrentHomeDir() }}index.php" method="post">
+                    {{ oViewConf.getHiddenSid()|raw }}
+                    {{ oViewConf.getNavFormParams()|raw }}
+                    <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
+                    <input type="hidden" name="fnc" value="executeuserchoice">
+                    <input type="hidden" name="tpl" value="{{ oViewConf.getActTplName() }}">
+                    <input type="hidden" name="oxloadid" value="{{ oViewConf.getActContentLoadId() }}">
+                    {% if oView.getArticleId() %}
+                        <input type="hidden" name="aid" value="{{ oView.getArticleId() }}">
+                    {% endif %}
+                    {% if oView.getProduct() %}
+                        {% set product = oView.getProduct() %}
+                        <input type="hidden" name="anid" value="{{ product.oxarticles__oxnid.value }}">
+                    {% endif %}
+
+                    <button class="submitButton btn btn-outline-primary" type="submit">{{ translate({ ident: "CONTINUE_SHOPPING" }) }}</button>
+                    {% hasrights { ident: "TOBASKET" } %}
+                        <button name="tobasket" value="1" class="submitButton btn btn-primary"
+                                type="submit">{{ translate({ ident: "CHECKOUT" }) }}</button>
+                    {% endhasrights %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
