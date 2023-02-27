@@ -106,43 +106,12 @@ $aTheme = array(
         ),
 
 //KATEGORIEN
-        array(
-            'group' => 'pop',
-            'name' => 'sHeaderImageWidth',
-            'type' => 'select',
-            'value' => 'w100c100',
-            'constraints' => 'w100c100|container',
-            'position' => 1,
-        ),
-        array(
-            'group' => 'pop',
-            'name' => 'sHeaderImageHeight',
-            'type' => 'select',
-            'value' => 'small',
-            'constraints' => 'small|medium',
-            'position' => 1,
-        ),
+
         array(
             'group' => 'pop',
             'name' => 'sShowPopBreadcrump',
             'type' => 'bool',
             'value' => 1,
-        ),
-        array(
-            'group' => 'pop',
-            'name' => 'sCategoryWidth',
-            'type' => 'select',
-            'value' => 'w100cContainer',
-            'constraints' => 'w100cContainer|w100c100|container',
-            'position' => 2,
-        ),
-        array(
-            'group' => 'pop',
-            'name' => 'sCategoryDescPosition',
-            'type' => 'select',
-            'value' => 'bottom',
-            'constraints' => 'bottom|top',
-            'position' => 3,
         ),
 
 //FUNKTIONEN
@@ -182,13 +151,6 @@ $aTheme = array(
 //FOOTER
         array(
             'group' => 'footer',
-            'name' => 'sFooterWidth',
-            'type' => 'select',
-            'value' => 'w100cContainer',
-            'constraints' => 'w100cContainer|w100c100|container',
-        ),
-        array(
-            'group' => 'footer',
             'name' => 'blFooterShowHelp',
             'type' => 'bool',
             'value' => 1,
@@ -196,12 +158,6 @@ $aTheme = array(
         array(
             'group' => 'footer',
             'name' => 'blFooterShowLinks',
-            'type' => 'bool',
-            'value' => 1,
-        ),
-        array(
-            'group' => 'footer',
-            'name' => 'blFooterShowNews',
             'type' => 'bool',
             'value' => 1,
         ),
@@ -246,6 +202,18 @@ $aTheme = array(
             'name' => 'sYouTubeUrl',
             'type' => 'str',
             'value' => 'https://www.youtube.com',
+        ),
+        array(
+            'group' => 'footer',
+            'name' => 'sPaymentIcons',
+            'type' => 'bool',
+            'value' => 0,
+        ),
+        array(
+            'group' => 'footer',
+            'name' => 'sTrustedBadges',
+            'type' => 'bool',
+            'value' => 0,
         ),
 
 //BILDER

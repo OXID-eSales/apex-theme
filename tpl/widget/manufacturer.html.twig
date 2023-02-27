@@ -6,37 +6,10 @@
             <h2>{{ translate({ ident: "OUR_BRANDS" }) }}</h2>
             <span class="subhead">{{ translate({ ident: "MANUFACTURERSLIDER_SUBHEAD" }) }}</span>
 
-            <div class="top-brands my-5">
-                <div class="row row-cols-2 row-cols-lg-4">
-                    {% for oManufacturer in oView.getManufacturerForSlider() %}
-                        {% if loop.index <= 4 %}
-                            <div class="col">
-                                <div class="card brand-card text-white">
-                                    <picture>
-                                        <source srcset="{{ oViewConf.getImageUrl('content/promo.webp') }}" media="(min-width: 768px)" type="image/webp">
-                                        <img src="{{ oViewConf.getImageUrl('content/promo-sm.webp') }}" class="card-img" alt="Promotion" width="460" height="460">
-                                    </picture>
-
-                                    <div class="card-img-overlay">
-                                        {% if oManufacturer.getIconUrl() %}
-                                            {% set aImgDimensions = oManufacturer.getIconUrl()|getimagesize %}
-                                            <img loading="lazy" class="logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}" height="{{ aImgDimensions.1 }}">
-                                        {% else %}
-                                            <span class="h2 mb-5 no-img">{{ oManufacturer.oxmanufacturers__oxtitle.value }}</span>
-                                        {% endif %}
-                                        <span class="btn btn-secondary">{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-
             <div class="row manufacturer-list">
                 {% for oManufacturer in oView.getManufacturerForSlider() %}
                     {% if oManufacturer.oxmanufacturers__oxicon.value %}
-                        {% if loop.index > 8 %}
+                        {% if loop.index < 8 %}
                             {% set aImgDimensions = oManufacturer.getIconUrl()|getimagesize %}
 
                             <div class="col-6 col-md-4 col-lg">

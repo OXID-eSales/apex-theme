@@ -10,136 +10,139 @@
     {% if footerWidth == 'container' %}
         <div class="container-xxl">
     {% endif %}
-            <footer class="footer">
-                <div class="container-xxl">
-                    {% block footer_main_row %}
-                        <div class="row">
+    <footer class="footer">
+        <div class="container-xxl">
+            {% block footer_main_row %}
+                <div class="row">
 
-                            {% block dd_footer_servicelist %}
-                            <div class="col-6 col-md-3 col-lg-2">
-                                <div class="h4">{{ translate({ ident: "SERVICES" }) }}</div>
-                                <div class="footer-content">
-                                    {% block dd_footer_servicelist_inner %}
+                    {% block dd_footer_servicelist %}
+                        <div class="col-6 col-md-3 col-lg-2">
+                            <div class="h4">{{ translate({ ident: "SERVICES" }) }}</div>
+                            <div class="footer-content">
+                                {% block dd_footer_servicelist_inner %}
                                     {{ include_widget({ cl: "oxwServiceList", noscript: 1, nocookie: 1, force_sid: force_sid }) }}
-                                    {% endblock %}
-                                </div>
-                            </div>
-                            {% endblock %}
-                            {% block dd_footer_information %}
-                            <div class="col-6 col-md-3 col-lg-2">
-                                <div class="h4">{{ translate({ ident: "INFORMATION" }) }}</div>
-                                <div class="footer-content">
-                                    {% block dd_footer_information_inner %}
-                                    {{ include_widget({ cl: "oxwInformation", noscript: 1, nocookie: 1, force_sid: force_sid }) }}
-                                    {% endblock %}
-                                </div>
-                            </div>
-                            {% endblock %}
-
-                            {% if oView.showNewsletter() %}
-                                <div class="col-12 col-lg-3">
-                                    <div class="mb-3 footer-newsletter">
-                                        <div class="h4">{{ translate({ ident: "NEWSLETTER" }) }}</div>
-                                        <div class="footer-content">
-                                            {% block dd_footer_newsletter %}
-                                            <p>{{ translate({ ident: "FOOTER_NEWSLETTER_INFO" }) }}</p>
-                                            {% include "widget/footer/newsletter.html.twig" %}
-                                            {% endblock %}
-                                        </div>
-                                    </div>
-                                    {% block footer_social %}{% endblock %}
-                                </div>
-                            {% endif %}
-
-                            <div class="col-12 col-lg-3">
-                                <div class="payment-methods mb-5">
-                                    <div class="h4">Zahlarten</div>
-                                    <p class="card-text placeholder-glow">
-                                        <span class="placeholder col-4 col-md-3 col-lg-2"></span>
-                                        <span class="placeholder col-4 col-md-3 col-lg-2"></span>
-                                        <span class="placeholder col-4 col-md-3 col-lg-2"></span>
-                                        <span class="placeholder col-4 col-md-3 col-lg-2"></span>
-                                        <span class="placeholder col-4 col-md-3 col-lg-2"></span>
-                                    </p>
-                                </div>
-                                {# <<START>> Social Links #}
-                                {% block dd_footer_social_links %}
-                                    {% if oViewConf.getViewThemeParam('sFacebookUrl') or oViewConf.getViewThemeParam('sTwitterUrl') or oViewConf.getViewThemeParam('sYouTubeUrl') or oViewConf.getViewThemeParam('sBlogUrl') %}
-                                        <div class="social-links">
-                                            <div class="h4">Social Media</div>
-                                            {% block dd_footer_social_links_inner %}
-                                                {% block dd_footer_social_links_list %}
-                                                    {% if oViewConf.getViewThemeParam('sFacebookUrl') %}
-                                                        <a target="_blank" class="btn btn-primary"
-                                                           rel="noopener"
-                                                           href="{{ oViewConf.getViewThemeParam('sFacebookUrl') }}">
-                                                            <span class="visually-hidden">Facebook</span>
-                                                            <svg aria-hidden="true">
-                                                                <use xlink:href="#facebook"></use>
-                                                            </svg>
-                                                        </a>
-                                                    {% endif %}
-                                                    {% if oViewConf.getViewThemeParam('sInstagramUrl') %}
-                                                        <a target="_blank" class="btn btn-primary"
-                                                           rel="noopener"
-                                                           href="{{ oViewConf.getViewThemeParam('sInstagramUrl') }}">
-                                                            <span class="visually-hidden">Instagram</span>
-                                                            <svg aria-hidden="true">
-                                                                <use xlink:href="#instagram"></use>
-                                                            </svg>
-                                                        </a>
-                                                    {% endif %}
-                                                    {% if oViewConf.getViewThemeParam('sTwitterUrl') %}
-                                                        <a target="_blank" class="btn btn-primary"
-                                                           rel="noopener"
-                                                           href="{{ oViewConf.getViewThemeParam('sTwitterUrl') }}">
-                                                            <span class="visually-hidden">Twitter</span>
-                                                            <svg aria-hidden="true">
-                                                                <use xlink:href="#twitter"></use>
-                                                            </svg>
-                                                        </a>
-                                                    {% endif %}
-                                                    {% if oViewConf.getViewThemeParam('sYouTubeUrl') %}
-                                                        <a target="_blank" class="btn btn-primary"
-                                                           rel="noopener"
-                                                           href="{{ oViewConf.getViewThemeParam('sYouTubeUrl') }}">
-                                                            <span class="visually-hidden">YouTube</span>
-                                                            <svg aria-hidden="true">
-                                                                <use xlink:href="#youtube"></use>
-                                                            </svg>
-                                                        </a>
-                                                    {% endif %}
-                                                    {% if oViewConf.getViewThemeParam('sBlogUrl') %}
-                                                        <a target="_blank" class="btn btn-primary"
-                                                           rel="noopener"
-                                                           href="{{ oViewConf.getViewThemeParam('sBlogUrl') }}">
-                                                            <span class="visually-hidden">Blog</span>
-                                                            <svg aria-hidden="true">
-                                                                <use xlink:href="#wordpress"></use>
-                                                            </svg>
-                                                        </a>
-                                                    {% endif %}
-                                                {% endblock %}
-                                            {% endblock %}
-                                        </div>
-                                    {% endif %}
                                 {% endblock %}
-                                {# <<ENDE>> Social Links #}
-                            </div>
-
-                            <div class="col-12 col-lg-2">
-                                <div class="h4">Trusted Badges</div>
-                                <p class="card-text placeholder-glow">
-                                    <span class="placeholder col-4 col-md-3"></span>
-                                    <span class="placeholder col-4 col-md-3"></span>
-                                    <span class="placeholder col-4 col-md-3"></span>
-                                </p>
                             </div>
                         </div>
                     {% endblock %}
-                </div>
+                    {% block dd_footer_information %}
+                        <div class="col-6 col-md-3 col-lg-2">
+                            <div class="h4">{{ translate({ ident: "INFORMATION" }) }}</div>
+                            <div class="footer-content">
+                                {% block dd_footer_information_inner %}
+                                    {{ include_widget({ cl: "oxwInformation", noscript: 1, nocookie: 1, force_sid: force_sid }) }}
+                                {% endblock %}
+                            </div>
+                        </div>
+                    {% endblock %}
 
-                {#% if oView.isPriceCalculated() %}
+                    {% if oView.showNewsletter() %}
+                        <div class="col-12 col-lg-3">
+                            <div class="mb-3 footer-newsletter">
+                                <div class="h4">{{ translate({ ident: "NEWSLETTER" }) }}</div>
+                                <div class="footer-content">
+                                    {% block dd_footer_newsletter %}
+                                        <p>{{ translate({ ident: "FOOTER_NEWSLETTER_INFO" }) }}</p>
+                                        {% include "widget/footer/newsletter.html.twig" %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                            {% block footer_social %}{% endblock %}
+                        </div>
+                    {% endif %}
+
+                    <div class="col-12 col-lg-3">
+                        {% if oViewConf.getViewThemeParam('sPaymentIcons') %}
+                            <div class="payment-methods mb-5">
+                                <div class="h4">{{ translate({ ident: "PAYMENT_METHODS" }) }}</div>
+                                {% block footer_payment_icons %}
+                                {% endblock %}
+                                {% ifcontent ident "footer_payment_icons" set oCont %}
+                                    {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) }}
+                                {% endifcontent %}
+                            </div>
+                        {% endif %}
+                        {# <<START>> Social Links #}
+                        {% block dd_footer_social_links %}
+                            {% if oViewConf.getViewThemeParam('sFacebookUrl') or oViewConf.getViewThemeParam('sTwitterUrl') or oViewConf.getViewThemeParam('sYouTubeUrl') or oViewConf.getViewThemeParam('sBlogUrl') %}
+                                <div class="social-links">
+                                    <div class="h4">Social Media</div>
+                                    {% block dd_footer_social_links_inner %}
+                                        {% block dd_footer_social_links_list %}
+                                            {% if oViewConf.getViewThemeParam('sFacebookUrl') %}
+                                                <a target="_blank" class="btn btn-primary"
+                                                   rel="noopener"
+                                                   href="{{ oViewConf.getViewThemeParam('sFacebookUrl') }}">
+                                                    <span class="visually-hidden">Facebook</span>
+                                                    <svg aria-hidden="true">
+                                                        <use xlink:href="#facebook"></use>
+                                                    </svg>
+                                                </a>
+                                            {% endif %}
+                                            {% if oViewConf.getViewThemeParam('sInstagramUrl') %}
+                                                <a target="_blank" class="btn btn-primary"
+                                                   rel="noopener"
+                                                   href="{{ oViewConf.getViewThemeParam('sInstagramUrl') }}">
+                                                    <span class="visually-hidden">Instagram</span>
+                                                    <svg aria-hidden="true">
+                                                        <use xlink:href="#instagram"></use>
+                                                    </svg>
+                                                </a>
+                                            {% endif %}
+                                            {% if oViewConf.getViewThemeParam('sTwitterUrl') %}
+                                                <a target="_blank" class="btn btn-primary"
+                                                   rel="noopener"
+                                                   href="{{ oViewConf.getViewThemeParam('sTwitterUrl') }}">
+                                                    <span class="visually-hidden">Twitter</span>
+                                                    <svg aria-hidden="true">
+                                                        <use xlink:href="#twitter"></use>
+                                                    </svg>
+                                                </a>
+                                            {% endif %}
+                                            {% if oViewConf.getViewThemeParam('sYouTubeUrl') %}
+                                                <a target="_blank" class="btn btn-primary"
+                                                   rel="noopener"
+                                                   href="{{ oViewConf.getViewThemeParam('sYouTubeUrl') }}">
+                                                    <span class="visually-hidden">YouTube</span>
+                                                    <svg aria-hidden="true">
+                                                        <use xlink:href="#youtube"></use>
+                                                    </svg>
+                                                </a>
+                                            {% endif %}
+                                            {% if oViewConf.getViewThemeParam('sBlogUrl') %}
+                                                <a target="_blank" class="btn btn-primary"
+                                                   rel="noopener"
+                                                   href="{{ oViewConf.getViewThemeParam('sBlogUrl') }}">
+                                                    <span class="visually-hidden">Blog</span>
+                                                    <svg aria-hidden="true">
+                                                        <use xlink:href="#wordpress"></use>
+                                                    </svg>
+                                                </a>
+                                            {% endif %}
+                                        {% endblock %}
+                                    {% endblock %}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                        {# <<ENDE>> Social Links #}
+                    </div>
+                    {% if oViewConf.getViewThemeParam('sTrustedBadges') %}
+                        <div class="col-12 col-lg-2">
+                            <div class="trust-badges mb-5">
+                                <div class="h4">{{ translate({ ident: "TRUSTED_BADGES" }) }}</div>
+                                {% block footer_trusted_badges %}
+                                {% endblock %}
+                                {% ifcontent ident "footer_trusted_badges" set oCont %}
+                                    {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) }}
+                                {% endifcontent %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endblock %}
+        </div>
+
+        {# % if oView.isPriceCalculated() %}
                     {% block layout_page_vatinclude %}
                         {% block footer_deliveryinfo %}
                             {% ifcontent ident "oxdeliveryinfo" set oCont %}
@@ -161,21 +164,21 @@
                             {% endifcontent %}
                         {% endblock %}
                     {% endblock %}
-                {% endif %#}
-                {% block dd_footer_copyright %}
-                    {% ifcontent ident "oxstdfooter" set oCont %}
-                        <div class="legal pt-4">
-                            <div class="container-xxl">
-                                <div class="row">
-                                    <section class="col-12">
-                                        {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) }}
-                                    </section>
-                                </div>
-                            </div>
-                        {% endifcontent %}
-                    {% endblock %}
+                {% endif % #}
+        {% block dd_footer_copyright %}
+            {% ifcontent ident "oxstdfooter" set oCont %}
+            <div class="legal pt-4">
+                <div class="container-xxl">
+                    <div class="row">
+                        <section class="col-12">
+                            {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) }}
+                        </section>
+                    </div>
                 </div>
-            </footer>
+            </div>
+            {% endifcontent %}
+        {% endblock %}
+    </footer>
     {% if footerWidth == 'container' %}
         </div>
     {% endif %}

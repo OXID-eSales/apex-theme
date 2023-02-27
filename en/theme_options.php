@@ -133,6 +133,11 @@ $aLang = array(
     'SHOP_THEME_sYouTubeUrl'         => 'YouTube Channel-URL',
     'HELP_SHOP_THEME_sYouTubeUrl'    => 'E.g.: https://www.youtube.com/user/oxidesales',
 
+    'SHOP_THEME_sPaymentIcons'        => 'Show payment icons placeholder',
+    'HELP_SHOP_THEME_sPaymentIcons'   => 'Add icons via module or vCMS (ident="footer_payment_icons")',
+    'SHOP_THEME_sTrustedBadges'       => 'Show trusted badge placeholder',
+    'HELP_SHOP_THEME_sTrustedBadges'  => 'Add badges via module or vCMS (ident="footer_trusted_badges")',
+
     'SHOP_THEME_sGoogleMapsAddr'      => 'Your postal address',
     'HELP_SHOP_THEME_sGoogleMapsAddr' => 'E.g.: OXID eSales AG, Bertoldstraße 48, 79098 Freiburg',
 
