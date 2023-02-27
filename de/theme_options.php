@@ -246,6 +246,12 @@ $aLang = array(
     'SHOP_THEME_sInstagramUrl'      => 'Instagram Profil-URL',
     'HELP_SHOP_THEME_sInstagramUrl' => 'Bsp.: https://www.instagram.com/conceptsandcreations/',
 
+    'SHOP_THEME_sPaymentIcons'        => 'Zahlungsarten Platzhalter anzeigen',
+    'HELP_SHOP_THEME_sPaymentIcons'   => 'Icons über Modul einfügen oder über das CMS pflegen (ident="footer_payment_icons")',
+    'SHOP_THEME_sTrustedBadges'       => 'Trusted Badge Platzhalter anzeigen',
+    'HELP_SHOP_THEME_sTrustedBadges'   => 'Badges über Modul einfügen oder über das CMS pflegen (ident="footer_trusted_badges")',
+
+
     'SHOP_THEME_sGoogleMapsAddr'      => 'Ihre Adresse',
     'HELP_SHOP_THEME_sGoogleMapsAddr' => 'Bsp.: OXID eSales AG, Bertoldstraße 48, 79098 Freiburg‎',
 

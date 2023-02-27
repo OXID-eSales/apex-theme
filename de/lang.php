@@ -178,6 +178,8 @@ $aLang = array(
     'MOVE_CAROUSEL_LEFT'                                   => 'Karussell nach links verschieben',
     'MOVE_CAROUSEL_RIGHT'                                  => 'Karussell nach rechts verschieben',
     'WATCH_NOW'                                             => 'Jetzt anschauen',
+    'PAYMENT_METHODS'                                       => 'Zahlungsarten',
+    'TRUSTED_BADGES'                                        => 'Trusted Badges',
 );
 
 /*
