@@ -1,7 +1,17 @@
 {# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
 {{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) #}
+{% set blEmailInvalid = false %}
+
+{% if Errors|is_array and Errors.default|is_array and not empty(Errors.default) %}
+    {% for key, oEr in Errors.default %}
+        {% if oEr.getOxMessage() == translate({ ident: "MESSAGE_INVALID_EMAIL" }) %}
+            {% set blEmailInvalid = true %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
 {% set aRegParams = oView.getRegParams() %}
-<form class="max-600" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
+<form class="max-600 needs-validation" action="{{ oViewConf.getSslSelfLink() }}" method="post" novalidate>
     {{ oViewConf.getHiddenSid()|raw }}
     <input type="hidden" name="fnc" value="send">
     <input type="hidden" name="cl" value="newsletter">
@@ -20,7 +30,7 @@
         <label for="newsletterLname">{{ translate({ ident: "LAST_NAME" }) }}</label>
     </div>
     <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
-        <input id="newsletterUserName" type="email" placeholder=" " class="form-control" name="editval[oxuser__oxusername]" maxlength="40" value="{% if aRegParams.oxuser__oxusername %}{{ aRegParams.oxuser__oxusername }}{% endif %}" required>
+        <input id="newsletterUserName" type="email" placeholder=" " class="form-control{% if blEmailInvalid %} is-invalid{% endif %}" name="editval[oxuser__oxusername]" maxlength="40" value="{% if aRegParams.oxuser__oxusername %}{{ aRegParams.oxuser__oxusername }}{% endif %}" required>
         <label for="newsletterUserName" class="req">{{ translate({ ident: "EMAIL" }) }}</label>
     </div>
     <div class="form-check">
