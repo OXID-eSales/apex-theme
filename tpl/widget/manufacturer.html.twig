@@ -8,20 +8,17 @@
 
             <div class="row manufacturer-list">
                 {% for oManufacturer in oView.getManufacturerForSlider() %}
-                    {% if oManufacturer.oxmanufacturers__oxicon.value %}
-                        {% if loop.index < 8 %}
-                            {% set aImgDimensions = oManufacturer.getIconUrl()|getimagesize %}
-
-                            <div class="col-6 col-md-4 col-lg">
-                                <a href="{{ oManufacturer.getLink() }}" title="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}" class="d-block text-center">
-                                    {% if oManufacturer.getIconUrl() %}
-                                        <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}" height="{{ aImgDimensions.1 }}">
-                                    {% else %}
-                                        <span class="no-img">{{ oManufacturer.oxmanufacturers__oxtitle.value }}</span>
-                                    {% endif %}
-                                </a>
-                            </div>
-                        {% endif %}
+                    {% if loop.index < 8 %}
+                        <div class="col-6 col-md-4 col-lg">
+                            <a href="{{ oManufacturer.getLink() }}" title="{{ translate({ ident: "VIEW_ALL_PRODUCTS" }) }}" class="d-block text-center">
+                                {% if oManufacturer.getIconUrl() %}
+                                    {% set aImgDimensions = oManufacturer.getIconUrl()|getimagesize %}
+                                    <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl() }}" alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}" height="{{ aImgDimensions.1 }}">
+                                {% else %}
+                                    <span class="no-img">{{ oManufacturer.oxmanufacturers__oxtitle.value }}</span>
+                                {% endif %}
+                            </a>
+                        </div>
                     {% endif %}
                 {% endfor %}
             </div>
