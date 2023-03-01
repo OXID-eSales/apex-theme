@@ -11,8 +11,8 @@
 {% if oxcmp_user.oxuser__oxpassword.value %}
     <div class="oxValidate_pwd mb-3{% if aErrors.oxuser__oxpassword %} is-invalid{% endif %}"{% if not aErrors.oxuser__oxpassword %} style="display:none;"{% endif %}>
         <div class="form-floating">
-            <input class="form-control" type="password" name="invadr[oxuser__oxpassword]" id="invadr[oxuser__oxpassword]" size="37">
-            <label for="invadr[oxuser__oxpassword]" class="req">{{ translate({ ident: "PASSWORD" }) }}</label>
+            <input id="user_password" class="form-control" type="password" name="user_password" size="37">
+            <label for="user_password" class="req">{{ translate({ ident: "PASSWORD" }) }}</label>
         </div>
         {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxuser__oxpassword} %}
     </div>
