@@ -33,7 +33,7 @@
                     <img class="product-img img-2" width="350" height="220" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
                 </picture>
             {% endif %}
-            <a href="{{ _productLink }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }}"></a>
+            <a href="{{ _productLink|raw }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }}"></a>
 
 
             {# TODO: We should have an attribute here #}
@@ -48,7 +48,7 @@
                     <div class="bottom">
                         {% if blShowToBasket %}
                             {% hasrights { ident: "TOBASKET" } %}
-                                <form name="tobasket{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink() }}" method="post"{% else %}action="{{ _productLink }}" method="get"{% endif %}>
+                                <form name="tobasket{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink() }}" method="post"{% else %}action="{{ _productLink|raw }}" method="get"{% endif %}>
                                     <div class="d-none">
                                         {{ oViewConf.getNavFormParams()|raw }}
                                         {{ oViewConf.getHiddenSid()|raw }}
@@ -90,7 +90,7 @@
                                 </form>
                             {% endhasrights %}
                         {% else %}
-                            <a class="btn btn-outline-primary w-100" href="{{ _productLink }}">{{ translate({ ident: "DETAILS" }) }}</a>
+                            <a class="btn btn-outline-primary w-100" href="{{ _productLink|raw }}">{{ translate({ ident: "DETAILS" }) }}</a>
                         {% endif %}
                     </div>
                     <div class="right">
@@ -177,7 +177,7 @@
             <div class="short-desc">
                 {{ product.oxarticles__oxshortdesc.value }}
             </div>
-            <a href="{{ _productLink }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }}"></a>
+            <a href="{{ _productLink|raw }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }}"></a>
         </div>
     </div>
 {% endblock %}

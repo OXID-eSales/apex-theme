@@ -48,7 +48,7 @@
                         <div class="col-3 pager-prev">
                             {% if actCategory.prevProductLink %}
 
-                                <a id="linkPrevArticle" href="{{ actCategory.prevProductLink }}">
+                                <a id="linkPrevArticle" href="{{ actCategory.prevProductLink|raw }}">
                                     <svg aria-hidden="true">
                                         <use xlink:href="#left"></use>
                                     </svg>
@@ -64,7 +64,7 @@
                         <div class="col-3 pager-next">
                             {% if actCategory.nextProductLink %}
                                 <a id="linkNextArticle"
-                                   href="{{ actCategory.nextProductLink }}">
+                                   href="{{ actCategory.nextProductLink|raw }}">
                                     {{ translate({ ident: "NEXT_PRODUCT" }) }}
                                     <svg aria-hidden="true">
                                         <use xlink:href="#right"></use>
