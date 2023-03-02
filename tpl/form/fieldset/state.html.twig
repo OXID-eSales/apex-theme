@@ -12,8 +12,6 @@
 {% endif %}
 
 {{ script({ include: "js/widgets/oxcountrystateselect.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
-{{ script({ add: "$( '#" ~ countrySelectId ~ "' ).oxCountryStateSelect({selectedStateId:'" ~ selectedStateId ~ "', listItem: '.form-group', span: 'div'});", dynamic: __oxid_include_dynamic }) }}
-{{ script({ add: "$('#" ~ countrySelectId ~ "').change(function() { $( 'select[name=\"" ~ stateSelectName ~ "\"]' ).selectpicker('refresh'); } );", dynamic: __oxid_include_dynamic }) }}
 
 <script type="text/javascript"><!--
     var allStates = new Array();
@@ -37,6 +35,6 @@
         allCountryIds['{{ country.getId() }}']  = cCount;
     {% endfor %}
 --></script>
-<select class="form-select{% if class %} {{ class }}{% endif %}" name="{{ stateSelectName }}" id="{{ stateSelectId }}">
+<select class="form-select stateselect{% if class %} {{ class }}{% endif %}" name="{{ stateSelectName }}" id="{{ stateSelectId }}" data-selectedstateid="{{ selectedStateId }}">
     <option value="">{{ translate({ ident: "PLEASE_SELECT_STATE" }) }}</option>
 </select>
