@@ -135,8 +135,8 @@ $aLang = array(
 
     'SHOP_THEME_sPaymentIcons'        => 'Show payment icons placeholder',
     'HELP_SHOP_THEME_sPaymentIcons'   => 'Add icons via module or vCMS (ident="footer_payment_icons")',
-    'SHOP_THEME_sTrustedBadges'       => 'Show trusted badge placeholder',
-    'HELP_SHOP_THEME_sTrustedBadges'  => 'Add badges via module or vCMS (ident="footer_trusted_badges")',
+    'SHOP_THEME_sTrustBadges'       => 'Show trust badge placeholder',
+    'HELP_SHOP_THEME_sTrustBadges'  => 'Add badges via module or vCMS (ident="footer_trust_badges")',
 
     'SHOP_THEME_sGoogleMapsAddr'      => 'Your postal address',
     'HELP_SHOP_THEME_sGoogleMapsAddr' => 'E.g.: OXID eSales AG, Bertoldstraße 48, 79098 Freiburg',

@@ -126,13 +126,13 @@
                         {% endblock %}
                         {# <<ENDE>> Social Links #}
                     </div>
-                    {% if oViewConf.getViewThemeParam('sTrustedBadges') %}
+                    {% if oViewConf.getViewThemeParam('sTrustBadges') %}
                         <div class="col-12 col-lg-2">
                             <div class="trust-badges mb-5">
-                                <div class="h4">{{ translate({ ident: "TRUSTED_BADGES" }) }}</div>
-                                {% block footer_trusted_badges %}
+                                <div class="h4">{{ translate({ ident: "TRUST_BADGES" }) }}</div>
+                                {% block footer_trust_badges %}
                                 {% endblock %}
-                                {% ifcontent ident "footer_trusted_badges" set oCont %}
+                                {% ifcontent ident "footer_trust_badges" set oCont %}
                                     {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) }}
                                 {% endifcontent %}
                             </div>

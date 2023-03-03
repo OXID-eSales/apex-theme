@@ -179,7 +179,7 @@ $aLang = array(
     'MOVE_CAROUSEL_RIGHT'                                   => 'Move carousel right',
     'WATCH_NOW'                                             => 'Watch now',
     'PAYMENT_METHODS'                                       => 'Payment methods',
-    'TRUSTED_BADGES'                                        => 'Trusted badges',
+    'TRUST_BADGES'                                        => 'Trust badges',
 );
 
 /*

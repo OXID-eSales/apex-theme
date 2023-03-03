@@ -248,8 +248,8 @@ $aLang = array(
 
     'SHOP_THEME_sPaymentIcons'        => 'Zahlungsarten Platzhalter anzeigen',
     'HELP_SHOP_THEME_sPaymentIcons'   => 'Icons über Modul einfügen oder über das CMS pflegen (ident="footer_payment_icons")',
-    'SHOP_THEME_sTrustedBadges'       => 'Trusted Badge Platzhalter anzeigen',
-    'HELP_SHOP_THEME_sTrustedBadges'   => 'Badges über Modul einfügen oder über das CMS pflegen (ident="footer_trusted_badges")',
+    'SHOP_THEME_sTrustBadges'       => 'Trust Badge Platzhalter anzeigen',
+    'HELP_SHOP_THEME_sTrustBadges'   => 'Badges über Modul einfügen oder über das CMS pflegen (ident="footer_trust_badges")',
 
 
     'SHOP_THEME_sGoogleMapsAddr'      => 'Ihre Adresse',
