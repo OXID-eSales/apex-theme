@@ -123,6 +123,9 @@ module.exports = function (grunt) {
                     ],
                     '<%= project.out %><%= project.theme %>/src/js/changeamount.min.js': [
                         '<%= project.dev %>build/js/pages/checkout/basket/changeamount.js'
+                    ],
+                    '<%= project.out %><%= project.theme %>/src/js/widgets/oxcountrystateselect.min.js': [
+                        '<%= project.dev %>build/js/widgets/oxcountrystateselect.js'
                     ]
                 }
             }
@@ -141,7 +144,8 @@ module.exports = function (grunt) {
                     '<%= project.out %><%= project.theme %>/src/js/payment.min.js': ['<%= project.out %><%= project.theme %>/src/js/payment.min.js'],
                     '<%= project.out %><%= project.theme %>/src/js/listremovebutton.min.js': ['<%= project.out %><%= project.theme %>/src/js/listremovebutton.min.js'],
                     '<%= project.out %><%= project.theme %>/src/js/changeaddress.min.js': ['<%= project.out %><%= project.theme %>/src/js/changeaddress.min.js'],
-                    '<%= project.out %><%= project.theme %>/src/js/changeamount.min.js': ['<%= project.out %><%= project.theme %>/src/js/changeamount.min.js']
+                    '<%= project.out %><%= project.theme %>/src/js/changeamount.min.js': ['<%= project.out %><%= project.theme %>/src/js/changeamount.min.js'],
+                    '<%= project.out %><%= project.theme %>/src/js/widgets/oxcountrystateselect.min.js': ['<%= project.out %><%= project.theme %>/src/js/widgets/oxcountrystateselect.min.js']
                 }
             }
         },
