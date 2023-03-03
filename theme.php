@@ -211,7 +211,7 @@ $aTheme = array(
         ),
         array(
             'group' => 'footer',
-            'name' => 'sTrustedBadges',
+            'name' => 'sTrustBadges',
             'type' => 'bool',
             'value' => 0,
         ),
