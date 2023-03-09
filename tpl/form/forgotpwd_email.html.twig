@@ -6,7 +6,7 @@
     {{ translate({ ident: "HERE_YOU_SET_UP_NEW_PASSWORD" }) }}
 </p>
 
-<form action="{{ oViewConf.getSelfActionLink() }}" class="needs-validation" name="forgotpwd" method="post" novalidate>
+<form action="{{ oViewConf.getSelfActionLink()|raw }}" class="needs-validation" name="forgotpwd" method="post" novalidate>
     <div class="row">
         <div class="col-md-6">
             {{ oViewConf.getHiddenSid()|raw }}

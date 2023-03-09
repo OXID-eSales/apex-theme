@@ -21,7 +21,7 @@
                             <li class="list-group-item bg-light" aria-disabled="true">{{ translate({ ident: "CATEGORIES" }) }}</li>
                             {% for category in oView.getCategoryList() %}
                                 {# include file="widget/product/list.tpl" type=$oView->getListDisplayType() listId="searchList" products=$oView->getArticleList() showMainLink=true #}
-                                <a class="list-group-item list-group-item-action" href="{{ category.getLink() }}">
+                                <a class="list-group-item list-group-item-action" href="{{ category.getLink()|raw }}">
                                     {{ category.getTitle() }}
                                 </a>
                             {% endfor %}
@@ -39,7 +39,7 @@
                         <ul class="list-group mb-3">
                             <li class="list-group-item bg-light" aria-disabled="true">{{ translate({ ident: "CNC_EXTENDEDSEARCH_CONTENT" }) }}</li>
                             {% for content in oView.getContentList() %}
-                                <a href="{{ content.getLink() }}" class="list-group-item list-group-item-action">
+                                <a href="{{ content.getLink()|raw }}" class="list-group-item list-group-item-action">
                                      {{ content.getTitle() }}
                                 </a>
                             {% endfor %}
@@ -65,11 +65,11 @@
                             {% for product in oView.getArticleList() %}
                                 {# include file="widget/product/list.tpl" type='line' listId="searchList" products=$oView->getArticleList() showMainLink=true #}
                                 {% if loop.index0 < iShowMaxProductSuggestions %}
-                                    <a href="{{ _productLink }}" title="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="list-group-item list-group-item-action list-group-item-product d-flex">
+                                    <a href="{{ _productLink|raw }}" title="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="list-group-item list-group-item-action list-group-item-product d-flex">
                                         {% set oPCategory = product.getCategory() %}
                                         <span class="picture">
                                             {% block widget_product_listitem_line_picturebox %}
-                                                <img loading="lazy" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="img-fluid">
+                                                <img loading="lazy" src="{{ product.getThumbnailUrl()|raw }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="img-fluid">
                                             {% endblock %}
                                         </span>
                                         <span class="content">

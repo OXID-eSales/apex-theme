@@ -24,7 +24,7 @@
                                 </div>
                             {% endblock %}
                             {% block account_delete_my_account_confirmation_form %}
-                                <form name="delete_my_account" action="{{ oViewConf.getSelfActionLink() }}"
+                                <form name="delete_my_account" action="{{ oViewConf.getSelfActionLink()|raw }}"
                                       method="post" >
                                         {{ oViewConf.getHiddenSid()|raw }}
                                         <input type="hidden" name="cl" value="account">

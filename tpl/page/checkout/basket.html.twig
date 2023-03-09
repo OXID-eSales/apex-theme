@@ -13,7 +13,7 @@
                 {% block checkout_basket_emptyshippingcart %}
                     <div id="empty-basket-warning">
                         <div class="h1 mb-3">{{ translate({ ident: "BASKET_EMPTY" }) }} 😢</div>
-                        <a href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" class="btn btn-outline-primary">
+                        <a href="{{ oViewConf.getHomeLink()|raw }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}" class="btn btn-outline-primary">
                             <svg>
                                 <use xlink:href="#left"></use>
                             </svg>

@@ -83,7 +83,7 @@
                                             {% if oViewConf.getViewThemeParam('sFacebookUrl') %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getViewThemeParam('sFacebookUrl') }}">
+                                                   href="{{ oViewConf.getViewThemeParam('sFacebookUrl')|raw }}">
                                                     <span class="visually-hidden">Facebook</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#facebook"></use>
@@ -93,7 +93,7 @@
                                             {% if oViewConf.getViewThemeParam('sInstagramUrl') %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getViewThemeParam('sInstagramUrl') }}">
+                                                   href="{{ oViewConf.getViewThemeParam('sInstagramUrl')|raw }}">
                                                     <span class="visually-hidden">Instagram</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#instagram"></use>
@@ -103,7 +103,7 @@
                                             {% if oViewConf.getViewThemeParam('sTwitterUrl') %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getViewThemeParam('sTwitterUrl') }}">
+                                                   href="{{ oViewConf.getViewThemeParam('sTwitterUrl')|raw }}">
                                                     <span class="visually-hidden">Twitter</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#twitter"></use>
@@ -113,7 +113,7 @@
                                             {% if oViewConf.getViewThemeParam('sYouTubeUrl') %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getViewThemeParam('sYouTubeUrl') }}">
+                                                   href="{{ oViewConf.getViewThemeParam('sYouTubeUrl')|raw }}">
                                                     <span class="visually-hidden">YouTube</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#youtube"></use>
@@ -123,7 +123,7 @@
                                             {% if oViewConf.getViewThemeParam('sBlogUrl') %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getViewThemeParam('sBlogUrl') }}">
+                                                   href="{{ oViewConf.getViewThemeParam('sBlogUrl')|raw }}">
                                                     <span class="visually-hidden">Blog</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#wordpress"></use>
@@ -162,12 +162,12 @@
                                         {% if oView.isVatIncluded() %}
                                             <span class="vat-info-text">
                                                 * {{ translate({ ident: "PLUS_SHIPPING" }) }}
-                                                <a href="{{ oCont.getLink() }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a>
+                                                <a href="{{ oCont.getLink()|raw }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a>
                                             </span>
                                         {% else %}
                                             <span class="vat-info-text">
                                                 * {{ translate({ ident: "PLUS" }) }}
-                                                <a href="{{ oCont.getLink() }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a>
+                                                <a href="{{ oCont.getLink()|raw }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a>
                                             </span>
                                         {% endif %}
                                     </div>

@@ -26,10 +26,10 @@
         {% block widget_product_listitem_grid_gridpicture %}
         <div class="product-img-wrapper">
 
-            <img {% if slider %}loading="lazy" {% endif %}width="350" height="220" src="{{ product.getThumbnailUrl() }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
+            <img {% if slider %}loading="lazy" {% endif %}width="350" height="220" src="{{ product.getThumbnailUrl()|raw }}" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}" class="product-img">
             {% if product.getMasterZoomPictureUrl(2) %}
                 <picture>
-                    <source type="image/webp" srcset="{{ product.getMasterZoomPictureUrl(2) }}" media="(min-width: 1024px)">
+                    <source type="image/webp" srcset="{{ product.getMasterZoomPictureUrl(2)|raw }}" media="(min-width: 1024px)">
                     <img class="product-img img-2" width="350" height="220" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
                 </picture>
             {% endif %}
@@ -48,7 +48,7 @@
                     <div class="bottom">
                         {% if blShowToBasket %}
                             {% hasrights { ident: "TOBASKET" } %}
-                                <form name="tobasket{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink() }}" method="post"{% else %}action="{{ _productLink|raw }}" method="get"{% endif %}>
+                                <form name="tobasket{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink()|raw }}" method="post"{% else %}action="{{ _productLink|raw }}" method="get"{% endif %}>
                                     <div class="d-none">
                                         {{ oViewConf.getNavFormParams()|raw }}
                                         {{ oViewConf.getHiddenSid()|raw }}

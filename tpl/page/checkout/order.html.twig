@@ -61,7 +61,7 @@
                                             {% endblock % #}
                                         {% block checkout_order_address %}
                                             <div id="orderAddress">
-                                                <form action="{{ oViewConf.getSslSelfLink() }}" method="post">
+                                                <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
                                                     {{ oViewConf.getHiddenSid()|raw }}
                                                     <input type="hidden" name="cl" value="user">
                                                     <input type="hidden" name="fnc" value="">
@@ -78,7 +78,7 @@
                                                         {% include "widget/address/billing_address.html.twig" %}
                                                     </div>
                                                 </form>
-                                                <form action="{{ oViewConf.getSslSelfLink() }}" method="post">
+                                                <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
                                                     {{ oViewConf.getHiddenSid()|raw }}
                                                     <input type="hidden" name="cl" value="user">
                                                     <input type="hidden" name="fnc" value="">
@@ -104,7 +104,7 @@
                                         {% endblock %}
 
                                         {% block shippingAndPayment %}
-                                            <form action="{{ oViewConf.getSslSelfLink() }}" method="post"
+                                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post"
                                                   id="orderShipping">
                                                 {{ oViewConf.getHiddenSid()|raw }}
                                                 <input type="hidden" name="cl" value="payment">
@@ -123,7 +123,7 @@
                                                     {{ oShipSet.oxdeliveryset__oxtitle.value }}
                                                 </div>
                                             </form>
-                                            <form action="{{ oViewConf.getSslSelfLink() }}" method="post"
+                                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post"
                                                   id="orderPayment">
                                                 {{ oViewConf.getHiddenSid()|raw }}
                                                 <input type="hidden" name="cl" value="payment">
@@ -146,7 +146,7 @@
 
                                         {% block checkout_order_remark %}
                                             {% if oView.getOrderRemark() %}
-                                                <form action="{{ oViewConf.getSslSelfLink() }}" method="post">
+                                                <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
                                                     {{ oViewConf.getHiddenSid()|raw }}
                                                     <input type="hidden" name="cl" value="user">
                                                     <input type="hidden" name="fnc" value="">
@@ -167,7 +167,7 @@
                                         {% endblock %}
 
                                         <div id="orderEditCart">
-                                            <form action="{{ oViewConf.getSslSelfLink() }}" method="post">
+                                            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
                                                 {{ oViewConf.getHiddenSid()|raw }}
                                                 <input type="hidden" name="cl" value="basket">
                                                 <input type="hidden" name="fnc" value="">
@@ -198,7 +198,7 @@
                                             {% endblock %}
                                         {% else %}
                                             {% block checkout_order_btn_confirm_bottom %}
-                                                <form action="{{ oViewConf.getSslSelfLink() }}" method="post"
+                                                <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post"
                                                       id="orderConfirmAgbBottom">
                                                     {{ oViewConf.getHiddenSid()|raw }}
                                                     {{ oViewConf.getNavFormParams()|raw }}
@@ -237,7 +237,7 @@
 
                             {% if not oView.isLowOrderPrice() %}
                                 <div id="orderAgbTop">
-                                    <form action="{{ oViewConf.getSslSelfLink() }}" method="post"
+                                    <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post"
                                           id="orderConfirmAgbTop">
                                         {{ oViewConf.getHiddenSid()|raw }}
                                         {{ oViewConf.getNavFormParams()|raw }}

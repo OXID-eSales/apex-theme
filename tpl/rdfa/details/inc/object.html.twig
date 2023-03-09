@@ -1,8 +1,8 @@
 <div rel="gr:includes">
     {% if oProduct.getVariants() or oView.drawParentUrl() %}
-        <div typeof="gr:ProductOrServiceModel" about="{{ sRDFaUrl }}#productdata">
+        <div typeof="gr:ProductOrServiceModel" about="{{ sRDFaUrl|raw }}#productdata">
     {% else %}
-        <div typeof="gr:SomeItems" about="{{ sRDFaUrl }}#productdata">
+        <div typeof="gr:SomeItems" about="{{ sRDFaUrl|raw }}#productdata">
     {% endif %}
               {% if oProduct.oxarticles__oxtitle.value %}
                 <div property="gr:name" content="{{ oProduct.oxarticles__oxtitle.value|striptags|strip }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
@@ -67,5 +67,5 @@
         </div>
         {% if oView.getBundleArticle() %}
             {% set oBundleProduct = oView.getBundleArticle() %}
-            <div rel="gr:includes" resource="{{ oBundleProduct.getLink() }}#productdata"></div>
+            <div rel="gr:includes" resource="{{ oBundleProduct.getLink()|raw }}#productdata"></div>
         {% endif %}

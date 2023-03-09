@@ -9,11 +9,11 @@
     xmlns:gr="http://purl.org/goodrelations/v1#"
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:v="http://rdf.data-vocabulary.org/#"
-    xml:base="{{ sRDFaUrl }}"
-    typeof="gr:Offering" about="{{ sRDFaUrl }}#offeringdata">
-    <div rel="foaf:page" resource="{{ sRDFaUrl }}"></div>
+    xml:base="{{ sRDFaUrl|raw }}"
+    typeof="gr:Offering" about="{{ sRDFaUrl|raw }}#offeringdata">
+    <div rel="foaf:page" resource="{{ sRDFaUrl|raw }}"></div>
 {% ifcontent ident oView.getRDFaBusinessEntityLoc() set oCont %}
-    <div rev="gr:offers" resource="{{ oCont.getLink() }}#companydata"></div>
+    <div rev="gr:offers" resource="{{ oCont.getLink()|raw }}#companydata"></div>
 {% endifcontent %}
 {% if oProduct.oxarticles__oxtitle.value %}
     <div property="gr:name" content="{{ oProduct.oxarticles__oxtitle.value|striptags|strip }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>

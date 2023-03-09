@@ -76,7 +76,7 @@
                         {% if blShowReviewLink %}
                             <td align="right" class="text-right">
                                 <p>
-                                    <a href="{{ oViewConf.getBaseDir() }}index.php?shp={{ shop.oxshops__oxid.value }}&amp;anid={{ oOrderArticle.oxorderarticles__oxartid.value }}&amp;cl=review&amp;reviewuserhash={{ reviewuserhash }}" target="_blank">{{ translate({ ident: "REVIEW" }) }}</a>
+                                    <a href="{{ oViewConf.getBaseDir()|raw }}index.php?shp={{ shop.oxshops__oxid.value }}&amp;anid={{ oOrderArticle.oxorderarticles__oxartid.value }}&amp;cl=review&amp;reviewuserhash={{ reviewuserhash }}" target="_blank">{{ translate({ ident: "REVIEW" }) }}</a>
                                 </p>
                             </td>
                         {% endif %}
@@ -95,7 +95,7 @@
 
     {% block email_html_ordershipped_shipmenttrackingurl %}
         {% if order.getShipmentTrackingUrl() %}
-            <p>{{ translate({ ident: "SHIPMENT_TRACKING", suffix: "COLON" }) }} <a href="{{ order.getShipmentTrackingUrl() }}" target="_blank" title="{{ translate({ ident: "CLICK_HERE" }) }}">{{ translate({ ident: "CLICK_HERE" }) }}</a></p>
+            <p>{{ translate({ ident: "SHIPMENT_TRACKING", suffix: "COLON" }) }} <a href="{{ order.getShipmentTrackingUrl()|raw }}" target="_blank" title="{{ translate({ ident: "CLICK_HERE" }) }}">{{ translate({ ident: "CLICK_HERE" }) }}</a></p>
             <br/>
         {% endif %}
     {% endblock %}

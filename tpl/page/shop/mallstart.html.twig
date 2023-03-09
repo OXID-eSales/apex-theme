@@ -3,7 +3,7 @@
 <div id="page">
     <div id="header">
        {% include "widget/header/languages.html.twig" %}
-       <div><a id="logo" href="{{ oViewConf.getHomeLink() }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}"><img src="{{ oViewConf.getImageUrl('logo.png') }}" alt="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}"></a></div>
+       <div><a id="logo" href="{{ oViewConf.getHomeLink()|raw }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}"><img src="{{ oViewConf.getImageUrl('logo.png')|raw }}" alt="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}"></a></div>
     </div>
     <div>
         {% include_content "oxstartwelcome" ignore missing %}
@@ -15,21 +15,21 @@
             {% set shoplangs = oView.getShopDefaultLangs() %}
             {% for shopid, mallshop in oView.getShopList() %}
                 {% if shoplinks[shopid] %}
-                    <a href="{{ shoplinks[shopid] }}">{{ mallshop.oxshops__oxname.value }}</a><br>
+                    <a href="{{ shoplinks[shopid]|raw }}">{{ mallshop.oxshops__oxname.value }}</a><br>
                 {% else %}
                     <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=mallstart"), params: "fnc=chshp&amp;shp=" ~ mallshop.oxshops__oxid.value ~ "&amp;lang=" ~ shoplangs[shopid] }) }}" >{{ mallshop.oxshops__oxname.value }}</a><br>
                 {% endif %}
             {% endfor %}
          </div>
         {% if oView.isDemoShop() %}
-            <a id="demoAdminLink" href="{{ oViewConf.getBaseDir() }}admin/"><img src="{{ oViewConf.getImageUrl('admin_start.jpg') }}"></a>
+            <a id="demoAdminLink" href="{{ oViewConf.getBaseDir()|raw }}admin/"><img src="{{ oViewConf.getImageUrl('admin_start.jpg')|raw }}"></a>
         {% endif %}
     </div>
 
 
     <div id="footer">
         <div class="copyright">
-            <img src="{{ oViewConf.getImageUrl('logo_small.png') }}" alt="{{ translate({ ident: "OXID_ESALES_URL_TITLE" }) }}">
+            <img src="{{ oViewConf.getImageUrl('logo_small.png')|raw }}" alt="{{ translate({ ident: "OXID_ESALES_URL_TITLE" }) }}">
         </div>
         <div class="text">
             {% include_content "oxstdfooter" ignore missing %}

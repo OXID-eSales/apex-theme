@@ -4,12 +4,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" id="Viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset={{ oView.getCharSet() }}">
-        <link rel="dns-prefetch" href="{{ oViewConf.getBaseDir() }}">
-        <link rel="preconnect" href="{{ oViewConf.getBaseDir() }}">
-        <link rel="preload" href="{{ oViewConf.getResourceUrl('fonts/Roboto-Regular.woff2') }}" as="font" crossorigin type="font/woff2">
-        <link rel="preload" href="{{ oViewConf.getResourceUrl('fonts/oswald-latin-600-normal.woff2') }}" as="font" crossorigin type="font/woff2">
-        <link rel="preload" href="{{ oViewConf.getResourceUrl('css/styles.min.css') }}" as="style">
-        <link rel="preload" href="{{ oViewConf.getResourceUrl('js/scripts.min.js') }}" as="script">
+        <link rel="dns-prefetch" href="{{ oViewConf.getBaseDir()|raw }}">
+        <link rel="preconnect" href="{{ oViewConf.getBaseDir()|raw }}">
+        <link rel="preload" href="{{ oViewConf.getResourceUrl('fonts/Roboto-Regular.woff2')|raw }}" as="font" crossorigin type="font/woff2">
+        <link rel="preload" href="{{ oViewConf.getResourceUrl('fonts/oswald-latin-600-normal.woff2')|raw }}" as="font" crossorigin type="font/woff2">
+        <link rel="preload" href="{{ oViewConf.getResourceUrl('css/styles.min.css')|raw }}" as="style">
+        <link rel="preload" href="{{ oViewConf.getResourceUrl('js/scripts.min.js')|raw }}" as="script">
 
         {% set sPageTitle = oView.getPageTitle() %}
         <title>{% block head_title %}{{ sPageTitle }}{% endblock %}</title>
@@ -41,24 +41,24 @@
 
             {% if oViewConf.getActiveClassName() == 'details' %}
                 <meta property="og:type" content="product">
-                <meta property="og:image" content="{{ oView.getActPicture() }}">
-                <meta property="og:url" content="{{ oView.getCanonicalUrl() }}">
+                <meta property="og:image" content="{{ oView.getActPicture()|raw }}">
+                <meta property="og:url" content="{{ oView.getCanonicalUrl()|raw }}">
             {% elseif oViewConf.getActiveClassName() == 'manufacturerlist' and actCategory.getIconUrl() %}
                 <meta property="og:type" content="website">
-                <meta property="og:image" content="{{ actCategory.getIconUrl() }}">
-                <meta property="og:url" content="{{ oView.getCanonicalUrl() }}">
+                <meta property="og:image" content="{{ actCategory.getIconUrl()|raw }}">
+                <meta property="og:url" content="{{ oView.getCanonicalUrl()|raw }}">
             {% else %}
                 {% set aOGImage = oViewConf.getViewThemeParam('aOGImage') %}
                 <meta property="og:type" content="website">
-                <meta property="og:image" content="{{ oViewConf.getImageUrl(aOGImage) }}">
-                <meta property="og:url" content="{{ oView.getCanonicalUrl() }}">
+                <meta property="og:image" content="{{ oViewConf.getImageUrl(aOGImage)|raw }}">
+                <meta property="og:url" content="{{ oView.getCanonicalUrl()|raw }}">
             {% endif %}
         {% endblock %}
 
         {% set canonical_url = oView.getCanonicalUrl() %}
         {% block head_link_canonical %}
             {% if canonical_url %}
-                <link rel="canonical" href="{{ canonical_url }}">
+                <link rel="canonical" href="{{ canonical_url|raw }}">
             {% endif %}
         {% endblock %}
 
@@ -66,7 +66,7 @@
             {% if oView.isLanguageLoaded() %}
                 {% for _lng in oxcmp_lang %}
                     {% if _lng.id == defaultLang %}
-                        <link rel="alternate" hreflang="x-default" href="{{ _lng.link }}">
+                        <link rel="alternate" hreflang="x-default" href="{{ _lng.link|raw }}">
                     {% endif %}
                     <link rel="alternate" hreflang="{{ _lng.abbr }}" href="{{ _lng.link|add_url_parameters(oView.getDynUrlParams()) }}">
                 {% endfor %}
@@ -76,10 +76,10 @@
         {% set oPageNavigation = oView.getPageNavigation() %}
         {% if oPageNavigation %}
             {% if oPageNavigation.previousPage %}
-                <link rel="prev" href="{{ oPageNavigation.previousPage }}">
+                <link rel="prev" href="{{ oPageNavigation.previousPage|raw }}">
             {% endif %}
             {% if oPageNavigation.nextPage %}
-                <link rel="next" href="{{ oPageNavigation.nextPage }}">
+                <link rel="next" href="{{ oPageNavigation.nextPage|raw }}">
             {% endif %}
         {% endif %}
 
@@ -89,9 +89,9 @@
             {% if aAppleTouchIcon %}
                 {% set appleTouchIcon72 = appleTouchIcon %}
                 {% set appleTouchIcon144 = appleTouchIcon %}
-                <link rel="apple-touch-icon-precomposed" href="{{ appleTouchIcon }}">
-                <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ appleTouchIcon72 }}">
-                <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ appleTouchIcon144 }}">
+                <link rel="apple-touch-icon-precomposed" href="{{ appleTouchIcon|raw }}">
+                <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ appleTouchIcon72|raw }}">
+                <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ appleTouchIcon144|raw }}">
             {% endif %}
 
             <!-- Shortcut Icons -->
@@ -103,20 +103,20 @@
             {% set sThemeColor = oViewConf.getViewThemeParam('sThemeColor') %}
 
             {% if sFaviconFile %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconFile) }}" type="image/x-icon">
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconFile)|raw }}" type="image/x-icon">
             {% endif %}
             {% if sFavicon16File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon16File) }}" sizes="16x16">
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon16File)|raw }}" sizes="16x16">
             {% endif %}
             {% if sFavicon32File %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon32File) }}" sizes="32x32">
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFavicon32File)|raw }}" sizes="32x32">
             {% endif %}
             {% if sFaviconSvg %}
-                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconSvg) }}">
-                <link rel="mask-icon" color="{{ sThemeColor }}" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconSvg) }}">
+                <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconSvg)|raw }}">
+                <link rel="mask-icon" color="{{ sThemeColor }}" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconSvg)|raw }}">
             {% endif %}
             {% if sSiteManifestFile %}
-                <link rel="manifest" href="{{ oViewConf.getImageUrl("favicons/" ~ sSiteManifestFile) }}">
+                <link rel="manifest" href="{{ oViewConf.getImageUrl("favicons/" ~ sSiteManifestFile)|raw }}">
             {% endif %}
             {% if sThemeColor %}
                 <meta name="theme-color" content="{{ sThemeColor }}">
@@ -127,7 +127,7 @@
             {% if oxcmp_user and oxcmp_user.oxuser__oxrights.value == "malladmin" and get_global_cookie("scsspreview") %}
                 {{ style({ include: "css/preview.css?"|cat(smarty.now) }) }}
             {% else %}
-                <link rel="stylesheet" href="{{ oViewConf.getResourceUrl('css/styles.min.css') }}">
+                <link rel="stylesheet" href="{{ oViewConf.getResourceUrl('css/styles.min.css')|raw }}">
             {% endif %}
         {% endblock %}
 

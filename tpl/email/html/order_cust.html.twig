@@ -129,7 +129,7 @@
                 <tr valign="top">
                     {% if oViewConf.getViewThemeParam('blEmailsShowProductPictures') %}
                         <td>
-                            <img src="{{ basketproduct.getIconUrl(false) }}" border="0" hspace="0" vspace="0" alt="{{ basketitem.getTitle()|striptags }}" align="texttop" style="max-width:80px;">
+                            <img src="{{ basketproduct.getIconUrl(false)|raw }}" border="0" hspace="0" vspace="0" alt="{{ basketitem.getTitle()|striptags }}" align="texttop" style="max-width:80px;">
                         </td>
                     {% endif %}
                     <td>
@@ -167,7 +167,7 @@
 
                             {% if blShowReviewLink %}
                                 <p>
-                                    <a href="{{ shopUrl }}index.php?shp={{ shop.oxshops__oxid.value }}&amp;anid={{ basketitem.getProductId() }}&amp;cl=review&amp;reviewuserhash={{ user.getReviewUserHash(user.getId()) }}" style="" target="_blank">{{ translate({ ident: "PRODUCT_REVIEW" }) }}</a>
+                                    <a href="{{ shopUrl|raw }}index.php?shp={{ shop.oxshops__oxid.value }}&amp;anid={{ basketitem.getProductId() }}&amp;cl=review&amp;reviewuserhash={{ user.getReviewUserHash(user.getId()) }}" style="" target="_blank">{{ translate({ ident: "PRODUCT_REVIEW" }) }}</a>
                                 </p>
                             {% endif %}
                         </p>
@@ -458,7 +458,7 @@
           </tr>
           <tr valign="top">
               <td valign="top">
-                  <img src="{{ oCard.getPictureUrl() }}" alt="{{ oCard.oxwrapping__oxname.value }}" hspace="0" vspace="0" border="0" align="top">
+                  <img src="{{ oCard.getPictureUrl()|raw }}" alt="{{ oCard.oxwrapping__oxname.value }}" hspace="0" vspace="0" border="0" align="top">
               </td>
               <td>{{ translate({ ident: "WHAT_I_WANTED_TO_SAY" }) }}<br><br>{{ basket.getCardMessage() }}</td>
           </tr>

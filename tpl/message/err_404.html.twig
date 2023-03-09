@@ -16,7 +16,7 @@
 
                 <p>
                     {{ translate({ ident: "DD_ERR_404_START_TEXT" }) }}<br>
-                    <a href="{{ oViewConf.getHomeLink() }}" class="btn btn-outline-primary" title="{{ translate({ ident: "DD_ERR_404_START_BUTTON" }) }}">{{ translate({ ident: "DD_ERR_404_START_BUTTON" }) }}</a>
+                    <a href="{{ oViewConf.getHomeLink()|raw }}" class="btn btn-outline-primary" title="{{ translate({ ident: "DD_ERR_404_START_BUTTON" }) }}">{{ translate({ ident: "DD_ERR_404_START_BUTTON" }) }}</a>
                 </p>
 
                 <p>
@@ -27,9 +27,9 @@
             <div class="col-md-6">
                 <div class="gears-box">
                     <div class="paper-overlay"></div>
-                    <img class="gear-rotate reverse" style="top: -55px; left: 65px;" src="{{ oViewConf.getImageUrl('404 / gear.png') }}">
-                    <img class="gear-rotate" style="top: 177px; left: -11px;" src="{{ oViewConf.getImageUrl('404 / gear.png') }}">
-                    <img class="gear-rotate" style="top: 19px; right: -26px;" src="{{ oViewConf.getImageUrl('404 / gear.png') }}">
+                    <img class="gear-rotate reverse" style="top: -55px; left: 65px;" src="{{ oViewConf.getImageUrl('404/gear.png')|raw }}">
+                    <img class="gear-rotate" style="top: 177px; left: -11px;" src="{{ oViewConf.getImageUrl('404/gear.png')|raw }}">
+                    <img class="gear-rotate" style="top: 19px; right: -26px;" src="{{ oViewConf.getImageUrl('404/gear.png')|raw }}">
                 </div>
             </div>
         </div>

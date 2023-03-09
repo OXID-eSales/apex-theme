@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <form name="delete_shipping_address_modal_form_{{ shippingAddressNumber }}"
-                                          action="{{ oViewConf.getSelfActionLink() }}"
+                                          action="{{ oViewConf.getSelfActionLink()|raw }}"
                                           method="post">
                                             {{ oViewConf.getHiddenSid()|raw }}
                                             <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">

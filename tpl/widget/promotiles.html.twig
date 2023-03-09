@@ -19,12 +19,12 @@
                                     {% set sBannerLink = oBanner.getBannerLink() %}
 
                                     {% if sBannerLink %}
-                                        <a href="{{ sBannerLink }}" class="card bg-dark text-white">
+                                        <a href="{{ sBannerLink|raw }}" class="card bg-dark text-white">
                                     {% else %}
                                         <div class="card bg-dark text-white">
                                     {% endif %}
 
-                                    <img loading="lazy" src="{{ sBannerPictureUrl }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="card-img">
+                                    <img loading="lazy" src="{{ sBannerPictureUrl|raw }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="card-img">
 
                                     {% if oViewConf.getViewThemeParam('blSliderShowImageCaption') and oArticle %}
                                         <div class="card-img-overlay">

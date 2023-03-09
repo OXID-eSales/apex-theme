@@ -3,7 +3,7 @@
 
     {% if oView.getProduct() %}
         {% set product = oView.getProduct() %}
-        {% set _productLink = product.getLink() %}
+        {% set _productLink = product.getLink()|raw %}
 
         <div class="container-xxl" id="{{ listId }}">
             <div class="row lineView newItems">

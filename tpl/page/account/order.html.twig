@@ -54,7 +54,7 @@
                                     {% if order.getShipmentTrackingUrl() %}
                                         &nbsp;|&nbsp;<strong>{{ translate({ ident: "TRACKING_ID" }) }}</strong>
                                         <span id="accOrderTrack_{{ order.oxorder__oxordernr.value }}">
-                                                <a href="{{ order.getShipmentTrackingUrl() }}">{{ translate({ ident: "TRACK_SHIPMENT" }) }}</a>
+                                                <a href="{{ order.getShipmentTrackingUrl()|raw }}">{{ translate({ ident: "TRACK_SHIPMENT" }) }}</a>
                                             </span>
                                     {% endif %}
                                 </div>
@@ -71,7 +71,7 @@
                                             {{ orderitem.oxorderarticles__oxamount.value }} {{ translate({ ident: "QNT" }) }}
                                             {% if oArticle.oxarticles__oxid.value and oArticle.isVisible() %}
                                             <a id="accOrderLink_{{ order.oxorder__oxordernr.value }}_{{ loop.index }}"
-                                               href="{{ oArticle.getLink() }}">
+                                               href="{{ oArticle.getLink()|raw }}">
                                                 {% endif %}
                                                 {{ orderitem.oxorderarticles__oxtitle.value }} {{ orderitem.oxorderarticles__oxselvariant.value }}
                                                 <span class="amount"></span>

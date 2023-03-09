@@ -18,7 +18,7 @@
     {% endfor %}
     {# oxscript add="oxVariantSelections = [`$_sSelectionHashCollection`];" #}
 
-    <form class="js-oxWidgetReload" action="{{ oView.getWidgetLink() }}" method="get">
+    <form class="js-oxWidgetReload" action="{{ oView.getWidgetLink()|raw }}" method="get">
         {{ oViewConf.getHiddenSid()|raw }}
         {{ oViewConf.getNavFormParams()|raw }}
         <input type="hidden" name="cl" value="{{ oView.getClassKey() }}">
@@ -35,7 +35,7 @@
 {% endif %}
 
 {% hasrights { ident: "TOBASKET" } %}
-    <form class="js-oxProductForm" action="{{ oViewConf.getSelfActionLink() }}" method="post">
+    <form class="js-oxProductForm" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post">
             {{ oViewConf.getHiddenSid()|raw }}
             {{ oViewConf.getNavFormParams()|raw }}
             <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
@@ -65,7 +65,7 @@
                                 <div class="thumbnails">
                                     {% for iPicNr, oArtIcon in oView.getIcons() %}
                                         <label for="image{{ iPicNr}}" class="thumb">
-                                            <img loading="lazy" src="{{ oPictureProduct.getIconUrl(iPicNr) }}" alt="{{ translate({ ident: "IMAGE" }) }}{{ iPicNr}}" width="112" height="112">
+                                            <img loading="lazy" src="{{ oPictureProduct.getIconUrl(iPicNr)|raw }}" alt="{{ translate({ ident: "IMAGE" }) }}{{ iPicNr}}" width="112" height="112">
                                         </label>
                                     {% endfor %}
                                 </div>
@@ -77,7 +77,7 @@
                                     {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
 
                                     <figure>
-                                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}"/>
+                                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}"/>
                                     </figure>
                                 {% endfor %}
                             </div>
@@ -89,7 +89,7 @@
             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                 {% block details_productmain_manufacturersicon %}
                     {% if oManufacturer %}
-                        <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" class="brand-name">
+                        <a href="{{ oManufacturer.getLink()|raw }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" class="brand-name">
                             {{ oManufacturer.oxmanufacturers__oxtitle.value }}
                         </a>
                     {% endif %}

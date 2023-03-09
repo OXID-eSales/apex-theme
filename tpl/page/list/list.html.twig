@@ -16,7 +16,7 @@
                 {% endif %}
             </h3>
             <div class="featured icon">
-                <img loading="lazy" src="{{ actCategory.getIconUrl() }}" alt="{{ actCategory.getTitle() }}">
+                <img loading="lazy" src="{{ actCategory.getIconUrl()|raw }}" alt="{{ actCategory.getTitle() }}">
             </div>
         </div>
         {% endif %}
@@ -47,7 +47,7 @@
                 </div>
                 {% if actCategory.getIconUrl() %}
                     <div class="col-12 col-md-6 order-1 order-md-1 py-4">
-                        <img src="{{ actCategory.getIconUrl() }}" alt="{{ actCategory.getTitle() }}">
+                        <img src="{{ actCategory.getIconUrl()|raw }}" alt="{{ actCategory.getTitle() }}">
                     </div>
                 {% endif %}
             </div>
@@ -78,7 +78,7 @@
                     </div>
                     {% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %}
                         <div class="col-12 col-md-6 order-1 order-md-1 py-4 text-right">
-                            <img src="{{ actCategory.getThumbUrl() }}" alt="{{ actCategory.oxcategories__oxtitle.value }}" class="w-100 img-fluid">
+                            <img src="{{ actCategory.getThumbUrl()|raw }}" alt="{{ actCategory.oxcategories__oxtitle.value }}" class="w-100 img-fluid">
                         </div>
                     {% endif %}
                 </div>
@@ -102,11 +102,11 @@
                     {% if category.getIsVisible() %}
                         {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
                         {% set iconUrl = category.getIconUrl() %}
-                            <a href="{{ category.getLink() }}" class="cat-list-item">
+                            <a href="{{ category.getLink()|raw }}" class="cat-list-item">
                                 {% if iconUrl %}
-                                    <img loading="lazy" src="{{ category.getIconUrl() }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
+                                    <img loading="lazy" src="{{ category.getIconUrl()|raw }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
                                 {% else %}
-                                    <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat-placeholder.png') }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
+                                    <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat-placeholder.png')|raw }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
                                 {% endif %}
                                 <span class="cat-list-item-name">
                                     {{ category.oxcategories__oxtitle.value }}
@@ -120,8 +120,8 @@
 
                     {% if category.getContentCats() %}
                         {% for ocont in category.getContentCats() %}
-                            <a href="{{ ocont.getLink() }}" class="cat-list-item">
-                                <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat-placeholder.png') }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
+                            <a href="{{ ocont.getLink()|raw }}" class="cat-list-item">
+                                <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat-placeholder.png')|raw }}" alt="{{ category.oxcategories__oxtitle.value }}" class="cat-list-item-img">
                                 <span class="cat-list-item-name">
                                     {{ ocont.oxcontents__oxtitle.value }}
                                 </span>

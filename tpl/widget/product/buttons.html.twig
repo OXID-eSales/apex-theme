@@ -11,7 +11,7 @@
                 <input type="hidden" name="{{ sFieldName|default("varselid") }}[{{ iKey }}]" value="{% if oActiveSelection %}{{ oActiveSelection.getValue() }}{% endif %}">
 
                 {% for oSelection in oSelections %}
-                    <a href="{{ oSelection.getLink() }}" data-selection-id="{{ oSelection.getValue() }}" class="btn btn-outline-primary{% if oSelection.isActive() %} active{% endif %}{% if oSelection.isDisabled() %} disabled{% endif %}">{{ oSelection.getName() }}</a>
+                    <a href="{{ oSelection.getLink()|raw }}" data-selection-id="{{ oSelection.getValue() }}" class="btn btn-outline-primary{% if oSelection.isActive() %} active{% endif %}{% if oSelection.isDisabled() %} disabled{% endif %}">{{ oSelection.getName() }}</a>
                 {% endfor %}
             {% endif %}
         </div>

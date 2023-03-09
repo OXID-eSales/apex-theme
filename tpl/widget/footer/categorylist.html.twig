@@ -6,10 +6,10 @@
                 {% if _cat.getIsVisible() %}
                     {% if _cat.getContentCats() %}
                         {% for _oCont in _cat.getContentCats() %}
-                            <a class="nav-link" href="{{ _oCont.getLink() }}">{{ _oCont.oxcontents__oxtitle.value }}</a>
+                            <a class="nav-link" href="{{ _oCont.getLink()|raw }}">{{ _oCont.oxcontents__oxtitle.value }}</a>
                         {% endfor %}
                     {% endif %}
-                    <a class="nav-link" href="{{ _cat.getLink() }}">
+                    <a class="nav-link" href="{{ _cat.getLink()|raw }}">
                         {{ _cat.oxcategories__oxtitle.value }} {% if oView.showCategoryArticlesCount() and ( _cat.getNrOfArticles() > 0 ) %} ({{ _cat.getNrOfArticles() }}){% endif %}
                     </a>
                 {% endif %}

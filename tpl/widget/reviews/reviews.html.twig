@@ -33,7 +33,7 @@
                 {% if oxcmp_user %}
                     <div id="review_form" class="collapse">
                         {% block widget_reviews_form %}
-                            <form action="{{ oViewConf.getSelfActionLink() }}" method="post" id="rating" novalidate>
+                            <form action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" id="rating" novalidate>
                                 <div id="writeReview" class="product-review mb-5">
                                     <div class="d-none">
                                         {% if oView.canRate() %}

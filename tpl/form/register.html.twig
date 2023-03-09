@@ -1,7 +1,7 @@
 {# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
 {{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) #}
 <div class="card card-lg">
-    <form action="{{ oViewConf.getSslSelfLink() }}" class="needs-validation" name="order" method="post" novalidate>
+    <form action="{{ oViewConf.getSslSelfLink()|raw }}" class="needs-validation" name="order" method="post" novalidate>
         {% set aErrors = oView.getFieldValidationErrors() %}
         {{ oViewConf.getHiddenSid()|raw }}
         {{ oViewConf.getNavFormParams()|raw }}

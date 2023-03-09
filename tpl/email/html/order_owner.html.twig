@@ -128,7 +128,7 @@
                 <tr valign="top">
                     {% if oViewConf.getViewThemeParam('blEmailsShowProductPictures') %}
                         <td>
-                            <img src="{{ basketproduct.getIconUrl(false) }}" border="0" hspace="0" vspace="0" alt="{{ basketitem.getTitle()|striptags }}" align="texttop" style="max-width:80px;">
+                            <img src="{{ basketproduct.getIconUrl(false)|raw }}" border="0" hspace="0" vspace="0" alt="{{ basketitem.getTitle()|striptags }}" align="texttop" style="max-width:80px;">
                         </td>
                     {% endif %}
                     <td>
@@ -186,7 +186,7 @@
             {% if basket['oCard'] %}
                 <tr valign="top">
                     <td>
-                        <img src="{{ basket.oCard.getPictureUrl() }}" alt="{{ basket.oCard.oxwrapping__oxname.value }}" hspace="0" vspace="0" border="0" align="top">
+                        <img src="{{ basket.oCard.getPictureUrl()|raw }}" alt="{{ basket.oCard.oxwrapping__oxname.value }}" hspace="0" vspace="0" border="0" align="top">
                     </td>
                     <td colspan="{{ iFooterColspan }}">
                         <b>{{ translate({ ident: "ATENTION_GREETING_CARD" }) }}</b><br>

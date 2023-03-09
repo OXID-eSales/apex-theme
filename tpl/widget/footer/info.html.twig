@@ -1,22 +1,22 @@
 {% block footer_information %}
     <nav class="nav flex-column">
         {% ifcontent ident "oximpressum" set _cont %}
-            <a class="nav-link" href="{{ _cont.getLink() }}">{{ _cont.oxcontents__oxtitle.value }}</a>
+            <a class="nav-link" href="{{ _cont.getLink()|raw }}">{{ _cont.oxcontents__oxtitle.value }}</a>
         {% endifcontent %}
         {% ifcontent ident "oxagb" set _cont %}
-            <a class="nav-link" href="{{ _cont.getLink() }}">{{ _cont.oxcontents__oxtitle.value }}</a>
+            <a class="nav-link" href="{{ _cont.getLink()|raw }}">{{ _cont.oxcontents__oxtitle.value }}</a>
         {% endifcontent %}
         {% ifcontent ident "oxsecurityinfo" set oCont %}
-            <a class="nav-link" href="{{ oCont.getLink() }}">{{ oCont.oxcontents__oxtitle.value }}</a>
+            <a class="nav-link" href="{{ oCont.getLink()|raw }}">{{ oCont.oxcontents__oxtitle.value }}</a>
         {% endifcontent %}
         {% ifcontent ident "oxdeliveryinfo" set oCont %}
-            <a class="nav-link" href="{{ oCont.getLink() }}">{{ oCont.oxcontents__oxtitle.value }}</a>
+            <a class="nav-link" href="{{ oCont.getLink()|raw }}">{{ oCont.oxcontents__oxtitle.value }}</a>
         {% endifcontent %}
         {% ifcontent ident "oxrightofwithdrawal" set oCont %}
-            <a class="nav-link" href="{{ oCont.getLink() }}">{{ oCont.oxcontents__oxtitle.value }}</a>
+            <a class="nav-link" href="{{ oCont.getLink()|raw }}">{{ oCont.oxcontents__oxtitle.value }}</a>
         {% endifcontent %}
         {% ifcontent ident "oxorderinfo" set oCont %}
-            <a class="nav-link" href="{{ oCont.getLink() }}">{{ oCont.oxcontents__oxtitle.value }}</a>
+            <a class="nav-link" href="{{ oCont.getLink()|raw }}">{{ oCont.oxcontents__oxtitle.value }}</a>
         {% endifcontent %}
         {% if oViewConf.getViewThemeParam('blFooterShowNewsletter') %}
             <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=newsletter") }) }}">{{ translate({ ident: "NEWSLETTER" }) }}</a>

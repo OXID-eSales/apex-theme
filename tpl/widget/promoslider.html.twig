@@ -29,16 +29,16 @@
                                             <div class="carousel-item{% if loop.first %} active{% endif %}">
                                                 {% set sBannerLink = oBanner.getBannerLink() %}
                                                 {% if sBannerLink %}
-                                                    <a class="d-block" href="{{ sBannerLink }}" title="{{ oBanner.oxactions__oxtitle.value }}">
+                                                    <a class="d-block" href="{{ sBannerLink|raw }}" title="{{ oBanner.oxactions__oxtitle.value }}">
                                                 {% endif %}
-                                                <img loading="lazy" src="{{ sBannerPictureUrl }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="w-100">
+                                                <img loading="lazy" src="{{ sBannerPictureUrl|raw }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="w-100">
 
                                                 {% if sBannerLink %}
                                                     </a>
                                                 {% endif %}
                                                 {% if oViewConf.getViewThemeParam('blSliderShowImageCaption') and oArticle %}
                                                 {% if sBannerLink %}
-                                                <a href="{{ sBannerLink }}" class="d-block" title="{{ oBanner.oxactions__oxtitle.value }}">
+                                                <a href="{{ sBannerLink|raw }}" class="d-block" title="{{ oBanner.oxactions__oxtitle.value }}">
                                                     {% endif %}
                                                     <div class="carousel-caption d-none d-md-block">
 

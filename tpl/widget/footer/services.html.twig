@@ -3,7 +3,7 @@
         {% block footer_services_items %}
             <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=contact") }) }}">{{ translate({ ident: "CONTACT" }) }}</a>
             {% if oViewConf.getViewThemeParam('blFooterShowHelp') %}
-                <a class="nav-link" href="{{ oViewConf.getHelpPageLink() }}">{{ translate({ ident: "HELP" }) }}</a>
+                <a class="nav-link" href="{{ oViewConf.getHelpPageLink()|raw }}">{{ translate({ ident: "HELP" }) }}</a>
             {% endif %}
             {% if oViewConf.getViewThemeParam('blFooterShowLinks') %}
                 <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=links") }) }}">{{ translate({ ident: "LINKS" }) }}</a>

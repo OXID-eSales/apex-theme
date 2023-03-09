@@ -17,7 +17,7 @@
                                     {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
                                     <div class="box">
                                         <h3>
-                                            <a id="moreSubCms_{{ loop.index }}" href="{{ ocont.getLink() }}">{{ ocont.oxcontents__oxtitle.value }}</a>
+                                            <a id="moreSubCms_{{ loop.index }}" href="{{ ocont.getLink()|raw }}">{{ ocont.oxcontents__oxtitle.value }}</a>
                                         </h3>
                                         <ul class="content"></ul>
                                     </div>
@@ -27,7 +27,7 @@
                             {% set iconUrl = category.getIconUrl() %}
                             <div class="col-12 col-sm-6 col-md-4 mb-3">
                                 <div class="list-group">
-                                    <a href="{{ category.getLink() }}" class="list-group-item list-group-item-action list-group-item-primary">
+                                    <a href="{{ category.getLink()|raw }}" class="list-group-item list-group-item-action list-group-item-primary">
                                         {{ category.oxcategories__oxtitle.value }}{% if oView.showCategoryArticlesCount() and (category.getNrOfArticles() > 0) %} ({{ category.getNrOfArticles() }}){% endif %}
                                     </a>
                                     {% if category.getHasVisibleSubCats() %}
@@ -36,9 +36,9 @@
                                             {% if subcategory.getIsVisible() %}
                                                 {# CMS subcategories #}
                                                 {% for ocont in subcategory.getContentCats() %}
-                                                    <a href="{{ ocont.getLink() }}" class="list-group-item list-group-item-action">{{ ocont.oxcontents__oxtitle.value }}</a>
+                                                    <a href="{{ ocont.getLink()|raw }}" class="list-group-item list-group-item-action">{{ ocont.oxcontents__oxtitle.value }}</a>
                                                 {% endfor %}
-                                                <a href="{{ subcategory.getLink() }}" class="list-group-item list-group-item-action">
+                                                <a href="{{ subcategory.getLink()|raw }}" class="list-group-item list-group-item-action">
                                                     {{ subcategory.oxcategories__oxtitle.value }}
 
                                                     {% if oView.showCategoryArticlesCount() and (subcategory.getNrOfArticles() > 0) %}
@@ -49,7 +49,7 @@
 
                                                 {% for subsubcategory in subcategory.getSubCats() %}
                                                     {% if subsubcategory.getIsVisible() %}
-                                                        <a href="{{ subsubcategory.getLink() }}" class="list-group-item list-group-item-action ps-5">
+                                                        <a href="{{ subsubcategory.getLink()|raw }}" class="list-group-item list-group-item-action ps-5">
                                                             {{ subsubcategory.oxcategories__oxtitle.value }}
                                                             {% if oView.showCategoryArticlesCount() and (subsubcategory.getNrOfArticles() > 0) %}
                                                                 <span class="badge bg-primary rounded-pill">{{ subsubcategory.getNrOfArticles() }}</span>

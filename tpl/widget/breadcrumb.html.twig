@@ -7,7 +7,7 @@
                         <ol class="breadcrumb">
                             {% block dd_widget_breadcrumb_list %}
                                 <li class="breadcrumb-item">
-                                    <a href="{{ oViewConf.getHomeLink() }}" class="breadcrumb-link" title="{{ translate({ ident: "HOME" }) }}">
+                                    <a href="{{ oViewConf.getHomeLink()|raw }}" class="breadcrumb-link" title="{{ translate({ ident: "HOME" }) }}">
                                         <svg aria-label="{{ translate({ ident: "HOME" }) }}">
                                             <use xlink:href="#house-door"></use>
                                         </svg>
@@ -18,7 +18,7 @@
                                         {% if loop.last and oView.getClassKey() != "details" %}
                                             {{ sCrum.title }}
                                         {% else %}
-                                            <a href="{% if sCrum.link %}{{ sCrum.link }}{% else %}#{% endif %}" class="breadcrumb-link" title="{{ sCrum.title|escape('html') }}">
+                                            <a href="{% if sCrum.link %}{{ sCrum.link|raw }}{% else %}#{% endif %}" class="breadcrumb-link" title="{{ sCrum.title|escape('html') }}">
                                                 {{ sCrum.title }}
                                             </a>
                                         {% endif %}

@@ -17,9 +17,9 @@
                             {% block checkout_basketcontents_basketitem_image %}
                                 {% set oBasketitemArticle = basketitem.getArticle() %}
 
-                                {% if editable %}<a class="d-block" href="{{ basketitem.getLink() }}">{% endif %}
+                                {% if editable %}<a class="d-block" href="{{ basketitem.getLink()|raw }}">{% endif %}
 
-                                <img loading="lazy" src="{{ oBasketitemArticle.getIconUrl() }}"
+                                <img loading="lazy" src="{{ oBasketitemArticle.getIconUrl()|raw }}"
                                      alt="{{ basketitem.getTitle()|striptags }} {{ product.oxarticles__oxvarselect.value }}" width="70" height="70">
 
                                 {% if editable %}</a>{% endif %}
@@ -371,7 +371,7 @@
                     <div class="list-group-item">
                         <div class="row">
                             <div class="col-md-5 col-lg-2">
-                                <img loading="lazy" src="{{ oCard.getPictureUrl() }}"
+                                <img loading="lazy" src="{{ oCard.getPictureUrl()|raw }}"
                                      alt="{{ card.oxwrapping__oxname.value }}">
                             </div>
                             <div class="col-md-7 col-lg-10">

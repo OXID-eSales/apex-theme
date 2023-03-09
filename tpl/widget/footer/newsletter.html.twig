@@ -1,5 +1,5 @@
 {% block dd_footer_newsletter_form %}
-    <form class="newsletter-form"  action="{{ oViewConf.getSslSelfLink() }}" method="post">
+    <form class="newsletter-form"  action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
         <div class="mb-3">
             {% block dd_footer_newsletter_form_inner %}
                 {{ oViewConf.getHiddenSid()|raw }}

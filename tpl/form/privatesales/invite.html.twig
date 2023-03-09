@@ -1,6 +1,6 @@
 {% set _oProduct = oView.getProduct() %}
 {% set editval = oView.getInviteData() %}
-<form class="js-oxValidate" action="{{ oViewConf.getSslSelfLink() }}" method="post">
+<form class="js-oxValidate" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
     {{ oViewConf.getHiddenSid()|raw }}
     {{ oViewConf.getNavFormParams()|raw }}
     <input type="hidden" name="fnc" value="send">

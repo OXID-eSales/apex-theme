@@ -96,7 +96,7 @@
                                 <span class="d-flex align-items-center">
                                     <span>{{ translate({ ident: "COUPON" }) }}&nbsp;({{ sVoucher.sVoucherNr }})</span>
                                     {% if editable %}
-                                        <a href="{{ oViewConf.getSelfLink() }}&amp;cl=basket&amp;fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}"
+                                        <a href="{{ oViewConf.getSelfLink()|raw }}&amp;cl=basket&fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}"
                                            class="btn removeFn py-0" title="{{ translate({ ident: "REMOVE" }) }}">
                                             <svg>
                                                 <use xlink:href="#trash"></use>
@@ -242,7 +242,7 @@
                 </h4>
                 <div class="collapse" id="voucherCollapse">
                     <div class="card-body">
-                        <form name="voucher" action="{{ oViewConf.getSelfActionLink() }}" method="post" novalidate>
+                        <form name="voucher" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" novalidate>
                             {{ oViewConf.getHiddenSid()|raw }}
                             <input type="hidden" name="cl" value="basket">
                             <input type="hidden" name="fnc" value="addVoucher">
@@ -277,7 +277,7 @@
     {% endif %}
     {% block basket_btn_next_bottom %}
         {% if not oView.isLowOrderPrice() and btn %}
-            <form action="{{ oViewConf.getSslSelfLink() }}" method="post">
+            <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
                 {{ oViewConf.getHiddenSid()|raw }}
                 <input type="hidden" name="cl" value="user">
                 <button type="submit" class="btn btn-highlight btn-lg w-100">

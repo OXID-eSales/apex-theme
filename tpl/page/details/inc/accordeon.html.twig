@@ -11,7 +11,7 @@
                         <div id="description" class="collapse" aria-labelledby="description-collapsible">
                             {{ include(template_from_string(oLongdesc)) }}
                             {% if oDetailsProduct.oxarticles__oxexturl.value %}
-                                <a id="productExturl" class="js-external" href="{{ oDetailsProduct.oxarticles__oxexturl.value }}">
+                                <a id="productExturl" class="js-external" href="{{ oDetailsProduct.oxarticles__oxexturl.value|raw }}">
                                 {% if oDetailsProduct.oxarticles__oxurldesc.value %}
                                     {{ oDetailsProduct.oxarticles__oxurldesc.value }}
                                 {% else %}

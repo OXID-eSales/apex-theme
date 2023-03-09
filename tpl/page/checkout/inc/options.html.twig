@@ -21,7 +21,7 @@
                 {{ translate({ ident: "OPEN_ACCOUNT" }) }}
             </h4>
             <div class="card-body">
-                <form action="{{ oViewConf.getSslSelfLink() }}" method="post" id="optionRegistration">
+                <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" id="optionRegistration">
                     {{ oViewConf.getHiddenSid()|raw }}
                     {{ oViewConf.getNavFormParams()|raw }}
                     <input type="hidden" name="cl" value="user">
@@ -41,7 +41,7 @@
                     {{ translate({ ident: "PURCHASE_WITHOUT_REGISTRATION" }) }}
                 </h4>
                 <div class="card-body">
-                    <form action="{{ oViewConf.getSslSelfLink() }}" method="post" id="optionNoRegistration">
+                    <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" id="optionNoRegistration">
                         {{ oViewConf.getHiddenSid()|raw }}
                         {{ oViewConf.getNavFormParams()|raw }}
                         <input type="hidden" name="cl" value="user">

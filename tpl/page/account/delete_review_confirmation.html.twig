@@ -18,7 +18,7 @@
                             <div class="col-md-12">
                                 {% block delete_review_confirmation_modal_form %}
                                     <form
-                                        action="{{ oViewConf.getSslSelfLink() }}"
+                                        action="{{ oViewConf.getSslSelfLink()|raw }}"
                                         method="post"
                                         id="remove_review_{{ reviewCounterIteration }}"
                                     >

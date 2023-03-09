@@ -64,9 +64,9 @@
                                                         {% block widget_minibasket_product_item %}
                                                             {% set minibasketItemTitle = _product.getTitle() %}
                                                             <div class="my-1">
-                                                                <a class="minibasket-link" href="{{ _product.getLink() }}" title="{{ minibasketItemTitle|striptags }}">
+                                                                <a class="minibasket-link" href="{{ _product.getLink()|raw }}" title="{{ minibasketItemTitle|striptags }}">
                                                                 <span>
-                                                                     <img loading="lazy" class="minibasket-img img-fluid" src="{{ _product.getIconUrl() }}" alt="{{ minibasketItemTitle|striptags }}" width="40" height="40">
+                                                                     <img loading="lazy" class="minibasket-img img-fluid" src="{{ _product.getIconUrl()|raw }}" alt="{{ minibasketItemTitle|striptags }}" width="40" height="40">
                                                                 </span>
                                                                     <span>
                                                                     {{ _product.getAmount() }} x {{ minibasketItemTitle|striptags|raw }}<br>

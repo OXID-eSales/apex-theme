@@ -25,7 +25,7 @@
 {{ script({ include: "js/changeaddress.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
 {% block user_checkout_change %}
-    <form action="{{ oViewConf.getSslSelfLink() }}" class="needs-validation" name="order" method="post" novalidate id="user_form">
+    <form action="{{ oViewConf.getSslSelfLink()|raw }}" class="needs-validation" name="order" method="post" novalidate id="user_form">
         {% block user_checkout_change_form %}
             {% set aErrors = oView.getFieldValidationErrors() %}
             {{ oViewConf.getHiddenSid()|raw }}

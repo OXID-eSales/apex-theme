@@ -7,7 +7,7 @@
             <li>{{ translate({ ident: "MESSAGE_INVITE_YOUR_FRIENDS_EMAIL" }) }}</li>
         </ul>
         {% ifcontent ident "oxsecurityinfo" set oCont %}
-            <p>{{ translate({ ident: "MESSAGE_READ_DETAILS" }) }} <a href="{{ oCont.getLink() }}" rel="nofollow">{{  oCont.oxcontents__oxtitle.value  }}</a></p>
+            <p>{{ translate({ ident: "MESSAGE_READ_DETAILS" }) }} <a href="{{ oCont.getLink()|raw }}" rel="nofollow">{{  oCont.oxcontents__oxtitle.value  }}</a></p>
         {% endifcontent %}
         {% include "form/privatesales/invite.html.twig" %}
     {% else %}

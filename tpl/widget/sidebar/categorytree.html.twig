@@ -18,7 +18,7 @@
                                         {% if _cat.getContentCats() and deepLevel > 1 %}
                                             {% for _oCont in _cat.getContentCats() %}
                                                 <li class="nav-item{% if oContentCat and oContentCat.getId()==_oCont.getId() %} active{% else %} end{% endif %}" >
-                                                    <a href="nav-link{{ _oCont.getLink() }}" title="{{ _oCont.oxcontents__oxtitle.value }}"><i></i>{{ _oCont.oxcontents__oxtitle.value }}</a>
+                                                    <a href="nav-link{{ _oCont.getLink()|raw }}" title="{{ _oCont.oxcontents__oxtitle.value }}"><i></i>{{ _oCont.oxcontents__oxtitle.value }}</a>
                                                 </li>
                                             {% endfor %}
                                         {% endif %}
@@ -26,7 +26,7 @@
                                         {# subcategories #}
                                         {% set oSubCats = _cat.getSubCats() %}
                                         <li class="nav-item{% if not oContentCat and act and act.getId()==_cat.getId() %} active{% elseif _cat.expanded %} exp{% endif %}{% if not _cat.hasVisibleSubCats %} end{% endif %}">
-                                            <a class="nav-link" href="{{ _cat.getLink() }}" title="{{ _cat.oxcategories__oxtitle.value }}">
+                                            <a class="nav-link" href="{{ _cat.getLink()|raw }}" title="{{ _cat.oxcategories__oxtitle.value }}">
                                                 <svg>
                                                     <use xlink:href="#{% if _cat.expanded and oSubCats %}down{% else %}right{% endif %}"></use>
                                                 </svg>

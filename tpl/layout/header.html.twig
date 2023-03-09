@@ -79,10 +79,10 @@
                                     {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
                                     {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
                                     {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
-                                    <a href="{{ oViewConf.getHomeLink() }}"
+                                    <a href="{{ oViewConf.getHomeLink()|raw }}"
                                        title="{{ oxcmp_shop.oxshops__oxname.value }}" class="logo-link d-flex">
                                         {% if slogoImg %}
-                                            <img src="{{ oViewConf.getImageUrl(slogoImg) }}"
+                                            <img src="{{ oViewConf.getImageUrl(slogoImg)|raw }}"
                                                  alt="{{ oxcmp_shop.oxshops__oxname.value }}" width="{{ sLogoWidth }}"
                                                  height="{{ sLogoHeight }}" class="logo-img">
                                         {% else %}

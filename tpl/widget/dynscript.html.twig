@@ -1,7 +1,7 @@
 {{ script({ dynamic: __oxid_include_dynamic }) }}
 
 <script>{% apply spaceless %}
-    var sBaseUrl = '{{ oViewConf.getSelfActionLink() }}';
+    var sBaseUrl = '{{ oViewConf.getSelfActionLink()|raw }}';
     var sActCl = '{{ oViewConf.getTopActiveClassName() }}';
 {% endapply %}</script>
 

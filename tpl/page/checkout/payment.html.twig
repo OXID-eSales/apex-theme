@@ -38,7 +38,7 @@
 
                                 {% block change_payment %}
                                     {{ script({ include: "js/payment.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
-                                    <form action="{{ oViewConf.getSslSelfLink() }}" class="payment" id="payment"
+                                    <form action="{{ oViewConf.getSslSelfLink()|raw }}" class="payment" id="payment"
                                           name="order" method="post" novalidate>
                                         {{ oViewConf.getHiddenSid()|raw }}
                                         {{ oViewConf.getNavFormParams()|raw }}
@@ -97,7 +97,7 @@
                                 {% block change_shipping %}
                                     {% if oView.getAllSets() %}
                                         {% set aErrors = oView.getFieldValidationErrors() %}
-                                        <form action="{{ oViewConf.getSslSelfLink() }}" name="shipping" id="shipping"
+                                        <form action="{{ oViewConf.getSslSelfLink()|raw }}" name="shipping" id="shipping"
                                               method="post">
                                             {{ oViewConf.getHiddenSid()|raw }}
                                             {{ oViewConf.getNavFormParams()|raw }}

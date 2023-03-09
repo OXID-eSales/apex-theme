@@ -10,7 +10,7 @@
                 <p>{{ translate({ ident: "MESSAGE_BASKET_EXCLUDE_INFO" }) }}</p>
             </div>
             <div class="modal-footer">
-                <form action="{{ oViewConf.getCurrentHomeDir() }}index.php" method="post">
+                <form action="{{ oViewConf.getCurrentHomeDir()|raw }}index.php" method="post">
                     {{ oViewConf.getHiddenSid()|raw }}
                     {{ oViewConf.getNavFormParams()|raw }}
                     <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">

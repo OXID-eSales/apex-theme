@@ -1,13 +1,13 @@
 {% set currency = oView.getActCurrency() %}
 {% for oNewDeliveryMethod in oView.getNotMappedToRDFaDeliverySets() %}
-    <div about="{{ sRDFaUrl }}#{{ oNewDeliveryMethod.oxdeliveryset__oxtitle.value|strip('')|cat('_')|cat(oNewDeliveryMethod.oxdeliveryset__oxid.value) }}" typeof="gr:DeliveryMethod">
+    <div about="{{ sRDFaUrl|raw }}#{{ oNewDeliveryMethod.oxdeliveryset__oxtitle.value|strip('')|cat('_')|cat(oNewDeliveryMethod.oxdeliveryset__oxid.value) }}" typeof="gr:DeliveryMethod">
         <div property="rdfs:label" content="{{ oNewDeliveryMethod.oxdeliveryset__oxtitle.value }}"></div>
     </div>
 {% endfor %}
 
 {% set oDelChargeSpecs = oView.getDeliveryChargeSpecs() %}
 {% for oDelChargeSpec in oDelChargeSpecs %}
-    <div typeof="gr:DeliveryChargeSpecification" about="{{ sRDFaUrl }}#{{ oDelChargeSpec.getId() }}">
+    <div typeof="gr:DeliveryChargeSpecification" about="{{ sRDFaUrl|raw }}#{{ oDelChargeSpec.getId() }}">
         <div property="rdfs:comment" content="{{ oDelChargeSpec.oxdelivery__oxtitle.value }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
         {% set oPriceValidity = oView.getRdfaPriceValidity() %}
         <div property="gr:validFrom" content="{{ oPriceValidity.validfrom }}" datatype="xsd:dateTime"></div>
@@ -36,7 +36,7 @@
     {% if oDelSetMethod.oxdeliveryset__oxobjectid.value %}
         <div rel="gr:appliesToDeliveryMethod" resource="http://purl.org/goodrelations/v1#{{ oDelSetMethod.oxdeliveryset__oxobjectid.value }}"></div>
     {% else %}
-        <div rel="gr:availableDeliveryMethods" resource="{{ sRDFaUrl }}#{{ oDelSetMethod.oxdeliveryset__oxtitle.value|strip('')|cat('_')|cat(oDelSetMethod.oxdeliveryset__oxid.value) }}"></div>
+        <div rel="gr:availableDeliveryMethods" resource="{{ sRDFaUrl|raw }}#{{ oDelSetMethod.oxdeliveryset__oxtitle.value|strip('')|cat('_')|cat(oDelSetMethod.oxdeliveryset__oxid.value) }}"></div>
     {% endif %}
 {% endfor %}
 {% for sRegion in oDelChargeSpec.getCountriesISO() %}

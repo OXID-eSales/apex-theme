@@ -12,8 +12,8 @@
                 {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
                 {% set aPictureInfo = oPictureProduct.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
                 <li class="details-picture-more-list-item">
-                    <a id="morePics_{{ loop.index }}"{% if aPictureInfo %} data-width="{{ aPictureInfo.0 }}" data-height="{{ aPictureInfo.1 }}"{% endif %} data-zoom-url="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr) }}">
-                        <img class="details-picture-more-img" src="{{ oPictureProduct.getIconUrl(iPicNr) }}" alt="morepic-{{ loop.index }}">
+                    <a id="morePics_{{ loop.index }}"{% if aPictureInfo %} data-width="{{ aPictureInfo.0 }}" data-height="{{ aPictureInfo.1 }}"{% endif %} data-zoom-url="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}">
+                        <img class="details-picture-more-img" src="{{ oPictureProduct.getIconUrl(iPicNr)|raw }}" alt="morepic-{{ loop.index }}">
                     </a>
                 </li>
             {% endfor %}

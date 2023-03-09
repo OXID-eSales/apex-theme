@@ -1,5 +1,5 @@
 {% set aExtends = oView.getBusinessEntityExtends() %}
-<div typeof="gr:BusinessEntity" about="{{ sRDFaUrl }}#companydata">
+<div typeof="gr:BusinessEntity" about="{{ sRDFaUrl|raw }}#companydata">
     <div property="gr:legalName vcard:fn" content="{{ oxcmp_shop.oxshops__oxcompany.value }}" datatype="xsd:string"></div>
     <div rel="vcard:adr">
         <div typeof="vcard:Address">
@@ -20,7 +20,7 @@
     <div property="vcard:tel" content="{{ oxcmp_shop.oxshops__oxtelefon.value }}"></div>
     <div property="vcard:fax" content="{{ oxcmp_shop.oxshops__oxtelefax.value }}"></div>
 {% if aExtends.sRDFaLogoUrl %}
-    <div rel="vcard:logo foaf:logo" resource="{{ aExtends.sRDFaLogoUrl }}"></div>
+    <div rel="vcard:logo foaf:logo" resource="{{ aExtends.sRDFaLogoUrl|raw }}"></div>
 {% endif %}
 {% if aExtends.sRDFaDUNS %}
     <div property="gr:hasDUNS" content="{{ aExtends.sRDFaDUNS }}" datatype="xsd:string"></div>

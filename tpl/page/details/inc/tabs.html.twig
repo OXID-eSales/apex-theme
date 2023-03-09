@@ -14,7 +14,7 @@
                     <div class="container-xxl">
                         {{ include(template_from_string(oLongdesc)) }}
                         {% if oDetailsProduct.oxarticles__oxexturl.value %}
-                            <a id="productExturl" class="js-external" href="{{ oDetailsProduct.oxarticles__oxexturl.value }}">
+                            <a id="productExturl" class="js-external" href="{{ oDetailsProduct.oxarticles__oxexturl.value|raw }}">
                             {% if oDetailsProduct.oxarticles__oxurldesc.value %}
                                 {{ oDetailsProduct.oxarticles__oxurldesc.value }}
                             {% else %}
@@ -81,7 +81,7 @@
             <p>
                 {{ oManufacturer.oxmanufacturers__oxshortdesc.value }}
             </p>
-            <a href="{{ oManufacturer.getLink() }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
+            <a href="{{ oManufacturer.getLink()|raw }}" title="{{ oManufacturer.oxmanufacturers__oxtitle.value }}">
                 {{ translate({ ident: "SHOW_ME_MORE" }) }}
             </a>
         </div>

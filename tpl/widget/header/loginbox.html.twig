@@ -6,7 +6,7 @@
     {% endfor %}
 {% endcapture %}
 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-    <form class="px-3 py-2" name="login" action="{{ oViewConf.getSslSelfLink() }}" method="post" style="width: 270px">
+    <form class="px-3 py-2" name="login" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" style="width: 270px">
         {{ oViewConf.getHiddenSid()|raw }}
         {{ oViewConf.getNavFormParams()|raw }}
         <input type="hidden" name="fnc" value="login_noredirect">

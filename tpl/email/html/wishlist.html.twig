@@ -7,7 +7,7 @@
 <p>{{ userInfo.send_message|escape }}</p>
 <br/>
 
-<p>{{ translate({ ident: "TO_MY_WISHLIST" }) }} <a href="{{ oViewConf.getBaseDir() }}index.php?cl=wishlist&wishid={{ userInfo.send_id }}"><b>{{ translate({ ident: "CLICK_HERE" }) }}</b></a></p>
+<p>{{ translate({ ident: "TO_MY_WISHLIST" }) }} <a href="{{ oViewConf.getBaseDir()|raw }}index.php?cl=wishlist&wishid={{ userInfo.send_id }}"><b>{{ translate({ ident: "CLICK_HERE" }) }}</b></a></p>
 <br/>
 
 <p>{{ translate({ ident: "WITH_LOVE" }) }}</p>

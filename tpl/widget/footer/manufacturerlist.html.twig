@@ -5,10 +5,10 @@
         {% block footer_manufacturers %}
             <nav class="nav flex-column">
                 {% set rootManufacturer = oView.getRootManufacturer() %}
-                <a class="nav-link" href="{{ rootManufacturer.getLink() }}">{{ translate({ ident: "ALL_BRANDS" }) }}</a>
+                <a class="nav-link" href="{{ rootManufacturer.getLink()|raw }}">{{ translate({ ident: "ALL_BRANDS" }) }}</a>
                 {% for _mnf in manufacturers %}
                     {% if loop.index0 < iManufacturerLimit and _mnf.oxmanufacturers__oxnrofarticles != "0" %}
-                    <a class="nav-link" href="{{ _mnf.getLink() }}">
+                    <a class="nav-link" href="{{ _mnf.getLink()|raw }}">
                         {{ _mnf.oxmanufacturers__oxtitle.value }}
                     </a>
                     {% endif %}

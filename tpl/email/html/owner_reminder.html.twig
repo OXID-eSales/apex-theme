@@ -33,7 +33,7 @@
         {% for oProduct in articles %}
             <tr valign="top">
                 <td>
-                    <img src="{{ oProduct.getIconUrl(false) }}" border="0" hspace="0" vspace="0" alt="{{ oProduct.oxarticles__oxtitle.value|striptags }}" align="texttop">
+                    <img src="{{ oProduct.getIconUrl(false)|raw }}" border="0" hspace="0" vspace="0" alt="{{ oProduct.oxarticles__oxtitle.value|striptags }}" align="texttop">
                 </td>
                 <td>
                     <p>

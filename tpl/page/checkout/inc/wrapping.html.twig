@@ -25,7 +25,7 @@
                 {% if not oxcmp_basket.getProductsCount() %}
                     <div class="alert alert-danger">{{ translate({ ident: "BASKET_EMPTY" }) }}</div>
                 {% else %}
-                    <form name="basket" action="{{ oViewConf.getSelfActionLink() }}" method="post" id="giftoptions_modal_form">
+                    <form name="basket" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" id="giftoptions_modal_form">
                         {{ oViewConf.getHiddenSid()|raw }}
                         <input type="hidden" name="cl" value="basket">
                         <input type="hidden" name="fnc" value="changewrapping">
@@ -41,7 +41,7 @@
                                             <div class="row">
                                                 {% set basketproduct = basketitemlist[basketindex] %}
                                                 <div class="col-4 col-md-3 col-lg-2">
-                                                    <img loading="lazy" src="{{ basketproduct.getIconUrl() }}" alt="{{ basketitem.getTitle()|striptags }}" class="cart-img img-fluid">
+                                                    <img loading="lazy" src="{{ basketproduct.getIconUrl()|raw }}" alt="{{ basketitem.getTitle()|striptags }}" class="cart-img img-fluid">
                                                 </div>
 
                                                 <div class="col-8 col-md-9 col-lg-10">
@@ -60,7 +60,7 @@
                                                             <label class="btn" for="wrapping_[{{ basketindex }}]{{ wrapping.oxwrapping__oxid.value }}">
                                                                 {% if wrapping.oxwrapping__oxpic.value %}
                                                                 <span class="img">
-                                                                    <img data-bs-target="wrapping_{{ wrapping.oxwrapping__oxid.value }}" loading="lazy" src="{{ wrapping.getPictureUrl() }}" alt="{{ wrapping.oxwrapping__oxname.value }}" class="wrappingTargetImg">
+                                                                    <img data-bs-target="wrapping_{{ wrapping.oxwrapping__oxid.value }}" loading="lazy" src="{{ wrapping.getPictureUrl()|raw }}" alt="{{ wrapping.oxwrapping__oxname.value }}" class="wrappingTargetImg">
                                                                 </span>
                                                                 {% endif %}
                                                                 {{ wrapping.oxwrapping__oxname.value }}
@@ -105,7 +105,7 @@
                                             {% if card.oxwrapping__oxpic.value %}
 
                                             <div class="col-4 col-md-3 col-lg-2">
-                                                <img loading="lazy" src="{{ card.getPictureUrl() }}" alt="{{ card.oxwrapping__oxname.value }}">
+                                                <img loading="lazy" src="{{ card.getPictureUrl()|raw }}" alt="{{ card.oxwrapping__oxname.value }}">
                                             </div>
                                             <div class="col-8 col-md-9 col-lg-10">
 
