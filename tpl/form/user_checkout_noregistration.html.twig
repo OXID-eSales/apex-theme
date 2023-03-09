@@ -19,11 +19,13 @@
             {% block user_checkout_noregistration_next_step_top %}
             {% endblock %}
 
-            <h3 class="h5">{{ translate({ ident: "NOTREGISTERED_ACCOUNTINFO" }) }}</h3>
-            {% include "form/fieldset/user_noaccount.html.twig" %}
+            <div id="addressForm">
+                <h3 class="h5">{{ translate({ ident: "NOTREGISTERED_ACCOUNTINFO" }) }}</h3>
+                {% include "form/fieldset/user_noaccount.html.twig" %}
 
-            <h3 class="h5">{{ translate({ ident: "BILLING_ADDRESS" }) }}</h3>
-            {% include "form/fieldset/user_billing.html.twig" with {noFormSubmit: true, blOrderRemark: true} %}
+                <h3 class="h5">{{ translate({ ident: "BILLING_ADDRESS" }) }}</h3>
+                {% include "form/fieldset/user_billing.html.twig" with {noFormSubmit: true, blOrderRemark: true} %}
+            </div>
 
             <h3 class="h5">{{ translate({ ident: "SHIPPING_ADDRESS" }) }}</h3>
 
