@@ -11,7 +11,7 @@
     <ul class="form">
         <li>
             <label class="req">{{ translate({ ident: "EMAIL" }) }} #1:</label>
-            <input type="text" class="js-oxValidate js-oxValidate_notEmpty js-oxValidate_email" name="editval[rec_email][1]" size="73" maxlength="73" value="{{ editval.rec_email.1 }}">
+            <input type="email" class="js-oxValidate_email" name="editval[rec_email][1]" size="73" maxlength="73" value="{{ editval.rec_email.1 }}" required>
             <p class="oxValidateError">
                 <span class="js-oxError_notEmpty">{{ translate({ ident: "ERROR_MESSAGE_INPUT_NOTALLFIELDS" }) }}</span>
                 <span class="js-oxError_email">{{ translate({ ident: "ERROR_MESSAGE_INPUT_NOVALIDEMAIL" }) }}</span>
@@ -59,7 +59,7 @@
         </li>
         <li>
             <label class="req">{{ translate({ ident: "SENDER_EMAIL", suffix: "COLON" }) }}</label>
-            <input type="text" class="js-oxValidate js-oxValidate_notEmpty js-oxValidate_email" name="editval[send_email]" size=73 maxlength=73 value="{{ editval.send_email }}" >
+            <input type="email" class="js-oxValidate_email" name="editval[send_email]" size=73 maxlength=73 value="{{ editval.send_email }}" required>
             <p class="oxValidateError">
                 <span class="js-oxError_notEmpty">{{ translate({ ident: "ERROR_MESSAGE_INPUT_NOTALLFIELDS" }) }}</span>
                 <span class="js-oxError_email">{{ translate({ ident: "ERROR_MESSAGE_INPUT_NOVALIDEMAIL" }) }}</span>

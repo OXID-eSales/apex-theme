@@ -140,16 +140,6 @@ if (userFormSubmitBtn) {
     userFormSubmitBtn.addEventListener('click', (item) => {
         item.preventDefault();
 
-        var shippingAddress = document.querySelector('#shippingAddress');
-
-        if (shippingAddress && shippingAddress.style.display === 'none') {
-            // disable shippingaddress form fields if billingaddress should be used as shippingaddress
-            var shippingAddressFormElements = shippingAddress.querySelectorAll('input, select');
-            shippingAddressFormElements.forEach((formElement) => {
-                formElement.disabled = true;
-            })
-        }
-
         var user_form = document.querySelector('#user_form');
         // dispatch submit event to trigger validation
         user_form.dispatchEvent(new Event('submit'));
