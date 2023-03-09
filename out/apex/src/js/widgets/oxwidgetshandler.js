@@ -114,16 +114,29 @@ var WidgetsHandler = (function() {
     function _load( oRegister ) {
         var iFilesLoaded = 0;
         var iFilesTotal = oRegister[ 'files' ].length;
-        $.ajaxSetup( {cache: true} );
+        //$.ajaxSetup( {cache: true} );
         for ( var i in oRegister[ 'files' ] ) {
-            $.getScript( oRegister[ 'files' ][ i ], function() {
+            _getScript( oRegister[ 'files' ][ i ], function() {
                 iFilesLoaded++;
                 if ( iFilesLoaded == iFilesTotal) {
                     _loadFunctions( oRegister );
                 }
             });
         }
-        $.ajaxSetup( {cache: false} );
+        //$.ajaxSetup( {cache: false} );
+    }
+
+    /**
+     * @param scriptUrl
+     * @param callback
+     * @private
+     */
+    function _getScript(scriptUrl, callback) {
+        const script = document.createElement('script');
+        script.src = scriptUrl;
+        script.onload = callback;
+
+        document.body.appendChild(script);
     }
 
     /**
@@ -133,7 +146,7 @@ var WidgetsHandler = (function() {
      */
     function _loadFunctions( oRegister ) {
         for ( var i in oRegister[ 'functions' ] ) {
-            $.globalEval( oRegister[ 'functions' ][ i ] );
+            eval( oRegister[ 'functions' ][ i ] );
         }
     }
 
