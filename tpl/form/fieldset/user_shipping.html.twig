@@ -15,55 +15,54 @@
         {{ script({ add: "$('.dd-edit-shipping-address').click(function(){ $('#shippingAddressForm').show(); $('html, body').animate({ scrollTop: $( '#shippingAddressForm').offset().top - 80 }, 600 ); } );", dynamic: __oxid_include_dynamic }) #}
 
         {% block form_user_shipping_address_select %}
-            <div class="list-group list-group-flush" id="shippingAddress"{% if not oView.showShipAddress() %} style="display: none;"{% endif %}>
-                {% for address in aUserAddresses %}
-                    <div class="list-group-item" data-bs-toggle="buttons">
-                        <div class="d-flex">
-                            <div class="select-address">
-                                <label class="btn btn-outline-primary setToThisShippingAddress{% if address.isSelected() %} active{% endif %}">
-                                    <input type="radio" class="btn-check" name="oxaddressid" value="{{ address.oxaddress__oxid.value }}" autocomplete="off" {% if address.isSelected() %}checked{% endif %}>
+            {% for address in aUserAddresses %}
+                <div class="list-group-item" data-bs-toggle="buttons">
+                    <div class="d-flex">
+                        <div class="select-address">
+                            <label class="btn btn-outline-primary setToThisShippingAddress{% if address.isSelected() %} active{% endif %}">
+                                <input type="radio" class="btn-check" name="oxaddressid" value="{{ address.oxaddress__oxid.value }}" autocomplete="off" {% if address.isSelected() %}checked{% endif %}>
 
-                                    {% if address.isSelected() %}
-                                    <span class="invisible">
-                                         <svg>
-                                            <use xlink:href="#check"></use>
-                                        </svg>
-
-                                        {{ translate({ ident: "USER_SHIPPING_SELECTED" }) }}</span>
-                                    {% else %}
-                                    <span class="invisible">{{ translate({ ident: "DD_USER_SHIPPING_SELECT_ADDRESS" }) }}</span>
-                                    {% endif %}
-                                </label>
-                            </div>
-                            <div class="address-info">
-                                {% block form_user_shipping_address_actions %}
                                 {% if address.isSelected() %}
-                                    {% block form_user_shipping_address_edit_action %}
-                                    <button class="btn btn-outline-dark btn-sm float-end dd-action dd-edit-shipping-address edit-button">
-                                        <svg>
-                                            <use xlink:href="#pencil"></use>
-                                        </svg>
-                                    </button>
-                                    {% endblock %}
-                                    {% block form_user_shipping_address_delete_action %}
-                                    <button class="btn btn-outline-dark btn-sm float-end dd-action dd-delete-shipping-address edit-button"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#delete_shipping_address_{{ loop.index }}"
-                                            type="button">
-                                        <svg>
-                                            <use xlink:href="#trash"></use>
-                                        </svg>
-                                    </button>
-                                    {% endblock %}
+                                <span class="invisible">
+                                     <svg>
+                                        <use xlink:href="#check"></use>
+                                    </svg>
+
+                                    {{ translate({ ident: "USER_SHIPPING_SELECTED" }) }}</span>
+                                {% else %}
+                                <span class="invisible">{{ translate({ ident: "DD_USER_SHIPPING_SELECT_ADDRESS" }) }}</span>
                                 {% endif %}
+                            </label>
+                        </div>
+                        <div class="address-info">
+                            {% block form_user_shipping_address_actions %}
+                            {% if address.isSelected() %}
+                                {% block form_user_shipping_address_edit_action %}
+                                <button class="btn btn-outline-dark btn-sm float-end dd-action dd-edit-shipping-address edit-button">
+                                    <svg>
+                                        <use xlink:href="#pencil"></use>
+                                    </svg>
+                                </button>
                                 {% endblock %}
-                                {% include "widget/address/shipping_address.html.twig" with {delivadr: address} %}
-                            </div>
+                                {% block form_user_shipping_address_delete_action %}
+                                <button class="btn btn-outline-dark btn-sm float-end dd-action dd-delete-shipping-address edit-button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#delete_shipping_address_{{ loop.index }}"
+                                        type="button">
+                                    <svg>
+                                        <use xlink:href="#trash"></use>
+                                    </svg>
+                                </button>
+                                {% endblock %}
+                            {% endif %}
+                            {% endblock %}
+                            {% include "widget/address/shipping_address.html.twig" with {delivadr: address} %}
                         </div>
                     </div>
-                {% endfor %}
+                </div>
+            {% endfor %}
 
-                <div class="list-group-item" data-bs-toggle="buttons">
+            <div class="list-group-item" data-bs-toggle="buttons">
                 <div class="d-flex">
                     <div class="select-address">
                         <div class="dd-add-delivery-address">
@@ -77,12 +76,11 @@
                     </div>
                 </div>
             </div>
-            </div>
         {% endblock %}
     {% endif %}
 {% endif %}
 
-<div id="shippingAddressForm"{% if delivadr %} style="display: none;"{% endif %} class="max-600">
+<div id="shippingAddressForm"{% if delivadr %} style="display: none;"{% endif %} class="max-600 mt-5">
     <div class="row gx-2">
         <div class="col-md-6 mb-3">
             <div class="form-floating">

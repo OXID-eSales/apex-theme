@@ -63,11 +63,12 @@
                                     </div>
                                 {% endblock %}
                             </div>
-
-                            {% block user_shipping_address_form %}
-                                {% include "form/fieldset/user_shipping.html.twig" with {noFormSubmit: true} %}
-                            {% endblock %}
                         </div>
+                        {% block user_shipping_address_form %}
+                            <div class="list-group list-group-flush card-body pt-0" id="shippingAddress"{% if not oView.showShipAddress() %} style="display: none;"{% endif %}>
+                                {% include "form/fieldset/user_shipping.html.twig" with {noFormSubmit: true} %}
+                            </div>
+                        {% endblock %}
                     </div>
                 {% endblock %}
             </div>
