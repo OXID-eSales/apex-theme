@@ -33,7 +33,7 @@
                                 </div>
                             {% endblock %}
                             {% block user_billing_address_form %}
-                                <div style="display: none;" id="addressForm">
+                                <div style="display: none;" id="addressForm" class="max-600">
                                     {% include "form/fieldset/user_email.html.twig" %}
                                     {% include "form/fieldset/user_billing.html.twig" with {noFormSubmit: true} %}
                                 </div>
@@ -63,12 +63,11 @@
                                     </div>
                                 {% endblock %}
                             </div>
-                        </div>
-                        {% block user_shipping_address_form %}
-                            <div class="list-group list-group-flush" id="shippingAddress"{% if not oView.showShipAddress() %} style="display: none;"{% endif %}>
+
+                            {% block user_shipping_address_form %}
                                 {% include "form/fieldset/user_shipping.html.twig" with {noFormSubmit: true} %}
-                            </div>
-                        {% endblock %}
+                            {% endblock %}
+                        </div>
                     </div>
                 {% endblock %}
             </div>
