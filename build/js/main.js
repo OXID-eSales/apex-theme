@@ -48,6 +48,8 @@
                                 formElement.dataset.wasrequired = true;
                             }
                         }
+                        // needed to reset the customValidity
+                        formElement.setCustomValidity('');
                     });
 
                 if (form.checkValidity()) {
@@ -100,6 +102,7 @@
         if (aInvalidFormElements.length) {
             aInvalidFormElements.forEach((invalidFormElement) => {
                 // use Oxid validation messages
+
                 if (invalidFormElement.validity.valueMissing) {
                     invalidFormElement.setCustomValidity(oApex.i18n.DD_FORM_VALIDATION_REQUIRED);
                 }
@@ -111,6 +114,7 @@
                 if (invalidFormElement.validity.typeMismatch) {
                     invalidFormElement.setCustomValidity(oApex.i18n.DD_FORM_VALIDATION_VALIDEMAIL);
                 }
+
 
                 const invalidMessageDiv = document.createElement('div');
                 invalidMessageDiv.classList.add('invalid-feedback');
