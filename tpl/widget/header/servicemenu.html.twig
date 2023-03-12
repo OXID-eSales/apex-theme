@@ -33,5 +33,5 @@
     <svg aria-label="{{ translate({ ident: "MY_WISH_LIST" }) }}">
         <use xlink:href="#star-fill"></use>
     </svg>
-    {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span class="badge js-noticeListCnt">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+    {% if oxcmp_user %} <span class="badge js-noticeListCnt">{% if oxcmp_user.getNoticeListArtCnt() %}{{ oxcmp_user.getNoticeListArtCnt() }}{% endif %}</span>{% endif %}
 </a>
