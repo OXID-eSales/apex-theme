@@ -1,3 +1,18 @@
+
+<button type="button" class="btn btn-minibasket" data-bs-toggle="modal" data-bs-target="#basketModal" aria-label="{{ translate({ ident: "CART" }) }}">
+    {% block dd_layout_page_header_icon_menu_minibasket_button %}
+        <svg>
+            <use xlink:href="#bag"></use>
+        </svg>
+
+        {% if oxcmp_basket.getItemsCount() > 0 %}<span class="badge">{{  oxcmp_basket.getItemsCount()  }}</span>{% endif %}
+
+        <span class="btn-text">
+            {{ translate({ ident: "CART" }) }}
+        </span>
+    {% endblock %}
+</button>
+
 {% if oxcmp_basket.getProductsCount() >= 5 %}
     {% set blScrollable = true %}
 {% endif %}
