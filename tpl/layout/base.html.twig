@@ -18,7 +18,7 @@
             {% if oView.noIndex() == 1 %}
                 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
             {% elseif oView.noIndex() == 2 %}
-                <meta name="ROBOTS" content="INDEX, FOLLOW">
+                <meta name="ROBOTS" content="NOINDEX, FOLLOW">
             {% endif %}
         {% endblock %}
 

@@ -2,20 +2,38 @@
   "name": "oxid-esales/apex-theme",
   "description": "APEX Theme",
   "type": "oxideshop-theme",
+  "keywords": [
+    "oxid",
+    "themes",
+    "eShop"
+  ],
   "homepage": "https://github.com/OXID-eSales/apex-theme",
   "license": [
     "GPL-3.0"
   ],
   "require": {
+        "php": ">=8.0",
     "oxid-esales/twig-component": "*"
   },
+  "minimum-stability": "dev",
   "authors": [
     { "name": "Tino Favetto, c&c concepts and creations GmbH" }
   ],
   "extra": {
     "oxideshop": {
-      "target-directory": "apex",
-      "assets-directory": "out/apex"
+            "target-directory": "apex",
+            "assets-directory": "out/apex",
+            "blacklist-filter": [
+                "build/**/*",
+                "grunt/**/*",
+                ".gitattributes",
+                ".gitignore",
+                "CHANGELOG.md",
+                "composer.json",
+                "CONTRIBUTING.md",
+                "Gruntfile.js",
+                "package.json"
+            ]
     }
   }
 }
