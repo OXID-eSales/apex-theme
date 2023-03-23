@@ -1,6 +1,6 @@
 {% set manufacturerWidth = oViewConf.getViewThemeParam('sManufacturerWidth') %}
 {% set count = 0 %}
-
+{% if oView.getManufacturerForSlider() %}
 <div class="container-xxl">
     <div class="py-5 manufacturer">
         <div class="container{% if manufacturerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
@@ -23,3 +23,4 @@
         </div>
     </div>
 </div>
+{% endif %}
