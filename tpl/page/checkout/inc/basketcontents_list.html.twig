@@ -7,7 +7,7 @@
         {# basket items #}
         {% set basketitemlist = oView.getBasketArticles() %}
         {% for basketindex, basketitem in oxcmp_basket.getContents() %}
-            <div class="list-group-item">
+            <div class="list-group-item basketitemrow">
                 {% block checkout_basketcontents_basketitem %}
                     {% set basketproduct = basketitemlist[basketindex] %}
                     {% set oArticle = basketitem.getArticle() %}
@@ -53,14 +53,14 @@
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li>
-                                                            <button type="button" name="removeBtn" class="dropdown-item"
+                                                            <button type="button" name="removeBtn" class="dropdown-item js-remove"
                                                                     onclick="document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
                                                                 {{ translate({ ident: "REMOVE" }) }}
                                                             </button>
                                                         </li>
                                                         {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') != 'hide' %}
                                                         <li>
-                                                            <button type="button" name="removeBtn" class="dropdown-item" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
+                                                            <button type="button" name="removeBtn" class="dropdown-item{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %} js-remove{% endif %}" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
                                                                 {{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}
                                                             </button>
                                                         </li>
@@ -245,7 +245,7 @@
                                                             <div class="d-none d-lg-block">
                                                                 <input type="hidden" name="aproducts[{{ basketindex }}][remove]"
                                                                        id="aproducts_{{ basketindex }}_remove" value="0">
-                                                                <button type="button" name="removeBtn" class="btn btn-remove"
+                                                                <button type="button" name="removeBtn" class="btn btn-remove js-remove"
                                                                         aria-label="{{ translate({ ident: "REMOVE" }) }}"
                                                                         onclick="document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
                                                                     <svg aria-hidden="true">
@@ -254,7 +254,7 @@
                                                                 </button>
 
                                                             {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') != 'hide' %}
-                                                                <button type="button"  name="removeBtn" class="btn btn-remove" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
+                                                                <button type="button"  name="removeBtn" class="btn btn-remove{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %} js-remove{% endif %}" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
                                                                     <svg aria-hidden="true">
                                                                         <use xlink:href="#star"></use>
                                                                     </svg>

@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const addBasketAmountEventlisteners = function () {
     const aAmountButtons = document.querySelectorAll('.js-amount button');
     const aAmountInputs = document.querySelectorAll('input[name^="aproducts"][name$="[am]"]');
+    const aRemoveButtons = document.querySelectorAll('#basket_form .js-remove');
 
     if (aAmountButtons) {
         aAmountButtons.forEach((btn) => {
@@ -22,6 +23,17 @@ const addBasketAmountEventlisteners = function () {
             input.addEventListener('change', function (evt) {
                 evt.preventDefault();
                 changeInputAmountAjax();
+            })
+        });
+    }
+
+    if (aRemoveButtons) {
+        aRemoveButtons.forEach((btn) => {
+            btn.addEventListener('click', function (evt) {
+                evt.preventDefault();
+                const amountInput = btn.closest('.basketitemrow').querySelector('input[name^="aproducts"][name$="[am]"]');
+                amountInput.value = 0;
+                amountInput.dispatchEvent(new Event('change'));
             })
         });
     }
