@@ -32,6 +32,17 @@
                                 {% block dd_footer_information_inner %}
                                     {{ include_widget({ cl: "oxwInformation", noscript: 1, nocookie: 1, force_sid: force_sid }) }}
                                 {% endblock %}
+
+                                <div class="footer-dropdowns dropdown d-lg-none">
+                                    {% block dd_footer_information_menu_languages %}
+                                        {# Language Dropdown #}
+                                        {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                    {% endblock %}
+                                    {% block dd_footer_information_menu_currencies %}
+                                        {# Currency Dropdown #}
+                                        {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
+                                    {% endblock %}
+                                </div>
                             </div>
                         </div>
                     {% endblock %}
