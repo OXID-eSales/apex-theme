@@ -46,4 +46,14 @@
       border: none;
     }
   }
+
+  &-dropdowns {
+    label {
+      padding: 5px 0;
+    }
+
+    .btn {
+      margin-bottom: 10px;
+    }
+  }
 }

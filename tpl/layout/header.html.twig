@@ -166,9 +166,9 @@
                     <svg aria-hidden="true">
                         <use xlink:href="#star-fill"></use>
                     </svg>
-                    <span class="btn-text">{{ translate({ ident: "FAVOURITES" }) }}</span>
                     {% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() %} <span
                             class="badge js-noticeListCnt">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}
+                    <span class="btn-text">{{ translate({ ident: "FAVOURITES" }) }}</span>
                 </a>
 
                 {{ include_widget({ cl: "oxwMiniBasket", nocookie: blAnon, force_sid: force_sid }) }}
