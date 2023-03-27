@@ -137,7 +137,7 @@
                                         </div>
                                         <div class="rater">
                                             {{ translate({ ident: "ON" }) }}
-                                            <time datetime="{{ review.oxreviews__oxcreate.value|date_format("%Y-%m- % d") }}">{{ review.oxreviews__oxcreate.value|date_format("%d.%m.%Y") }}</time>
+                                            <time datetime="{{ review.oxreviews__oxcreate.value|date_format("%Y-%m-%d") }}">{{ review.oxreviews__oxcreate.value|date_format("%d.%m.%Y") }}</time>
                                             {{ translate({ ident: "BY" }) }}
                                             <span>{{ review.oxuser__oxfname.value }}</span>
                                         </div>

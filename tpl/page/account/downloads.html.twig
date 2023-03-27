@@ -18,7 +18,7 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-9">
-                                        <strong>{{ oOrderArticle.oxarticletitle }}</strong> &ndash; {{ translate({ ident: "ORDER_NUMBER" }) }}: {{ oOrderArticle.oxordernr }}, {{ oOrderArticle.oxorderdate|date_format("%d.%m. % Y") }}
+                                        <strong>{{ oOrderArticle.oxarticletitle }}</strong> &ndash; {{ translate({ ident: "ORDER_NUMBER" }) }}: {{ oOrderArticle.oxordernr }}, {{ oOrderArticle.oxorderdate|date_format("%d.%m.%Y") }}
                                     </div>
                                     <div class="col-3">
                                         {% if oOrderFile.isPaid() or not oOrderFile.oxorderfiles__oxpurchasedonly.value  %}

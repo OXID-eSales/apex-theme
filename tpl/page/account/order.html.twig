@@ -21,8 +21,8 @@
                             <div class="row">
                                 <div class="col-3">
                                     <strong>{{ translate({ ident: "DATE", suffix: "COLON" }) }}</strong>
-                                    <span id="accOrderDate_{{ order.oxorder__oxordernr.value }}">{{ order.oxorder__oxorderdate.value|date_format("%d.%m. % Y") }}</span>
-                                    <span>{{ order.oxorder__oxorderdate.value|date_format(" % H, %M, %S") }}</span>
+                                    <span id="accOrderDate_{{ order.oxorder__oxordernr.value }}">{{ order.oxorder__oxorderdate.value|date_format("%d.%m.%Y") }}</span>
+                                    <span>{{ order.oxorder__oxorderdate.value|date_format("%H:%M:%S") }}</span>
                                 </div>
                                 <div class="col-3">
                                     <strong>{{ translate({ ident: "STATUS" }) }}</strong>
