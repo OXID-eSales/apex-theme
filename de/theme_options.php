@@ -341,4 +341,9 @@ $aLang = array(
     'SHOP_THEME_sBasketNoticeListButtonFunction_move' => 'Artikel auf Merkliste verschieben (aus Warenkorb löschen)',
     'SHOP_THEME_sBasketNoticeListButtonFunction_copy' => 'Artikel auf Merkliste kopieren',
 
+    'SHOP_THEME_sFaviconSvg'                  => 'SVG Favicon',
+    'SHOP_THEME_sSiteManifestFile'            => 'Site Manifest Datei',
+    'SHOP_THEME_sThemeColor'                  => 'Theme Farbe',
+    'SHOP_THEME_sManufacturerPromotionsize'   => 'Größe des Hersteller Promotionicons in Pixeln (Breite*Höhe)',
+
 );

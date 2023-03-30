@@ -38,6 +38,7 @@ $aLang = array(
     'SHOP_THEME_GROUP_econda'          => 'econda Web Shop Controlling',
     'SHOP_THEME_GROUP_emails'          => 'E-mails',
     'SHOP_THEME_GROUP_basket'          => 'Basket',
+    'SHOP_THEME_GROUP_pdp'             => 'Product Detail Page',
 
     'SHOP_THEME_sIconsize'      => 'Icon size (width*height)',
     //SHOP_CONFIG_ICONSIZE
@@ -218,4 +219,13 @@ $aLang = array(
     'SHOP_THEME_sBasketNoticeListButtonFunction_hide' => 'Hide Button',
     'SHOP_THEME_sBasketNoticeListButtonFunction_move' => 'Move Product to Noticelist (delete from Basket)',
     'SHOP_THEME_sBasketNoticeListButtonFunction_copy' => 'Copy Product to Noticelist',
+
+    'SHOP_THEME_aAppleTouchIcon'              => 'Apple Home-Screen Icon 310*310px.',
+    'SHOP_THEME_aOGImage'                     => 'Bild für das Teilen der Seite (OG-Image)',
+    'SHOP_THEME_sFaviconSvg'                  => 'SVG Favicon',
+    'SHOP_THEME_sSiteManifestFile'            => 'Site Manifest File',
+    'SHOP_THEME_sThemeColor'                  => 'Theme color',
+    'SHOP_THEME_sManufacturerPromotionsize'   => 'Manufacturer promotion Icon picture size (width*height)',
+    'SHOP_THEME_sInstagramUrl'                => 'Instagram Profile-URL',
+
 );
