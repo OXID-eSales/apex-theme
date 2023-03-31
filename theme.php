@@ -67,43 +67,6 @@ $aTheme = [
             'constraints' => 'line|grid',
         ],
 
-//STARTPAGE
-
-        [
-            'group' => 'startpage',
-            'name' => 'showCategoryTiles',
-            'type' => 'bool',
-            'value' => 1,
-            'position' => 21,
-        ],
-        [
-            'group' => 'startpage',
-            'name' => 'bl_showManufacturer',
-            'type' => 'bool',
-            'value' => 1,
-            'position' => 30,
-        ],
-        [
-            'group' => 'startpage',
-            'name' => 'sShowBargainArticles',
-            'type' => 'bool',
-            'value' => 1,
-            'position' => 35,
-        ],
-        [
-            'group' => 'startpage',
-            'name' => 'sShowNewestArticles',
-            'type' => 'bool',
-            'value' => 1,
-            'position' => 40,
-        ],
-        [
-            'group' => 'startpage',
-            'name' => 'sShowTopArticles',
-            'type' => 'bool',
-            'value' => 1,
-            'position' => 50,
-        ],
 //DETAIL
         [
             'group' => 'pdp',
@@ -111,15 +74,6 @@ $aTheme = [
             'type' => 'bool',
             'value' => 0,
             'position' => 40,
-        ],
-
-//KATEGORIEN
-
-        [
-            'group' => 'pop',
-            'name' => 'sShowPopBreadcrump',
-            'type' => 'bool',
-            'value' => 1,
         ],
 
 //FUNKTIONEN
