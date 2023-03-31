@@ -284,7 +284,7 @@ $aLang = array(
     'SHOP_THEME_sFavicon16File'           => 'Dateiname des Favicons mit den Maßen 16*16px.',
     'SHOP_THEME_sFavicon32File'           => 'Dateiname des Favicons mit den Maßen 32*32px.',
     'SHOP_THEME_aAppleTouchIcon'          => 'Apple Home-Screen Icon 310*310px.',
-    'SHOP_THEME_aOGImage'                 => 'Bild für das Teilen der Seite (OG-Image)',
+    'SHOP_THEME_aOGImage'                 => 'Open Graph image (OG-Image - wird angezeigt wenn die Seite geteilt wird)',
     'SHOP_THEME_sFaviconMSTileColor'      => 'Kachel-Farbe für Windows 8/Windows Mobile Lesezeichen.',
     'HELP_SHOP_THEME_sFaviconMSTileColor' => 'Angabe als HEX-Wert.<br>Bsp.: #D83434',
 

@@ -221,7 +221,7 @@ $aLang = array(
     'SHOP_THEME_sBasketNoticeListButtonFunction_copy' => 'Copy Product to Noticelist',
 
     'SHOP_THEME_aAppleTouchIcon'              => 'Apple Home-Screen Icon 310*310px.',
-    'SHOP_THEME_aOGImage'                     => 'Bild für das Teilen der Seite (OG-Image)',
+    'SHOP_THEME_aOGImage'                     => 'Open Graph image (OG-Image - is displayed when the page is shared)',
     'SHOP_THEME_sFaviconSvg'                  => 'SVG Favicon',
     'SHOP_THEME_sSiteManifestFile'            => 'Site Manifest File',
     'SHOP_THEME_sThemeColor'                  => 'Theme color',
