@@ -2403,7 +2403,7 @@
         var arrowOffsetParent = getOffsetParent(arrowElement);
         var clientSize = arrowOffsetParent ? axis === 'y' ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
         var centerToReference = endDiff / 2 - startDiff / 2; // Make sure the arrow doesn't overflow the popper if the center point is
-        // outside of the popper bounds
+        // outside the popper bounds
 
         var min = paddingObject[minProp];
         var max = clientSize - arrowRect[len] - paddingObject[maxProp];
