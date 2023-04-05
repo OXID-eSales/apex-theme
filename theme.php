@@ -1,7 +1,14 @@
 <?php
 
+/**
+ * Copyright © OXID eSales AG. All rights reserved.
+ * See LICENSE file for license details.
+ */
+
+declare(strict_types=1);
+
 $aTheme = [
-    'id'          => 'APEX',
+    'id'          => 'apex',
     'title'       => 'APEX Theme',
     'description' => 'APEX - Bootstrap 5 TWIG Theme',
     'thumbnail'   => 'apex_green.svg',

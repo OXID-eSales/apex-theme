@@ -16,9 +16,10 @@
  * along with OXID eSales Wave theme.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @link          http://www.oxid-esales.com
- * @copyright (C) OXID eSales AG 2003-2016
+ * @copyright (C) OXID eSales AG 2003-2023
  */
 
+$sLangName = 'Deutsch';
 
 $aLang = array(
     'charset' => 'UTF-8',
@@ -109,17 +110,12 @@ $aLang = array(
     'SHOP_THEME_sDefaultListDisplayType'            => 'Standard für Produktlistentyp',
     'SHOP_THEME_sDefaultListDisplayType_grid'       => 'Galerie',
     'SHOP_THEME_sDefaultListDisplayType_line'       => 'Liste',
-    'SHOP_THEME_sDefaultListDisplayType_infogrid'   => 'Galerie zweispaltig',
     'SHOP_THEME_sStartPageListDisplayType'          => 'Produktlistentyp auf der Startseite',
     'SHOP_THEME_sStartPageListDisplayType_grid'     => 'Galerie',
     'SHOP_THEME_sStartPageListDisplayType_line'     => 'Liste',
-    'SHOP_THEME_sStartPageListDisplayType_infogrid' => 'Galerie zweispaltig',
     'SHOP_THEME_blShowWeightInList'                 => 'Gewicht in Produktlisten anzeigen',
 
-    'SHOP_THEME_sHeaderWidth'                => 'Header Breite',
-    'SHOP_THEME_sHeaderWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
-    'SHOP_THEME_sHeaderWidth_w100c100'       => 'Alles 100%',
-    'SHOP_THEME_sHeaderWidth_container'      => 'Alles mittig',
+    'SHOP_THEME_sProductListNavigation'         => 'Produktlisten-Navigation anzeigen',
 
     'SHOP_THEME_sFooterWidth'                => 'Footer Breite',
     'SHOP_THEME_sFooterWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
@@ -136,26 +132,13 @@ $aLang = array(
     'SHOP_THEME_sPromoWidth_w100c100'       => 'Alles 100%',
     'SHOP_THEME_sPromoWidth_container'      => 'Alles mittig',
 
-    'SHOP_THEME_sPromoTilesGrid'        => 'Banner-Kachel Breite',
-    'SHOP_THEME_sPromoTilesGrid_100_33' => '1. 100%, Rest 33% auf Desktop',
-    'SHOP_THEME_sPromoTilesGrid_50'     => 'Alle 50% auf Desktop',
-    'SHOP_THEME_sPromoTilesGrid_33'     => 'Alle 33% auf Desktop',
-    'SHOP_THEME_sPromoTilesGrid_25'     => 'Alle 25% auf Desktop',
-
     'SHOP_THEME_sPromoBg'         => 'Promo-Banner Hintergrund',
     'SHOP_THEME_sPromoBg_white'   => 'weiß',
     'SHOP_THEME_sPromoBg_light'   => 'grau',
     'SHOP_THEME_sPromoBg_dark'    => 'dunkel',
     'SHOP_THEME_sPromoBg_primary' => 'primärfarbe',
 
-    'SHOP_THEME_sPromoTilesSpacing'   => 'Kachel-Abstand',
-    'SHOP_THEME_sPromoTilesSpacing_0' => '0',
-    'SHOP_THEME_sPromoTilesSpacing_1' => '1',
-    'SHOP_THEME_sPromoTilesSpacing_2' => '2',
-    'SHOP_THEME_sPromoTilesSpacing_3' => '3',
-    'SHOP_THEME_sPromoTilesSpacing_4' => '4',
-    'SHOP_THEME_sPromoTilesSpacing_5' => '5',
-
+    'SHOP_THEME_showCategoryTiles'                     => 'Kategorie-Kacheln anzeigen',
     'SHOP_THEME_showCategoryTilesWidth'                => 'Kategorie-Kacheln-Zeile Breite',
     'SHOP_THEME_showCategoryTilesWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
     'SHOP_THEME_showCategoryTilesWidth_w100c100'       => 'Alles 100%',
@@ -193,8 +176,6 @@ $aLang = array(
     'SHOP_THEME_sBargainWidth_w100c100'       => 'Alles 100%',
     'SHOP_THEME_sBargainWidth_container'      => 'Alles mittig',
 
-    'SHOP_THEME_sProductListNavigation'         => 'Produktlisten-Navigation anzeigen',
-
     'SHOP_THEME_sShowTopArticles'         => 'Topseller anzeigen',
     'SHOP_THEME_sTopWidth'                => 'Topseller Breite',
     'SHOP_THEME_sTopWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
@@ -211,15 +192,6 @@ $aLang = array(
     'SHOP_THEME_sHeaderImageWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
     'SHOP_THEME_sHeaderImageWidth_w100c100'       => 'Alles 100%',
     'SHOP_THEME_sHeaderImageWidth_container'      => 'Alles mittig',
-    'SHOP_THEME_sHeaderShowSearch'                => 'Suche anzeigen',
-    'SHOP_THEME_sHeaderSticky'                    => 'Header oben fixieren',
-    'SHOP_THEME_sHeaderMenu'                      => 'Menu-Style',
-    'SHOP_THEME_sHeaderMenu_Dropdowns'            => 'Dropdowns',
-    'SHOP_THEME_sHeaderMenu_MegaMenu'             => 'Megamenu',
-
-    'SHOP_THEME_sHeaderImageHeight'        => 'Kategoriebild Höhe',
-    'SHOP_THEME_sHeaderImageHeight_small'  => 'schmal',
-    'SHOP_THEME_sHeaderImageHeight_medium' => 'medium',
 
     'SHOP_THEME_sCategoryWidth'                => 'Produktliste',
     'SHOP_THEME_sCategoryWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
@@ -236,31 +208,25 @@ $aLang = array(
     'SHOP_THEME_aNrofCatArticles'       => 'Anzahl der Artikel, die in einer Artikelliste pro Seite angezeigt werden können<br><br>Warnung: Eine große Anzahl von Artikeln pro Seite (über 100) kann die Geschwindigkeit des Shops erheblich beeinflussen!',
 
     'SHOP_THEME_sFacebookUrl'       => 'Facebook Seiten-URL',
-    'HELP_SHOP_THEME_sFacebookUrl'  => 'Bsp.: https://www.facebook.com/cc.concepts.and.creations',
+    'HELP_SHOP_THEME_sFacebookUrl'  => 'Bsp.: https://www.facebook.com/oxidesales',
     'SHOP_THEME_sTwitterUrl'        => 'Twitter Profil-URL',
-    'HELP_SHOP_THEME_sTwitterUrl'   => 'Bsp.: https://twitter.com/con_creat',
+    'HELP_SHOP_THEME_sTwitterUrl'   => 'Bsp.: https://twitter.com/OXID_eSales',
     'SHOP_THEME_sYouTubeUrl'        => 'YouTube Kanal-URL',
-    'HELP_SHOP_THEME_sYouTubeUrl'   => 'Bsp.: https://www.youtube.com/user/oxidesales‎',
+    'HELP_SHOP_THEME_sYouTubeUrl'   => 'Bsp.: https://www.youtube.com/user/oxidesales',
     'SHOP_THEME_sBlogUrl'           => 'Blog-URL',
-    'HELP_SHOP_THEME_sBlogUrl'      => 'Bsp.: https://con-creat.de/blog.html',
+    'HELP_SHOP_THEME_sBlogUrl'      => 'Bsp.: https://www.oxid-esales.com/blog/',
     'SHOP_THEME_sInstagramUrl'      => 'Instagram Profil-URL',
-    'HELP_SHOP_THEME_sInstagramUrl' => 'Bsp.: https://www.instagram.com/conceptsandcreations/',
+    'HELP_SHOP_THEME_sInstagramUrl' => 'Bsp.: https://www.instagram.com/oxid_esales/?hl=de',
 
-    'SHOP_THEME_sPaymentIcons'        => 'Zahlungsarten Platzhalter anzeigen',
-    'HELP_SHOP_THEME_sPaymentIcons'   => 'Icons über Modul einfügen oder über das CMS pflegen (ident="footer_payment_icons")',
-    'SHOP_THEME_sTrustBadges'       => 'Trust Badge Platzhalter anzeigen',
+    'SHOP_THEME_sPaymentIcons'       => 'Zahlungsarten Platzhalter anzeigen',
+    'HELP_SHOP_THEME_sPaymentIcons'  => 'Icons über Modul einfügen oder über das CMS pflegen (ident="footer_payment_icons")',
+    'SHOP_THEME_sTrustBadges'        => 'Trust Badge Platzhalter anzeigen',
     'HELP_SHOP_THEME_sTrustBadges'   => 'Badges über Modul einfügen oder über das CMS pflegen (ident="footer_trust_badges")',
 
-
     'SHOP_THEME_sGoogleMapsAddr'      => 'Ihre Adresse',
-    'HELP_SHOP_THEME_sGoogleMapsAddr' => 'Bsp.: OXID eSales AG, Bertoldstraße 48, 79098 Freiburg‎',
+    'HELP_SHOP_THEME_sGoogleMapsAddr' => 'Bsp.: OXID eSales AG, Bertoldstraße 48, 79098 Freiburg',
 
-    'SHOP_THEME_bl_showManufacturer' => 'Hersteller auf Startseite anzeigen‎',
-    'SHOP_THEME_bl_showPromo'        => 'Promo-Banner Optionen',
-    'SHOP_THEME_bl_showPromo_Tiles'  => 'Als Kacheln anzeigen',
-    'SHOP_THEME_bl_showPromo_Slider' => 'Als Karussell anzeigen',
-    'SHOP_THEME_bl_showPromo_None'   => 'nicht anzeigen',
-    'SHOP_THEME_showCategoryTiles'   => 'Kategorie-Kacheln anzeigen',
+    'SHOP_THEME_bl_showManufacturer' => 'Hersteller auf Startseite anzeigen',
 
     'SHOP_THEME_blUseGAPageTracker'            => 'Google Analytics PageTracker benutzen',
     'SHOP_THEME_blUseGAEcommerceTracking'      => 'Google Analytics Ecommerce Tracking benutzen',
@@ -271,6 +237,7 @@ $aLang = array(
 
     'SHOP_THEME_sLogoFile'        => 'Dateiname des Logos im Header',
     'HELP_SHOP_THEME_sLogoFile'   => 'Relativ zu dem Pfad <code>/out/apex/img/</code>.',
+
     'SHOP_THEME_sLogoWidth'       => 'Breite des Header-Logos',
     'HELP_SHOP_THEME_sLogoWidth'  => 'Angaben in Pixel.',
     'SHOP_THEME_sLogoHeight'      => 'Höhe des Header-Logos',
@@ -285,6 +252,7 @@ $aLang = array(
     'SHOP_THEME_sFavicon32File'           => 'Dateiname des Favicons mit den Maßen 32*32px.',
     'SHOP_THEME_aAppleTouchIcon'          => 'Apple Home-Screen Icon 310*310px.',
     'SHOP_THEME_aOGImage'                 => 'Open Graph image (OG-Image - wird angezeigt wenn die Seite geteilt wird)',
+    'SHOP_THEME_sFaviconSvg'              => 'SVG Favicon',
     'SHOP_THEME_sFaviconMSTileColor'      => 'Kachel-Farbe für Windows 8/Windows Mobile Lesezeichen.',
     'HELP_SHOP_THEME_sFaviconMSTileColor' => 'Angabe als HEX-Wert.<br>Bsp.: #D83434',
 
@@ -294,11 +262,11 @@ $aLang = array(
     'SHOP_THEME_sGoogleShoppingAccountId'      => 'Google Shopping Account-ID (Optional)',
     'HELP_SHOP_THEME_sGoogleShoppingAccountId' => 'Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden.<br><br>Kundennummer im Google Merchant Center. Dieser Wert muss mit der Kundennummer übereinstimmen, die Sie zum Senden Ihres <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">Produktdatenfeeds an Google Shopping</a> über das Google Merchant Center verwenden. Wenn Sie ein MCA-Konto haben, verwenden Sie die Kundennummer des Unterkontos, das mit diesem Produktfeed verknüpft ist.',
     'SHOP_THEME_sPageLanguage'                 => 'Sprache Ihres Shops in ISO (Erforderlich)',
-    'HELP_SHOP_THEME_sPageLanguage'            => 'Der Sprach-Wert ist ein aus zwei Buchstaben bestehender <a href="http://de.wikipedia.org/wiki/ISO_639#ISO_639-1" target="_blank">ISO 639-1-Sprachcode</a> und der Land-Wert ist ein aus zwei Buchstaben bestehender <a href="http://de.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 ALPHA-2-Ländercode</a>. In der Regel besteht &lt;Land&gt; aus Großbuchstaben und &lt;Sprache&gt; aus Kleinbuchstaben.<br><br>Beispiele: de_DE, en_GB, fr_FR, en_AU, en_US oder ja_JP.',
+    'HELP_SHOP_THEME_sPageLanguage'            => 'Der Sprach-Wert ist ein aus zwei Buchstaben bestehender <a href="https://de.wikipedia.org/wiki/ISO_639#ISO_639-1" target="_blank">ISO 639-1-Sprachcode</a> und der Land-Wert ist ein aus zwei Buchstaben bestehender <a href="https://de.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 ALPHA-2-Ländercode</a>. In der Regel besteht &lt;Land&gt; aus Großbuchstaben und &lt;Sprache&gt; aus Kleinbuchstaben.<br><br>Beispiele: de_DE, en_GB, fr_FR, en_AU, en_US oder ja_JP.',
     'SHOP_THEME_sShoppingCountry'              => 'Google Shopping-Feed Land (Optional)',
-    'HELP_SHOP_THEME_sShoppingCountry'         => 'Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden.<br><br>Dient zur Angabe des Landes, dem das Konto in Google Shopping zugeordnet ist. Dieser Wert sollte mit dem Land des Kontos übereinstimmen, das Sie verwenden, um Ihren <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">Produktdatenfeed an Google Shopping zu senden</a>.<br><br>Der Wert des Landesparameters muss ein <a href="http://de.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">aus zwei Buchstaben bestehender ISO 3166-Ländercode</a> sein.<br><br>Beispiele: US, GB, AU, FR, DE, JP.',
+    'HELP_SHOP_THEME_sShoppingCountry'         => 'Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden.<br><br>Dient zur Angabe des Landes, dem das Konto in Google Shopping zugeordnet ist. Dieser Wert sollte mit dem Land des Kontos übereinstimmen, das Sie verwenden, um Ihren <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">Produktdatenfeed an Google Shopping zu senden</a>.<br><br>Der Wert des Landesparameters muss ein <a href="https://de.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">aus zwei Buchstaben bestehender ISO 3166-Ländercode</a> sein.<br><br>Beispiele: US, GB, AU, FR, DE, JP.',
     'SHOP_THEME_sShoppingLanguage'             => 'Google Shopping-Feed Sprache (Optional)',
-    'HELP_SHOP_THEME_sShoppingLanguage'        => 'Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden.<br><br>Dies ist die Sprache des Kontos aus Google Shopping. Dieser Wert sollte mit der Sprache des Kontos übereinstimmen, das Sie verwenden, um Ihren <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">Produktdatenfeed an Google Shopping zu senden</a>.<br><br>Der Wert des Sprachparameters muss ein aus <a href="http://de.wikipedia.org/wiki/ISO_639#ISO_639-1" target="_blank">zwei Buchstaben bestehender ISO 639-1-Sprachcode</a> sein.<br><br>Beispiele: en, fr, de, ja.',
+    'HELP_SHOP_THEME_sShoppingLanguage'        => 'Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden.<br><br>Dies ist die Sprache des Kontos aus Google Shopping. Dieser Wert sollte mit der Sprache des Kontos übereinstimmen, das Sie verwenden, um Ihren <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">Produktdatenfeed an Google Shopping zu senden</a>.<br><br>Der Wert des Sprachparameters muss ein aus <a href="https://de.wikipedia.org/wiki/ISO_639#ISO_639-1" target="_blank">zwei Buchstaben bestehender ISO 639-1-Sprachcode</a> sein.<br><br>Beispiele: en, fr, de, ja.',
     'SHOP_THEME_sShippingDaysOnStock'          => 'Anz. der Tage bis zum Versand einer Bestellung mit Artikeln, die alle auf Lager sind. (Erforderlich)',
     'HELP_SHOP_THEME_sShippingDaysOnStock'     => 'Hierbei handelt es sich um das voraussichtliche Datum des Versands der Bestellung; dies ist nicht dasselbe wie das voraussichtliche Lieferdatum.<br><br>Wenn die Bestellung mehrere Artikel umfasst, wählen Sie das späteste voraussichtliche Versanddatum aus.<br><br>Wenn Sie Ihren Kunden einen Zeitraum nennen, geben Sie den letzten Tag des Zeitraums an. Wenn Sie beispielsweise innerhalb von 5 bis 7 Tagen versenden, geben Sie 7 Tage an.<br><br>Der hier genannte Termin wird dem Kunden per E-Mail mitgeteilt.<br><br>Nach dem voraussichtlichen Versanddatum erhält der Kunde eine Umfrage zum abgeschlossenen Kauf.',
     'SHOP_THEME_sShippingDaysNotOnStock'       => 'Anz. der Tage bis zum Versand einer Bestellung, bei der mind. 1 Artikel nicht auf Lager ist. (Erforderlich)',
@@ -311,37 +279,19 @@ $aLang = array(
     'SHOP_THEME_blSliderShowImageCaption'      => 'Bildunterschriften im Slider auf der Startseite aktivieren',
     'HELP_SHOP_THEME_blSliderShowImageCaption' => 'Diese wird angezeigt, sobald einem Slide ein Produkt zugeordnet ist.',
 
-    'SHOP_THEME_sEcondaRecommendationsAID'         => 'Account-ID',
-    'HELP_SHOP_THEME_sEcondaRecommendationsAID'    => 'Geben Sie hier Ihre econda Account-ID ein.<br>Diese hat üblicherweise folgendes Format: XXXXXXXX-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX-X.<br>Bitte denken Sie daran, das econda Webshop Controlling zu aktivieren.',
-    'SHOP_THEME_blEcondaRecommendationsStart'      => 'Recommendations auf Startseite anzeigen',
-    'SHOP_THEME_sEcondaWidgetIdStart'              => 'Recommendation-Widget-ID für Startseite',
-    'SHOP_THEME_sEcondaRecommendationsFromStart'   => 'Starte Ausgabe der Recommendations ab Artikel',
-    'SHOP_THEME_sEcondaRecommendationsToStart'     => 'Stoppe Ausgabe der Recommendations ab Artikel',
-    'SHOP_THEME_blEcondaRecommendationsList'       => 'Recommendations in Listenansicht anzeigen',
-    'SHOP_THEME_sEcondaWidgetIdList'               => 'Recommendation-Widget-ID für Listenansicht',
-    'SHOP_THEME_sEcondaRecommendationsFromList'    => 'Starte Ausgabe der Recommendations ab Artikel',
-    'SHOP_THEME_sEcondaRecommendationsToList'      => 'Stoppe Ausgabe der Recommendations ab Artikel',
-    'SHOP_THEME_blEcondaRecommendationsDetails'    => 'Recommendations auf Detailseite anzeigen',
-    'SHOP_THEME_sEcondaWidgetIdDetails'            => 'Recommendation-Widget-ID für Detailseite',
-    'SHOP_THEME_sEcondaRecommendationsFromDetails' => 'Starte Ausgabe der Recommendations ab Artikel',
-    'SHOP_THEME_sEcondaRecommendationsToDetails'   => 'Stoppe Ausgabe der Recommendations ab Artikel',
-    'SHOP_THEME_blEcondaRecommendationsBasket'     => 'Recommendations im Warenkorb anzeigen',
-    'SHOP_THEME_sEcondaWidgetIdBasket'             => 'Recommendation-Widget-ID für Warenkorb',
-    'SHOP_THEME_sEcondaRecommendationsFromBasket'  => 'Starte Ausgabe der Recommendations ab Artikel',
-    'SHOP_THEME_sEcondaRecommendationsToBasket'    => 'Stoppe Ausgabe der Recommendations ab Artikel',
-
     'SHOP_THEME_blEmailsShowProductPictures' => 'Produktbilder in E-Mails anzeigen',
 
-    'SHOP_THEME_sImageStyle'          => 'Bild-Style',
+    'SHOP_THEME_sImageStyle'          => 'Bild-Stil',
     'SHOP_THEME_sImageStyle_grid'     => 'Raster',
     'SHOP_THEME_sImageStyle_carousel' => 'Karussel',
+
+    'SHOP_THEME_blEmailsShowProductPictures' => 'Produktbilder in E-Mails anzeigen',
 
     'SHOP_THEME_sBasketNoticeListButtonFunction' => 'Funktion des Merklisten-Buttons im Warenkorb',
     'SHOP_THEME_sBasketNoticeListButtonFunction_hide' => 'Button ausblenden',
     'SHOP_THEME_sBasketNoticeListButtonFunction_move' => 'Artikel auf Merkliste verschieben (aus Warenkorb löschen)',
     'SHOP_THEME_sBasketNoticeListButtonFunction_copy' => 'Artikel auf Merkliste kopieren',
 
-    'SHOP_THEME_sFaviconSvg'                  => 'SVG Favicon',
     'SHOP_THEME_sSiteManifestFile'            => 'Site Manifest Datei',
     'SHOP_THEME_sThemeColor'                  => 'Theme Farbe',
     'SHOP_THEME_sManufacturerPromotionsize'   => 'Größe des Hersteller Promotionicons in Pixeln (Breite*Höhe)',
