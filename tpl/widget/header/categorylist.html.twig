@@ -106,18 +106,6 @@
                                 {% endfor %}
                             {% endblock %}
                         </div>
-                        <div class="d-md-none">
-                            {% block dd_layout_page_header_icon_menu_languages_mega_menu %}
-                            {# Language Dropdown
-                            {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
-                            #}
-                            {% endblock %}
-                            {% block dd_layout_page_header_icon_menu_currencies_mega_menu %}
-                            {# Currency Dropdown
-                            {{ include_widget({ cl: "oxwCurrencyList", cur: oViewConf.getActCurrency(), _parent: oView.getClassKey(), nocookie: 1, _navurlparams: oViewConf.getNavUrlParams(), anid: oViewConf.getActArticleId() }) }}
-                            #}
-                            {% endblock %}
-                        </div>
                     </div>
                 {% endblock %}
             </nav>
