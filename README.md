@@ -18,7 +18,7 @@ select a Twig theme and click activation button.
 
 ## Usage
 
-For development you will need npm installed https://nodejs.org/ and grunt for the built tasks https://gruntjs.com/
+For development, you will need npm installed https://nodejs.org/ and grunt for the built tasks https://gruntjs.com/
 
 ## License
 

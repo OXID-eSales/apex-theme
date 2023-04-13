@@ -129,10 +129,10 @@
 
 
     /**
-     * Checks if element or one of it's ancestors is set to display: none
+     * Checks if element or one of its ancestors is set to display: none
      * @param element source node
      * @param endNode check until
-     * @returns {boolean} true if element or one of it's ancestors are display:none
+     * @returns {boolean} true if element or one of its ancestors are display:none
      */
     const isDisplayNoneItem = function (element, endNode) {
         var parent = element.parentNode;
