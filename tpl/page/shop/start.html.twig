@@ -55,42 +55,7 @@
         {% endif %}
     {% endblock %}
 
-    <div class="usp-list usp-list-content">
-        <div class="slider-container">
-            <div class="list-inline-item">
-                <svg aria-hidden="true">
-                    <use xlink:href="#box2-fill"></use>
-                </svg>
-                <span class="usp-text">Schnelle Lieferung</span>
-            </div>
-            <div class="list-inline-item">
-                <svg aria-hidden="true">
-                    <use xlink:href="#headset"></use>
-                </svg>
-                <span class="usp-text">Individuelle Beratung</span>
-            </div>
-            <div class="list-inline-item">
-                <svg aria-hidden="true">
-                    <use xlink:href="#truck"></use>
-                </svg>
-                <span class="usp-text">Express Lieferung</span>
-            </div>
-            <div class="list-inline-item">
-                <svg aria-hidden="true">
-                    <use xlink:href="#shield-fill-check"></use>
-                </svg>
-                <span class="usp-text">Top Qualität</span>
-            </div>
-            <div class="list-inline-item">
-            <div class="list-inline-item">
-                <svg aria-hidden="true">
-                    <use xlink:href="#hand-thumbs-up-fill"></use>
-                </svg>
-                <span class="usp-text">Hohe Kundenzufriedenheit</span>
-            </div>
-        </div>
-    </div>
-    </div>
+    {% include_content "oxstartusps" ignore missing %}
 
     {% include_content 'oxstartslot4' ignore missing %}
     {{ insert_tracker() }}
