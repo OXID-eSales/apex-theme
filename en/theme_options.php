@@ -68,6 +68,8 @@ $aLang = array(
     'SHOP_THEME_sManufacturerIconsize'      => 'Manufacturer\'s/brand logo size',
     // Check if this is really manufacturer or if it is more like "brand"
     'HELP_SHOP_THEME_sManufacturerIconsize' => 'Manufacturer\'s/brand logo is shown on start page in manufacturer\'s slider.',
+    'SHOP_THEME_sManufacturerPicturesize' => 'Manufacturer\'s/brand picture size',
+    'SHOP_THEME_sManufacturerThumbnailsize' => 'Manufacturer\'s/brand thumbnail size',
 
     'SHOP_THEME_sCatIconsize'      => 'Size of a subcategory\'s picture (width*height)',
     'HELP_SHOP_THEME_sCatIconsize' => 'In category view, the category pictures of subcategories are displayed in the defined size.',

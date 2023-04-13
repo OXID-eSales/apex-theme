@@ -68,6 +68,8 @@ $aLang = array(
     'SHOP_THEME_sManufacturerIconsize'      => 'Größe des Hersteller-/Markenlogos in Pixeln (Breite*Höhe)',
     // Check if this is really manufacturer or if it is more like "brand"
     'HELP_SHOP_THEME_sManufacturerIconsize' => 'Dieses Logo wird auf der Startseite in der Markenlogo-übersicht angezeigt.',
+    'SHOP_THEME_sManufacturerPicturesize' => 'Größe des Hersteller-/Markenbildes',
+    'SHOP_THEME_sManufacturerThumbnailsize' => 'Größe des Hersteller-/Marken-Thumbnails',
 
     'SHOP_THEME_sCatIconsize'      => 'Größe des Kategoriebildes einer Unterkategorie in Pixeln (Breite*Höhe)',
     'HELP_SHOP_THEME_sCatIconsize' => 'In der Kategorieübersicht werden die Kategoriebilder von Unterkategorien in der hier definierten Größe angezeigt.',
@@ -277,8 +279,6 @@ $aLang = array(
     'SHOP_THEME_sImageStyle'          => 'Bild-Stil',
     'SHOP_THEME_sImageStyle_grid'     => 'Raster',
     'SHOP_THEME_sImageStyle_carousel' => 'Karussel',
-
-    'SHOP_THEME_blEmailsShowProductPictures' => 'Produktbilder in E-Mails anzeigen',
 
     'SHOP_THEME_sBasketNoticeListButtonFunction' => 'Funktion des Merklisten-Buttons im Warenkorb',
     'SHOP_THEME_sBasketNoticeListButtonFunction_hide' => 'Button ausblenden',
