@@ -87,8 +87,6 @@ $aLang = array(
     //SHOP_CONFIG_SHOWWISHLIST
     'SHOP_THEME_bl_showCompareList'         => 'Use compare list',
     //SHOP_CONFIG_SHOWCOMPARELIST
-    'SHOP_THEME_bl_showListmania'           => 'Use listmania',
-    //SHOP_CONFIG_SHOWLISTMANIA
     'SHOP_THEME_blShowBirthdayFields'       => 'Display input fields for date of birth when users enter their personal data',
     //SHOP_CONFIG_SHOWBIRTHDAYFIELDS
 
@@ -110,9 +108,6 @@ $aLang = array(
     'SHOP_THEME_sDefaultListDisplayType'            => 'Default product list type',
     'SHOP_THEME_sDefaultListDisplayType_grid'       => 'Grid',
     'SHOP_THEME_sDefaultListDisplayType_line'       => 'List',
-    'SHOP_THEME_sStartPageListDisplayType'          => 'Product list type on Start page',
-    'SHOP_THEME_sStartPageListDisplayType_grid'     => 'Grid',
-    'SHOP_THEME_sStartPageListDisplayType_line'     => 'List',
     'SHOP_THEME_blShowWeightInList'                 => 'Display weight in list',
 
     'SHOP_THEME_sProductListNavigation'         => 'Display product list navigation',
@@ -253,8 +248,6 @@ $aLang = array(
     'SHOP_THEME_aAppleTouchIcon'          => 'Apple Home-Screen Icon 310*310px.',
     'SHOP_THEME_aOGImage'                 => 'Open Graph image (OG-Image - is displayed when the page is shared)',
     'SHOP_THEME_sFaviconSvg'              => 'SVG Favicon',
-    'SHOP_THEME_sFaviconMSTileColor'      => 'Tile color for Windows 8/Windows Mobile bookmarks.',
-    'HELP_SHOP_THEME_sFaviconMSTileColor' => 'Specified as a hexadecimal value.<br>E.g.: #D83434',
 
     'SHOP_THEME_blUseGoogleTS'                 => 'Use Google Trusted Stores',
     'SHOP_THEME_sGoogleVendorId'               => 'Google Store-ID',
@@ -278,8 +271,6 @@ $aLang = array(
 
     'SHOP_THEME_blSliderShowImageCaption'      => 'Activate captions for slider on home page',
     'HELP_SHOP_THEME_blSliderShowImageCaption' => 'A caption is visible, when the active slide has an assigned product.',
-
-    'SHOP_THEME_blFullwidthLayout' => 'Activate full width layout',
 
     'SHOP_THEME_sImageStyle'          => 'Image style',
     'SHOP_THEME_sImageStyle_grid'     => 'Grid',

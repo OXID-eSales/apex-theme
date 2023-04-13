@@ -87,8 +87,6 @@ $aLang = array(
     //SHOP_CONFIG_SHOWWISHLIST
     'SHOP_THEME_bl_showCompareList'         => 'Artikelvergleich aktivieren',
     //SHOP_CONFIG_SHOWCOMPARELIST
-    'SHOP_THEME_bl_showListmania'           => 'Lieblingslisten aktivieren',
-    //SHOP_CONFIG_SHOWLISTMANIA
     'SHOP_THEME_blShowBirthdayFields'       => 'Eingabefeld für das Geburtsdatum anzeigen, wenn Benutzer ihre Daten eingeben',
     //SHOP_CONFIG_SHOWBIRTHDAYFIELDS
 
@@ -110,9 +108,6 @@ $aLang = array(
     'SHOP_THEME_sDefaultListDisplayType'            => 'Standard für Produktlistentyp',
     'SHOP_THEME_sDefaultListDisplayType_grid'       => 'Galerie',
     'SHOP_THEME_sDefaultListDisplayType_line'       => 'Liste',
-    'SHOP_THEME_sStartPageListDisplayType'          => 'Produktlistentyp auf der Startseite',
-    'SHOP_THEME_sStartPageListDisplayType_grid'     => 'Galerie',
-    'SHOP_THEME_sStartPageListDisplayType_line'     => 'Liste',
     'SHOP_THEME_blShowWeightInList'                 => 'Gewicht in Produktlisten anzeigen',
 
     'SHOP_THEME_sProductListNavigation'         => 'Produktlisten-Navigation anzeigen',
@@ -253,8 +248,6 @@ $aLang = array(
     'SHOP_THEME_aAppleTouchIcon'          => 'Apple Home-Screen Icon 310*310px.',
     'SHOP_THEME_aOGImage'                 => 'Open Graph image (OG-Image - wird angezeigt wenn die Seite geteilt wird)',
     'SHOP_THEME_sFaviconSvg'              => 'SVG Favicon',
-    'SHOP_THEME_sFaviconMSTileColor'      => 'Kachel-Farbe für Windows 8/Windows Mobile Lesezeichen.',
-    'HELP_SHOP_THEME_sFaviconMSTileColor' => 'Angabe als HEX-Wert.<br>Bsp.: #D83434',
 
     'SHOP_THEME_blUseGoogleTS'                 => 'Google Zertifizierte Händler benutzen',
     'SHOP_THEME_sGoogleVendorId'               => 'Google Store-ID (Erforderlich)',
