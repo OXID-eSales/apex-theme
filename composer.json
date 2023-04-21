@@ -9,7 +9,7 @@
   ],
   "homepage": "https://github.com/OXID-eSales/apex-theme",
   "license": [
-    "GPL-3.0"
+    "proprietary"
   ],
   "require": {
         "php": ">=8.0",
