@@ -96,6 +96,7 @@ $aLang = array(
     // Detailseite
     'BACK_TO_OVERVIEW'                                      => 'Zur Übersicht',
     'OF'                                                    => 'von',
+    'IMAGE'                                                 => 'Bild',
     'DD_RATING_CUSTOMERRATINGS'                             => 'Kundenmeinungen',
     'PAGE_DETAILS_CUSTOMERS_ALSO_BOUGHT_SUBHEADER'          => 'Kunden die sich diesen Artikel gekauft haben, kauften auch folgende Artikel.',
     'WIDGET_PRODUCT_RELATED_PRODUCTS_ACCESSORIES_SUBHEADER' => 'Folgende Artikel passen gut zu diesem Artikel.',
