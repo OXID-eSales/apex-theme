@@ -5,12 +5,12 @@
         <div typeof="gr:SomeItems" about="{{ sRDFaUrl|raw }}#productdata">
     {% endif %}
               {% if oProduct.oxarticles__oxtitle.value %}
-                <div property="gr:name" content="{{ oProduct.oxarticles__oxtitle.value|striptags|strip }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
+                <div property="gr:name" content="{{ oProduct.oxarticles__oxtitle.value|striptags|trim }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
                {% endif %}
                {% hasrights { ident: "SHOWLONGDESCRIPTION" } %}
                {% set oLongdesc = oProduct.getLongDescription() %}
                {% if oLongdesc.value %}
-                   <div property="gr:description" content="{{ oLongdesc.value|striptags|strip }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
+                   <div property="gr:description" content="{{ oLongdesc.value|striptags|trim }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
                {% endif %}
             {% endhasrights %}
             <div rel="foaf:depiction v:image" resource="{{ oView.getActPicture() }}"></div>
@@ -69,3 +69,4 @@
             {% set oBundleProduct = oView.getBundleArticle() %}
             <div rel="gr:includes" resource="{{ oBundleProduct.getLink()|raw }}#productdata"></div>
         {% endif %}
+</div>

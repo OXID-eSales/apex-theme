@@ -5,7 +5,7 @@
         <div rel="gr:availableDeliveryMethods" resource="http://purl.org/goodrelations/v1#{{ oDelSetMethod.oxdeliveryset__oxobjectid.value }}"></div>
     {% else %}
         {% ifcontent ident sContentName set oCont %}
-        <div rel="gr:availableDeliveryMethods" resource="{{ oCont.getLink()|raw }}#{{ oDelSetMethod.oxdeliveryset__oxtitle.value|strip('')|cat('_')|cat(oDelSetMethod.oxdeliveryset__oxid.value) }}"></div>
+        <div rel="gr:availableDeliveryMethods" resource="{{ oCont.getLink()|raw }}#{{ [oDelSetMethod.oxdeliveryset__oxtitle.value, oDelSetMethod.oxdeliveryset__oxid.value]|join('_')|striptags|trim }}"></div>
         {% endifcontent %}
     {% endif %}
 {% endfor %}
