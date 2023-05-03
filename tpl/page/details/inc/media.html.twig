@@ -6,7 +6,7 @@
     {% for oMediaUrl in oView.getMediaFiles() %}
         {% set sUrl = oMediaUrl.oxmediaurls__oxurl.value %}
         {% set blIsYouTubeMedia = false %}
-        {% if sUrl|strpos('youtube.com') or sUrl|strpos('youtu.be') %}
+        {% if 'youtube.com' in sUrl or 'youtu.be' in sUrl %}
             {% set blIsYouTubeMedia = true %}
         {% endif %}
 
