@@ -1,24 +1,26 @@
 {% capture append = "oxidBlock_content" %}
-{% set wishuser = oView.getWishUser() %}
+    {% set wishuser = oView.getWishUser() %}
     {% if not oView.getWishListUsers() and oView.getWishListSearchParam() %}
         {% set _statusMessage = "MESSAGE_SORRY_NO_GIFT_REGISTRY"|translate %}
         {% include "message/error.html.twig" with {statusMessage: _statusMessage} %}
     {% endif %}
-    <h1>{% if wishuser %}{{ translate({ ident: "GIFT_REGISTRY_OF" }) }} {{ wishuser.oxuser__oxfname.value }} {{ wishuser.oxuser__oxlname.value }}{% else %}{{ translate({ ident: "PUBLIC_GIFT_REGISTRIES" }) }}{% endif %}</h1>
-    <div class="wishlistView">
-        {% include "form/wishlist_search.html.twig" with {searchClass: "wishlist"} %}
+    <div class="container-xxl py-5">
+        <h1>{% if wishuser %}{{ translate({ ident: "GIFT_REGISTRY_OF" }) }} {{ wishuser.oxuser__oxfname.value }} {{ wishuser.oxuser__oxlname.value }}{% else %}{{ translate({ ident: "PUBLIC_GIFT_REGISTRIES" }) }}{% endif %}</h1>
+        <div class="wishlistView">
+            {% include "form/wishlist_search.html.twig" with {searchClass: "wishlist"} %}
+            {% if oView.getWishList() %}
+                {% set wishuser = oView.getWishUser() %}
+                <p class="wishlistUser">
+                {{ translate({ ident: "WISHLIST_PRODUCTS", args: wishuser.oxuser__oxfname.value|cat(' ')|cat(wishuser.oxuser__oxlname.value) }) }}
+                </p>
+            {% endif %}
+        </div>
         {% if oView.getWishList() %}
-            {% set wishuser = oView.getWishUser() %}
-            <p class="wishlistUser">
-            {{ translate({ ident: "WISHLIST_PRODUCTS", args: wishuser.oxuser__oxfname.value|cat(' ')|cat(wishuser.oxuser__oxlname.value) }) }}
-            </p>
+            {% include "widget/product/list.html.twig" with {type: "line", title: "", listId: "wishlistProductList", products: oView.getWishList(), owishid: wishuser.oxuser__oxid.value} %}
+        {% else %}
+            {{ translate({ ident: "GIFT_REGISTRY_EMPTY" }) }}
         {% endif %}
     </div>
-    {% if oView.getWishList() %}
-        {% include "widget/product/list.html.twig" with {type: "line", title: "", listId: "wishlistProductList", products: oView.getWishList(), owishid: wishuser.oxuser__oxid.value} %}
-    {% else %}
-        {{ translate({ ident: "GIFT_REGISTRY_EMPTY" }) }}
-    {% endif %}
     {{ insert_tracker() }}
 {% endcapture %}
 {% include "layout/page.html.twig" with {sidebar: "Left"} %}
