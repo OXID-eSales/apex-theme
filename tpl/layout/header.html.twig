@@ -115,7 +115,10 @@
                     </button>
                 {% endblock %}
 
-                <a href="#" class="btn btn-toggle btn-search">
+                <a href="#" class="btn btn-toggle btn-search"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#searchForm" aria-controls="searchForm"
+                   aria-expanded="false">
                     <svg aria-hidden="true">
                         <use xlink:href="#search"></use>
                     </svg>

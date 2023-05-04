@@ -3,7 +3,21 @@
     outline: 1px solid #000;
   }
 
+  @include media-breakpoint-down(lg) {
+    position: absolute;
+    padding: 10px;
+    top: 50px;
+    width: 100%;
+    z-index: 10;
+    background: #fff;
+
+    &:not(.show) {
+      display: none;
+    }
+  }
+
   @include media-breakpoint-up(lg) {
+    display: block !important;
     min-width: 500px;
   }
 
