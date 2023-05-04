@@ -8,7 +8,7 @@
     </button>
     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
         {% block account_menu %}
-        <a class="dropdown-item{% if active_link == "dashboard" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSslSelfLink()|cat("cl=account") }) }}" title="Übersicht">Übersicht</a>
+        <a class="dropdown-item{% if active_link == "dashboard" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSslSelfLink()|cat("cl=account") }) }}" title="{{ translate({ ident: "SUMMARY" }) }}">{{ translate({ ident: "SUMMARY" }) }}</a>
         <a class="dropdown-item{% if active_link == "password" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSslSelfLink()|cat("cl=account_password") }) }}" title="{{ translate({ ident: "CHANGE_PASSWORD" }) }}">{{ translate({ ident: "CHANGE_PASSWORD" }) }}</a>
         <a class="dropdown-item{% if active_link == "newsletter" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSslSelfLink()|cat("cl=account_newsletter") }) }}" title="{{ translate({ ident: "NEWSLETTER_SETTINGS" }) }}">{{ translate({ ident: "NEWSLETTER_SETTINGS" }) }}</a>
         <a class="dropdown-item{% if active_link == "billship" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSslSelfLink()|cat("cl=account_user") }) }}" title="{{ translate({ ident: "BILLING_SHIPPING_SETTINGS" }) }}">{{ translate({ ident: "BILLING_SHIPPING_SETTINGS" }) }}</a>
