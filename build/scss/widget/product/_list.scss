@@ -43,7 +43,7 @@
   > div {
     scroll-snap-align: center;
     min-width: 220px;
-    max-width: 400px;
+    max-width: calc(50% - 10px);
     margin: 0 5px;
     transition: $transition-base;
     height: auto;

@@ -16,7 +16,7 @@
         padding-bottom: 50px;
       }
 
-      @include media-breakpoint-up(md) {
+      @include media-breakpoint-up(lg) {
         &,
         &.sale {
           padding-bottom: $spacer;
