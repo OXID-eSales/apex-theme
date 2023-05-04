@@ -149,9 +149,11 @@
         {% endif %}
     </header>
     {% if oView.showSearch() and oView.getIsOrderStep() and oView.getClassKey() != "basket"%}
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
-                {% include "page/checkout/inc/steps.html.twig" with {active: active_step} %}
+        <div class="container-xxl">
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+                    {% include "page/checkout/inc/steps.html.twig" with {active: active_step} %}
+                </div>
             </div>
         </div>
     {% endif %}
