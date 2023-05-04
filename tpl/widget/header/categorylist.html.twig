@@ -31,7 +31,7 @@
                                                 <div class="nav-level-2">
                                                     <div class="container-xxl">
                                                         <div class="row">
-                                                            <div class="col-md-4">
+                                                            <div class="col-lg-4">
                                                                 <div class="h5">{{ translate({ ident: "CATEGORIES" }) }}</div>
                                                                 {% for subcatkey, osubcat in ocat.getSubCats() %}
                                                                     {% if osubcat.getIsVisible() %}
@@ -92,7 +92,7 @@
                                                                     {% endif %}
                                                                 {% endfor %}
                                                             </div>
-                                                            <div class="col-md-8">
+                                                            <div class="col-md-8 d-none d-lg-block">
                                                                 {# Content #}
                                                                 {% include_content 'oxstartslot1' ignore missing  %}
                                                                 {% block dd_widget_header_categorylist_content %}{% endblock %}
