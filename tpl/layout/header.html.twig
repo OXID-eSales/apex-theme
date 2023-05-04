@@ -122,7 +122,7 @@
                     <span class="btn-text">{{ translate({ ident: "SEARCH" }) }}</span>
                 </a>
 
-                <a href="#" class="btn btn-toggle btn-search">
+                <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account") }) }}" class="btn btn-toggle btn-account">
                     <svg aria-hidden="true">
                         <use xlink:href="#person"></use>
                     </svg>
