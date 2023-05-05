@@ -1,0 +1,47 @@
+{% set searchrecomm = oView.getRecommSearch() %}
+{% if oView.getRecommLists()|length > 0 %}
+    <div class="row" id="recommendationsLists">
+        {% for recommlist in oView.getRecommLists() %}
+            {% block redommendations_list_content %}
+                <div class="card card-lg mb-3">
+                    <div class="card-header card-title d-inline row">
+                        {% set editclass = oViewConf.getActiveClassName() %}
+                        {% if blEdit %}
+                            {% set editclass = "account_recommlist&amp;fnc=editList" %}
+                        {% endif %}
+
+                        <form action="{{ oViewConf.getSelfActionLink()|raw }}" method="post">
+                            <div class="col-sm-6 d-inline">
+                                <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=" ~ editclass), params: "recommid=" ~ recommlist.oxrecommlists__oxid.value ~ "&amp;searchrecomm=" ~ searchrecomm }) }}" class="lead" title="{{ recommlist.oxrecommlists__oxtitle.value }}">{{ recommlist.oxrecommlists__oxtitle.value }}</a>
+                                <small class="text-muted">{{ translate({ ident: "LIST_BY" }) }} <strong>{{ recommlist.oxrecommlists__oxauthor.value }}</strong></small>
+
+                            </div>
+
+                            {% if blEdit %}
+                                <div class="col-sm-6 d-inline">
+                                    {{ oViewConf.getHiddenSid()|raw() }}
+                                    <input type="hidden" name="cl" value="account_recommlist">
+                                    <input type="hidden" name="fnc" value="editList">
+                                    <input type="hidden" name="recommid" value="{{ recommlist.getId() }}">
+                                    <button class="btn btn-outline-dark btn-sm float-end edit-button" type="submit" name="editList" title="{{ translate({ ident: "EDIT" }) }}">
+                                        <svg>
+                                            <use xlink:href="#pencil"></use>
+                                        </svg>
+                                    </button>
+                                    <button class="btn btn-outline-dark btn-sm float-end edit-button"  type="submit" name="deleteList" value="1" title="{{ translate({ ident: "REMOVE" }) }}">
+                                        <svg>
+                                            <use xlink:href="#trash"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                    <div class="card-body">{{ recommlist.oxrecommlists__oxdesc.value }}</div>
+                </div>
+            {% endblock %}
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="alert alert-info">{{ translate({ ident: "NO_LISTMANIA_LIST_FOUND" }) }}</p>
+{% endif %}

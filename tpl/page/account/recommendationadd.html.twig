@@ -1,0 +1,14 @@
+{% capture append = "oxidBlock_content" %}
+    <div class="container-xxl py-5">
+        {% set product = oView.getProduct() %}
+        {% set template_title = product.oxarticles__oxtitle.value|cat(" ")|cat(product.oxarticles__oxvarselect.value) %}
+
+        <h1 class="page-header">{{ template_title }}</h1>
+
+        {% include_dynamic "form/recommendation_add.html.twig" with {testid: ""} %}
+    </div>
+{{ insert_tracker({title: template_title}) }}
+{% endcapture %}
+
+{% include "layout/page.html.twig" with {sidebar: "Left"} %}
+

@@ -320,6 +320,16 @@
                                 </div>
                             {% endif %}
 
+                            {% if oViewConf.getShowListmania() %}
+                                <div class="col-6">
+                                    {% if oxcmp_user %}
+                                        <a class="btn btn-sm btn-light w-100" id="recommList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=recommadd"), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat(oViewConf.getNavUrlParams())|cat("&amp;stoken=")|cat(oViewConf.getSessionChallengeToken()) }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
+                                    {% else %}
+                                        <a class="btn btn-sm btn-light w-100" id="loginToRecommlist" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
                             <div class="col-6">
                                 {% block details_productmain_addtowishlist %}
                                     {% if oxcmp_user %}

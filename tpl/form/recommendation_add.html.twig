@@ -1,0 +1,33 @@
+{% if not oxcmp_user.oxuser__oxusername.value %}
+  {% include "page/account/login.html.twig" %}
+{% else %}
+    {% set product = oView.getProduct() %}
+    {% if oxcmp_user.getRecommListsCount() %}
+        <form action="{{ oViewConf.getSelfActionLink()|raw }}" method="post">
+            <div class="card card-lg">
+                {{ oViewConf.getHiddenSid()|raw() }}
+                {{ oViewConf.getNavFormParams()|raw() }}
+                <input type="hidden" name="fnc" value="addToRecomm">
+                <input type="hidden" name="cl" value="details">
+                <input type="hidden" name="anid" value="{{ product.oxarticles__oxid.value }}">
+                <div class="card-body">
+                    <div class="mb-3 form-floating">
+                        <select class="form-select" name="recomm" id="recommselect">
+                            {% for oList in oView.getRecommLists() %}
+                                <option value="{{ oList.oxrecommlists__oxid.value }}">{{ oList.oxrecommlists__oxtitle.value }}</option>
+                            {% endfor %}
+                        </select>
+                        <label class="form-label" for="recommselect">{{ translate({ ident: "SELECT_LISTMANIA_LIST" }) }}:</label>
+                    </div>
+                    <label class="control-label col-lg-3">Description:</label>
+                    <textarea class="form-control" rows="8" name="recomm_txt"></textarea><br>
+                    <div class="col-lg-offset-3 col-lg-9 my-3">
+                        <button class="btn btn-primary" type="submit">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</button>
+                    </div>
+                </div>
+            </div>
+      </form>
+    {% else %}
+        {{ translate({ ident: "NO_LISTMANIA_LIST" }) }} <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_recommlist") }) }}">{{ translate({ ident: "CLICK_HERE" }) }}</a>
+    {% endif %}
+{% endif %}

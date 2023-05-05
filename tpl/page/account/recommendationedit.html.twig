@@ -1,0 +1,28 @@
+{% capture append = "oxidBlock_content" %}
+    <div class="container-xxl py-5">
+        {% set template_title = "LISTMANIA"|translate %}
+        {% if oView.getActiveRecommList() %}
+            {% set _actvrecommlist = oView.getActiveRecommList() %}
+            {% set recommendation_head = _actvrecommlist.oxrecommlists__oxtitle.value %}
+
+            <div class="row">
+                <h3 class="page-header col pl-0 ml-3">
+                    {{ recommendation_head }}
+                </h3>
+                <div class="col-12 col-sm-3 button-col">
+                    {% include "page/account/inc/account_menu.html.twig" with {active_link: "recommendationlist"} %}
+                </div>
+            </div>
+            <div class="listmaniaView">
+                {% include "form/recommendation_edit.html.twig" with {actvrecommlist: _actvrecommlist} %}
+            </div>
+            {% if oView.getArticleList() %}
+                {% set blEdit = true %}
+                {% include "widget/product/list.html.twig" with {type: "line", listId: "recommendProductList", products: oView.getArticleList(), recommid: _actvrecommlist.getId(), removeFunction: "removeArticle"} %}
+                {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigation(), place: "bottom"} %}
+            {% endif %}
+        {% endif %}
+    </div>
+    {{ insert_tracker({title: template_title}) }}
+{% endcapture %}
+{% include "layout/page.html.twig" with {sidebar: "Left"} %}
