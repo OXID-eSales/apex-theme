@@ -4,7 +4,7 @@
     {% set tpl = oViewConf.getActTplName() %}
     {% set oxloadid = oViewConf.getActContentLoadId() %}
     <h1>{{ template_title }}</h1>
-    {{ oView.getParsedContent() }}
+    {{ oView.getParsedContent()|raw }}
     {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
 {% include "layout/popup.html.twig" %}
