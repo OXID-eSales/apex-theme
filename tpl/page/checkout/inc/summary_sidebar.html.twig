@@ -242,7 +242,7 @@
                 </h4>
                 <div class="collapse" id="voucherCollapse">
                     <div class="card-body">
-                        <form name="voucher" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" novalidate>
+                        <form name="voucher" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="needs-validation" novalidate>
                             {{ oViewConf.getHiddenSid()|raw }}
                             <input type="hidden" name="cl" value="basket">
                             <input type="hidden" name="fnc" value="addVoucher">
@@ -251,9 +251,11 @@
                             <label class="visually-hidden"
                                    for="input_voucherNr">{{ translate({ ident: "ENTER_COUPON_NUMBER" }) }}</label>
                             <div class="input-group">
+                                <div class="voucher-input">
                                 <input type="text" name="voucherNr" size="30" class="form-control" id="input_voucherNr"
                                        required>
-                                <button type="submit" class="btn btn-primary"
+                                </div>
+                                <button type="submit" class="btn btn-primary voucher-btn"
                                         title="{{ translate({ ident: "REDEEM_COUPON" }) }}">
                                     <svg aria-hidden="true">
                                         <use xlink:href="#right"></use>
