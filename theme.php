@@ -20,13 +20,13 @@ $aTheme = [
             'group' => 'display',
             'name'  => 'aNrofCatArticles',
             'type'  => 'arr',
-            'value' => ["20"],
+            'value' => ['20'],
         ],
         [
             'group' => 'display',
             'name'  => 'aNrofCatArticlesInGrid',
             'type'  => 'arr',
-            'value' => ["20"],
+            'value' => ['20'],
         ],
         [
             'group' => 'display',
