@@ -1,16 +1,13 @@
 {% if oView.isEnabled() and get_global_cookie("displayedCookiesNotification") != '1' %}
-    {# oxscript include="js/libs / jquery.cookie.min.js" }}
-    {{ script({ add: "$.cookie('testing', 'yes'); if(!$.cookie('testing')) $('#cookieNote').hide(); else{ $('#cookieNote').show(); $.cookie('testing', null, -1);}", dynamic: __oxid_include_dynamic }) }}
-    {{ script({ include: "js/widgets/oxcookienote.min.js", dynamic: __oxid_include_dynamic }) #}
     <div id="cookieNote">
         <div class="alert alert-info" style="margin: 0;">
-            <button type="button" class="btn-close" data-bs-dismiss="alert">
+            <button id="closeButton" type="button" class="btn-close" data-bs-dismiss="alert">
                 <span aria-hidden="true"></span><span class="visually-hidden-focusable">{{ translate({ ident: 'CLOSE' }) }}</span>
             </button>
             {{ translate({ ident: 'COOKIE_NOTE' }) }}
             <span class="cancelCookie"><a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=clearcookies") }) }}" title="{{ translate({ ident: 'COOKIE_NOTE_DISAGREE' }) }}">{{ translate({ ident: 'COOKIE_NOTE_DISAGREE' }) }}</a></span>
         </div>
     </div>
-    {# oxscript add="$('#cookieNote').oxCookieNote();" #}
+    {{ script({ add: "setCookieNote(document.getElementById('cookieNote'));", dynamic: __oxid_include_dynamic }) }}
 {% endif %}
 {{ script({ widget: oView.getClassKey(), dynamic: __oxid_include_dynamic }) }}
