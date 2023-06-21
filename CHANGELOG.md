@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [v1.0.1] - Unreleased
 
 ### Fixed
-- The cookie note was continuously shown even when it was accepted
+- The cookie note was permanently shown
+
+### Changed
+- Cookienote will close only if the note is closed by the "X" sign
 
 ## [v1.0.0] - 2023-05-09
 
