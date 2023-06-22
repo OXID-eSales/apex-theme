@@ -10,7 +10,7 @@
   "devDependencies": {
     "@fontsource/oswald": "^4.5.7",
     "@popperjs/core": "^2.9.2",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "5.2.3",
     "dart-sass": "^1.25.0",
     "grunt": "^1.5.3",
     "grunt-combine-media-queries": "^1.0.20",
@@ -29,5 +29,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "js-cookie": "^3.0.5"
+  }
 }
