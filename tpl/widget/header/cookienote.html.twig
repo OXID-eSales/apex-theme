@@ -1,5 +1,5 @@
-{% if oView.isEnabled() and get_global_cookie("displayedCookiesNotification") != '1' %}
-    <div id="cookieNote">
+{% if oView.isEnabled() %}
+    <div id="cookieNote" hidden>
         <div class="alert alert-info" style="margin: 0;">
             <button id="cookieNoteCloseButton" type="button" class="btn-close" data-bs-dismiss="alert">
                 <span aria-hidden="true"></span><span class="visually-hidden-focusable">{{ translate({ ident: 'CLOSE' }) }}</span>
@@ -8,6 +8,5 @@
             <span class="cancelCookie"><a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=clearcookies") }) }}" title="{{ translate({ ident: 'COOKIE_NOTE_DISAGREE' }) }}">{{ translate({ ident: 'COOKIE_NOTE_DISAGREE' }) }}</a></span>
         </div>
     </div>
-    {{ script({ add: "document.getElementById('cookieNoteCloseButton')?.addEventListener('click', function(){ Cookies.set('displayedCookiesNotification', 1, { path: '/', expires: 30 }); });", dynamic: __oxid_include_dynamic }) }}
 {% endif %}
 {{ script({ widget: oView.getClassKey(), dynamic: __oxid_include_dynamic }) }}
