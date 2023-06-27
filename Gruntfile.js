@@ -96,6 +96,7 @@ module.exports = function (grunt) {
                         '<%= project.dev %>node_modules/bootstrap/js/dist/modal.js',*/
 //                        '<%= project.dev %>node_modules/bootstrap/js/dist/tab.js',
                         '<%= project.dev %>node_modules/js-cookie/dist/js.cookie.js',
+                        '<%= project.dev %>build/js/widgets/cookieNote.js',
                         '<%= project.dev %>build/js/main.js'
                     ],
                     '<%= project.out %><%= project.theme %>/src/js/variants.min.js': [
