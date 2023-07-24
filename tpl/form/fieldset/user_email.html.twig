@@ -1,6 +1,6 @@
 <div class="mb-3{% if aErrors.oxuser__oxusername %} is-invalid{% endif %}">
     <div class="form-floating">
-        <input class="oxValidate_enterPass oxValidate_enterPassTarget[oxValidate_pwd] form-control" type="email" id="invadr[oxuser__oxusername]" name="invadr[oxuser__oxusername]" value="{% if isset( invadr.oxuser__oxusername ) %}{{ invadr.oxuser__oxusername }}{% else %}{{ oxcmp_user.oxuser__oxusername.value }}{% endif %}" size="37" required>
+        <input class="oxValidate_enterPass oxValidate_enterPassTarget[oxValidate_pwd] form-control" type="email" id="invadr[oxuser__oxusername]" name="invadr[oxuser__oxusername]" value="{% if invadr.oxuser__oxusername is defined %}{{ invadr.oxuser__oxusername }}{% else %}{{ oxcmp_user.oxuser__oxusername.value }}{% endif %}" size="37" required>
         <label for="invadr[oxuser__oxusername]" class="req">{{ translate({ ident: "EMAIL_ADDRESS" }) }}</label>
     </div>
     {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxuser__oxusername} %}

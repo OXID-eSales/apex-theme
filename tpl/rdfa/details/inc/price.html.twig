@@ -34,7 +34,7 @@
 {{ twig.capture.sRDFaPriceStart }}
             {% set price = oDetailsProduct.getPrice() %}
             <div property="gr:hasCurrencyValue" content="{{ price.getBruttoPrice() }}" datatype="xsd:float"></div>
-            {% if isset(iRDFaMinAmount) %}
+            {% if iRDFaMinAmount is defined %}
                 <div rel="gr:hasEligibleQuantity">
                     <div typeof="gr:QuantitativeValue">
                         <div property="gr:hasMinValue" content="1" datatype="xsd:float"></div>
