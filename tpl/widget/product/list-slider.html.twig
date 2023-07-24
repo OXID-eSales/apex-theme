@@ -14,7 +14,7 @@
     </div>
 {% endif %}
 
-{% if products and not empty(products) %}
+{% if products and products|length > 0 %}
     <div class="slider-container d-flex flex-nowrap" id="{{ listId }}">
         {% for _product in products %}
             {% set testid = listId|cat("_")|cat(loop.index) %}

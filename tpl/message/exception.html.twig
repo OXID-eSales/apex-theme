@@ -1,7 +1,7 @@
 {% capture append = "oxidBlock_content" %}
     {% set template_title = "MY_DOWNLOADS"|translate %}
     <div class="errorBox">
-          {% if Errors|is_array and Errors.default|is_array and not empty(Errors.default) %}
+          {% if Errors|is_array and Errors.default|is_array and Errors.default|length > 0 %}
           <div class="status error corners">
               {% for key, oEr in Errors.default %}
                   <p>{{ oEr.getOxMessage() }}</p>
