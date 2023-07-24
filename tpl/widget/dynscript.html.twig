@@ -202,8 +202,8 @@
                     <span id="gts-o-has-preorder">{% if blHasPreOrder %}Y{% else %}N{% endif %}</span>
                     <span id="gts-o-has-digital">{% if oBasket.hasDownloadableProducts() %}Y{% else %}N{% endif %}</span>
 
-                    {% if smarty.capture.sGtsItems %}
-                        {{ smarty.capture.sGtsItems }}
+                    {% if twig.capture.sGtsItems %}
+                        {{ twig.capture.sGtsItems }}
                     {% endif %}
                 </div>
             {% endif %}
