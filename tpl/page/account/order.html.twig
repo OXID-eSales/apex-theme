@@ -13,7 +13,7 @@
         {% set oOrders = oView.getOrderList() %}
 
         {% block account_order_history %}
-            {% if oOrders and not empty(oOrders) %}
+            {% if oOrders and oOrders|length > 0 %}
                 {% set oArticleList = oView.getOrderArticleList() %}
                 {% for order in oOrders %}
                     <div class="card card-lg mb-3">

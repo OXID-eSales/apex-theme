@@ -12,7 +12,7 @@
     {% endif %}
 {% endif %}
 
-{% if products and not empty(products) %}
+{% if products and products|length > 0 %}
     <div class="list-container" id="{{ listId }}">
         <div class="row{% if type != 'line' %} grid-row{% endif %} {{ type }}-view">
         {% for _product in products %}
