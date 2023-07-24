@@ -125,7 +125,7 @@
 
         {% block base_style %}
             {% if oxcmp_user and oxcmp_user.oxuser__oxrights.value == "malladmin" and get_global_cookie("scsspreview") %}
-                {{ style({ include: "css/preview.css?"|cat(smarty.now) }) }}
+                {{ style({ include: "css/preview.css?" ~ 'now'|date('U') }) }}
             {% else %}
                 <link rel="stylesheet" href="{{ oViewConf.getResourceUrl('css/styles.min.css')|raw }}">
             {% endif %}
