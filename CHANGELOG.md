@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Cookie Note close button
 - Extra whitespaces after Contact form submit
+- Deny direct access to directory files
 
 ## [v1.0.0] - 2023-05-09
 
