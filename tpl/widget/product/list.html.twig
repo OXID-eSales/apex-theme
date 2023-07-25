@@ -16,7 +16,7 @@
     <div class="list-container" id="{{ listId }}">
         <div class="row{% if type != 'line' %} grid-row{% endif %} {{ type }}-view">
         {% for _product in products %}
-            {% set testid = listId|cat("_")|cat(loop.index) %}
+            {% set testid = listId ~ "_" ~ loop.index %}
 
             {% if type != 'line' %}
             <div class="col mb-3">

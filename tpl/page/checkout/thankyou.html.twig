@@ -22,7 +22,7 @@
                 <a id="backToShop" rel="nofollow" href="{{ seo_url({ ident: oViewConf.getHomeLink() }) }}" class="link">{{ translate({ ident: "BACK_TO_START_PAGE" }) }}</a>
                 {% if oxcmp_user.oxuser__oxpassword.value %}
                     {{ translate({ ident: "OR" }) }}
-                    <a id="orderHistory" rel="nofollow" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_order") }) }}" class="link">{{ translate({ ident: "CHECK_YOUR_ORDER_HISTORY" }) }}</a>.
+                    <a id="orderHistory" rel="nofollow" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_order" }) }}" class="link">{{ translate({ ident: "CHECK_YOUR_ORDER_HISTORY" }) }}</a>.
                 {% endif %}
             {% endblock %}
 

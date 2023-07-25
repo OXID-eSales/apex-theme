@@ -3,7 +3,7 @@
     {% if oView.getActiveRecommList() %}
         {% set _actvrecommlist = oView.getActiveRecommList() %}
         {% set recommendation_head = "LIST_BY"|translate %}
-        {% set recommendation_head = _actvrecommlist.oxrecommlists__oxtitle.value|cat(" <span>(")|cat(recommendation_head)|cat(" ")|cat(_actvrecommlist->oxrecommlists__oxauthor->value)|cat(")</span>") %}
+        {% set recommendation_head = _actvrecommlist.oxrecommlists__oxtitle.value ~ " <span>(" ~ recommendation_head ~ " " ~ _actvrecommlist->oxrecommlists__oxauthor->value ~ ")</span>" %}
         <h1 class="page-header">{{ recommendation_head }}</h1>
         <div class="listRefine clear bottomRound">
             {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigation()} %}
@@ -17,7 +17,7 @@
                     </div>
                     {% if oView.isReviewActive() %}
                     <div class="rating clear">
-                        {% include "widget/reviews/rating.html.twig" with {itemid: "recommid="|cat(_actvrecommlist.getId()), sRateUrl: oViewConf.getSelfLink()|cat("cl=recommlist")} %}
+                        {% include "widget/reviews/rating.html.twig" with { itemid: "recommid=" ~ _actvrecommlist.getId(), sRateUrl: oViewConf.getSelfLink() ~ "cl=recommlist" } %}
                     </div>
                     {% endif %}
                 </div>
@@ -35,7 +35,7 @@
     {% else %}
 
         {% set hitsfor = "HITS_FOR"|translate %}
-        {% set recommendation_head = oView.getArticleCount()|cat(" ")|cat(hitsfor)|cat(" &quot;")|cat(oView->getSearchForHtml())|cat("&quot;") %}
+        {% set recommendation_head = oView.getArticleCount() ~ " " ~ hitsfor ~ " &quot;" ~ oView->getSearchForHtml() ~ "&quot;" %}
 
         <h1 class="page-header">{{ recommendation_head }}</h1>
         {% include "page/recommendations/inc/list.html.twig" %}
