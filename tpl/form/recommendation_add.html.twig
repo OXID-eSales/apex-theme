@@ -28,6 +28,6 @@
             </div>
       </form>
     {% else %}
-        {{ translate({ ident: "NO_LISTMANIA_LIST" }) }} <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_recommlist") }) }}">{{ translate({ ident: "CLICK_HERE" }) }}</a>
+        {{ translate({ ident: "NO_LISTMANIA_LIST" }) }} <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_recommlist" }) }}">{{ translate({ ident: "CLICK_HERE" }) }}</a>
     {% endif %}
 {% endif %}

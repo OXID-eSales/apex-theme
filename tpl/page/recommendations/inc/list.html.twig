@@ -12,7 +12,7 @@
 
                         <form action="{{ oViewConf.getSelfActionLink()|raw }}" method="post">
                             <div class="col-sm-6 d-inline">
-                                <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=" ~ editclass), params: "recommid=" ~ recommlist.oxrecommlists__oxid.value ~ "&amp;searchrecomm=" ~ searchrecomm }) }}" class="lead" title="{{ recommlist.oxrecommlists__oxtitle.value }}">{{ recommlist.oxrecommlists__oxtitle.value }}</a>
+                                <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ editclass, params: "recommid=" ~ recommlist.oxrecommlists__oxid.value ~ "&amp;searchrecomm=" ~ searchrecomm }) }}" class="lead" title="{{ recommlist.oxrecommlists__oxtitle.value }}">{{ recommlist.oxrecommlists__oxtitle.value }}</a>
                                 <small class="text-muted">{{ translate({ ident: "LIST_BY" }) }} <strong>{{ recommlist.oxrecommlists__oxauthor.value }}</strong></small>
 
                             </div>

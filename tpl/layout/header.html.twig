@@ -125,7 +125,7 @@
                     <span class="btn-text">{{ translate({ ident: "SEARCH" }) }}</span>
                 </a>
 
-                <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account") }) }}" class="btn btn-toggle btn-account">
+                <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account" }) }}" class="btn btn-toggle btn-account">
                     <svg aria-hidden="true">
                         <use xlink:href="#person"></use>
                     </svg>
@@ -134,7 +134,7 @@
                     </span>
                 </a>
 
-                <a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+                <a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_noticelist" }) }}">
                     <svg aria-hidden="true">
                         <use xlink:href="#star-fill"></use>
                     </svg>

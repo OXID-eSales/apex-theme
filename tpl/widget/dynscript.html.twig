@@ -56,7 +56,7 @@
             });
 
             {% for oOrderArticle in oOrder.getOrderArticles() %}
-                {% set sArticleName = oOrderArticle.oxorderarticles__oxtitle.value|cat(' ')|cat(oOrderArticle.oxorderarticles__oxselvariant.value) %}
+                {% set sArticleName = oOrderArticle.oxorderarticles__oxtitle.value ~ ' ' ~ oOrderArticle.oxorderarticles__oxselvariant.value %}
                 {% set sCategoryName = "" %}
                 {% set oOrderArticlePrice = oOrderArticle.getPrice() %}
                 {% set oArticle = oOrderArticle.getArticle() %}
@@ -151,7 +151,7 @@
                         {% for oOrderArticle in oOrder.getOrderArticles() %}
                             {% set oArticle = oOrderArticle.getArticle() %}
                             {% set oOrderArticlePrice = oOrderArticle.getPrice() %}
-                            {% set sArticleName = oOrderArticle.oxorderarticles__oxtitle.value|cat(' ')|cat(oOrderArticle.oxorderarticles__oxselvariant.value) %}
+                            {% set sArticleName = oOrderArticle.oxorderarticles__oxtitle.value ~ ' ' ~ oOrderArticle.oxorderarticles__oxselvariant.value %}
                             {% if not blHasPreOrder and oArticle.getStockStatus() == -1 %}
                                 {% set blHasPreOrder = true %}
                             {% endif %}

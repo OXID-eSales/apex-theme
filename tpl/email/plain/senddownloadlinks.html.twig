@@ -19,7 +19,7 @@
     {% block email_html_senddownloadlinks_download_link %}
         {% for oOrderFile in oOrderFileList %}
             {% if order.oxorder__oxpaid.value or not oOrderFile.oxorderfiles__oxpurchasedonly.value %}
-                {{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=download"), params: "sorderfileid="|cat(oOrderFile.getId()) }) }} {{ oOrderFile.oxorderfiles__oxfilename.value }}
+                {{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=download", params: "sorderfileid=" ~ oOrderFile.getId() }) }} {{ oOrderFile.oxorderfiles__oxfilename.value }}
             {% else %}
                 {{ oOrderFile.oxorderfiles__oxfilename.value }} {{ translate({ ident: "DOWNLOADS_PAYMENT_PENDING" }) }}
             {% endif %}

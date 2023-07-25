@@ -22,7 +22,7 @@
                                     </div>
                                     <div class="col-3">
                                         {% if oOrderFile.isPaid() or not oOrderFile.oxorderfiles__oxpurchasedonly.value  %}
-                                            <a class="btn btn-success btn-sm" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=download"), params: "sorderfileid="|cat(oOrderFile.getId()) }) }}" title="{{ oOrderFile.oxorderfiles__oxfilename.value }} {{ translate({ ident: "DD_DOWNLOADS_DOWNLOAD_TOOLTIP" }) }}">
+                                            <a class="btn btn-success btn-sm" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=download", params: "sorderfileid=" ~ oOrderFile.getId() }) }}" title="{{ oOrderFile.oxorderfiles__oxfilename.value }} {{ translate({ ident: "DD_DOWNLOADS_DOWNLOAD_TOOLTIP" }) }}">
                                                 <svg>
                                                     <use xlink:href="#download"></use>
                                                 </svg>

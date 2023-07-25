@@ -9,7 +9,7 @@
 {% endif %}
 {% set notificationsCounter = oView.getCompareItemsCnt()+noticeListCount+wishListCount+recommListCount %}
 
-<button type="button" aria-label="Usercenter" class="btn" data-bs-toggle="dropdown" data-href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account") }) }}">
+<button type="button" aria-label="Usercenter" class="btn" data-bs-toggle="dropdown" data-href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account" }) }}">
     {% block dd_layout_page_header_icon_menu_account_button %}
         <svg aria-label="
             {% if not oxcmp_user.oxuser__oxpassword.value %}
@@ -29,7 +29,7 @@
     {% endblock %}
 {% endif %}
 
-<a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+<a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_noticelist" }) }}">
     <svg aria-label="{{ translate({ ident: "MY_WISH_LIST" }) }}">
         <use xlink:href="#star-fill"></use>
     </svg>

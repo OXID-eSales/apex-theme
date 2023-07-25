@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [v1.0.1] - Unreleased
 
+### Change
+- Deprecated `count`, `empty`, `isset` and `cat` functions
+
 ### Fixed
 - Cookie Note close button
 - Extra whitespaces after Contact form submit

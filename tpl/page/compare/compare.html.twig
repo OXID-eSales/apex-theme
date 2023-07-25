@@ -32,13 +32,13 @@
                                     <td class="item-wrapper text-center compare-item-wrapper">
                                         <div class="move-controls">
                                             {% if not product.hidePrev %}
-                                                <a id="compareLeft_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getActiveClassName()), params: "fnc=moveleft&amp;aid=" ~ product.oxarticles__oxnid.value ~ "&amp;pgNr="|cat(oView.getActPage()) }) }}" class="btn btn-outline-primary movePrev">&laquo;</a>
+                                                <a id="compareLeft_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getActiveClassName(), params: "fnc=moveleft&amp;aid=" ~ product.oxarticles__oxnid.value ~ "&amp;pgNr=" ~ oView.getActPage() }) }}" class="btn btn-outline-primary movePrev">&laquo;</a>
                                             {% endif %}
 
                                            <span>{{ translate({ ident: "MOVE" }) }}</span>
 
                                             {% if not product.hideNext %}
-                                                <a id="compareRight_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getActiveClassName()), params: "fnc=moveright&amp;aid=" ~ product.oxarticles__oxnid.value ~ "&amp;pgNr="|cat(oView.getActPage()) }) }}" class="btn btn-outline-primary moveNext">&raquo;</a>
+                                                <a id="compareRight_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getActiveClassName(), params: "fnc=moveright&amp;aid=" ~ product.oxarticles__oxnid.value ~ "&amp;pgNr=" ~ oView.getActPage() }) }}" class="btn btn-outline-primary moveNext">&raquo;</a>
                                             {% endif %}
                                         </div>
                                         {% include "page/compare/inc/compareitem.html.twig" with {product: product, testid: loop.index} %}

@@ -22,7 +22,7 @@
                             </a>
                         {% else %}
                             <a class="btn btn-light" rel="nofollow"
-                               href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=details" ~ oViewConf.getNavUrlParams() }) }}">
+                               href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=details" ~ oViewConf.getNavUrlParams() }) }}">
                                 {{ translate({ ident: "WRITE_REVIEW" }) }}
                             </a>
                         {% endif %}
@@ -162,7 +162,7 @@
                             </a>
                         {% else %}
                             <a class="btn btn-light" rel="nofollow"
-                               href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=details" ~ oViewConf.getNavUrlParams() }) }}">
+                               href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=details" ~ oViewConf.getNavUrlParams() }) }}">
                                 {{ translate({ ident: "WRITE_REVIEW" }) }}
                             </a>
                         {% endif %}

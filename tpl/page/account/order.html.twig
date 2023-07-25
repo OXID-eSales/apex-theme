@@ -88,7 +88,7 @@
                                             {% hasrights { ident: "TOBASKET" } %}
                                             {% if oArticle.isBuyable() %}
                                               {% if oArticle.oxarticles__oxid.value %}
-                                                <a id="accOrderToBasket_{{ order.oxorder__oxordernr.value }}_{{ loop.index }}" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_order"), params: "fnc=tobasket&amp;aid=`$oArticle->oxarticles__oxid->value`&amp;am=1" }) }}">{{ translate({ ident: "TO_CART" }) }}</a>
+                                                <a id="accOrderToBasket_{{ order.oxorder__oxordernr.value }}_{{ loop.index }}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_order", params: "fnc=tobasket&amp;aid=`$oArticle->oxarticles__oxid->value`&amp;am=1" }) }}">{{ translate({ ident: "TO_CART" }) }}</a>
                                               {% endif %}
                                             {% endif %}
                                             {% endhasrights %}
