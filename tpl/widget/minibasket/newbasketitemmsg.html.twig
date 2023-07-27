@@ -3,7 +3,7 @@
         <div class="alert alert-success" id="newItemMsg">
             {% block dd_widget_minibasket_new_item_msg %}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true"></button>
-                <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=basket") }) }}" class="btn btn-outline-primary btn-sm" style="margin-right:15px;">
+                <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=basket" }) }}" class="btn btn-outline-primary btn-sm" style="margin-right:15px;">
                     <svg>
                         <use xlink:href="#bag"></use>
                     </svg>

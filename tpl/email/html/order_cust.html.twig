@@ -482,7 +482,7 @@
         {% for oOrderFile in oOrderFileList %}
             <p>
                 {% if order.oxorder__oxpaid.value or not oOrderFile.oxorderfiles__oxpurchasedonly.value %}
-                    <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=download"), params: "sorderfileid="|cat(oOrderFile.getId()) }) }}">{{ oOrderFile.oxorderfiles__oxfilename.value }}</a> {{ oOrderFile.getFileSize()|file_size }}
+                    <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=download", params: "sorderfileid=" ~ oOrderFile.getId() }) }}">{{ oOrderFile.oxorderfiles__oxfilename.value }}</a> {{ oOrderFile.getFileSize()|file_size }}
                 {% else %}
                     <span>{{ oOrderFile.oxorderfiles__oxfilename.value }}</span>
                     <strong>{{ translate({ ident: "DOWNLOADS_PAYMENT_PENDING" }) }}</strong>

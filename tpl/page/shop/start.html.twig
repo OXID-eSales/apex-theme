@@ -14,7 +14,7 @@
             {% set oNewestArticles = oView.getNewestArticles() %}
             {% set newestWidth = oViewConf.getViewThemeParam('sNewestWidth') %}
             <div class="article-slider row-spacer">
-                {% if oNewestArticles and oNewestArticles.count() %}
+                {% if oNewestArticles and oNewestArticles|length > 0 %}
                     {% include "widget/product/list-slider.html.twig" with {head: "START_NEWEST_HEADER"|translate, subhead: "START_NEWEST_SUBHEADER"|translate, listId: "newItems", products: oNewestArticles, showMainLink: true, iProductsPerLine: 4} %}
                 {% endif %}
             </div>
@@ -27,8 +27,8 @@
             {% set topWidth = oViewConf.getViewThemeParam('sTopWidth') %}
             {% set oTopArticles = oView.getTop5ArticleList() %}
             <div class="article-slider row-spacer">
-                {% if oTopArticles and oTopArticles.count() %}
-                    {% include "widget/product/list-slider.html.twig" with {head: "START_TOP_PRODUCTS_HEADER"|translate, subhead: "START_TOP_PRODUCTS_SUBHEADER"|translate(oTopArticles.count()), listId: "topBox", products: oTopArticles, showMainLink: true, iProductsPerLine: 2} %}
+                {% if oTopArticles and oTopArticles|length > 0 %}
+                    {% include "widget/product/list-slider.html.twig" with {head: "START_TOP_PRODUCTS_HEADER"|translate, subhead: "START_TOP_PRODUCTS_SUBHEADER"|translate(oTopArticles|length), listId: "topBox", products: oTopArticles, showMainLink: true, iProductsPerLine: 2} %}
                 {% endif %}
             </div>
         {% endif %}
@@ -40,7 +40,7 @@
             {% set oBargainArticles = oView.getBargainArticleList() %}
             {% set bargainWidth = oViewConf.getViewThemeParam('sBargainWidth') %}
             <div class="article-slider row-spacer">
-                {% if oBargainArticles and oBargainArticles.count() %}
+                {% if oBargainArticles and oBargainArticles|length > 0 %}
                     {% include "widget/product/list-slider.html.twig" with {head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, showMainLink: true, iProductsPerLine: 4} %}
                 {% endif %}
             </div>

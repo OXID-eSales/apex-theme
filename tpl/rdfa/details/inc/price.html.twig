@@ -17,7 +17,7 @@
         {% if loop.first %}
             {% set iRDFaMinAmount = priceItem.oxprice2article__oxamount.value %}
         {% endif %}
-{{ smarty.capture.sRDFaPriceStart }}
+{{ twig.capture.sRDFaPriceStart }}
             <div property="gr:hasCurrencyValue" content="{{ priceItem.oxpricealarm__oxprice.value }}" datatype="xsd:float"></div>
             <div rel="gr:hasEligibleQuantity">
                 <div typeof="gr:QuantitativeValue">
@@ -31,10 +31,10 @@
     {% endfor %}
 {% endif %}
 {% if oProduct.getFPrice() %}
-{{ smarty.capture.sRDFaPriceStart }}
+{{ twig.capture.sRDFaPriceStart }}
             {% set price = oDetailsProduct.getPrice() %}
             <div property="gr:hasCurrencyValue" content="{{ price.getBruttoPrice() }}" datatype="xsd:float"></div>
-            {% if isset(iRDFaMinAmount) %}
+            {% if iRDFaMinAmount is defined %}
                 <div rel="gr:hasEligibleQuantity">
                     <div typeof="gr:QuantitativeValue">
                         <div property="gr:hasMinValue" content="1" datatype="xsd:float"></div>

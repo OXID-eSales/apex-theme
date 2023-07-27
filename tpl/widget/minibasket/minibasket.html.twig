@@ -36,9 +36,9 @@
 
                                         {% block minibasket_top_functions %}
                                         {% if oxcmp_user %}
-                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=payment") }) }}" class="btn btn-highlight btn-lg w-100 mb-2">{{ translate({ ident: "CHECKOUT" }) }}</a>
+                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=payment" }) }}" class="btn btn-highlight btn-lg w-100 mb-2">{{ translate({ ident: "CHECKOUT" }) }}</a>
                                         {% else %}
-                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=user") }) }}" class="btn btn-highlight btn-lg w-100 mb-2">{{ translate({ ident: "CHECKOUT" }) }}</a>
+                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=user" }) }}" class="btn btn-highlight btn-lg w-100 mb-2">{{ translate({ ident: "CHECKOUT" }) }}</a>
                                         {% endif %}
                                         {% endblock %}
 
@@ -82,7 +82,7 @@
                                         {% include "widget/minibasket/countdown.html.twig" %}
 
                                         {% block dd_layout_page_header_icon_menu_minibasket_functions %}
-                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=basket") }) }}" class="btn btn-outline-primary w-100">{{ translate({ ident: "DISPLAY_BASKET" }) }}</a>
+                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=basket" }) }}" class="btn btn-outline-primary w-100">{{ translate({ ident: "DISPLAY_BASKET" }) }}</a>
                                         {% endblock %}
 
                                         {% endhasrights %}

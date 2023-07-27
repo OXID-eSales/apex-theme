@@ -2,18 +2,18 @@
     {% block widget_header_servicebox_items %}
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <li>
-                <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSslSelfLink()|cat("cl=account") }) }}">{{ translate({ ident: "MY_ACCOUNT" }) }}</a>
+                <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSslSelfLink() ~ "cl=account" }) }}">{{ translate({ ident: "MY_ACCOUNT" }) }}</a>
             </li>
             {% if oViewConf.getShowCompareList() %}
                 <li>
-                    <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=compare") }) }}">
+                    <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=compare" }) }}">
                         {{ translate({ ident: "MY_PRODUCT_COMPARISON" }) }}
                     </a>
                 </li>
             {% endif %}
             {% if oViewConf.getShowWishlist() %}
                 <li>
-                    <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_wishlist") }) }}">
+                    <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_wishlist" }) }}">
                         {{ translate({ ident: "MY_GIFT_REGISTRY" }) }}
                     </a>
                 </li>
@@ -21,7 +21,7 @@
 
             {% if oViewConf.isFunctionalityEnabled( "blEnableDownloads" ) %}
                 <li>
-                    <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_downloads") }) }}">
+                    <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_downloads" }) }}">
                         {{ translate({ ident: "MY_DOWNLOADS" }) }}
                     </a>
                 </li>

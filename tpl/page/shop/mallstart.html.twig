@@ -17,7 +17,7 @@
                 {% if shoplinks[shopid] %}
                     <a href="{{ shoplinks[shopid]|raw }}">{{ mallshop.oxshops__oxname.value }}</a><br>
                 {% else %}
-                    <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=mallstart"), params: "fnc=chshp&amp;shp=" ~ mallshop.oxshops__oxid.value ~ "&amp;lang=" ~ shoplangs[shopid] }) }}" >{{ mallshop.oxshops__oxname.value }}</a><br>
+                    <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=mallstart", params: "fnc=chshp&amp;shp=" ~ mallshop.oxshops__oxid.value ~ "&amp;lang=" ~ shoplangs[shopid] }) }}" >{{ mallshop.oxshops__oxname.value }}</a><br>
                 {% endif %}
             {% endfor %}
          </div>

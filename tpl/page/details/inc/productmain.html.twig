@@ -9,10 +9,10 @@
     {% for iKey, oSelectionList in aVariantSelections.rawselections %}
         {% set _sSelectionHash = "" %}
         {% for iPos, oListItem in oSelectionList %}
-            {% set _sSelectionHash = _sSelectionHash|cat(iPos)|cat(":")|cat(oListItem.hash)|cat("|") %}
+            {% set _sSelectionHash = _sSelectionHash ~ iPos ~ ":" ~ oListItem.hash ~ "|" %}
         {% endfor %}
         {% if _sSelectionHash %}
-            {% if _sSelectionHashCollection %}{% set _sSelectionHashCollection = _sSelectionHashCollection|cat(",") %}{% endif %}
+            {% if _sSelectionHashCollection %}{% set _sSelectionHashCollection = _sSelectionHashCollection ~ "," %}{% endif %}
             {% set _sSelectionHashCollection = _sSelectionHashCollection ~ "'" ~ _sSelectionHash ~ "'" %}
         {% endif %}
     {% endfor %}
@@ -323,9 +323,9 @@
                             {% if oViewConf.getShowListmania() %}
                                 <div class="col-6">
                                     {% if oxcmp_user %}
-                                        <a class="btn btn-sm btn-light w-100" id="recommList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=recommadd"), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat(oViewConf.getNavUrlParams())|cat("&amp;stoken=")|cat(oViewConf.getSessionChallengeToken()) }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="recommList" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=recommadd", params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
                                     {% else %}
-                                        <a class="btn btn-sm btn-light w-100" id="loginToRecommlist" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value|cat("&amp;sourcecl=")|cat(oViewConf.getTopActiveClassName())|cat(oViewConf.getNavUrlParams()) }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="loginToRecommlist" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
                                     {% endif %}
                                 </div>
                             {% endif %}
@@ -333,9 +333,9 @@
                             <div class="col-6">
                                 {% block details_productmain_addtowishlist %}
                                     {% if oxcmp_user %}
-                                        <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getTopActiveClassName(), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
                                     {% else %}
-                                        <a class="btn btn-sm btn-light w-100" id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
                                     {% endif %}
                                 {% endblock %}
                             </div>
@@ -343,9 +343,9 @@
                             {% if oViewConf.getShowWishlist() %}
                                 <div class="col-6">
                                     {% if oxcmp_user %}
-                                        <a class="btn btn-sm btn-light w-100" id="linkToWishList" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=")|cat(oViewConf.getTopActiveClassName()), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=towishlist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="linkToWishList" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getTopActiveClassName(), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=towishlist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                     {% else %}
-                                        <a class="btn btn-sm btn-light w-100" id="loginToWish" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account"), params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="loginToWish" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                     {% endif %}
                                 </div>
                             {% endif %}

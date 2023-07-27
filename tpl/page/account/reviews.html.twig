@@ -30,10 +30,10 @@
                                         </div>
                                         <div class="col-md-3 rating text-end">
                                             {% if review.getRating() %}
-                                                {% for starRatings in 0..5 %}
-                                                    {% if review.getRating() >= smarty.section.starRatings.iteration %}
-                                                        <svg>
-                                                            <use xlink:href="#star"></use>
+                                                {% for starRatings in 1..5 %}
+                                                    {% if review.getRating() >= loop.index %}
+                                                        <svg aria-hidden="true" class="star-fill">
+                                                            <use xlink:href="#star-fill"></use>
                                                         </svg>
                                                     {% else %}
                                                         <svg>

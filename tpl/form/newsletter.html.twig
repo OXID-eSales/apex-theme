@@ -2,7 +2,7 @@
 {{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) #}
 {% set blEmailInvalid = false %}
 
-{% if Errors|is_array and Errors.default|is_array and not empty(Errors.default) %}
+{% if Errors|is_array and Errors.default|is_array and Errors.default|length > 0 %}
     {% for key, oEr in Errors.default %}
         {% if oEr.getOxMessage() == translate({ ident: "MESSAGE_INVALID_EMAIL" }) %}
             {% set blEmailInvalid = true %}

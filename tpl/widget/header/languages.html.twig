@@ -17,7 +17,7 @@
             <div class="dropdown-menu dropdown-menu-md-end">
                 {% block dd_layout_page_header_icon_menu_languages_list %}
                     {% for _lng in oxcmp_lang %}
-                        {% set sLangImg = "lang/"|cat(_lng.abbr)|cat(".png") %}
+                        {% set sLangImg = "lang/" ~ _lng.abbr ~ ".png" %}
                         {% if _lng.selected %}
                             {% capture name = "languageSelected" %}
                                 <a class="dropdown-item {{ _lng.abbr }}" title="{{ _lng.name }}" href="{{ _lng.link|add_url_parameters(oView.getDynUrlParams()) }}" hreflang="{{ _lng.abbr }}">

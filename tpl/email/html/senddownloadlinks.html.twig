@@ -21,7 +21,7 @@
             <ul>
                 <li>
                     {% if order.oxorder__oxpaid.value != "0000-00 - 00 00:00:00" or not oOrderFile.oxorderfiles__oxpurchasedonly.value %}
-                        <a href="{{ seo_url({ ident: oViewConf.getBaseDir()|cat("index.php?cl=download"), params: "sorderfileid="|cat(oOrderFile.getId()) }) }}">{{ oOrderFile.oxorderfiles__oxfilename.value }}</a> {{ oOrderFile.getFileSize()|file_size }}
+                        <a href="{{ seo_url({ ident: oViewConf.getBaseDir() ~ "index.php?cl=download", params: "sorderfileid=" ~ oOrderFile.getId() }) }}">{{ oOrderFile.oxorderfiles__oxfilename.value }}</a> {{ oOrderFile.getFileSize()|file_size }}
                     {% else %}
                         <span>{{ oOrderFile.oxorderfiles__oxfilename.value }}</span>
                         <strong>{{ translate({ ident: "DOWNLOADS_PAYMENT_PENDING" }) }}</strong>
