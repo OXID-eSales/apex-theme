@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [v1.0.1] - Unreleased
 
 ### Change
-- Deprecated `count`, `empty`, `isset` and `cat` functions
+- Deprecated `count`, `empty`, `isset`, `implode` and `cat` functions
 
 ### Fixed
 - Cookie Note close button
