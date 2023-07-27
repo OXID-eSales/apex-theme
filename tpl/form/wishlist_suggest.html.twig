@@ -1,6 +1,6 @@
 <div class="wishlistSuggest">
     {% if oView.getWishList() and oView.showSuggest() %}
-        {% if Errors.account_whishlist|is_array and not empty(Errors.account_whishlist) %}
+        {% if Errors.account_whishlist|is_array and Errors.account_whishlist|length > 0 %}
             {% for key, oEr in Errors.account_whishlist %}
                 <p class="alert alert-danger">{{ oEr.getOxMessage() }}</p>
             {% endfor %}

@@ -6,6 +6,6 @@
             <div>{{ translate({ ident: "MESSAGE_PLEASE_DELETE_FOLLOWING_DIRECTORY", suffix: "COLON" }) }} {{ oViewConf.getBaseDir() }}/setup!</div>
         </div>
     {% endcapture %}
-    {% include "message/error.html.twig" with {statusMessage: ""|implode(_error_content)} %}
+    {% include "message/error.html.twig" with {statusMessage: _error_content|join('""')} %}
 {% endcapture %}
 {% include "layout/base.html.twig" %}

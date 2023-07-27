@@ -19,7 +19,7 @@
             <input type="password" id="lgn_pwd" name="lgn_pwd" autocomplete="current-password" class="form-control textbox stepsPasswordbox" placeholder="{{ translate({ ident: "PASSWORD" }) }}" required>
             <label for="lgn_pwd">{{ translate({ ident: "PASSWORD" }) }}</label>
         </div>
-        <a class="btn btn-sm btn-link px-0 mb-3 forgotPasswordOpener" id="step2PswdOpener" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=forgotpwd") }) }}" title="{{ translate({ ident: "FORGOT_PASSWORD" }) }}">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
+        <a class="btn btn-sm btn-link px-0 mb-3 forgotPasswordOpener" id="step2PswdOpener" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=forgotpwd" }) }}" title="{{ translate({ ident: "FORGOT_PASSWORD" }) }}">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
     {% endblock %}
 
     <button type="submit" class="btn btn-highlight btn-lg w-100">{{ translate({ ident: "LOGIN" }) }}</button>

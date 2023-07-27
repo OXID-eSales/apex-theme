@@ -36,7 +36,7 @@
                     <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
                         <input id="loginPwd" class="form-control" type="password" name="lgn_pwd" role="loginPwd" required placeholder=" ">
                         <label class="req">{{ translate({ ident: "PASSWORD" }) }}</label>
-                        <a id="forgotPasswordLink" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=forgotpwd") }) }}" class="btn btn-link px-0">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
+                        <a id="forgotPasswordLink" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=forgotpwd" }) }}" class="btn btn-link px-0">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
                     </div>
                 {% endblock %}
 
@@ -61,7 +61,7 @@
         <h4 class="card-header card-title">{{ translate({ ident: "OPEN_ACCOUNT" }) }}</h4>
         <div class="card-body">
             <p>{{ translate({ ident: "DD_LOGIN_ACCOUNT_PANEL_CREATE_BODY" }) }}</p>
-            <a id="openAccountLink" href="{{ seo_url({ ident: oViewConf.getSslSelfLink()|cat("cl=register") }) }}" class="btn btn-primary" >{{ translate({ ident: "OPEN_ACCOUNT" }) }}</a><br>
+            <a id="openAccountLink" href="{{ seo_url({ ident: oViewConf.getSslSelfLink() ~ "cl=register" }) }}" class="btn btn-primary" >{{ translate({ ident: "OPEN_ACCOUNT" }) }}</a><br>
         </div>
     </div>
 </div>

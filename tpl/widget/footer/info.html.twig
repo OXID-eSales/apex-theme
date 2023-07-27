@@ -19,7 +19,7 @@
             <a class="nav-link" href="{{ oCont.getLink()|raw }}">{{ oCont.oxcontents__oxtitle.value }}</a>
         {% endifcontent %}
         {% if oViewConf.getViewThemeParam('blFooterShowNewsletter') %}
-            <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=newsletter") }) }}">{{ translate({ ident: "NEWSLETTER" }) }}</a>
+            <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=newsletter" }) }}">{{ translate({ ident: "NEWSLETTER" }) }}</a>
         {% endif %}
     </nav>
 {% endblock %}

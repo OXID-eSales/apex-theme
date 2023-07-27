@@ -20,7 +20,7 @@
     <ul class="wishlistResults">
         {% for wishres in oView.getWishListUsers() %}
             <li>
-                <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=wishlist"), params: "wishid=" ~ wishres.oxuser__oxid.value }) }}">
+                <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=wishlist", params: "wishid=" ~ wishres.oxuser__oxid.value }) }}">
                     {{ translate({ ident: "GIFT_REGISTRY_OF" }) }} {{ wishres.oxuser__oxfname.value }}&nbsp;{{ wishres.oxuser__oxlname.value }}
                 </a>
             </li>

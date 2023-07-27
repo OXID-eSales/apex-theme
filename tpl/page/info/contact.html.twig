@@ -1,8 +1,8 @@
 {% capture append = "oxidBlock_content" %}
     {% if oView.getContactSendStatus() %}
-        {% set _statusMessage = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate|cat(" ")|cat(oxcmp_shop.oxshops__oxname.value) %}
+        {% set _statusMessage = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate ~ " " ~ oxcmp_shop.oxshops__oxname.value %}
         {% set _statusMessageSuffix = "PAGE_DETAILS_THANKYOUMESSAGE2"|translate %}
-        {% include "message/notice.html.twig" with {statusMessage: _statusMessage|cat(_statusMessageSuffix)} %}
+        {% include "message/notice.html.twig" with {statusMessage: _statusMessage ~ _statusMessageSuffix} %}
     {% endif %}
 
     {% set sGoogleMapsAddr = oViewConf.getViewThemeParam('sGoogleMapsAddr') %}

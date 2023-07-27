@@ -31,7 +31,7 @@
                         <input type="hidden" name="fnc" value="changewrapping">
                         <div class="list-group list-group-flush">
                             {% set oWrapList = oView.getWrappingList() %}
-                            {% if oWrapList.count() %}
+                            {% if oWrapList|length > 0 %}
                                 {# basket items #}
                                 {% set icounter = "0" %}
                                 {% set basketitemlist = oView.getBasketArticles() %}
@@ -78,7 +78,7 @@
                             {% endif %}
                         </div>
                         {% set oCardList = oView.getCardList() %}
-                        {% if oCardList.count() %}
+                        {% if oCardList|length > 0 %}
                             {% block checkout_wrapping_cards %}
                                 <h5 class="px-3">{{ translate({ ident: "GREETING_CARD" }) }}</h5>
                                 <div class="list-group list-group-flush wrappingCard" id="wrappCard">

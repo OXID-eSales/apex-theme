@@ -5,7 +5,7 @@
                 <span aria-hidden="true"></span><span class="visually-hidden-focusable">{{ translate({ ident: 'CLOSE' }) }}</span>
             </button>
             {{ translate({ ident: 'COOKIE_NOTE' }) }}
-            <span class="cancelCookie"><a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=clearcookies") }) }}" title="{{ translate({ ident: 'COOKIE_NOTE_DISAGREE' }) }}">{{ translate({ ident: 'COOKIE_NOTE_DISAGREE' }) }}</a></span>
+            <span class="cancelCookie"><a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=clearcookies" }) }}" title="{{ translate({ ident: 'COOKIE_NOTE_DISAGREE' }) }}">{{ translate({ ident: 'COOKIE_NOTE_DISAGREE' }) }}</a></span>
         </div>
     </div>
 {% endif %}

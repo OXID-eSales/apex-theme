@@ -10,14 +10,14 @@
     {% set oDetailsProduct = oView.getProduct() %}
     {% set oPictureProduct = oView.getPicturesProduct() %}
     {% set currency = oView.getActCurrency() %}
-    {% set sPageHeadTitle = oDetailsProduct.oxarticles__oxtitle.value|cat(' ')|cat(oDetailsProduct.oxarticles__oxvarselect.value) %}
+    {% set sPageHeadTitle = oDetailsProduct.oxarticles__oxtitle.value ~ ' ' ~ oDetailsProduct.oxarticles__oxvarselect.value %}
     {% set headerImageWidth = oViewConf.getViewThemeParam('sHeaderImageWidth') %}
     {% set productListNavigation = oViewConf.getViewThemeParam('sProductListNavigation') %}
 
     {% if oView.getPriceAlarmStatus() == 1 %}
-        {% set _statusMessage1 = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate|cat(" ")|cat(oxcmp_shop.oxshops__oxname.value) %}
-        {% set _statusMessage2 = "PAGE_DETAILS_THANKYOUMESSAGE2"|translate|cat(" ") %}
-        {% set _statusMessage3 = "PAGE_DETAILS_THANKYOUMESSAGE3"|translate|cat(" ")|cat(oView.getBidPrice())|cat(" ")|cat(currency.sign)|cat(" ") %}
+        {% set _statusMessage1 = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate ~ " " ~ oxcmp_shop.oxshops__oxname.value %}
+        {% set _statusMessage2 = "PAGE_DETAILS_THANKYOUMESSAGE2"|translate ~ " " %}
+        {% set _statusMessage3 = "PAGE_DETAILS_THANKYOUMESSAGE3"|translate ~ " " ~ oView.getBidPrice() ~ " " ~ currency.sign ~ " " %}
         {% set _statusMessage4 = "PAGE_DETAILS_THANKYOUMESSAGE4"|translate %}
         {% include "message/success.html.twig" with { statusMessage: _statusMessage1 ~ _statusMessage2 ~ _statusMessage3 ~ _statusMessage4 } %}
     {% elseif oView.getPriceAlarmStatus() == 2 %}

@@ -11,7 +11,7 @@
             {% set unit = oDetailsProduct.oxarticles__oxdeltimeunit.value %}
             {% set ident = unit %}
             {% if oDetailsProduct.oxarticles__oxmaxdeltime.value > 1 %}
-                {% set ident = ident|cat("S") %}
+                {% set ident = ident ~ "S" %}
             {% endif %}
             {{ oDetailsProduct.oxarticles__oxmaxdeltime.value }} {{ translate({ ident: ident }) }}
         {% endif %}

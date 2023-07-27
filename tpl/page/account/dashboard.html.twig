@@ -28,7 +28,7 @@
                     <div class="card-text mb-3">
                         {{ translate({ ident: "ORDERS" }) }} {{ oView.getOrderCnt() }}
                     </div>
-                    <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_order") }) }}">
+                    <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_order" }) }}">
                         {{ translate({ ident: "MORE" }) }}
                     </a>
                 </div>
@@ -45,7 +45,7 @@
                         <div class="card-text mb-3">
                             {{ translate({ ident: "MY_DOWNLOADS_DESC" }) }}
                         </div>
-                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_downloads") }) }}">
+                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_downloads" }) }}">
                             {{ translate({ ident: "MORE" }) }}
                         </a>
                     </div>
@@ -62,7 +62,7 @@
                     <div class="card-text mb-3">
                         {{ translate({ ident: "PRODUCT" }) }} {% if oxcmp_user %}{{ oxcmp_user.getNoticeListArtCnt() }}{% else %}0{% endif %}
                     </div>
-                    <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_noticelist") }) }}">
+                    <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_noticelist" }) }}">
                         {{ translate({ ident: "MORE" }) }}
                     </a>
                 </div>
@@ -78,7 +78,7 @@
                         <div class="card-text mb-3">
                             {{ translate({ ident: "PRODUCT" }) }} {% if oxcmp_user %}{{ oxcmp_user.getWishListArtCnt() }}{% else %}0{% endif %}
                         </div>
-                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_wishlist") }) }}">
+                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_wishlist" }) }}">
                             {{ translate({ ident: "MORE" }) }}
                         </a>
                     </div>
@@ -95,7 +95,7 @@
                         <div class="card-text mb-3">
                             {{ translate({ ident: "PRODUCT" }) }} {% if oView.getCompareItemsCnt() %}{{ oView.getCompareItemsCnt() }}{% else %}0{% endif %}
                         </div>
-                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=compare") }) }}">
+                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=compare" }) }}">
                             {{ translate({ ident: "MORE" }) }}
                         </a>
                     </div>
@@ -113,7 +113,7 @@
                         <div class="card-text mb-3">
                             {{ translate({ ident: "MY_REVIEWS" }) }} {% if oView.getReviewAndRatingItemsCount() %}{{ oView.getReviewAndRatingItemsCount() }}{% else %}0{% endif %}
                         </div>
-                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_reviewlist") }) }}">
+                        <a class="btn btn-outline-primary stretched-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_reviewlist" }) }}">
                             {{ translate({ ident: "MORE" }) }}
                         </a>
                     </div>

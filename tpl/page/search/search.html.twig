@@ -4,7 +4,7 @@
     {% set searchparamforhtml = oView.getSearchParamForHtml() %}
     {% set template_title = search_title ~ "-" ~ searchparamforhtml %}
     {% set search_head = "HITS_FOR"|translate %}
-    {% set search_head = oView.getArticleCount()|cat(" ")|cat(search_head)|cat(' "')|cat(oView.getSearchParamForHtml())|cat('"') %}
+    {% set search_head = oView.getArticleCount() ~ " " ~ search_head ~ ' "' ~ oView.getSearchParamForHtml() ~ '"' %}
     {% set showPopBreadcrump = oViewConf.getViewThemeParam('sShowPopBreadcrump') %}
 
     {% block search_header %}

@@ -15,7 +15,7 @@
             </div>
             <div class="mb-3 publish-list">
                 <button class="btn btn-primary" type="submit">{{ translate({ ident: "SAVE" }) }}</button>
-                <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=account_wishlist"), params: "blshowsuggest=1" }) }}" class="btn btn-outline-primary">
+                <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_wishlist", params: "blshowsuggest=1" }) }}" class="btn btn-outline-primary">
                     {{ translate({ ident: "MESSAGE_SEND_GIFT_REGISTRY" }) }}
                 </a>
             </div>

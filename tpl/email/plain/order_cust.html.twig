@@ -193,7 +193,7 @@
     {{ translate({ ident: "MY_DOWNLOADS_DESC" }) }}
     {% for oOrderFile in oOrderFileList %}
       {% if order.oxorder__oxpaid.value or not oOrderFile.oxorderfiles__oxpurchasedonly.value %}
-        {{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=download"), params: "sorderfileid="|cat(oOrderFile.getId()) }) }}
+        {{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=download", params: "sorderfileid=" ~ oOrderFile.getId() }) }}
       {% else %}
         {{ oOrderFile.oxorderfiles__oxfilename.value }} {{ translate({ ident: "DOWNLOADS_PAYMENT_PENDING" }) }}
       {% endif %}
