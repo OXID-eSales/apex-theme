@@ -23,7 +23,7 @@
                     <ul class="dropdown-menu" aria-labelledby="sort" role="menu">
                         {% for sColumnName in oView.getSortColumns() %}
                             <li>
-                                <a class="dropdown-item{% if oView.getListOrderDirection() == 'desc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ "_artPerPage&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=desc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}">
+                                <a class="dropdown-item{% if oView.getListOrderDirection() == 'desc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ _artPerPage ~ "&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=desc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}">
                                     {{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}
                                 </a>
                             </li>
@@ -37,7 +37,7 @@
             {% else %}
                 <nav class="nav">
                     {% for sColumnName in oView.getSortColumns() %}
-                        <a class="nav-link{% if oView.getListOrderDirection() == 'desc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ "_artPerPage&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=desc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}">
+                        <a class="nav-link{% if oView.getListOrderDirection() == 'desc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ _artPerPage ~ "&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=desc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}">
                             {{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_DESC" }) }}
                         </a>
                         <a class="nav-link{% if oView.getListOrderDirection() == 'asc' and sColumnName == oView.getListOrderBy() %} active{% endif %}" href="{{ oView.getLink()|add_url_parameters("ldtype=" ~ _listType ~ "&amp;_artperpage=" ~ _artPerPage ~ "&amp;" ~ _sortColumnVarName ~ "=" ~ sColumnName ~ "&amp;" ~ _sortDirectionVarName ~ "=asc&amp;pgNr=0&amp;" ~ _additionalParams) }}" title="{{ translate({ ident: sColumnName|upper }) }} {{ translate({ ident: "DD_SORT_ASC" }) }}">
