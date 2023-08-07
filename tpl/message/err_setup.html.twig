@@ -1,7 +1,7 @@
 {% capture append = "oxidBlock_pageBody" %}
     <h1>{{ translate({ ident: "ERROR_MESSAGE_OXID_SHOP_ERROR" }) }}</h1>
     {% capture append = "_error_content" %}
-            {{ translate({ ident: "MESSAGE_PLEASE_DELETE_FOLLOWING_DIRECTORY", suffix: "COLON" }) }} {{ oViewConf.getBaseDir() }}/setup!
+            {{ translate({ ident: "MESSAGE_PLEASE_DELETE_FOLLOWING_DIRECTORY", suffix: "COLON" }) }} Setup!
     {% endcapture %}
     {% include "message/error.html.twig" with {statusMessage: _error_content|join('""')} %}
 {% endcapture %}
