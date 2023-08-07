@@ -2,6 +2,10 @@
 
 ## v1.0.1 - Unreleased
 
+
+### Fixed
+- Modified the broken error message when shop mode is turned to production with Setup directory still present. 
+
 ### Change
 - Deprecated `count`, `empty`, `isset`, `implode` and `cat` functions
 
