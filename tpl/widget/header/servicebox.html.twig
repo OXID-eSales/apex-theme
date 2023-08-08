@@ -1,6 +1,6 @@
 {% block widget_header_servicebox_flyoutbox %}
-    {% block widget_header_servicebox_items %}
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        {% block widget_header_servicebox_items %}
             <li>
                 <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSslSelfLink() ~ "cl=account" }) }}">{{ translate({ ident: "MY_ACCOUNT" }) }}</a>
             </li>
@@ -26,12 +26,12 @@
                     </a>
                 </li>
             {% endif %}
-            <li><hr class="dropdown-divider"></li>
-            <li>
-                <a class="dropdown-item" href="{{ oViewConf.getLogoutLink()|raw }}" title="{{ translate({ ident: "LOGOUT" }) }}">
-                    {{ translate({ ident: "LOGOUT" }) }}
-                </a>
-            </li>
-        </ul>
-    {% endblock %}
+        {% endblock %}
+        <li><hr class="dropdown-divider"></li>
+        <li>
+            <a class="dropdown-item" href="{{ oViewConf.getLogoutLink()|raw }}" title="{{ translate({ ident: "LOGOUT" }) }}">
+                {{ translate({ ident: "LOGOUT" }) }}
+            </a>
+        </li>
+    </ul>
 {% endblock %}
