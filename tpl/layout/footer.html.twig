@@ -153,29 +153,30 @@
             {% endblock %}
         </div>
 
-        {# % if oView.isPriceCalculated() %}
-                    {% block layout_page_vatinclude %}
-                        {% block footer_deliveryinfo %}
-                            {% ifcontent ident "oxdeliveryinfo" set oCont %}
-                                <div class="container{% if footerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
-                                    <div class="text-end">
-                                        {% if oView.isVatIncluded() %}
-                                            <span class="vat-info-text">
-                                                * {{ translate({ ident: "PLUS_SHIPPING" }) }}
-                                                <a href="{{ oCont.getLink()|raw }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a>
-                                            </span>
-                                        {% else %}
-                                            <span class="vat-info-text">
-                                                * {{ translate({ ident: "PLUS" }) }}
-                                                <a href="{{ oCont.getLink()|raw }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a>
-                                            </span>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            {% endifcontent %}
-                        {% endblock %}
-                    {% endblock %}
-                {% endif % #}
+        {% if oView.isPriceCalculated() %}
+            {% block layout_page_vatinclude %}
+                {% block footer_deliveryinfo %}
+                    {% ifcontent ident "oxdeliveryinfo" set oCont %}
+                        <div class="container{% if footerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
+                            <div class="text-end">
+                                {% if oView.isVatIncluded() %}
+                                    <span class="vat-info-text">
+                                        * {{ translate({ ident: "PLUS_SHIPPING" }) }}
+                                        <a href="{{ oCont.getLink()|raw }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a>
+                                    </span>
+                                {% else %}
+                                    <span class="vat-info-text">
+                                        * {{ translate({ ident: "PLUS" }) }}
+                                        <a href="{{ oCont.getLink()|raw }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a>
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endifcontent %}
+                {% endblock %}
+            {% endblock %}
+        {% endif %}
+
         {% block dd_footer_copyright %}
             {% ifcontent ident "oxstdfooter" set oCont %}
             <div class="legal pt-4">
