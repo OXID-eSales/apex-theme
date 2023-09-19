@@ -5,9 +5,11 @@
 
     <!-- CMS -->
 
-    {% if oView.isReviewActive() %}
-        {% include "widget/reviews/reviews.html.twig" %}
-    {% endif %}
+    {% block details_productmain_reviews %}
+        {% if oView.isReviewActive() %}
+            {% include "widget/reviews/reviews.html.twig" %}
+        {% endif %}
+    {% endblock %}
 
     {% include_content 'oxstartslot4' ignore missing %}
 </div>
