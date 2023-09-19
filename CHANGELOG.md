@@ -8,6 +8,7 @@
 ### Fixed
 - Modified the broken error message when shop mode is turned to production with Setup directory still present. 
 - Add same padding for "..." placeholder in paging [PR-41](https://github.com/OXID-eSales/apex-theme/pull/41)
+- Improve contact form message field handling [PR-42](https://github.com/OXID-eSales/apex-theme/pull/42)
 
 ### Change
 - Deprecated `count`, `empty`, `isset`, `implode` and `cat` functions
