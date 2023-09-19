@@ -1,7 +1,9 @@
 # Change Log for OXID APEX Theme
 
-## v1.0.1 - Unreleased
+## v1.1.0 - Unreleased
 
+### Added
+- New block `details_productmain_reviews` in `fullproductinfo.html.twig` [PR-37](https://github.com/OXID-eSales/apex-theme/pull/37)
 
 ### Fixed
 - Modified the broken error message when shop mode is turned to production with Setup directory still present. 
