@@ -68,7 +68,7 @@
                 id="c_message"
                 class="form-control"
                 {% if contactFormFields.message.isRequired %} required{% endif %}
-            >{{~ oView.getContactMessage() ~}}</textarea>
+            >{{~ oView.getContactMessage()|raw ~}}</textarea>
             <label class="{% if contactFormFields.message.isRequired %}req {% endif %}" for="c_message">
                 {{ translate({ ident: "MESSAGE" }) }}
             </label>
