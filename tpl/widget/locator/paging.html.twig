@@ -21,7 +21,7 @@
                     {% set i = i+1 %}
                 {% elseif iPage > i %}
                     <li class="page-item disabled">
-                        <span>...</span>
+                        <span class="page-link">...</span>
                     </li>
                     <li class="page-item {% if iPage == pages.actPage %} active{% endif %}">
                         <a href="{{ page.url|raw }}" class="page-link">{{ iPage }}</a>
@@ -32,7 +32,7 @@
                         <a href="{{ page.url|raw }}" class="page-link">{{ iPage }}</a>
                     </li>
                     <li class="page-item disabled">
-                        <span>...</span>
+                        <span class="page-link">...</span>
                     </li>
                     {% set i = iPage+1 %}
                 {% endif %}
