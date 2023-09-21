@@ -7,6 +7,7 @@
         {# basket items #}
         {% set basketitemlist = oView.getBasketArticles() %}
         {% for basketindex, basketitem in oxcmp_basket.getContents() %}
+            {% block checkout_basketcontents_basketitem_main %}
             <div class="list-group-item basketitemrow">
                 {% block checkout_basketcontents_basketitem %}
                     {% set basketproduct = basketitemlist[basketindex] %}
@@ -362,6 +363,7 @@
                 {% endblock %}
                 {# basket items end #}
             </div>
+            {% endblock %}
         {% endfor %}
 
         {% block checkout_basketcontents_giftwrapping %}

@@ -3,7 +3,11 @@
 ## v1.1.0 - Unreleased
 
 ### Added
-- New block `details_productmain_reviews` in `fullproductinfo.html.twig` [PR-37](https://github.com/OXID-eSales/apex-theme/pull/37)
+- New blocks:
+    - `details_productmain_reviews` in `fullproductinfo.html.twig` [PR-37](https://github.com/OXID-eSales/apex-theme/pull/37)
+    - `checkout_basketcontents_basketitem_main` in `basketcontents_list.html.twig`
+    - `checkout_payment` in `payment.html.twig`
+    - `checkout_user` in `user.html.twig`
 
 ### Change
 - Deprecated `count`, `empty`, `isset`, `implode` and `cat` functions
