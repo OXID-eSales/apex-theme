@@ -1,6 +1,5 @@
 {% if editable %}
 <div id="basket_list" class="basket card{% if oViewConf.getActiveClassName() == 'order' %} orderBasketItems{% endif %}">
-
     <h4 class="card-header card-title">{{ translate({ ident: "CART" }) }}</h4>
     <div class="list-group list-group-flush">
         {% endif %}
@@ -253,8 +252,14 @@
                                                                     </svg>
                                                                 </button>
 
-                                                            {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') != 'hide' %}
+                                                            {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') != 'hide' and oxcmp_user.getId() is not empty %}
                                                                 <button type="button"  name="removeBtn" class="btn btn-remove{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %} js-remove{% endif %}" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
+                                                                    <svg aria-hidden="true">
+                                                                        <use xlink:href="#star"></use>
+                                                                    </svg>
+                                                                </button>
+                                                            {%  else %}
+                                                                <button type="button"  class="btn btn-remove" onclick="window.location.href='{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}';">
                                                                     <svg aria-hidden="true">
                                                                         <use xlink:href="#star"></use>
                                                                     </svg>
