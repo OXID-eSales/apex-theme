@@ -15,5 +15,6 @@
 - Modified the broken error message when shop mode is turned to production with Setup directory still present.
 - Add same padding for "..." placeholder in paging [#0007532](https://bugs.oxid-esales.com/view.php?id=7532) [PR-41](https://github.com/OXID-eSales/apex-theme/pull/41)
 - Improve contact form message field handling [PR-42](https://github.com/OXID-eSales/apex-theme/pull/42)
+- Fixed no login request after adding a product to the favorites from the Basketlist [#0007473](https://bugs.oxid-esales.com/view.php?id=7473) 
 
 ## v1.0.0 - 2023-05-09
