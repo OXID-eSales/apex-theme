@@ -20,6 +20,7 @@
             </div>
         </div>
     {% else %}
+        {% block checkout_user %}
         <div class="container-md py-5">
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
@@ -80,6 +81,7 @@
                 </div>
             </div>
         </div>
+        {% endblock %}
     {% endif %}
     {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
