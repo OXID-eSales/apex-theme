@@ -74,10 +74,10 @@
                                                             </svg>
                                                         </button>
                                                     </h4>
-                                                    <div class="card-body">
-                                                        {% include "widget/address/billing_address.html.twig" %}
-                                                    </div>
                                                 </form>
+                                                <div class="card-body">
+                                                    {% include "widget/address/billing_address.html.twig" %}
+                                                </div>
                                                 <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
                                                     {{ oViewConf.getHiddenSid()|raw }}
                                                     <input type="hidden" name="cl" value="user">
@@ -91,15 +91,15 @@
                                                             </svg>
                                                         </button>
                                                     </h4>
-                                                    <div class="card-body">
-                                                        {% set oDelAdress = oView.getDelAddress() %}
-                                                        {% if oDelAdress %}
-                                                            {% include "widget/address/shipping_address.html.twig" with {delivadr: oDelAdress} %}
-                                                        {% else %}
-                                                            {% include "widget/address/billing_address.html.twig" %}
-                                                        {% endif %}
-                                                    </div>
                                                 </form>
+                                                <div class="card-body">
+                                                    {% set oDelAdress = oView.getDelAddress() %}
+                                                    {% if oDelAdress %}
+                                                        {% include "widget/address/shipping_address.html.twig" with {delivadr: oDelAdress} %}
+                                                    {% else %}
+                                                        {% include "widget/address/billing_address.html.twig" %}
+                                                    {% endif %}
+                                                </div>
                                             </div>
                                         {% endblock %}
 
@@ -118,11 +118,11 @@
                                                         </svg>
                                                     </button>
                                                 </h4>
-                                                {% set oShipSet = oView.getShipSet() %}
-                                                <div class="card-body">
-                                                    {{ oShipSet.oxdeliveryset__oxtitle.value }}
-                                                </div>
                                             </form>
+                                            <div class="card-body">
+                                                {% set oShipSet = oView.getShipSet() %}
+                                                {{ oShipSet.oxdeliveryset__oxtitle.value }}
+                                            </div>
                                             <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post"
                                                   id="orderPayment">
                                                 {{ oViewConf.getHiddenSid()|raw }}
@@ -137,11 +137,11 @@
                                                         </svg>
                                                     </button>
                                                 </h4>
-                                                <div class="card-body">
-                                                    {% set payment = oView.getPayment() %}
-                                                    {{ payment.oxpayments__oxdesc.value }}
-                                                </div>
                                             </form>
+                                            <div class="card-body">
+                                                {% set payment = oView.getPayment() %}
+                                                {{ payment.oxpayments__oxdesc.value }}
+                                            </div>
                                         {% endblock %}
 
                                         {% block checkout_order_remark %}
