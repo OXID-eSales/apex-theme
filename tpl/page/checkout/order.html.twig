@@ -68,12 +68,14 @@
                                                             {{ oViewConf.getHiddenSid()|raw }}
                                                             <input type="hidden" name="cl" value="user">
                                                             <input type="hidden" name="fnc" value="">
-                                                            <button type="submit" class="btn"
-                                                                    title="{{ translate({ ident: "EDIT" }) }}">
-                                                                <svg aria-hidden="true">
-                                                                    <use xlink:href="#pencil"></use>
-                                                                </svg>
-                                                            </button>
+                                                            {% block checkout_order_billing_address_button %}
+                                                                <button type="submit" class="btn"
+                                                                        title="{{ translate({ ident: "EDIT" }) }}">
+                                                                    <svg aria-hidden="true">
+                                                                        <use xlink:href="#pencil"></use>
+                                                                    </svg>
+                                                                </button>
+                                                            {% endblock %}
                                                         </form>
                                                     {% endblock %}
                                                 </h4>
@@ -89,12 +91,14 @@
                                                             {{ oViewConf.getHiddenSid()|raw }}
                                                             <input type="hidden" name="cl" value="user">
                                                             <input type="hidden" name="fnc" value="">
-                                                            <button type="submit" class="btn"
-                                                                    title="{{ translate({ ident: "EDIT" }) }}">
-                                                                <svg aria-hidden="true">
-                                                                    <use xlink:href="#pencil"></use>
-                                                                </svg>
-                                                            </button>
+                                                            {% block checkout_order_shipping_address_button %}
+                                                                <button type="submit" class="btn"
+                                                                        title="{{ translate({ ident: "EDIT" }) }}">
+                                                                    <svg aria-hidden="true">
+                                                                        <use xlink:href="#pencil"></use>
+                                                                    </svg>
+                                                                </button>
+                                                            {% endblock %}
                                                         </form>
                                                     {% endblock %}
                                                 </h4>
@@ -120,12 +124,14 @@
                                                         {{ oViewConf.getHiddenSid()|raw }}
                                                         <input type="hidden" name="cl" value="payment">
                                                         <input type="hidden" name="fnc" value="">
-                                                        <button type="submit" class="btn"
-                                                                title="{{ translate({ ident: "EDIT" }) }}">
-                                                            <svg aria-hidden="true">
-                                                                <use xlink:href="#pencil"></use>
-                                                            </svg>
-                                                        </button>
+                                                        {% block checkout_order_shipping_carrier_button %}
+                                                            <button type="submit" class="btn"
+                                                                    title="{{ translate({ ident: "EDIT" }) }}">
+                                                                <svg aria-hidden="true">
+                                                                    <use xlink:href="#pencil"></use>
+                                                                </svg>
+                                                            </button>
+                                                        {% endblock %}
                                                     </form>
                                                 {% endblock %}
                                             </h4>
@@ -143,12 +149,14 @@
                                                         {{ oViewConf.getHiddenSid()|raw }}
                                                         <input type="hidden" name="cl" value="payment">
                                                         <input type="hidden" name="fnc" value="">
-                                                        <button type="submit" class="btn"
-                                                                title="{{ translate({ ident: "EDIT" }) }}">
-                                                            <svg aria-hidden="true">
-                                                                <use xlink:href="#pencil"></use>
-                                                            </svg>
-                                                        </button>
+                                                        {% block checkout_order_payment_method_button %}
+                                                            <button type="submit" class="btn"
+                                                                    title="{{ translate({ ident: "EDIT" }) }}">
+                                                                <svg aria-hidden="true">
+                                                                    <use xlink:href="#pencil"></use>
+                                                                </svg>
+                                                            </button>
+                                                        {% endblock %}
                                                     </form>
                                                 {% endblock %}
                                             </h4>
@@ -169,12 +177,14 @@
                                                             {{ oViewConf.getHiddenSid()|raw }}
                                                             <input type="hidden" name="cl" value="user">
                                                             <input type="hidden" name="fnc" value="">
-                                                            <button type="submit" class="btn"
-                                                                    title="{{ translate({ ident: "EDIT" }) }}">
-                                                                <svg aria-hidden="true">
-                                                                    <use xlink:href="#pencil"></use>
-                                                                </svg>
-                                                            </button>
+                                                            {% block checkout_order_remark_button %}
+                                                                <button type="submit" class="btn"
+                                                                        title="{{ translate({ ident: "EDIT" }) }}">
+                                                                    <svg aria-hidden="true">
+                                                                        <use xlink:href="#pencil"></use>
+                                                                    </svg>
+                                                                </button>
+                                                            {% endblock %}
                                                         </form>
                                                     {% endblock %}
                                                 </h4>
