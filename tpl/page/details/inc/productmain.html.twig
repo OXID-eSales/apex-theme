@@ -282,15 +282,17 @@
                         {% endhasrights %}
                     {% endblock %}
 
-                    {% if oView.isVatIncluded() %}
-                        <div class="vat-info-text">
-                            {{ translate({ ident: "PLUS_SHIPPING" }) }}
-                        </div>
-                    {% else %}
-                        <div class="vat-info-text">
-                            {{ translate({ ident: "PLUS" }) }}
-                        </div>
-                    {% endif %}
+                    {% ifcontent ident "oxdeliveryinfo" set oCont %}
+                        {% if oView.isVatIncluded() %}
+                            <div class="vat-info-text">
+                                {{ translate({ ident: "PLUS_SHIPPING" }) }}<a href="{{ oCont.getLink() }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a>
+                            </div>
+                        {% else %}
+                            <div class="vat-info-text">
+                                {{ translate({ ident: "PLUS" }) }}<a href="{{ oCont.getLink() }}">{{ translate({ ident: "PLUS_SHIPPING2" }) }}</a>
+                            </div>
+                        {% endif %}
+                    {% endifcontent %}
                 </div>
 
                 {% if oDetailsProduct.loadAmountPriceInfo() %}
