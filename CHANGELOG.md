@@ -8,6 +8,25 @@
     - `checkout_basketcontents_basketitem_main` in `basketcontents_list.html.twig`
     - `checkout_payment` in `payment.html.twig`
     - `checkout_user` in `user.html.twig`
+    - in `order.html.twig`:
+      - `checkout_order_billing_address`
+      - `checkout_order_billing_address_form`
+      - `checkout_order_billing_address_button`
+      - `checkout_order_billing_address_desc`
+      - `checkout_order_shipping_address`
+      - `checkout_order_shipping_address_form`
+      - `checkout_order_shipping_address_button`
+      - `checkout_order_shipping_address_desc`
+      - `checkout_order_shipping_carrier_form`
+      - `checkout_order_shipping_carrier_button`
+      - `checkout_order_shipping_carrier_desc`
+      - `checkout_order_payment_method`
+      - `checkout_order_payment_method_form`
+      - `checkout_order_payment_method_button`
+      - `checkout_order_payment_method_desc`
+      - `checkout_order_remark_form`
+      - `checkout_order_remark_button`
+      - `checkout_order_remark_desc`
 
 ### Change
 - Deprecated `count`, `empty`, `isset`, `implode` and `cat` functions
