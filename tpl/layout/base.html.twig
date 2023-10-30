@@ -172,12 +172,7 @@
         {% include "i18n/js_vars.html.twig" %}
         {{ script({ include: 'js/bootstrap.bundle.min.js', dynamic: __oxid_include_dynamic }) }}
         {{ script({ include: 'js/scripts.min.js', dynamic: __oxid_include_dynamic }) }}
-
     {% endblock %}
-    {% if oViewConf.isTplBlocksDebugMode() %}
-        {{ script({ include: "js/widgets/oxblockdebug.min.js", dynamic: __oxid_include_dynamic }) }}
-        {{ script({ add: "$( 'body' ).oxBlockDebug();", dynamic: __oxid_include_dynamic }) }}
-    {% endif %}
 
     {{ script({ dynamic: __oxid_include_dynamic })|replace({ 'type="text/javascript"': '' })|raw }}
 

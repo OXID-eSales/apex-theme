@@ -7,6 +7,7 @@ const addBasketAmountEventlisteners = function () {
     const aAmountButtons = document.querySelectorAll('.js-amount button');
     const aAmountInputs = document.querySelectorAll('input[name^="aproducts"][name$="[am]"]');
     const aRemoveButtons = document.querySelectorAll('#basket_form .js-remove');
+    const productLabelInputs = document.querySelectorAll('#basket_form .persParam');
 
     if (aAmountButtons) {
         aAmountButtons.forEach((btn) => {
@@ -37,6 +38,15 @@ const addBasketAmountEventlisteners = function () {
             })
         });
     }
+
+    if (productLabelInputs) {
+        productLabelInputs.forEach((input) => {
+            input.addEventListener('change', function (evt) {
+                evt.preventDefault();
+                updateProductLabel(input);
+            })
+        });
+    }
 }
 
 
@@ -44,7 +54,9 @@ const changeInputAmount = function (button, mode) {
     const amountWrapper = button.closest('.js-amount');
     if (amountWrapper) {
         const amountInput = amountWrapper.querySelector('input[name^="aproducts"][name$="[am]"]');
-        if(!amountInput) return;
+        if (!amountInput) {
+            return;
+        }
         mode === 'sub' ? amountInput.value = Math.max(0, parseInt(amountInput.value, 10) - 1) : null;
         mode === 'add' ? amountInput.value = parseInt(amountInput.value, 10) + 1 : null;
         // trigger ajax
@@ -54,6 +66,16 @@ const changeInputAmount = function (button, mode) {
         }, 350);
     }
 }
+
+const updateProductLabel = function (input) {
+    debounceCall(function () {
+        const row = input.closest('.basketitemrow');
+        if (row) {
+            addLoadingSpinner(row);
+        }
+        changeInputAmountAjax();
+    }, 350);
+};
 
 
 const addLoadingSpinner = function (row) {

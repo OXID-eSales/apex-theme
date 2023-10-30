@@ -82,19 +82,6 @@ module.exports = function (grunt) {
                 },
                 files: {
                     '<%= project.out %><%= project.theme %>/src/js/scripts.min.js': [
-                        /*'<%= project.dev %>node_modules/@popperjs/core/dist/umd/popper-lite.js',
-                        '<%= project.dev %>node_modules/bootstrap/js/dist/dom/data.js',
-                        '<%= project.dev %>node_modules/bootstrap/js/dist/dom/event-handler.js',
-                        '<%= project.dev %>node_modules/bootstrap/js/dist/dom/selector-engine.js',
-                        '<%= project.dev %>node_modules/bootstrap/js/dist/dom/manipulator.js',
-                        '<%= project.dev %>node_modules/bootstrap/js/dist/base-component.js',
-//                        '<%= project.dev %>node_modules/bootstrap/js/dist/alert.js',
-//                        '<%= project.dev %>node_modules/bootstrap/js/dist/button.js',
-//                        '<%= project.dev %>node_modules/bootstrap/js/dist/carousel.js',
-                        '<%= project.dev %>node_modules/bootstrap/js/dist/collapse.js',
-                        '<%= project.dev %>node_modules/bootstrap/js/dist/dropdown.js',
-                        '<%= project.dev %>node_modules/bootstrap/js/dist/modal.js',*/
-//                        '<%= project.dev %>node_modules/bootstrap/js/dist/tab.js',
                         '<%= project.dev %>node_modules/js-cookie/dist/js.cookie.js',
                         '<%= project.dev %>build/js/widgets/cookieNote.js',
                         '<%= project.dev %>build/js/main.js'
