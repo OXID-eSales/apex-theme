@@ -328,13 +328,13 @@ $aTheme = [
             'group' => 'logo',
             'name'  => 'sEmailLogo',
             'type'  => 'str',
-            'value' => '',
+            'value' => 'logo.svg',
         ],
         [
             'group' => 'logo',
             'name'  => 'sLogoFile',
             'type'  => 'str',
-            'value' => '',
+            'value' => 'logo.svg',
         ],
         [
             'group' => 'logo',
