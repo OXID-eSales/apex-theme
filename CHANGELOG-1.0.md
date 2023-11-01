@@ -21,6 +21,6 @@
 - Extra whitespaces after Contact form submit
 - Fixed no login request after adding a product to the favorites from the Basketlist [#0007473](https://bugs.oxid-esales.com/view.php?id=7473)
 - Improve contact form message field handling [PR-42](https://github.com/OXID-eSales/apex-theme/pull/42)
-- Product Labes saving.
+- Product Labels saving.
 
 ## v1.0.0 - 2023-05-09
