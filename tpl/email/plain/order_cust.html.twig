@@ -241,10 +241,10 @@
 
 {% block email_plain_order_cust_paymentinfo %}
 {% if payment.oxuserpayments__oxpaymentsid.value == "oxidpayadvance" %}
-{{ translate({ ident: "BANK" }) }} {{ shop.oxshops__oxbankname.value }}<br>
-{{ translate({ ident: "BANK_CODE" }) }} {{ shop.oxshops__oxbankcode.value }}<br>
-{{ translate({ ident: "BANK_ACCOUNT_NUMBER" }) }} {{ shop.oxshops__oxbanknumber.value }}<br>
-{{ translate({ ident: "BIC" }) }} {{ shop.oxshops__oxbiccode.value }}<br>
+{{ translate({ ident: "BANK" }) }} {{ shop.oxshops__oxbankname.value }}
+{{ translate({ ident: "BANK_CODE" }) }} {{ shop.oxshops__oxbankcode.value }}
+{{ translate({ ident: "BANK_ACCOUNT_NUMBER" }) }} {{ shop.oxshops__oxbanknumber.value }}
+{{ translate({ ident: "BIC" }) }} {{ shop.oxshops__oxbiccode.value }}
 {{ translate({ ident: "IBAN" }) }} {{ shop.oxshops__oxibannumber.value }}
 {% endif %}
 {% endblock %}
