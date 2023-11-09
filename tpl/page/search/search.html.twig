@@ -40,9 +40,7 @@
             {% endif %}
             <div class="row">
                 {% if oView.getArticleList() %}
-                    {% for product in oView.getArticleList() %}
-                        {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "searchList", products: oView.getArticleList(), showMainLink: true} %}
-                    {% endfor %}
+                    {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "searchList", products: oView.getArticleList(), showMainLink: true} %}
                 {% endif %}
                 {% if oView.getArticleCount() %}
                     {% block search_bottom_listlocator %}
