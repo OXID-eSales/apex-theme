@@ -26,6 +26,9 @@
         {% if oView.isEnabledDownloadableFiles() %}
         <a class="dropdown-item{% if active_link == "downloads" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_downloads" }) }}" title="{{ translate({ ident: "MY_DOWNLOADS" }) }}">{{ translate({ ident: "MY_DOWNLOADS" }) }}</a>
         {% endif %}
+        {% if oView.isUserAllowedToManageOwnReviews() %}
+        <a class="dropdown-item{% if active_link == "reviewlist" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_reviewlist" }) }}" title="{{ translate({ ident: "MY_REVIEWS" }) }}">{{ translate({ ident: "MY_REVIEWS" }) }}</a>
+        {% endif %}
         {% endblock %}
     </div>
 </div>
