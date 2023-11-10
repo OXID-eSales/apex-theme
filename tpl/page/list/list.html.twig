@@ -39,7 +39,7 @@
                     <h1{% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %} class="text-white"{% endif %}>
                         {{ actCategory.getTitle() }}
                     </h1>
-                    {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 and actCategory.getShortDescription() %}
+                    {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 %}
                     <div id="catDescLocator" class="categoryDescription pb-5">
                         {{ actCategory.getShortDescription()|raw() }}
                     </div>
