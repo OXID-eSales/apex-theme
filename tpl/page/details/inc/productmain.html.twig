@@ -1,4 +1,3 @@
-{# oxscript include="js/details.min.js" priority=10 #}
 
 {% set oManufacturer = oView.getManufacturer() %}
 {% set aVariantSelections = oView.getVariantSelections() %}
@@ -16,7 +15,6 @@
             {% set _sSelectionHashCollection = _sSelectionHashCollection ~ "'" ~ _sSelectionHash ~ "'" %}
         {% endif %}
     {% endfor %}
-    {# oxscript add="oxVariantSelections = [`$_sSelectionHashCollection`];" #}
 
     <form class="js-oxWidgetReload" action="{{ oView.getWidgetLink()|raw }}" method="get">
         {{ oViewConf.getHiddenSid()|raw }}

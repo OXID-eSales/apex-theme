@@ -26,6 +26,13 @@
                     </a>
                 </li>
             {% endif %}
+            {% if oView.isUserAllowedToManageOwnReviews() %}
+                <li>
+                    <a class="dropdown-item" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_reviewlist" }) }}">
+                        {{ translate({ ident: "MY_REVIEWS" }) }}
+                    </a>
+                </li>
+            {% endif %}
         {% endblock %}
         <li><hr class="dropdown-divider"></li>
         <li>

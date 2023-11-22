@@ -6,7 +6,8 @@ if (showShipAddress) {
 
 function showShipAddressAction(evt) {
     evt.preventDefault();
-    document.getElementById('shippingAddress').style.display = evt.target.checked ? 'none' : 'block';
+    var shippingAddress = document.getElementById('shippingAddress');
+    shippingAddress.style.display = (shippingAddress.style.display === 'none' ? 'block' : 'none');
 }
 
 
@@ -26,16 +27,8 @@ function userChangeAddressAction(evt) {
 var userChangeShippingAddress = document.getElementById('userChangeShippingAddress')
 
 if (userChangeShippingAddress) {
-    userChangeShippingAddress.addEventListener('click', userChangeShippingAddressAction);
+    userChangeShippingAddress.addEventListener('click', showShipAddressAction);
 }
-
-function userChangeShippingAddressAction(evt) {
-    evt.preventDefault();
-    var showShipAddressCheckbox = document.getElementById('showShipAddress');
-    showShipAddressCheckbox.checked = false;
-    showShipAddressCheckbox.dispatchEvent(new Event('change'));
-}
-
 
 /* CHANGE SHIPPING ADDRESS */
 

@@ -1,3 +1,5 @@
-{#{% include 'content::ident::contentplainident|default("oxregisterplainemail")' %}#}{# TODO: uncomment after fixing #}
+{% set shop = oEmailView.getShop() %}
+{% set user = oEmailView.getUser() %}
+{% include_content 'oxregisterplainemail' %}
 
-{#{% include 'content::ident::oxemailfooterplain' %}#}{# TODO: uncomment after fixing #}
+{% include_content 'oxemailfooterplain' %}

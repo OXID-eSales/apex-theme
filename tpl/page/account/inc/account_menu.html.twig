@@ -17,6 +17,7 @@
         <a class="dropdown-item{% if active_link == "compare" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=compare" }) }}" title="{{ translate({ ident: "MY_PRODUCT_COMPARISON" }) }}">{{ translate({ ident: "MY_PRODUCT_COMPARISON" }) }}{% if oView.getCompareItemCount() > 0 %} <span class="badge">{{ oView.getCompareItemCount() }}</span>{% endif %}</a>
         {% endif %}
 
+        <a class="dropdown-item{% if active_link == "noticelist" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_noticelist" }) }}" title="{{ translate({ ident: "MY_WISH_LIST" }) }}">{{ translate({ ident: "MY_WISH_LIST" }) }}{% if oxcmp_user and oxcmp_user.getNoticeListArtCnt() > 0 %} <span class="badge">{{ oxcmp_user.getNoticeListArtCnt() }}</span>{% endif %}</a>
         {% if oViewConf.getShowWishlist() %}
         <a class="dropdown-item{% if active_link == "wishlist" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_wishlist" }) }}" title="{{ translate({ ident: "MY_GIFT_REGISTRY" }) }}">{{ translate({ ident: "MY_GIFT_REGISTRY" }) }}{% if oxcmp_user and oxcmp_user.getWishListArtCnt() > 0 %} <span class="badge">{{ oxcmp_user.getWishListArtCnt() }}</span>{% endif %}</a>
         {% endif %}
@@ -25,6 +26,9 @@
         {% endif %}
         {% if oView.isEnabledDownloadableFiles() %}
         <a class="dropdown-item{% if active_link == "downloads" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_downloads" }) }}" title="{{ translate({ ident: "MY_DOWNLOADS" }) }}">{{ translate({ ident: "MY_DOWNLOADS" }) }}</a>
+        {% endif %}
+        {% if oView.isUserAllowedToManageOwnReviews() %}
+        <a class="dropdown-item{% if active_link == "reviewlist" %} active{% endif %}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_reviewlist" }) }}" title="{{ translate({ ident: "MY_REVIEWS" }) }}">{{ translate({ ident: "MY_REVIEWS" }) }}</a>
         {% endif %}
         {% endblock %}
     </div>

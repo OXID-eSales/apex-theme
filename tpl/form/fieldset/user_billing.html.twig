@@ -3,7 +3,7 @@
 
 {% if invadr.oxuser__oxbirthdate.month is defined %}
     {% set iBirthdayMonth = invadr.oxuser__oxbirthdate.month %}
-{% elseif oxcmp_user.oxuser__oxbirthdate.value and oxcmp_user.oxuser__oxbirthdate.value != "0000-00 - 00" %}
+{% elseif oxcmp_user.oxuser__oxbirthdate.value and oxcmp_user.oxuser__oxbirthdate.value != "0000-00-00" %}
     {% set iBirthdayMonth = oxcmp_user.oxuser__oxbirthdate.value|regex_replace("/^([0-9]{4})[-]/","")|regex_replace("/[-]([0-9]{1,2})$/","") %}
 {% else %}
     {% set iBirthdayMonth = 0 %}
@@ -11,7 +11,7 @@
 
 {% if invadr.oxuser__oxbirthdate.day is defined %}
     {% set iBirthdayDay = invadr.oxuser__oxbirthdate.day %}
-{% elseif oxcmp_user.oxuser__oxbirthdate.value and oxcmp_user.oxuser__oxbirthdate.value != "0000-00 - 00" %}
+{% elseif oxcmp_user.oxuser__oxbirthdate.value and oxcmp_user.oxuser__oxbirthdate.value != "0000-00-00" %}
     {% set iBirthdayDay = oxcmp_user.oxuser__oxbirthdate.value|regex_replace("/^([0-9]{4})[-]([0-9]{1,2})[-]/","") %}
 {% else %}
     {% set iBirthdayDay = 0 %}
@@ -19,7 +19,7 @@
 
 {% if invadr.oxuser__oxbirthdate.year is defined %}
     {% set iBirthdayYear = invadr.oxuser__oxbirthdate.year %}
-{% elseif oxcmp_user.oxuser__oxbirthdate.value and oxcmp_user.oxuser__oxbirthdate.value != "0000-00 - 00" %}
+{% elseif oxcmp_user.oxuser__oxbirthdate.value and oxcmp_user.oxuser__oxbirthdate.value != "0000-00-00" %}
     {% set iBirthdayYear = oxcmp_user.oxuser__oxbirthdate.value|regex_replace("/[-]([0-9]{1,2})[-]([0-9]{1,2})$/","") %}
 {% else %}
     {% set iBirthdayYear = 0 %}

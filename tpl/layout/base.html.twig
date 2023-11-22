@@ -164,9 +164,6 @@
     {% for _block in oxidBlock_pageBody %}
         {{ _block|raw }}
     {% endfor %}
-    {# if oViewConf.getTopActiveClassName() == 'details' and oView.showZoomPics() }}
-        {% include "page/details/inc/photoswipe.html.twig" %}
-    {{ /if #}
 
     {% block base_js %}
         {% include "i18n/js_vars.html.twig" %}
