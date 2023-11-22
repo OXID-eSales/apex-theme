@@ -26,39 +26,6 @@
                                         {% endblock %}
                                     {% else %}
                                         {% set currency = oView.getActCurrency() %}
-                                        {# % block checkout_order_next_step_top %}
-                                                {% if oView.isLowOrderPrice() %}
-                                                    {% block checkout_order_loworderprice_top %}
-                                                        <div class="alert alert-info">{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ oView.getMinOrderPrice() }} {{ currency.sign }}</div>
-                                                    {% endblock %}
-                                                {% else %}
-                                                    {% if oView.showOrderButtonOnTop() %}
-                                                        <a href="{{ seo_url({ ident: oViewConf.getPaymentLink() }) }}"
-                                                           class="btn btn-outline-primary prevStep submitButton largeButton">{{ translate({ ident: "PREVIOUS_STEP" }) }}</a>
-                                                    {% endif %}
-                                                {% endif %}
-                                            {% endblock %}
-
-                                            {% block checkout_order_vouchers %}
-                                                {% if oViewConf.getShowVouchers() and oxcmp_basket.getVouchers() %}
-                                                    {{ translate({ ident: "USED_COUPONS" }) }}
-                                                    {% for key, oEr in Errors.basket %}
-                                                        {% if oEr.getErrorClassType() == 'oxVoucherException' %}
-                                                            <div class="alert alert-danger">
-                                                                {{ translate({ ident: "PAGE_CHECKOUT_ORDER_COUPONNOTACCEPTED1" }) }} {{ oEr.getValue('voucherNr') }} {{ translate({ ident: "PAGE_CHECKOUT_ORDER_COUPONNOTACCEPTED2" }) }}
-                                                                <br>
-                                                                {{ translate({ ident: "REASON" }) }}
-                                                                {{ oEr.getOxMessage() }}
-                                                            </div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                    <div class="alert alert-info">
-                                                        {% for key, sVoucher in oxcmp_basket.getVouchers() %}
-                                                            {{ sVoucher.sVoucherNr }}<br>
-                                                        {% endfor %}
-                                                    </div>
-                                                {% endif %}
-                                            {% endblock % #}
                                         {% block checkout_order_address %}
                                             <div id="orderAddress">
                                                 <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
@@ -216,13 +183,6 @@
                                                     <input type="hidden" name="oxdownloadableproductsagreement"
                                                            value="0">
                                                     <input type="hidden" name="oxserviceproductsagreement" value="0">
-
-
-                                                    {# % block checkout_order_btn_submit_bottom %}
-                                                        <button type="submit" class="btn btn-lg btn-primary w-100">
-                                                            {{ translate({ ident: "SUBMIT_ORDER" }) }}
-                                                        </button>
-                                                    {% endblock %#}
                                                 </form>
                                             {% endblock %}
                                         {% endif %}

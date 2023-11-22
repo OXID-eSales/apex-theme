@@ -145,31 +145,6 @@
                 {% if oUnitPrice %}
                     <span id="productPriceUnit">{{ format_price(oUnitPrice, { currency: currency }) }}/{{ product.getUnitName() }}</span>
                 {% endif %}
-
-                {# if product.getStockStatus() == -1 }}
-                    <span class="stockFlag notOnStock">
-                        {% if product.oxarticles__oxnostocktext.value %}
-                            {{ product.oxarticles__oxnostocktext.value }}
-                        {% elseif oViewConf.getStockOffDefaultMessage() %}
-                            <span class="text-danger">{{ translate({ ident: "MESSAGE_NOT_ON_STOCK" }) }}</span>
-                        {% endif %}
-                        {% if product.getDeliveryDate() %}
-                            <span class="text-info">{{ translate({ ident: "AVAILABLE_ON" }) }} {{ product.getDeliveryDate() }}</span>
-                        {% endif %}
-                    </span>
-                {% elseif product.getStockStatus() == 1 %}
-                    <span class="stockFlag lowStock">
-                        <span class="text-warning">{{ translate({ ident: "LOW_STOCK" }) }}</span>
-                    </span>
-                {% elseif product.getStockStatus() == 0 %}
-                    <span class="stockFlag">
-                        {% if product.oxarticles__oxstocktext.value %}
-                            {{ product.oxarticles__oxstocktext.value }}
-                        {% elseif oViewConf.getStockOnDefaultMessage() %}
-                            <span class="text-success">{{ translate({ ident: "READY_FOR_SHIPPING" }) }}</span>
-                        {% endif %}
-                    </span>
-                {{ /if #}
             </div>
 
         </div>

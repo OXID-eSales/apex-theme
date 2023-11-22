@@ -77,7 +77,7 @@
                         {% block dd_footer_social_links %}
                             {% if oViewConf.getViewThemeParam('sFacebookUrl') or oViewConf.getViewThemeParam('sTwitterUrl') or oViewConf.getViewThemeParam('sYouTubeUrl') or oViewConf.getViewThemeParam('sBlogUrl') %}
                                 <div class="social-links">
-                                    <div class="h4">Social Media</div>
+                                    <div class="h4">{{ translate({ ident: "SOCIAL_MEDIA" }) }}</div>
                                     {% block dd_footer_social_links_inner %}
                                         {% block dd_footer_social_links_list %}
                                             {% if oViewConf.getViewThemeParam('sFacebookUrl') %}

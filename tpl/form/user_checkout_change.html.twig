@@ -1,27 +1,3 @@
-{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
-
-{% capture assign = "sValidationJS" %}
-    {% apply spaceless %}
-    $('input,select,textarea').not('[type=submit]').jqBootstrapValidation(
-        {
-            filter: function()
-            {
-                if( $( '#shippingAddress' ).css( 'display' ) == 'block' )
-                {
-                    return $(this).is(':visible, .selectpicker');
-                }
-                else
-                {
-                    return $(this).is(':visible, #addressForm .selectpicker');
-                }
-            }
-        }
-    );
-    {% endapply %}
-{% endcapture %}
-
-{{ script({ add: sValidationJS*, dynamic: __oxid_include_dynamic }) #}
-
 {{ script({ include: "js/changeaddress.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
 {% block user_checkout_change %}
@@ -102,10 +78,6 @@
                 {% include "form/fieldset/order_remark.html.twig" with {blOrderRemark: true} %}
             {% endblock %}
 
-
-            {# % block user_checkout_change_next_step_bottom %}
-                <button id="userNextStepBottom" class="btn btn-primary w-100 btn-lg" name="userform" type="submit">{{ translate({ ident: "CONTINUE_TO_NEXT_STEP" }) }}</button>
-            {% endblock %#}
         {% endblock %}
     </form>
     {% include "form/fieldset/delete_shipping_address_modal.html.twig" %}

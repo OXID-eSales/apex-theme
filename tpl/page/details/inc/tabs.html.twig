@@ -54,24 +54,6 @@
     {% endif %}
 {% endblock %}
 
-{# block name="details_tabs_pricealarm" }}
-    {% if oView.isPriceAlarm() and not oDetailsProduct.isParentNotBuyable() %}
-        {% capture append = "tabs" %}
-            <a id="pricealarm-tab" class="nav-link{% if blFirstTab %} active{% endif %}" href="#pricealarm" data-bs-toggle="tab" role="tab" aria-controls="pricealarm" aria-selected="false">
-                {{ translate({ ident: "PRICE_ALERT" }) }}
-            </a>
-        {% endcapture %}
-        {% capture append = "tabsContent" %}
-            <div id="pricealarm" class="tab-pane{% if blFirstTab %} active{% endif %}" role="tabpanel" aria-labelledby="pricealarm-tab">
-                <div class="container-xxl">
-                    {% include "form/pricealarm.html.twig" %}
-                </div>
-            </div>
-            {% set blFirstTab = false %}
-        {% endcapture %}
-    {% endif %}
-{{ /block #}
-
 {% set oManufacturer = oView.getManufacturer() %}
 {% if oManufacturer and oManufacturer.oxmanufacturers__oxshortdesc.value %}
     {% capture append = "tabs" %}<a class="nav-link{% if blFirstTab %} active{% endif %}" href="#manufacturer-tab" data-bs-toggle="tab">{{ translate({ ident: "MORE_ABOUT" }) }} {{ oManufacturer.oxmanufacturers__oxtitle.value }}</a>{% endcapture %}

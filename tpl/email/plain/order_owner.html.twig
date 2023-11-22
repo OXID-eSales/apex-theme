@@ -8,9 +8,9 @@
 
 {% block email_plain_order_owner_orderemail %}
 {% if payment.oxuserpayments__oxpaymentsid.value == "oxempty" %}
-{#{% include 'content::ident::oxadminordernpplainemail' %}#}{# TODO: uncomment after fixing #}
+{% include_content 'oxadminordernpplainemail' %}
 {% else %}
-{#{% include 'content::ident::oxadminorderplainemail' %}#}{# TODO: uncomment after fixing #}
+{% include_content 'oxadminorderplainemail' %}
 {% endif %}
 {% endblock %}
 
@@ -210,4 +210,4 @@
 {% endif %}
 {% endblock %}
 
-{#{% include 'content::ident::oxemailfooterplain' %}#}{# TODO: uncomment after fixing #}
+{% include_content 'oxemailfooterplain' %}

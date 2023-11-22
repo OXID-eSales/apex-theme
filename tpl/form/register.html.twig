@@ -1,5 +1,3 @@
-{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
-{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) #}
 <div class="card card-lg">
     <form action="{{ oViewConf.getSslSelfLink()|raw }}" class="needs-validation" name="order" method="post" novalidate>
         {% set aErrors = oView.getFieldValidationErrors() %}
@@ -22,16 +20,16 @@
                     <div class="form-check">
                         <input id="orderConfirmAgbBottom" type="checkbox" class="checkbox" name="ord_agb" value="1">
                         <label for="orderConfirmAgbBottom">
-                            {% ifcontent ident "oxagb" set oCont %}
+                            {% ifcontent ident "oxagb" set oContent %}
                                 {{ translate({ ident: "FORM_REGISTER_IAGREETOTERMS1" }) }}
                                 <a href="#" data-bs-toggle="modal"
                                    data-bs-target="#popup1">{{ translate({ ident: "TERMS_AND_CONDITIONS" }) }}</a>
                                 {{ translate({ ident: "FORM_REGISTER_IAGREETOTERMS3" }) }},&nbsp;
                             {% endifcontent %}
-                            {% ifcontent ident "oxrightofwithdrawal" set oCont %}
+                            {% ifcontent ident "oxrightofwithdrawal" set oContent %}
                                 {{ translate({ ident: "FORM_REGISTER_IAGREETORIGHTOFWITHDRAWAL1" }) }}
                                 <a href="#" data-bs-toggle="modal"
-                                   data-bs-target="#popup2">{{ oCont.oxcontents__oxtitle.value }}</a>
+                                   data-bs-target="#popup2">{{ oContent.oxcontents__oxtitle.value }}</a>
                                 {{ translate({ ident: "FORM_REGISTER_IAGREETORIGHTOFWITHDRAWAL3" }) }}
                             {% endifcontent %}
                         </label>
@@ -60,7 +58,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                     </div>
                     <div class="modal-body">
-                        {{ oCont.oxcontents__oxcontent.value|raw }}
+                        {{ oContent.oxcontents__oxcontent.value|raw }}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary"
@@ -80,7 +78,7 @@
                         <span class="h4 modal-title" id="popup2Label">{{ oContent.oxcontents__oxtitle.value }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                     </div>
-                    <div class="modal-body">{{ oCont.oxcontents__oxcontent.value|raw }}</div>
+                    <div class="modal-body">{{ oContent.oxcontents__oxcontent.value|raw }}</div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary"
                                 data-bs-dismiss="modal">{{ translate({ ident: "CLOSE" }) }}</button>

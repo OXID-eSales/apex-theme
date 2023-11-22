@@ -1,6 +1,3 @@
-{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
-{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();"*, dynamic: __oxid_include_dynamic }) #}
-
 {% set currency = oView.getActCurrency() %}
 <p class="alert alert-info">{{ translate({ ident: "MESSAGE_PRICE_ALARM_PRICE_CHANGE" }) }}</p>
 <form name="pricealarm" action="{{ oViewConf.getSelfActionLink()|raw }}" class="needs-validation" method="post" novalidate>
