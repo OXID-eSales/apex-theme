@@ -1,6 +1,3 @@
-{# oxscript include="js/libs / jqBootstrapValidation.min.js" priority=10 }}
-{{ script({ add: "$('input, "select", textarea').not('[type=submit]').jqBootstrapValidation();", dynamic: __oxid_include_dynamic }) #}
-
 <form class="needs-validation" action="{{ oViewConf.getSelfActionLink()|raw }}" name="forgotpwd" method="post" novalidate>
     {% set aErrors = oView.getFieldValidationErrors() %}
         {{ oViewConf.getHiddenSid()|raw }}

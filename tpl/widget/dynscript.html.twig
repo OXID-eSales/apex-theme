@@ -144,9 +144,7 @@
                     {% set sCustomerCountry = oCountry.oxcountry__oxisoalpha2.value %}
                 {% endif %}
 
-                <!-- START Google Zertifizierte Händler Order -->
                 <div id="gts-order" style="display:none;" translate="no">
-                    {# Zuerst die Artikel der Bestellung iterieren um Informationen für die Bestelldaten zu sammeln #}
                     {% capture name = "sGtsItems" %}
                         {% for oOrderArticle in oOrder.getOrderArticles() %}
                             {% set oArticle = oOrderArticle.getArticle() %}
@@ -174,7 +172,6 @@
                         {% endfor %}
                     {% endcapture %}
 
-                    {# voraussichtliches Versanddatum berechnen #}
                     {% if blHasPreOrder %}
                         {% set sShipDate = (sShippingDaysNotOnStock ~ "weekdays")|strtotime %}
                     {% else %}

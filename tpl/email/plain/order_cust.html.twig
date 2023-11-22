@@ -10,9 +10,9 @@
 
 {% block email_plain_order_cust_orderemail %}
 {% if payment.oxuserpayments__oxpaymentsid.value == "oxempty" %}
-{#{% include 'content::ident::oxuserordernpplainemail' %}#}{# TODO: uncomment after fixing #}
+{% include_content 'oxuserordernpplainemail' %}
 {% else %}
-{#{% include 'content::ident::oxuserorderplainemail' %}#}{# TODO: uncomment after fixing #}
+{% include_content 'oxuserorderplainemail' %}
 {% endif %}
 {% endblock %}
 
@@ -241,16 +241,16 @@
 
 {% block email_plain_order_cust_paymentinfo %}
 {% if payment.oxuserpayments__oxpaymentsid.value == "oxidpayadvance" %}
-{{ translate({ ident: "BANK" }) }} {{ shop.oxshops__oxbankname.value }}<br>
-{{ translate({ ident: "BANK_CODE" }) }} {{ shop.oxshops__oxbankcode.value }}<br>
-{{ translate({ ident: "BANK_ACCOUNT_NUMBER" }) }} {{ shop.oxshops__oxbanknumber.value }}<br>
-{{ translate({ ident: "BIC" }) }} {{ shop.oxshops__oxbiccode.value }}<br>
+{{ translate({ ident: "BANK" }) }} {{ shop.oxshops__oxbankname.value }}
+{{ translate({ ident: "BANK_CODE" }) }} {{ shop.oxshops__oxbankcode.value }}
+{{ translate({ ident: "BANK_ACCOUNT_NUMBER" }) }} {{ shop.oxshops__oxbanknumber.value }}
+{{ translate({ ident: "BIC" }) }} {{ shop.oxshops__oxbiccode.value }}
 {{ translate({ ident: "IBAN" }) }} {{ shop.oxshops__oxibannumber.value }}
 {% endif %}
 {% endblock %}
 
 {% block email_plain_order_cust_orderemailend %}
-{#{% include 'content::ident::oxuserorderemailendplain' %}#}{# TODO: uncomment after fixing #}
+{% include_content 'oxuserorderemailendplain' %}
 {% endblock %}
 
-{#{% include 'content::ident::oxemailfooterplain' %}#}{# TODO: uncomment after fixing #}
+{% include_content 'oxemailfooterplain' %}

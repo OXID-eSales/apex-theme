@@ -30,7 +30,6 @@
                     <span class="text">{{ translate({ ident: "STEPS_PAY" }) }}</span>
                 </div>
             </div>
-            {# {{ script({ add: "$('#paymentStep').click( function() { $('#userNextStepBottom').click();return false;});", dynamic: __oxid_include_dynamic }) }} #}
         {% endblock %}
 
         {% set showStepLinks = false %}
@@ -45,18 +44,6 @@
                     <span class="text">{{ translate({ ident: "STEPS_ORDER" }) }}</span>
                 </div>
             </div>
-            {# {{ script({ add: "$('#orderStep').click( function() { $('#paymentNextStepBottom').click();return false;});", dynamic: __oxid_include_dynamic }) }} #}
         {% endblock %}
-
-        {# block name="checkout_steps_laststep" }}
-            <li class="nav-item">
-                <span  class="nav-link disabled">
-                    <div class="num">5</div>
-                    <div class="text">
-                        {{ translate({ ident: "READY" }) }}
-                    </div>
-                </span>
-            </li>
-        {{ /block* #}
     </div>
 {% endblock %}
