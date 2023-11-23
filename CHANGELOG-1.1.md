@@ -30,7 +30,7 @@
 - Fixed the content issue in user registration page popup
 - Fixed the category description inside the product list
 - Removed superfluous assignments from the category list
-- Completed all DOTOs in email templates
+- Completed all TODOs in email templates
 - Removed all unused javascript files
 - Fixed edit shipment button click action
 
