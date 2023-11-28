@@ -15,7 +15,6 @@ composer require oxid-esales/twig-component-ee # for OXID eShop Enterprise Editi
 Run following commands to install the theme:
 
 ```bash
-composer config repositories.oxid-esales/apex-theme vcs https://github.com/OXID-eSales/apex-theme
 composer require oxid-esales/apex-theme
 ```
 
