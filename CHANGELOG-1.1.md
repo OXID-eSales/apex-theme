@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v1.1.0 - Unreleased
+## v1.1.0 - 2023-11-28
 
 ### Added
 - New blocks:
@@ -11,7 +11,7 @@
 
 ### Changed
 - Stop using deprecated Twig Component functions
-- 
+
 ### Fixed
 - Add missing "shipping" link in the price description part [PR-43](https://github.com/OXID-eSales/apex-theme/pull/43)
 - Add same padding for "..." placeholder in paging [#0007532](https://bugs.oxid-esales.com/view.php?id=7532) [PR-41](https://github.com/OXID-eSales/apex-theme/pull/41)
