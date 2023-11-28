@@ -211,11 +211,12 @@
                                     </form>
                                 </div>
                             {% endif %}
-
-                            <button type="button" class="btn btn-highlight btn-lg w-100"
-                                    onclick="document.getElementById('orderConfirmAgbBottom').submit();">
-                                {{ translate({ ident: "SUBMIT_ORDER" }) }}
-                            </button>
+                            {% block checkout_order_next_step_side %}
+                                <button type="button" class="btn btn-highlight btn-lg w-100"
+                                        onclick="document.getElementById('orderConfirmAgbBottom').submit();">
+                                    {{ translate({ ident: "SUBMIT_ORDER" }) }}
+                                </button>
+                            {% endblock %}
                         </div>
                     </div>
                 </div>
