@@ -1,5 +1,11 @@
 # Change Log for OXID APEX Theme
 
+## v1.2.0 - 2023-11-29
+
+### Added
+- New blocks:
+  - `checkout_order_next_step_side` in `page/checkout/order.html.twig` [PR-48](https://github.com/OXID-eSales/apex-theme/pull/48)
+
 ## v1.1.0 - 2023-11-28
 
 ### Added
