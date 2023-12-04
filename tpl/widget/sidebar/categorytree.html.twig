@@ -4,7 +4,7 @@
         {% set act = oxcmp_categories.getClickCat() %}
         {% if categories %}
             {% set deepLevel = oView.getDeepLevel() %}
-            <div class="categoryBox hidden-sm">
+            <nav class="categoryBox hidden-sm" aria-labelledby="sidebar-header">
                 <div class="sidebar-header"><strong>{{ translate({ ident: "CATEGORIES" }) }}</strong></div>
                 {% block dd_widget_sidebar_categorytree_inner %}
                     <ol class="nav flex-column">
@@ -41,7 +41,7 @@
                         {% endblock %}
                     </ol>
                 {% endblock %}
-            </div>
+            </nav>
         {% endif %}
     {% endif %}
 {% endblock %}
