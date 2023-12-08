@@ -2,12 +2,42 @@
 
 <div id="page">
     <div id="header">
-       {% include "widget/header/languages.html.twig" %}
-       <div><a id="logo" href="{{ oViewConf.getHomeLink()|raw }}" title="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}"><img src="{{ oViewConf.getImageUrl('logo.png')|raw }}" alt="{{ oxcmp_shop.oxshops__oxtitleprefix.value }}"></a></div>
+        <div class="dropdowns d-none d-lg-inline-block">
+            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                    data-bs-auto-close="outside" aria-label="{{ translate({ ident: "CHANGE" }) }}">
+                <svg aria-hidden="true">
+                    <use xlink:href="#globe"></use>
+                </svg>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <form>
+                    {% block dd_layout_page_header_icon_menu_languages %}
+                        {# Language Dropdown #}
+                        {{ include_widget({ cl: "oxwLanguageList", lang: oViewConf.getActLanguageId(), _parent: oView.getClassKey(), nocookie: 1 }) }}
+                    {% endblock %}
+                </form>
+            </div>
+        </div>
+        {% block mallstart_logo %}
+            {% set slogoImg = oViewConf.getViewThemeParam('sLogoFile') %}
+            {% set sLogoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
+            {% set sLogoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
+        <a href="{{ oViewConf.getHomeLink()|raw }}"
+           title="{{ oxcmp_shop.oxshops__oxname.value }}" class="logo-link d-flex">
+            {% if slogoImg %}
+                <img src="{{ oViewConf.getImageUrl(slogoImg)|raw }}"
+                     alt="{{ oxcmp_shop.oxshops__oxname.value }}" width="{{ sLogoWidth }}"
+                     height="{{ sLogoHeight }}" class="logo-img">
+            {% else %}
+                <span class="h1">{{ oxcmp_shop.oxshops__oxname.value }}</span>
+                {% endif %}
+            </a>
+        {% endblock %}
     </div>
     <div>
         {% include_content "oxstartwelcome" ignore missing %}
-        <div>
+
+        <nav>
             {{ translate({ ident: "PLEASE_CHOOSE" }) }}
             <br>
             <br>
@@ -20,16 +50,16 @@
                     <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=mallstart", params: "fnc=chshp&amp;shp=" ~ mallshop.oxshops__oxid.value ~ "&amp;lang=" ~ shoplangs[shopid] }) }}" >{{ mallshop.oxshops__oxname.value }}</a><br>
                 {% endif %}
             {% endfor %}
-         </div>
+         </nav>
         {% if oView.isDemoShop() %}
-            <a id="demoAdminLink" href="{{ oViewConf.getBaseDir()|raw }}admin/"><img src="{{ oViewConf.getImageUrl('admin_start.jpg')|raw }}"></a>
+            <a id="demoAdminLink" href="{{ oViewConf.getBaseDir()|raw }}admin/"><img src="{{ oViewConf.getImageUrl('admin-banner.png')|raw }}" alt="Shop-Admin"></a>
         {% endif %}
     </div>
 
 
     <div id="footer">
         <div class="copyright">
-            <img src="{{ oViewConf.getImageUrl('logo_small.png')|raw }}" alt="{{ translate({ ident: "OXID_ESALES_URL_TITLE" }) }}">
+            <img src="{{ oViewConf.getImageUrl('oxid-eshop-logo.png')|raw }}" alt="{{ translate({ ident: "OXID_ESALES_URL_TITLE" }) }}" width="200px" />
         </div>
         <div class="text">
             {% include_content "oxstdfooter" ignore missing %}
