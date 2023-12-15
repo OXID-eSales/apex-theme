@@ -26,6 +26,7 @@
 
 ### Fixed
 - No additional address info in order shipped email [#0006566](https://bugs.oxid-esales.com/view.php?id=6566)
+- Aria landmarks to several templates [PR-49](https://github.com/OXID-eSales/apex-theme/pull/49)
 
 ## v1.2.0 - 2023-11-29
 

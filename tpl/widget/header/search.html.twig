@@ -1,6 +1,6 @@
 {% block widget_header_search_form %}
     {% if oView.showSearch() %}
-        <form id="searchForm" class="search mx-auto" action="{{ oViewConf.getSelfActionLink()|raw }}" method="get" name="search">
+        <form id="searchForm" class="search mx-auto" action="{{ oViewConf.getSelfActionLink()|raw }}" method="get" name="search" role="search">
             {{ oViewConf.getHiddenSid()|raw }}
             <input type="hidden" name="cl" value="search">
 

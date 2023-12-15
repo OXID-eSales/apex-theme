@@ -1,5 +1,5 @@
 {% block footer_services %}
-    <nav class="nav flex-column">
+    <div class="nav flex-column">
         {% block footer_services_items %}
             <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=contact" }) }}">{{ translate({ ident: "CONTACT" }) }}</a>
             {% if oViewConf.getViewThemeParam('blFooterShowHelp') %}
@@ -39,5 +39,5 @@
                 <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_downloads" }) }}">{{ translate({ ident: "MY_DOWNLOADS" }) }}</a>
             {% endif %}
         {% endblock %}
-    </nav>
+    </div>
 {% endblock %}
