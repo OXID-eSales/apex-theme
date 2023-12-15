@@ -15,7 +15,7 @@
             </div>
         {% endif %}
 
-        <div class="content">
+        <main class="content">
             {% block content_main %}
                 {% include "message/errors.html.twig" %}
 
@@ -36,7 +36,7 @@
                     {{ _block|raw }}
                 {% endfor %}
             {% endblock %}
-        </div>
+        </main>
 
         {% if sidebar and sidebar == "Right" %}
             <div class="{{ oView.getClassKey() }}">

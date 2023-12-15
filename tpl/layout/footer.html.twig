@@ -16,18 +16,18 @@
                 <div class="row">
 
                     {% block dd_footer_servicelist %}
-                        <div class="col-6 col-md-3 col-lg-2">
-                            <div class="h4">{{ translate({ ident: "SERVICES" }) }}</div>
+                        <nav aria-labelledby="services-title" class="col-6 col-md-3 col-lg-2">
+                            <div id="services-title" class="h4">{{ translate({ ident: "SERVICES" }) }}</div>
                             <div class="footer-content">
                                 {% block dd_footer_servicelist_inner %}
                                     {{ include_widget({ cl: "oxwServiceList", noscript: 1, nocookie: 1, force_sid: force_sid }) }}
                                 {% endblock %}
                             </div>
-                        </div>
+                        </nav>
                     {% endblock %}
                     {% block dd_footer_information %}
-                        <div class="col-6 col-md-3 col-lg-2">
-                            <div class="h4">{{ translate({ ident: "INFORMATION" }) }}</div>
+                        <nav aria-labelledby="information-title" class="col-6 col-md-3 col-lg-2">
+                            <div id="information-title" class="h4">{{ translate({ ident: "INFORMATION" }) }}</div>
                             <div class="footer-content">
                                 {% block dd_footer_information_inner %}
                                     {{ include_widget({ cl: "oxwInformation", noscript: 1, nocookie: 1, force_sid: force_sid }) }}
@@ -44,20 +44,20 @@
                                     {% endblock %}
                                 </div>
                             </div>
-                        </div>
+                        </nav>
                     {% endblock %}
 
                     {% if oView.showNewsletter() %}
                         <div class="col-12 col-lg-3">
-                            <div class="mb-3 footer-newsletter">
-                                <div class="h4">{{ translate({ ident: "NEWSLETTER" }) }}</div>
+                            <section id="footer-newsletter" aria-labelledby="footer-newsletter-title" class="mb-3 footer-newsletter">
+                                <div id="footer-newsletter-title" class="h4">{{ translate({ ident: "NEWSLETTER" }) }}</div>
                                 <div class="footer-content">
                                     {% block dd_footer_newsletter %}
                                         <p>{{ translate({ ident: "FOOTER_NEWSLETTER_INFO" }) }}</p>
                                         {% include "widget/footer/newsletter.html.twig" %}
                                     {% endblock %}
                                 </div>
-                            </div>
+                            </section>
                             {% block footer_social %}{% endblock %}
                         </div>
                     {% endif %}
