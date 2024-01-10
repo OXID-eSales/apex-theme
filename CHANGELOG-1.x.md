@@ -23,6 +23,8 @@
         - `checkout_order_remark_form`
         - `checkout_order_remark_button`
         - `checkout_order_remark_desc`
+    - in `search.html.twig` [PR-46](https://github.com/OXID-eSales/apex-theme/pull/46)
+        - `search_list_productlist`
 
 ### Fixed
 - No additional address info in order shipped email [#0006566](https://bugs.oxid-esales.com/view.php?id=6566)
