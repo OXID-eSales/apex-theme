@@ -38,16 +38,18 @@
             {% else %}
                 <p class="alert alert-info">{{ translate({ ident: "NO_ITEMS_FOUND" }) }}</p>
             {% endif %}
-            {% if oView.getArticleList() %}
-                {% for product in oView.getArticleList() %}
-                    {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "searchList", products: oView.getArticleList(), showMainLink: true} %}
-                {% endfor %}
-            {% endif %}
-            {% if oView.getArticleCount() %}
-                {% block search_bottom_listlocator %}
-                    {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedBottom(), place: "bottom"} %}
-                {% endblock %}
-            {% endif %}
+            <div class="row">
+                {% if oView.getArticleList() %}
+                    {% block search_list_productlist %}
+                        {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "searchList", products: oView.getArticleList(), showMainLink: true} %}
+                    {% endblock %}
+                {% endif %}
+                {% if oView.getArticleCount() %}
+                    {% block search_bottom_listlocator %}
+                        {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedBottom(), place: "bottom"} %}
+                    {% endblock %}
+                {% endif %}
+            </div>
         </div>
     {% endblock %}
     </div>
