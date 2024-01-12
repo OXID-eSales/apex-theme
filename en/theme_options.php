@@ -183,10 +183,6 @@ $aLang = array(
 
     'SHOP_THEME_sShowPopBreadcrump' => 'Show breadcrumps',
 
-    'SHOP_THEME_sCategoryDescPosition'        => 'Category description position',
-    'SHOP_THEME_sCategoryDescPosition_bottom' => 'bottom',
-    'SHOP_THEME_sCategoryDescPosition_top'    => 'top',
-
     'SHOP_THEME_aNrofCatArticlesInGrid' => 'Grid view: Number of products which can be shown in a product lists (category pages, search results)<br><br>Attention: A large number of products per page (above 100) can cause performance loss!',
     'SHOP_THEME_aNrofCatArticles'       => 'Number of products which can be shown in a product lists (category pages, search results)<br><br>Attention: A large number of products per page (above 100) can cause performance loss!',
 
