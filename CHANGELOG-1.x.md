@@ -69,5 +69,6 @@
 - Completed all TODOs in email templates
 - Removed all unused javascript files
 - Fixed edit shipment button click action
+- Fixed category short and long description in product list 
 
 ## v1.0.0 - 2023-05-09

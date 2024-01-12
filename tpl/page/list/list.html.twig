@@ -1,7 +1,6 @@
 {% set actCategory = oView.getActiveCategory() %}
 {% set showPopBreadcrump = oViewConf.getViewThemeParam('sShowPopBreadcrump') %}
 {% set oPageNavigation = oView.getPageNavigation() %}
-{% set sCategoryDescPosition = oViewConf.getViewThemeParam('sCategoryDescPosition') %}
 
 {% capture append = "oxidBlock_sidebar" %}
     {% set listType = oView.getListType() %}
@@ -68,8 +67,14 @@
                             {{ oView.getTitle() }}
                         </h1>
 
-                        {% if actCategory.oxcategories__oxlongdesc.value and oPageNavigation.actPage == 1 and sCategoryDescPosition == 'bottom' %}
-                            {% block page_list_long_desc_bottom %}
+                        {% if actCategory and actCategory.getShortDescription() and oPageNavigation.actPage == 1 %}
+                            <div id="catDescLocator" class="categoryDescription pb-3">
+                                {{ actCategory.getShortDescription()|raw() }}
+                            </div>
+                        {% endif %}
+
+                        {% if actCategory.oxcategories__oxlongdesc.value and oPageNavigation.actPage == 1 %}
+                            {% block page_list_long_desc %}
                                 <div id="catLongDescLocator" class="categoryDescription">
                                     {{ include(template_from_string(actCategory.oxcategories__oxlongdesc)) }}
                                 </div>
@@ -85,15 +90,6 @@
             </div>
         </div>
     {% endif %}
-
-    {% if actCategory.oxcategories__oxlongdesc.value and oPageNavigation.actPage == 1 and sCategoryDescPosition == 'top' %}
-        {% block page_list_long_desc %}
-        <div id="catLongDescLocator" class="container-{% if headerImageWidth == 'container' %}fluid{% else %}xxl{% endif %} categoryDescription">
-            {{ include(template_from_string(actCategory.oxcategories__oxlongdesc)) }}
-        </div>
-        {% endblock %}
-    {% endif %}
-
     {% if oView.hasVisibleSubCats() %}
         <div class="container-xxl">
             {% set iSubCategoriesCount = 0 %}
