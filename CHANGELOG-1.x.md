@@ -30,6 +30,11 @@
 - No additional address info in order shipped email [#0006566](https://bugs.oxid-esales.com/view.php?id=6566)
 - Aria landmarks to several templates [PR-49](https://github.com/OXID-eSales/apex-theme/pull/49)
 
+## v1.2.1 - 2024-01-15
+
+### Fixed
+- Category short and long description are not shown in product list
+
 ## v1.2.0 - 2023-11-29
 
 ### Added
@@ -69,6 +74,5 @@
 - Completed all TODOs in email templates
 - Removed all unused javascript files
 - Fixed edit shipment button click action
-- Fixed category short and long description in product list 
 
 ## v1.0.0 - 2023-05-09
