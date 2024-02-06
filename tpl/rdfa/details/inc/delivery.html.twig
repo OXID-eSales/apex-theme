@@ -2,15 +2,15 @@
 {% set oDeliveryMethods = oView.getRDFaDeliverySetMethods() %}
 {% for oDelSetMethod in oDeliveryMethods %}
     {% if oDelSetMethod.oxdeliveryset__oxobjectid.value %}
-        <div rel="gr:availableDeliveryMethods" resource="http://purl.org/goodrelations/v1#{{ oDelSetMethod.oxdeliveryset__oxobjectid.value }}"></div>
+        <div rel="availableDeliveryMethod" resource="http://purl.org/goodrelations/v1#{{ oDelSetMethod.oxdeliveryset__oxobjectid.value }}"></div>
     {% else %}
         {% ifcontent ident sContentName set oCont %}
-        <div rel="gr:availableDeliveryMethods" resource="{{ oCont.getLink()|raw }}#{{ [oDelSetMethod.oxdeliveryset__oxtitle.value, oDelSetMethod.oxdeliveryset__oxid.value]|join('_')|striptags|trim }}"></div>
+        <div rel="availableDeliveryMethod" resource="{{ oCont.getLink()|raw }}#{{ [oDelSetMethod.oxdeliveryset__oxtitle.value, oDelSetMethod.oxdeliveryset__oxid.value]|join('_')|striptags|trim }}"></div>
         {% endifcontent %}
     {% endif %}
 {% endfor %}
 {% ifcontent ident sContentName set oCont %}
 {% for oDelivery in oView.getProductsDeliveryList() %}
-    <div rel="gr:hasPriceSpecification" resource="{{ oCont.getLink()|raw }}#{{ oDelivery.getId() }}"></div>
+    <div rel="priceSpecification" resource="{{ oCont.getLink()|raw }}#{{ oDelivery.getId() }}"></div>
 {% endfor %}
 {% endifcontent %}
