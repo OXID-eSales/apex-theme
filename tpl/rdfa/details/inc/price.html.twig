@@ -1,16 +1,16 @@
 {% capture name = "sRDFaPriceStart" %}
-    <div rel="gr:hasPriceSpecification">
-        <div typeof="gr:UnitPriceSpecification">
+    <div rel="schema:priceSpecification">
+        <div typeof="schema:UnitPriceSpecification">
             {% if oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
                 {% set aRDFaPValidity = oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
-                <div property="gr:validFrom" content="{{ aRDFaPValidity.from }}" datatype="xsd:dateTime"></div>
-                <div property="gr:validThrough" content="{{ aRDFaPValidity.through }}" datatype="xsd:dateTime"></div>
+                <div property="schema:validFrom" content="{{ aRDFaPValidity.from }}" datatype="xsd:dateTime"></div>
+                <div property="schema:validThrough" content="{{ aRDFaPValidity.through }}" datatype="xsd:dateTime"></div>
             {% endif %}
             {% if oView.getRDFaVAT() > 0 %}
-                <div property="gr:valueAddedTaxIncluded" content="{% if oView.getRDFaVAT() == 1 %}true{% else %}false{% endif %}" datatype="xsd:boolean"></div>
+                <div property="schema:valueAddedTaxIncluded" content="{% if oView.getRDFaVAT() == 1 %}true{% else %}false{% endif %}" datatype="xsd:boolean"></div>
             {% endif %}
-            <div property="gr:hasUnitOfMeasurement" content="C62" datatype="xsd:string"></div>
-            <div property="gr:hasCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
+            <div property="schema:unitCode" content="C62" datatype="xsd:string"></div>
+            <div property="schema:priceCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
 {% endcapture %}
 {% if oProduct.loadAmountPriceInfo() %}
     {% for priceItem in oProduct.loadAmountPriceInfo() %}
@@ -18,12 +18,12 @@
             {% set iRDFaMinAmount = priceItem.oxprice2article__oxamount.value %}
         {% endif %}
 {{ twig.capture.sRDFaPriceStart | raw }}
-            <div property="gr:hasCurrencyValue" content="{{ priceItem.oxpricealarm__oxprice.value }}" datatype="xsd:float"></div>
-            <div rel="gr:hasEligibleQuantity">
-                <div typeof="gr:QuantitativeValue">
-                    <div property="gr:hasMinValue" content="{{ priceItem.oxprice2article__oxamount.value }}" datatype="xsd:float"></div>
-                    <div property="gr:hasMaxValue" content="{{ priceItem.oxprice2article__oxamountto.value }}" datatype="xsd:float"></div>
-                    <div property="gr:hasUnitOfMeasurement" content="C62" datatype="xsd:string"></div>
+            <div property="schema:price" content="{{ priceItem.oxpricealarm__oxprice.value }}" datatype="xsd:float"></div>
+            <div rel="schema:eligibleQuantity">
+                <div typeof="schema:QuantitativeValue">
+                    <div property="schema:minValue" content="{{ priceItem.oxprice2article__oxamount.value }}" datatype="xsd:float"></div>
+                    <div property="schema:maxValue" content="{{ priceItem.oxprice2article__oxamountto.value }}" datatype="xsd:float"></div>
+                    <div property="schema:unitCode" content="C62" datatype="xsd:string"></div>
                 </div>
             </div>
         </div>
@@ -33,13 +33,13 @@
 {% if oProduct.getFPrice() %}
 {{ twig.capture.sRDFaPriceStart | raw }}
             {% set price = oDetailsProduct.getPrice() %}
-            <div property="gr:hasCurrencyValue" content="{{ price.getBruttoPrice() }}" datatype="xsd:float"></div>
+            <div property="schema:price" content="{{ price.getBruttoPrice() }}" datatype="xsd:float"></div>
             {% if iRDFaMinAmount is defined %}
-                <div rel="gr:hasEligibleQuantity">
-                    <div typeof="gr:QuantitativeValue">
-                        <div property="gr:hasMinValue" content="1" datatype="xsd:float"></div>
-                        <div property="gr:hasMaxValue" content="{{ iRDFaMinAmount-1 }}" datatype="xsd:float"></div>
-                        <div property="gr:hasUnitOfMeasurement" content="C62" datatype="xsd:string"></div>
+                <div rel="schema:eligibleQuantity">
+                    <div typeof="schema:QuantitativeValue">
+                        <div property="schema:minValue" content="1" datatype="xsd:float"></div>
+                        <div property="schema:maxValue" content="{{ iRDFaMinAmount-1 }}" datatype="xsd:float"></div>
+                        <div property="schema:unitCode" content="C62" datatype="xsd:string"></div>
                     </div>
                 </div>
             {% endif %}
