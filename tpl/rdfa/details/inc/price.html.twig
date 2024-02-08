@@ -1,5 +1,5 @@
 {% capture name = "sRDFaPriceStart" %}
-    <div rel="priceSpecification">
+    <div rel="schema:priceSpecification">
         <div typeof="schema:UnitPriceSpecification">
             {% if oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
                 {% set aRDFaPValidity = oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
@@ -19,7 +19,7 @@
         {% endif %}
 {{ twig.capture.sRDFaPriceStart | raw }}
             <div property="schema:price" content="{{ priceItem.oxpricealarm__oxprice.value }}" datatype="xsd:float"></div>
-            <div rel="eligibleQuantity">
+            <div rel="schema:eligibleQuantity">
                 <div typeof="schema:QuantitativeValue">
                     <div property="schema:minValue" content="{{ priceItem.oxprice2article__oxamount.value }}" datatype="xsd:float"></div>
                     <div property="schema:maxValue" content="{{ priceItem.oxprice2article__oxamountto.value }}" datatype="xsd:float"></div>
@@ -35,7 +35,7 @@
             {% set price = oDetailsProduct.getPrice() %}
             <div property="schema:price" content="{{ price.getBruttoPrice() }}" datatype="xsd:float"></div>
             {% if iRDFaMinAmount is defined %}
-                <div rel="eligibleQuantity">
+                <div rel="schema:eligibleQuantity">
                     <div typeof="schema:QuantitativeValue">
                         <div property="schema:minValue" content="1" datatype="xsd:float"></div>
                         <div property="schema:maxValue" content="{{ iRDFaMinAmount-1 }}" datatype="xsd:float"></div>

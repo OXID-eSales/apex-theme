@@ -9,11 +9,14 @@
     xmlns:schema="http://schema.org/"
     xmlns:v="http://schema.org/"
     xml:base="{{ sRDFaUrl|raw }}"
-    typeof="schema:Offer" about="{{ sRDFaUrl|raw }}#offeringdata">
+    typeof="schema:Product" about="{{ sRDFaUrl|raw }}#offeringdata">
+
     <div rel="schema:mainEntityOfPage" resource="{{ sRDFaUrl|raw }}"></div>
+
 {% ifcontent ident oView.getRDFaBusinessEntityLoc() set oCont %}
     <div rev="makesOffer" resource="{{ oCont.getLink()|raw }}#companydata"></div>
 {% endifcontent %}
+
 {% if oProduct.oxarticles__oxtitle.value %}
     <div property="schema:name" content="{{ oProduct.oxarticles__oxtitle.value|striptags|trim }}" {% if oView.getActiveLangAbbr() %} xml:lang="{{ oView.getActiveLangAbbr() }}"{% endif %}></div>
 {% endif %}
@@ -30,66 +33,84 @@
 {% endif %}
 {% endhasrights %}
 {% include "rdfa/details/inc/object.html.twig" %}
-{% if oView.getRDFaNormalizedRating() %}
-    <div rel="rating">
-        <div typeof="schema:aggregateRating">
+
+{% if oView.getRDFaNormalizedRating() and oProduct.oxarticles__oxtitle.value %}
+    <div rel="schema:aggregateRating">
+        <div typeof="schema:AggregateRating">
             {% set aRDFaRating = oView.getRDFaNormalizedRating() %}
             <div property="schema:reviewCount" content="{{ aRDFaRating.count }}" datatype="xsd:float"></div>
             <div property="schema:ratingValue" content="{{ aRDFaRating.value }}" datatype="xsd:float"></div>
         </div>
     </div>
 {% endif %}
+
 {% if oView.showRDFaProductStock() %}
-    <div rel="inventoryLevel">
+    <div rel="schema:inventoryLevel">
         <div typeof="schema:QuantitativeValue">
             <div property="schema:minValue" content="{% if oProduct.getStockStatus() == -1 %}0{% else %}{{ oProduct.oxarticles__oxstock.value }}{% endif %}" datatype="xsd:float"></div>
             <div property="schema:unitCode" content="C62" datatype="xsd:string"></div>
         </div>
     </div>
 {% endif %}
-{% hasrights { ident: "SHOWARTICLEPRICE" } %}
-{% include "rdfa/details/inc/price.html.twig" with {oDetailsProduct: oProduct} %}
-{% endhasrights %}
-{% if oProduct.getDeliveryDate() %}
-    <div property="schema:validFrom" content="{{ oProduct.getDeliveryDate() }}T00:00:00" datatype="xsd:dateTime"></div>
-{% elseif oView.getRDFaValidityPeriod('iRDFaOfferingValidity') %}
-    {% set aRDFaValidity = oView.getRDFaValidityPeriod('iRDFaOfferingValidity') %}
-    <div property="schema:validFrom" content="{{ aRDFaValidity.from }}" datatype="xsd:dateTime"></div>
-    <div property="schema:validThrough" content="{{ aRDFaValidity.through }}" datatype="xsd:dateTime"></div>
-{% endif %}
-{% if oView.getRDFaBusinessFnc() %}
-    <div rel="businessFunction" resource="http://purl.org/goodrelations/v1#{{ oView.getRDFaBusinessFnc() }}"></div>
-{% endif %}
-{% if oView.getRDFaCustomers() %}
-    {% for Customer in oView.getRDFaCustomers() %}
-        <div rel="eligibleCustomerType" resource="http://purl.org/goodrelations/v1#{{ Customer }}"></div>
-    {% endfor %}
-{% endif %}
-{% if oViewConf.getCountryList() %}
-{% for oRegion in oViewConf.getCountryList() %}
-    <div property="schema:eligibleRegion" content="{{ oRegion.oxcountry__oxisoalpha2.value }}" datatype="xsd:string"></div>
-{% endfor %}
-{% endif %}
-{% hasrights { ident: "SHOWARTICLEPRICE" } %}
-{% include "rdfa/details/inc/payment.html.twig" %}
-{% if oProduct.oxarticles__oxfreeshipping.value %}
-    <div rel="priceSpecification">
-        <div typeof="schema:DeliveryChargeSpecification">
-        {% if oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
-        {% set aRDFaPValidity = oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
-            <div property="schema:validFrom" content="{{ aRDFaPValidity.from }}" datatype="xsd:dateTime"></div>
-            <div property="schema:validThrough" content="{{ aRDFaPValidity.through }}" datatype="xsd:dateTime"></div>
+
+<div rel="schema:offers">
+    <div typeof="schema:Offer">
+        {% if oProduct.getDeliveryDate() %}
+            <div property="schema:validFrom" content="{{ oProduct.getDeliveryDate() }}T00:00:00" datatype="xsd:dateTime"></div>
+        {% elseif oView.getRDFaValidityPeriod('iRDFaOfferingValidity') %}
+            {% set aRDFaValidity = oView.getRDFaValidityPeriod('iRDFaOfferingValidity') %}
+            <div property="schema:validFrom" content="{{ aRDFaValidity.from }}" datatype="xsd:dateTime"></div>
+            <div property="schema:validThrough" content="{{ aRDFaValidity.through }}" datatype="xsd:dateTime"></div>
         {% endif %}
-        {% if oView.getRDFaVAT() > 0 %}
-            <div property="schema:valueAddedTaxIncluded" content="{% if oView.getRDFaVAT() == 1 %}true{% else %}false{% endif %}" datatype="xsd:boolean"></div>
+
+        {% if oView.getRDFaBusinessFnc() %}
+            <div rel="schema:businessFunction" resource="http://purl.org/goodrelations/v1#{{ oView.getRDFaBusinessFnc() }}"></div>
         {% endif %}
-        <div property="schema:priceCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
-        <div property="schema:price" content="0.00" datatype="xsd:float"></div>
+
+        {% if oView.getRDFaCustomers() %}
+            {% for Customer in oView.getRDFaCustomers() %}
+                <div rel="schema:eligibleCustomerType" resource="http://purl.org/goodrelations/v1#{{ Customer }}"></div>
+            {% endfor %}
+        {% endif %}
+
+        {% if oViewConf.getCountryList() %}
+            {% for oRegion in oViewConf.getCountryList() %}
+                <div property="schema:eligibleRegion" content="{{ oRegion.oxcountry__oxisoalpha2.value }}" datatype="xsd:string"></div>
+            {% endfor %}
+        {% endif %}
+
+        {% hasrights { ident: "SHOWARTICLEPRICE" } %}
+
+            {% include "rdfa/details/inc/price.html.twig" with {oDetailsProduct: oProduct} %}
+
+            {% include "rdfa/details/inc/payment.html.twig" %}
+
+            <div rel="schema:shippingDetails">
+                <div typeof="schema:OfferShippingDetails">
+                    {% if oProduct.oxarticles__oxfreeshipping.value %}
+                        <div rel="schema:shippingRate">
+                            <div typeof="schema:priceSpecification">
+                                {% if oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
+                                    {% set aRDFaPValidity = oView.getRDFaValidityPeriod("iRDFaPriceValidity") %}
+                                    <div property="schema:validFrom" content="{{ aRDFaPValidity.from }}" datatype="xsd:dateTime"></div>
+                                    <div property="schema:validThrough" content="{{ aRDFaPValidity.through }}" datatype="xsd:dateTime"></div>
+                                {% endif %}
+                                {% if oView.getRDFaVAT() > 0 %}
+                                    <div property="schema:valueAddedTaxIncluded" content="{% if oView.getRDFaVAT() == 1 %}true{% else %}false{% endif %}" datatype="xsd:boolean"></div>
+                                {% endif %}
+                                <div property="schema:priceCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
+                                <div property="schema:price" content="0.00" datatype="xsd:float"></div>
+                            </div>
+                        </div>
+                    {% else %}
+                        {% include "rdfa/details/inc/delivery.html.twig" %}
+                    {% endif %}
+                </div>
+            </div>
+
+        {% endhasrights %}
     </div>
 </div>
-{% else %}
-{% include "rdfa/details/inc/delivery.html.twig" %}
-{% endif %}
-{% endhasrights %}
-    <div rel="schema:image" resource="{{ oView.getActPicture() }}"></div>
+
+<div rel="schema:image" resource="{{ oView.getActPicture() | raw }}"></div>
 </div>

@@ -18,7 +18,7 @@
         <div property="schema:priceCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
         <div property="schema:price" content="{{ oDelChargeSpec.oxdelivery__oxaddsum.value }}" datatype="xsd:float"></div>
 {% if oDelChargeSpec.oxdelivery__oxdeltype.value == "p" %}
-        <div rel="eligibleTransactionVolume">
+        <div rel="schema:eligibleTransactionVolume">
             <div typeof="schema:UnitPriceSpecification">
                 <div property="schema:unitCode" content="C62" datatype="xsd:string"></div>
                 <div property="schema:priceCurrency" content="{{ currency.name }}" datatype="xsd:string"></div>
@@ -34,7 +34,7 @@
 {% set oDeliverySetMethods = oDelChargeSpec.deliverysetmethods %}
 {% for oDelSetMethod in oDeliverySetMethods %}
     {% if oDelSetMethod.oxdeliveryset__oxobjectid.value %}
-        <div rel="appliesToDeliveryMethod" resource="http://purl.org/goodrelations/v1#{{ oDelSetMethod.oxdeliveryset__oxobjectid.value }}"></div>
+        <div rel="schema:appliesToDeliveryMethod" resource="http://purl.org/goodrelations/v1#{{ oDelSetMethod.oxdeliveryset__oxobjectid.value }}"></div>
     {% else %}
         <div rel="availableDeliveryMethod" resource="{{ sRDFaUrl|raw }}#{{ [oDelSetMethod.oxdeliveryset__oxtitle.value, oDelSetMethod.oxdeliveryset__oxid.value]|join('_')|striptags|trim }}"></div>
     {% endif %}
