@@ -14,7 +14,7 @@
     {% endif %}
 {% endfor %}
 {% ifcontent ident sContentName set oCont %}
-{% for oDelivery in oView.getProductsDeliveryList() %}
-    <div rel="schema:priceSpecification" resource="{{ oCont.getLink()|raw }}#{{ oDelivery.getId() }}"></div>
-{% endfor %}
+    {% for oDelivery in oView.getProductsDeliveryList() %}
+        <div rel="priceSpecification" resource="{{ oCont.getLink()|raw }}#{{ oDelivery.getId() }}"></div>
+    {% endfor %}
 {% endifcontent %}
