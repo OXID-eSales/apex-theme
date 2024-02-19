@@ -10,7 +10,7 @@
             {% include "message/errors.html.twig" %}
         {% endif %}
 
-        <h3>{{ translate({ ident: "OPEN_ACCOUNT" }) }}</h3>
+        <h1 class="h3">{{ translate({ ident: "OPEN_ACCOUNT" }) }}</h1>
         {% include "form/register.html.twig" %}
     </div>
     {{ insert_tracker({title: template_title}) }}
