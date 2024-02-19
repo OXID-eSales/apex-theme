@@ -5,7 +5,7 @@
 
 <div class="card-group mb-5">
     <div class="card card-lg">
-        <h4 class="card-header card-title">{{ translate({ ident: "LOGIN" }) }}</h4>
+        <h2 class="h4 card-header card-title">{{ translate({ ident: "LOGIN" }) }}</h2>
         <div class="card-body">
             <form name="login" class="needs-validation" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" novalidate>
                 {{ oViewConf.getHiddenSid()|raw }}
