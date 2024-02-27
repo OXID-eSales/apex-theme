@@ -24,7 +24,7 @@
                 <div property="schema:gtin13" content="{{ oProduct.oxarticles__oxdistean.value }}" datatype="xsd:string"></div>
             {% endif %}
             {% if oView.getRDFaGenericCondition() %}
-                <div property="schema:condition" content="{{ oView.getRDFaGenericCondition() }}" xml:lang="en"></div>
+                <div property="schema:itemCondition" content="{{ oView.getRDFaGenericCondition() }}" xml:lang="en"></div>
             {% endif %}
             {% for oCatPath in oView.getCatTreePath() %}
                 {% if loop.last %}

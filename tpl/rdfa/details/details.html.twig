@@ -43,18 +43,18 @@
     </div>
 {% endif %}
 
-{% if oView.showRDFaProductStock() %}
-    <div rel="schema:inventoryLevel">
-        <div typeof="schema:QuantitativeValue">
-            <div property="schema:minValue" content="{% if oProduct.getStockStatus() == -1 %}0{% else %}{{ oProduct.oxarticles__oxstock.value }}{% endif %}" datatype="xsd:float"></div>
-            <div property="schema:unitCode" content="C62" datatype="xsd:string"></div>
-        </div>
-    </div>
-{% endif %}
-
 <div rel="schema:offers">
     <div typeof="schema:Offer">
         {% include "rdfa/details/inc/object.html.twig" %}
+
+        {% if oView.showRDFaProductStock() %}
+            <div rel="schema:inventoryLevel">
+                <div typeof="schema:QuantitativeValue">
+                    <div property="schema:minValue" content="{% if oProduct.getStockStatus() == -1 %}0{% else %}{{ oProduct.oxarticles__oxstock.value }}{% endif %}" datatype="xsd:float"></div>
+                    <div property="schema:unitCode" content="C62" datatype="xsd:string"></div>
+                </div>
+            </div>
+        {% endif %}
 
         {% if oProduct.getDeliveryDate() %}
             <div property="schema:validFrom" content="{{ oProduct.getDeliveryDate() }}T00:00:00" datatype="xsd:dateTime"></div>
