@@ -11,8 +11,6 @@
     xml:base="{{ sRDFaUrl|raw }}"
     typeof="schema:Product" about="{{ sRDFaUrl|raw }}#offeringdata">
 
-    <div rel="schema:mainEntityOfPage" resource="{{ sRDFaUrl|raw }}"></div>
-
 {% ifcontent ident oView.getRDFaBusinessEntityLoc() set oCont %}
     <div rev="makesOffer" resource="{{ oCont.getLink()|raw }}#companydata"></div>
 {% endifcontent %}
