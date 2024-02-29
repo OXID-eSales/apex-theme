@@ -301,7 +301,7 @@
                     {% hasrights { ident: "TOBASKET" } %}
                         {% if not oDetailsProduct.isNotBuyable() %}
                             <div class="tobasket-function input-group input-group-lg mb-3">
-                                <input type="text" class="form-control" id="amountToBasket" name="am" value="1">
+                                <input type="text" class="form-control" id="amountToBasket" name="am" value="1" aria-label="{{ translate({ ident: "QUANTITY" }) }}">
                                 <button id="toBasket" type="submit"{% if not blCanBuy %} disabled{% endif %} class="btn btn-highlight">
                                     {{ translate({ ident: "TO_CART" }) }}
                                 </button>
