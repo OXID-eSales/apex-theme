@@ -8,8 +8,8 @@
 
     {% block contact_form_fields %}
         <div class="mb-3 form-floating">
-            {% include "form/fieldset/salutation.html.twig" with {name: "editval[oxuser__oxsal]", value: editval.oxuser__oxsal, required: contactFormFields.salutation.isRequired} %}
-            <label class="form-label{% if contactFormFields.salutation.isRequired %} req{% endif %}">
+            {% include "form/fieldset/salutation.html.twig" with {name: "editval[oxuser__oxsal]", id: "salutation", value: editval.oxuser__oxsal, required: contactFormFields.salutation.isRequired} %}
+            <label for="salutation" class="{% if contactFormFields.salutation.isRequired %} req{% endif %}">
                 {{ translate({ ident: "TITLE" }) }}
             </label>
         </div>
@@ -78,7 +78,7 @@
     {% block contact_form_buttons %}
         <div class="mb-3">
             <p class="req-warning">{{ translate({ ident: "COMPLETE_MARKED_FIELDS" }) }}</p>
-            <button class="btn btn-primary" type="submit">
+            <button class="btn btn-highlight" type="submit">
                 {{ translate({ ident: "SEND" }) }}
             </button>
         </div>

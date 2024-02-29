@@ -174,7 +174,7 @@
                     <option value="{{ country.oxcountry__oxid.value }}" {{ sCountrySelect }}>{{ country.oxcountry__oxtitle.value }}</option>
                 {% endfor %}
             </select>
-            <label class="form-label{% if oView.isFieldRequired("oxaddress__oxcountryid") %} req{% endif %}" for="delCountrySelect">{{ translate({ ident: "COUNTRY" }) }}</label>
+            <label class="{% if oView.isFieldRequired("oxaddress__oxcountryid") %} req{% endif %}" for="delCountrySelect">{{ translate({ ident: "COUNTRY" }) }}</label>
 
             {% if oView.isFieldRequired("oxaddress__oxcountryid") %}
                 {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxaddress__oxcountryid} %}
@@ -198,7 +198,7 @@
         <div class="col-md-6 mb-3">
             <div class="form-floating{% if aErrors.oxaddress__oxfon %} is-invalid{% endif %}">
                 <input class="form-control{% if oView.isFieldRequired("oxaddress__oxfon") %} js-oxValidate js-oxValidate_notEmpty{% endif %}" placeholder="{{ translate({ ident: "PHONE" }) }}" type="text" maxlength="128" id="deladr[oxaddress__oxfon]" name="deladr[oxaddress__oxfon]" value="{% if deladr.oxaddress__oxfon is defined %}{{ deladr.oxaddress__oxfon }}{% else %}{{ delivadr.oxaddress__oxfon.value }}{% endif %}"{% if oView.isFieldRequired("oxaddress__oxfon") %} required{% endif %}>
-                <label for="deladr[oxaddress__oxfon]" class="form-label{% if oView.isFieldRequired("oxaddress__oxfon") %} req{% endif %}">{{ translate({ ident: "PHONE" }) }}</label>
+                <label for="deladr[oxaddress__oxfon]" class="{% if oView.isFieldRequired("oxaddress__oxfon") %} req{% endif %}">{{ translate({ ident: "PHONE" }) }}</label>
             </div>
             {% if oView.isFieldRequired("oxaddress__oxfon") %}
                 {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxaddress__oxfon} %}
@@ -207,7 +207,7 @@
         <div class="col-md-6 mb-3">
             <div class="form-floating{% if aErrors.oxaddress__oxfax %} is-invalid{% endif %}">
                 <input class="form-control{% if oView.isFieldRequired("oxaddress__oxfax") %} js-oxValidate js-oxValidate_notEmpty{% endif %}" placeholder="{{ translate({ ident: "FAX" }) }}" type="text" maxlength="128" id="deladr[oxaddress__oxfax]" name="deladr[oxaddress__oxfax]" value="{% if deladr.oxaddress__oxfax is defined %}{{ deladr.oxaddress__oxfax }}{% else %}{{ delivadr.oxaddress__oxfax.value }}{% endif %}"{% if oView.isFieldRequired("oxaddress__oxfax") %} required{% endif %}>
-                <label for="deladr[oxaddress__oxfax]" class="form-label{% if oView.isFieldRequired("oxaddress__oxfax") %} req{% endif %}">{{ translate({ ident: "FAX" }) }}</label>
+                <label for="deladr[oxaddress__oxfax]" class="{% if oView.isFieldRequired("oxaddress__oxfax") %} req{% endif %}">{{ translate({ ident: "FAX" }) }}</label>
             </div>
             {% if oView.isFieldRequired("oxaddress__oxfax") %}
                 {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxaddress__oxfax} %}
