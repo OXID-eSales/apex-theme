@@ -27,7 +27,7 @@
         {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigation(), place: "bottom"} %}
         {% if oView.isReviewActive() %}
         <div class="widgetBox reviews">
-            <h4>{{ translate({ ident: "WRITE_PRODUCT_REVIEW" }) }}</h4>
+            <h2 class="h4">{{ translate({ ident: "WRITE_PRODUCT_REVIEW" }) }}</h2>
             {% include "widget/reviews/reviews.html.twig" %}
         </div>
         {% endif %}

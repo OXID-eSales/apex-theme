@@ -4,11 +4,11 @@
         {% if not oView.isActive('PsLogin') %}
             {% if oView.isConfirmAGBActive() %}
                 {% ifcontent ident "oxrighttocancellegend" set oContent %}
-                   <h5 class="card-header card-title card-header-edit">{{ oContent.oxcontents__oxtitle.value }}</h5>
+                   <h2 class="h5 card-header card-title card-header-edit">{{ oContent.oxcontents__oxtitle.value }}</h2>
                 {% endifcontent %}
             {% else %}
                 {% ifcontent ident "oxrighttocancellegend2" set oContent %}
-                    <h5 class="card-header card-title card-header-edit">{{ oContent.oxcontents__oxtitle.value }}</h5>
+                    <h2 class="h5 card-header card-title card-header-edit">{{ oContent.oxcontents__oxtitle.value }}</h2>
                 {% endifcontent %}
             {% endif %}
         {% endif %}

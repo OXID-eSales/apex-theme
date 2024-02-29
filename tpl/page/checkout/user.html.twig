@@ -30,9 +30,9 @@
 
                                 {% block checkout_user_noregistration %}
                                     {% if oView.getLoginOption() == 1 %}
-                                        <h4 class="card-header card-title">
+                                        <h2 class="h4 card-header card-title">
                                             {{ translate({ ident: "PURCHASE_WITHOUT_REGISTRATION" }) }}
-                                        </h4>
+                                        </h2>
                                         <div class="card-body">
                                             {% include "form/user_checkout_noregistration.html.twig" %}
                                         </div>
@@ -41,9 +41,9 @@
 
                                 {% block checkout_user_registration %}
                                     {% if oView.getLoginOption() == 3 %}
-                                        <h4 class="card-header card-title">
+                                        <h2 class="h4 card-header card-title">
                                             {{ translate({ ident: "OPEN_ACCOUNT" }) }}
-                                        </h4>
+                                        </h2>
                                         <div class="card-body">
                                             {% include "form/user_checkout_registration.html.twig" %}
                                         </div>
@@ -52,9 +52,9 @@
 
                                 {% block checkout_user_change %}
                                     {% if oxcmp_user %}
-                                        <h4 class="card-header card-title">
+                                        <h2 class="h4 card-header card-title">
                                             {{ translate({ ident: "ADDRESSES" }) }}
-                                        </h4>
+                                        </h2>
                                         <div class="card-body">
                                             {% include "form/user_checkout_change.html.twig" %}
                                         </div>

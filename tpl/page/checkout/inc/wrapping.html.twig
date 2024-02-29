@@ -20,7 +20,7 @@
                 <p>{{ translate({ ident: "WRAPPING_DESCRIPTION" }) }}</p>
             </div>
             {% block checkout_wrapping_contents %}
-                <h5 class="px-3">{{ translate({ ident: "ADD_WRAPPING" }) }}</h5>
+                <h2 class="h5 px-3">{{ translate({ ident: "ADD_WRAPPING" }) }}</h2>
 
                 {% if not oxcmp_basket.getProductsCount() %}
                     <div class="alert alert-danger">{{ translate({ ident: "BASKET_EMPTY" }) }}</div>
@@ -80,7 +80,7 @@
                         {% set oCardList = oView.getCardList() %}
                         {% if oCardList|length > 0 %}
                             {% block checkout_wrapping_cards %}
-                                <h5 class="px-3">{{ translate({ ident: "GREETING_CARD" }) }}</h5>
+                                <h2 class="h5 px-3">{{ translate({ ident: "GREETING_CARD" }) }}</h2>
                                 <div class="list-group list-group-flush wrappingCard" id="wrappCard">
                                     <div class="list-group-item">
                                         <div class="row">
@@ -133,7 +133,7 @@
                             {% block checkout_wrapping_comment %}
                                 <div class="modal-body">
                                     <div class="mb-3 wrappingComment">
-                                        <h5>{{ translate({ ident: "GREETING_MESSAGE" }) }}</h5>
+                                        <h2 class="h5">{{ translate({ ident: "GREETING_MESSAGE" }) }}</h2>
                                         <textarea cols="102" rows="5" name="giftmessage" id="giftmessage" class="form-control">{{ oxcmp_basket.getCardMessage() }}</textarea>
                                     </div>
                                 </div>

@@ -16,9 +16,9 @@
                                 {% for ocont in category.getContentCats() %}
                                     {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
                                     <div class="box">
-                                        <h3>
+                                        <h2 class="h3">
                                             <a id="moreSubCms_{{ loop.index }}" href="{{ ocont.getLink()|raw }}">{{ ocont.oxcontents__oxtitle.value }}</a>
-                                        </h3>
+                                        </h2>
                                         <ul class="content"></ul>
                                     </div>
                                 {% endfor %}
