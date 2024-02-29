@@ -214,14 +214,14 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <div class="input-group">
-                                                            <input id="amountToBasket_{{ testid }}" type="text" name="am" value="1" size="3" autocomplete="off" class="form-control amount">
+                                                            <input id="amountToBasket_{{ testid }}" type="text" name="am" value="1" size="3" autocomplete="off" class="form-control amount" aria-label="{{ translate({ ident: "QUANTITY" }) }}">
                                                             <button id="toBasket_{{ testid }}" type="submit" aria-label="{{ translate({ ident: "TO_CART" }) }}" class="btn btn-highlight" data-container="body">
                                                                 <svg>
                                                                     <use xlink:href="#bag"></use>
                                                                 </svg>
                                                             </button>
                                                             {% if removeFunction and ((owishid and (owishid==oxcmp_user.oxuser__oxid.value)) or (wishid==oxcmp_user.oxuser__oxid.value) or recommid) %}
-                                                            <button data-triggerForm="remove_{{ removeFunction }}{{ testid }}" type="submit" class="btn btn-light removeButton listRemoveButton">
+                                                            <button data-triggerForm="remove_{{ removeFunction }}{{ testid }}" type="submit" class="btn btn-light removeButton listRemoveButton" aria-label="{{ translate({ ident: "REMOVE" }) }}">
                                                                 <svg>
                                                                     <use xlink:href="#trash"></use>
                                                                 </svg>
