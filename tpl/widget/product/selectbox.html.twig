@@ -4,7 +4,13 @@
     {% if not blHideLabel %}
     <label class="form-label" for="formSelect{{ testid }}">{{ oSelectionList.getLabel() }}</label>
     {% endif %}
-    <select id="formSelect{{ testid }}" class="form-select" aria-label="{{ oSelectionList.getLabel() }}" name="{{ sFieldName|default("varselid") }}[{{ iKey }}]"{% if blSubmitOnChange %} onchange="document.forms['tobasket.{{ testid }}'].submit()"{% endif %}>
+    <select
+            id="formSelect{{ testid }}"
+            class="form-select"
+            aria-label="{{ oSelectionList.getLabel() }}{% if productTitle %} - {{ productTitle }}{% endif %}"
+            name="{{ sFieldName|default("varselid") }}[{{ iKey }}]"
+            {% if blSubmitOnChange %}onchange="document.forms['tobasket.{{ testid }}'].submit()"{% endif %}
+    >
         <option value="">
         {% if sFieldName == "sel" %}
         {{ translate({ ident: "PLEASE_CHOOSE" }) }}
