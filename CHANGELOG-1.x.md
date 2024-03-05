@@ -28,7 +28,8 @@
 
 ### Fixed
 - No additional address info in order shipped email [#0006566](https://bugs.oxid-esales.com/view.php?id=6566)
-- Aria landmarks to several templates [PR-49](https://github.com/OXID-eSales/apex-theme/pull/49)
+- Aria landmarks added to several templates [PR-49](https://github.com/OXID-eSales/apex-theme/pull/49)
+- Fixed heading tag level jumps
 
 ## v1.2.1 - 2024-01-15
 
