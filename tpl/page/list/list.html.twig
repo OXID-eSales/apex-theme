@@ -83,7 +83,7 @@
                     </div>
                     {% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %}
                         <div class="col-12 col-md-6 order-1 order-md-1 py-4 text-right">
-                            <img src="{{ actCategory.getThumbUrl()|raw }}" alt="{{ actCategory.oxcategories__oxtitle.value }}" class="w-100 img-fluid">
+                            <img src="{{ actCategory.getThumbUrl()|raw }}" alt="{{ translate({ ident: "DD_CATEGORY_IMAGE_ALT" })|replace({'PLACE_HOLDER': actCategory.oxcategories__oxtitle.value }) }}" class="w-100 img-fluid">
                         </div>
                     {% endif %}
                 </div>
