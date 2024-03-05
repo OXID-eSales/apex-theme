@@ -168,6 +168,10 @@ $aLang = array(
     'PAYMENT_METHODS'                                       => 'Payment methods',
     'TRUST_BADGES'                                        	=> 'Trust badges',
     'SOCIAL_MEDIA'                                        	=> 'Social Media',
+	'DD_CATEGORY_IMAGE_ALT'                                 => 'category image of the category “PLACE_HOLDER”',
+	'DD_MANUFACTURER_IMAGE_ALT'                            	=> 'Manufacturer logo of the manufacturer “PLACE_HOLDER”',
+	'DD_PRODUCT_SINGLE_IMAGE_ALT'                           => 'Product image of the product “PLACE_HOLDER”',
+	'DD_PRODUCT_GALLERY_IMAGE_ALT'                          => 'Product image PLACE_HOLDER_COUNT of the product “PLACE_HOLDER_IMAGE”',
 );
 
 /*
