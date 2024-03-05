@@ -1,11 +1,11 @@
 {% capture append = "oxidBlock_content" %}
 
     {% block checkout_payment %}
-    <div class="container-md py-5">
+    <div class="container-xxl py-5">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+            <div class="col-md-12">
                 <div class="row">
-                    <div class="col-lg-7">
+                    <div class="col-lg-8 col-xl-9">
                         <div class="card active mb-3">
                             {% block checkout_payment_main %}
                                 {% block checkout_payment_errors %}
@@ -146,7 +146,7 @@
                             {{ translate({ ident: "PREVIOUS_STEP" }) }}</a>
 
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-4 col-xl-3">
                         <div class="sticky-md-top">
                             {% include "page/checkout/inc/summary_sidebar.html.twig" %}
 

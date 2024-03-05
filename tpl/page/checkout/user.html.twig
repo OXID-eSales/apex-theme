@@ -1,16 +1,16 @@
 {% capture append = "oxidBlock_content" %}
     {% set template_title = "" %}
     {% if not oView.getLoginOption() and not oxcmp_user %}
-        <div class="container-md py-5">
+        <div class="container-xxl py-5">
             <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+                <div class="col-md-12">
                     <div class="row">
-                        <div class="col-lg-7">
+                        <div class="col-lg-8 col-xl-9">
                             {% block checkout_user_main %}
                                 {% include "page/checkout/inc/options.html.twig" %}
                             {% endblock %}
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-4 col-xl-3">
                             <div class="sticky-md-top">
                                 {% include "page/checkout/inc/summary_sidebar.html.twig" %}
                             </div>
@@ -21,11 +21,11 @@
         </div>
     {% else %}
         {% block checkout_user %}
-        <div class="container-md py-5">
+        <div class="container-xxl py-5">
             <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+                <div class="col-md-12">
                     <div class="row">
-                        <div class="col-lg-7">
+                        <div class="col-lg-8 col-xl-9">
                             <div class="card mt-n2 mb-3 active">
 
                                 {% block checkout_user_noregistration %}
@@ -68,7 +68,7 @@
                                 {{ translate({ ident: "BACK" }) }}
                             </a>
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-4 col-xl-3">
                             <div class="sticky-md-top">
                                 {% include "page/checkout/inc/summary_sidebar.html.twig" %}
 
