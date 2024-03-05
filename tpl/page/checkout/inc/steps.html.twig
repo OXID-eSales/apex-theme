@@ -1,5 +1,6 @@
 {% block checkout_steps_main %}
-    <div class="row g-0 text-center ms-auto steps">
+    <section aria-labelledby="checkout-steps">
+    <div id="checkout-steps" class="row g-0 text-center ms-auto steps">
         {% if oxcmp_basket.getProductsCount() %}
             {% set showStepLinks = true %}
         {% endif %}
@@ -46,4 +47,5 @@
             </div>
         {% endblock %}
     </div>
+    </section>
 {% endblock %}
