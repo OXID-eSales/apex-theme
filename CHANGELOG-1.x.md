@@ -26,6 +26,9 @@
     - in `search.html.twig` [PR-46](https://github.com/OXID-eSales/apex-theme/pull/46)
         - `search_list_productlist`
 
+### Changed
+- Improved contrast in form elements' colour scheme
+
 ### Fixed
 - No additional address info in order shipped email [#0006566](https://bugs.oxid-esales.com/view.php?id=6566)
 - Aria landmarks added to several templates [PR-49](https://github.com/OXID-eSales/apex-theme/pull/49)
