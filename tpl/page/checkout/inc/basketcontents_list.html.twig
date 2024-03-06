@@ -224,7 +224,8 @@
                                                                         <input id="am_{{ loop.index }}" type="number"
                                                                                class="form-control text-center"
                                                                                name="aproducts[{{ basketindex }}][am]"
-                                                                               value="{{ basketitem.getAmount() }}" min="0" {% if blAllowUnevenAmounts %} step="any"{% endif %}>
+                                                                               value="{{ basketitem.getAmount() }}" min="0" {% if blAllowUnevenAmounts %} step="any"{% endif %}
+                                                                               aria-label="{{ translate({ ident: "QUANTITY" }) }} - {{ basketitem.getTitle() }}">
                                                                         <button class="btn btn-outline-primary btn-more js-increaseAmount"
                                                                                 name="more" type="button">
                                                                             +
