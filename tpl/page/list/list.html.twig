@@ -15,7 +15,7 @@
                 {% endif %}
             </h2>
             <div class="featured icon">
-                <img loading="lazy" src="{{ actCategory.getIconUrl()|raw }}" alt="{{ translate({ ident: "DD_MANUFACTURER_IMAGE_ALT" })|replace({'PLACE_HOLDER': actCategory.getTitle() }) }}">
+                <img loading="lazy" src="{{ actCategory.getIconUrl()|raw }}" alt="{{ translate({ ident: "MANUFACTURER_IMAGE_ALT", args: actCategory.getTitle() }) }}">
             </div>
         </div>
         {% endif %}
@@ -46,7 +46,7 @@
                 </div>
                 {% if actCategory.getIconUrl() %}
                     <div class="col-12 col-md-6 order-1 order-md-1 py-4">
-                        <img src="{{ actCategory.getIconUrl()|raw }}" alt="{{ translate({ ident: "DD_MANUFACTURER_IMAGE_ALT" })|replace({'PLACE_HOLDER': actCategory.getTitle() }) }}">
+                        <img src="{{ actCategory.getIconUrl()|raw }}" alt="{{ translate({ ident: "MANUFACTURER_IMAGE_ALT", args: actCategory.getTitle() }) }}">
                     </div>
                 {% endif %}
             </div>
@@ -83,7 +83,7 @@
                     </div>
                     {% if actCategory.oxcategories__oxthumb.value and actCategory.getThumbUrl() %}
                         <div class="col-12 col-md-6 order-1 order-md-1 py-4 text-right">
-                            <img src="{{ actCategory.getThumbUrl()|raw }}" alt="{{ translate({ ident: "DD_CATEGORY_IMAGE_ALT" })|replace({'PLACE_HOLDER': actCategory.oxcategories__oxtitle.value }) }}" class="w-100 img-fluid">
+                            <img src="{{ actCategory.getThumbUrl()|raw }}" alt="{{ translate({ ident: "CATEGORY_IMAGE_ALT", args: actCategory.oxcategories__oxtitle.value }) }}" class="w-100 img-fluid">
                         </div>
                     {% endif %}
                 </div>
@@ -99,9 +99,9 @@
                         {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
                         {% set iconUrl = category.getIconUrl() %}
                         {% if listType=='manufacturer' or listType=='vendor' %}
-                            {% set iconAltAttribute = translate({ ident: "DD_MANUFACTURER_IMAGE_ALT" })|replace({'PLACE_HOLDER': category.oxcategories__oxtitle.value }) %}
+                            {% set iconAltAttribute = translate({ ident: "MANUFACTURER_IMAGE_ALT", args: category.oxcategories__oxtitle.value }) %}
                         {% else %}
-                            {% set iconAltAttribute = translate({ ident: "DD_CATEGORY_IMAGE_ALT" })|replace({'PLACE_HOLDER': category.oxcategories__oxtitle.value }) %}
+                            {% set iconAltAttribute = translate({ ident: "CATEGORY_IMAGE_ALT", args: category.oxcategories__oxtitle.value }) %}
                         {% endif %}
                             <a href="{{ category.getLink()|raw }}" class="cat-list-item">
                                 {% if iconUrl %}
@@ -123,9 +123,9 @@
                         {% for ocont in category.getContentCats() %}
                             <a href="{{ ocont.getLink()|raw }}" class="cat-list-item">
                                 {% if listType=='manufacturer' or listType=='vendor' %}
-                                    {% set iconAltAttribute = translate({ ident: "DD_MANUFACTURER_IMAGE_ALT" })|replace({'PLACE_HOLDER': category.oxcategories__oxtitle.value }) %}
+                                    {% set iconAltAttribute = translate({ ident: "MANUFACTURER_IMAGE_ALT", args: category.oxcategories__oxtitle.value }) %}
                                 {% else %}
-                                    {% set iconAltAttribute = translate({ ident: "DD_CATEGORY_IMAGE_ALT" })|replace({'PLACE_HOLDER': category.oxcategories__oxtitle.value }) %}
+                                    {% set iconAltAttribute = translate({ ident: "CATEGORY_IMAGE_ALT", args: category.oxcategories__oxtitle.value }) %}
                                 {% endif %}
                                 <img loading="lazy" src="{{ oViewConf.getImageUrl('subcat-placeholder.png')|raw }}" alt="{{ iconAltAttribute }}" class="cat-list-item-img">
                                 <span class="cat-list-item-name">

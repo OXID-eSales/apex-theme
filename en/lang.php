@@ -54,7 +54,7 @@ $aLang = array(
     'DD_ERR_404_START_BUTTON'                               => 'Go to home page',
     'DD_ERR_404_CONTACT_TEXT'                               => 'May we assist you?<br>Feel free to call us or write an email:',
     'DD_ERR_404_CONTACT_BUTTON'                             => 'to the contact page',
-    'ERR_404_IMAGE_ALT'                             		=> "Die angeforderte Seite konnte nicht gefunden werden.",
+    'ERR_404_IMAGE_ALT'                                     => 'The requested page could not be found.',
 
     // Login
     'DD_LOGIN_ACCOUNT_PANEL_CREATE_BODY'                    => 'By creating an account with our store, you will be guided through the checkout process faster. In addition, you can store multiple shipping addresses and track orders in your account.',
@@ -167,12 +167,12 @@ $aLang = array(
     'MOVE_CAROUSEL_RIGHT'                                   => 'Move carousel right',
     'WATCH_NOW'                                             => 'Watch now',
     'PAYMENT_METHODS'                                       => 'Payment methods',
-    'TRUST_BADGES'                                        	=> 'Trust badges',
-    'SOCIAL_MEDIA'                                        	=> 'Social Media',
-	'DD_CATEGORY_IMAGE_ALT'                                 => 'category image of the category “PLACE_HOLDER”',
-	'DD_MANUFACTURER_IMAGE_ALT'                            	=> 'Manufacturer logo of the manufacturer “PLACE_HOLDER”',
-	'DD_PRODUCT_SINGLE_IMAGE_ALT'                           => 'Product image of the product “PLACE_HOLDER”',
-	'DD_PRODUCT_GALLERY_IMAGE_ALT'                          => 'Product image PLACE_HOLDER_COUNT of the product “PLACE_HOLDER_IMAGE”',
+    'TRUST_BADGES'                                          => 'Trust badges',
+    'SOCIAL_MEDIA'                                          => 'Social Media',
+    'CATEGORY_IMAGE_ALT'                                 => 'category image of the category “%s”',
+    'MANUFACTURER_IMAGE_ALT'                            	=> 'Manufacturer logo of the manufacturer “%s”',
+    'PRODUCT_SINGLE_IMAGE_ALT'                           => 'Product image of the product “%s”',
+    'PRODUCT_GALLERY_IMAGE_ALT'                          => 'Product image %d of the product “%s”',
 );
 
 /*
