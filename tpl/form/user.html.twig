@@ -15,7 +15,7 @@
                 {# Rechnungsadresse #}
                 <div class="card card-lg mb-3">
                     {% block user_billing_address_head %}
-                        <h4 class="card-header card-title d-flex card-header-edit justify-content-between">
+                        <h2 class="h4 card-header card-title d-flex card-header-edit justify-content-between">
                             {{ translate({ ident: "BILLING_ADDRESS" }) }}
 
                             <button id="userChangeAddress" class="btn edit-button" name="changeBillAddress" type="button">
@@ -23,7 +23,7 @@
                                     <use xlink:href="#pencil"></use>
                                 </svg>
                             </button>
-                        </h4>
+                        </h2>
                     {% endblock %}
                     <div class="card-body">
                         {% block user_billing_address %}
@@ -45,11 +45,11 @@
                 {# Lieferadresse #}
                 {% block user_shipping_address %}
                     <div class="card card-lg">
-                        <h4 class="card-header bg-light">
+                        <h2 class="h4 card-header bg-light">
                             {% block user_shipping_address_head %}
                             {{ translate({ ident: "SHIPPING_ADDRESSES" }) }}
                             {% endblock %}
-                        </h4>
+                        </h2>
                         <div class="card-body">
                             <div class="checkbox">
                                 {% block user_shipping_address_choice %}

@@ -28,7 +28,7 @@
 
                                     {% if oViewConf.getViewThemeParam('blSliderShowImageCaption') and oArticle %}
                                         <div class="card-img-overlay">
-                                            <h5 class="card-title h2">{{ oArticle.oxarticles__oxtitle.value }}</h5>
+                                            <h3 class="card-title h2">{{ oArticle.oxarticles__oxtitle.value }}</h5>
                                             {% if oArticle.oxarticles__oxshortdesc.value|trim %}
                                             <p class="card-text">{{ oArticle.oxarticles__oxshortdesc.value|trim }}</p>
                                             {% endif %}

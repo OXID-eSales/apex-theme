@@ -7,13 +7,13 @@
     {% if listType=='manufacturer' or listType=='vendor' %}
         {% if actCategory and actCategory.getIconUrl() %}
         <div class="box">
-            <h3>
+            <h2 class="h3">
                 {% if listType=='manufacturer' %}
                     {{ translate({ ident: "BRAND" }) }}
                 {% elseif listType=='vendor' %}
                     {{ translate({ ident: "VENDOR" }) }}
                 {% endif %}
-            </h3>
+            </h2>
             <div class="featured icon">
                 <img loading="lazy" src="{{ actCategory.getIconUrl()|raw }}" alt="{{ actCategory.getTitle() }}">
             </div>

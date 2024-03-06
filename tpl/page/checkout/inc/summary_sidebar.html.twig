@@ -1,7 +1,7 @@
 
     {% block checkout_basketcontents_summary %}
         <div class="card mb-3">
-            <h4 class="card-header card-title">{{ translate({ ident: "SUMMARY" }) }}</h4>
+            <h2 class="h4 card-header card-title">{{ translate({ ident: "SUMMARY" }) }}</h2>
 
             <div class="list-group mb-3 list-group-flush border-0">
                 {% block checkout_basketcontents_summary_table_inner %}
@@ -214,7 +214,7 @@
                 {% endblock %}
 
                 {% block checkout_basketcontents_grandtotal %}
-                    <div class="list-group-item d-flex justify-content-between align-items-center mb-0 mt-2 h4">
+                    <div class="list-group-item d-flex justify-content-between align-items-center mb-0 mt-2 h2">
                         {{ translate({ ident: "GRAND_TOTAL" }) }}
                         <span>{{ format_price(oxcmp_basket.getPrice(), { currency: currency }) }}</span>
                     </div>
@@ -232,14 +232,14 @@
     {% if oViewConf.getShowVouchers() and oViewConf.getActiveClassName() == 'basket' %}
         {% block checkout_basket_vouchers %}
             <div class="card mb-3">
-                <h4 class="card-header card-title collapsed card-collapse" data-bs-toggle="collapse"
+                <h2 class="h4 card-header card-title collapsed card-collapse" data-bs-toggle="collapse"
                     data-bs-target="#voucherCollapse" aria-expanded="false" aria-controls="voucherCollapse">
                     {{ translate({ ident: "COUPON" }) }}
 
                     <svg aria-hidden="true">
                         <use xlink:href="#down"></use>
                     </svg>
-                </h4>
+                </h2>
                 <div class="collapse" id="voucherCollapse">
                     <div class="card-body">
                         <form name="voucher" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="needs-validation" novalidate>

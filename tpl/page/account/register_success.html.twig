@@ -2,7 +2,7 @@
     {% set template_title = "MESSAGE_WELCOME_REGISTERED_USER"|translate %}
     <div class="container-xxl">
         <div class="py-5">
-            <h3>{{ translate({ ident: "MESSAGE_WELCOME_REGISTERED_USER" }) }}</h3>
+            <h1 class="h3">{{ translate({ ident: "MESSAGE_WELCOME_REGISTERED_USER" }) }}</h1>
             <div class="box info">
               {% if oView.getRegistrationStatus() == 1 %}
                 {{ translate({ ident: "MESSAGE_CONFIRMING_REGISTRATION" }) }}

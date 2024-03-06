@@ -6,9 +6,9 @@
 
     {% block checkout_options_login %}
         <div class="card mb-3">
-            <h4 class="card-header card-title">
+            <h2 class="h4 card-header card-title">
                 {{ translate({ ident: "LOGIN" }) }}
-            </h4>
+            </h2>
             <div class="card-body">
                 {% include "form/login.html.twig" %}
             </div>
@@ -17,9 +17,9 @@
 
     {% block checkout_options_reg %}
         <div class="card mb-3">
-            <h4 class="card-header card-title">
+            <h2 class="h4 card-header card-title">
                 {{ translate({ ident: "OPEN_ACCOUNT" }) }}
-            </h4>
+            </h2>
             <div class="card-body">
                 <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" id="optionRegistration">
                     {{ oViewConf.getHiddenSid()|raw }}
@@ -37,9 +37,9 @@
     {% block checkout_options_noreg %}
         {% if oView.getShowNoRegOption() %}
             <div class="card mb-3">
-                <h4 class="card-header card-title">
+                <h2 class="h4 card-header card-title">
                     {{ translate({ ident: "PURCHASE_WITHOUT_REGISTRATION" }) }}
-                </h4>
+                </h2>
                 <div class="card-body">
                     <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" id="optionNoRegistration">
                         {{ oViewConf.getHiddenSid()|raw }}

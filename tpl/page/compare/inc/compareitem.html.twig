@@ -124,7 +124,7 @@
                 {% if blShowToBasket %}
                     {% hasrights { ident: "TOBASKET" } %}
                         <div class="input-group">
-                            <input id="amountToBasket_{{ testid }}" type="text" name="am" value="1" autocomplete="off" class="form-control amount">
+                            <input id="amountToBasket_{{ testid }}" type="text" name="am" value="1" autocomplete="off" class="form-control amount" aria-label="{{ translate({ ident: "QUANTITY" }) }}">
                             <button type="submit" class="btn btn-outline-primary" title="{{ translate({ ident: "TO_CART" }) }}">
                                 <svg>
                                     <use xlink:href="#bag"></use>

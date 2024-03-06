@@ -5,7 +5,7 @@
 
 <div class="card-group mb-5">
     <div class="card card-lg">
-        <h4 class="card-header card-title">{{ translate({ ident: "LOGIN" }) }}</h4>
+        <h2 class="h4 card-header card-title">{{ translate({ ident: "LOGIN" }) }}</h2>
         <div class="card-body">
             <form name="login" class="needs-validation" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" novalidate>
                 {{ oViewConf.getHiddenSid()|raw }}
@@ -25,14 +25,14 @@
                 <p>{{ translate({ ident: "LOGIN_ALREADY_CUSTOMER" }) }}</p>
 
                 <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
-                    <input id="loginUser" class="form-control" type="text" name="lgn_usr" role="loginUser" required placeholder=" ">
-                    <label class="req">{{ translate({ ident: "EMAIL" }) }}</label>
+                    <input id="loginUser" class="form-control" type="text" name="lgn_usr" required placeholder=" ">
+                    <label for="loginUser" class="req">{{ translate({ ident: "EMAIL" }) }}</label>
                 </div>
 
                 {% block checkout_options_loginaccount_passwordfield %}
                     <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
-                        <input id="loginPwd" class="form-control" type="password" name="lgn_pwd" role="loginPwd" required placeholder=" ">
-                        <label class="req">{{ translate({ ident: "PASSWORD" }) }}</label>
+                        <input id="loginPwd" class="form-control" type="password" name="lgn_pwd" required placeholder=" ">
+                        <label for="loginPwd" class="req">{{ translate({ ident: "PASSWORD" }) }}</label>
                         <a id="forgotPasswordLink" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=forgotpwd" }) }}" class="btn btn-link px-0">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
                     </div>
                 {% endblock %}
@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="card card-lg">
-        <h4 class="card-header card-title">{{ translate({ ident: "OPEN_ACCOUNT" }) }}</h4>
+        <h2 class="h4 card-header card-title">{{ translate({ ident: "OPEN_ACCOUNT" }) }}</h2>
         <div class="card-body">
             <p>{{ translate({ ident: "DD_LOGIN_ACCOUNT_PANEL_CREATE_BODY" }) }}</p>
             <a id="openAccountLink" href="{{ seo_url({ ident: oViewConf.getSslSelfLink() ~ "cl=register" }) }}" class="btn btn-primary" >{{ translate({ ident: "OPEN_ACCOUNT" }) }}</a><br>
