@@ -54,6 +54,7 @@ $aLang = array(
     'DD_ERR_404_START_BUTTON'                               => 'Go to home page',
     'DD_ERR_404_CONTACT_TEXT'                               => 'May we assist you?<br>Feel free to call us or write an email:',
     'DD_ERR_404_CONTACT_BUTTON'                             => 'to the contact page',
+    'ERR_404_IMAGE_ALT'                             		=> "Die angeforderte Seite konnte nicht gefunden werden.",
 
     // Login
     'DD_LOGIN_ACCOUNT_PANEL_CREATE_BODY'                    => 'By creating an account with our store, you will be guided through the checkout process faster. In addition, you can store multiple shipping addresses and track orders in your account.',
