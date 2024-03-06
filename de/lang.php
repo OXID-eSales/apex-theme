@@ -54,6 +54,7 @@ $aLang = array(
     'DD_ERR_404_START_BUTTON'                               => 'Startseite aufrufen',
     'DD_ERR_404_CONTACT_TEXT'                               => 'Dürfen wir Ihnen direkt behilflich sein?<br>Gerne können Sie uns anrufen oder eine E-Mail schreiben:',
     'DD_ERR_404_CONTACT_BUTTON'                             => 'zur Kontaktseite',
+    'ERR_404_IMAGE_ALT'                                     => 'Die angeforderte Seite konnte nicht gefunden werden.',
 
     // Login
     'DD_LOGIN_ACCOUNT_PANEL_CREATE_BODY'                    => 'Durch Ihre Anmeldung in unserem Shop, werden Sie in der Lage sein schneller durch den Bestellvorgang geführt zu werden. Des Weiteren können Sie mehrere Versandadressen speichern und Bestellungen in Ihrem Konto verfolgen.',
@@ -166,8 +167,12 @@ $aLang = array(
     'MOVE_CAROUSEL_RIGHT'                                  => 'Karussell nach rechts verschieben',
     'WATCH_NOW'                                             => 'Jetzt anschauen',
     'PAYMENT_METHODS'                                       => 'Zahlungsarten',
-    'TRUST_BADGES'                                        	=> 'Trust Badges',
-	'SOCIAL_MEDIA'                                        	=> 'Soziale Medien',
+    'TRUST_BADGES'                                          => 'Trust Badges',
+    'SOCIAL_MEDIA'                                          => 'Soziale Medien',
+    'CATEGORY_IMAGE_ALT'                                 => 'Kategoriebild der Kategorie “%s”',
+    'MANUFACTURER_IMAGE_ALT'                            	=> 'Herstellerlogo des Herstellers “%s“',
+    'PRODUCT_SINGLE_IMAGE_ALT'                           => 'Artikelbild des Artikels “%s“',
+    'PRODUCT_GALLERY_IMAGE_ALT'                          => 'Artikelbild %d des Artikels “%s“',
 );
 
 /*
