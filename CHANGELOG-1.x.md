@@ -29,6 +29,7 @@
 ### Changed
 - Improved contrast in form elements' colour scheme
 - Improved accessibility attributes for images
+- Aria-labels to be more distinct
 
 ### Fixed
 - No additional address info in order shipped email [#0006566](https://bugs.oxid-esales.com/view.php?id=6566)

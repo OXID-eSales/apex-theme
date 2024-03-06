@@ -33,7 +33,7 @@
                     <img class="product-img img-2" width="350" height="220" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value ~ ' ' ~ product.oxarticles__oxvarselect.value }) }}">
                 </picture>
             {% endif %}
-            <a href="{{ _productLink|raw }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }}"></a>
+            <a href="{{ _productLink|raw }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }} - {{ product.oxarticles__oxtitle.value }}"></a>
 
 
             {# TODO: We should have an attribute here #}
@@ -81,7 +81,7 @@
                                     </div>
 
                                     <div class="input-group">
-                                        <input type="number" class="form-control" name="am" value="1" aria-label="{{ translate({ ident: "QUANTITY" }) }}" aria-describedby="submit{{ testid }}">
+                                        <input type="number" class="form-control" name="am" value="1" aria-label="{{ translate({ ident: "QUANTITY" }) }} - {{ product.oxarticles__oxtitle.value }}" aria-describedby="submit{{ testid }}">
                                         <button type="submit" id="submit{{ testid }}" class="btn btn-highlight">
                                             {{ translate({ ident: "TO_CART" }) }}
                                         </button>
@@ -90,19 +90,19 @@
                                 </form>
                             {% endhasrights %}
                         {% else %}
-                            <a class="btn btn-outline-primary w-100" href="{{ _productLink|raw }}">{{ translate({ ident: "DETAILS" }) }}</a>
+                            <a class="btn btn-outline-primary w-100" href="{{ _productLink|raw }}">{{ translate({ ident: "DETAILS" }) }} - {{ product.oxarticles__oxtitle.value }}</a>
                         {% endif %}
                     </div>
                     <div class="right">
                         {% block widget_product_listitem_grid_addtowishlist %}
                             {% if oxcmp_user %}
-                                <a aria-label="{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}" class="btn btn-sm btn-light w-100" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getTopActiveClassName(), params: "aid=" ~ product.oxarticles__oxnid.value ~ "&amp;anid=" ~ product.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">
+                                <a aria-label="{{ translate({ ident: "ADD_TO_WISH_LIST" }) }} - {{ product.oxarticles__oxtitle.value }}" class="btn btn-sm btn-light w-100" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getTopActiveClassName(), params: "aid=" ~ product.oxarticles__oxnid.value ~ "&amp;anid=" ~ product.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">
                                     <svg>
                                         <use xlink:href="#star"></use>
                                     </svg>
                                 </a>
                             {% else %}
-                                <a aria-label="{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}" class="btn btn-sm btn-light w-100" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">
+                                <a aria-label="{{ translate({ ident: "ADD_TO_WISH_LIST" }) }} - {{ product.oxarticles__oxtitle.value }}" class="btn btn-sm btn-light w-100" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">
                                     <svg>
                                         <use xlink:href="#star"></use>
                                     </svg>
@@ -177,7 +177,7 @@
             <div class="short-desc">
                 {{ product.oxarticles__oxshortdesc.value }}
             </div>
-            <a href="{{ _productLink|raw }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }}"></a>
+            <a href="{{ _productLink|raw }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }} - {{ product.oxarticles__oxtitle.value }}"></a>
         </div>
     </div>
 {% endblock %}

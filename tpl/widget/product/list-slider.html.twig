@@ -22,13 +22,13 @@
         {% endfor %}
     </div>
     <div class="slider-nav">
-        <button type="button" class="btn btn-secondary slide-left" aria-label="{{ translate({ ident: "MOVE_CAROUSEL_LEFT" }) }}">
+        <button type="button" class="btn btn-secondary slide-left" aria-label="{{ translate({ ident: "MOVE_CAROUSEL_LEFT" }) }}{% if head %} - {{ head }}{% endif %}">
             <svg aria-hidden="true">
                 <use xlink:href="#left"></use>
             </svg>
         </button>
 
-        <button type="button" class="btn btn-secondary slide-right" aria-label="{{ translate({ ident: "MOVE_CAROUSEL_RIGHT" }) }}">
+        <button type="button" class="btn btn-secondary slide-right" aria-label="{{ translate({ ident: "MOVE_CAROUSEL_RIGHT" }) }}{% if head %} - {{ head }}{% endif %}">
             <svg aria-hidden="true">
                 <use xlink:href="#right"></use>
             </svg>
