@@ -100,12 +100,12 @@
 
 
                                             <h2 class="card-header card-title">
-                                                {{ translate({ ident: "SELECT_SHIPPING_METHOD" }) }}
+                                                {{ translate({ ident: "SHIPPING_METHOD" }) }}
                                             </h2>
                                             <div class="card-body">
                                                 {% block act_shipping %}
                                                     <div class="mb-3">
-                                                        <select class="form-select" name="sShipSet"
+                                                        <select aria-label="{{ translate({ ident: "SELECT_SHIPPING_METHOD" }) }}" class="form-select" name="sShipSet"
                                                                 onchange="this.form.submit();">
                                                             {% for sShipID, oShippingSet in oView.getAllSets() %}
                                                                 <option value="{{ sShipID }}"

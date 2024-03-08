@@ -102,7 +102,8 @@ $aLang = array(
     'STEPS_SEND'                                            => 'Adresse',
     'STEPS_PAY'                                             => 'Zahlung & Versand',
     'STEPS_ORDER'                                           => 'Bestellen',
-    'SELECT_SHIPPING_METHOD'                                => 'Versandart',
+    'SHIPPING_METHOD'                                       => 'Versandart',
+    'SELECT_SHIPPING_METHOD'                                => 'Versandart auswählen',
 
     // E-Mails
     'DD_FOOTER_FOLLOW_US'                                    => 'Folgen Sie uns',
