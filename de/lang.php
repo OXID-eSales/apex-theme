@@ -169,10 +169,13 @@ $aLang = array(
     'PAYMENT_METHODS'                                       => 'Zahlungsarten',
     'TRUST_BADGES'                                          => 'Trust Badges',
     'SOCIAL_MEDIA'                                          => 'Soziale Medien',
-    'CATEGORY_IMAGE_ALT'                                 => 'Kategoriebild der Kategorie “%s”',
-    'MANUFACTURER_IMAGE_ALT'                            	=> 'Herstellerlogo des Herstellers “%s“',
-    'PRODUCT_SINGLE_IMAGE_ALT'                           => 'Artikelbild des Artikels “%s“',
-    'PRODUCT_GALLERY_IMAGE_ALT'                          => 'Artikelbild %d des Artikels “%s“',
+    'CATEGORY_IMAGE_ALT'                                    => 'Kategoriebild der Kategorie “%s”',
+    'MANUFACTURER_IMAGE_ALT'                                => 'Herstellerlogo des Herstellers “%s“',
+    'PRODUCT_SINGLE_IMAGE_ALT'                              => 'Artikelbild des Artikels “%s“',
+    'PRODUCT_GALLERY_IMAGE_ALT'                             => 'Artikelbild %d des Artikels “%s“',
+
+    //Minibasket
+    'CART_NUMBER_OF_ITEMS'                                  => 'Warenkorb - Anzahl der Artikel: %d'
 );
 
 /*

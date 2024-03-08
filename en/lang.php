@@ -169,10 +169,13 @@ $aLang = array(
     'PAYMENT_METHODS'                                       => 'Payment methods',
     'TRUST_BADGES'                                          => 'Trust badges',
     'SOCIAL_MEDIA'                                          => 'Social Media',
-    'CATEGORY_IMAGE_ALT'                                 => 'category image of the category “%s”',
-    'MANUFACTURER_IMAGE_ALT'                            	=> 'Manufacturer logo of the manufacturer “%s”',
-    'PRODUCT_SINGLE_IMAGE_ALT'                           => 'Product image of the product “%s”',
-    'PRODUCT_GALLERY_IMAGE_ALT'                          => 'Product image %d of the product “%s”',
+    'CATEGORY_IMAGE_ALT'                                    => 'category image of the category “%s”',
+    'MANUFACTURER_IMAGE_ALT'                                => 'Manufacturer logo of the manufacturer “%s”',
+    'PRODUCT_SINGLE_IMAGE_ALT'                              => 'Product image of the product “%s”',
+    'PRODUCT_GALLERY_IMAGE_ALT'                             => 'Product image %d of the product “%s”',
+
+    //Minibasket
+    'CART_NUMBER_OF_ITEMS'                                  => 'Shopping cart - number of items: %d'
 );
 
 /*
