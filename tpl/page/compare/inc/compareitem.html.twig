@@ -8,7 +8,7 @@
 
     <div class="card">
         <div class="position-relative text-center">
-            <img height="300" src="{% if size=='big' %}{{ product.getPictureUrl(1)|raw }}{% elseif size=='thinest' %}{{ product.getIconUrl()|raw }}{% else %}{{ product.getThumbnailUrl() }}{% endif %}" alt="{{ product.oxarticles__oxtitle.value|striptags }} {{ product.oxarticles__oxvarselect.value|default('') }}" class="product-img">
+            <img height="300" src="{% if size=='big' %}{{ product.getPictureUrl(1)|raw }}{% elseif size=='thinest' %}{{ product.getIconUrl()|raw }}{% else %}{{ product.getThumbnailUrl() }}{% endif %}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value|striptags ~ ' ' ~ product.oxarticles__oxvarselect.value|default('') }) }}" class="product-img">
             <a class="stretched-link" href="{{ _productLink|raw }}" {% if oView.noIndex() %}rel="nofollow"{% endif %}></a>
         </div>
     </div>

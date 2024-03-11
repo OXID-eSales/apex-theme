@@ -224,7 +224,8 @@
                                                                         <input id="am_{{ loop.index }}" type="number"
                                                                                class="form-control text-center"
                                                                                name="aproducts[{{ basketindex }}][am]"
-                                                                               value="{{ basketitem.getAmount() }}" min="0" {% if blAllowUnevenAmounts %} step="any"{% endif %}>
+                                                                               value="{{ basketitem.getAmount() }}" min="0" {% if blAllowUnevenAmounts %} step="any"{% endif %}
+                                                                               aria-label="{{ translate({ ident: "QUANTITY" }) }} - {{ basketitem.getTitle() }}">
                                                                         <button class="btn btn-outline-primary btn-more js-increaseAmount"
                                                                                 name="more" type="button">
                                                                             +
@@ -246,7 +247,7 @@
                                                                 <input type="hidden" name="aproducts[{{ basketindex }}][remove]"
                                                                        id="aproducts_{{ basketindex }}_remove" value="0">
                                                                 <button type="button" name="removeBtn" class="btn btn-remove js-remove"
-                                                                        aria-label="{{ translate({ ident: "REMOVE" }) }}"
+                                                                        aria-label="{{ translate({ ident: "REMOVE" }) }} - {{ basketitem.getTitle() }}"
                                                                         onclick="document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
                                                                     <svg aria-hidden="true">
                                                                         <use xlink:href="#trash"></use>

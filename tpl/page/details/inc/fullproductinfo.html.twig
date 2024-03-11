@@ -24,7 +24,7 @@
                         {% if oManufacturer and oManufacturer.getIconUrl() %}
                             {% set aImgDimensions = oManufacturer.getIconUrl()|getimagesize %}
                             <img loading="lazy" class="manufacturer-list-logo" src="{{ oManufacturer.getIconUrl()|raw }}"
-                                 alt="{{ oManufacturer.oxmanufacturers__oxtitle.value }}" width="{{ aImgDimensions.0 }}"
+                                 alt="{{ translate({ ident: "MANUFACTURER_IMAGE_ALT", args: oManufacturer.oxmanufacturers__oxtitle.value }) }}" width="{{ aImgDimensions.0 }}"
                                  height="{{ aImgDimensions.1 }}">
                         {% else %}
                             <div class="h5">{{ oManufacturer.oxmanufacturers__oxtitle.value }}</div>

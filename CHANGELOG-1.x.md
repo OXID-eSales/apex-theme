@@ -28,11 +28,15 @@
 
 ### Changed
 - Improved contrast in form elements' colour scheme
+- Improved accessibility attributes for images
+- Aria-labels to be more distinct
+- Minibasket aria-label now contains product count
 
 ### Fixed
 - No additional address info in order shipped email [#0006566](https://bugs.oxid-esales.com/view.php?id=6566)
 - Aria landmarks added to several templates [PR-49](https://github.com/OXID-eSales/apex-theme/pull/49)
 - Fixed heading tag level jumps
+- Fixed missing aria label translation for shipping method in checkout
 
 ## v1.2.1 - 2024-01-15
 
