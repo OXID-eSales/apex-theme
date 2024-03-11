@@ -1,6 +1,6 @@
-function addToNoticelistAjax(articleid) {
+function addToNoticelistAjax(articleid, am = 1) {
     var stoken = document.querySelector('input[name=stoken]').value;
-    var url = '/index.php?cl=details&aid=' + articleid + '&anid=' + articleid + '&fnc=tonoticelist&am=1&stoken=' + stoken;
+    var url = '/index.php?cl=details&aid=' + articleid + '&anid=' + articleid + '&fnc=tonoticelist&am=' + am + '&stoken=' + stoken;
 
     // perform ajax call
     var request = new XMLHttpRequest();

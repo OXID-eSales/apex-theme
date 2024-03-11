@@ -102,7 +102,8 @@ $aLang = array(
 
     // Checkout
     'DD_BASKET_BACK_TO_SHOP'                                => 'back to shop',
-    'MOVE_TO_NOTICELIST'                                    => 'Mode to noticelist',
+    'MOVE_TO_NOTICELIST'                                    => 'Move to noticelist',
+    'COPY_TO_NOTICELIST'                                    => 'Copy to noticelist',
     'STEPS_SEND'                                            => 'Address',
     'STEPS_PAY'                                             => 'Payment & delivery',
     'STEPS_ORDER'                                           => 'Order',

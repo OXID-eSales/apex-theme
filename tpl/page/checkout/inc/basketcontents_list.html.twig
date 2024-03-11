@@ -60,9 +60,26 @@
                                                         </li>
                                                         {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') != 'hide' %}
                                                         <li>
-                                                            <button type="button" name="removeBtn" class="dropdown-item{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %} js-remove{% endif %}" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
+                                                            {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' and oxcmp_user.getId() is not empty %}
+                                                            <button
+                                                                    type="button"
+                                                                    name="removeBtn"
+                                                                    class="dropdown-item{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %} js-remove{% endif %}"
+                                                                    onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}"
+                                                                    title="{{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}"
+                                                            >
                                                                 {{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}
                                                             </button>
+                                                            {% elseif oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'copy' %}
+                                                            <button
+                                                                    type="button"
+                                                                    class="btn btn-remove"
+                                                                    onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}');window.location.reload();"
+                                                                    title="{{ translate({ ident: "COPY_TO_NOTICELIST" }) }}"
+                                                            >
+                                                                {{ translate({ ident: "COPY_TO_NOTICELIST" }) }}
+                                                            </button>
+                                                            {% endif %}
                                                         </li>
                                                         {% endif %}
                                                     </ul>
@@ -254,18 +271,31 @@
                                                                     </svg>
                                                                 </button>
 
-                                                            {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') != 'hide' and oxcmp_user.getId() is not empty %}
-                                                                <button type="button"  name="removeBtn" class="btn btn-remove{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %} js-remove{% endif %}" onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}">
+                                                            {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') != 'hide' %}
+                                                                {% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' and oxcmp_user.getId() is not empty %}
+                                                                <button
+                                                                        type="button"
+                                                                        name="removeBtn"
+                                                                        class="btn btn-remove{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %} js-remove{% endif %}"
+                                                                        onclick="addToNoticelistAjax('{{ oArticle.getId() }}');{% if oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% endif %}"
+                                                                        title="{{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}"
+                                                                >
                                                                     <svg aria-hidden="true">
                                                                         <use xlink:href="#star"></use>
                                                                     </svg>
                                                                 </button>
-                                                            {%  else %}
-                                                                <button type="button"  class="btn btn-remove" onclick="window.location.href='{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}';">
+                                                                {% elseif oViewConf.getViewThemeParam('sBasketNoticeListButtonFunction') == 'copy' %}
+                                                                <button
+                                                                        type="button"
+                                                                        class="btn btn-remove"
+                                                                        onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}');window.location.reload();"
+                                                                        title="{{ translate({ ident: "COPY_TO_NOTICELIST" }) }}"
+                                                                >
                                                                     <svg aria-hidden="true">
                                                                         <use xlink:href="#star"></use>
                                                                     </svg>
                                                                 </button>
+                                                                {% endif %}
                                                             {% endif %}
                                                             </div>
                                                         {% endif %}
