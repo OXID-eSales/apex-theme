@@ -3,7 +3,7 @@
     {% block checkout_payment %}
     <div class="container-md py-5">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+            <div class="col-md-12 col-lg-10 col-xl-10 col-xxl-6">
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="card active mb-3">
@@ -139,12 +139,12 @@
                             {% endblock %}
                         </div>
                         <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=user" }) }}"
-                           class="btn btn-outline-primary">
+                           class="btn btn-outline-primary btn-back mb-3">
                             <svg>
                                 <use xlink:href="#left"></use>
                             </svg>
-                            {{ translate({ ident: "PREVIOUS_STEP" }) }}</a>
-
+                            {{ translate({ ident: "PREVIOUS_STEP" }) }}
+                        </a>
                     </div>
                     <div class="col-lg-5">
                         <div class="sticky-md-top">
