@@ -99,6 +99,7 @@ $aLang = array(
     // Checkout
     'DD_BASKET_BACK_TO_SHOP'                                => 'zurück zum Shop',
     'MOVE_TO_NOTICELIST'                                    => 'Auf die Merkliste',
+    'COPY_TO_NOTICELIST'                                    => 'Kopieren auf die Merkliste',
     'STEPS_SEND'                                            => 'Adresse',
     'STEPS_PAY'                                             => 'Zahlung & Versand',
     'STEPS_ORDER'                                           => 'Bestellen',
