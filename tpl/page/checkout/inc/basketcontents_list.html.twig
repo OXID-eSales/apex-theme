@@ -61,26 +61,29 @@
                                                         </li>
                                                         {% if basketNoticeListButtonFunction != 'hide' %}
                                                         <li>
-                                                            {% if basketNoticeListButtonFunction == 'move' and oxcmp_user.getId() is not empty %}
                                                             <button
                                                                     type="button"
-                                                                    name="removeBtn"
-                                                                    class="dropdown-item js-remove"
-                                                                    onclick="addToNoticelistAjax('{{ oArticle.getId() }}');document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';"
-                                                                    title="{{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}"
+                                                                    class="btn btn-remove dropdown-item{% if basketNoticeListButtonFunction == 'move' and oxcmp_user.getId() is not empty %} js-remove{% endif %}"
+                                                                    {% if (basketNoticeListButtonFunction == 'move' or basketNoticeListButtonFunction == 'copy') and oxcmp_user.getId() is not empty %}
+                                                                        {% if basketNoticeListButtonFunction == 'move' %}
+                                                                            name="removeBtn"
+                                                                        {% endif %}
+                                                                        onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}');{% if basketNoticeListButtonFunction == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% else %}window.location.reload();{% endif %}"
+                                                                    {%  else %}
+                                                                        onclick="window.location.href='{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}';"
+                                                                    {% endif %}
+                                                                    {% if basketNoticeListButtonFunction == 'copy' %}
+                                                                        title="{{ translate({ ident: "COPY_TO_NOTICELIST" }) }}"
+                                                                    {% else %}
+                                                                        title="{{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}"
+                                                                    {% endif %}
                                                             >
-                                                                {{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}
+                                                                {% if basketNoticeListButtonFunction == 'copy' %}
+                                                                    {{ translate({ ident: "COPY_TO_NOTICELIST" }) }}
+                                                                {% else %}
+                                                                    {{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}
+                                                                {% endif %}
                                                             </button>
-                                                            {% elseif basketNoticeListButtonFunction == 'copy' %}
-                                                            <button
-                                                                    type="button"
-                                                                    class="btn btn-remove"
-                                                                    onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}');window.location.reload();"
-                                                                    title="{{ translate({ ident: "COPY_TO_NOTICELIST" }) }}"
-                                                            >
-                                                                {{ translate({ ident: "COPY_TO_NOTICELIST" }) }}
-                                                            </button>
-                                                            {% endif %}
                                                         </li>
                                                         {% endif %}
                                                     </ul>
@@ -273,30 +276,27 @@
                                                                 </button>
 
                                                             {% if basketNoticeListButtonFunction != 'hide' %}
-                                                                {% if basketNoticeListButtonFunction == 'move' and oxcmp_user.getId() is not empty %}
                                                                 <button
-                                                                        type="button"
-                                                                        name="removeBtn"
-                                                                        class="btn btn-remove js-remove"
-                                                                        onclick="addToNoticelistAjax('{{ oArticle.getId() }}');document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';"
-                                                                        title="{{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}"
-                                                                >
-                                                                    <svg aria-hidden="true">
-                                                                        <use xlink:href="#star"></use>
-                                                                    </svg>
-                                                                </button>
-                                                                {% elseif basketNoticeListButtonFunction == 'copy' %}
-                                                                <button
-                                                                        type="button"
-                                                                        class="btn btn-remove"
-                                                                        onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}');window.location.reload();"
-                                                                        title="{{ translate({ ident: "COPY_TO_NOTICELIST" }) }}"
-                                                                >
-                                                                    <svg aria-hidden="true">
-                                                                        <use xlink:href="#star"></use>
-                                                                    </svg>
-                                                                </button>
+                                                                type="button"
+                                                                class="btn btn-remove{% if basketNoticeListButtonFunction == 'move' and oxcmp_user.getId() is not empty %} js-remove{% endif %}"
+                                                                {% if (basketNoticeListButtonFunction == 'move' or basketNoticeListButtonFunction == 'copy') and oxcmp_user.getId() is not empty %}
+                                                                    {% if basketNoticeListButtonFunction == 'move' %}
+                                                                    name="removeBtn"
+                                                                    {% endif %}
+                                                                    onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}');{% if basketNoticeListButtonFunction == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% else %}window.location.reload();{% endif %}"
+                                                                {%  else %}
+                                                                    onclick="window.location.href='{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}';"
                                                                 {% endif %}
+                                                                {% if basketNoticeListButtonFunction == 'copy' %}
+                                                                    title="{{ translate({ ident: "COPY_TO_NOTICELIST" }) }}"
+                                                                {% else %}
+                                                                    title="{{ translate({ ident: "MOVE_TO_NOTICELIST" }) }}"
+                                                                {% endif %}
+                                                                >
+                                                                    <svg aria-hidden="true">
+                                                                        <use xlink:href="#star"></use>
+                                                                    </svg>
+                                                                </button>
                                                             {% endif %}
                                                             </div>
                                                         {% endif %}
