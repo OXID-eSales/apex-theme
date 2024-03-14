@@ -25,6 +25,9 @@
         - `checkout_order_remark_desc`
     - in `search.html.twig` [PR-46](https://github.com/OXID-eSales/apex-theme/pull/46)
         - `search_list_productlist`
+    - in `page/checkout/inc/summary_sidebar.html.twig` [PR-51](https://github.com/OXID-eSales/apex-theme/pull/51)
+        - `checkout_basket_vouchers_form_inner`
+        - `checkout_basket_vouchers_errors`
 
 ### Changed
 - Improved contrast in form elements' colour scheme
