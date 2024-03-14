@@ -3,7 +3,7 @@
     {% if not oView.getLoginOption() and not oxcmp_user %}
         <div class="container-md py-5">
             <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+                <div class="col-md-12 col-lg-10 col-xl-10 col-xxl-6">
                     <div class="row">
                         <div class="col-lg-7">
                             {% block checkout_user_main %}
@@ -23,7 +23,7 @@
         {% block checkout_user %}
         <div class="container-md py-5">
             <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+                <div class="col-md-12 col-lg-10 col-xl-10 col-xxl-6">
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="card mt-n2 mb-3 active">
@@ -61,7 +61,8 @@
                                     {% endif %}
                                 {% endblock %}
                             </div>
-                            <a href="/?cl=basket" class="btn btn-outline-primary">
+                            <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=basket" }) }}"
+                               class="btn btn-outline-primary btn-back mb-3">
                                 <svg aria-hidden="true">
                                     <use xlink:href="#left"></use>
                                 </svg>

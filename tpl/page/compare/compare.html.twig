@@ -16,51 +16,47 @@
             {% endif %}
         </div>
 
-
         {% if oView.getCompareItemsCnt() >= 1 %}
             <div id="comparePlayground" class="compare">
-                <div id="compareLandscape" class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                            <tr class="compare-products">
-                                {% for iProdNr, product in articleList %}
-                                    {% if loop.first %}
-                                        <th class="attrib-title no-border" scope="row">&nbsp;</th>
+                <div id="compareLandscape" class="table-responsive compare-products">
+                    <div class="d-flex flex-row flex-nowrap table">
+                        <div class="col mt-auto">
+                            <div class="card">
+                                {% for prodNr, attrib in atributeList %}
+                                <div class="attrib-title fw-bold">{{ attrib.title }}:</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        {% for prodNr, product in articleList %}
+                        <div class="col compare-product">
+                            <div class="card card-block mx-2">
+                                <div class="move-controls">
+                                    {% if not product.hidePrev %}
+                                        <a id="compareLeft_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getActiveClassName(), params: "fnc=moveleft&amp;aid=" ~ product.oxarticles__oxnid.value ~ "&amp;pgNr=" ~ oView.getActPage() }) }}" class="btn btn-outline-primary movePrev">&laquo;</a>
                                     {% endif %}
 
-                                    <td class="item-wrapper text-center compare-item-wrapper">
-                                        <div class="move-controls">
-                                            {% if not product.hidePrev %}
-                                                <a id="compareLeft_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getActiveClassName(), params: "fnc=moveleft&amp;aid=" ~ product.oxarticles__oxnid.value ~ "&amp;pgNr=" ~ oView.getActPage() }) }}" class="btn btn-outline-primary movePrev">&laquo;</a>
-                                            {% endif %}
+                                   <span>{{ translate({ ident: "MOVE" }) }}</span>
 
-                                           <span>{{ translate({ ident: "MOVE" }) }}</span>
+                                    {% if not product.hideNext %}
+                                        <a id="compareRight_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getActiveClassName(), params: "fnc=moveright&amp;aid=" ~ product.oxarticles__oxnid.value ~ "&amp;pgNr=" ~ oView.getActPage() }) }}" class="btn btn-outline-primary moveNext">&raquo;</a>
+                                    {% endif %}
+                                </div>
+                                {% include "page/compare/inc/compareitem.html.twig" with { product: product, testid: loop.index } %}
 
-                                            {% if not product.hideNext %}
-                                                <a id="compareRight_{{ product.oxarticles__oxid.value }}" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getActiveClassName(), params: "fnc=moveright&amp;aid=" ~ product.oxarticles__oxnid.value ~ "&amp;pgNr=" ~ oView.getActPage() }) }}" class="btn btn-outline-primary moveNext">&raquo;</a>
-                                            {% endif %}
-                                        </div>
-                                        {% include "page/compare/inc/compareitem.html.twig" with {product: product, testid: loop.index} %}
-                                    </td>
+                                {% for attrib in atributeList %}
+                                    <div class="attrib-text">
+                                        {% if attrib.aProd[prodNr] and attrib.aProd[prodNr].value %}
+                                            {{ attrib.aProd[prodNr].value }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </div>
                                 {% endfor %}
-                            </tr>
-                            {% for iProdNr, oAttrib in atributeList %}
-                                <tr>
-                                    <th class="attrib-title" scope="row">{{ oAttrib.title }}:</th>
-
-                                    {% for iProdNr, product in articleList %}
-                                        <td class="attrib-text">
-                                            {% if oAttrib.aProd[iProdNr] and oAttrib.aProd[iProdNr].value %}
-                                                {{ oAttrib.aProd[iProdNr].value }}
-                                            {% else %}
-                                                -
-                                            {% endif %}
-                                        </td>
-                                    {% endfor %}
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         {% else %}
@@ -73,6 +69,5 @@
     </div>
     {{ insert_tracker({title: template_title}) }}
 {% endcapture %}
-
 
 {% include "layout/page.html.twig" %}

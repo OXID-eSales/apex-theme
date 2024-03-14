@@ -3,17 +3,13 @@
 .compare {
   background: #fff;
 
-  .table {
-    width: auto;
-  }
-
-  &-item-wrapper {
-    width: 280px;
-    padding: 15px;
-  }
-
   .attrib-title {
     min-width: 200px;
+  }
+
+  .attrib-title,
+  .attrib-text {
+    border-top: 1px solid var(--bs-border-color);
   }
 }
 
