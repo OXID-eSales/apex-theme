@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v1.4.0 - Unreleased
+## v1.3.0 - Unreleased
 
 ### Added
 - New blocks:
@@ -43,7 +43,7 @@
 - Fixed missing aria label translation for shipping method in checkout
 - Cleanup hardcoded text in product page [#0007516](https://bugs.oxid-esales.com/view.php?id=7516) [PR-52](https://github.com/OXID-eSales/apex-theme/pull/52)
 
-## v1.3.0 - 2024-03-15
+## v1.2.2 - 2024-03-15
 
 ### Added
 - `basketLoaded` event on basket item amount change ajax reload [PR-54](https://github.com/OXID-eSales/apex-theme/pull/54)
