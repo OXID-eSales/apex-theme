@@ -42,6 +42,7 @@
 - Move/copy of product to noticelist from basket
 - Fixed missing aria label translation for shipping method in checkout
 - Cleanup hardcoded text in product page [#0007516](https://bugs.oxid-esales.com/view.php?id=7516) [PR-52](https://github.com/OXID-eSales/apex-theme/pull/52)
+- Iframe has no accessible name in contact us page
 
 ## v1.2.2 - 2024-03-15
 
