@@ -12,7 +12,7 @@ $aTheme = [
     'title'       => 'APEX Theme',
     'description' => 'APEX - Bootstrap 5 TWIG Theme',
     'thumbnail'   => 'apex_green.svg',
-    'version'     => '1.2.1',
+    'version'     => '1.3.0',
     'author'      => 'Tino Favetto, c&c concepts and creations GmbH',
     'settings'    => [
 //DISPLAY
