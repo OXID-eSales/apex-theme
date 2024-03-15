@@ -103,6 +103,7 @@ const changeInputAmountAjax = function () {
         const nWrapper = newDoc.body;
         document.querySelector('body').replaceWith(nWrapper);
         addBasketAmountEventlisteners();
+        dispatchEvent(new Event("basketLoaded"));
     }).catch(function (error) {
         console.log(error);
     });
