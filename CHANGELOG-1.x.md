@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v1.3.0 - Unreleased
+## v1.3.0 - 2024-03-15
 
 ### Added
 - `basketLoaded` event on basket item amount change ajax reload [PR-54](https://github.com/OXID-eSales/apex-theme/pull/54)
