@@ -3,6 +3,7 @@
         {% set order = oView.getOrder() %}
         {% set basket = oView.getBasket() %}
         <div class="container-xxl py-5" id="thankyouPage">
+        <h1 class="visually-hidden">{{ translate({ ident:"ORDER_COMPLETED" }) }}</h1>
             <h2 class="h3 blockHead">{{ translate({ ident: "THANK_YOU" }) }}</h2>
 
             {% block checkout_thankyou_info %}

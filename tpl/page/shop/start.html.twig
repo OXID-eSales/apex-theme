@@ -1,5 +1,7 @@
 {% capture append = "oxidBlock_content" %}
 
+    <h1 class="visually-hidden">{{ translate({ ident:"PAGE_TITLE_START" }) }}</h1>
+
     {% include_content 'oxstartslot1' ignore missing  %}
 
     {% if oViewConf.getViewThemeParam('showCategoryTiles') %}

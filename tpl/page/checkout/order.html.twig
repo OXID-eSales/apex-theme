@@ -9,6 +9,7 @@
             {% include "message/error.html.twig" with {statusMessage: "ERROR_DELIVERY_ADDRESS_WAS_CHANGED_DURING_CHECKOUT"|translate} %}
         {% endif %}
     {% endblock %}
+    <h1 class="visually-hidden">{{ translate({ ident:"PAGE_TITLE_ORDER" }) }}</h1>
     <div class="container-md py-5">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-10 col-xxl-6">
