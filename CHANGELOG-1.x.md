@@ -1,33 +1,9 @@
 # Change Log for OXID APEX Theme
 
-## v1.3.0 - Unreleased
+## v1.3.0 - 2024-03-18
 
 ### Added
-- New blocks:
-    - in `order.html.twig` [PR-45](https://github.com/OXID-eSales/apex-theme/pull/45)
-        - `checkout_order_billing_address`
-        - `checkout_order_billing_address_form`
-        - `checkout_order_billing_address_button`
-        - `checkout_order_billing_address_desc`
-        - `checkout_order_shipping_address`
-        - `checkout_order_shipping_address_form`
-        - `checkout_order_shipping_address_button`
-        - `checkout_order_shipping_address_desc`
-        - `checkout_order_shipping_carrier_form`
-        - `checkout_order_shipping_carrier_button`
-        - `checkout_order_shipping_carrier_desc`
-        - `checkout_order_payment_method`
-        - `checkout_order_payment_method_form`
-        - `checkout_order_payment_method_button`
-        - `checkout_order_payment_method_desc`
-        - `checkout_order_remark_form`
-        - `checkout_order_remark_button`
-        - `checkout_order_remark_desc`
-    - in `search.html.twig` [PR-46](https://github.com/OXID-eSales/apex-theme/pull/46)
-        - `search_list_productlist`
-    - in `page/checkout/inc/summary_sidebar.html.twig` [PR-51](https://github.com/OXID-eSales/apex-theme/pull/51)
-        - `checkout_basket_vouchers_form_inner`
-        - `checkout_basket_vouchers_errors`
+- New blocks for `order.html.twig` [PR-45](https://github.com/OXID-eSales/apex-theme/pull/45), `search.html.twig` [PR-46](https://github.com/OXID-eSales/apex-theme/pull/46) and `summary_sidebar.html.twig` [PR-51](https://github.com/OXID-eSales/apex-theme/pull/51)
 
 ### Changed
 - Improved contrast in form elements' colour scheme
