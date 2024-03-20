@@ -117,7 +117,7 @@
 
         <div class="card-body{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} sale{% endif %}">
             <div class="d-flex justify-content-between">
-                {% block widget_product_listitem_infogrid_titlebox %}
+                {% block widget_product_listitem_grid_titlebox %}
                     <div class="h5 card-title">
                         {{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}
                     </div>
