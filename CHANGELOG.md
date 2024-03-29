@@ -1,5 +1,10 @@
 # Change Log for OXID APEX Theme
 
+## v2.0.0 - Unreleased
+
+### Changed
+- Block `widget_product_listitem_infogrid_titlebox` renamed to `widget_product_listitem_grid_titlebox` for consistancy in `listitem_grid.html.twig` [#0006429](https://bugs.oxid-esales.com/view.php?id=6429) [PR-56](https://github.com/OXID-eSales/apex-theme/pull/56)
+
 ## v1.3.0 - 2024-03-18
 
 ### Added
