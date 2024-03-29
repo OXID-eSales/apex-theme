@@ -37,7 +37,7 @@
                 {% if paymentmethod.oxpayments__oxlongdesc.value %}
 
                     <div class="alert alert-info desc">
-                        {{ paymentmethod.oxpayments__oxlongdesc.value }}
+                        {{ paymentmethod.oxpayments__oxlongdesc.value|raw }}
                     </div>
 
                 {% endif %}
