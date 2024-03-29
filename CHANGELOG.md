@@ -1,5 +1,10 @@
 # Change Log for OXID APEX Theme
 
+## v1.3.1 - Unreleased
+
+### Fixed
+- Allow html-code in payment-descriptions
+
 ## v1.3.0 - 2024-03-18
 
 ### Added

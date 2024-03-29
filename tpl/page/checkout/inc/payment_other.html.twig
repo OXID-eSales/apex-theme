@@ -20,7 +20,7 @@
                 {% block checkout_payment_longdesc %}
                     {% if paymentmethod.oxpayments__oxlongdesc.value|striptags|trim %}
                         <div class="desc">
-                            {{ paymentmethod.oxpayments__oxlongdesc.value }}
+                            {{ paymentmethod.oxpayments__oxlongdesc.value|raw }}
                         </div>
                     {% endif %}
                 {% endblock %}
