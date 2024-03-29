@@ -10,7 +10,7 @@
             {% if paymentmethod.oxpayments__oxlongdesc.value %}
                 <div class="payment-option-info{% if oView.getCheckedPaymentId() == paymentmethod.oxpayments__oxid.value %} activePayment{% endif %}">
                     <div class="desc">
-                        {{ paymentmethod.oxpayments__oxlongdesc.value }}
+                        {{ paymentmethod.oxpayments__oxlongdesc.value|raw }}
                     </div>
                 </div>
 
