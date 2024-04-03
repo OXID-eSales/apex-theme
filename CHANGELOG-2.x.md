@@ -8,3 +8,6 @@
 ### Fixed
 - Allow HTML code in payment descriptions
 - RDFa templates contain escaped HTML tags
+
+### Removed
+- PHP v8.0 support
