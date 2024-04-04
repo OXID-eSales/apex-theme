@@ -1,5 +1,6 @@
 {% for oNewPaymentMethod in oView.getNotMappedToRDFaPayments() %}
-    <div about="{{ sRDFaUrl|raw }}#{{ [oNewPaymentMethod.oxpayments__oxdesc.value, oNewPaymentMethod.oxpayments__oxid.value]|join('_')|striptags|trim }}" typeof="gr:PaymentMethod">
+    <div about="{{ sRDFaUrl|raw }}#{{ [oNewPaymentMethod.oxpayments__oxdesc.value, oNewPaymentMethod.oxpayments__oxid.value]|join('_')|striptags|trim }}"
+         typeof="schema:PaymentMethod">
         <div property="rdfs:label" content="{{ oNewPaymentMethod.oxpayments__oxdesc.value }}"></div>
         {% if oNewPaymentMethod.oxpayments__oxlongdesc.value != "" %}
             <div property="rdfs:comment" content="{{ oNewPaymentMethod.oxpayments__oxlongdesc.value|striptags|trim }}"></div>

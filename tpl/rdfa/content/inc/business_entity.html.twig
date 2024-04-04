@@ -1,6 +1,7 @@
 {% set aExtends = oView.getBusinessEntityExtends() %}
-<div typeof="gr:BusinessEntity" about="{{ sRDFaUrl|raw }}#companydata">
-    <div property="gr:legalName vcard:fn" content="{{ oxcmp_shop.oxshops__oxcompany.value }}" datatype="xsd:string"></div>
+<div typeof="schema:onlineStore" about="{{ sRDFaUrl|raw }}#companydata">
+
+    <div property="schema:legalName vcard:fn" content="{{ oxcmp_shop.oxshops__oxcompany.value }}" datatype="xsd:string"></div>
     <div rel="vcard:adr">
         <div typeof="vcard:Address">
             <div property="vcard:country-name" content="{{ oxcmp_shop.oxshops__oxcountry.value }}"></div>
@@ -9,6 +10,7 @@
             <div property="vcard:street-address" content="{{ oxcmp_shop.oxshops__oxstreet.value }}"></div>
         </div>
     </div>
+
 {% if aExtends.sRDFaLatitude and aExtends.sRDFaLongitude %}
     <div rel="vcard:geo">
         <div typeof="rdf:Description">
@@ -17,21 +19,28 @@
         </div>
     </div>
 {% endif %}
+
     <div property="vcard:tel" content="{{ oxcmp_shop.oxshops__oxtelefon.value }}"></div>
     <div property="vcard:fax" content="{{ oxcmp_shop.oxshops__oxtelefax.value }}"></div>
+
 {% if aExtends.sRDFaLogoUrl %}
     <div rel="vcard:logo foaf:logo" resource="{{ aExtends.sRDFaLogoUrl|raw }}"></div>
 {% endif %}
+
 {% if aExtends.sRDFaDUNS %}
-    <div property="gr:hasDUNS" content="{{ aExtends.sRDFaDUNS }}" datatype="xsd:string"></div>
+    <div property="schema:duns" content="{{ aExtends.sRDFaDUNS }}" datatype="xsd:string"></div>
 {% endif %}
+
 {% if aExtends.sRDFaISIC %}
-    <div property="gr:hasISICv4" content="{{ aExtends.sRDFaISIC }}" datatype="xsd:int"></div>
+    <div property="schema:isicV4" content="{{ aExtends.sRDFaISIC }}" datatype="xsd:int"></div>
 {% endif %}
+
 {% if aExtends.sRDFaGLN %}
-    <div property="gr:hasGlobalLocationNumber" content="{{ aExtends.sRDFaGLN }}" datatype="xsd:string"></div>
+    <div property="schema:globalLocationNumber" content="{{ aExtends.sRDFaGLN }}" datatype="xsd:string"></div>
 {% endif %}
+
 {% if aExtends.sRDFaNAICS %}
-    <div property="gr:hasNAICS" content="{{ aExtends.sRDFaNAICS }}" datatype="xsd:int"></div>
+    <div property="schema:naics" content="{{ aExtends.sRDFaNAICS }}" datatype="xsd:int"></div>
 {% endif %}
+
 </div>
