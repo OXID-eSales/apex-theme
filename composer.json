@@ -28,7 +28,7 @@
         "build/**/*",
         "grunt/**/*",
         ".gitignore",
-        "CHANGELOG-2.x.md",
+        "CHANGELOG-*",
         "composer.json",
         "Gruntfile.js",
         "package.json"

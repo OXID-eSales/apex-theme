@@ -1,5 +1,5 @@
 # APEX Theme
-APEX is the new Bootstrap 5 based OXID Theme for Twig template engine
+APEX is the Bootstrap 5 based OXID Theme for Twig template engine
 
 ## Installation
 
@@ -13,16 +13,26 @@ composer require oxid-esales/apex-theme
 
 ### Branches
 * `b-8.0.x` - compatible with OXID eShop b-8.0.x branch
+* `b-7.2.x` - compatible with OXID eShop b-7.2.x branch
 * `b-7.1.x` - compatible with OXID eShop b-7.1.x branch
-* `b-7.0.x` - compatible with OXID eShop b-7.0.x branch
 
 ### Versions
 * versions `1.x` - compatible with OXID eShop compilations 7.0.x and 7.1.x
 
 ## Activation
 
-Open OXID eShop administration panel and go to:`Extensions --> Themes`,
-select the APEX theme and click activation button.
+### Via OXID eShop administration panel:
+Select the APEX theme and click activation button in:
+
+`Extensions --> Themes`
+
+### Via console:
+
+Execute the following command:
+```bash
+bin/oe-console oe:theme:activate apex
+```
+
 
 ## Development
 
