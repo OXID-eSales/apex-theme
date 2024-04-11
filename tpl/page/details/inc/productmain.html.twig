@@ -212,12 +212,7 @@
                                     {{ translate({ ident: "AVAILABLE_ON" }) }} {{ oDetailsProduct.getDeliveryDate() }}
                                 {% endif %}
                             {% elseif oDetailsProduct.getStockStatus() == 1 %}
-                                <span class="text-warning">●</span>
-                                {% if oDetailsProduct.oxarticles__oxlowstocktext.value %}
-                                    {{ oDetailsProduct.oxarticles__oxlowstocktext.value }}
-                                {% elseif oViewConf.getStockLowDefaultMessage() %}
-                                    {{ translate({ ident: "LOW_STOCK" }) }}
-                                {% endif %}
+                                <span class="text-warning">●</span> {{ translate({ ident: "LOW_STOCK" }) }}
                             {% elseif oDetailsProduct.getStockStatus() == 0 %}
                                 <span class="text-success">●</span>
                                 {% if oDetailsProduct.oxarticles__oxstocktext.value %}
