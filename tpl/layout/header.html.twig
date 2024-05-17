@@ -159,5 +159,5 @@
     {% endif %}
 {% endblock %}
 
-{{ insert_new_basket_item({tpl: "widget/minibasket/newbasketitemmsg.html.twig", type: "message"}) }}
+{{ insert_new_basket_item({tpl: "widget/minibasket/newbasketitemmsg.html.twig", type: "message"})|raw }}
 {% include_dynamic "widget/minibasket/minibasketmodal.html.twig" %}
