@@ -40,7 +40,7 @@
                 <div class="container-{% if oView.showSearch() %}xxl{% else %}md{% endif %}">
                     {% if not oView.showSearch() %}
                     <div class="row justify-content-center">
-                        <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+                        <div class="col-md-12 col-lg-10 col-xl-10 col-xxl-6">
                             {% endif %}
 
                             <div class="header-container">
@@ -151,7 +151,7 @@
     {% if oView.showSearch() and oView.getIsOrderStep() and oView.getClassKey() != "basket"%}
         <div class="container-xxl">
             <div class="row justify-content-center mt-5">
-                <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+                <div class="col-md-12 col-lg-10 col-xl-10 col-xxl-6">
                     {% include "page/checkout/inc/steps.html.twig" with {active: active_step} %}
                 </div>
             </div>

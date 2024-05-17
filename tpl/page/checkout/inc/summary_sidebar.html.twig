@@ -1,7 +1,7 @@
 
     {% block checkout_basketcontents_summary %}
         <div class="card mb-3">
-            <h4 class="card-header card-title">{{ translate({ ident: "SUMMARY" }) }}</h4>
+            <h2 class="h4 card-header card-title">{{ translate({ ident: "SUMMARY" }) }}</h2>
 
             <div class="list-group mb-3 list-group-flush border-0">
                 {% block checkout_basketcontents_summary_table_inner %}
@@ -214,7 +214,7 @@
                 {% endblock %}
 
                 {% block checkout_basketcontents_grandtotal %}
-                    <div class="list-group-item d-flex justify-content-between align-items-center mb-0 mt-2 h4">
+                    <div class="list-group-item d-flex justify-content-between align-items-center mb-0 mt-2 h5">
                         {{ translate({ ident: "GRAND_TOTAL" }) }}
                         <span>{{ format_price(oxcmp_basket.getPrice(), { currency: currency }) }}</span>
                     </div>
@@ -232,49 +232,50 @@
     {% if oViewConf.getShowVouchers() and oViewConf.getActiveClassName() == 'basket' %}
         {% block checkout_basket_vouchers %}
             <div class="card mb-3">
-                <h4 class="card-header card-title collapsed card-collapse" data-bs-toggle="collapse"
+                <h2 class="h4 card-header card-title collapsed card-collapse" data-bs-toggle="collapse"
                     data-bs-target="#voucherCollapse" aria-expanded="false" aria-controls="voucherCollapse">
                     {{ translate({ ident: "COUPON" }) }}
 
                     <svg aria-hidden="true">
                         <use xlink:href="#down"></use>
                     </svg>
-                </h4>
+                </h2>
                 <div class="collapse" id="voucherCollapse">
                     <div class="card-body">
                         <form name="voucher" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="needs-validation" novalidate>
-                            {{ oViewConf.getHiddenSid()|raw }}
-                            <input type="hidden" name="cl" value="basket">
-                            <input type="hidden" name="fnc" value="addVoucher">
-                            <input type="hidden" name="CustomError" value="basket">
+                            {% block checkout_basket_vouchers_form_inner %}
+                                {{ oViewConf.getHiddenSid()|raw }}
+                                <input type="hidden" name="cl" value="basket">
+                                <input type="hidden" name="fnc" value="addVoucher">
+                                <input type="hidden" name="CustomError" value="basket">
 
-                            <label class="visually-hidden"
-                                   for="input_voucherNr">{{ translate({ ident: "ENTER_COUPON_NUMBER" }) }}</label>
-                            <div class="input-group">
-                                <div class="voucher-input">
-                                <input type="text" name="voucherNr" size="30" class="form-control" id="input_voucherNr"
-                                       required>
+                                <label class="visually-hidden" for="input_voucherNr">{{ translate({ ident: "ENTER_COUPON_NUMBER" }) }}</label>
+                                <div class="input-group">
+                                    <div class="voucher-input">
+                                        <input type="text" name="voucherNr" size="30" class="form-control" id="input_voucherNr" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary voucher-btn" title="{{ translate({ ident: "REDEEM_COUPON" }) }}">
+                                        <svg aria-hidden="true">
+                                            <use xlink:href="#right"></use>
+                                        </svg>
+                                    </button>
                                 </div>
-                                <button type="submit" class="btn btn-primary voucher-btn"
-                                        title="{{ translate({ ident: "REDEEM_COUPON" }) }}">
-                                    <svg aria-hidden="true">
-                                        <use xlink:href="#right"></use>
-                                    </svg>
-                                </button>
-                            </div>
+                            {% endblock %}
                         </form>
                     </div>
                 </div>
             </div>
-            {% for key, oEr in Errors.basket %}
-                {% if oEr.getErrorClassType() == 'oxVoucherException' %}
-                    <div class="alert alert-danger p-4">
-                        {{ translate({ ident: "COUPON_NOT_ACCEPTED", args: oEr.getValue('voucherNr') }) }}
-                        <strong>{{ translate({ ident: "REASON" }) }}</strong>
-                        {{ oEr.getOxMessage() }}
-                    </div>
-                {% endif %}
-            {% endfor %}
+            {% block checkout_basket_vouchers_errors %}
+                {% for key, oEr in Errors.basket %}
+                    {% if oEr.getErrorClassType() == 'oxVoucherException' %}
+                        <div class="alert alert-danger p-4">
+                            {{ translate({ ident: "COUPON_NOT_ACCEPTED", args: oEr.getValue('voucherNr') }) }}
+                            <strong>{{ translate({ ident: "REASON" }) }}</strong>
+                            {{ oEr.getOxMessage() }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endblock %}
         {% endblock %}
     {% endif %}
     {% block basket_btn_next_bottom %}

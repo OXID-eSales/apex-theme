@@ -9,6 +9,10 @@
   color: $ox-footer-color;
   padding: 20px 0;
 
+  a {
+    color: $ox-footer-link-color;
+  }
+
   @include media-breakpoint-up(md) {
     padding: 75px 0;
   }

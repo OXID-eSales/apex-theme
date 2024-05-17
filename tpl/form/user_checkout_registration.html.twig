@@ -20,14 +20,14 @@
             {% endblock %}
 
             <div id="addressForm">
-                <h3 class="h5">{{ translate({ ident: "ACCOUNT_INFORMATION" }) }}</h3>
+                <h2 class="h5">{{ translate({ ident: "ACCOUNT_INFORMATION" }) }}</h2>
                 {% include "form/fieldset/user_account.html.twig" %}
 
-                <h3 class="h5">{{ translate({ ident: "BILLING_ADDRESS" }) }}</h3>
+                <h2 class="h5">{{ translate({ ident: "BILLING_ADDRESS" }) }}</h2>
                 {% include "form/fieldset/user_billing.html.twig" with {noFormSubmit: true, blSubscribeNews: false, blOrderRemark: true} %}
             </div>
 
-            <h3 class="h5">{{ translate({ ident: "SHIPPING_ADDRESS" }) }}</h3>
+            <h2 class="h5">{{ translate({ ident: "SHIPPING_ADDRESS" }) }}</h2>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="blshowshipaddress" id="showShipAddress"{% if not oView.showShipAddress() %} checked{% endif %} value="0">
                 <label class="form-check-label" for="showShipAddress">

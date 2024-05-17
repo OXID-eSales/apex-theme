@@ -2,9 +2,9 @@
 {% capture append = "oxidBlock_content" %}
 <div class="container-xxl py-5">
     <div class="row">
-        <h3 class="page-header col pl-0 ml-3">
+        <h1 class="h3 page-header col pl-0 ml-3">
             {{ translate({ ident: "HELLO" }) }} {{ oxcmp_user.oxuser__oxfname.value }}
-        </h3>
+        </h1>
         <div class="col-12 col-sm-3 button-col">
             {% include "page/account/inc/account_menu.html.twig" with {active_link: "dashboard"} %}
         </div>
@@ -23,7 +23,7 @@
 
         <div class="col mb-3">
             <div class="card card-lg h-100">
-                <h4 class="card-header card-title">{{ translate({ ident: "ORDER_HISTORY" }) }}</h4>
+                <h2 class="h4 card-header card-title">{{ translate({ ident: "ORDER_HISTORY" }) }}</h2>
                 <div class="card-body">
                     <div class="card-text mb-3">
                         {{ translate({ ident: "ORDERS" }) }} {{ oView.getOrderCnt() }}
@@ -38,9 +38,9 @@
         {% if oView.isEnabledDownloadableFiles() %}
             <div class="col mb-3">
                 <div class="card card-lg h-100">
-                    <h4 class="card-header card-title">
+                    <h2 class="h4 card-header card-title">
                         {{ translate({ ident: "MY_DOWNLOADS" }) }}
-                    </h4>
+                    </h2>
                     <div class="card-body">
                         <div class="card-text mb-3">
                             {{ translate({ ident: "MY_DOWNLOADS_DESC" }) }}
@@ -55,9 +55,9 @@
 
         <div class="col mb-3">
             <div class="card card-lg h-100">
-                <h4 class="card-header card-title">
+                <h2 class="h4 card-header card-title">
                     {{ translate({ ident: "MY_WISH_LIST" }) }}
-                </h4>
+                </h2>
                 <div class="card-body">
                     <div class="card-text mb-3">
                         {{ translate({ ident: "PRODUCT" }) }} {% if oxcmp_user %}{{ oxcmp_user.getNoticeListArtCnt() }}{% else %}0{% endif %}
@@ -71,9 +71,9 @@
         {% if oViewConf.getShowWishlist() %}
             <div class="col mb-3">
                 <div class="card card-lg h-100">
-                    <h4 class="card-header card-title">
+                    <h2 class="h4 card-header card-title">
                         {{ translate({ ident: "MY_GIFT_REGISTRY" }) }}
-                    </h4>
+                    </h2>
                     <div class="card-body">
                         <div class="card-text mb-3">
                             {{ translate({ ident: "PRODUCT" }) }} {% if oxcmp_user %}{{ oxcmp_user.getWishListArtCnt() }}{% else %}0{% endif %}
@@ -88,9 +88,9 @@
         {% if oViewConf.getShowCompareList() %}
             <div class="col mb-3">
                 <div class="card card-lg h-100">
-                    <h4 class="card-header card-title">
+                    <h2 class="h4 card-header card-title">
                         {{ translate({ ident: "MY_PRODUCT_COMPARISON" }) }}
-                    </h4>
+                    </h2>
                     <div class="card-body">
                         <div class="card-text mb-3">
                             {{ translate({ ident: "PRODUCT" }) }} {% if oView.getCompareItemsCnt() %}{{ oView.getCompareItemsCnt() }}{% else %}0{% endif %}
@@ -106,9 +106,9 @@
         {% if oView.isUserAllowedToManageOwnReviews() %}
             <div class="col mb-3">
                 <div class="card card-lg h-100">
-                    <h4 class="card-header card-title">
+                    <h2 class="h4 card-header card-title">
                         {{ translate({ ident: "MY_REVIEWS" }) }}
-                    </h4>
+                    </h2>
                     <div class="card-body">
                         <div class="card-text mb-3">
                             {{ translate({ ident: "MY_REVIEWS" }) }} {% if oView.getReviewAndRatingItemsCount() %}{{ oView.getReviewAndRatingItemsCount() }}{% else %}0{% endif %}
@@ -141,7 +141,7 @@
         </div>
         {% endblock %}
         <div class="col-6 text-end">
-            <a href="{{ oViewConf.getLogoutLink()|raw }}" class="btn btn-outline-primary" role="getLogoutLink">
+            <a href="{{ oViewConf.getLogoutLink()|raw }}" class="btn btn-outline-primary">
                 {{ translate({ ident: "LOGOUT" }) }}
             </a>
         </div>

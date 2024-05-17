@@ -63,7 +63,7 @@
                                 <div class="thumbnails">
                                     {% for iPicNr, oArtIcon in oView.getIcons() %}
                                         <label for="image{{ iPicNr}}" class="thumb">
-                                            <img loading="lazy" src="{{ oPictureProduct.getIconUrl(iPicNr)|raw }}" alt="{{ translate({ ident: "IMAGE" }) }}{{ iPicNr}}" width="112" height="112">
+                                            <img loading="lazy" src="{{ oPictureProduct.getIconUrl(iPicNr)|raw }}" alt=" {{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}" width="112" height="112">
                                         </label>
                                     {% endfor %}
                                 </div>
@@ -75,7 +75,7 @@
                                     {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
 
                                     <figure>
-                                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt="{{ oPictureProduct.oxarticles__oxtitle.value|striptags }} {{ oPictureProduct.oxarticles__oxvarselect.value|striptags }}"/>
+                                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt=" {{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}"/>
                                     </figure>
                                 {% endfor %}
                             </div>
@@ -212,7 +212,12 @@
                                     {{ translate({ ident: "AVAILABLE_ON" }) }} {{ oDetailsProduct.getDeliveryDate() }}
                                 {% endif %}
                             {% elseif oDetailsProduct.getStockStatus() == 1 %}
-                                <span class="text-warning">●</span> {{ translate({ ident: "LOW_STOCK" }) }}
+                                <span class="text-warning">●</span>
+                                {% if oDetailsProduct.oxarticles__oxlowstocktext.value %}
+                                    {{ oDetailsProduct.oxarticles__oxlowstocktext.value }}
+                                {% elseif oViewConf.getStockLowDefaultMessage() %}
+                                    {{ translate({ ident: "LOW_STOCK" }) }}
+                                {% endif %}
                             {% elseif oDetailsProduct.getStockStatus() == 0 %}
                                 <span class="text-success">●</span>
                                 {% if oDetailsProduct.oxarticles__oxstocktext.value %}
@@ -301,7 +306,7 @@
                     {% hasrights { ident: "TOBASKET" } %}
                         {% if not oDetailsProduct.isNotBuyable() %}
                             <div class="tobasket-function input-group input-group-lg mb-3">
-                                <input type="text" class="form-control" id="amountToBasket" name="am" value="1">
+                                <input type="text" class="form-control" id="amountToBasket" name="am" value="1" aria-label="{{ translate({ ident: "QUANTITY" }) }}">
                                 <button id="toBasket" type="submit"{% if not blCanBuy %} disabled{% endif %} class="btn btn-highlight">
                                     {{ translate({ ident: "TO_CART" }) }}
                                 </button>

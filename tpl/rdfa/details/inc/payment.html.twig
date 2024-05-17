@@ -1,11 +1,12 @@
 {% set aPaymentMethods = oView.getRDFaPaymentMethods() %}
 {% for oPaymentMethod in aPaymentMethods %}
     {% if oPaymentMethod.oxpayments__oxobjectid.value %}
-        <div rel="gr:acceptedPaymentMethods" resource="http://purl.org/goodrelations/v1#{{ oPaymentMethod.oxpayments__oxobjectid.value }}"></div>
+        <div rel="schema:acceptedPaymentMethod" resource="http://purl.org/goodrelations/v1#{{ oPaymentMethod.oxpayments__oxobjectid.value }}"></div>
     {% else %}
         {% set sContentName = oView.getRDFaPaymentChargeSpecLoc() %}
         {% ifcontent ident sContentName set oCont %}
-        <div rel="gr:acceptedPaymentMethods" resource="{{ oCont.getLink()|raw }}#{{ [oPaymentMethod.oxpayments__oxdesc.value, oPaymentMethod.oxpayments__oxid.value]|join('_')|striptags|trim }}">
+        <div rel="schema:acceptedPaymentMethod"
+             resource="{{ oCont.getLink()|raw }}#{{ [oPaymentMethod.oxpayments__oxdesc.value, oPaymentMethod.oxpayments__oxid.value]|join('_')|striptags|trim }}">
         </div>
         {% endifcontent %}
     {% endif %}

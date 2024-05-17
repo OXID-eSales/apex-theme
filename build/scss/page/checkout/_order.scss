@@ -49,6 +49,18 @@
   .list-group {
     padding: 0 10px;
   }
+
+  @include media-breakpoint-down(lg) {
+    .btn-back {
+      width: 100%;
+    }
+  }
+
+  .sticky-md-top {
+    span {
+      white-space: nowrap;
+    }
+  }
 }
 
 h4.card-header {
@@ -104,7 +116,7 @@ h4.card-header {
 
       .num {
         border-color: #6A7281;
-        color: #6A7281;
+        color: #383838;
       }
     }
 
@@ -112,7 +124,7 @@ h4.card-header {
       .num {
         border-color: #6EB156;
         background: #6EB156;
-        color: #fff;
+        color: #383838;
       }
     }
 

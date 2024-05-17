@@ -3,7 +3,8 @@
         {% set order = oView.getOrder() %}
         {% set basket = oView.getBasket() %}
         <div class="container-xxl py-5" id="thankyouPage">
-            <h3 class="blockHead">{{ translate({ ident: "THANK_YOU" }) }}</h3>
+        <h1 class="visually-hidden">{{ translate({ ident:"ORDER_COMPLETED" }) }}</h1>
+            <h2 class="h3 blockHead">{{ translate({ ident: "THANK_YOU" }) }}</h2>
 
             {% block checkout_thankyou_info %}
                 {{ translate({ ident: "THANK_YOU_FOR_ORDER" }) }} {{ oxcmp_shop.oxshops__oxname.value }}. <br>
@@ -31,7 +32,7 @@
 
             {% if oView.getAlsoBoughtTheseProducts() %}
                 <br><br>
-                <h1>{{ translate({ ident: "WHO_BOUGHT_ALSO_BOUGHT" }) }}</h1>
+                <h2 class="h1">{{ translate({ ident: "WHO_BOUGHT_ALSO_BOUGHT" }) }}</h2>
                 {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "alsoBoughtThankyou", products: oView.getAlsoBoughtTheseProducts(), blDisableToCart: true} %}
             {% endif %}
         </div>

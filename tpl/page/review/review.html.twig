@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="reviews">
-                        <h4>{{ translate({ ident: "WRITE_PRODUCT_REVIEW" }) }}</h4>
+                        <h2 class="h4">{{ translate({ ident: "WRITE_PRODUCT_REVIEW" }) }}</h2>
                         {% include "widget/reviews/reviews.html.twig" with {sReviewUserHash: oView.getReviewUserHash(), oDetailsProduct: oView.getProduct(), oReviewUser: oView.getReviewUser()} %}
                     </div>
                 </div>

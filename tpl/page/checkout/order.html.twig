@@ -9,9 +9,10 @@
             {% include "message/error.html.twig" with {statusMessage: "ERROR_DELIVERY_ADDRESS_WAS_CHANGED_DURING_CHECKOUT"|translate} %}
         {% endif %}
     {% endblock %}
+    <h1 class="visually-hidden">{{ translate({ ident:"PAGE_TITLE_ORDER" }) }}</h1>
     <div class="container-md py-5">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+            <div class="col-md-12 col-lg-10 col-xl-10 col-xxl-6">
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="card mb-3">
@@ -29,7 +30,7 @@
                                         {% block checkout_order_address %}
                                             <div id="orderAddress">
                                                 {% block checkout_order_billing_address %}
-                                                    <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
+                                                    <h2 class="h4 card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                         {{ translate({ ident: "BILLING_ADDRESS" }) }}
                                                         {% block checkout_order_billing_address_form %}
                                                             <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
@@ -46,7 +47,7 @@
                                                                 {% endblock %}
                                                             </form>
                                                         {% endblock %}
-                                                    </h4>
+                                                    </h2>
                                                     <div class="card-body">
                                                         {% block checkout_order_billing_address_desc %}
                                                             {% include "widget/address/billing_address.html.twig" %}
@@ -54,7 +55,7 @@
                                                     </div>
                                                 {% endblock %}
                                                 {% block checkout_order_shipping_address %}
-                                                    <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
+                                                    <h2 class="h4 card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                         {{ translate({ ident: "SHIPPING_ADDRESS" }) }}
                                                         {% block checkout_order_shipping_address_form %}
                                                             <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
@@ -71,7 +72,7 @@
                                                                 {% endblock %}
                                                             </form>
                                                         {% endblock %}
-                                                    </h4>
+                                                    </h2>
                                                     <div class="card-body">
                                                         {% block checkout_order_shipping_address_desc %}
                                                             {% set oDelAdress = oView.getDelAddress() %}
@@ -88,7 +89,7 @@
 
                                         {% block shippingAndPayment %}
                                             {% block checkout_order_shipping_carrier %}
-                                                <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
+                                                <h2 class="h4 card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                     {{ translate({ ident: "SHIPPING_CARRIER" }) }}
                                                     {% block checkout_order_shipping_carrier_form %}
                                                         <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post"
@@ -106,7 +107,7 @@
                                                             {% endblock %}
                                                         </form>
                                                     {% endblock %}
-                                                </h4>
+                                                </h2>
                                                 <div class="card-body">
                                                     {% block checkout_order_shipping_carrier_desc %}
                                                         {% set oShipSet = oView.getShipSet() %}
@@ -115,7 +116,7 @@
                                                 </div>
                                             {% endblock %}
                                             {% block checkout_order_payment_method %}
-                                                <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
+                                                <h2 class="h4 card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                     {{ translate({ ident: "PAYMENT_METHOD" }) }}
                                                     {% block checkout_order_payment_method_form %}
                                                         <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post"
@@ -133,7 +134,7 @@
                                                             {% endblock %}
                                                         </form>
                                                     {% endblock %}
-                                                </h4>
+                                                </h2>
                                                 <div class="card-body">
                                                     {% block checkout_order_payment_method_desc %}
                                                         {% set payment = oView.getPayment() %}
@@ -145,7 +146,7 @@
 
                                         {% block checkout_order_remark %}
                                             {% if oView.getOrderRemark() %}
-                                                <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
+                                                <h2 class="h4 card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                     {{ translate({ ident: "WHAT_I_WANTED_TO_SAY" }) }}
                                                     {% block checkout_order_remark_form %}
                                                         <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
@@ -162,7 +163,7 @@
                                                             {% endblock %}
                                                         </form>
                                                     {% endblock %}
-                                                </h4>
+                                                </h2>
                                                 <div class="card-body">
                                                     {% block checkout_order_remark_desc %}
                                                         {{ oView.getOrderRemark()|nl2br }}
@@ -176,7 +177,7 @@
                                                 {{ oViewConf.getHiddenSid()|raw }}
                                                 <input type="hidden" name="cl" value="basket">
                                                 <input type="hidden" name="fnc" value="">
-                                                <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
+                                                <h2 class="h4 card-header card-title card-header-edit d-flex justify-content-between align-items-center">
                                                     {{ translate({ ident: "CART" }) }}
                                                     <button type="submit" class="btn"
                                                             title="{{ translate({ ident: "EDIT" }) }}">
@@ -184,7 +185,7 @@
                                                             <use xlink:href="#pencil"></use>
                                                         </svg>
                                                     </button>
-                                                </h4>
+                                                </h2>
                                                 {% block order_basket %}
                                                     <div class="card-body">
                                                         {% include "page/checkout/inc/basketcontents.html.twig" with {editable: false} %}

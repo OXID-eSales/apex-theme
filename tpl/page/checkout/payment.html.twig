@@ -1,9 +1,10 @@
 {% capture append = "oxidBlock_content" %}
 
     {% block checkout_payment %}
+    <h1 class="visually-hidden">{{ translate({ ident:"PAGE_TITLE_PAYMENT" }) }}</h1>
     <div class="container-md py-5">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-8 col-xl-8 col-xxl-6">
+            <div class="col-md-12 col-lg-10 col-xl-10 col-xxl-6">
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="card active mb-3">
@@ -47,7 +48,7 @@
                                         <input type="hidden" name="fnc" value="validatepayment">
 
                                         {% if oView.getPaymentList() %}
-                                            <h4 class="card-header card-title">{{ translate({ ident: "PAYMENT_METHOD" }) }}</h4>
+                                            <h2 class="h4 card-header card-title">{{ translate({ ident: "PAYMENT_METHOD" }) }}</h2>
                                             <div class="card-body">
                                                 {% set inptcounter = "-1" %}
                                                 {% for sPaymentID, paymentmethod in oView.getPaymentList() %}
@@ -75,9 +76,9 @@
                                             </div>
                                         {% elseif oView.getEmptyPayment() %}
                                             {% block checkout_payment_nopaymentsfound %}
-                                                <h4 id="paymentHeader" class="card-header card-title">
+                                                <h2 id="paymentHeader" class="card-header card-title">
                                                     {{ translate({ ident: "PAYMENT_INFORMATION" }) }}
-                                                </h4>
+                                                </h2>
                                                 <div class="card-body">
                                                     {% include_content "oxnopaymentmethod" ignore missing %}
                                                     <input type="hidden" name="paymentid" value="oxempty">
@@ -99,13 +100,13 @@
                                             <input type="hidden" name="fnc" value="changeshipping">
 
 
-                                            <h4 class="card-header card-title">
-                                                {{ translate({ ident: "SELECT_SHIPPING_METHOD" }) }}
-                                            </h4>
+                                            <h2 class="card-header card-title h4">
+                                                {{ translate({ ident: "SELECTED_SHIPPING_CARRIER" }) }}
+                                            </h2>
                                             <div class="card-body">
                                                 {% block act_shipping %}
                                                     <div class="mb-3">
-                                                        <select class="form-select" name="sShipSet"
+                                                        <select aria-label="{{ translate({ ident: "SELECT_SHIPPING_METHOD" }) }}" class="form-select" name="sShipSet"
                                                                 onchange="this.form.submit();">
                                                             {% for sShipID, oShippingSet in oView.getAllSets() %}
                                                                 <option value="{{ sShipID }}"
@@ -139,12 +140,12 @@
                             {% endblock %}
                         </div>
                         <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=user" }) }}"
-                           class="btn btn-outline-primary">
+                           class="btn btn-outline-primary btn-back mb-3">
                             <svg>
                                 <use xlink:href="#left"></use>
                             </svg>
-                            {{ translate({ ident: "PREVIOUS_STEP" }) }}</a>
-
+                            {{ translate({ ident: "PREVIOUS_STEP" }) }}
+                        </a>
                     </div>
                     <div class="col-lg-5">
                         <div class="sticky-md-top">

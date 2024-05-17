@@ -1,5 +1,5 @@
 {% block layout_page_header_widget_minibasket_button %}
-    <button type="button" class="btn btn-minibasket" data-bs-toggle="modal" data-bs-target="#basketModal" aria-label="{{ translate({ ident: "CART" }) }}">
+    <button type="button" class="btn btn-minibasket" data-bs-toggle="modal" data-bs-target="#basketModal" aria-label="{{ translate({ ident: 'CART_NUMBER_OF_ITEMS', args: oxcmp_basket.getItemsCount() }) }}">
         {% block dd_layout_page_header_icon_menu_minibasket_button %}
             <svg>
                 <use xlink:href="#bag"></use>

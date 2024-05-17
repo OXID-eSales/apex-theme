@@ -20,14 +20,14 @@
             {% endblock %}
 
             <div id="addressForm">
-                <h3 class="h5">{{ translate({ ident: "NOTREGISTERED_ACCOUNTINFO" }) }}</h3>
+                <h2 class="h5">{{ translate({ ident: "NOTREGISTERED_ACCOUNTINFO" }) }}</h2>
                 {% include "form/fieldset/user_noaccount.html.twig" %}
 
-                <h3 class="h5">{{ translate({ ident: "BILLING_ADDRESS" }) }}</h3>
+                <h2 class="h5">{{ translate({ ident: "BILLING_ADDRESS" }) }}</h2>
                 {% include "form/fieldset/user_billing.html.twig" with {noFormSubmit: true, blOrderRemark: true} %}
             </div>
 
-            <h3 class="h5">{{ translate({ ident: "SHIPPING_ADDRESS" }) }}</h3>
+            <h2 class="h5">{{ translate({ ident: "SHIPPING_ADDRESS" }) }}</h2>
 
             <div class="mb-3">
                 <div class="form-check">
