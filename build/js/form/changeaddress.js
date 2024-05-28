@@ -118,6 +118,9 @@ if (setToThisShippingAddress) {
                inputItem.disabled = true;
             });
 
+            // set radio button to checked (fix for firefox to trigger change)
+            setToThisShippingAddressItem.querySelector('input[type="radio"]').checked = true;
+
             // reset oxaddressid to selected element
             setToThisShippingAddressItem.closest('form').querySelector('input[name="fnc"]').value = "";
             setToThisShippingAddressItem.closest('form').submit();
