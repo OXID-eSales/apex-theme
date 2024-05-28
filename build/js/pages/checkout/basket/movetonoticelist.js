@@ -1,4 +1,4 @@
-function addToNoticelistAjax(articleid, am = 1) {
+function addToNoticelistAjax(articleid, am = 1, callback) {
     var stoken = document.querySelector('input[name=stoken]').value;
     var url = '/index.php?cl=details&aid=' + articleid + '&anid=' + articleid + '&fnc=tonoticelist&am=' + am + '&stoken=' + stoken;
 
@@ -9,6 +9,12 @@ function addToNoticelistAjax(articleid, am = 1) {
     request.onerror = function () {
         // There was a connection error of some sort
         console.log('error');
+    };
+
+    request.onreadystatechange = function () {
+        if (typeof callback === 'function' && am.readyState === 4) {
+            callback();
+        }
     };
 
     request.send();
