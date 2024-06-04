@@ -12,7 +12,7 @@
                 {% block checkout_basketcontents_basketitem %}
                     {% set basketproduct = basketitemlist[basketindex] %}
                     {% set oArticle = basketitem.getArticle() %}
-                    {% set oAttributes = oArticle.getAttributes() %}
+                    {% set oAttributes = oArticle.getAttributesDisplayableInBasket() %}
                     <div class="row" id="list_cartItem_{{ loop.index }}">
                         <div class="col-img">
                             {% block checkout_basketcontents_basketitem_image %}
