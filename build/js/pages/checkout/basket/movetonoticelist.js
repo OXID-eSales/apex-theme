@@ -12,7 +12,7 @@ function addToNoticelistAjax(articleid, am = 1, callback) {
     };
 
     request.onreadystatechange = function () {
-        if (typeof callback === 'function' && am.readyState === 4) {
+        if (typeof callback === 'function' && request.readyState === 4 && request.status === 200) {
             callback();
         }
     };
