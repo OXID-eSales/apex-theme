@@ -6,6 +6,7 @@
 - Allow html-code in payment-descriptions
 - Respect the "Display attribute's value for products in checkout" option for attributes in basket [#0007648](https://bugs.oxid-esales.com/view.php?id=7648) [PR-58](https://github.com/OXID-eSales/apex-theme/pull/58)
 - Update theme id in english theme_options.php [PR-59](https://github.com/OXID-eSales/apex-theme/pull/59)
+- Fixed copy notice list feature for firefox [PR-61](https://github.com/OXID-eSales/apex-theme/pull/61)
 
 ## v1.3.0 - 2024-03-18
 
