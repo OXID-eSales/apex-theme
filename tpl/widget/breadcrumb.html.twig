@@ -25,9 +25,10 @@
                                     </li>
                                 {% endfor %}
                                 {% if oView.getClassKey() == "details" %}
-                                <li class="breadcrumb-item active">
-                                    {{ oDetailsProduct.oxarticles__oxtitle.value }}
-                                </li>
+                                    {% set oDetailsProduct = oView.getProduct() %}
+                                    <li class="breadcrumb-item active">
+                                        {{ oDetailsProduct.oxarticles__oxtitle.value }}
+                                    </li>
                                 {% endif %}
                             {% endblock %}
                         </ol>

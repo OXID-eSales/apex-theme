@@ -68,7 +68,7 @@
                                                                         {% if basketNoticeListButtonFunction == 'move' %}
                                                                             name="removeBtn"
                                                                         {% endif %}
-                                                                        onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}');{% if basketNoticeListButtonFunction == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% else %}window.location.reload();{% endif %}"
+                                                                        onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}', function() { {% if basketNoticeListButtonFunction == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% else %}window.location.reload();{% endif %} });"
                                                                     {%  else %}
                                                                         onclick="window.location.href='{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}';"
                                                                     {% endif %}
@@ -283,7 +283,7 @@
                                                                     {% if basketNoticeListButtonFunction == 'move' %}
                                                                     name="removeBtn"
                                                                     {% endif %}
-                                                                    onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}');{% if basketNoticeListButtonFunction == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% else %}window.location.reload();{% endif %}"
+                                                                    onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}', function () { {% if basketNoticeListButtonFunction == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% else %}window.location.reload();{% endif %} });"
                                                                 {%  else %}
                                                                     onclick="window.location.href='{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}';"
                                                                 {% endif %}
