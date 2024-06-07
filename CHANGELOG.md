@@ -6,9 +6,9 @@
 - Allow html-code in payment-descriptions
 - Respect the "Display attribute's value for products in checkout" option for attributes in basket [#0007648](https://bugs.oxid-esales.com/view.php?id=7648) [PR-58](https://github.com/OXID-eSales/apex-theme/pull/58)
 - Update theme id in english theme_options.php [PR-59](https://github.com/OXID-eSales/apex-theme/pull/59)
-- Fixed copy notice list feature for firefox [PR-61](https://github.com/OXID-eSales/apex-theme/pull/61)
-- Fixed delivery address change on firefox [PR-60](https://github.com/OXID-eSales/apex-theme/pull/60)
-- Fixed title in breadcrumb for product detail page [PR-62](https://github.com/OXID-eSales/apex-theme/pull/62)
+- Fixed copy notice list feature for firefox [#0007651](https://bugs.oxid-esales.com/view.php?id=7651) [PR-61](https://github.com/OXID-eSales/apex-theme/pull/61)
+- Fixed delivery address change on firefox [#0007560](https://bugs.oxid-esales.com/view.php?id=7560) [PR-60](https://github.com/OXID-eSales/apex-theme/pull/60)
+- Fixed title in breadcrumb for product detail page [#0007545](https://bugs.oxid-esales.com/view.php?id=7545) [PR-62](https://github.com/OXID-eSales/apex-theme/pull/62)
 
 ## v1.3.0 - 2024-03-18
 
