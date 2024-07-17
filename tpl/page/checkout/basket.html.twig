@@ -6,7 +6,7 @@
 
             {% if oView.isLowOrderPrice() %}
                 {% block checkout_basket_loworderprice_top %}
-                    <div class="alert alert-info">{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ oView.getMinOrderPrice() }} {{ currency.sign }}</div>
+                    <div class="alert alert-info">{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ format_price(oView.getMinOrderPrice(), { currency: currency }) }}</div>
                 {% endblock %}
             {% endif %}
 
