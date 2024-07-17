@@ -56,27 +56,42 @@
                     <div class="gallery">
                         <div class="carousel">
                             {% for iPicNr, oArtIcon in oView.getIcons() %}
-                                <input type="radio" class="gallery-helper" id="image{{ iPicNr}}" name="gallery-control"{% if loop.first %} checked{% endif %}>
+                                <input type="radio" class="gallery-helper" id="image{{ iPicNr }}" name="gallery-control"{% if loop.first %} checked{% endif %}>
                             {% endfor %}
 
                             {% if imageCount > 1 %}
                                 <div class="thumbnails">
                                     {% for iPicNr, oArtIcon in oView.getIcons() %}
-                                        <label for="image{{ iPicNr}}" class="thumb">
+                                        <label for="image{{ iPicNr }}" class="thumb">
                                             <img loading="lazy" src="{{ oPictureProduct.getIconUrl(iPicNr)|raw }}" alt=" {{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}" width="112" height="112">
                                         </label>
                                     {% endfor %}
                                 </div>
                             {% endif %}
 
-                            <div class="wrap slider-container">
+                            <div class="wrap">
                                 {% for iPicNr, oArtIcon in oView.getIcons() %}
                                     {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
                                     {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
 
-                                    <figure>
-                                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt=" {{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}"/>
+                                    <figure class="zoom-container">
+                                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}" data-bs-toggle="modal" data-bs-target="#imageModal{{ iPicNr }}"/>
                                     </figure>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="imageModal{{ iPicNr }}" tabindex="-1" aria-labelledby="imageModalLabel{{ iPicNr }}" aria-hidden="true">
+                                        <div class="modal-dialog d-flex justify-content-center modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="imageModalLabel{{ iPicNr }}">{{ translate({ ident: 'PRODUCT_GALLERY_IMAGE_ALT', args: { 'count': iPicNr, 'title': oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body d-flex justify-content-center">
+                                                    <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt="{{ translate({ ident: 'PRODUCT_GALLERY_IMAGE_ALT', args: { 'count': iPicNr, 'title': oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 {% endfor %}
                             </div>
                         </div>
@@ -357,6 +372,147 @@
         </div>
     </div>
 </div>
+
+<style>
+    /*!* Container for the zoomed image on the page *!*/
+    /*.zoom-container {*/
+    /*    position: relative;*/
+    /*    overflow: hidden;*/
+    /*}*/
+
+    /*!* The actual image with zoom *!*/
+    /*.zoom-container img {*/
+    /*    transition: transform 0.5s ease;*/
+    /*}*/
+
+    /*!* Zoomed image on hover *!*/
+    /*.zoom-container:hover img {*/
+    /*    transform: scale(1.5); !* Adjust the scale as needed *!*/
+    /*}*/
+
+    /* Container for the zoomed image on the page */
+    .zoom-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* The actual image with zoom */
+    .zoom-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Lens for zoom effect */
+    .lens {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        width: 100px;
+        height: 100px;
+        opacity: 0.4;
+        background: rgba(255, 255, 255, 0.2);
+        pointer-events: none;
+        display: none; /* Hide the lens by default */
+    }
+
+    /* Container for the zoom result */
+    .zoom-result {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        width: 200px; /* Adjust the size as needed */
+        height: 200px; /* Adjust the size as needed */
+        overflow: hidden;
+        display: none; /* Hide the result box by default */
+        top: 0;
+        right: 0;
+        background-color: white; /* To ensure it's visible */
+        z-index: 1000; /* To keep it above other elements */
+    }
+
+    .zoom-result img {
+        position: absolute !important;
+        width: auto;
+        height: auto;
+        transform-origin: top left;
+        max-width: none !important;
+        max-height: none !important;
+    }
+</style>
+
+{#<script>#}
+{#    document.addEventListener("DOMContentLoaded", function() {#}
+{#        const zoomContainers = document.querySelectorAll('.zoom-container');#}
+
+{#        zoomContainers.forEach(container => {#}
+{#            const img = container.querySelector('img');#}
+
+{#            container.addEventListener('mousemove', function(e) {#}
+{#                const rect = container.getBoundingClientRect();#}
+{#                const x = e.clientX + rect.left; // X-coordinate relative to the container#}
+{#                const y = e.clientY + rect.top;  // Y-coordinate relative to the container#}
+
+{#                img.style.transformOrigin = `${x}px ${y}px`;#}
+{#            });#}
+{#        });#}
+{#    });#}
+{#</script>#}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const zoomContainers = document.querySelectorAll('.zoom-container');
+
+        zoomContainers.forEach(container => {
+            const img = container.querySelector('img');
+            const lens = document.createElement('div');
+            lens.classList.add('lens');
+            container.appendChild(lens);
+
+            const result = document.createElement('div');
+            result.classList.add('zoom-result');
+            container.appendChild(result);
+
+            const resultImg = document.createElement('img');
+            resultImg.src = img.src;
+            result.appendChild(resultImg);
+
+            container.addEventListener('mousemove', function(e) {
+                lens.style.display = 'block';
+                result.style.display = 'block';
+
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                moveLens(e, lens, img, resultImg, rect, x, y);
+            });
+
+            container.addEventListener('mouseleave', function() {
+                lens.style.display = 'none';
+                result.style.display = 'none';
+            });
+
+            function moveLens(e, lens, img, resultImg, rect, x, y) {
+                const cx = result.offsetWidth / lens.offsetWidth;
+                const cy = result.offsetHeight / lens.offsetHeight;
+
+                let lensX = x - lens.offsetWidth / 2;
+                let lensY = y - lens.offsetHeight / 2;
+
+                if (lensX < 0) lensX = 0;
+                if (lensY < 0) lensY = 0;
+                if (lensX > img.width - lens.offsetWidth) lensX = img.width - lens.offsetWidth;
+                if (lensY > img.height - lens.offsetHeight) lensY = img.height - lens.offsetHeight;
+
+                lens.style.left = `${lensX}px`;
+                lens.style.top = `${lensY}px`;
+
+                resultImg.style.width = `${img.width * cx}px`;
+                resultImg.style.height = `${img.height * cy}px`;
+                resultImg.style.transform = `translate(${-lensX * cx}px, ${-lensY * cy}px)`;
+            }
+        });
+    });
+</script>
 
 {% block details_productmain_content %}{% endblock %}
 
