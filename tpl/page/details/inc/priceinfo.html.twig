@@ -32,9 +32,9 @@
                                 {{ priceItem.oxprice2article__oxaddperc.value }}% {{ translate({ ident: "DISCOUNT" }) }}
                             {% else %}
                                 {% block details_productmain_price %}
-                                    {{ priceItem.fbrutprice }} {{ currency.sign }}
+                                    {{ format_price(priceItem.fbrutprice, { currency: currency }) }}
                                     {% if oDetailsProduct.getUnitName() and priceItem.fbrutamountprice %}
-                                        &nbsp;({{ priceItem.fbrutamountprice }} {{ currency.sign }} / {{ oDetailsProduct.getUnitName() }})
+                                        &nbsp;({{ format_price(priceItem.fbrutamountprice, { currency: currency }) }} / {{ oDetailsProduct.getUnitName() }})
                                     {% endif %}
                                 {% endblock %}
                             {% endif %}
