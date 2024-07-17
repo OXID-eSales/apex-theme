@@ -54,7 +54,8 @@
                                     {{ oDiscount.sDiscount }}
 
                                     <span>
-                                        {{ format_price(oDiscount.dDiscount*-1, { currency: currency }) }}
+                                        {% if oDiscount.dDiscount > 0 %}-{% endif %}
+                                        {{ format_price(oDiscount.dDiscount, { currency: currency }) }}
                                     </span>
                                 </div>
                             {% endfor %}
@@ -104,7 +105,7 @@
                                         </a>
                                     {% endif %}
                                 </span>
-                                <span class="text-danger">{{ format_price(sVoucher.dVoucherdiscount*-1, { currency: currency }) }}</span>
+                                <span class="text-danger">{% if sVoucher.dVoucherdiscount > 0 %}-{% endif %}{{ format_price(sVoucher.dVoucherdiscount, { currency: currency }) }}</span>
                             </div>
                         {% endfor %}
                     {% endif %}
