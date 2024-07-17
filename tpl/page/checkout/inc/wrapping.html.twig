@@ -11,7 +11,7 @@
                 {% endblock %}
 
                 <span class="close float-end" data-bs-dismiss="modal" aria-hidden="true">
-                    <svg>
+                    <svg class="icon">
                         <use xlink:href="#times"></use>
                     </svg>
                 </span>
@@ -51,7 +51,7 @@
                                                         <label class="btn" for="wrapping_{{ basketindex }}">
                                                             <span class="img"></span>
                                                             {{ translate({ ident: "NONE" }) }}
-                                                            <strong>0,00 {{ currency.sign }}</strong>
+                                                            <strong>{{ format_price('0', { currency: currency }) }}</strong>
                                                         </label>
 
                                                         {% set ictr = "1" %}
@@ -64,7 +64,7 @@
                                                                 </span>
                                                                 {% endif %}
                                                                 {{ wrapping.oxwrapping__oxname.value }}
-                                                                <strong>{{ wrapping.getFPrice() }} {{ currency.sign }}</strong>
+                                                                <strong>{{ format_price(wrapping.getFPrice(), { currency: currency }) }}</strong>
                                                             </label>
                                                             {% set ictr = ictr+1 %}
                                                         {% endfor %}
@@ -119,7 +119,7 @@
                                                     <div class="form-check">
                                                         <input class="radiobox form-check-input" type="radio" name="chosencard" id="chosen_{{ card.oxwrapping__oxid.value }}" value="{{ card.oxwrapping__oxid.value }}" {% if oxcmp_basket.getCardId() == card.oxwrapping__oxid.value %}CHECKED{% endif %}>
                                                         <label class="form-check-label" for="chosen_{{ card.oxwrapping__oxid.value }}">
-                                                            {{ card.oxwrapping__oxname.value }} <strong>{{ card.getFPrice() }} {{ currency.sign }}</strong>
+                                                            {{ card.oxwrapping__oxname.value }} <strong>{{ format_price(card.getFPrice(), { currency: currency }) }}</strong>
                                                         </label>
                                                     </div>
                                                 </div>

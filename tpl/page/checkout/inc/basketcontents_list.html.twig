@@ -452,8 +452,9 @@
                                         {% endif %}
                                     </div>
                                     <div class="totalPrice text-end">
-                                        <strong class="text-nowrap h5">{{ oCard.getFPrice() }}
-                                            &nbsp;{{ currency.sign }}</strong>
+                                        <strong class="text-nowrap h5">
+                                            {{ format_price(oCard.getFPrice(), { currency: currency }) }}
+                                        </strong>
                                     </div>
                                 </div>
                             </div>
