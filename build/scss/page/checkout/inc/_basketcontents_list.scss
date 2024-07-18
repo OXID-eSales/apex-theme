@@ -5,11 +5,15 @@
 
   .basket-item-desc {
     color: #6A7281;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 1.6;
 
     @include media-breakpoint-up(md) {
       margin-bottom: 20px;
+    }
+
+    .article-vat {
+      white-space: nowrap;
     }
 
     ul {

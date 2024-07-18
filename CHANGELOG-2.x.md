@@ -13,6 +13,8 @@
 - RDFa templates contain escaped HTML tags
 - Template contains wrongly named block [#0006429](https://bugs.oxid-esales.com/view.php?id=6429), [PR-56](https://github.com/OXID-eSales/apex-theme/pull/56)
 - New item in basket message display [#0007548](https://bugs.oxid-esales.com/view.php?id=7548) [PR-57](https://github.com/OXID-eSales/apex-theme/pull/57)
+- Contact form success message styling [#0007528](https://bugs.oxid-esales.com/view.php?id=7528)
+- Display of discounted price in basket [#0007519](https://bugs.oxid-esales.com/view.php?id=7519)
 
 ### Removed
 - PHP v8.0 support

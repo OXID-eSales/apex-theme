@@ -132,6 +132,17 @@
                                                                     {{ translate({ ident: "UNIT_PRICE" }) }}:
                                                                 </span>
                                                                 <span class="value">
+                                                                    {% if oArticle.getTPrice() %}
+                                                                      <del class="text-nowrap text-danger">{{ format_price(oArticle.getTPrice(), { currency: currency }) }}</del>
+                                                                    {% endif %}
+                                                                    {% if not basketitem.isBundle() and not oArticle.getTPrice() %}
+                                                                      {% set dRegUnitPrice = basketitem.getRegularUnitPrice() %}
+                                                                      {% set dUnitPrice = basketitem.getUnitPrice() %}
+                                                                      {% if dRegUnitPrice.getPrice() > dUnitPrice.getPrice() %}
+                                                                          <del class="text-nowrap text-danger">{{ format_price(basketitem.getRegularUnitPrice(), { currency: currency }) }}</del>
+                                                                      {% endif %}
+                                                                    {% endif %}
+
                                                                     {{ format_price(basketitem.getUnitPrice(), { currency: currency }) }}
 
                                                                     {% block checkout_basketcontents_basketitem_vat %}
@@ -307,7 +318,6 @@
                                                 {% block checkout_basketcontents_basketitem_totalprice %}
                                                     {# product quantity * price #}
                                                     <div class="totalPrice text-end">
-                                                        <del class="text-nowrap text-danger">{{ format_price(basketitem.getPrice(), { currency: currency }) }}</del>
                                                         <strong class="text-nowrap h5">{{ format_price(basketitem.getPrice(), { currency: currency }) }}</strong>
                                                     </div>
                                                 {% endblock %}
