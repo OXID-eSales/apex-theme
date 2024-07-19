@@ -188,7 +188,7 @@ $thumb-size: 120px;
     display: none;
   }
 
-  .carousel {
+  > .carousel {
     @include media-breakpoint-up(md) {
       display: -webkit-box;
       display: -ms-flexbox;
