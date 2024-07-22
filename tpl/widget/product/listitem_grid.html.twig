@@ -139,7 +139,7 @@
 
                                         {% set rangePrice = product.getFVarMinPrice() %}
                                         {% if not product.isParentNotBuyable() %}
-                                            {% set variantPrice = product.getFMinPrice() %}
+                                            {% set rangePrice = product.getFMinPrice() %}
                                         {% endif %}
 
                                         {{ format_price(rangePrice, { currency: currency }) }}
