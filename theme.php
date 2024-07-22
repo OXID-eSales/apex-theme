@@ -116,7 +116,7 @@ $aTheme = [
             'group'       => 'pdp',
             'name'        => 'productZoomType',
             'type'        => 'select',
-            'value'       => 'move',
+            'value'       => 'no_zoom',
             'constraints' => 'no_zoom|modal_zoom|hover_zoom|detail_zoom',
         ],
 
