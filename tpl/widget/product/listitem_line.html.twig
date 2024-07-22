@@ -111,7 +111,7 @@
                                         <div class="price h5{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} sale{% endif %}">
                                             {% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %}
                                             <span class="oldPrice text-muted">
-                                                <del>{{ product.getFTPrice() }} {{ currency.sign }}</del>
+                                                <del>{{ format_price(product.getFTPrice(), { currency: currency }) }}</del>
                                             </span>
                                             {% endif %}
 
@@ -119,19 +119,21 @@
                                             <span id="productPrice_{{ testid }}" class="text-nowrap{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} text-danger{% endif %}">
                                                 {% if product.isRangePrice() %}
                                                     {{ translate({ ident: "PRICE_FROM" }) }}
+                                                    {% set rangePrice = product.getFVarMinPrice() %}
                                                     {% if not product.isParentNotBuyable() %}
-                                                        {{ product.getFMinPrice() }}
-                                                    {% else %}
-                                                        {{ product.getFVarMinPrice() }}
+                                                        {% set rangePrice = product.getFMinPrice() %}
                                                     {% endif %}
+
+                                                    {{ format_price(rangePrice, { currency: currency }) }}
                                                 {% else %}
+                                                    {% set variantPrice = product.getFVarMinPrice() %}
                                                     {% if not product.isParentNotBuyable() %}
-                                                        {{ product.getFPrice() }}
-                                                    {% else %}
-                                                        {{ product.getFVarMinPrice() }}
+                                                        {% set variantPrice = product.getFPrice() %}
                                                     {% endif %}
+
+                                                    {{ format_price(variantPrice, { currency: currency }) }}
                                                 {% endif %}
-                                                {{ currency.sign }}
+
                                                 {% if oView.isVatIncluded() %}
                                                     {% if not (product.hasMdVariants() or (oViewConf.showSelectListsInList() and product.getSelections(1)) or product.getVariants()) %}*{% endif %}
                                                 {% endif %}

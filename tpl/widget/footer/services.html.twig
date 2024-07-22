@@ -15,7 +15,7 @@
                 {% block footer_services_cart %}
                     <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getBasketLink() }) }}">
                         {{ translate({ ident: "CART" }) }}
-                        {% if oxcmp_basket and oxcmp_basket.getItemsCount() > 0 %} <span class="badge bg-secondary rounded-pill">{{ oxcmp_basket.getItemsCount() }}</span>{% endif %}
+                        {% if oxcmp_basket and oxcmp_basket.getItemsCount() > 0 %} <span class="badge rounded-pill">{{ oxcmp_basket.getItemsCount() }}</span>{% endif %}
                     </a>
                 {% endblock %}
             {% endhasrights %}

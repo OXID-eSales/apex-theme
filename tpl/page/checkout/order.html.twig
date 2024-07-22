@@ -199,7 +199,7 @@
                                         {% if oView.isLowOrderPrice() %}
                                             {% block checkout_order_loworderprice_bottom %}
                                                 <div class="alert alert-info">
-                                                    <div>{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ oView.getMinOrderPrice() }} {{ currency.sign }}</div>
+                                                    <div>{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ format_price(oView.getMinOrderPrice(), { currency: currency }) }}</div>
                                                 </div>
                                             {% endblock %}
                                         {% else %}
