@@ -26,38 +26,64 @@
                     </figure>
                 {% endfor %}
             </div>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        const zoomContainers = document.querySelectorAll('.carousel-item');
 
-            <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        zoomContainers.forEach(container => {
+            const img = container.querySelector('img');
+
+            img.addEventListener('click', function(e) {
+                if (img.classList.contains('zoom')) {
+                    img.classList.remove('zoom')
+                } else {
+                    img.classList.add('zoom')
+                }
+            });
+
+            container.addEventListener('mousemove', function(e) {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX + rect.left; // X-coordinate relative to the container
+                const y = e.clientY + rect.top;  // Y-coordinate relative to the container
+
+                img.style.transformOrigin = `${x}px ${y}px`;
+            });
+        });
+    });
+</script>
+<style>
+    .carousel-item img {
+        object-fit: contain;
+    }
+    .carousel-item img.zoom {
+        transition: transform 0.1s ease;
+    }
+
+    .carousel-item img.zoom {
+        transform: scale(2.5); /* Adjust the scale as needed */
+    }
+
+</style>
+            <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog d-flex justify-content-center modal-fullscreen p-4">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="imageModalLabel">
+                            <h5 class="modal-title">
                                 {{ oDetailsProduct.oxarticles__oxtitle.value }} {{ oDetailsProduct.oxarticles__oxvarselect.value }}
                             </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ translate({ ident: "CLOSE" }) }}"></button>
                         </div>
                         <div class="modal-body justify-content-center">
 
-                            <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-interval="false">
-                                <div class="carousel-inner">
+                            <div id="carouselExampleIndicators" class="carousel carousel-dark slide h-100" data-bs-interval="false">
+                                <div class="carousel-inner h-100">
                                     {% for iPicNr, oArtIcon in oView.getIcons() %}
-                                        <div class="carousel-item{% if loop.index == 1 %} active{% endif %}">
-                                            <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" class="d-block w-100" alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}">
+                                        <div class="carousel-item h-100{% if loop.index == 1 %} active{% endif %}">
+                                            <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" class="d-block w-100 h-100" alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}">
                                         </div>
                                     {% endfor %}
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">{{ translate({ ident: "PREVIOUS" }) }}</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">{{ translate({ ident: "NEXT" }) }}</span>
-                                </button>
-
-
                             </div>
-
                         </div>
                         <div class="modal-footer d-flex align-items-center justify-content-center">
                             {% for iPicNr, oArtIcon in oView.getIcons() %}
