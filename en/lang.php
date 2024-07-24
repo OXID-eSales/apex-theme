@@ -45,6 +45,7 @@ $aLang = array(
     // Contact form
     'DD_CONTACT_PAGE_HEADING'                               => 'Contact us!',
     'DD_CONTACT_FORM_HEADING'                               => 'Contact',
+    'DD_CONTACT_MAP_TITLE'                                  => 'Google Map showing the location of %s',
 
     // Link list
     'DD_LINKS_NO_ENTRIES'                                   => 'Unfortunately, there are no links available.',
