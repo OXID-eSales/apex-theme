@@ -1,0 +1,66 @@
+.zoom-container-magnifier {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+}
+
+.zoom-container-magnifier img {
+  height: auto;
+  display: block;
+  position: relative;
+}
+
+.lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  width: 100px;
+  height: 100px;
+  opacity: 0.4;
+  background: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  display: none;
+  box-sizing: border-box;
+}
+
+.zoom-result-magnifier {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  display: none;
+  top: 45%;
+  left: 100%;
+  margin-left: 10px;
+  background-color: white;
+  z-index: 1000;
+}
+
+.zoom-result-magnifier img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  transform-origin: top left;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.carousel-item img.zoom {
+  transition: transform 0.1s ease;
+  padding: 10px;
+  transform: scale(2.5);
+}
+
+.zoom-container-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.zoom-container-hover img {
+  transition: transform 0.5s ease;
+  transform: translateY(-50%);
+}
+
+.zoom-container-hover img.zoom {
+  transform: translateY(-50%) scale(2.0);
+}

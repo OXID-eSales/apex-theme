@@ -332,42 +332,6 @@
     </div>
 </div>
 
-<style>
-    /*!* Container for the zoomed image on the page *!*/
-    /*.zoom-container {*/
-    /*    position: relative;*/
-    /*    overflow: hidden;*/
-    /*}*/
-
-    /*!* The actual image with zoom *!*/
-    /*.zoom-container img {*/
-    /*    transition: transform 0.5s ease;*/
-    /*}*/
-
-    /*!* Zoomed image on hover *!*/
-    /*.zoom-container:hover img {*/
-    /*    transform: scale(1.5); !* Adjust the scale as needed *!*/
-    /*}*/
-</style>
-
-{#<script>#}
-{#    document.addEventListener("DOMContentLoaded", function() {#}
-{#        const zoomContainers = document.querySelectorAll('.zoom-container');#}
-
-{#        zoomContainers.forEach(container => {#}
-{#            const img = container.querySelector('img');#}
-
-{#            container.addEventListener('mousemove', function(e) {#}
-{#                const rect = container.getBoundingClientRect();#}
-{#                const x = e.clientX + rect.left; // X-coordinate relative to the container#}
-{#                const y = e.clientY + rect.top;  // Y-coordinate relative to the container#}
-
-{#                img.style.transformOrigin = `${x}px ${y}px`;#}
-{#            });#}
-{#        });#}
-{#    });#}
-{#</script>#}
-
 {% block details_productmain_content %}{% endblock %}
 
 {% hasrights { ident: "TOBASKET" } %}

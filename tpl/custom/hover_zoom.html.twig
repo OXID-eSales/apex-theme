@@ -2,6 +2,6 @@
     {% if oxcmp_user %}
         {% set force_sid = oView.getSidForWidget() %}
     {% endif %}
-    {{ include_widget({ cl: "oxwArticleDetails", _parent: oView.getClassKey(), nocookie: 1, force_sid: force_sid, _navurlparams: oViewConf.getNavUrlParams(), _object: oView.getProduct(), anid: oViewConf.getActArticleId(), iPriceAlarmStatus: oView.getPriceAlarmStatus(), skipESIforUser: 1, oxwtemplate: "custom/details/product_details" }) }}
+    {{ include_widget({ cl: "oxwArticleDetails", _parent: oView.getClassKey(), nocookie: 1, force_sid: force_sid, _navurlparams: oViewConf.getNavUrlParams(), _object: oView.getProduct(), anid: oViewConf.getActArticleId(), iPriceAlarmStatus: oView.getPriceAlarmStatus(), skipESIforUser: 1 }) }}
 {% endcapture %}
 {% include "layout/page.html.twig" %}
