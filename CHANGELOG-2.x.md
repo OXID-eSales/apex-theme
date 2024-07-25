@@ -18,4 +18,4 @@
 - Display of discounted price in basket [#0007519](https://bugs.oxid-esales.com/view.php?id=7519)
 
 ### Removed
-- PHP v8.0 support
+- PHP v8.1 support

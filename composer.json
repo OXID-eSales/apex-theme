@@ -17,7 +17,7 @@
   ],
   "homepage": "https://github.com/OXID-eSales/apex-theme",
   "require": {
-    "php": ">=8.1",
+    "php": ">=8.2",
     "oxid-esales/twig-component": "*"
   },
   "minimum-stability": "dev",
