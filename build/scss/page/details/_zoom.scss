@@ -2,6 +2,7 @@
   position: relative;
   display: inline-block;
   padding: 10px;
+  z-index: 1;
 }
 
 .zoom-container-magnifier img {
@@ -22,6 +23,13 @@
   box-sizing: border-box;
 }
 
+@include media-breakpoint-down(md) {
+  .lens,
+  .zoom-result-magnifier{
+    display: none !important;
+  }
+}
+
 .zoom-result-magnifier {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -29,11 +37,10 @@
   height: 300px;
   overflow: hidden;
   display: none;
-  top: 45%;
+  top: 16%;
   left: 100%;
   margin-left: 10px;
   background-color: white;
-  z-index: 1000;
 }
 
 .zoom-result-magnifier img {
@@ -51,6 +58,11 @@
   transform: scale(2.5);
 }
 
+.carouselThumbnail {
+  width: 80px;
+  height: 80px;
+}
+
 .zoom-container-hover {
   position: relative;
   overflow: hidden;
@@ -58,9 +70,17 @@
 
 .zoom-container-hover img {
   transition: transform 0.5s ease;
-  transform: translateY(-50%);
 }
 
 .zoom-container-hover img.zoom {
-  transform: translateY(-50%) scale(2.0);
+  transform: scale(2.0);
+}
+@include media-breakpoint-up(md) {
+  .zoom-container-hover img {
+    transform: translateY(-50%);
+  }
+
+  .zoom-container-hover img.zoom {
+    transform: translateY(-50%) scale(2.0);
+  }
 }

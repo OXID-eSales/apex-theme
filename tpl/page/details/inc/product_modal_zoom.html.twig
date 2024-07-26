@@ -22,7 +22,7 @@
                     {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
                     {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
 
-                    <figure class="zoom-container" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ loop.index - 1 }}">
+                    <figure class="zoom-container" data-bs-target="#carouselZoomPicturesIndicators" data-bs-slide-to="{{ loop.index - 1 }}">
                         <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}" data-bs-toggle="modal" data-bs-target="#imageModal"/>
                     </figure>
                 {% endfor %}
@@ -37,12 +37,14 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ translate({ ident: "CLOSE" }) }}"></button>
                         </div>
                         <div class="modal-body justify-content-center">
-
-                            <div id="carouselExampleIndicators" class="carousel carousel-dark slide h-100" data-bs-interval="false">
+                            <div id="carouselZoomPicturesIndicators" class="carousel carousel-dark slide h-100" data-bs-interval="false">
                                 <div class="carousel-inner h-100">
                                     {% for iPicNr, oArtIcon in oView.getIcons() %}
-                                        <div class="carousel-item h-100 d-flex justify-content-center{% if loop.index == 1 %} active{% endif %}">
-                                            <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" class="d-block object-fit-contain h-100" alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}">
+                                        <div class="carousel-item h-100{% if loop.index == 1 %} active{% endif %}">
+                                            <img
+                                                src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}"
+                                                class="d-block mx-auto object-fit-contain h-100"
+                                                alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}">
                                         </div>
                                     {% endfor %}
                                 </div>
@@ -51,15 +53,18 @@
                         <div class="modal-footer d-flex align-items-center justify-content-center">
                             {% for iPicNr, oArtIcon in oView.getIcons() %}
                                 <button type="button"
-                                        data-bs-target="#carouselExampleIndicators"
+                                        class="carouselThumbnail"
+                                        data-bs-target="#carouselZoomPicturesIndicators"
                                         data-bs-slide-to="{{ loop.index - 1 }}"
                                         class="active"
                                         aria-current="true"
                                         aria-label=""
                                         style="height: 80px; width: 80px"
                                 >
-                                    <img class="d-block w-100"
-                                         src="{{ oPictureProduct.getIconUrl(iPicNr)|raw }}"
+                                    <img
+                                        src="{{ oPictureProduct.getIconUrl(iPicNr)|raw }}"
+                                        class="d-block w-100"
+                                        alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}"
                                     />
                                 </button>
                             {% endfor %}

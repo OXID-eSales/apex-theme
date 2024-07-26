@@ -117,7 +117,7 @@ $aTheme = [
             'name'        => 'productZoomType',
             'type'        => 'select',
             'value'       => 'no_zoom',
-            'constraints' => 'no_zoom|modal_zoom|hover_zoom|detail_zoom',
+            'constraints' => 'no_zoom|modal_zoom|hover_zoom|magnifier_lens',
         ],
 
 //KATEGORIEN

@@ -23,9 +23,11 @@
                     {% set aPictureInfo = config.getMasterPicturePath('product/' ~ iPicNr ~ '/' ~ sPictureName)|getimagesize %}
 
                     <figure class="zoom-container-magnifier">
-                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt="{{ translate({ ident: 'PRODUCT_GALLERY_IMAGE_ALT', args: { 'count': iPicNr, 'title': oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}" data-bs-toggle="modal" data-bs-target="#imageModal{{ iPicNr }}">
+                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt="{{ translate({ ident: 'PRODUCT_GALLERY_IMAGE_ALT', args: { 'count': iPicNr, 'title': oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}">
                         <div class="lens"></div>
-                        <div class="zoom-result-magnifier"><img src="" alt="Zoomed Image"></div>
+                        <div class="zoom-result-magnifier">
+                            <img src="" alt="Zoomed Image">
+                        </div>
                     </figure>
                 {% endfor %}
             </div>
