@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
     zoomContainers.forEach(container => {
         const img = container.querySelector('img');
 
+        //Disable zoom on touch for mobile
+        img.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+        });
+
         img.addEventListener('mouseover', function() {
             img.classList.add('zoom');
         });
