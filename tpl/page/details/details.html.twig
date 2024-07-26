@@ -13,15 +13,6 @@
     {% set sPageHeadTitle = oDetailsProduct.oxarticles__oxtitle.value ~ ' ' ~ oDetailsProduct.oxarticles__oxvarselect.value %}
     {% set headerImageWidth = oViewConf.getViewThemeParam('sHeaderImageWidth') %}
     {% set productListNavigation = oViewConf.getViewThemeParam('sProductListNavigation') %}
-    {% set themeZoom = oViewConf.getViewThemeParam('productZoomType') %}
-
-    {% set filePath = oDetailsProduct.oxarticles__oxtemplate.value %}
-    {% if filePath %}
-        {% set filename = filePath|split('/')|last %}
-        {% set pictureZoomOption = 'product_' ~ filename %}
-    {% else %}
-        {% set pictureZoomOption = 'product_' ~ themeZoom ~ '.html.twig' %}
-    {% endif %}
 
     {% if oView.getPriceAlarmStatus() == 1 %}
         {% set _statusMessage1 = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate ~ " " ~ oxcmp_shop.oxshops__oxname.value %}

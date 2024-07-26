@@ -51,11 +51,9 @@
         <div class="row row-cols-md-2">
             <div class="col-12 col-md-6 col-lg-8 col-xl-9">
                 {# article picture with zoom #}
-                {% if pictureZoomOption %}
-                    {% include "page/details/inc/" ~ pictureZoomOption %}
-                {% else %}
-                    {% include "page/details/inc/product_no_zoom.html.twig" %}
-                {% endif %}
+                {% block details_productmain_zoom %}
+                    {% include "page/details/inc/gallery.html.twig" %}
+                {% endblock %}
             </div>
 
             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
