@@ -25,4 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
             img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
         });
     });
+
+    const zoomModal = document.getElementById('zoomModal')
+    zoomModal.addEventListener('hidden.bs.modal', function (event) {
+        const modalZoomImages = document.querySelectorAll('.carousel-item img.zoom');
+        modalZoomImages.forEach(img => {
+            img.classList.remove('zoom');
+        });
+
+    })
 });
