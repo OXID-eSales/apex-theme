@@ -1,9 +1,10 @@
 # Change Log for OXID APEX Theme
 
-## v2.0.0 - unreleased
+## v2.0.0 - Unreleased
 
 ### Changed
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`
+- Move translations to ``translations/`` directory
 
 ### Fixed
 - Currency formatting when using `@Front` parameter
