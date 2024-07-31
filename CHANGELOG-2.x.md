@@ -2,6 +2,9 @@
 
 ## v2.0.0 - unreleased
 
+### Added
+- Restore translations for private sales 
+
 ### Changed
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`
 

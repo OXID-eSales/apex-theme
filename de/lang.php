@@ -177,8 +177,14 @@ $aLang = array(
     'PRODUCT_SINGLE_IMAGE_ALT'                              => 'Artikelbild des Artikels “%s“',
     'PRODUCT_GALLERY_IMAGE_ALT'                             => 'Artikelbild %d des Artikels “%s“',
 
-    //Minibasket
-    'CART_NUMBER_OF_ITEMS'                                  => 'Warenkorb - Anzahl der Artikel: %d'
+    // Minibasket
+    'CART_NUMBER_OF_ITEMS'                                  => 'Warenkorb - Anzahl der Artikel: %d',
+
+    // Private sales
+    'FORM_REGISTER_IAGREETOTERMS1'                          => "Ich stimme den",
+    'FORM_REGISTER_IAGREETOTERMS3'                          => "zu",
+    'FORM_REGISTER_IAGREETORIGHTOFWITHDRAWAL1'              => "Ich stimme den",
+    'FORM_REGISTER_IAGREETORIGHTOFWITHDRAWAL3'              => "zu.",
 );
 
 /*
