@@ -16,6 +16,7 @@
 - New item in basket message display [#0007548](https://bugs.oxid-esales.com/view.php?id=7548) [PR-57](https://github.com/OXID-eSales/apex-theme/pull/57)
 - Contact form success message styling [#0007528](https://bugs.oxid-esales.com/view.php?id=7528)
 - Display of discounted price in basket [#0007519](https://bugs.oxid-esales.com/view.php?id=7519)
+- Required select fields on form submit not marked as invalid [#0007564](https://bugs.oxid-esales.com/view.php?id=7564)
 
 ### Removed
 - PHP v8.1 support

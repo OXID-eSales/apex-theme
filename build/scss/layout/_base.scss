@@ -204,11 +204,17 @@
   .form-control {
     border-color: $danger;
   }
+  .form-select {
+    border-color: $danger;
+  }
 
   .req {
     &::after {
       color: $danger;
     }
+  }
+  > .invalid-feedback {
+    display: block;
   }
 }
 
