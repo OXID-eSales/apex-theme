@@ -9,16 +9,15 @@
 {% endif %}
 {% set notificationsCounter = oView.getCompareItemsCnt()+noticeListCount+wishListCount+recommListCount %}
 
-<button type="button" aria-label="Usercenter" class="btn" data-bs-toggle="dropdown" data-href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account" }) }}">
+<button
+        type="button"
+        aria-label="{{ (oxcmp_user.oxuser__oxpassword.value ? "MY_ACCOUNT" : "LOGIN")|translate  }}"
+        class="btn"
+        data-bs-toggle="dropdown"
+        data-href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account" }) }}"
+>
     {% block dd_layout_page_header_icon_menu_account_button %}
-        <svg aria-label="
-            {% if not oxcmp_user.oxuser__oxpassword.value %}
-                {{ translate({ ident: "LOGIN" }) }}
-            {% else %}
-                {{ translate({ ident: "MY_ACCOUNT" }) }}
-            {% endif %}">
-            <use xlink:href="#person"></use>
-        </svg>
+        <svg><use xlink:href="#person"></use></svg>
     {% endblock %}
 </button>
 {% if not oxcmp_user.oxuser__oxpassword.value %}

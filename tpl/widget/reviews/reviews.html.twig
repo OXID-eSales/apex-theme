@@ -58,30 +58,7 @@
                                     </div>
 
                                     {% block widget_reviews_form_rating %}
-                                        {% if oView.canRate() %}
-                                            <script>
-                                                function change(value) {
-                                                    document.getElementById("productRating").value = value;
-                                                    document.getElementById("recommListRating").value = value;
-                                                    document.getElementById("reviewRating").className = "rating list-inline stars" + value;
-                                                }
-                                            </script>
-                                            <ul id="reviewRating" class="rating list-inline">
-                                                {% for star in 1..5 %}
-                                                    <li class="list-inline-item rating-star s{{ loop.index }}"
-                                                        data-rate-value="{{ loop.index }}">
-                                                        <button type="button" onclick="change({{ loop.index }});"
-                                                                class="ox-write-review ox-rateindex-{{ loop.index }}"
-                                                                title="{{ loop.index }} {% if loop.index == 1 %}{{ "STAR"|translate }}{% else %}{{ "STARS"|translate }}{% endif %}">
-                                                            <svg>
-                                                                <use xlink:href="#star"></use>
-                                                            </svg>
-                                                        </button>
-                                                    </li>
-                                                {% endfor %}
-                                                <li class="rating-star" id="reviewRatingText"></li>
-                                            </ul>
-                                        {% endif %}
+                                        {% include 'widget/reviews/star_rating.html.twig' %}
                                     {% endblock %}
 
                                     {% block widget_reviews_form_fields %}

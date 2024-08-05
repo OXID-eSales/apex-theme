@@ -1,0 +1,24 @@
+{% if oView.canRate() %}
+    <script>
+        function change(value) {
+            document.getElementById("productRating").value = value;
+            document.getElementById("recommListRating").value = value;
+            document.getElementById("reviewRating").className = "rating list-inline stars" + value;
+        }
+    </script>
+    <ul id="reviewRating" class="rating list-inline">
+        {% for star in 1..5 %}
+            <li class="list-inline-item rating-star s{{ loop.index }}"
+                data-rate-value="{{ loop.index }}">
+                <button type="button" onclick="change({{ loop.index }});"
+                        class="ox-write-review ox-rateindex-{{ loop.index }}"
+                        aria-label="{{ loop.index }} {{ (loop.first ? "STAR" : "STARS")|translate }}">
+                    <svg>
+                        <use xlink:href="#star"></use>
+                    </svg>
+                </button>
+            </li>
+        {% endfor %}
+        <li class="rating-star" id="reviewRatingText"></li>
+    </ul>
+{% endif %}
