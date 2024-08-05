@@ -3,7 +3,9 @@
 ## v2.0.0 - unreleased
 
 ### Added
-- Restore translations for private sales 
+- Restore translations for private sales
+- New theme setting for product picture zoom with three different zoom options
+- Three alternative templates for the different zoom options that can be applied per product
 
 ### Changed
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`
