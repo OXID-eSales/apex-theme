@@ -28,8 +28,8 @@
     {% endblock %}
 {% endif %}
 
-<a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_noticelist" }) }}">
-    <svg aria-label="{{ translate({ ident: "MY_WISH_LIST" }) }}">
+<a class="btn" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account_noticelist" }) }}" aria-label="{{ translate({ ident: "MY_WISH_LIST" }) }}">
+    <svg>
         <use xlink:href="#star-fill"></use>
     </svg>
     {% if oxcmp_user %} <span class="badge js-noticeListCnt">{% if oxcmp_user.getNoticeListArtCnt() %}{{ oxcmp_user.getNoticeListArtCnt() }}{% endif %}</span>{% endif %}

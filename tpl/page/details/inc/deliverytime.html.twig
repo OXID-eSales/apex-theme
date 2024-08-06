@@ -1,6 +1,6 @@
 {% if oDetailsProduct.oxarticles__oxmindeltime.value or oDetailsProduct.oxarticles__oxmaxdeltime.value %}
-    <div class="deliverytime">
-        <svg aria-label="{{ translate({ ident: "DELIVERYTIME_DELIVERYTIME" }) }}">
+    <div class="deliverytime" aria-label="{{ translate({ ident: "DELIVERYTIME_DELIVERYTIME" }) }}">
+        <svg>
             <use xlink:href="#truck"></use>
         </svg>
         {{ translate({ ident: "DELIVERYTIME_DELIVERYTIME", suffix: "COLON" }) }}
