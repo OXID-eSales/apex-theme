@@ -163,8 +163,8 @@
 
                     {# Weight #}
                     {% if oDetailsProduct.oxarticles__oxweight.value %}
-                        <div class="weight">
-                            <svg aria-label="{{ translate({ ident: "WEIGHT" }) }}">
+                        <div class="weight" aria-label="{{ translate({ ident: "WEIGHT" }) }}">
+                            <svg>
                                 <use xlink:href="#weight-hanging"></use>
                             </svg>
                             {% block details_productmain_weight %}
@@ -188,8 +188,8 @@
                         {% set oUnitPrice = oDetailsProduct.getUnitPrice() %}
                         {% block details_productmain_priceperunit %}
                             {% if oUnitPrice %}
-                                <div class="ppu">
-                                    <svg aria-label="{{ translate({ ident: "WEIGHT" }) }}">
+                                <div class="ppu" aria-label="{{ translate({ ident: "WEIGHT" }) }}">
+                                    <svg>
                                         <use xlink:href="#tag"></use>
                                     </svg>
                                     {{ format_price(oUnitPrice, { currency: currency }) }}/{{ oDetailsProduct.getUnitName() }}
@@ -232,8 +232,8 @@
                     {# vpe #}
                     {% block details_productmain_vpe %}
                         {% if oDetailsProduct.oxarticles__oxvpe.value > 1 %}
-                            <div class="vpe">
-                                <svg aria-label="{{ translate({ ident: "DETAILS_VPE_MESSAGE_1" }) }}">
+                            <div class="vpe" aria-label="{{ translate({ ident: "DETAILS_VPE_MESSAGE_1" }) }}">
+                                <svg>
                                     <use xlink:href="#boxes-stacked"></use>
                                 </svg>
                                 {{ translate({ ident: "DETAILS_VPE_MESSAGE_1" }) }} {{ oDetailsProduct.oxarticles__oxvpe.value }} {{ translate({ ident: "DETAILS_VPE_MESSAGE_2" }) }}</div>

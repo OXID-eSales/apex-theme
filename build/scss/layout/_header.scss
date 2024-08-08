@@ -229,9 +229,10 @@
 
   .btn {
     flex: 1 1 auto;
+    padding-inline: 10px;
 
     &-text {
-      font-size: 10px;
+      font-size: 13px;
       display: block;
     }
   }

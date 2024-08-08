@@ -8,6 +8,8 @@
 
 ### Changed
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`
+- Increase size of mobile navigation font
+- Make aria-labels more informative and add missing ones
 
 ### Fixed
 - Currency formatting when using `@Front` parameter
