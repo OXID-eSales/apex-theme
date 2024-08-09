@@ -1,0 +1,17 @@
+{% block details_productmain_gallery_sliders %}
+    {% set themeZoom = oViewConf.getViewThemeParam('productZoomType') %}
+    {% set filePath = oDetailsProduct.oxarticles__oxtemplate.value %}
+
+    {% if filePath %}
+        {% set filename = filePath|split('/')|last %}
+        {% set pictureZoomOption = 'product_' ~ filename %}
+    {% else %}
+        {% set pictureZoomOption = 'product_' ~ themeZoom ~ '.html.twig' %}
+    {% endif %}
+
+    {% if pictureZoomOption %}
+        {% include "page/details/inc/gallery/zoom/" ~ pictureZoomOption %}
+    {% else %}
+        {% include "page/details/inc/gallery/zoom/product_no_zoom.html.twig" %}
+    {% endif %}
+{% endblock %}

@@ -115,6 +115,15 @@ module.exports = function (grunt) {
                     ],
                     '<%= project.out %><%= project.theme %>/src/js/widgets/oxcountrystateselect.min.js': [
                         '<%= project.dev %>build/js/widgets/oxcountrystateselect.js'
+                    ],
+                    '<%= project.out %><%= project.theme %>/src/js/pages/details/magnifierlens.min.js': [
+                        '<%= project.dev %>build/js/pages/details/magnifierlens.js'
+                    ],
+                    '<%= project.out %><%= project.theme %>/src/js/pages/details/hoverzoom.min.js': [
+                        '<%= project.dev %>build/js/pages/details/hoverzoom.js'
+                    ],
+                    '<%= project.out %><%= project.theme %>/src/js/pages/details/modalzoom.min.js': [
+                        '<%= project.dev %>build/js/pages/details/modalzoom.js'
                     ]
                 }
             }
@@ -134,7 +143,10 @@ module.exports = function (grunt) {
                     '<%= project.out %><%= project.theme %>/src/js/listremovebutton.min.js': ['<%= project.out %><%= project.theme %>/src/js/listremovebutton.min.js'],
                     '<%= project.out %><%= project.theme %>/src/js/changeaddress.min.js': ['<%= project.out %><%= project.theme %>/src/js/changeaddress.min.js'],
                     '<%= project.out %><%= project.theme %>/src/js/changeamount.min.js': ['<%= project.out %><%= project.theme %>/src/js/changeamount.min.js'],
-                    '<%= project.out %><%= project.theme %>/src/js/widgets/oxcountrystateselect.min.js': ['<%= project.out %><%= project.theme %>/src/js/widgets/oxcountrystateselect.min.js']
+                    '<%= project.out %><%= project.theme %>/src/js/widgets/oxcountrystateselect.min.js': ['<%= project.out %><%= project.theme %>/src/js/widgets/oxcountrystateselect.min.js'],
+                    '<%= project.out %><%= project.theme %>/src/js/pages/details/magnifierlens.min.js': ['<%= project.out %><%= project.theme %>/src/js/pages/details/magnifierlens.min.js'],
+                    '<%= project.out %><%= project.theme %>/src/js/pages/details/hoverzoom.min.js': ['<%= project.out %><%= project.theme %>/src/js/pages/details/hoverzoom.min.js'],
+                    '<%= project.out %><%= project.theme %>/src/js/pages/details/modalzoom.min.js': ['<%= project.out %><%= project.theme %>/src/js/pages/details/modalzoom.min.js']
                 }
             }
         },

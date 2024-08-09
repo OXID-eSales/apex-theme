@@ -4,7 +4,9 @@
 
 ### Added
 - Custom stock message for product when amount gets low [#0004401](https://bugs.oxid-esales.com/view.php?id=4401)
-- Restore translations for private sales 
+- Restore translations for private sales
+- New theme setting for product picture zoom with three different zoom options
+- Three alternative templates for the different zoom options that can be applied per product
 
 ### Changed
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`

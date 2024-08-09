@@ -1,0 +1,19 @@
+{% block details_productmain_gallery %}
+{% set imageCount = oView.getIcons()|length %}
+
+<div class="gallery">
+    <div class="carousel">
+        {% for iPicNr, oArtIcon in oView.getIcons() %}
+            <input type="radio" class="gallery-helper" id="image{{ iPicNr}}" name="gallery-control"{% if loop.first %} checked{% endif %} />
+        {% endfor %}
+
+        {% block details_productmain_gallery_thumbnails_main %}
+            {% include "page/details/inc/gallery/thumbnails.html.twig" %}
+        {% endblock %}
+
+        {% block details_productmain_gallery_sliders_main %}
+            {% include "page/details/inc/gallery/sliders.html.twig" %}
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

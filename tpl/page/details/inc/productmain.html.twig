@@ -52,35 +52,7 @@
             <div class="col-12 col-md-6 col-lg-8 col-xl-9">
                 {# article picture with zoom #}
                 {% block details_productmain_zoom %}
-                    {% set imageCount = oView.getIcons()|length %}
-                    <div class="gallery">
-                        <div class="carousel">
-                            {% for iPicNr, oArtIcon in oView.getIcons() %}
-                                <input type="radio" class="gallery-helper" id="image{{ iPicNr}}" name="gallery-control"{% if loop.first %} checked{% endif %}>
-                            {% endfor %}
-
-                            {% if imageCount > 1 %}
-                                <div class="thumbnails">
-                                    {% for iPicNr, oArtIcon in oView.getIcons() %}
-                                        <label for="image{{ iPicNr}}" class="thumb">
-                                            <img loading="lazy" src="{{ oPictureProduct.getIconUrl(iPicNr)|raw }}" alt=" {{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}" width="112" height="112">
-                                        </label>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-
-                            <div class="wrap slider-container">
-                                {% for iPicNr, oArtIcon in oView.getIcons() %}
-                                    {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
-                                    {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
-
-                                    <figure>
-                                        <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt=" {{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}"/>
-                                    </figure>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
+                    {% include "page/details/inc/gallery.html.twig" %}
                 {% endblock %}
             </div>
 

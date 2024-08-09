@@ -188,7 +188,7 @@ $thumb-size: 120px;
     display: none;
   }
 
-  .carousel {
+  > .carousel {
     @include media-breakpoint-up(md) {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -333,11 +333,11 @@ $thumb-size: 120px;
         }
 
         & ~ .wrap figure:not(:nth-of-type(#{$temp})) {
-          opacity: 0;
+          display: none;
         }
 
         & ~ .wrap figure:nth-of-type(#{$temp}) {
-          opacity: 1;
+          display: block;
         }
 
         & ~ .thumbnails {

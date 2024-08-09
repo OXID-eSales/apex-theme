@@ -112,6 +112,13 @@ $aTheme = [
             'value'    => 0,
             'position' => 40,
         ],
+        [
+            'group'       => 'pdp',
+            'name'        => 'productZoomType',
+            'type'        => 'select',
+            'value'       => 'no_zoom',
+            'constraints' => 'no_zoom|modal_zoom|hover_zoom|magnifier_lens',
+        ],
 
 //KATEGORIEN
 

@@ -100,6 +100,12 @@ $aLang = array(
 
     'SHOP_THEME_sProductListNavigation'         => 'Display product list navigation',
 
+    'SHOP_THEME_productZoomType'                => 'Zoom type for product detail page',
+    'SHOP_THEME_productZoomType_no_zoom'        => 'No zoom',
+    'SHOP_THEME_productZoomType_modal_zoom'     => 'Modal zoom',
+    'SHOP_THEME_productZoomType_hover_zoom'     => 'Hover zoom',
+    'SHOP_THEME_productZoomType_magnifier_lens' => 'Magnifier zoom',
+
     'SHOP_THEME_sFooterWidth'                => 'Footer width',
     'SHOP_THEME_sFooterWidth_w100cContainer' => 'Background 100%, content centered',
     'SHOP_THEME_sFooterWidth_w100c100'       => 'All 100%',

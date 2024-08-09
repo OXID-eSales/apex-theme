@@ -1,0 +1,12 @@
+{{ script({ include: "js/pages/details/hoverzoom.min.js", priority: 11, dynamic: __oxid_include_dynamic }) }}
+
+<div class="wrap">
+    {% for iPicNr, oArtIcon in oView.getIcons() %}
+        {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
+        {% set aPictureInfo = config.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
+
+        <figure class="zoom-container-hover">
+            <img src="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}" alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": iPicNr, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}">
+        </figure>
+    {% endfor %}
+</div>
