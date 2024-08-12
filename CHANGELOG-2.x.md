@@ -6,6 +6,7 @@
 - Restore translations for private sales
 - New theme setting for product picture zoom with three different zoom options
 - Three alternative templates for the different zoom options that can be applied per product
+- JS function inserting html content and executing included scripts
 
 ### Changed
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`

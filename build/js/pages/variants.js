@@ -31,7 +31,7 @@ handleVariantDropdownLinkClick = (e) => {
             // Success!
             let html = this.response;
             // replace markup
-            document.getElementById('details_container').outerHTML = html;
+            setOuterHtmlAndExecuteScripts(document.getElementById('details_container'), html);
             // bind event listeners again
             addDropdownLinksEventListeners();
         }
