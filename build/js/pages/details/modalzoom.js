@@ -1,3 +1,8 @@
+/**
+ * Copyright © OXID eSales AG. All rights reserved.
+ * See LICENSE file for license details.
+ */
+
 document.addEventListener("DOMContentLoaded", function() {
     const zoomContainers = document.querySelectorAll('.carousel-item');
 
@@ -32,6 +37,5 @@ document.addEventListener("DOMContentLoaded", function() {
         modalZoomImages.forEach(img => {
             img.classList.remove('zoom');
         });
-
     })
 });
