@@ -333,11 +333,13 @@ $thumb-size: 120px;
         }
 
         & ~ .wrap figure:not(:nth-of-type(#{$temp})) {
-          display: none;
+          opacity: 0;
+          visibility: hidden;
         }
 
         & ~ .wrap figure:nth-of-type(#{$temp}) {
-          display: block;
+          opacity: 1;
+          visibility: visible;
         }
 
         & ~ .thumbnails {
