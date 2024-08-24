@@ -66,114 +66,84 @@
     {% endif %}
 
     {% if sGoogleVendorId and sPageLanguage %}
-        {# Händler-Gütesiegelcode #}
-        <script>
-            var gts = gts || [];
-
-            gts.push(["id", "{{ sGoogleVendorId }}"]);
-            gts.push(["badge_position","BOTTOM_RIGHT"]);
-            gts.push(["locale", "{{ sPageLanguage|default('de_DE') }}"]);
-            {% if sGoogleShoppingAccountId %}
-                gts.push(["google_base_subaccount_id", "{{ sGoogleShoppingAccountId }}"]);
-                gts.push(["google_base_offer_id", "{{ sGoogleShoppingProductId }}"]);
-                {% if sShoppingCountry %}
-                    gts.push(["google_base_country", "{{ sShoppingCountry|default('DE') }}"]);
-                {% endif %}
-                {% if sShoppingLanguage %}
-                    gts.push(["google_base_language", "{{ sShoppingLanguage|default('de') }}"]);
-                {% endif %}
-            {% endif %}
-
-            (function() {
-                var gts = document.createElement("script");
-                gts.type = "";
-                gts.async = true;
-                gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(gts, s);
-            })();
+        <!-- begin google customer rating badge -->
+        <script src="https://apis.google.com/js/platform.js?onload=renderBadge"
+                async defer>
         </script>
 
-        {# Bestellbestätigungs-Modul #}
+        <script>
+            window.renderBadge = function() {
+                var ratingBadgeContainer = document.createElement("div");
+                document.body.appendChild(ratingBadgeContainer);
+                window.gapi.load('ratingbadge', function() {
+                    window.gapi.ratingbadge.render(
+                        ratingBadgeContainer, {
+                            "merchant_id": "{{ sGoogleVendorId }}",
+                            "position": "BOTTOM_RIGHT",
+                            "locale": "{{ sPageLanguage|default('de_DE') }}"
+                        });
+                });
+            }
+        </script>
+
+        {% if sShoppingLanguage %}
+            <script>
+                window.___gcfg = {
+                    lang: "{{ sShoppingLanguage|default('de') }}"
+                };
+            </script>
+        {% endif %}
+        <!-- end google customer rating badge -->
+
+        {# Order confirmation module #}
         {% if oViewConf.getTopActiveClassName() == 'thankyou' %}
             {% set sShippingDaysOnStock = oViewConf.getViewThemeParam('sShippingDaysOnStock') %}
             {% set sShippingDaysNotOnStock = oViewConf.getViewThemeParam('sShippingDaysNotOnStock') %}
             {% set sDeliveryDaysOnStock = oViewConf.getViewThemeParam('sDeliveryDaysOnStock') %}
             {% set sDeliveryDaysNotOnStock = oViewConf.getViewThemeParam('sDeliveryDaysNotOnStock') %}
 
-            {% if sShippingDaysOnStock and sShippingDaysNotOnStock and sDeliveryDaysOnStock and sDeliveryDaysNotOnStock %}
+{#            {% if sShippingDaysOnStock and sShippingDaysNotOnStock and sDeliveryDaysOnStock and sDeliveryDaysNotOnStock %}#}
                 {% if not oOrder %}
                     {% set oOrder = oView.getOrder() %}
                 {% endif %}
 
-                {% set aShopDomain = shopURLParam|parse_url %}
                 {% set blHasPreOrder = false %}
-                {% set oBasket = oView.getBasket() %}
                 {% set oCountry = "oxCountry"|oxNew %}
                 {% if oCountry.load(oOrder.oxorder__oxbillcountryid.value) %}
                     {% set sCustomerCountry = oCountry.oxcountry__oxisoalpha2.value %}
                 {% endif %}
 
-                <div id="gts-order" style="display:none;" translate="no">
-                    {% capture name = "sGtsItems" %}
-                        {% for oOrderArticle in oOrder.getOrderArticles() %}
-                            {% set oArticle = oOrderArticle.getArticle() %}
-                            {% set oOrderArticlePrice = oOrderArticle.getPrice() %}
-                            {% set sArticleName = oOrderArticle.oxorderarticles__oxtitle.value ~ ' ' ~ oOrderArticle.oxorderarticles__oxselvariant.value %}
-                            {% if not blHasPreOrder and oArticle.getStockStatus() == -1 %}
-                                {% set blHasPreOrder = true %}
-                            {% endif %}
-
-                            <span class="gts-item">
-                                <span class="gts-i-name">{{ sArticleName|trim }}</span>
-                                <span class="gts-i-price">{{ oOrderArticlePrice.getBruttoPrice() }}</span>
-                                <span class="gts-i-quantity">{{ oOrderArticle.oxorderarticles__oxamount.value }}</span>
-                                <span class="gts-i-prodsearch-id">{{ oOrderArticle.oxorderarticles__oxartnum.value }}</span>
-                                {% if sGoogleShoppingAccountId %}
-                                    <span class="gts-i-prodsearch-store-id">{{ sGoogleShoppingAccountId }}</span>
-                                    {% if sShoppingCountry %}
-                                        <span class="gts-i-prodsearch-country">{{ sShoppingCountry|default('DE') }}</span>
-                                    {% endif %}
-                                    {% if sShoppingLanguage %}
-                                        <span class="gts-i-prodsearch-language">{{ sShoppingLanguage|default('de') }}</span>
-                                    {% endif %}
-                                {% endif %}
-                            </span>
-                        {% endfor %}
-                    {% endcapture %}
-
-                    {% if blHasPreOrder %}
-                        {% set sShipDate = (sShippingDaysNotOnStock ~ "weekdays")|strtotime %}
-                    {% else %}
-                        {% set sShipDate = (sShippingDaysOnStock ~ "weekdays")|strtotime %}
-                    {% endif %}
-
-                    {# voraussichtliches Lieferdatum berechnen #}
+                    {# calculate estimated delivery date #}
                     {% if blHasPreOrder %}
                         {% set sDeliveryDate = (sDeliveryDaysNotOnStock ~ "weekdays")|strtotime %}
                     {% else %}
                         {% set sDeliveryDate = (sDeliveryDaysOnStock ~ "weekdays")|strtotime %}
                     {% endif %}
 
-                    <span id="gts-o-id">{{ oOrder.oxorder__oxordernr.value }}</span>
-                    <span id="gts-o-domain">{{ aShopDomain.host }}</span>
-                    <span id="gts-o-email">{{ oOrder.oxorder__oxbillemail.value }}</span>
-                    <span id="gts-o-country">{{ sCustomerCountry }}</span>
-                    <span id="gts-o-currency">{{ oOrder.oxorder__oxcurrency.value }}</span>
-                    <span id="gts-o-total">{{ oOrder.oxorder__oxtotalordersum.value }}</span>
-                    <span id="gts-o-discounts">{% if oOrder.oxorder__oxdiscount.value > 0 %}-{% endif %}{{ oOrder.oxorder__oxdiscount.value }}</span>
-                    <span id="gts-o-shipping-total">{{ oOrder.oxorder__oxdelcost.value }}</span>
-                    <span id="gts-o-tax-total">{{ oOrder.oxorder__oxartvatprice1.value+oOrder.oxorder__oxartvatprice2.value }}</span>
-                    <span id="gts-o-est-ship-date">{{ sShipDate|date_format("%Y-%m-%d") }}</span>
-                    <span id="gts-o-est-delivery-date">{{ sDeliveryDate|date_format("%Y-%m-%d") }}</span>
-                    <span id="gts-o-has-preorder">{% if blHasPreOrder %}Y{% else %}N{% endif %}</span>
-                    <span id="gts-o-has-digital">{% if oBasket.hasDownloadableProducts() %}Y{% else %}N{% endif %}</span>
+                    <script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script>
+                    <script>
+                        function renderOptIn() {
+                            var estimated_delivery_date = new Date()
+                            estimated_delivery_date.setDate(estimated_delivery_date.getDate() + 0);
+                            estimated_delivery_date = estimated_delivery_date.toISOString().split("T")[0];
+
+                            window.gapi.load('surveyoptin', function() {
+                                window.gapi.surveyoptin.render({
+                                    "merchant_id": "{{ sGoogleVendorId }}",
+                                    "order_id": "{{ oOrder.oxorder__oxordernr.value }}",
+                                    "email": "{{ oOrder.oxorder__oxbillemail.value }}",
+                                    "delivery_country": "{{ sCustomerCountry }}",
+                                    "estimated_delivery_date": "{{ sDeliveryDate }}",// use estimated_delivery_date for testing this survery now
+                                    "opt_in_style": "CENTER_DIALOG"
+                                });
+                            });
+                        }
+                    </script>
 
                     {% if twig.capture.sGtsItems %}
                         {{ twig.capture.sGtsItems }}
                     {% endif %}
-                </div>
-            {% endif %}
+{#        {% endif %}#}
         {% endif %}
     {% endif %}
 {% endif %}

@@ -13,6 +13,7 @@
 - Increase size of mobile navigation font
 - Make aria-labels more informative and add missing ones
 - Replaced Google Universal Analytics by Google Analytics 4
+- Replaced Google Trusted Stores by Google Customer Reviews API
 
 ### Fixed
 - Currency formatting when using `@Front` parameter
