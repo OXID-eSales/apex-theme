@@ -8,18 +8,18 @@
 {# Google Analytics Page Tracking #}
 {% set sGATrackingId = oViewConf.getViewThemeParam('sGATrackingId') %}
 {% if oViewConf.getViewThemeParam('blUseGAPageTracker') and sGATrackingId %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ sGATrackingId }}"></script>
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-        ga('create', '{{ sGATrackingId }}');
-        {# IP-Adressen anonymisieren #}
-        {% if oViewConf.getViewThemeParam('blGAAnonymizeIPs') %}
-            ga('set', 'anonymizeIp', true);
-        {% endif %}
-        ga('send', 'pageview');
+        gtag('config', '{{ sGATrackingId }}', {
+            'debug_mode':true,
+            {% if oViewConf.getViewThemeParam('blGAAnonymizeIPs') %}
+            'anonymize_ip': true
+            {% endif %}
+        });
     </script>
 {% endif %}
 
@@ -28,56 +28,26 @@
     {% set oOrder = oView.getOrder() %}
 
     {% if oOrder %}
-        {% if not oViewConf.getViewThemeParam('blUseGAPageTracker') %}
-            <script>
-                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                ga('create', '{{ sGATrackingId }}');
-                {# IP-Adressen anonymisieren #}
-                {% if oViewConf.getViewThemeParam('blGAAnonymizeIPs') %}
-                    ga('set', 'anonymizeIp', true);
-                {% endif %}
-            </script>
-        {% endif %}
-
-
         <script>
-            ga( 'require', 'ecommerce' );
-
-            ga( 'ecommerce:addTransaction', {
-                'id': '{{ oOrder.oxorder__oxordernr.value }}',           // Transaction ID. Required.
-                'affiliation': '{{ oxcmp_shop.oxshops__oxname.value }}', // Affiliation or store name.
-                'revenue': '{{ oOrder.oxorder__oxtotalordersum.value }}', // Grand Total.
-                'shipping': '{{ oOrder.oxorder__oxdelcost.value }}',     // Shipping.
-                'tax': '{{ oOrder.oxorder__oxartvatprice1.value+oOrder.oxorder__oxartvatprice2.value }}' // Tax.
+            gtag('event', 'purchase', {
+                "transaction_id": "{{ oOrder.oxorder__oxordernr.value }}",            // Transaction ID. Required.
+                "affiliation": "{{ oxcmp_shop.oxshops__oxname.value }}",              // Affiliation or store name.
+                "value": {{ oOrder.oxorder__oxtotalordersum.value }},                // Grand Total.
+                "currency": "{{ oOrder.oxorder__oxcurrency.value }}",                 // Local currency code.
+                "tax": {{ oOrder.oxorder__oxartvatprice1.value+oOrder.oxorder__oxartvatprice2.value }}, // Tax.
+                "shipping": {{ oOrder.oxorder__oxdelcost.value }},                   // Shipping.
+                "items": [
+                    {% for oOrderArticle in oOrder.getOrderArticles() %}
+                    {
+                        "item_name": "{{ oOrderArticle.oxorderarticles__oxtitle.value|trim }}",  // Product name. Required.
+                        "item_id": "{{ oOrderArticle.oxorderarticles__oxartnum.value }}",       // SKU/code.
+                        "price": {{ oOrderArticle.getPrice().getBruttoPrice() }},              // Unit price.
+                        "quantity": {{ oOrderArticle.oxorderarticles__oxamount.value }},       // Quantity.
+                        "item_category": "{% set oMainCategory = oOrderArticle.getArticle().getCategory() %}{% if oMainCategory %}{{ oMainCategory.oxcategories__oxtitle.value }}{% endif %}" // Category or variation.
+                    }{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ]
             });
-
-            {% for oOrderArticle in oOrder.getOrderArticles() %}
-                {% set sArticleName = oOrderArticle.oxorderarticles__oxtitle.value ~ ' ' ~ oOrderArticle.oxorderarticles__oxselvariant.value %}
-                {% set sCategoryName = "" %}
-                {% set oOrderArticlePrice = oOrderArticle.getPrice() %}
-                {% set oArticle = oOrderArticle.getArticle() %}
-                {% if oArticle %}
-                    {% set oMainCategory = oArticle.getCategory() %}
-                    {% if oMainCategory %}
-                        {% set sCategoryName = oMainCategory.oxcategories__oxtitle.value %}
-                    {% endif %}
-                {% endif %}
-                ga( 'ecommerce:addItem', {
-                    'id': '{{ oOrder.oxorder__oxordernr.value }}',                     // Transaction ID. Required.
-                    'name': '{{ sArticleName|trim }}',                                   // Product name. Required.
-                    'sku': '{{ oOrderArticle.oxorderarticles__oxartnum.value }}',      // SKU/code.
-                    'category': '{{ sCategoryName }}',                                   // Category or variation.
-                    'price': '{{ oOrderArticlePrice.getBruttoPrice() }}',               // Unit price.
-                    'quantity': '{{ oOrderArticle.oxorderarticles__oxamount.value }}', // Quantity.
-                    'currency': '{{ oOrder.oxorder__oxcurrency.value }}'               // local currency code.
-                });
-            {% endfor %}
-
-            ga('ecommerce:send' );
         </script>
     {% endif %}
 {% endif %}
