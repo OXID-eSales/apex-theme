@@ -1,6 +1,9 @@
 # Change Log for OXID APEX Theme
 
-## v1.3.1 - Unreleased
+## v1.4.0 - Unreleased
+
+### Added
+- New blocks in `tpl/layout/base.html.twig`: base_preload_fonts, base_preload_css, base_preload_js [PR-65](https://github.com/OXID-eSales/apex-theme/pull/65)
 
 ### Fixed
 - Allow html-code in payment-descriptions
