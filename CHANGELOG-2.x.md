@@ -8,6 +8,16 @@
 - New theme setting for product picture zoom with three different zoom options
 - Three alternative templates for the different zoom options that can be applied per product
 - JS function `setOuterHtmlAndExecuteScripts` that inserts HTML content and executes embedded scripts
+- New blocks:
+  - `tpl/form/forgotpwd_change_pwd.html.twig`
+      - forgotpwd_change_password
+      - forgotpwd_change_password_new
+      - forgotpwd_change_password_confirm
+  - `tpl/form/user_password.html.twig`
+    - user_change_password
+    - user_change_password_old
+    - user_change_password_confirm
+    - user_change_password_new
 
 ### Changed
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`
