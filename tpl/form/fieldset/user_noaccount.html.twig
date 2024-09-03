@@ -10,7 +10,7 @@
 {% block user_noaccount_newsletter %}
     <input type="hidden" name="blnewssubscribed" value="0">
     <div class="mb-3 form-check">
-        <input type="checkbox" id="blnewssubscribed" name="blnewssubscribed" value="1" {% if oView.isNewsSubscribed() %}checked{% endif %}> {{ translate({ ident: "NEWSLETTER_SUBSCRIPTION" }) }}
+        <input type="checkbox" class="form-check-input" id="blnewssubscribed" name="blnewssubscribed" value="1" {% if oView.isNewsSubscribed() %}checked{% endif %}>
         <label class="form-check-label" for="blnewssubscribed">
             {{ translate({ ident: "NEWSLETTER_SUBSCRIPTION" }) }}
         </label>
