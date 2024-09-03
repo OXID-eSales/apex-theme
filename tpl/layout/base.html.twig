@@ -6,10 +6,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset={{ oView.getCharSet() }}">
         <link rel="dns-prefetch" href="{{ oViewConf.getBaseDir()|raw }}">
         <link rel="preconnect" href="{{ oViewConf.getBaseDir()|raw }}">
+        {% block base_preload_fonts %}
         <link rel="preload" href="{{ oViewConf.getResourceUrl('fonts/Roboto-Regular.woff2')|raw }}" as="font" crossorigin type="font/woff2">
         <link rel="preload" href="{{ oViewConf.getResourceUrl('fonts/oswald-latin-600-normal.woff2')|raw }}" as="font" crossorigin type="font/woff2">
+        {% endblock %}
+        {% block base_preload_css %}
         <link rel="preload" href="{{ oViewConf.getResourceUrl('css/styles.min.css')|raw }}" as="style">
+        {% endblock %}
+        {% block base_preload_js %}
         <link rel="preload" href="{{ oViewConf.getResourceUrl('js/scripts.min.js')|raw }}" as="script">
+        {% endblock %}
 
         {% set sPageTitle = oView.getPageTitle() %}
         <title>{% block head_title %}{{ sPageTitle }}{% endblock %}</title>
