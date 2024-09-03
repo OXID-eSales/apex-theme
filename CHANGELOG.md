@@ -9,6 +9,7 @@
 - Fixed copy notice list feature for firefox [#0007651](https://bugs.oxid-esales.com/view.php?id=7651) [PR-61](https://github.com/OXID-eSales/apex-theme/pull/61)
 - Fixed delivery address change on firefox [#0007560](https://bugs.oxid-esales.com/view.php?id=7560) [PR-60](https://github.com/OXID-eSales/apex-theme/pull/60)
 - Fixed title in breadcrumb for product detail page [#0007545](https://bugs.oxid-esales.com/view.php?id=7545) [PR-62](https://github.com/OXID-eSales/apex-theme/pull/62)
+- Fix images, structure and accessibility in mallstart template [PR-50](https://github.com/OXID-eSales/apex-theme/pull/50) 
 
 ## v1.3.0 - 2024-03-18
 
