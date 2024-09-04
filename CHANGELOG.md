@@ -14,6 +14,7 @@
 - Fixed title in breadcrumb for product detail page [#0007545](https://bugs.oxid-esales.com/view.php?id=7545) [PR-62](https://github.com/OXID-eSales/apex-theme/pull/62)
 - Fix images, structure and accessibility in mallstart template [PR-50](https://github.com/OXID-eSales/apex-theme/pull/50) 
 - Remove double newsletter label in guest checkout [#0007668](https://bugs.oxid-esales.com/view.php?id=7668) [PR-63](https://github.com/OXID-eSales/apex-theme/pull/63)
+- Triggers other submit events on order step 3 "Next" button click [PR-64](https://github.com/OXID-eSales/apex-theme/pull/64)
 
 ## v1.3.0 - 2024-03-18
 
