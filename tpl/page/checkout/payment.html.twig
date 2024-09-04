@@ -152,7 +152,7 @@
                             {% include "page/checkout/inc/summary_sidebar.html.twig" %}
 
                             <button type="button" class="btn btn-highlight btn-lg w-100"
-                                    onclick="document.getElementById('payment').submit();">
+                                    onclick="document.querySelector('#payment').requestSubmit();">
                                 {{ translate({ ident: "NEXT" }) }}
                             </button>
                         </div>
