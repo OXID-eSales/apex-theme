@@ -65,7 +65,7 @@
         {% set sGoogleShoppingProductId = oArticle.oxarticles__oxartnum.value %}
     {% endif %}
 
-    {% if sGoogleVendorId and sPageLanguage %}
+    {% if sGoogleVendorId and sShoppingLanguage %}
         <!-- begin google customer rating badge -->
         <script src="https://apis.google.com/js/platform.js?onload=renderBadge"
                 async defer>
@@ -80,7 +80,7 @@
                         ratingBadgeContainer, {
                             "merchant_id": "{{ sGoogleVendorId }}",
                             "position": "BOTTOM_RIGHT",
-                            "locale": "{{ sPageLanguage|default('de_DE') }}"
+                            "locale": "{{ sShoppingLanguage|default('de') }}"
                         });
                 });
             }
@@ -102,7 +102,7 @@
             {% set sDeliveryDaysOnStock = oViewConf.getViewThemeParam('sDeliveryDaysOnStock') %}
             {% set sDeliveryDaysNotOnStock = oViewConf.getViewThemeParam('sDeliveryDaysNotOnStock') %}
 
-{#            {% if sShippingDaysOnStock and sShippingDaysNotOnStock and sDeliveryDaysOnStock and sDeliveryDaysNotOnStock %}#}
+            {% if sShippingDaysOnStock and sShippingDaysNotOnStock and sDeliveryDaysOnStock and sDeliveryDaysNotOnStock %}
                 {% if not oOrder %}
                     {% set oOrder = oView.getOrder() %}
                 {% endif %}
@@ -123,17 +123,13 @@
                     <script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script>
                     <script>
                         function renderOptIn() {
-                            var estimated_delivery_date = new Date()
-                            estimated_delivery_date.setDate(estimated_delivery_date.getDate() + 0);
-                            estimated_delivery_date = estimated_delivery_date.toISOString().split("T")[0];
-
                             window.gapi.load('surveyoptin', function() {
                                 window.gapi.surveyoptin.render({
                                     "merchant_id": "{{ sGoogleVendorId }}",
                                     "order_id": "{{ oOrder.oxorder__oxordernr.value }}",
                                     "email": "{{ oOrder.oxorder__oxbillemail.value }}",
                                     "delivery_country": "{{ sCustomerCountry }}",
-                                    "estimated_delivery_date": "{{ sDeliveryDate }}",// use estimated_delivery_date for testing this survery now
+                                    "estimated_delivery_date": "{{ sDeliveryDate|date('Y-m-d') }}",
                                     "opt_in_style": "CENTER_DIALOG"
                                 });
                             });
@@ -143,7 +139,7 @@
                     {% if twig.capture.sGtsItems %}
                         {{ twig.capture.sGtsItems }}
                     {% endif %}
-{#        {% endif %}#}
+         {% endif %}
         {% endif %}
     {% endif %}
 {% endif %}
