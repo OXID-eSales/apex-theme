@@ -36,3 +36,4 @@
 
 ### Removed
 - PHP v8.1 support
+- Google legacy trusted store code
