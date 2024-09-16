@@ -22,6 +22,7 @@
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`
 - Increase size of mobile navigation font
 - Make aria-labels more informative and add missing ones
+- Replaced Google Universal Analytics by Google Analytics 4
 
 ### Fixed
 - Currency formatting when using `@Front` parameter
@@ -35,3 +36,4 @@
 
 ### Removed
 - PHP v8.1 support
+- Google legacy trusted store code
