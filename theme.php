@@ -418,13 +418,13 @@ $aTheme = [
             'group' => 'googleanalytics',
             'name'  => 'blUseGAEcommerceTracking',
             'type'  => 'bool',
-            'value' => 1,
+            'value' => 0,
         ],
         [
             'group' => 'googleanalytics',
             'name'  => 'blUseGAPageTracker',
             'type'  => 'bool',
-            'value' => 1,
+            'value' => 0,
         ],
         [
             'group' => 'googleanalytics',
