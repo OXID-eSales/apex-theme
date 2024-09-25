@@ -277,6 +277,13 @@
                     {% endif %}
                 {% endfor %}
             {% endblock %}
+            {% block checkout_basket_voucher_warning %}
+                {% if oxcmp_basket.isVoucherExceeded() %}
+                <div class="alert alert-danger p-4">
+                    {{ translate({ ident: "APPLY_COUPON_WARNING" }) }}
+                </div>
+                {% endif %}
+            {% endblock %}
         {% endblock %}
     {% endif %}
     {% block basket_btn_next_bottom %}
