@@ -30,7 +30,7 @@
     </div>
     {% endfor %}
 {% endif %}
-{% if oProduct.getFPrice() %}
+{% if oProduct.getPrice() %}
 {{ twig.capture.sRDFaPriceStart | raw }}
             {% set price = oDetailsProduct.getPrice() %}
             <div property="schema:price" content="{{ price.getBruttoPrice() }}" datatype="xsd:float"></div>

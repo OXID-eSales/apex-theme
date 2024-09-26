@@ -65,7 +65,7 @@
                                                                 </span>
                                                                 {% endif %}
                                                                 {{ wrapping.oxwrapping__oxname.value }}
-                                                                <strong>{{ format_price(wrapping.getFPrice(), { currency: currency }) }}</strong>
+                                                                <strong>{{ format_price(wrapping.getPrice(), { currency: currency }) }}</strong>
                                                             </label>
                                                             {% set ictr = ictr+1 %}
                                                         {% endfor %}
@@ -120,7 +120,7 @@
                                                     <div class="form-check">
                                                         <input class="radiobox form-check-input" type="radio" name="chosencard" id="chosen_{{ card.oxwrapping__oxid.value }}" value="{{ card.oxwrapping__oxid.value }}" {% if oxcmp_basket.getCardId() == card.oxwrapping__oxid.value %}CHECKED{% endif %}>
                                                         <label class="form-check-label" for="chosen_{{ card.oxwrapping__oxid.value }}">
-                                                            {{ card.oxwrapping__oxname.value }} <strong>{{ format_price(card.getFPrice(), { currency: currency }) }}</strong>
+                                                            {{ card.oxwrapping__oxname.value }} <strong>{{ format_price(card.getPrice(), { currency: currency }) }}</strong>
                                                         </label>
                                                     </div>
                                                 </div>

@@ -40,10 +40,10 @@
 
 {% set dRegUnitPrice = basketitem.getRegularUnitPrice() %}
 {% set dUnitPrice = basketitem.getUnitPrice() %}
-{{ translate({ ident: "UNIT_PRICE" }) }} {{ basketitem.getFUnitPrice() }} {{ currency.name }} {% if not basketitem.isBundle() %} {% if dRegUnitPrice.getPrice() > dUnitPrice.getPrice() %} ({{ format_price(basketitem.getFRegularUnitPrice(), { currency: currency }) }}) {% endif %}{% endif %}
+{{ translate({ ident: "UNIT_PRICE" }) }} {{ basketitem.getFUnitPrice() }} {{ currency.name }} {% if not basketitem.isBundle() %} {% if dRegUnitPrice.getPrice() > dUnitPrice.getPrice() %} ({{ format_price(basketitem.getRegularUnitPrice(), { currency: currency }) }}) {% endif %}{% endif %}
 {{ translate({ ident: "QUANTITY" }) }} {{ basketitem.getAmount() }}
 {{ translate({ ident: "VAT" }) }} {{ basketitem.getVatPercent() }}%
-{{ translate({ ident: "TOTAL" }) }} {{ basketitem.getFTotalPrice() }} {{ currency.name }}
+{{ translate({ ident: "TOTAL" }) }} {{ basketitem.getTotalPrice() }} {{ currency.name }}
 {% endblock %}
 {% endfor %}
 ------------------------------------------------------------------
@@ -60,7 +60,7 @@
 {% endblock %}
 {% block email_plain_order_nodiscountownertotalgross %}
 {# brutto price #}
-{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getFProductsPrice() }} {{ currency.name }}
+{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getProductsPrice() }} {{ currency.name }}
 {% endblock %}
 {% endif %}
 
@@ -74,7 +74,7 @@
 {% else %}
 {% block email_plain_order_discountownertotalgross %}
 {# brutto price #}
-{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getFProductsPrice() }} {{ currency.name }}
+{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getProductsPrice() }} {{ currency.name }}
 {% endblock %}
 {% endif %}
 {% block email_plain_order_ownerdiscounts %}
@@ -98,7 +98,7 @@
 {% if order.isNettoMode() %}
 {% block email_plain_order_ownertotalgross %}
 {# brutto price #}
-{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getFProductsPrice() }} {{ currency.name }}
+{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getProductsPrice() }} {{ currency.name }}
 {% endblock %}
 {% endif %}
 {% block email_plain_order_owner_voucherdiscount %}
@@ -112,8 +112,8 @@
 {% if basket.getDelCostNet() %}
     {{ translate({ ident: "SHIPPING_NET", suffix: "COLON" }) }} {{ format_price(basket.getDelCostNet(), { currency: currency }) }}
     {% if basket.getDelCostVat() %} {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }} {% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getDelCostVatPercent() }) }}{% endif %} {{ format_price(basket.getDelCostVat(), { currency: currency }) }}
-{% elseif basket.getFDeliveryCosts() %}
-    {{ translate({ ident: "SHIPPING_COST" }) }} {{ format_price(basket.getFDeliveryCosts(), { currency: currency }) }}
+{% elseif basket.getDeliveryCosts() %}
+    {{ translate({ ident: "SHIPPING_COST" }) }} {{ format_price(basket.getDeliveryCosts(), { currency: currency }) }}
 {% endif %}
 {% endblock %}
 {% block email_plain_order_ownerpaymentcosts %}
@@ -123,8 +123,8 @@
     {% if basket.getPayCostVat() %}
         {% if basket.isProportionalCalculationOn() %} {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}{% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getPayCostVatPercent() }) }}{% endif %} {{ format_price(basket.getPayCostVat(), { currency: currency }) }}
     {% endif %}
-{% elseif basket.getFPaymentCosts() %}
-    {{ translate({ ident: "SURCHARGE" }) }} {{ format_price(basket.getFPaymentCosts(), { currency: currency }) }}
+{% elseif basket.getPaymentCosts() %}
+    {{ translate({ ident: "SURCHARGE" }) }} {{ format_price(basket.getPaymentCosts(), { currency: currency }) }}
 {% endif %}
 {% endblock %}
 
@@ -136,8 +136,8 @@
         {% if basket.getWrappCostVat() %}
             {{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(basket.getWrappCostVat(), { currency: currency }) }}
         {% endif %}
-    {% elseif basket.getFWrappingCosts() %}
-        {{ translate({ ident: "GIFT_WRAPPING" }) }} {{ format_price(basket.getFWrappingCosts(), { currency: currency }) }}
+    {% elseif basket.getWrappingCosts() %}
+        {{ translate({ ident: "GIFT_WRAPPING" }) }} {{ format_price(basket.getWrappingCosts(), { currency: currency }) }}
     {% endif %}
 {% endif %}
 {% endblock %}
@@ -150,15 +150,15 @@
         {% if basket.getGiftCardCostVat() %}
             {% if basket.isProportionalCalculationOn() %}{{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}{% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getGiftCardCostVatPercent() }) }}{% endif %} {{ format_price(basket.getGiftCardCostVat(), { currency: currency }) }}
         {% endif %}
-    {% elseif basket.getFGiftCardCosts() %}
-        {{ translate({ ident: "GREETING_CARD" }) }} {{ format_price(basket.getFGiftCardCosts(), { currency: currency }) }}
+    {% elseif basket.getGiftCardCosts() %}
+        {{ translate({ ident: "GREETING_CARD" }) }} {{ format_price(basket.getGiftCardCosts(), { currency: currency }) }}
     {% endif %}
 {% endif %}
 {% endblock %}
 
 {% block email_plain_order_ownergrandtotal %}
 {# grand total price #}
-{{ translate({ ident: "GRAND_TOTAL" }) }} {{ basket.getFPrice() }} {{ currency.name }}
+{{ translate({ ident: "GRAND_TOTAL" }) }} {{ basket.getPrice() }} {{ currency.name }}
 {% if basket['oCard'] %}
     {{ translate({ ident: "ATENTION_GREETING_CARD" }) }}
     {{ translate({ ident: "WHAT_I_WANTED_TO_SAY" }) }}
@@ -174,7 +174,7 @@
 
 {% block email_plain_order_ownerpaymentinfo %}
 {% if payment.oxuserpayments__oxpaymentsid.value != "oxempty" %}{{ translate({ ident: "PAYMENT_INFORMATION" }) }}
-{{ translate({ ident: "PAYMENT_METHOD" }) }}{{ payment.oxpayments__oxdesc.value }} {% if basket.getPaymentCosts() %}({{ format_price(basket.getFPaymentCosts(), { currency: currency }) }}){% endif %}
+{{ translate({ ident: "PAYMENT_METHOD" }) }}{{ payment.oxpayments__oxdesc.value }} {% if basket.getPaymentCosts() %}({{ format_price(basket.getPaymentCosts(), { currency: currency }) }}){% endif %}
 {% endif %}
 {% endblock %}
 

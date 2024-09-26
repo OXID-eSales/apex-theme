@@ -224,7 +224,7 @@
                     {% block details_productmain_price %}
                         {% hasrights { ident: "SHOWARTICLEPRICE" } %}
                             {% block details_productmain_price_value %}
-                                {% if oDetailsProduct.getFPrice() %}
+                                {% if oDetailsProduct.getPrice() %}
                                     <div id="productPrice" class="price-label">
                                         {% set sFrom = "" %}
                                         {% set oPrice = oDetailsProduct.getPrice() %}
