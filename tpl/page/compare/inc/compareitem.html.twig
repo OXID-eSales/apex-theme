@@ -79,7 +79,7 @@
 
                             {% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %}
                                 <span class="oldPrice text-muted">
-                                    <del>{{ format_price(product.getFTPrice(), { currency: currency }) }}</del>
+                                    <del>{{ format_price(product.getTPrice(), { currency: currency }) }}</del>
                                 </span>
                             {% endif %}
 
@@ -91,7 +91,7 @@
 
                                             {% set rangePrice = product.getVarMinPrice() %}
                                             {% if not product.isParentNotBuyable() %}
-                                                {% set rangePrice = product.getFMinPrice() %}
+                                                {% set rangePrice = product.getMinPrice() %}
                                             {% endif %}
 
                                             {{ format_price(rangePrice, { currency: currency }) }}

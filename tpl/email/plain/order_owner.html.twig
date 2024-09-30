@@ -40,10 +40,10 @@
 
 {% set dRegUnitPrice = basketitem.getRegularUnitPrice() %}
 {% set dUnitPrice = basketitem.getUnitPrice() %}
-{{ translate({ ident: "UNIT_PRICE" }) }} {{ basketitem.getFUnitPrice() }} {{ currency.name }} {% if not basketitem.isBundle() %} {% if dRegUnitPrice.getPrice() > dUnitPrice.getPrice() %} ({{ format_price(basketitem.getRegularUnitPrice(), { currency: currency }) }}) {% endif %}{% endif %}
+{{ translate({ ident: "UNIT_PRICE" }) }} {{ basketitem.getUnitPrice().getPrice() }} {{ currency.name }} {% if not basketitem.isBundle() %} {% if dRegUnitPrice.getPrice() > dUnitPrice.getPrice() %} ({{ format_price(basketitem.getRegularUnitPrice(), { currency: currency }) }}) {% endif %}{% endif %}
 {{ translate({ ident: "QUANTITY" }) }} {{ basketitem.getAmount() }}
 {{ translate({ ident: "VAT" }) }} {{ basketitem.getVatPercent() }}%
-{{ translate({ ident: "TOTAL" }) }} {{ basketitem.getTotalPrice() }} {{ currency.name }}
+{{ translate({ ident: "TOTAL" }) }} {{ basketitem.getPrice().getPrice() }} {{ currency.name }}
 {% endblock %}
 {% endfor %}
 ------------------------------------------------------------------
@@ -104,7 +104,7 @@
 {% block email_plain_order_owner_voucherdiscount %}
 {# voucher discounts #}
 {% if oViewConf.getShowVouchers() and basket.getVoucherDiscValue() %}
-{{ translate({ ident: "COUPON" }) }} {% if basket.getFVoucherDiscountValue() > 0 %}-{% endif %}{{ basket.getFVoucherDiscountValue()|replace({"-": ""}) }} {{ currency.name }}
+{{ translate({ ident: "COUPON" }) }} {% if basket.getVoucherDiscValue() > 0 %}-{% endif %}{{ basket.getVoucherDiscValue()|replace({"-": ""}) }} {{ currency.name }}
 {% endif %}
 {% endblock %}
 {% block email_plain_order_ownerdelcosts %}

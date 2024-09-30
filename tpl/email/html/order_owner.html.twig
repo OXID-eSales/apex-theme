@@ -154,7 +154,7 @@
                     </td>
                     <td>
                         <p>
-                            <b style="white-space:nowrap;">{% if basketitem.getFUnitPrice() %}{{ format_price(basketitem.getFUnitPrice(), { currency: currency }) }}{% endif %}</b>
+                            <b style="white-space:nowrap;">{% if basketitem.getUnitPrice() %}{{ format_price(basketitem.getUnitPrice(), { currency: currency }) }}{% endif %}</b>
                             {% if not basketitem.isBundle() %}
                                 {% set dRegUnitPrice = basketitem.getRegularUnitPrice() %}
                                 {% set dUnitPrice = basketitem.getUnitPrice() %}
@@ -177,7 +177,7 @@
                     <td>{{ basketitem.getAmount() }}</td>
                     <td>{{ basketitem.getVatPercent() }}%</td>
                     <td>
-                        <b>{{ format_price(basketitem.getTotalPrice(), { currency: currency }) }}</b>
+                        <b>{{ format_price(basketitem.getPrice(), { currency: currency }) }}</b>
                     </td>
                 </tr>
             {% endblock %}
@@ -313,7 +313,7 @@
             {% if oViewConf.getShowVouchers() and basket.getVoucherDiscValue() %}
                 <tr valign="top" bgcolor="#ebebeb">
                     <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "COUPON" }) }}</td>
-                    <td align="right" class="odd text-right">{% if basket.getFVoucherDiscountValue() > 0 %}-{% endif %}{{ format_price((basket.getFVoucherDiscountValue()|replace({"-": ""})), { currency: currency }) }}</td>
+                    <td align="right" class="odd text-right">{% if basket.getVoucherDiscValue() > 0 %}-{% endif %}{{ format_price((basket.getVoucherDiscValue()|replace({"-": ""})), { currency: currency }) }}</td>
                 </tr>
             {% endif %}
         {% endblock %}

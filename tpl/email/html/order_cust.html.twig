@@ -203,7 +203,7 @@
                     </td>
                     <td align="right">{{ basketitem.getVatPercent() }}%</td>
                     <td align="right">
-                        <b>{{ format_price(basketitem.getTotalPrice(), { currency: currency }) }}</b>
+                        <b>{{ format_price(basketitem.getPrice(), { currency: currency }) }}</b>
                     </td>
                 </tr>
             {% endblock %}
@@ -326,7 +326,7 @@
             {% if oViewConf.getShowVouchers() and basket.getVoucherDiscValue() %}
                 <tr valign="top" bgcolor="#ebebeb">
                     <td align="right" colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "COUPON" }) }}</td>
-                    <td align="right" class="odd text-right">{% if basket.getFVoucherDiscountValue() > 0 %}-{% endif %}{{ format_price((basket.getFVoucherDiscountValue()|replace({"-": ""})), { currency: currency }) }}</td>
+                    <td align="right" class="odd text-right">{% if basket.getVoucherDiscValue() > 0 %}-{% endif %}{{ format_price((basket.getVoucherDiscValue()|replace({"-": ""})), { currency: currency }) }}</td>
                 </tr>
             {% endif %}
         {% endblock %}
@@ -400,10 +400,10 @@
                             <td align="right" class="odd text-right">{{ format_price(basket.getWrappCostVat(), { currency: currency }) }}</td>
                         </tr>
                     {% endif %}
-                {% elseif basket.getWrappingCosts() %}
+                {% elseif basket.getWrappingCost() and basket.getWrappingCost().getBruttoPrice() %}
                     <tr valign="top" bgcolor="#ebebeb">
                         <td align="right" colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "GIFT_WRAPPING" }) }}:</td>
-                        <td align="right" class="odd text-right">{{ format_price(basket.getWrappingCosts(), { currency: currency }) }}</td>
+                        <td align="right" class="odd text-right">{{ format_price(basket.getWrappingCost().getBruttoPrice(), { currency: currency }) }}</td>
                     </tr>
                 {% endif %}
             {% endblock %}
