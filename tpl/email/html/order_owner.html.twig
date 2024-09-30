@@ -408,10 +408,10 @@
                         <td align="right" class="odd text-right">{{ format_price(basket.getGiftCardCostVat(), { currency: currency }) }}</td>
                     </tr>
                     {% endif %}
-                {% elseif basket.getGiftCardCosts() %}
+                {% elseif basket.getGiftCardCost() and basket.getGiftCardCost().getBruttoPrice() %}
                     <tr valign="top" bgcolor="#ebebeb">
                         <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "GREETING_CARD" }) }}:</td>
-                        <td align="right" class="odd text-right">{{ format_price(basket.getGiftCardCosts(), { currency: currency }) }}</td>
+                        <td align="right" class="odd text-right">{{ format_price(basket.getGiftCardCost().getBruttoPrice(), { currency: currency }) }}</td>
                     </tr>
                 {% endif %}
             {% endblock %}
