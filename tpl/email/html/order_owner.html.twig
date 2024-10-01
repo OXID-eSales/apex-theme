@@ -383,10 +383,10 @@
                             <td align="right" class="odd text-right">{{ format_price(basket.getWrappCostVat(), { currency: currency }) }}</td>
                         </tr>
                     {% endif %}
-                {% elseif basket.getWrappingCosts() %}
+                {% elseif basket.getWrappingCost() and basket.getWrappingCost().getBruttoPrice() %}
                     <tr valign="top" bgcolor="#ebebeb">
                         <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "GIFT_WRAPPING" }) }}:</td>
-                        <td align="right" class="odd text-right">{{ format_price(basket.getWrappingCosts(), { currency: currency }) }}</td>
+                        <td align="right" class="odd text-right">{{ format_price(basket.getWrappingCost().getBruttoPrice(), { currency: currency }) }}</td>
                     </tr>
                 {% endif %}
             {% endblock %}

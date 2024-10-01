@@ -136,8 +136,8 @@
         {% if basket.getWrappCostVat() %}
             {{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(basket.getWrappCostVat(), { currency: currency }) }}
         {% endif %}
-    {% elseif basket.getWrappingCosts() %}
-        {{ translate({ ident: "GIFT_WRAPPING" }) }} {{ format_price(basket.getWrappingCosts(), { currency: currency }) }}
+    {% elseif basket.getWrappingCost() and basket.getWrappingCost().getBruttoPrice() %}
+        {{ translate({ ident: "GIFT_WRAPPING" }) }} {{ format_price(basket.getWrappingCost().getBruttoPrice(), { currency: currency }) }}
     {% endif %}
 {% endif %}
 {% endblock %}
