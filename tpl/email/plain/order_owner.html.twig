@@ -60,7 +60,7 @@
 {% endblock %}
 {% block email_plain_order_nodiscountownertotalgross %}
 {# brutto price #}
-{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getProductsPrice() }} {{ currency.name }}
+{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getBruttoSum() }} {{ currency.name }}
 {% endblock %}
 {% endif %}
 
@@ -74,7 +74,7 @@
 {% else %}
 {% block email_plain_order_discountownertotalgross %}
 {# brutto price #}
-{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getProductsPrice() }} {{ currency.name }}
+{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getBruttoSum() }} {{ currency.name }}
 {% endblock %}
 {% endif %}
 {% block email_plain_order_ownerdiscounts %}
@@ -98,7 +98,7 @@
 {% if order.isNettoMode() %}
 {% block email_plain_order_ownertotalgross %}
 {# brutto price #}
-{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getProductsPrice() }} {{ currency.name }}
+{{ translate({ ident: "TOTAL_GROSS" }) }} {{ basket.getBruttoSum() }} {{ currency.name }}
 {% endblock %}
 {% endif %}
 {% block email_plain_order_owner_voucherdiscount %}

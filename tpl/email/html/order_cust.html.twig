@@ -256,7 +256,7 @@
                 <!-- brutto price -->
                 <tr valign="top" bgcolor="#ebebeb">
                     <td align="right" colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "TOTAL_GROSS" }) }}</td>
-                    <td align="right" class="odd text-right">{{ format_price(basket.getProductsPrice(), { currency: currency }) }}</td>
+                    <td align="right" class="odd text-right">{{ format_price(basket.getBruttoSum(), { currency: currency }) }}</td>
                 </tr>
             {% endblock %}
         {% endif %}
@@ -275,7 +275,7 @@
                     <!-- brutto price -->
                     <tr valign="top" bgcolor="#ebebeb">
                         <td align="right" colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "TOTAL_GROSS" }) }}</td>
-                        <td align="right" class="odd text-right">{{ format_price(basket.getProductsPrice(), { currency: currency }) }}</td>
+                        <td align="right" class="odd text-right">{{ format_price(basket.getBruttoSum(), { currency: currency }) }}</td>
                     </tr>
                 {% endblock %}
             {% endif %}
@@ -315,7 +315,7 @@
                     <!-- brutto price -->
                     <tr valign="top" bgcolor="#ebebeb">
                         <td align="right" colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "TOTAL_GROSS" }) }}</td>
-                        <td align="right" class="odd text-right">{{ format_price(basket.getProductsPrice(), { currency: currency }) }}</td>
+                        <td align="right" class="odd text-right">{{ format_price(basket.getBruttoSum(), { currency: currency }) }}</td>
                     </tr>
                 {% endblock %}
             {% endif %}
