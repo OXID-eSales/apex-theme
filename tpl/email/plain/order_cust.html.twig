@@ -174,7 +174,7 @@
 
 {% block email_plain_order_cust_grandtotal %}
 {# grand total price #}
-{{ translate({ ident: "GRAND_TOTAL" }) }} {{ basket.getPrice() }} {{ currency.name }}
+{{ translate({ ident: "GRAND_TOTAL" }) }} {{ basket.getPrice().getBruttoPrice() }} {{ currency.name }}
 
 {% if basket.getCard() %}
     {{ translate({ ident: "YOUR_GREETING_CARD" }) }}
