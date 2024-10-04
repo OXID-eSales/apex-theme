@@ -11,7 +11,7 @@
         <input type="hidden" name="fnc" value="addme">
     </div>
     <div class="mb-3 form-floating">
-        <input class="form-control" id="pa[price]" type="text" placeholder=" " name="pa[price]" value="{% hasrights { ident: "SHOWARTICLEPRICE" } %}{% if product %}{{ product.getFPrice() }}{% endif %}{% endhasrights %}" maxlength="32" required>
+        <input class="form-control" id="pa[price]" type="text" placeholder=" " name="pa[price]" value="{% hasrights { ident: "SHOWARTICLEPRICE" } %}{% if product %}{{ product.getPrice() }}{% endif %}{% endhasrights %}" maxlength="32" required>
         <label for="pa[price]" class="req form-label">{{ translate({ ident: "YOUR_PRICE" }) }} ({{ currency.sign }}):</label>
     </div>
     <div class="mb-3 form-floating">

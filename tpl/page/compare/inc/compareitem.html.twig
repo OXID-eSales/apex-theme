@@ -79,26 +79,26 @@
 
                             {% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %}
                                 <span class="oldPrice text-muted">
-                                    <del>{{ format_price(product.getFTPrice(), { currency: currency }) }}</del>
+                                    <del>{{ format_price(product.getTPrice(), { currency: currency }) }}</del>
                                 </span>
                             {% endif %}
 
                             {% block widget_product_listitem_grid_price_value %}
-                                {% if product.getFPrice() %}
+                                {% if product.getPrice() %}
                                     <span class="text-nowrap{% if tprice and tprice.getBruttoPrice() > price.getBruttoPrice() %} text-danger{% endif %}">
                                         {% if product.isRangePrice() %}
                                             {{ translate({ ident: "PRICE_FROM" }) }}
 
-                                            {% set rangePrice = product.getFVarMinPrice() %}
+                                            {% set rangePrice = product.getVarMinPrice() %}
                                             {% if not product.isParentNotBuyable() %}
-                                                {% set rangePrice = product.getFMinPrice() %}
+                                                {% set rangePrice = product.getMinPrice() %}
                                             {% endif %}
 
                                             {{ format_price(rangePrice, { currency: currency }) }}
                                         {% else %}
-                                            {% set variantPrice = product.getFVarMinPrice() %}
+                                            {% set variantPrice = product.getVarMinPrice() %}
                                             {% if not product.isParentNotBuyable() %}
-                                                {% set variantPrice = product.getFPrice() %}
+                                                {% set variantPrice = product.getPrice() %}
                                             {% endif %}
 
                                             {{ format_price(variantPrice, { currency: currency }) }}
