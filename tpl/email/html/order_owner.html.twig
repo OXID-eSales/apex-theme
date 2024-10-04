@@ -225,12 +225,12 @@
                 <!-- netto price -->
                 <tr valign="top" bgcolor="#ebebeb">
                     <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "TOTAL_NET" }) }}</td>
-                    <td align="right" class="odd text-right">{{ format_price(basket.getProductsNetPrice(), { currency: currency }) }}</td>
+                    <td align="right" class="odd text-right">{{ format_price(basket.getNettoSum(), { currency: currency }) }}</td>
                 </tr>
             {% endblock %}
             {% block email_html_order_owner_nodiscountproductvats %}
                 <!-- VATs -->
-                {% for key, VATitem in basket.getProductVats() %}
+                {% for key, VATitem in basket.getProductVats(false) %}
                     <tr valign="top" bgcolor="#ebebeb">
                         <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: key }) }}</td>
                         <td align="right" class="odd text-right">{{ format_price(VATitem, { currency: currency }) }}</td>
@@ -323,7 +323,7 @@
             {% if basket.getDelCostNet() %}
                 <tr valign="top" bgcolor="#ebebeb">
                     <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "SHIPPING_NET" }) }}</td>
-                    <td align="right" class="odd text-right">{{ format_price(basket.getDelCostNet(), { currency: currency }) }}</td>
+                    <td align="right" class="odd text-right">{{ format_price(basket.getDeliveryCost().getNettoPrice(), { currency: currency }) }}</td>
                 </tr>
                 {% if basket.getDelCostVat() %}
                     <tr valign="top" bgcolor="#ebebeb">
@@ -332,7 +332,7 @@
                         {% else %}
                             <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getDelCostVatPercent() }) }}</td>
                         {% endif %}
-                        <td align="right" class="odd text-right">{{ format_price(basket.getDelCostVat(), { currency: currency }) }}</td>
+                        <td align="right" class="odd text-right">{{ format_price(basket.getDeliveryCost().getVatValue(), { currency: currency }) }}</td>
                     </tr>
                 {% endif %}
             {% elseif basket.getDeliveryCosts() %}
@@ -348,7 +348,7 @@
             {% if basket.getPayCostNet() %}
                 <tr valign="top" bgcolor="#ebebeb">
                     <td colspan="{{ iFooterColspan }}" class="odd text-right">{% if basket.getPaymentCosts() >= 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DEDUCTION" }) }}{% endif %} {{ translate({ ident: "PAYMENT_METHOD" }) }}</td>
-                    <td align="right" class="odd text-right">{{ format_price(basket.getPayCostNet(), { currency: currency }) }}</td>
+                    <td align="right" class="odd text-right">{{ format_price(basket.getPaymentCost().getNettoPrice(), { currency: currency }) }}</td>
                 </tr>
                 <!-- payment sum VAT (if available) -->
                 {% if basket.getPayCostVat() %}
@@ -358,7 +358,7 @@
                         {% else %}
                             <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getPayCostVatPercent() }) }}</td>
                         {% endif %}
-                        <td align="right" class="odd text-right">{{ format_price(basket.getPayCostVat(), { currency: currency }) }}</td>
+                        <td align="right" class="odd text-right">{{ format_price(basket.getPaymentCost().getVatValue(), { currency: currency }) }}</td>
                     </tr>
                 {% endif %}
             {% elseif basket.getPaymentCosts() %}
@@ -375,12 +375,12 @@
                 {% if basket.getWrappCostNet() %}
                     <tr valign="top" bgcolor="#ebebeb">
                         <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "BASKET_TOTAL_WRAPPING_COSTS_NET" }) }}:</td>
-                        <td align="right" class="odd text-right">{{ format_price(basket.getWrappCostNet(), { currency: currency }) }}</td>
+                        <td align="right" class="odd text-right">{{ format_price(basket.getWrappingCost().getNettoPrice(), { currency: currency }) }}</td>
                     </tr>
                     {% if basket.getWrappCostVat() %}
                         <tr valign="top" bgcolor="#ebebeb">
                             <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "PLUS_VAT" }) }}:</td>
-                            <td align="right" class="odd text-right">{{ format_price(basket.getWrappCostVat(), { currency: currency }) }}</td>
+                            <td align="right" class="odd text-right">{{ format_price(basket.getWrappingCost().getVatValue(), { currency: currency }) }}</td>
                         </tr>
                     {% endif %}
                 {% elseif basket.getWrappingCost() and basket.getWrappingCost().getBruttoPrice() %}
@@ -396,7 +396,7 @@
                 {% if basket.getGiftCardCostNet() %}
                     <tr valign="top" bgcolor="#ebebeb">
                         <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "BASKET_TOTAL_GIFTCARD_COSTS_NET" }) }}:</td>
-                        <td align="right" class="odd text-right">{{ format_price(basket.getGiftCardCostNet(), { currency: currency }) }}</td>
+                        <td align="right" class="odd text-right">{{ format_price(basket.getGiftCardCost().getNettoPrice(), { currency: currency }) }}</td>
                     </tr>
                     {% if basket.getGiftCardCostVat() %}
                     <tr>
@@ -405,7 +405,7 @@
                         {% else %}
                             <td colspan="{{ iFooterColspan }}" class="odd text-right">{{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getGiftCardCostVatPercent() }) }}</td>
                         {% endif %}
-                        <td align="right" class="odd text-right">{{ format_price(basket.getGiftCardCostVat(), { currency: currency }) }}</td>
+                        <td align="right" class="odd text-right">{{ format_price(basket.getGiftCardCost().getVatValue(), { currency: currency }) }}</td>
                     </tr>
                     {% endif %}
                 {% elseif basket.getGiftCardCost() and basket.getGiftCardCost().getBruttoPrice() %}

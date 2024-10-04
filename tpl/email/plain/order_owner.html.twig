@@ -110,8 +110,8 @@
 {% block email_plain_order_ownerdelcosts %}
 {# delivery costs #}
 {% if basket.getDelCostNet() %}
-    {{ translate({ ident: "SHIPPING_NET", suffix: "COLON" }) }} {{ format_price(basket.getDelCostNet(), { currency: currency }) }}
-    {% if basket.getDelCostVat() %} {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }} {% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getDelCostVatPercent() }) }}{% endif %} {{ format_price(basket.getDelCostVat(), { currency: currency }) }}
+    {{ translate({ ident: "SHIPPING_NET", suffix: "COLON" }) }} {{ format_price(basket.getDeliveryCost().getNettoPrice(), { currency: currency }) }}
+    {% if basket.getDelCostVat() %} {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }} {% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getDelCostVatPercent() }) }}{% endif %} {{ format_price(basket.getDeliveryCost().getVatValue(), { currency: currency }) }}
 {% elseif basket.getDeliveryCosts() %}
     {{ translate({ ident: "SHIPPING_COST" }) }} {{ format_price(basket.getDeliveryCosts(), { currency: currency }) }}
 {% endif %}
@@ -119,9 +119,9 @@
 {% block email_plain_order_ownerpaymentcosts %}
 {# payment sum #}
 {% if basket.getPayCostNet() %}
-    {% if basket.getPaymentCosts() >= 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DEDUCTION" }) }}{% endif %} {{ translate({ ident: "PAYMENT_METHOD" }) }} {{ format_price(basket.getPayCostNet(), { currency: currency }) }}
+    {% if basket.getPaymentCosts() >= 0 %}{{ translate({ ident: "SURCHARGE" }) }}{% else %}{{ translate({ ident: "DEDUCTION" }) }}{% endif %} {{ translate({ ident: "PAYMENT_METHOD" }) }} {{ format_price(basket.getPaymentCost().getNettoPrice(), { currency: currency }) }}
     {% if basket.getPayCostVat() %}
-        {% if basket.isProportionalCalculationOn() %} {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}{% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getPayCostVatPercent() }) }}{% endif %} {{ format_price(basket.getPayCostVat(), { currency: currency }) }}
+        {% if basket.isProportionalCalculationOn() %} {{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}{% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getPayCostVatPercent() }) }}{% endif %} {{ format_price(basket.getPaymentCost().getVatValue(), { currency: currency }) }}
     {% endif %}
 {% elseif basket.getPaymentCosts() %}
     {{ translate({ ident: "SURCHARGE" }) }} {{ format_price(basket.getPaymentCosts(), { currency: currency }) }}
@@ -132,9 +132,9 @@
 {# Gift wrapping #}
 {% if oViewConf.getShowGiftWrapping() %}
     {% if basket.getWrappCostNet() %}
-        {{ translate({ ident: "BASKET_TOTAL_WRAPPING_COSTS_NET" }) }} {{ format_price(basket.getWrappCostNet(), { currency: currency }) }}
+        {{ translate({ ident: "BASKET_TOTAL_WRAPPING_COSTS_NET" }) }} {{ format_price(basket.getWrappingCost().getNettoPrice(), { currency: currency }) }}
         {% if basket.getWrappCostVat() %}
-            {{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(basket.getWrappCostVat(), { currency: currency }) }}
+            {{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(basket.getWrappingCost().getVatValue(), { currency: currency }) }}
         {% endif %}
     {% elseif basket.getWrappingCost() and basket.getWrappingCost().getBruttoPrice() %}
         {{ translate({ ident: "GIFT_WRAPPING" }) }} {{ format_price(basket.getWrappingCost().getBruttoPrice(), { currency: currency }) }}
@@ -146,9 +146,9 @@
 {# Greeting card #}
 {% if oViewConf.getShowGiftWrapping() %}
     {% if basket.getGiftCardCostNet() %}
-        {{ translate({ ident: "BASKET_TOTAL_GIFTCARD_COSTS_NET" }) }} {{ format_price(basket.getGiftCardCostNet(), { currency: currency }) }}
+        {{ translate({ ident: "BASKET_TOTAL_GIFTCARD_COSTS_NET" }) }} {{ format_price(basket.getGiftCardCost().getNettoPrice(), { currency: currency }) }}
         {% if basket.getGiftCardCostVat() %}
-            {% if basket.isProportionalCalculationOn() %}{{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}{% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getGiftCardCostVatPercent() }) }}{% endif %} {{ format_price(basket.getGiftCardCostVat(), { currency: currency }) }}
+            {% if basket.isProportionalCalculationOn() %}{{ translate({ ident: "BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" }) }}{% else %} {{ translate({ ident: "VAT_PLUS_PERCENT_AMOUNT", suffix: "COLON", args: basket.getGiftCardCostVatPercent() }) }}{% endif %} {{ format_price(basket.getGiftCardCost().getVatValue(), { currency: currency }) }}
         {% endif %}
     {% elseif basket.getGiftCardCost() and basket.getGiftCardCost().getBruttoPrice() %}
         {{ translate({ ident: "GREETING_CARD" }) }} {{ format_price(basket.getGiftCardCost().getBruttoPrice(), { currency: currency }) }}
