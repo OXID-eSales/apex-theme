@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v2.0.0 - unreleased
+## v2.0.0 - 2024-10-14
 
 ### Added
 - Restore translations for private sales
