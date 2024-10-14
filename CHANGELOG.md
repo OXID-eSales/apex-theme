@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v1.4.0 - Unreleased
+## v1.4.0 - 2024-10-14
 
 ### Added
 - New blocks in `tpl/layout/base.html.twig`: base_preload_fonts, base_preload_css, base_preload_js [PR-65](https://github.com/OXID-eSales/apex-theme/pull/65)
