@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v2.0.0 - unreleased
+## v2.0.0 - 2024-10-14
 
 ### Added
 - Custom stock message for product when amount gets low [#0004401](https://bugs.oxid-esales.com/view.php?id=4401)
