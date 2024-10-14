@@ -20,7 +20,7 @@
     "php": ">=8.0",
     "oxid-esales/twig-component": "*"
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "extra": {
     "oxideshop": {
       "assets-directory": "out/apex",
