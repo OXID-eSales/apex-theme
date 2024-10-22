@@ -17,6 +17,7 @@ composer require oxid-esales/apex-theme
 * `b-7.1.x` - compatible with OXID eShop b-7.1.x branch
 
 ### Versions
+* versions `2.x` - compatible with OXID eShop compilations 7.2.x
 * versions `1.x` - compatible with OXID eShop compilations 7.0.x and 7.1.x
 
 ## Activation
