@@ -3,7 +3,7 @@
 ## v2.1.0 - Unreleased
 
 ### Fixed
-- Remove force_sid from address section in contact page [#0007672](https://bugs.oxid-esales.com/view.php?id=7672)
+- force_sid is shown in address section of contact page [#0007672](https://bugs.oxid-esales.com/view.php?id=7672)
 
 ## v2.0.0 - 2024-10-14
 
