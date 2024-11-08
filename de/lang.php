@@ -185,6 +185,7 @@ $aLang = array(
     'FORM_REGISTER_IAGREETOTERMS3'                          => "zu",
     'FORM_REGISTER_IAGREETORIGHTOFWITHDRAWAL1'              => "Ich stimme den",
     'FORM_REGISTER_IAGREETORIGHTOFWITHDRAWAL3'              => "zu.",
+    'MESSAGE_PAYMENT_BANK_CODE_INVALID'                     => 'Bitte geben Sie eine gültige BIC-Code ein!',
 );
 
 /*
