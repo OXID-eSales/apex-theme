@@ -1,5 +1,10 @@
 # Change Log for OXID APEX Theme
 
+## v2.1.0 - Unreleased
+
+### Fixed
+- Resolved an issue where force_sid was incorrectly displayed on the address section of the contact page [#0007672](https://bugs.oxid-esales.com/view.php?id=7672)
+
 ## v2.0.0 - 2024-10-14
 
 ### Added
