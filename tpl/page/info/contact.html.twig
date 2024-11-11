@@ -37,7 +37,7 @@
                         {% if oxcmp_shop.oxshops__oxinfoemail.value %}
                             <strong>{{ translate({ ident: "EMAIL", suffix: "COLON" }) }}</strong> <span itemprop="email">{{ mailto(oxcmp_shop.oxshops__oxinfoemail.value) }}</span><br>
                         {% endif %}
-                        <span itemprop="url">{{ oViewConf.getHomeLink()|raw }}</span>
+                        <span itemprop="url">{{ oxcmp_shop.oxshops__oxurl.value|raw }}</span>
                     </address>
                 </div>
             </div>
