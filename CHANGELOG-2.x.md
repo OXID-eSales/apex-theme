@@ -30,6 +30,7 @@
 - Make aria-labels more informative and add missing ones
 - Replaced Google Universal Analytics by Google Analytics 4
 - Adjusted `checkout_basketcontents_voucherdiscount` template block to display vouchers with zero value in the cart, allowing for proper handling of free shipping vouchers.
+- Updated validation label message for MESSAGE_PAYMENT_BANK_CODE_INVALID to "Please provide a valid BIC code"
 
 ### Fixed
 - Currency formatting when using `@Front` parameter
