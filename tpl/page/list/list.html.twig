@@ -103,7 +103,7 @@
                         {% else %}
                             {% set iconAltAttribute = translate({ ident: "CATEGORY_IMAGE_ALT", args: category.oxcategories__oxtitle.value }) %}
                         {% endif %}
-                            <a href="{{ category.getLink()|raw }}" class="cat-list-item">
+                            <a href="{{ category.getLink()|raw }}" title="{{ category.oxcategories__oxdesc.value }}" class="cat-list-item">
                                 {% if iconUrl %}
                                     <img loading="lazy" src="{{ category.getIconUrl()|raw }}" alt="{{ iconAltAttribute }}" class="cat-list-item-img">
                                 {% else %}
@@ -121,7 +121,7 @@
 
                     {% if category.getContentCats() %}
                         {% for ocont in category.getContentCats() %}
-                            <a href="{{ ocont.getLink()|raw }}" class="cat-list-item">
+                            <a href="{{ ocont.getLink()|raw }}" title="{{ category.oxcategories__oxdesc.value }}" class="cat-list-item">
                                 {% if listType=='manufacturer' or listType=='vendor' %}
                                     {% set iconAltAttribute = translate({ ident: "MANUFACTURER_IMAGE_ALT", args: category.oxcategories__oxtitle.value }) %}
                                 {% else %}

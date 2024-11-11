@@ -91,7 +91,7 @@
                 {% endblock %}
 
                 {% block checkout_basketcontents_voucherdiscount %}
-                    {% if oViewConf.getShowVouchers() and oxcmp_basket.getVoucherDiscValue() %}
+                    {% if oViewConf.getShowVouchers() and oxcmp_basket.getVouchers() %}
                         {% for key, sVoucher in oxcmp_basket.getVouchers() %}
                             <div class="list-group-item d-flex justify-content-between align-items-center">
                                 <span class="d-flex align-items-center">
