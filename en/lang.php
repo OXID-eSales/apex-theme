@@ -185,6 +185,7 @@ $aLang = array(
     'FORM_REGISTER_IAGREETOTERMS3'                          => "",
     'FORM_REGISTER_IAGREETORIGHTOFWITHDRAWAL1'              => "I agree to the",
     'FORM_REGISTER_IAGREETORIGHTOFWITHDRAWAL3'              => ".",
+    'MESSAGE_PAYMENT_BANK_CODE_INVALID'                     => 'Please provide a valid BIC code!',
 );
 
 /*
