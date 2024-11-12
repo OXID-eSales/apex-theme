@@ -23,6 +23,7 @@
     - user_change_password_old
     - user_change_password_confirm
     - user_change_password_new
+- Short description as title attribute to subcategory links, displaying details on hover.
 
 ### Changed
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`
