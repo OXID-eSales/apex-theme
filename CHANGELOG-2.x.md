@@ -2,6 +2,12 @@
 
 ## v2.1.0 - Unreleased
 
+### Added
+- Short description as title attribute to subcategory links, displaying details on hover.
+
+### Changed
+- Updated validation label message for MESSAGE_PAYMENT_BANK_CODE_INVALID to "Please provide a valid BIC code"
+
 ### Fixed
 - Resolved an issue where force_sid was incorrectly displayed on the address section of the contact page [#0007672](https://bugs.oxid-esales.com/view.php?id=7672)
 
@@ -23,7 +29,6 @@
     - user_change_password_old
     - user_change_password_confirm
     - user_change_password_new
-- Short description as title attribute to subcategory links, displaying details on hover.
 
 ### Changed
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`
@@ -31,7 +36,6 @@
 - Make aria-labels more informative and add missing ones
 - Replaced Google Universal Analytics by Google Analytics 4
 - Adjusted `checkout_basketcontents_voucherdiscount` template block to display vouchers with zero value in the cart, allowing for proper handling of free shipping vouchers.
-- Updated validation label message for MESSAGE_PAYMENT_BANK_CODE_INVALID to "Please provide a valid BIC code"
 
 ### Fixed
 - Currency formatting when using `@Front` parameter
