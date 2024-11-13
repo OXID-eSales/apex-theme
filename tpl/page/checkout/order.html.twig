@@ -213,6 +213,7 @@
                                                     <input type="hidden" name="challenge" value="{{ challenge }}">
                                                     <input type="hidden" name="sDeliveryAddressMD5"
                                                            value="{{ oView.getDeliveryAddressMD5() }}">
+                                                    <input type="hidden" name="basketSummaryHash" value="{{ basketSummaryHash }}">
 
                                                     {% if oView.isActive('PsLogin') or not oView.isConfirmAGBActive() %}
                                                         <input type="hidden" name="ord_agb" value="1">
@@ -245,6 +246,7 @@
                                         <input type="hidden" name="challenge" value="{{ challenge }}">
                                         <input type="hidden" name="sDeliveryAddressMD5"
                                                value="{{ oView.getDeliveryAddressMD5() }}">
+                                        <input type="hidden" name="basketSummaryHash" value="{{ basketSummaryHash }}">
 
                                         {% include "page/checkout/inc/agb.html.twig" %}
                                     </form>
