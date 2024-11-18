@@ -67,7 +67,7 @@
 
                                                 {% block checkout_payment_nextstep %}
                                                     {% if oView.isLowOrderPrice() %}
-                                                        <div class="alert alert-info">
+                                                        <div class="alert alert-danger p-4">
                                                             {{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ format_price(oView.getMinOrderPrice(), { currency: currency }) }}
                                                         </div>
                                                     {% else %}
