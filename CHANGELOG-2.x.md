@@ -10,6 +10,7 @@
 
 ### Fixed
 - Resolved an issue where force_sid was incorrectly displayed on the address section of the contact page [#0007672](https://bugs.oxid-esales.com/view.php?id=7672)
+- Show popup error message when product with low stock is added to basket [#0005353](https://bugs.oxid-esales.com/view.php?id=5353)
 
 ## v2.0.0 - 2024-10-14
 
