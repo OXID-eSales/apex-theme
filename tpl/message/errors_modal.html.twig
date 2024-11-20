@@ -2,11 +2,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <div class="h4 modal-title" id="basketModalLabel">Error</div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal">
-                    <span aria-hidden="true">×</span>
                     <span class="visually-hidden-focusable">Close</span>
                 </button>
-                <div class="h4 modal-title" id="basketModalLabel">Error</div>
             </div>
             <div class="modal-body">
                 <div id="modalbasketFlyout" class="basketFlyout">
@@ -18,4 +17,4 @@
         </div>
     </div>
 </div>
-{{ script({ add: "$('#error-popup').modal('show');", dynamic: __oxid_include_dynamic }) }}
+{{ script({ add: "var basketModal = new bootstrap.Modal(document.getElementById('error-popup')); basketModal.show()", dynamic: __oxid_include_dynamic }) }}
