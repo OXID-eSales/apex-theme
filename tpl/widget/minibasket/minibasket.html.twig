@@ -7,7 +7,6 @@
         {% hasrights { ident: "TOBASKET" } %}
             {% set currency = oView.getActCurrency() %}
 
-
             <div class="modal fade basketFlyout modal-sidebar-right" id="basketModal" tabindex="-1" role="dialog" aria-labelledby="basketModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -57,7 +56,7 @@
                                                                     {{ _product.getAmount() }} x {{ minibasketItemTitle|striptags|raw }}<br>
                                                                     {{ format_price(_product.getPrice(), { currency: currency }) }}<br>
                                                                     {% if _product.getUnitPrice() %}
-                                                                        <small>{{ translate({ ident: "UNIT_PRICE" }) }}: {{ format_price(_product.getUnitPrice(), { currency: currency }) }}</small>
+                                                                        <small class="unit">{{ translate({ ident: "UNIT_PRICE" }) }}: {{ format_price(_product.getUnitPrice(), { currency: currency }) }}</small>
                                                                     {% endif %}
                                                                 </span>
                                                                 </a>
@@ -66,6 +65,7 @@
                                                     {% endfor %}
                                                 </div>
 
+                                                {% block widget_minibasket_totalgross %}
                                                 {# Product total bruto price #}
                                                 <div class="row my-2">
                                                     <div class="col-8">{{ translate({ ident: "TOTAL_GROSS" }) }}</div>
@@ -73,7 +73,9 @@
                                                         {{ format_price(oxcmp_basket.getBruttoSum(), { currency: currency }) }}
                                                     </div>
                                                 </div>
+                                                {% endblock %}
 
+                                                {% block widget_minibasket_discounts %}
                                                 {# Discount #}
                                                 {% for oDiscount in oxcmp_basket.getDiscounts() %}
                                                 <div class="row my-2">
@@ -89,7 +91,9 @@
                                                     </div>
                                                 </div>
                                                 {% endfor %}
+                                                {% endblock %}
 
+                                                {% block widget_minibasket_voucherdiscount %}
                                                 {# Vouchers #}
                                                 {% if oViewConf.getShowVouchers() and oxcmp_basket.getVouchers() %}
                                                 {% for key, sVoucher in oxcmp_basket.getVouchers() %}
@@ -101,7 +105,9 @@
                                                 </div>
                                                 {% endfor %}
                                                 {% endif %}
+                                                {% endblock %}
 
+                                                {% block widget_minibasket_deliverycosts %}
                                                 {# Shipping cost #}
                                                 {% set deliveryCost = oxcmp_basket.getDeliveryCost() %}
                                                 {% if deliveryCost and (oxcmp_basket.getBasketUser() or oViewConf.isFunctionalityEnabled('blCalculateDelCostIfNotLoggedIn') ) %}
@@ -112,7 +118,9 @@
                                                     </div>
                                                 </div>
                                                 {% endif %}
+                                                {% endblock %}
 
+                                                {% block widget_minibasket_paymentcosts %}
                                                 {# Payment cost #}
                                                 {% set paymentCost = oxcmp_basket.getPaymentCost() %}
                                                 {% if paymentCost and paymentCost.getPrice() %}
@@ -123,7 +131,9 @@
                                                     </div>
                                                 </div>
                                                 {% endif %}
+                                                {% endblock %}
 
+                                                {% block widget_minibasket_wrappingcostsa %}
                                                 {# Wrapping cost #}
                                                 {% set wrappingCost = oxcmp_basket.getWrappingCost() %}
                                                 {% if wrappingCost and wrappingCost.getPrice() > 0 %}
@@ -134,7 +144,9 @@
                                                     </div>
                                                 </div>
                                                 {% endif %}
+                                                {% endblock %}
 
+                                                {% block widget_minibasket_giftcardcosts %}
                                                 {# Gift card cost #}
                                                 {% set giftCardCost = oxcmp_basket.getGiftCardCost() %}
                                                 {% if giftCardCost and giftCardCost.getPrice() > 0 %}
@@ -143,10 +155,11 @@
                                                     <div class="col-4 text-end">
                                                         {{ format_price(giftCardCost.getBruttoPrice(), { currency: currency }) }}
                                                     </div>
-
                                                 </div>
                                                 {% endif %}
+                                                {% endblock %}
 
+                                                {% block widget_minibasket_grand_total %}
                                                 <div class="row minibasket-total-row my-3">
                                                     <div class="col-8 minibasket-total-col h5">
                                                         {{ translate({ ident: "GRAND_TOTAL" }) }}
@@ -155,6 +168,7 @@
                                                         {{ format_price(oxcmp_basket.getPrice(), { currency: currency }) }}
                                                     </div>
                                                 </div>
+                                                {% endblock %}
 
                                                 {% block widget_minibasket_menu_total %}{% endblock %}
                                             {% endblock %}
@@ -162,9 +176,13 @@
 
                                         {% include "widget/minibasket/countdown.html.twig" %}
 
+                                        <div class="bottom">
+                                             <div class="mb-2 charges">{{ translate({ ident: "SHIPPING_PAYMENT_COST_CALCULATE_AT_CHECKOUT" }) }}</div>
+
                                         {% block dd_layout_page_header_icon_menu_minibasket_functions %}
                                         <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=basket" }) }}" class="btn btn-outline-primary w-100">{{ translate({ ident: "DISPLAY_BASKET" }) }}</a>
                                         {% endblock %}
+                                        </div>
 
                                         {% endhasrights %}
                                     {% endif %}

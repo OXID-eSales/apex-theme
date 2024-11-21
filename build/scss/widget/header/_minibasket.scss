@@ -11,6 +11,10 @@
   background: #fff;
 }
 
+.minibasket-link .unit {
+  color: #6a7281;
+}
+
 .minibasket-items {
   max-height: calc(100vh - 100px);
   overflow-y: auto;
@@ -48,10 +52,13 @@
       background: #f1f1f1;
       display: flex;
       flex-direction: column;
-      max-height: calc(100vh - 71px);
 
-      .btn-outline-primary {
+      .bottom {
         margin-top: auto;
+
+        .charges {
+          font-size: $small-font-size;
+        }
       }
     }
 

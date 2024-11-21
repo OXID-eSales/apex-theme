@@ -179,6 +179,7 @@ $aLang = array(
 
     // Minibasket
     'CART_NUMBER_OF_ITEMS'                                  => 'Warenkorb - Anzahl der Artikel: %d',
+    'SHIPPING_PAYMENT_COST_CALCULATE_AT_CHECKOUT'           => 'Shipping and payment costs may calculate at checkout.',
 
     // Private sales
     'FORM_REGISTER_IAGREETOTERMS1'                          => "Ich stimme den",
