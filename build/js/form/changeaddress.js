@@ -143,6 +143,9 @@ if (userFormSubmitBtn) {
         // continue
         if (user_form.checkValidity() === true) {
             user_form.submit();
+
+            // Replace POST URL with a clean GET URL in history
+            history.replaceState(null, '', 'index.php?cl=user&lang=1');
         }
     });
 }
