@@ -4,6 +4,7 @@
 
 ### Added
 - Short description as title attribute to subcategory links, displaying details on hover.
+- Display vouchers, shipping, payment cost and discounts in minibasket.
 
 ### Changed
 - Updated validation label message for MESSAGE_PAYMENT_BANK_CODE_INVALID to "Please provide a valid BIC code"
