@@ -18,7 +18,7 @@
                                         {% endfor %}
 
                                         <div class="nav-item{% if ocat.getSubCats() %} has-subs{% endif %}">
-                                            <a class="nav-link nav-link-1{% if homeNotSelected and ocat.expanded %} active{% endif %}"{% if homeNotSelected and ocat.expanded %} aria-current="page"{% endif %} href="{{ ocat.getLink()|raw }}">
+                                            <a class="nav-link nav-link-1{% if homeNotSelected and ocat.expanded %} active{% endif %}{% if oViewConf.getActCatId() == ocat.getId() %} fw-bold{% endif %}"{% if homeNotSelected and ocat.expanded %} aria-current="page"{% endif %} href="{{ ocat.getLink()|raw }}">
                                                 {{ ocat.oxcategories__oxtitle.value }}
                                             </a>
 
@@ -38,9 +38,9 @@
 
                                                                         {% if osubcat.getIsVisible() %}
                                                                             <div class="nav-item nav-item-2">
-                                                                                <a class="nav-link{% if homeNotSelected and osubcat.expanded %} active{% endif %}" href="{{ osubcat.getLink()|raw }}">
+                                                                                <a class="nav-link{% if homeNotSelected and osubcat.expanded %} active{% endif %}{% if oViewConf.getActCatId() == osubcat.getId() %} fw-bold{% endif %}" href="{{ osubcat.getLink()|raw }}">
                                                                                     <svg class="icon">
-                                                                                        <use xlink:href="#{% if homeNotSelected and osubcat.expanded %}down{% else %}right{% endif %}"></use>
+                                                                                        <use xlink:href="#{% if homeNotSelected and osubcat.expanded and osubcat.getSubCats() %}down{% else %}right{% endif %}"></use>
                                                                                     </svg>
                                                                                     {{ osubcat.oxcategories__oxtitle.value }}
                                                                                 </a>
@@ -58,9 +58,9 @@
 
                                                                                                 {% if osubsubcat.getIsVisible() %}
                                                                                                     <div class="nav-item">
-                                                                                                        <a class="nav-link{% if homeNotSelected and osubsubcat.expanded %} active{% endif %}" href="{{ osubsubcat.getLink()|raw }}">
+                                                                                                        <a class="nav-link{% if homeNotSelected and osubsubcat.expanded %} active{% endif %}{% if oViewConf.getActCatId() == osubsubcat.getId() %} fw-bold{% endif %}" href="{{ osubsubcat.getLink()|raw }}">
                                                                                                             <svg class="icon">
-                                                                                                                <use xlink:href="#{% if homeNotSelected and osubsubcat.expanded %}down{% else %}right{% endif %}"></use>
+                                                                                                                <use xlink:href="#{% if homeNotSelected and osubsubcat.expanded and osubsubcat.getSubCats() %}down{% else %}right{% endif %}"></use>
                                                                                                             </svg>
                                                                                                             {{ osubsubcat.oxcategories__oxtitle.value }}
                                                                                                         </a>
@@ -78,7 +78,7 @@
 
                                                                                                                         {% if osubsubsubcat.getIsVisible() %}
                                                                                                                             <div class="nav-item">
-                                                                                                                                <a class="nav-link{% if homeNotSelected and osubsubsubcat.expanded %} active{% endif %}" href="{{ osubsubsubcat.getLink()|raw }}">{{ osubsubsubcat.oxcategories__oxtitle.value }}</a>
+                                                                                                                                <a class="nav-link{% if homeNotSelected and osubsubsubcat.expanded %} active{% endif %}{% if oViewConf.getActCatId() == osubsubsubcat.getId() %} fw-bold{% endif %}" href="{{ osubsubsubcat.getLink()|raw }}">{{ osubsubsubcat.oxcategories__oxtitle.value }}</a>
                                                                                                                             </div>
                                                                                                                         {% endif %}
                                                                                                                     {% endif %}
