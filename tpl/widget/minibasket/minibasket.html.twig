@@ -177,7 +177,13 @@
                                         {% include "widget/minibasket/countdown.html.twig" %}
 
                                         <div class="bottom">
-                                             <div class="mb-2 charges">{{ translate({ ident: "SHIPPING_PAYMENT_COST_CALCULATE_AT_CHECKOUT" }) }}</div>
+                                            <div class="mb-2 charges">
+                                            {% if oxcmp_basket.getBasketUser() or oViewConf.isFunctionalityEnabled('blCalculateDelCostIfNotLoggedIn') %}
+                                                {{ translate({ ident: "SHIPPING_PAYMENT_COST_CALCULATE_AT_CHECKOUT" }) }}
+                                            {% else %}
+                                                {{ translate({ ident: "SHIPPING_PAYMENT_COST_CANNOT_CALCULATE" }) }}
+                                            {% endif %}
+                                            </div>
 
                                         {% block dd_layout_page_header_icon_menu_minibasket_functions %}
                                         <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=basket" }) }}" class="btn btn-outline-primary w-100">{{ translate({ ident: "DISPLAY_BASKET" }) }}</a>
