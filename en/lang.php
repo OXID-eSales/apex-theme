@@ -179,7 +179,8 @@ $aLang = array(
 
     // Minibasket
     'CART_NUMBER_OF_ITEMS'                                  => 'Shopping cart - number of items: %d',
-    'SHIPPING_PAYMENT_COST_CALCULATE_AT_CHECKOUT'           => 'Shipping and payment costs may calculate at checkout.',
+    'SHIPPING_PAYMENT_COST_CALCULATE_AT_CHECKOUT'           => 'Shipping costs in the mini basket are calculated based on checkout data and may change if details like the delivery address are updated.',
+    'SHIPPING_PAYMENT_COST_CANNOT_CALCULATE'                => 'Shipping costs cannot be calculated yet as essential information required for the calculation is missing.',
 
     // Private sales
     'FORM_REGISTER_IAGREETOTERMS1'                          => "I agree to the",
