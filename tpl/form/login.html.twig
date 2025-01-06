@@ -1,24 +1,29 @@
 <form id="optionLogin" class="needs-validation" name="login" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" novalidate>
-
-    {{ oViewConf.getHiddenSid()|raw }}
-    {{ oViewConf.getNavFormParams()|raw }}
-    <input type="hidden" name="fnc" value="login_noredirect">
-    <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
-    {% block checkout_options_login_text %}
-    {% endblock %}
-    {% set aErrors = oView.getFieldValidationErrors() %}
-    <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
-        <input type="text" id="lgn_usr" name="lgn_usr" autocomplete="email" class="form-control textbox" placeholder="{{ translate({ ident: "EMAIL_ADDRESS" }) }}" required>
-        <label for="lgn_usr">{{ translate({ ident: "EMAIL_ADDRESS" }) }}</label>
-    </div>
-
-    {% block checkout_options_login_passwordfield %}
+    {% block checkout_login_form_fields %}
+        {{ oViewConf.getHiddenSid()|raw }}
+        {{ oViewConf.getNavFormParams()|raw }}
+        <input type="hidden" name="fnc" value="login_noredirect">
+        <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
+        {% block checkout_options_login_text %}
+        {% endblock %}
+        {% set aErrors = oView.getFieldValidationErrors() %}
         <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
-            <input type="password" id="lgn_pwd" name="lgn_pwd" autocomplete="current-password" class="form-control textbox stepsPasswordbox" placeholder="{{ translate({ ident: "PASSWORD" }) }}" required>
-            <label for="lgn_pwd">{{ translate({ ident: "PASSWORD" }) }}</label>
+            <input type="text" id="lgn_usr" name="lgn_usr" autocomplete="email" class="form-control textbox" placeholder="{{ translate({ ident: "EMAIL_ADDRESS" }) }}" required>
+            <label for="lgn_usr">{{ translate({ ident: "EMAIL_ADDRESS" }) }}</label>
         </div>
-        <a class="btn btn-sm btn-link px-0 mb-3 forgotPasswordOpener" id="step2PswdOpener" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=forgotpwd" }) }}" title="{{ translate({ ident: "FORGOT_PASSWORD" }) }}">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
+
+        {% block checkout_options_login_passwordfield %}
+            <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
+                <input type="password" id="lgn_pwd" name="lgn_pwd" autocomplete="current-password" class="form-control textbox stepsPasswordbox" placeholder="{{ translate({ ident: "PASSWORD" }) }}" required>
+                <label for="lgn_pwd">{{ translate({ ident: "PASSWORD" }) }}</label>
+            </div>
+            <a class="btn btn-sm btn-link px-0 mb-3 forgotPasswordOpener" id="step2PswdOpener" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=forgotpwd" }) }}" title="{{ translate({ ident: "FORGOT_PASSWORD" }) }}">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
+        {% endblock %}
     {% endblock %}
 
-    <button type="submit" class="btn btn-highlight btn-lg w-100">{{ translate({ ident: "LOGIN" }) }}</button>
+    {% block checkout_login_form_captcha %}{% endblock %}
+
+    {% block checkout_login_form_buttons %}
+        <button type="submit" class="btn btn-highlight btn-lg w-100">{{ translate({ ident: "LOGIN" }) }}</button>
+    {% endblock %}
 </form>

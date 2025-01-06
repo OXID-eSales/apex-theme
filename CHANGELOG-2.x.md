@@ -6,6 +6,24 @@
 - Short description as title attribute to subcategory links, displaying details on hover.
 - Display vouchers, shipping, payment cost and discounts in minibasket.
 - New form input to validate basket changes on order confirmation step
+- New blocks:
+  - `tpl/form/fieldset/user_account.html.twig`
+    - user_account_form_fields
+  - `tpl/form/login.html.twig`
+    - checkout_login_form_fields
+    - checkout_login_form_captcha
+    - checkout_login_form_buttons  
+  - `tpl/form/login_account.html.twig`
+    - account_login_form_fields
+    - account_login_form_captcha
+  - `tpl/form/newsletter.html.twig`
+    - newsletter_form_fields
+    - newsletter_form_captcha
+    - newsletter_form_buttons
+  - `tpl/widget/header/loginbox.html.twig`
+    - loginbox_form_fields
+    - loginbox_form_captcha
+    - loginbox_form_buttons
 
 ### Changed
 - Updated validation label message for MESSAGE_PAYMENT_BANK_CODE_INVALID to "Please provide a valid BIC code"
