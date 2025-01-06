@@ -10,37 +10,44 @@
 
 {% set aRegParams = oView.getRegParams() %}
 <form class="max-600 needs-validation" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" novalidate>
-    {{ oViewConf.getHiddenSid()|raw }}
-    <input type="hidden" name="fnc" value="send">
-    <input type="hidden" name="cl" value="newsletter">
-    <input type="hidden" name="editval[oxuser__oxcountryid]" value="{{ oView.getHomeCountryId() }}">
+    {% block newsletter_form_fields %}
+        {{ oViewConf.getHiddenSid()|raw }}
+        <input type="hidden" name="fnc" value="send">
+        <input type="hidden" name="cl" value="newsletter">
+        <input type="hidden" name="editval[oxuser__oxcountryid]" value="{{ oView.getHomeCountryId() }}">
 
-    <div class="mb-3 form-floating">
-        {% include "form/fieldset/salutation.html.twig" with {id: "editval[oxuser__oxsal]", name: "editval[oxuser__oxsal]", value: aRegParams.oxuser__oxsal} %}
-        <label for="editval[oxuser__oxsal]">{{ translate({ ident: "TITLE" }) }}</label>
-    </div>
-    <div class="mb-3 form-floating">
-        <input class="form-control" id="newsletterFname" placeholder=" " type="text" name="editval[oxuser__oxfname]" maxlength="40" value="{% if aRegParams.oxuser__oxfname %}{{ aRegParams.oxuser__oxfname }}{% endif %}">
-        <label for="newsletterFname">{{ translate({ ident: "FIRST_NAME" }) }}</label>
-    </div>
-    <div class="mb-3 form-floating">
-        <input class="form-control" placeholder=" " id="newsletterLname" type="text" name="editval[oxuser__oxlname]" maxlength="40" value="{% if aRegParams.oxuser__oxlname %}{{ aRegParams.oxuser__oxlname }}{% endif %}">
-        <label for="newsletterLname">{{ translate({ ident: "LAST_NAME" }) }}</label>
-    </div>
-    <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
-        <input id="newsletterUserName" type="email" placeholder=" " class="form-control{% if blEmailInvalid %} is-invalid{% endif %}" name="editval[oxuser__oxusername]" maxlength="40" value="{% if aRegParams.oxuser__oxusername %}{{ aRegParams.oxuser__oxusername }}{% endif %}" required>
-        <label for="newsletterUserName" class="req">{{ translate({ ident: "EMAIL" }) }}</label>
-    </div>
-    <div class="form-check">
-        <input id="newsletterSubscribeOn" class="form-check-input" type="radio" name="subscribeStatus" value="1" checked>
-        <label for="newsletterSubscribeOn" class="form-check-label">{{ translate({ ident: "SUBSCRIBE" }) }}</label>
-    </div>
-    <div class="form-check">
-        <input id="newsletterSubscribeOff" class="form-check-input" type="radio" name="subscribeStatus" value="0">
-        <label for="newsletterSubscribeOff" class="form-check-label">{{ translate({ ident: "UNSUBSCRIBE" }) }}</label>
-    </div>
-    <div class="mb-3">
-         <p class="req-warning">{{ translate({ ident: "COMPLETE_MARKED_FIELDS" }) }}</p>
-        <button id="newsLetterSubmit" class="btn btn-primary" type="submit">{{ translate({ ident: "SUBMIT" }) }}</button>
-    </div>
+        <div class="mb-3 form-floating">
+            {% include "form/fieldset/salutation.html.twig" with {id: "editval[oxuser__oxsal]", name: "editval[oxuser__oxsal]", value: aRegParams.oxuser__oxsal} %}
+            <label for="editval[oxuser__oxsal]">{{ translate({ ident: "TITLE" }) }}</label>
+        </div>
+        <div class="mb-3 form-floating">
+            <input class="form-control" id="newsletterFname" placeholder=" " type="text" name="editval[oxuser__oxfname]" maxlength="40" value="{% if aRegParams.oxuser__oxfname %}{{ aRegParams.oxuser__oxfname }}{% endif %}">
+            <label for="newsletterFname">{{ translate({ ident: "FIRST_NAME" }) }}</label>
+        </div>
+        <div class="mb-3 form-floating">
+            <input class="form-control" placeholder=" " id="newsletterLname" type="text" name="editval[oxuser__oxlname]" maxlength="40" value="{% if aRegParams.oxuser__oxlname %}{{ aRegParams.oxuser__oxlname }}{% endif %}">
+            <label for="newsletterLname">{{ translate({ ident: "LAST_NAME" }) }}</label>
+        </div>
+        <div class="mb-3 form-floating{% if aErrors %} is-invalid{% endif %}">
+            <input id="newsletterUserName" type="email" placeholder=" " class="form-control{% if blEmailInvalid %} is-invalid{% endif %}" name="editval[oxuser__oxusername]" maxlength="40" value="{% if aRegParams.oxuser__oxusername %}{{ aRegParams.oxuser__oxusername }}{% endif %}" required>
+            <label for="newsletterUserName" class="req">{{ translate({ ident: "EMAIL" }) }}</label>
+        </div>
+        <div class="form-check">
+            <input id="newsletterSubscribeOn" class="form-check-input" type="radio" name="subscribeStatus" value="1" checked>
+            <label for="newsletterSubscribeOn" class="form-check-label">{{ translate({ ident: "SUBSCRIBE" }) }}</label>
+        </div>
+        <div class="form-check">
+            <input id="newsletterSubscribeOff" class="form-check-input" type="radio" name="subscribeStatus" value="0">
+            <label for="newsletterSubscribeOff" class="form-check-label">{{ translate({ ident: "UNSUBSCRIBE" }) }}</label>
+        </div>
+    {% endblock %}
+
+    {% block newsletter_form_captcha %}{% endblock %}
+
+    {% block newsletter_form_buttons %}
+        <div class="mb-3">
+             <p class="req-warning">{{ translate({ ident: "COMPLETE_MARKED_FIELDS" }) }}</p>
+            <button id="newsLetterSubmit" class="btn btn-primary" type="submit">{{ translate({ ident: "SUBMIT" }) }}</button>
+        </div>
+    {% endblock %}
 </form>
