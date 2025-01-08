@@ -22,14 +22,20 @@
 - JS function `setOuterHtmlAndExecuteScripts` that inserts HTML content and executes embedded scripts
 - New blocks:
   - `tpl/form/forgotpwd_change_pwd.html.twig`
-      - forgotpwd_change_password
-      - forgotpwd_change_password_new
-      - forgotpwd_change_password_confirm
+    - forgotpwd_change_password
+    - forgotpwd_change_password_new
+    - forgotpwd_change_password_confirm
   - `tpl/form/user_password.html.twig`
     - user_change_password
     - user_change_password_old
     - user_change_password_confirm
     - user_change_password_new
+  - `basketcontents_list.html.twig`
+    - checkout_basketcontents_basketitem_weight
+    - checkout_basketcontents_basketitem_priceunit
+  - `tpl/widget/minibasket/minibasket.html.twig`
+    - widget_minibasket_product_weight
+    - widget_minibasket_product_priceunit
 
 ### Changed
 - Vocabulary, used in RDFa templates, switched from `GoodRelations` to `Schema.org`
