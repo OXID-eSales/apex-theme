@@ -62,6 +62,27 @@
                                                                     {% if _product.getUnitPrice() %}
                                                                         <small class="unit">{{ translate({ ident: "UNIT_PRICE" }) }}: {{ format_price(_product.getUnitPrice(), { currency: currency }) }}</small>
                                                                     {% endif %}
+
+                                                                    {# Weight #}
+                                                                    {% if basketItem.oxarticles__oxweight.value %}
+                                                                        <br>
+                                                                        <small class="unit">
+                                                                            {{ translate({ ident: "WEIGHT", suffix: "COLON" }) }}
+
+                                                                            {% block widget_minibasket_product_weight %}
+                                                                                {{ basketItem.oxarticles__oxweight.value }} {{ translate({ ident: "KG" }) }}
+                                                                            {% endblock %}
+
+                                                                            {% hasrights { ident: "SHOWARTICLEPRICE" } %}
+                                                                                {% set oUnitPrice = basketItem.getUnitPrice() %}
+                                                                                {% block widget_minibasket_product_priceunit %}
+                                                                                    {% if oUnitPrice %}
+                                                                                        ({{ format_price(oUnitPrice, { currency: currency }) }}/{{ basketItem.getUnitName() }})
+                                                                                    {% endif %}
+                                                                                {% endblock %}
+                                                                            {% endhasrights %}
+                                                                        </small>
+                                                                    {% endif %}
                                                                 </span>
                                                                 </a>
                                                             </div>
