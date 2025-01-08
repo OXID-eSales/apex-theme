@@ -133,7 +133,7 @@
                                                                 </span>
                                                                 <span class="value">
                                                                     {% if oArticle.getTPrice() %}
-                                                                      <del class="text-nowrap text-danger">{{ format_price(oArticle.getTPrice(), { currency: currency }) }}</del>
+                                                                        <del class="text-nowrap text-danger">{{ format_price(oArticle.getTPrice(), { currency: currency }) }}</del>
                                                                     {% endif %}
                                                                     {% if not basketitem.isBundle() and not oArticle.getTPrice() %}
                                                                       {% set dRegUnitPrice = basketitem.getRegularUnitPrice() %}
@@ -157,6 +157,33 @@
                                                     {% endif %}
                                                 {% endblock %}
 
+                                                {# Weight #}
+                                                {% if oArticle.oxarticles__oxweight.value %}
+                                                <ul class="list-unstyled unit-price">
+                                                    <li>
+                                                        <span class="attribute">
+                                                            {{ translate({ ident: "WEIGHT", suffix: "COLON" }) }}
+                                                        </span>
+
+                                                        <span class="value">
+                                                        {% block checkout_basketcontents_basketitem_weight %}
+                                                            {{ oArticle.oxarticles__oxweight.value }} {{ translate({ ident: "KG" }) }}
+                                                        {% endblock %}
+
+                                                        {% hasrights { ident: "SHOWARTICLEPRICE" } %}
+                                                        {% set oUnitPrice = oArticle.getUnitPrice() %}
+                                                            {% block checkout_basketcontents_basketitem_priceunit %}
+                                                            {% if oUnitPrice %}
+                                                                <span>
+                                                                ({{ format_price(oUnitPrice, { currency: currency }) }}/{{ oArticle.getUnitName() }})
+                                                                </span>
+                                                            {% endif %}
+                                                            {% endblock %}
+                                                        {% endhasrights %}
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                                {% endif %}
 
 
                                                 {% block checkout_basketcontents_basketitem_selectlists %}
