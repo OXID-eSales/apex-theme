@@ -145,7 +145,7 @@ if (userFormSubmitBtn) {
             user_form.submit();
 
             // Replace POST URL with a clean GET URL in history
-            history.replaceState(null, '', 'index.php?cl=user&lang=1');
+            history.replaceState(null, '', 'index.php?cl=user');
         }
     });
 }
