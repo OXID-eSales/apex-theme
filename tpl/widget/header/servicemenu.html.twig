@@ -14,6 +14,7 @@
         aria-label="{{ (oxcmp_user.oxuser__oxpassword.value ? "MY_ACCOUNT" : "LOGIN")|translate  }}"
         class="btn"
         data-bs-toggle="dropdown"
+        data-bs-auto-close="outside"
         data-href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account" }) }}"
 >
     {% block dd_layout_page_header_icon_menu_account_button %}
