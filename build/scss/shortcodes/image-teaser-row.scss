@@ -1,5 +1,5 @@
 .navbar-collapse {
-  @include media-breakpoint-between(sm, md) {
+  @include media-breakpoint-between(sm, lg) {
     width: 100%;
 
     .navbar-nav {
