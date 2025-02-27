@@ -37,6 +37,7 @@
 - Show popup error message when product with low stock is added to basket [#0005353](https://bugs.oxid-esales.com/view.php?id=5353)
 - Category tree view visibility for mobile [#0007597](https://bugs.oxid-esales.com/view.php?id=7597)
 - Navigation menu for tablet view might look distorted when using Visual CMS module
+- Prevent change basket form from submitting twice [#0007391](https://bugs.oxid-esales.com/view.php?id=7391)
 
 ## v2.0.0 - 2024-10-14
 
