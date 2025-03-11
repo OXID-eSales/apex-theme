@@ -4,6 +4,7 @@
 </p>
 
 <form action="{{ oViewConf.getSelfActionLink()|raw }}" class="needs-validation" name="forgotpwd" method="post" novalidate>
+    {% block forgotpwd_email_form %}
     <div class="row">
         <div class="col-md-6">
             {{ oViewConf.getHiddenSid()|raw }}
@@ -13,15 +14,18 @@
             <input type="hidden" name="actcontrol" value="forgotpwd">
 
             <div class="mb-3 form-floating">
+                {% block forgotpwd_email_field %}
                 <input id="forgotPasswordUserLoginName{{ idPrefix }}" placeholder=" " type="email" name="lgn_usr"
                 value="{{ oView.getActiveUsername() }}" class="form-control" required>
                 <label for="forgotPasswordUserLoginName{{ idPrefix }}" class="req">{{ translate({ ident: "YOUR_EMAIL_ADDRESS" }) }}</label>
+                {% endblock %}
             </div>
             <div class="mb-3">
                 <button class="btn btn-primary submitButton" type="submit">{{ translate({ ident: "REQUEST_PASSWORD" }) }}</button>
             </div>
         </div>
     </div>
+    {% endblock %}
 </form>
 
 {{ translate({ ident: "REQUEST_PASSWORD_AFTERCLICK" }) }}<br><br>

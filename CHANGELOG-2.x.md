@@ -24,6 +24,9 @@
     - loginbox_form_fields
     - loginbox_form_captcha
     - loginbox_form_buttons
+- `forgotpwd_email.html.twig`
+  - forgotpwd_email_form
+  - forgotpwd_email_field
 
 ### Changed
 - Updated validation label message for MESSAGE_PAYMENT_BANK_CODE_INVALID to "Please provide a valid BIC code"
