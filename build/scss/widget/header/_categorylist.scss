@@ -1,5 +1,4 @@
 .navbar-collapse {
-  display: block !important;
   z-index: 123;
   position: fixed;
   top: 51px;
@@ -60,6 +59,20 @@
   .d-md-none .dropdown-toggle {
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  @include media-breakpoint-between(sm, lg) {
+    .slider-container {
+      >div {
+        min-width: unset;
+        max-width: calc(50%);
+      }
+      .card {
+        &:first-child {
+          margin: 0 !important;
+        }
+      }
+    }
   }
 }
 

@@ -6,8 +6,8 @@
         <div class="container-xxl">
             <nav id="mainnav" class="navbar navbar-mega navbar-expand-lg p-0">
                 {% block dd_widget_header_categorylist_navbar_mega_menu %}
-                    <div class="navbar-collapse collapse" id="navbarSupportedContent">
-                        <div id="navigation" class="navbar-nav navbar-nav-mega">
+                    <div class="navbar-collapse collapse align-items-start row" id="navbarSupportedContent">
+                        <div id="navigation" class="navbar-nav navbar-nav-mega col-sm-12 col-md-6">
                             {% block dd_widget_header_categorylist_navbar_list_mega_menu %}
                                 {% for catkey, ocat in oxcmp_categories %}
                                     {% if ocat.getIsVisible() %}
@@ -112,6 +112,9 @@
                                     {% endif %}
                                 {% endfor %}
                             {% endblock %}
+                        </div>
+                        <div class="col-sm-12 col-md-6 mt-3 d-md-block d-lg-none">
+                            {% include_content 'oxstartslot1' ignore missing  %}
                         </div>
                     </div>
                 {% endblock %}
