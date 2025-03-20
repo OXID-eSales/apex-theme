@@ -21,6 +21,7 @@
         {% block account_dashboard_col2 %}
         {% endblock %}
 
+        {% block account_dashboard_items %}
         <div class="col mb-3">
             <div class="card card-lg h-100">
                 <h2 class="h4 card-header card-title">{{ translate({ ident: "ORDER_HISTORY" }) }}</h2>
@@ -120,6 +121,7 @@
                 </div>
             </div>
         {% endif %}
+        {% endblock %}
     </div>
 
     <div class="row">
