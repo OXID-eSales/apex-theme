@@ -30,6 +30,7 @@
 
 ### Changed
 - Updated validation label message for MESSAGE_PAYMENT_BANK_CODE_INVALID to "Please provide a valid BIC code"
+- Added missing template block around account dashboard page items [PR-66](https://github.com/OXID-eSales/apex-theme/pull/66)
 
 ### Fixed
 - Resolved an issue where force_sid was incorrectly displayed on the address section of the contact page [#0007672](https://bugs.oxid-esales.com/view.php?id=7672)
