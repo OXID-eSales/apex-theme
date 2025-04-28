@@ -173,8 +173,9 @@
 
     {% block base_js %}
         {% include "i18n/js_vars.html.twig" %}
-        {{ script({ include: 'js/bootstrap.bundle.min.js', dynamic: __oxid_include_dynamic }) }}
-        {{ script({ include: 'js/scripts.min.js', dynamic: __oxid_include_dynamic }) }}
+
+        <script src="{{ oViewConf.getResourceUrl('js/bootstrap.bundle.min.js') }}" defer></script>
+        <script src="{{ oViewConf.getResourceUrl('js/scripts.min.js') }}" defer></script>
     {% endblock %}
 
     {{ script({ dynamic: __oxid_include_dynamic })|replace({ 'type="text/javascript"': '' })|raw }}
