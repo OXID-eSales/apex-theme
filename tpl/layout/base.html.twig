@@ -14,7 +14,7 @@
         <link rel="preload" href="{{ oViewConf.getResourceUrl('css/styles.min.css')|raw }}" as="style">
         {% endblock %}
         {% block base_preload_js %}
-        <link rel="preload" href="{{ oViewConf.getResourceUrl('js/scripts.min.js')|raw }}" as="script">
+        <link rel="preload" href="{{ oViewConf.getResourceUrl('js/scripts.min.js')|raw }}" as="script" crossorigin="anonymous">
         {% endblock %}
 
         {% set sPageTitle = oView.getPageTitle() %}
@@ -174,8 +174,8 @@
     {% block base_js %}
         {% include "i18n/js_vars.html.twig" %}
 
-        <script src="{{ oViewConf.getResourceUrl('js/bootstrap.bundle.min.js') }}" defer></script>
-        <script src="{{ oViewConf.getResourceUrl('js/scripts.min.js') }}" defer></script>
+        <script src="{{ oViewConf.getResourceUrl('js/bootstrap.bundle.min.js') }}" async></script>
+        <script src="{{ oViewConf.getResourceUrl('js/scripts.min.js') }}" defer crossorigin="anonymous"></script>
     {% endblock %}
 
     {{ script({ dynamic: __oxid_include_dynamic })|replace({ 'type="text/javascript"': '' })|raw }}
