@@ -68,8 +68,10 @@
                                                                         {% if basketNoticeListButtonFunction == 'move' %}
                                                                             name="removeBtn"
                                                                         {% endif %}
+                                                                        data-action="copy"
                                                                         onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}', function() { {% if basketNoticeListButtonFunction == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% else %}window.location.reload();{% endif %} });"
                                                                     {%  else %}
+                                                                        data-action="move"
                                                                         onclick="window.location.href='{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}';"
                                                                     {% endif %}
                                                                     {% if basketNoticeListButtonFunction == 'copy' %}
@@ -318,10 +320,10 @@
                                                                 type="button"
                                                                 class="btn btn-remove{% if basketNoticeListButtonFunction == 'move' and oxcmp_user.getId() is not empty %} js-remove{% endif %}"
                                                                 {% if (basketNoticeListButtonFunction == 'move' or basketNoticeListButtonFunction == 'copy') and oxcmp_user.getId() is not empty %}
-                                                                    {% if basketNoticeListButtonFunction == 'move' %}
-                                                                    name="removeBtn"
-                                                                    {% endif %}
-                                                                    onclick="addToNoticelistAjax('{{ oArticle.getId() }}', '{{ basketitem.getAmount() }}', function () { {% if basketNoticeListButtonFunction == 'move' %}document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';{% else %}window.location.reload();{% endif %} });"
+                                                                    data-action="{{ basketNoticeListButtonFunction }}"
+                                                                    data-basketid="{{ basketindex }}"
+                                                                    data-articleId="{{ oArticle.getId() }}"
+                                                                    data-amount="{{ basketitem.getAmount() }}"
                                                                 {%  else %}
                                                                     onclick="window.location.href='{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ product.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}';"
                                                                 {% endif %}

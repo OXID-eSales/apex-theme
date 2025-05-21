@@ -1,7 +1,11 @@
+/**
+ * Copyright © OXID eSales AG. All rights reserved.
+ * See LICENSE file for license details.
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
     addBasketAmountEventlisteners();
 }, false);
-
 
 const addBasketAmountEventlisteners = function () {
     const aAmountButtons = document.querySelectorAll('.js-amount button');

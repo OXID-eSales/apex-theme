@@ -171,7 +171,7 @@
     }
 })();
 
-const setOuterHtmlAndExecuteScripts = function(element, html) {
+export function setOuterHtmlAndExecuteScripts(element, html) {
     'use strict';
 
     const tempDiv = document.createElement('div');

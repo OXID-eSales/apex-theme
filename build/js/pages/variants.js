@@ -1,6 +1,8 @@
 /**
  * Script for Variantselection
  */
+import { setOuterHtmlAndExecuteScripts } from '../main.js'
+
 addDropdownLinksEventListeners = () => {
     var aVariantDropdownLinks = document.querySelectorAll('#variants .dropDown .form-select');
 
