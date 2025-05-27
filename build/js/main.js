@@ -190,3 +190,16 @@ const setOuterHtmlAndExecuteScripts = function(element, html) {
         document.body.removeChild(newScript);
     });
 }
+
+function replaceHistoryFromPreviousStep() {
+    const previousStepBtn = document.querySelector('a.btn-back');
+    if (previousStepBtn && previousStepBtn.getAttribute('href')) {
+        const href = previousStepBtn.getAttribute('href');
+        const link = document.createElement('a');
+        link.href = href;
+
+        const relativePath = link.pathname + link.search;
+
+        history.replaceState(null, '', relativePath);
+    }
+}

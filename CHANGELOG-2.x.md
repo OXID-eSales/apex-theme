@@ -39,6 +39,7 @@
 - Category tree view visibility for mobile [#0007597](https://bugs.oxid-esales.com/view.php?id=7597)
 - Navigation menu for tablet view might look distorted when using Visual CMS module
 - Prevent change basket form from submitting twice [#0007391](https://bugs.oxid-esales.com/view.php?id=7391)
+- Addressed an issue where using the browser’s back button did not return the customer to previous step during checkout
 
 ## v2.0.0 - 2024-10-14
 

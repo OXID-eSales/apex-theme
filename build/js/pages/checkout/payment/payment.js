@@ -8,4 +8,19 @@ if (paymentInputs) {
             targetParentDl.querySelectorAll('.payment-option').forEach((item) => {item.style.display = 'block'});
         });
     });
+
+    const paymentSelector = document.querySelector('#payment');
+    if (paymentSelector) {
+        paymentSelector.addEventListener('submit', function () {
+            replaceHistoryFromPreviousStep();
+        });
+    }
+}
+
+const shipSelect = document.querySelector('select[name="sShipSet"]');
+if (shipSelect) {
+    shipSelect.addEventListener('change', function () {
+        replaceHistoryFromPreviousStep();
+        this.form.submit();
+    });
 }
