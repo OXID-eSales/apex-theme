@@ -20,7 +20,7 @@
     "roboto-fontface": "^0.10.0"
   },
   "scripts": {
-    "build": "vite build --config vite.config.js && vite build --config vite.details.js && vite build --config vite.main.js && vite build --config vite.widgets.js",
+    "build": "vite build",
     "watch": "vite build --watch"
   },
   "license": "ISC",

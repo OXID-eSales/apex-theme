@@ -35,20 +35,61 @@ export default defineConfig({
             }
         },
     },
+    esbuild: {
+        minifyIdentifiers: false,
+    },
     build: {
-        minify: true,
+        minify: 'esbuild',
         sourcemap: true,
         outDir: path.resolve(__dirname, 'out/apex/src'),
-        emptyOutDir: false,
+        emptyOutDir: true,
         rollupOptions: {
             preserveEntrySignatures: "strict",
             input: {
                 scripts: path.resolve(__dirname, 'build/js/scripts.js'),
                 styles: path.resolve(__dirname, 'build/scss/style.scss'),
+
+                //Widgets
+                oxcountrystateselect: path.resolve(__dirname, 'build/js/widgets/oxcountrystateselect.js'),
+
+                //Detail page scripts
+                magnifierlens: path.resolve(__dirname,  'build/js/pages/details/magnifierlens.js'),
+                hoverzoom: path.resolve(__dirname, 'build/js/pages/details/hoverzoom.js'),
+                modalzoom: path.resolve(__dirname, 'build/js/pages/details/modalzoom.js'),
+
+                variants: path.resolve(__dirname, 'build/js/pages/variants.js'),
+                private_sales: path.resolve(__dirname, 'build/js/form/private_sales.js'),
+                changeaddress: path.resolve(__dirname, 'build/js/form/changeaddress.js'),
+                movetonoticelist: path.resolve(__dirname, 'build/js/pages/checkout/basket/movetonoticelist.js'),
+                changeamount: path.resolve(__dirname, 'build/js/pages/checkout/basket/changeamount.js'),
+                wrapping: path.resolve(__dirname, 'build/js/pages/checkout/basket/wrapping.js'),
+                agb: path.resolve(__dirname, 'build/js/pages/checkout/order/agb.js'),
+                payment: path.resolve(__dirname, 'build/js/pages/checkout/payment/payment.js'),
+                listremovebutton: path.resolve(__dirname, 'build/js/pages/myaccount/listremovebutton.js')
             },
             output: {
                 manualChunks: null,
-                entryFileNames: 'js/[name].min.js',
+                entryFileNames: (chunk) => {
+                    const nameMap = {
+                        oxcountrystateselect: 'js/widgets/oxcountrystateselect.min.js',
+
+                        magnifierlens: 'js/pages/details/magnifierlens.min.js',
+                        hoverzoom: 'js/pages/details/hoverzoom.min.js',
+                        modalzoom: 'js/pages/details/modalzoom.min.js',
+
+                        variants: 'js/variants.min.js',
+                        private_sales: 'js/private_sales.min.js',
+                        changeaddress: 'js/changeaddress.min.js',
+                        movetonoticelist: 'js/movetonoticelist.min.js',
+                        changeamount: 'js/changeamount.min.js',
+                        wrapping: 'js/wrapping.min.js',
+                        agb: 'js/agb.min.js',
+                        payment: 'js/payment.min.js',
+                        listremovebutton: 'js/listremovebutton.min.js'
+                    };
+
+                    return nameMap[chunk.name] || 'js/[name].min.js'; // Fallback for JS
+                },
                 chunkFileNames: 'js/[name].min.js',
                 assetFileNames: 'css/[name].min.[ext]',
             },
