@@ -175,11 +175,21 @@
                                     {% elseif oViewConf.showSelectListsInList() %}
                                         {% set oSelections = product.getSelections(1) %}
                                         {% if oSelections %}
+                                        <form name="tobasket.{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink()|raw }}" method="post"{% else %}action="{{ _productLink|raw }}" method="get"{% endif %}>
                                             <div id="selectlistsselector_{{ iIndex }}" class="selectorsBox">
                                                 {% for oList in oSelections %}
-                                                    {% include "widget/product/selectbox.html.twig" with {oSelectionList: oList, sFieldName: "sel", iKey: loop.index0, blHideDefault: true, sSelType: "seldrop", blHideLabel: true} %}
+                                                    {% include "widget/product/selectbox.html.twig" with {
+                                                        oSelectionList: oList,
+                                                        blSubmitOnChange: true,
+                                                        sFieldName: "sel",
+                                                        iKey: loop.index0,
+                                                        blHideDefault: true,
+                                                        sSelType: "seldrop",
+                                                        blHideLabel: true
+                                                    } %}
                                                 {% endfor %}
                                             </div>
+                                        </form>
                                         {% endif %}
                                     {% endif %}
                                     {% endblock %}
