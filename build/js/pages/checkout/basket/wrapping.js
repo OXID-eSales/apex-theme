@@ -1,6 +1,5 @@
 // Script to select Wrapping by clicking the image
 var wrappingTargetImg = document.querySelectorAll('.wrappingTargetImg');
-
 if (wrappingTargetImg) {
     wrappingTargetImg.forEach((item) => {
         item.addEventListener('click', function () {
@@ -12,7 +11,6 @@ if (wrappingTargetImg) {
 
 // Script to select Greeting Card by clicking the image
 var wrapCardImg = document.querySelectorAll('#wrappCard img');
-
 if (wrapCardImg) {
     wrapCardImg.forEach((item) => {
         item.addEventListener('click', function () {

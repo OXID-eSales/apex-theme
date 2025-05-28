@@ -5,7 +5,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     const zoomContainers = document.querySelectorAll('.zoom-container-magnifier');
-
     zoomContainers.forEach(container => {
         const img = container.querySelector('img');
         const lens = container.querySelector('.lens');

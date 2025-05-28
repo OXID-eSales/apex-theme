@@ -7,8 +7,7 @@ window.addEventListener('basketLoaded', function () {
 }, false);
 
 const addToNoticelistEventlisteners = function () {
-    const moveToNoticeList = document.querySelectorAll('button.btn-remove');
-
+    const moveToNoticeList = document.querySelectorAll('button.btn-noticelist');
     if (moveToNoticeList) {
         moveToNoticeList.forEach((btn) => {
             btn.addEventListener('click', function (evt) {

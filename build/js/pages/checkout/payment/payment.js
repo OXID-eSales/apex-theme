@@ -1,5 +1,4 @@
 var paymentInputs = document.querySelectorAll('#payment .form-check input[type=radio]');
-
 if (paymentInputs) {
     paymentInputs.forEach((item) => {
         item.addEventListener('click', function (evt) {

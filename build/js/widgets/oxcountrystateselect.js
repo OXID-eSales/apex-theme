@@ -28,7 +28,6 @@
     };
 
     const aCountrySelects = document.querySelectorAll('#invCountrySelect, #delCountrySelect');
-
     if (aCountrySelects) {
         aCountrySelects.forEach((countrySelect) => {
             countrySelect.addEventListener('change', (item) => {

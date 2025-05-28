@@ -71,24 +71,14 @@ export default defineConfig({
                 manualChunks: null,
                 entryFileNames: (chunk) => {
                     const nameMap = {
-                        oxcountrystateselect: 'js/widgets/oxcountrystateselect.min.js',
+                        oxcountrystateselect: 'widgets/',
 
-                        magnifierlens: 'js/pages/details/magnifierlens.min.js',
-                        hoverzoom: 'js/pages/details/hoverzoom.min.js',
-                        modalzoom: 'js/pages/details/modalzoom.min.js',
-
-                        variants: 'js/variants.min.js',
-                        private_sales: 'js/private_sales.min.js',
-                        changeaddress: 'js/changeaddress.min.js',
-                        movetonoticelist: 'js/movetonoticelist.min.js',
-                        changeamount: 'js/changeamount.min.js',
-                        wrapping: 'js/wrapping.min.js',
-                        agb: 'js/agb.min.js',
-                        payment: 'js/payment.min.js',
-                        listremovebutton: 'js/listremovebutton.min.js'
+                        magnifierlens: 'pages/details/',
+                        hoverzoom: 'pages/details/',
+                        modalzoom: 'pages/details/'
                     };
 
-                    return nameMap[chunk.name] || 'js/[name].min.js'; // Fallback for JS
+                    return nameMap[chunk.name] ? ('js/' + nameMap[chunk.name] + '[name].min.js') : 'js/[name].min.js'; // Fallback for JS
                 },
                 chunkFileNames: 'js/[name].min.js',
                 assetFileNames: 'css/[name].min.[ext]',

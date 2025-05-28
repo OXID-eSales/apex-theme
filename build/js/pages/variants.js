@@ -5,7 +5,6 @@ import { setOuterHtmlAndExecuteScripts } from '../main.js'
 
 addDropdownLinksEventListeners = () => {
     var aVariantDropdownLinks = document.querySelectorAll('#variants .dropDown .form-select');
-
     if (aVariantDropdownLinks) {
         aVariantDropdownLinks.forEach((select) => select.addEventListener('change', handleVariantDropdownLinkClick));
     }
@@ -49,7 +48,6 @@ handleVariantDropdownLinkClick = (e) => {
 
 addDropdownLinksEventListeners();
 
-
 /*!
  * Serialize all form data into a query string
  * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
@@ -63,7 +61,6 @@ var serialize = function (form) {
 
     // Loop through each field in the form
     for (var i = 0; i < form.elements.length; i++) {
-
         var field = form.elements[i];
 
         // Don't serialize fields without a name, submits, buttons, file and reset inputs, and disabled fields
@@ -84,5 +81,4 @@ var serialize = function (form) {
     }
 
     return serialized.join('&');
-
 };
