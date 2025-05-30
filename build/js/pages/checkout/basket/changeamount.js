@@ -1,13 +1,28 @@
+/**
+ * Copyright © OXID eSales AG. All rights reserved.
+ * See LICENSE file for license details.
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
     addBasketAmountEventlisteners();
 }, false);
-
 
 const addBasketAmountEventlisteners = function () {
     const aAmountButtons = document.querySelectorAll('.js-amount button');
     const aAmountInputs = document.querySelectorAll('input[name^="aproducts"][name$="[am]"]');
     const aRemoveButtons = document.querySelectorAll('#basket_form .js-remove');
     const productLabelInputs = document.querySelectorAll('#basket_form .persParam');
+
+    const productSelectionInputs = document.querySelectorAll('select[name^="aproducts"][name*="[sel]"]');
+    if (productSelectionInputs) {
+        productSelectionInputs.forEach((sel) => {
+            sel.addEventListener('change', function (evt) {
+                evt.preventDefault();
+
+                updateProductLabel(sel);
+            })
+        });
+    }
 
     if (aAmountButtons) {
         aAmountButtons.forEach((btn) => {

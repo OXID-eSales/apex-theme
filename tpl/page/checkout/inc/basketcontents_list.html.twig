@@ -193,7 +193,7 @@
                                                             <div class="selectorsBox"
                                                                  id="cartItemSelections_{{ loop.index }}">
                                                                 {% for oList in oSelections %}
-                                                                    {% if oViewConf.showSelectListsInList() %}
+                                                                    {% if oViewConf.showSelectListsInList() and editable %}
                                                                         {% include "widget/product/selectbox.html.twig" with {oSelectionList: oList, sFieldName: "aproducts[" ~ basketindex ~ "][sel]", iKey: loop.index0, blHideDefault: true, sSelType: "seldrop"} %}
                                                                     {% else %}
                                                                         {% set oActiveSelection = oList.getActiveSelection() %}
