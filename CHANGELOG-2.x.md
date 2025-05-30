@@ -1,10 +1,10 @@
 # Change Log for OXID APEX Theme
 
-## v2.1.0 - Unreleased
+## v2.1.0 - 2025-04-09
 
 ### Added
 - Short description as title attribute to subcategory links, displaying details on hover.
-- Display vouchers, shipping, payment cost and discounts in minibasket.
+- Display vouchers, shipping, payment cost and discounts in mini basket.
 - New form input to validate basket changes on order confirmation step
 - New blocks:
   - `tpl/form/fieldset/user_account.html.twig`
