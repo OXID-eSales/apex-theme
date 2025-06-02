@@ -1,7 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    addBasketAmountEventlisteners();
+    addBasketAmountEventlisteners()
+    preventFormSubmission();
 }, false);
 
+const preventFormSubmission = function () {
+    var basketForm = document.getElementById("basket_form");
+    if (basketForm) {
+        basketForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+        });
+    }
+}
 
 const addBasketAmountEventlisteners = function () {
     const aAmountButtons = document.querySelectorAll('.js-amount button');
