@@ -170,23 +170,3 @@
         );
     }
 })();
-
-export function setOuterHtmlAndExecuteScripts(element, html) {
-    'use strict';
-
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = html;
-    element.outerHTML = tempDiv.innerHTML;
-
-    // Extract and execute scripts
-    const scripts = tempDiv.querySelectorAll('script');
-    scripts.forEach((oldScript) => {
-        const newScript = document.createElement('script');
-        Array.from(oldScript.attributes).forEach(attr => {
-            newScript.setAttribute(attr.name, attr.value);
-        });
-        newScript.textContent = oldScript.textContent;
-        document.body.appendChild(newScript);
-        document.body.removeChild(newScript);
-    });
-}
