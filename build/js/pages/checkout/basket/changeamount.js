@@ -64,7 +64,6 @@ const addBasketAmountEventlisteners = function () {
     }
 }
 
-
 const changeInputAmount = function (button, mode) {
     const amountWrapper = button.closest('.js-amount');
     if (amountWrapper) {
@@ -92,7 +91,6 @@ const updateProductLabel = function (input) {
     }, 350);
 };
 
-
 const addLoadingSpinner = function (row) {
     const sLoadingSpinner = '<div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 10; --bs-bg-opacity: .75;" class="loadingShadowMinibasket bg-secondary"><div class="spinner-border text-primary"><span class="visually-hidden">Loading...</span></div></div>';
     const newDoc = new DOMParser().parseFromString(sLoadingSpinner, 'text/html');
@@ -100,7 +98,6 @@ const addLoadingSpinner = function (row) {
 
     row.prepend(nLoadingSpinner);
 }
-
 
 const changeInputAmountAjax = function () {
     const data = new FormData(document.getElementById('basket_form'));
@@ -123,7 +120,6 @@ const changeInputAmountAjax = function () {
         console.log(error);
     });
 }
-
 
 const debounceCall = (function () {
     let timer = 0;
