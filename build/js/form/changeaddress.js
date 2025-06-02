@@ -1,5 +1,4 @@
 var showShipAddress = document.getElementById('showShipAddress');
-
 if (showShipAddress) {
     showShipAddress.addEventListener('change', showShipAddressAction);
 }
@@ -10,9 +9,7 @@ function showShipAddressAction(evt) {
     shippingAddress.style.display = (shippingAddress.style.display === 'none' ? 'block' : 'none');
 }
 
-
 var userChangeAddress = document.getElementById('userChangeAddress');
-
 if (userChangeAddress) {
     userChangeAddress.addEventListener('click', userChangeAddressAction);
 }
@@ -23,9 +20,7 @@ function userChangeAddressAction(evt) {
     return false;
 }
 
-
 var userChangeShippingAddress = document.getElementById('userChangeShippingAddress')
-
 if (userChangeShippingAddress) {
     userChangeShippingAddress.addEventListener('click', showShipAddressAction);
 }
@@ -33,7 +28,6 @@ if (userChangeShippingAddress) {
 /* CHANGE SHIPPING ADDRESS */
 
 var userEditShippingAddressButton = document.querySelector('.dd-edit-shipping-address');
-
 if (userEditShippingAddressButton) {
     userEditShippingAddressButton.addEventListener('click', userEditShippingAddressButtonAction);
 }
@@ -50,10 +44,8 @@ function userEditShippingAddressButtonAction(evt) {
     }
 }
 
-
 /* CREATE NEW SHIPPING ADDRESS */
 var ddAddDeliveryAddressButton = document.querySelector('.dd-add-delivery-address');
-
 if (ddAddDeliveryAddressButton) {
     ddAddDeliveryAddressButton.addEventListener('click', ddAddDeliveryAddressButtonAction);
 }
@@ -78,7 +70,6 @@ function ddAddDeliveryAddressButtonAction(evt) {
     scrollToShippingAddressForm();
 }
 
-
 function createNewShippingAddressForm() {
     // inputs
     document.getElementById('shippingAddressForm').querySelectorAll('input').forEach((inputitem) => {
@@ -96,16 +87,13 @@ function createNewShippingAddressForm() {
     newShippingAddressBtn.click();
 }
 
-
-function scrollToShippingAddressForm()
-{
+function scrollToShippingAddressForm() {
     var shippingAddressForm = document.getElementById('shippingAddressForm');
     window.scrollTo(null, shippingAddressForm.offsetTop + 300);
 }
 
 /* CHANGE SHIPPING ADDRESS BUTTON */
 var setToThisShippingAddress = document.querySelectorAll('.setToThisShippingAddress');
-
 if (setToThisShippingAddress) {
     setToThisShippingAddress.forEach((setToThisShippingAddressItem) => {
         setToThisShippingAddressItem.addEventListener('click', () => {
@@ -128,10 +116,7 @@ if (setToThisShippingAddress) {
     });
 }
 
-
-
 var userFormSubmitBtn = document.querySelector('#userFormSubmit');
-
 if (userFormSubmitBtn) {
     userFormSubmitBtn.addEventListener('click', (item) => {
         item.preventDefault();
@@ -146,4 +131,3 @@ if (userFormSubmitBtn) {
         }
     });
 }
-

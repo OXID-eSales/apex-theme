@@ -1,9 +1,28 @@
 /**
  * Script for Variantselection
  */
+function setOuterHtmlAndExecuteScripts(element, html) {
+    'use strict';
+
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    element.outerHTML = tempDiv.innerHTML;
+
+    // Extract and execute scripts
+    const scripts = tempDiv.querySelectorAll('script');
+    scripts.forEach((oldScript) => {
+        const newScript = document.createElement('script');
+        Array.from(oldScript.attributes).forEach(attr => {
+            newScript.setAttribute(attr.name, attr.value);
+        });
+        newScript.textContent = oldScript.textContent;
+        document.body.appendChild(newScript);
+        document.body.removeChild(newScript);
+    });
+}
+
 addDropdownLinksEventListeners = () => {
     var aVariantDropdownLinks = document.querySelectorAll('#variants .dropDown .form-select');
-
     if (aVariantDropdownLinks) {
         aVariantDropdownLinks.forEach((select) => select.addEventListener('change', handleVariantDropdownLinkClick));
     }
@@ -47,7 +66,6 @@ handleVariantDropdownLinkClick = (e) => {
 
 addDropdownLinksEventListeners();
 
-
 /*!
  * Serialize all form data into a query string
  * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
@@ -61,7 +79,6 @@ var serialize = function (form) {
 
     // Loop through each field in the form
     for (var i = 0; i < form.elements.length; i++) {
-
         var field = form.elements[i];
 
         // Don't serialize fields without a name, submits, buttons, file and reset inputs, and disabled fields
@@ -82,5 +99,4 @@ var serialize = function (form) {
     }
 
     return serialized.join('&');
-
 };

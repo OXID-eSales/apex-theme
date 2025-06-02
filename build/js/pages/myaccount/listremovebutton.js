@@ -1,5 +1,4 @@
 var aListRemoveButton = document.querySelectorAll('.listRemoveButton');
-
 if (aListRemoveButton) {
     aListRemoveButton.forEach((item) => {
         item.addEventListener('click', function (evt) {

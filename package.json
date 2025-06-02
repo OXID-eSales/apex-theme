@@ -2,8 +2,8 @@
   "name": "apex",
   "version": "1.2.0",
   "description": "APEX - Bootstrap 5 TWIG Theme",
-  "main": "index.js",
   "author": "Tino Favetto, c&c concepts and creations gmbh",
+  "type": "module",
   "engines": {
     "node": ">=8"
   },
@@ -12,22 +12,16 @@
     "@popperjs/core": "^2.9.2",
     "bootstrap": "5.2.3",
     "dart-sass": "^1.25.0",
-    "grunt": "^1.5.3",
-    "grunt-combine-media-queries": "^1.0.20",
-    "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^4.0.0",
-    "grunt-contrib-uglify": "^5.0.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-sass": "^3.1.0",
-    "grunt-svg-symbols": "^1.0.0",
+    "autoprefixer": "^10.4.20",
+    "vite": "~5.3.0",
+    "vite-plugin-static-copy": "^2.1.0",
+    "sass": "~1.60.0",
     "matchdep": "^2.0.0",
     "roboto-fontface": "^0.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "grunt": "grunt"
+    "build": "vite build",
+    "watch": "vite build --watch"
   },
   "license": "ISC",
   "dependencies": {

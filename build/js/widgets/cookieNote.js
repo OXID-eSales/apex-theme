@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 var cookieNote = document.getElementById('cookieNote');
 if (!Cookies.get('displayedCookiesNotification') && cookieNote) {
     cookieNote.removeAttribute("hidden")
