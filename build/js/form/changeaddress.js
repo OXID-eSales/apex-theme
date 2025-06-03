@@ -111,6 +111,7 @@ if (setToThisShippingAddress) {
 
             // reset oxaddressid to selected element
             setToThisShippingAddressItem.closest('form').querySelector('input[name="fnc"]').value = "";
+            replaceHistoryFromPreviousStep();
             setToThisShippingAddressItem.closest('form').submit();
         });
     });
@@ -127,7 +128,14 @@ if (userFormSubmitBtn) {
 
         // continue
         if (user_form.checkValidity() === true) {
+            replaceHistoryFromPreviousStep();
             user_form.submit();
         }
     });
 }
+
+document.querySelectorAll('input[name="oxaddressid"]').forEach((radio) => {
+    radio.addEventListener('change', () => {
+        replaceHistoryFromPreviousStep();
+    });
+});
