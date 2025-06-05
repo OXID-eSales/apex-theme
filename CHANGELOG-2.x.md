@@ -5,6 +5,10 @@
 ### Fixed
 - Product selection in basket overview page [#0007708](https://bugs.oxid-esales.com/view.php?id=7708)
 - Product selection for line type view in listing page
+- Addressed an issue where using the browser’s back button did not return the customer to previous step during checkout [#0007004](https://bugs.oxid-esales.com/view.php?id=7004)
+
+### Changed
+- Removed Grunt entirely and migrated all build tasks to Vite
 
 ## v2.1.0 - 2025-04-09
 
@@ -37,7 +41,6 @@
 ### Changed
 - Updated validation label message for MESSAGE_PAYMENT_BANK_CODE_INVALID to "Please provide a valid BIC code"
 - Added missing template block around account dashboard page items [PR-66](https://github.com/OXID-eSales/apex-theme/pull/66)
-- Removed Grunt entirely and migrated all build tasks to Vite
 
 ### Fixed
 - Resolved an issue where force_sid was incorrectly displayed on the address section of the contact page [#0007672](https://bugs.oxid-esales.com/view.php?id=7672)
@@ -46,7 +49,6 @@
 - Category tree view visibility for mobile [#0007597](https://bugs.oxid-esales.com/view.php?id=7597)
 - Navigation menu for tablet view might look distorted when using Visual CMS module
 - Prevent change basket form from submitting twice [#0007391](https://bugs.oxid-esales.com/view.php?id=7391)
-- Addressed an issue where using the browser’s back button did not return the customer to previous step during checkout [#0007004](https://bugs.oxid-esales.com/view.php?id=7004)
 
 ## v2.0.0 - 2024-10-14
 
