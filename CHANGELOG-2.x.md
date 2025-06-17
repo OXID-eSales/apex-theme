@@ -2,6 +2,9 @@
 
 ## v2.2.0 - Unreleased
 
+### Added
+- Added password, Billing/shipping and newsletter settings section to my account dashboard
+
 ### Fixed
 - Product selection in basket overview page [#0007708](https://bugs.oxid-esales.com/view.php?id=7708)
 - Product selection for line type view in listing page
