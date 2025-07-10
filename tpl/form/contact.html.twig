@@ -1,4 +1,7 @@
-{% set editval = oView.getUserData() %}
+{% if not oView.getContactSendStatus() %}
+    {% set editval = oView.getUserData() %}
+{% endif %}
+
 <form class="needs-validation" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" novalidate>
     {{ oViewConf.getHiddenSid()|raw }}
     <input type="hidden" name="fnc" value="send">
@@ -53,7 +56,7 @@
                name="c_subject"
                id="c_subject"
                maxlength=80 placeholder=" "
-               value="{{ oView.getContactSubject() }}"
+               value="{% if not oView.getContactSendStatus() %}{{ oView.getContactSubject() }}{% endif %}"
                class="form-control"
             {% if contactFormFields.subject.isRequired %} required{% endif %}>
             <label class="{% if contactFormFields.subject.isRequired %}req{% endif %}" for="c_subject">
@@ -66,7 +69,7 @@
                 id="c_message"
                 class="form-control"
                 {% if contactFormFields.message.isRequired %} required{% endif %}
-            >{{~ oView.getContactMessage()|raw ~}}</textarea>
+            >{% if not oView.getContactSendStatus() %}{{~ oView.getContactMessage()|raw ~}}{% endif %}</textarea>
             <label class="{% if contactFormFields.message.isRequired %}req {% endif %}" for="c_message">
                 {{ translate({ ident: "MESSAGE" }) }}
             </label>
