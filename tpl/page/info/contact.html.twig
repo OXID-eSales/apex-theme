@@ -7,13 +7,12 @@
         </div>
 
     {% endif %}
+    {% if oView.getContactSendStatus() %}
+        {% set _statusMessage = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate ~ " " ~ oxcmp_shop.oxshops__oxname.value %}
+        {% set _statusMessageSuffix = "PAGE_DETAILS_THANKYOUMESSAGE2"|translate %}
+        {% include "message/success.html.twig" with {statusMessage: _statusMessage ~ _statusMessageSuffix} %}
+    {% endif %}
     <div class="container-xxl mb-5">
-        {% if oView.getContactSendStatus() %}
-            {% set _statusMessage = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate ~ " " ~ oxcmp_shop.oxshops__oxname.value %}
-            {% set _statusMessageSuffix = "PAGE_DETAILS_THANKYOUMESSAGE2"|translate %}
-            {% include "message/success.html.twig" with {statusMessage: _statusMessage ~ _statusMessageSuffix} %}
-        {% endif %}
-
         <div class="row bg-white p-4 m-4">
             <div class="col-12">
                 <h1>{{ translate({ ident: "DD_CONTACT_PAGE_HEADING" }) }}</h1>
