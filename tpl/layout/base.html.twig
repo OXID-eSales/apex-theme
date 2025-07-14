@@ -14,7 +14,7 @@
         <link rel="preload" href="{{ oViewConf.getResourceUrl('css/styles.min.css')|raw }}" as="style">
         {% endblock %}
         {% block base_preload_js %}
-        <link rel="preload" href="{{ oViewConf.getResourceUrl('js/scripts.min.js')|raw }}" as="script">
+        <link href="{{ oViewConf.getResourceUrl('js/scripts.min.js')|raw }}" as="script">
         {% endblock %}
 
         {% set sPageTitle = oView.getPageTitle() %}
