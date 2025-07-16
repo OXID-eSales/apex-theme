@@ -273,6 +273,16 @@ $aLang = array(
     'SHOP_THEME_sBasketNoticeListButtonFunction_move' => 'Artikel auf Merkliste verschieben (aus Warenkorb löschen)',
     'SHOP_THEME_sBasketNoticeListButtonFunction_copy' => 'Artikel auf Merkliste kopieren',
 
+    'SHOP_THEME_basketLowOrderDisplayOrderButton'          => 'Display order button on basket pages when minimum order value is not reached',
+    'SHOP_THEME_basketLowOrderDisplayOrderButton_show'     => 'Show',
+    'SHOP_THEME_basketLowOrderDisplayOrderButton_disabled' => 'Disabled',
+    'SHOP_THEME_basketLowOrderDisplayOrderButton_hide'     => 'Hide',
+
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton'          => 'Display minibasket order button when minimum order value is not reached',
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_show'     => 'Show',
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_disabled' => 'Disabled',
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_hide'     => 'Hide',
+
     'SHOP_THEME_sSiteManifestFile'            => 'Site Manifest Datei',
     'SHOP_THEME_sThemeColor'                  => 'Theme Farbe',
     'SHOP_THEME_sManufacturerPromotionsize'   => 'Größe des Hersteller Promotionicons in Pixeln (Breite*Höhe)',

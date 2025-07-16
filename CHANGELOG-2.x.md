@@ -4,12 +4,23 @@
 
 ### Added
 - Added password, Billing/shipping and newsletter settings section to my account dashboard
+- New blocks:
+  - `tpl/page/checkout//minibasket.html.twig`
+    - widget_minibasket_loworderprice_top
+  - `tpl/page/checkout/order.html.twig`
+    - widget_minibasket_loworderprice_top
+  - `tpl/page/checkout/payment.html.twig`
+    - widget_minibasket_loworderprice_top
+  - `tpl/page/checkout/user.html.twig`
+    - checkout_user_errors
+    - widget_minibasket_loworderprice_top
 
 ### Fixed
 - Product selection in basket overview page [#0007708](https://bugs.oxid-esales.com/view.php?id=7708)
 - Product selection for line type view in listing page
 - Addressed an issue where using the browser’s back button did not return the customer to previous step during checkout [#0007004](https://bugs.oxid-esales.com/view.php?id=7004)
 - Clear inputs and adjust contact form success message design on submit [#0006031](https://bugs.oxid-esales.com/view.php?id=6031)
+- Display minimum order message on every checkout step [#0007637](https://bugs.oxid-esales.com/view.php?id=7637)
 
 ### Changed
 - Removed Grunt entirely and migrated all build tasks to Vite

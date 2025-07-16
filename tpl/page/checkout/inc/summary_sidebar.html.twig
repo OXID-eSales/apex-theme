@@ -280,11 +280,14 @@
         {% endblock %}
     {% endif %}
     {% block basket_btn_next_bottom %}
-        {% if not oView.isLowOrderPrice() and btn %}
+        {% set displayBasketOrderButton = oViewConf.getViewThemeParam('basketLowOrderDisplayOrderButton') %}
+        {% if (not oView.isLowOrderPrice() or (displayBasketOrderButton == 'show' or displayBasketOrderButton == 'disabled')) and btn %}
             <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
                 {{ oViewConf.getHiddenSid()|raw }}
                 <input type="hidden" name="cl" value="user">
-                <button type="submit" class="btn btn-highlight btn-lg w-100">
+                <button type="submit" class="btn btn-highlight btn-lg w-100"
+                        {% if oView.isLowOrderPrice() and displayBasketOrderButton == 'disabled' %} disabled="disabled"{% endif %}
+                >
                     {{ translate({ ident: "CHECKOUT" }) }}
                 </button>
             </form>
