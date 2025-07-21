@@ -510,5 +510,19 @@ $aTheme = [
             'value'       => 'move',
             'constraints' => 'hide|move|copy',
         ],
+        [
+            'group'       => 'basket',
+            'name'        => 'basketLowOrderDisplayOrderButton',
+            'type'        => 'select',
+            'value'       => 'hide',
+            'constraints' => 'show|disabled|hide',
+        ],
+        [
+            'group'       => 'basket',
+            'name'        => 'miniBasketLowOrderDisplayOrderButton',
+            'type'        => 'select',
+            'value'       => 'show',
+            'constraints' => 'show|disabled|hide',
+        ],
     ],
 ];

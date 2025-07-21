@@ -1,4 +1,13 @@
 {% capture append = "oxidBlock_content" %}
+
+    {% block checkout_user_errors %}
+        {% if oView.isLowOrderPrice() %}
+            {% block widget_minibasket_loworderprice_top %}
+                <div class="alert alert-danger p-4 mt-4">{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ format_price(oView.getMinOrderPrice(), { currency: currency }) }}</div>
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
+
     {% set template_title = "" %}
     {% if not oView.getLoginOption() and not oxcmp_user %}
         <div class="container-md py-5">

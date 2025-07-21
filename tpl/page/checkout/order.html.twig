@@ -8,6 +8,11 @@
         {% if iError == 1 %}
             {% include "message/error.html.twig" with {statusMessage: "ERROR_DELIVERY_ADDRESS_WAS_CHANGED_DURING_CHECKOUT"|translate} %}
         {% endif %}
+        {% if oView.isLowOrderPrice() %}
+            {% block widget_minibasket_loworderprice_top %}
+                <div class="alert alert-danger p-4 mt-4">{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ format_price(oView.getMinOrderPrice(), { currency: currency }) }}</div>
+            {% endblock %}
+        {% endif %}
     {% endblock %}
     <h1 class="visually-hidden">{{ translate({ ident:"PAGE_TITLE_ORDER" }) }}</h1>
     <div class="container-md py-5">
@@ -196,13 +201,7 @@
                                     {% endif %}
 
                                     {% block checkout_order_next_step_bottom %}
-                                        {% if oView.isLowOrderPrice() %}
-                                            {% block checkout_order_loworderprice_bottom %}
-                                                <div class="alert alert-danger p-4">
-                                                    <div>{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ format_price(oView.getMinOrderPrice(), { currency: currency }) }}</div>
-                                                </div>
-                                            {% endblock %}
-                                        {% else %}
+                                        {% if not oView.isLowOrderPrice() %}
                                             {% block checkout_order_btn_confirm_bottom %}
                                                 <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post"
                                                       id="orderConfirmAgbBottom">
@@ -253,10 +252,18 @@
                                 </div>
                             {% endif %}
                             {% block checkout_order_next_step_side %}
+                                {% set displayBasketOrderButton = oViewConf.getViewThemeParam('basketLowOrderDisplayOrderButton') %}
+                                {% if not oView.isLowOrderPrice() or (displayBasketOrderButton == 'show' or displayBasketOrderButton == 'disabled') %}
                                 <button type="button" class="btn btn-highlight btn-lg w-100"
-                                        onclick="document.getElementById('orderConfirmAgbBottom').submit();">
+                                        {% if oView.isLowOrderPrice() and displayBasketOrderButton == 'disabled' %}
+                                        disabled="disabled"
+                                        {% else %}
+                                        onclick="document.getElementById('orderConfirmAgbBottom').submit();"
+                                        {% endif %}
+                                >
                                     {{ translate({ ident: "SUBMIT_ORDER" }) }}
                                 </button>
+                                {% endif %}
                             {% endblock %}
                         </div>
                     </div>

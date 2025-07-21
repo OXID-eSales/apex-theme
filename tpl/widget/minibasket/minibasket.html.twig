@@ -29,16 +29,23 @@
                                             {% block widget_minibasket_product %}{% endblock %}
                                         {% endfor %}
 
-                                        {% block widget_minibasket_total %}
-
-                                        {% endblock %}
+                                        {% block widget_minibasket_total %}{% endblock %}
 
                                         {% block minibasket_top_functions %}
-                                        {% if oxcmp_user %}
-                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=payment" }) }}" class="btn btn-highlight btn-lg w-100 mb-2">{{ translate({ ident: "CHECKOUT" }) }}</a>
-                                        {% else %}
-                                        <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=user" }) }}" class="btn btn-highlight btn-lg w-100 mb-2">{{ translate({ ident: "CHECKOUT" }) }}</a>
-                                        {% endif %}
+                                            {% if oView.isLowOrderPrice() %}
+                                                {% block widget_minibasket_loworderprice_top %}
+                                                    <div class="alert alert-danger p-4">{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ format_price(oView.getMinOrderPrice(), { currency: currency }) }}</div>
+                                                {% endblock %}
+                                            {% endif %}
+
+                                            {% set displayMiniBasketOrderButton = oViewConf.getViewThemeParam('miniBasketLowOrderDisplayOrderButton') %}
+                                            {% if not oView.isLowOrderPrice() or (displayMiniBasketOrderButton == 'show' or displayMiniBasketOrderButton == 'disabled') %}
+                                                {% if oxcmp_user %}
+                                                    <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=payment" }) }}" class="btn btn-highlight btn-lg w-100 mb-2{% if oView.isLowOrderPrice() and displayMiniBasketOrderButton == 'disabled' %} disabled{% endif %}">{{ translate({ ident: "CHECKOUT" }) }}</a>
+                                                {% else %}
+                                                    <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=user" }) }}" class="btn btn-highlight btn-lg w-100 mb-2{% if oView.isLowOrderPrice() and displayMiniBasketOrderButton == 'disabled' %} disabled{% endif %}">{{ translate({ ident: "CHECKOUT" }) }}</a>
+                                                {% endif %}
+                                            {% endif %}
                                         {% endblock %}
 
                                         <div class="minibasket-menu-box">
