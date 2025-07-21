@@ -273,15 +273,15 @@ $aLang = array(
     'SHOP_THEME_sBasketNoticeListButtonFunction_move' => 'Artikel auf Merkliste verschieben (aus Warenkorb löschen)',
     'SHOP_THEME_sBasketNoticeListButtonFunction_copy' => 'Artikel auf Merkliste kopieren',
 
-    'SHOP_THEME_basketLowOrderDisplayOrderButton'          => 'Display order button on basket pages when minimum order value is not reached',
-    'SHOP_THEME_basketLowOrderDisplayOrderButton_show'     => 'Show',
-    'SHOP_THEME_basketLowOrderDisplayOrderButton_disabled' => 'Disabled',
-    'SHOP_THEME_basketLowOrderDisplayOrderButton_hide'     => 'Hide',
+    'SHOP_THEME_basketLowOrderDisplayOrderButton'          => 'Bestellbutton im Warenkorb anzeigen, wenn der Mindestbestellwert nicht erreicht ist',
+    'SHOP_THEME_basketLowOrderDisplayOrderButton_show'     => 'Anzeigen',
+    'SHOP_THEME_basketLowOrderDisplayOrderButton_disabled' => 'Deaktiviert',
+    'SHOP_THEME_basketLowOrderDisplayOrderButton_hide'     => 'Ausblenden',
 
-    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton'          => 'Display minibasket order button when minimum order value is not reached',
-    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_show'     => 'Show',
-    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_disabled' => 'Disabled',
-    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_hide'     => 'Hide',
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton'          => 'Bestellbutton im Miniwarenkorb anzeigen, wenn der Mindestbestellwert nicht erreicht ist',
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_show'     => 'Anzeigen',
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_disabled' => 'Deaktiviert',
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_hide'     => 'Ausblenden',
 
     'SHOP_THEME_sSiteManifestFile'            => 'Site Manifest Datei',
     'SHOP_THEME_sThemeColor'                  => 'Theme Farbe',
