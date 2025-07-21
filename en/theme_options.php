@@ -273,6 +273,16 @@ $aLang = array(
     'SHOP_THEME_sBasketNoticeListButtonFunction_move' => 'Move Product to Noticelist (delete from Basket)',
     'SHOP_THEME_sBasketNoticeListButtonFunction_copy' => 'Copy Product to Noticelist',
 
+    'SHOP_THEME_basketLowOrderDisplayOrderButton'          => 'Display order button on basket pages when minimum order value is not reached',
+    'SHOP_THEME_basketLowOrderDisplayOrderButton_show'     => 'Show',
+    'SHOP_THEME_basketLowOrderDisplayOrderButton_disabled' => 'Disabled',
+    'SHOP_THEME_basketLowOrderDisplayOrderButton_hide'     => 'Hide',
+
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton'          => 'Display minibasket order button when minimum order value is not reached',
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_show'     => 'Show',
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_disabled' => 'Disabled',
+    'SHOP_THEME_miniBasketLowOrderDisplayOrderButton_hide'     => 'Hide',
+
     'SHOP_THEME_sSiteManifestFile'            => 'Site Manifest File',
     'SHOP_THEME_sThemeColor'                  => 'Theme color',
     'SHOP_THEME_sManufacturerPromotionsize'   => 'Manufacturer promotion Icon picture size (width*height)',
