@@ -6,6 +6,7 @@
         {% endif %}
         {# basket items #}
         {% set basketitemlist = oView.getBasketArticles() %}
+        {% set oMarkGenerator = oView.getBasketContentMarkGenerator() %}
         {% for basketindex, basketitem in oxcmp_basket.getContents() %}
             {% block checkout_basketcontents_basketitem_main %}
             <div class="list-group-item basketitemrow">
@@ -40,8 +41,10 @@
                                                 {% endif %}
                                                 {{ basketitem.getTitle() }}
 
-                                                {% if basketitem.isSkipDiscount() %}
-                                                    <sup><a href="#SkipDiscounts_link">**</a></sup>
+                                                {% if basketitem.isSkipDiscount() %}<sup><a href="#SkipDiscounts_link">**</a></sup>{% endif %}
+                                                {% if oViewConf.getActiveClassName() == 'order' and oViewConf.isFunctionalityEnabled('blEnableIntangibleProdAgreement') %}
+                                                    {% if oArticle.hasDownloadableAgreement() %} <sup><a rel="nofollow" href="#noteForDownloadableArticles" class="text-decoration-none">{{ oMarkGenerator.getMark('downloadable') }}</a></sup>{% endif %}
+                                                    {% if oArticle.hasIntangibleAgreement() %} <sup><a rel="nofollow" href="#noteForIntangibleArticles" class="text-decoration-none">{{ oMarkGenerator.getMark('intangible') }}</a></sup>{% endif %}
                                                 {% endif %}
                                             </div>
 

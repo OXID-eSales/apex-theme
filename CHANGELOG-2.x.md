@@ -21,6 +21,7 @@
 - Addressed an issue where using the browser’s back button did not return the customer to previous step during checkout [#0007004](https://bugs.oxid-esales.com/view.php?id=7004)
 - Clear inputs and adjust contact form success message design on submit [#0006031](https://bugs.oxid-esales.com/view.php?id=6031)
 - Display minimum order message on every checkout step [#0007637](https://bugs.oxid-esales.com/view.php?id=7637)
+- Explanation marks for downloadable products [#0006917](https://bugs.oxid-esales.com/view.php?id=6917)
 
 ### Changed
 - Removed Grunt entirely and migrated all build tasks to Vite
