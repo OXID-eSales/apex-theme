@@ -57,8 +57,17 @@
 
 <div class="mb-3 form-floating{% if aErrors.oxuser__oxaddinfo %} is-invalid{% endif %}">
     {% set _address_addinfo_tooltip = "FORM_FIELDSET_USER_BILLING_ADDITIONALINFO_TOOLTIP"|translate %}
-    <input class="form-control" placeholder=" " type="text" maxlength="255" id="invadr[oxuser__oxaddinfo]" name="invadr[oxuser__oxaddinfo]" value="{% if invadr.oxuser__oxaddinfo is defined %}{{ invadr.oxuser__oxaddinfo }}{% else %}{{ oxcmp_user.oxuser__oxaddinfo.value }}{% endif %}"{% if oView.isFieldRequired("oxuser__oxaddinfo") %} required{% endif %}>
-    <label for="invadr[oxuser__oxaddinfo]"{% if _address_addinfo_tooltip %} title="{{ _address_addinfo_tooltip }}"{% endif %} class="{% if oView.isFieldRequired("oxuser__oxaddinfo") %} req{% endif %}">{{ translate({ ident: "ADDITIONAL_INFO" }) }}</label>
+    <input
+        class="form-control"
+        placeholder=" "
+        type="text"
+        maxlength="255"
+        id="invadr[oxuser__oxaddinfo]"
+        name="invadr[oxuser__oxaddinfo]"
+        value="{% if invadr.oxuser__oxaddinfo is defined %}{{ invadr.oxuser__oxaddinfo }}{% else %}{{ oxcmp_user.oxuser__oxaddinfo.value }}{% endif %}"{% if oView.isFieldRequired("oxuser__oxaddinfo") %} required{% endif %}
+        {% if _address_addinfo_tooltip %} data-bs-toggle="tooltip" title="{{ _address_addinfo_tooltip }}"{% endif %}
+    >
+    <label for="invadr[oxuser__oxaddinfo]" class="{% if oView.isFieldRequired("oxuser__oxaddinfo") %} req{% endif %}">{{ translate({ ident: "ADDITIONAL_INFO" }) }}</label>
     {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxuser__oxaddinfo} %}
 </div>
 
