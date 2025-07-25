@@ -26,6 +26,7 @@
 
 ### Changed
 - Removed Grunt entirely and migrated all build tasks to Vite
+- Removed whitespace from the salutation field's default value in the subscription form
 
 ## v2.1.0 - 2025-04-09
 
