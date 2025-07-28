@@ -12,13 +12,13 @@
             {% set categories = oxcmp_categories %}
             <div class="category-list">
                 {% for _cat in categories %}
-                    {% if not _cat.getSubCats() %}
+                    {% if not _cat.getHasVisibleSubCats() %}
                         <a class="btn btn-sm btn-tag btn-rounded todo" href="{{ _cat.getLink()|raw }}">
                             {{ _cat.oxcategories__oxtitle.value }}
                         </a>
                     {% else %}
                         {% for _subcat in _cat.getSubCats() %}
-                            {% if not _subcat.getSubCats() %}
+                            {% if not _subcat.getHasVisibleSubCats() %}
                                 <a class="btn btn-sm btn-tag btn-rounded todo" href="{{ _subcat.getLink()|raw }}">
                                     {{ _subcat.oxcategories__oxtitle.value }}
                                 </a>
