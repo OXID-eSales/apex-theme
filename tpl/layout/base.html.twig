@@ -26,6 +26,25 @@
             {% elseif oView.noIndex() == 2 %}
                 <meta name="ROBOTS" content="NOINDEX, FOLLOW">
             {% endif %}
+
+            {# Google Analytics Page Tracking #}
+            {% set sGATrackingId = oViewConf.getViewThemeParam('sGATrackingId') %}
+            {% if oViewConf.getViewThemeParam('blUseGAPageTracker') and sGATrackingId %}
+                <script async src="https://www.googletagmanager.com/gtag/js?id={{ sGATrackingId }}"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', '{{ sGATrackingId }}', {
+                        {% if oViewConf.getViewThemeParam('blGAAnonymizeIPs') %}
+                        'debug_mode':true,
+                        'anonymize_ip': true
+                        {% endif %}
+                    });
+                </script>
+            {% endif %}
+
         {% endblock %}
 
         {% block head_meta_description %}
@@ -178,10 +197,6 @@
     {% endblock %}
 
     {{ script({ dynamic: __oxid_include_dynamic })|replace({ 'type="text/javascript"': '' })|raw }}
-
-    {% if not oView.isDemoShop() %}
-        {% include_dynamic "widget/dynscript.html.twig" %}
-    {% endif %}
 
     {% for _block in oxidBlock_pageScript %}
         {{ _block|raw }}
