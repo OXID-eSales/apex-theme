@@ -26,6 +26,7 @@
         </div>
     {% endblock %}
     {% block search_results %}
+        {% include "gaExtension/events/view_search_results.html.twig" %}
         <div class="container-xxl">
             {% if oView.getArticleCount() %}
                 <div class="d-flex py-3">

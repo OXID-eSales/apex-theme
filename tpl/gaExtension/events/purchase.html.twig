@@ -1,0 +1,28 @@
+{# Google Analytics eCommerce Tracking #}
+{% set sGATrackingId = oViewConf.getViewThemeParam('sGATrackingId') %}
+{% if oViewConf.getViewThemeParam('blUseGAEcommerceTracking') and sGATrackingId %}
+    {% set oOrder = oView.getOrder() %}
+    {% if oOrder %}
+        <script>
+            gtag('event', 'purchase', {
+                "transaction_id": "{{ oOrder.oxorder__oxordernr.value }}",
+                "affiliation": "{{ oxcmp_shop.oxshops__oxname.value }}",
+                "value": {{ oOrder.oxorder__oxtotalordersum.value }},
+                "currency": "{{ oOrder.oxorder__oxcurrency.value }}",
+                "tax": {{ oOrder.oxorder__oxartvatprice1.value+oOrder.oxorder__oxartvatprice2.value }},
+                "shipping": {{ oOrder.oxorder__oxdelcost.value }},
+                "items": [
+                    {% for oOrderArticle in oOrder.getOrderArticles() %}
+                    {
+                        "item_name": "{{ oOrderArticle.oxorderarticles__oxtitle.value|trim }}",
+                        "item_id": "{{ oOrderArticle.oxorderarticles__oxartnum.value }}",
+                        "price": {{ oOrderArticle.getPrice().getBruttoPrice() }},
+                        "quantity": {{ oOrderArticle.oxorderarticles__oxamount.value }},
+                        "item_category": "{% set oMainCategory = oOrderArticle.getArticle().getCategory() %}{% if oMainCategory %}{{ oMainCategory.oxcategories__oxtitle.value }}{% endif %}"
+                    }{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ]
+            });
+        </script>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,22 @@
+{% set productList = oView.getArticleList() %}
+{% set category = oView.getActiveCategory() %}
+<script>
+    gtag("event", "view_item_list", {
+        item_list_id: '{{ oView.getCategoryId() }}',
+        item_list_name: '{% for sCrum in oView.getBreadCrumb() %}{% if sCrum.title  %}{{ breadCrumb|cat(sCrum.title)|cat(" > ")|raw }}{% endif %}{% endfor %}',
+        items: [
+            {% for productList in product %}
+            {% set manufacturer = product.getManufacturer() %}
+            {
+                item_oxid: '{{ product.getFieldData("oxid") }}',
+                item_id: '{{ product.getFieldData("oxartnum") }}',
+                item_name: '{{ product.getRawFieldData('oxtitle')|raw }}',
+                item_brand: '{% if manufacturer %}{{ manufacturer.getFieldData('oxtitle')|raw }}{% endif %}',
+                item_variant: '{% if product.getFieldData("oxvarselect") %}{{ product.getFieldData("oxvarselect") }}{% endif %}',
+                price: {{ product.getPrice().getBruttoPrice()|number_format(2, '.', '') }},
+                item_category:  '{% if category %}{{ category.getFieldData('oxtitle')|raw }}{% endif %}',
+            }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ]
+    });
+</script>

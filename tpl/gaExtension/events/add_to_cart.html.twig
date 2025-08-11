@@ -1,0 +1,27 @@
+{% set product = oView.getProduct() %}
+{% set gtmCategory = product.getCategory() %}
+{% set gtmManufacturer = product.getManufacturer() %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var addToCartBtn = document.querySelector('#toBasket');
+
+        if (addToCartBtn) {
+            addToCartBtn.addEventListener('click', function() {
+
+                gtag('event', 'add_to_cart', {
+                    currency: "{{ oView.getActCurrency().name }}",
+                    value: 30.03,
+                    items: [
+                        {
+                            item_id: '{{ product.getFieldData("oxid") }}}',
+                            item_name:  '{{ product.getFieldData('oxtitle')|raw }}',
+                            item_brand: '{% if gtmManufacturer %}{{ gtmManufacturer.getFieldData('oxtitle')|raw }}{% endif %}',
+                            price: 10.01,
+                            quantity: 3
+                        }
+                    ]
+                });
+            });
+        }
+    });
+</script>

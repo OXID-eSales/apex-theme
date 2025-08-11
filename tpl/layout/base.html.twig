@@ -30,19 +30,7 @@
             {# Google Analytics Page Tracking #}
             {% set sGATrackingId = oViewConf.getViewThemeParam('sGATrackingId') %}
             {% if oViewConf.getViewThemeParam('blUseGAPageTracker') and sGATrackingId %}
-                <script async src="https://www.googletagmanager.com/gtag/js?id={{ sGATrackingId }}"></script>
-                <script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-
-                    gtag('config', '{{ sGATrackingId }}', {
-                        {% if oViewConf.getViewThemeParam('blGAAnonymizeIPs') %}
-                        'debug_mode':true,
-                        'anonymize_ip': true
-                        {% endif %}
-                    });
-                </script>
+                {% include "gaExtension/layout/base.html.twig" %}
             {% endif %}
 
         {% endblock %}

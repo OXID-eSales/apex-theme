@@ -1,0 +1,24 @@
+{% set cartArticles = oView.getBasketArticles() %}
+{% set basketPrice = oxcmp_basket.getPrice() %}
+<script>
+    gtag("event", "view_cart", {
+        currency: "{{ oView.getActCurrency().name }}",
+        value: {{ basketPrice.getPrice() }},
+        items: [
+            {% for basketindex, basketitem in oxcmp_basket.getContents() %}
+            {% set basketItem = basketitem.getArticle() %}
+            {% set basketItemCategory = basketItem.getCategory() %}
+            {% set manufacturer = basketItem.getManufacturer() %}
+            {
+                item_id:      '{{ cartArticles[basketindex].getFieldData('oxartnum') }}',
+                item_name:    '{{ cartArticles[basketindex].getFieldData('oxtitle')|raw }}',
+                item_variant: '{{ cartArticles[basketindex].getFieldData('oxvarselect') }}',
+                item_brand:   '{% if manufacturer %}{{ manufacturer.getRawFieldData('oxtitle') }}{% endif %}',
+                quantity:     '{{ basketitem.getAmount() }}',
+                price:         {{ basketitem.getPrice().getBruttoPrice()|replace({',': '.'})|number_format(2, '.', '') }},
+            }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ]
+    });
+
+</script>

@@ -1,0 +1,28 @@
+{% set product = oView.getProduct() %}
+{% set category = product.getCategory() %}
+{% set manufacturer = product.getManufacturer() %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var wishlistBtn = document.getElementById('linkToNoticeList');
+        if (!wishlistBtn) return;
+
+        wishlistBtn.addEventListener('click', function() {
+            gtag('event', 'add_to_wishlist', {
+                currency: "{{ oView.getActCurrency().name }}",
+                price: {{ product.getPrice().getBruttoPrice()|number_format(2, '.', '') }},
+                items: [
+                    {
+                        item_oxid: '{{ product.getFieldData("oxid") }}',
+                        item_id: '{{ product.getFieldData("oxid") }}}',
+                        item_name:  '{{ product.getFieldData('oxtitle')|raw }}',
+                        item_brand: '{% if manufacturer %}{{ manufacturer.getFieldData('oxtitle')|raw }}{% endif %}',
+                        item_variant: '{% if product.getFieldData("oxvarselect") %}{{ product.getFieldData("oxvarselect") }}{% endif %}',
+                        price: {{ product.getPrice().getBruttoPrice()|number_format(2, '.', '') }},
+                        item_category: '{% if category %}{{ category.getFieldData('oxtitle')|raw }}{% endif %}',
+                    }
+                ]
+            });
+            console.log('GA4 add_to_wishlist event sent');
+        });
+    });
+</script>

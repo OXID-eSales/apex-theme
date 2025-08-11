@@ -1,0 +1,46 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var removeButtons = document.querySelectorAll('button.btn-remove.js-remove');
+
+        removeButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+
+                var basketItem = btn.closest('.basketitemrow');
+                if (!basketItem) return;
+
+                var productContainer = basketItem.querySelector('[id^="list_cartItem_"]') || basketItem;
+
+                var itemIdInput = basketItem.querySelector('input[name^="aproducts"][name$="[aid]"]');
+                var itemId = itemIdInput ? itemIdInput.value : '';
+
+                var itemNameElem = basketItem.querySelector('.h5') || basketItem.querySelector('.product-name');
+                var itemName = itemNameElem ? itemNameElem.textContent.trim() : '';
+
+                var priceElem = basketItem.querySelector('.totalPrice strong') || basketItem.querySelector('.unit-price .value');
+                var priceText = priceElem ? priceElem.textContent.trim() : '';
+
+                var price = 0;
+                if (priceText) {
+                    priceText = priceText.replace(/[^\d,.-]/g, '').replace(',', '.');
+                    price = parseFloat(priceText) || 0;
+                }
+
+                var qtyInput = basketItem.querySelector('input[name^="aproducts"][name$="[am]"]');
+                var quantity = qtyInput ? parseInt(qtyInput.value) : 1;
+
+                gtag('event', 'remove_from_cart', {
+                    currency: 'EUR', // Replace with actual currency if available
+                    value: price * quantity,
+                    items: [{
+                        item_id: itemId,
+                        item_name: itemName,
+                        price: price,
+                        quantity: quantity
+                    }]
+                });
+
+                console.log('GA4 remove_from_cart event sent:', itemName, itemId, price, quantity);
+            });
+        });
+    });
+</script>

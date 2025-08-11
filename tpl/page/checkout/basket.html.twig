@@ -2,6 +2,8 @@
     <h1 class="visually-hidden">{{ translate({ ident:"PAGE_TITLE_BASKET" }) }}</h1>
     <div class="container-xxl py-5">
         {% block checkout_basket_main %}
+            {% include "gaExtension/events/view_cart.html.twig" %}
+            {% include "gaExtension/events/remove_from_cart.html.twig" %}
             {% set currency = oView.getActCurrency() %}
 
             {% if oView.isLowOrderPrice() %}

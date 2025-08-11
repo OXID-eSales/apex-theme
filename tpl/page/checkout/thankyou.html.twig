@@ -2,35 +2,7 @@
     {% block checkout_thankyou_main %}
         {% set order = oView.getOrder() %}
         {% set basket = oView.getBasket() %}
-        {# Google Analytics eCommerce Tracking #}
-        {% set sGATrackingId = oViewConf.getViewThemeParam('sGATrackingId') %}
-        {% if oViewConf.getViewThemeParam('blUseGAEcommerceTracking') and sGATrackingId %}
-            {% set oOrder = oView.getOrder() %}
-
-            {% if oOrder %}
-                <script>
-                    gtag('event', 'purchase', {
-                        "transaction_id": "{{ oOrder.oxorder__oxordernr.value }}",            // Transaction ID. Required.
-                        "affiliation": "{{ oxcmp_shop.oxshops__oxname.value }}",              // Affiliation or store name.
-                        "value": {{ oOrder.oxorder__oxtotalordersum.value }},                // Grand Total.
-                        "currency": "{{ oOrder.oxorder__oxcurrency.value }}",                 // Local currency code.
-                        "tax": {{ oOrder.oxorder__oxartvatprice1.value+oOrder.oxorder__oxartvatprice2.value }}, // Tax.
-                        "shipping": {{ oOrder.oxorder__oxdelcost.value }},                   // Shipping.
-                        "items": [
-                            {% for oOrderArticle in oOrder.getOrderArticles() %}
-                            {
-                                "item_name": "{{ oOrderArticle.oxorderarticles__oxtitle.value|trim }}",  // Product name. Required.
-                                "item_id": "{{ oOrderArticle.oxorderarticles__oxartnum.value }}",       // SKU/code.
-                                "price": {{ oOrderArticle.getPrice().getBruttoPrice() }},              // Unit price.
-                                "quantity": {{ oOrderArticle.oxorderarticles__oxamount.value }},       // Quantity.
-                                "item_category": "{% set oMainCategory = oOrderArticle.getArticle().getCategory() %}{% if oMainCategory %}{{ oMainCategory.oxcategories__oxtitle.value }}{% endif %}" // Category or variation.
-                            }{% if not loop.last %},{% endif %}
-                            {% endfor %}
-                        ]
-                    });
-                </script>
-            {% endif %}
-        {% endif %}
+        {% include "gaExtension/events/purchase.html.twig" %}
         <div class="container-xxl py-5" id="thankyouPage">
         <h1 class="visually-hidden">{{ translate({ ident:"ORDER_COMPLETED" }) }}</h1>
             <h2 class="h3 blockHead">{{ translate({ ident: "THANK_YOU" }) }}</h2>

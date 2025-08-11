@@ -1,0 +1,21 @@
+{% set product = oView.getProduct() %}
+{% set category = product.getCategory() %}
+{% set manufacturer = product.getManufacturer() %}
+<script>
+    gtag("event", "view_item", {
+        currency: "{{ oView.getActCurrency().name }}",
+        price: {{ product.getPrice().getBruttoPrice()|number_format(2, '.', '') }},
+        items: [
+            {
+                item_oxid: '{{ product.getFieldData("oxid") }}',
+                item_id: '{{ product.getFieldData("oxid") }}}',
+                item_name:  '{{ product.getFieldData('oxtitle')|raw }}',
+                item_brand: '{% if manufacturer %}{{ manufacturer.getFieldData('oxtitle')|raw }}{% endif %}',
+                item_variant: '{% if product.getFieldData("oxvarselect") %}{{ product.getFieldData("oxvarselect") }}{% endif %}',
+                price: {{ product.getPrice().getBruttoPrice()|number_format(2, '.', '') }},
+                item_category: '{% if category %}{{ category.getFieldData('oxtitle')|raw }}{% endif %}',
+            }
+        ]
+    });
+
+</script>
