@@ -8,7 +8,7 @@
         if (addToCartBtn) {
             addToCartBtn.addEventListener('click', function() {
 
-                gtag('event', 'add_to_cart', {
+                fireGAEvent('add_to_cart', {
                     currency: "{{ oView.getActCurrency().name }}",
                     value: 30.03,
                     items: [

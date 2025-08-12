@@ -7,7 +7,7 @@
         if (!wishlistBtn) return;
 
         wishlistBtn.addEventListener('click', function() {
-            gtag('event', 'add_to_wishlist', {
+            fireGAEvent('add_to_wishlist', {
                 currency: "{{ oView.getActCurrency().name }}",
                 price: {{ product.getPrice().getBruttoPrice()|number_format(2, '.', '') }},
                 items: [

@@ -1,7 +1,7 @@
 {% set productList = oView.getArticleList() %}
 {% set category = oView.getActiveCategory() %}
 <script>
-    gtag("event", "view_item_list", {
+    fireGAEvent("view_item_list", {
         item_list_id: '{{ oView.getCategoryId() }}',
         item_list_name: '{% for sCrum in oView.getBreadCrumb() %}{% if sCrum.title  %}{{ breadCrumb|cat(sCrum.title)|cat(" > ")|raw }}{% endif %}{% endfor %}',
         items: [

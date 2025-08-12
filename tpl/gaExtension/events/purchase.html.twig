@@ -4,7 +4,7 @@
     {% set oOrder = oView.getOrder() %}
     {% if oOrder %}
         <script>
-            gtag('event', 'purchase', {
+            fireGAEvent('purchase', {
                 "transaction_id": "{{ oOrder.oxorder__oxordernr.value }}",
                 "affiliation": "{{ oxcmp_shop.oxshops__oxname.value }}",
                 "value": {{ oOrder.oxorder__oxtotalordersum.value }},

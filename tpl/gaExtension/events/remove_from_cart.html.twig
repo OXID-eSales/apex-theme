@@ -28,7 +28,7 @@
                 var qtyInput = basketItem.querySelector('input[name^="aproducts"][name$="[am]"]');
                 var quantity = qtyInput ? parseInt(qtyInput.value) : 1;
 
-                gtag('event', 'remove_from_cart', {
+                fireGAEvent('remove_from_cart', {
                     currency: 'EUR', // Replace with actual currency if available
                     value: price * quantity,
                     items: [{

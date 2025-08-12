@@ -1,7 +1,7 @@
 {% set cartArticles = oView.getBasketArticles() %}
 {% set basketPrice = oxcmp_basket.getPrice() %}
 <script>
-    gtag("event", "view_cart", {
+    fireGAEvent("view_cart", {
         currency: "{{ oView.getActCurrency().name }}",
         value: {{ basketPrice.getPrice() }},
         items: [

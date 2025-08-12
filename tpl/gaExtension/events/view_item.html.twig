@@ -2,7 +2,7 @@
 {% set category = product.getCategory() %}
 {% set manufacturer = product.getManufacturer() %}
 <script>
-    gtag("event", "view_item", {
+    fireGAEvent("view_item", {
         currency: "{{ oView.getActCurrency().name }}",
         price: {{ product.getPrice().getBruttoPrice()|number_format(2, '.', '') }},
         items: [

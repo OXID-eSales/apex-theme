@@ -1,13 +1,106 @@
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ sGATrackingId }}"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    var UC_CATEGORY_SLUG = 'google-analytics';
+    var UC_TEMPLATE_ID = 'iO-9SX7g3y40FI';
+    var UC_SETTINGS_ID = '9WczrVFl0we3X5';
+    var GA_TRACKING_ID = '{{ sGATrackingId }}';
+</script>
 
-    gtag('config', '{{ sGATrackingId }}', {
-        {% if oViewConf.getViewThemeParam('blGAAnonymizeIPs') %}
-        'debug_mode':true,
-        'anonymize_ip': true
-        {% endif %}
+{#<script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>#}
+<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="9WczrVFl0we3X5" async></script>
+<script async  type="text/plain" src="https://www.googletagmanager.com/gtag/js?id={{ sGATrackingId }}" data-usercentrics="{{ UC_CATEGORY_SLUG }}"></script>
+
+<script>
+    // Event queue for GA events
+    window.gaEventQueue = window.gaEventQueue || [];
+    window._gaLoaded = false;
+
+    // Default: queue events until consent granted & GA ready
+    window.fireGAEvent = function(eventName, eventParams) {
+        window.gaEventQueue.push({eventName, eventParams});
+    };
+
+    function flushGAQueue() {
+        if (typeof gtag !== 'function') return;
+        window.gaEventQueue.forEach(function(evt) {
+            gtag('event', evt.eventName, evt.eventParams);
+        });
+        window.gaEventQueue = [];
+        window.fireGAEvent = function(eventName, eventParams) {
+            gtag('event', eventName, eventParams);
+        };
+    }
+
+    function loadGA() {
+        if (window._gaLoaded) return;
+        window._gaLoaded = true;
+
+        var s = document.createElement('script');
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_TRACKING_ID;
+        s.async = true;
+        document.head.appendChild(s);
+
+        s.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+            window.gtag = gtag;
+
+            gtag('js', new Date());
+
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted',
+                'ad_storage': 'denied'
+            });
+            gtag('config', GA_TRACKING_ID, { 'debug_mode': true });
+
+            flushGAQueue();
+        };
+    }
+
+    // Handle consent
+    window.addEventListener('UC_UI_INITIALIZED', function() {
+        console.log('Usercentrics UI initialized');
+
+        // Query the current consent status directly from Usercentrics API
+        var currentServices = UC_UI.getServicesBaseInfo();
+        var gaConsentGiven = false;
+        currentServices.forEach(function(service) {
+            if (service.templateId === UC_TEMPLATE_ID && service.consent.given === true) {
+                console.log('GA consent already given at page load');
+                gaConsentGiven = true;
+                loadGA();
+            }
+        });
+
+        if (!gaConsentGiven) {
+            console.log('GA consent NOT given at page load; events will be queued.');
+        }
+
+        window.addEventListener('UC_CONSENT_CHANGED', function(e) {
+            console.log('UC_CONSENT_CHANGED event:', e.detail);
+            const { services,categories } = e.detail;
+
+            Object.values(services || {}).forEach(function(service) {
+                console.log('Service checked:', service.name, service);
+                if (
+                    service.templateId === UC_TEMPLATE_ID
+                    && service.consent && service.consent.given === true
+                ) {
+                    loadGA();
+                }
+            });
+
+            if (
+                categories &&
+                categories[UC_CATEGORY_SLUG] &&
+                categories[UC_CATEGORY_SLUG].state === 'ALL_ACCEPTED'
+            ) {
+                loadGA();
+            }
+
+            // if consent is not granted by UC, then we will not load GA
+            //uncomment the next line to load GA without consent
+            //loadGA();
+        });
+
     });
 </script>
