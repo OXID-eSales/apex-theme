@@ -179,9 +179,11 @@
 
     {{ script({ dynamic: __oxid_include_dynamic })|replace({ 'type="text/javascript"': '' })|raw }}
 
-    {% if not oView.isDemoShop() %}
-        {% include_dynamic "widget/dynscript.html.twig" %}
-    {% endif %}
+    {% block analytics_scripts %}
+        {% if not oView.isDemoShop() %}
+            {% include_dynamic "widget/dynscript.html.twig" %}
+        {% endif %}
+    {% endblock %}
 
     {% for _block in oxidBlock_pageScript %}
         {{ _block|raw }}

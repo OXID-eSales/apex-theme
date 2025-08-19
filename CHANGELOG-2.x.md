@@ -14,6 +14,7 @@
   - `tpl/page/checkout/user.html.twig`
     - checkout_user_errors
     - widget_minibasket_loworderprice_top
+  - New template block `analytics_scripts`  in tpl/layout/base.html.twig for injecting analytics and dynamic scripts.
 
 ### Fixed
 - Product selection in basket overview page [#0007708](https://bugs.oxid-esales.com/view.php?id=7708)
