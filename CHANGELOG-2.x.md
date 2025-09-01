@@ -16,6 +16,9 @@
     - widget_minibasket_loworderprice_top
   - New template block `analytics_scripts`  in tpl/layout/base.html.twig for injecting analytics and dynamic scripts.
 
+### Deprecated
+- The `morecategories` template is deprecated and will be removed in the next major version
+
 ### Fixed
 - Product selection in basket overview page [#0007708](https://bugs.oxid-esales.com/view.php?id=7708)
 - Product selection for line type view in listing page
