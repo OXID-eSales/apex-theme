@@ -59,7 +59,10 @@
                 <div class="col-3 col-lg-1">
                     {% block widget_product_listitem_line_picturebox %}
                         <a class="d-block text-center py-2" href="{{ _productLink|raw }}" title="{{ product.oxarticles__oxtitle.value }} {{ product.oxarticles__oxvarselect.value }}">
-                            <img loading="lazy" width="100" height="100" src="{{ product.getThumbnailUrl()|raw }}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value ~ ' ' ~ product.oxarticles__oxvarselect.value }) }}" class="card-img">
+                            {% set thumbnail = product.getThumbnail() %}
+                            {% if thumbnail %}
+                                <img loading="lazy" width="100" height="100" src="{{ thumbnail.getUrl()|raw }}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value ~ ' ' ~ product.oxarticles__oxvarselect.value }) }}" class="card-img">
+                            {% endif %}
                         </a>
                     {% endblock %}
                 </div>

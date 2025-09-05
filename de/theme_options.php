@@ -48,7 +48,7 @@ $aLang = array(
     //SHOP_CONFIG_CATEGORYTHUMBNAILSIZE
     'HELP_SHOP_THEME_sCatThumbnailsize' => 'In der Kategorieübersicht wird das Bild der ausgewählten Kategorie in der hier definierten Größe angezeigt.',
     //SHOP_CONFIG_CATEGORYTHUMBNAILSIZE
-    'SHOP_THEME_aDetailImageSizes'      => 'Größe der Artikelbilder  (Bild 1-12) in Pixeln (Breite*Höhe)',
+    'SHOP_THEME_sDetailImageSize'      => 'Größe der Artikelbilder in Pixeln (Breite*Höhe)',
     //SHOP_CONFIG_DETAILIMAGESIZE
 
     'SHOP_THEME_sManufacturerIconsize'      => 'Größe des Hersteller-/Markenlogos in Pixeln (Breite*Höhe)',

@@ -18,10 +18,11 @@
                         <div class="col-img">
                             {% block checkout_basketcontents_basketitem_image %}
                                 {% set oBasketitemArticle = basketitem.getArticle() %}
+                                {% set icon = oBasketitemArticle.getIcon() %}
 
                                 {% if editable %}<a class="d-block" href="{{ basketitem.getLink()|raw }}">{% endif %}
 
-                                <img loading="lazy" src="{{ oBasketitemArticle.getIconUrl()|raw }}"
+                                <img loading="lazy" src="{{ icon.getUrl()|raw }}"
                                      alt="{{ basketitem.getTitle()|striptags }} {{ product.oxarticles__oxvarselect.value }}" width="70" height="70">
 
                                 {% if editable %}</a>{% endif %}

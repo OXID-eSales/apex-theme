@@ -26,10 +26,12 @@
         {% block widget_product_listitem_grid_gridpicture %}
         <div class="product-img-wrapper">
 
-            <img {% if slider %}loading="lazy" {% endif %}width="350" height="220" src="{{ product.getThumbnailUrl()|raw }}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value ~ ' ' ~ product.oxarticles__oxvarselect.value }) }}" class="product-img">
-            {% if product.getMasterZoomPictureUrl(2) %}
+            {% set thumbnail = product.getThumbnail() %}
+            <img {% if slider %}loading="lazy" {% endif %}width="350" height="220" src="{{ thumbnail.getUrl()|raw }}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value ~ ' ' ~ product.oxarticles__oxvarselect.value }) }}" class="product-img">
+            {% set media = product.getMedia(1) %}
+            {% if media %}
                 <picture>
-                    <source type="image/webp" srcset="{{ product.getMasterZoomPictureUrl(2)|raw }}" media="(min-width: 1024px)">
+                    <source type="image/webp" srcset="{{ media.getZoomUrl()|raw }}" media="(min-width: 1024px)">
                     <img class="product-img img-2" width="350" height="220" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value ~ ' ' ~ product.oxarticles__oxvarselect.value }) }}">
                 </picture>
             {% endif %}

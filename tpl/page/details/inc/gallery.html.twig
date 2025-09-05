@@ -1,10 +1,10 @@
 {% block details_productmain_gallery %}
-{% set imageCount = oView.getIcons()|length %}
+{% set imageCount = oView.getMediaItems()|length %}
 
 <div class="gallery">
     <div class="carousel">
-        {% for iPicNr, oArtIcon in oView.getIcons() %}
-            <input type="radio" class="gallery-helper" id="image{{ iPicNr}}" name="gallery-control"{% if loop.first %} checked{% endif %} />
+        {% for mediaItem in oView.getMediaItems() %}
+            <input type="radio" class="gallery-helper" id="image{{ loop.index }}" name="gallery-control"{% if loop.first %} checked{% endif %} />
         {% endfor %}
 
         {% block details_productmain_gallery_thumbnails_main %}

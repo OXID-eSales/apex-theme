@@ -1,14 +1,13 @@
-{% if oView.morePics() %}
-    {% set iMorePics = oView.getIcons()|length %}
+{% if oView.hasMultipleImages() %}
+    {% set mediaItems = oView.getMediaItems() %}
+    {% set mediaCount = mediaItems|length %}
 
-    <div class="details-picture-more{% if iMorePics > 4 %} flexslider{% endif %}" id="morePicsContainer">
-        <ul class="{% if iMorePics > 4 %}slides{% else %}details-picture-more-list{% endif %}">
-            {% for iPicNr, oArtIcon in oView.getIcons() %}
-                {% set sPictureName = oPictureProduct.getPictureFieldValue("oxpic", iPicNr) %}
-                {% set aPictureInfo = oPictureProduct.getMasterPicturePath("product/" ~ iPicNr ~ "/" ~ sPictureName)|getimagesize %}
+    <div class="details-picture-more{% if mediaCount > 4 %} flexslider{% endif %}" id="morePicsContainer">
+        <ul class="{% if mediaCount > 4 %}slides{% else %}details-picture-more-list{% endif %}">
+            {% for mediaItem in mediaItems %}
                 <li class="details-picture-more-list-item">
-                    <a id="morePics_{{ loop.index }}"{% if aPictureInfo %} data-width="{{ aPictureInfo.0 }}" data-height="{{ aPictureInfo.1 }}"{% endif %} data-zoom-url="{{ oPictureProduct.getMasterZoomPictureUrl(iPicNr)|raw }}">
-                        <img class="details-picture-more-img" src="{{ oPictureProduct.getIconUrl(iPicNr)|raw }}" alt="morepic-{{ loop.index }}">
+                    <a id="morePics_{{ loop.index }}" data-zoom-url="{{ mediaItem.getZoomUrl()|raw }}">
+                        <img class="details-picture-more-img" src="{{ mediaItem.getIconUrl()|raw }}" alt="morepic-{{ loop.index }}">
                     </a>
                 </li>
             {% endfor %}

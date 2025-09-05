@@ -234,22 +234,9 @@ $aTheme = [
 //BILDER
         [
             'group' => 'images',
-            'name'  => 'aDetailImageSizes',
-            'type'  => 'aarr',
-            'value' => [
-                'oxpic1' => '800*600',
-                'oxpic2' => '800*600',
-                'oxpic3' => '800*600',
-                'oxpic4' => '800*600',
-                'oxpic5' => '800*600',
-                'oxpic6' => '800*600',
-                'oxpic7' => '800*600',
-                'oxpic8' => '800*600',
-                'oxpic9' => '800*600',
-                'oxpic10' => '800*600',
-                'oxpic11' => '800*600',
-                'oxpic12' => '800*600',
-            ],
+            'name'  => 'sDetailImageSize',
+            'type'  => 'str',
+            'value' => '800*600',
         ],
         [
             'group' => 'images',

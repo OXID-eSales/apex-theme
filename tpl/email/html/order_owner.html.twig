@@ -125,10 +125,11 @@
         {% for basketindex, basketitem in basket.getContents() %}
             {% block email_html_order_owner_basketitem %}
                 {% set basketproduct = basketitemlist[basketindex] %}
+                {% set icon = basketproduct.getIcon() %}
                 <tr valign="top">
                     {% if oViewConf.getViewThemeParam('blEmailsShowProductPictures') %}
                         <td>
-                            <img src="{{ basketproduct.getIconUrl(false)|raw }}" border="0" hspace="0" vspace="0" alt="{{ basketitem.getTitle()|striptags }}" align="texttop" style="max-width:80px;">
+                            <img src="{{ icon.getUrl()|raw }}" border="0" hspace="0" vspace="0" alt="{{ basketitem.getTitle()|striptags }}" align="texttop" style="max-width:80px;">
                         </td>
                     {% endif %}
                     <td>
