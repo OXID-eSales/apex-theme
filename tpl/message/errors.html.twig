@@ -2,7 +2,7 @@
     <div class="container-xxl mt-5">
         {% for key, oEr in Errors.default %}
             <div class="alert alert-danger alert-dismissible">
-                <p>{{ oEr.getOxMessage() }}</p>
+                <p>{{ oEr.getOxMessage() | raw }}</p>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close - {{ oEr.getOxMessage() }}"></button>
             </div>
         {% endfor %}
