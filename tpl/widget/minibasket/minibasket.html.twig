@@ -59,7 +59,7 @@
                                                             <div class="my-1">
                                                                 <a class="minibasket-link" href="{{ _product.getLink()|raw }}" title="{{ minibasketItemTitle|striptags }}">
                                                                 <span>
-                                                                     <img loading="lazy" class="minibasket-img img-fluid" src="{{ icon.getUrl()|raw }}" alt="{{ minibasketItemTitle|striptags }}" width="40" height="40">
+                                                                     <img loading="lazy" class="minibasket-img img-fluid" src="{{ icon.getIconUrl()|raw }}" alt="{{ minibasketItemTitle|striptags }}" width="40" height="40">
                                                                 </span>
                                                                 <span>
                                                                     {{ _product.getAmount() }} x {{ minibasketItemTitle|striptags|raw }}<br>

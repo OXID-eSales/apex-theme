@@ -12,7 +12,7 @@
     <div class="card">
         <div class="position-relative text-center">
             <a class="stretched-link" href="{{ _productLink|raw }}"{% if oView.noIndex() %} rel="nofollow"{% endif %}>
-                <img height="300" src="{% if size=='big' %}{{ media.getUrl()|raw }}{% elseif size=='thinest' %}{{ icon.getUrl()|raw }}{% else %}{{ thumbnail.getUrl()|raw }}{% endif %}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value|striptags ~ ' ' ~ product.oxarticles__oxvarselect.value|default('') }) }}" class="product-img">
+                <img height="300" src="{% if size=='big' %}{{ media.getUrl()|raw }}{% elseif size=='thinest' %}{{ icon.getIconUrl()|raw }}{% else %}{{ thumbnail.getThumbnailUrl()|raw }}{% endif %}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value|striptags ~ ' ' ~ product.oxarticles__oxvarselect.value|default('') }) }}" class="product-img">
             </a>
         </div>
     </div>

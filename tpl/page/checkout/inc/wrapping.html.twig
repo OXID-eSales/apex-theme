@@ -43,7 +43,7 @@
                                                 {% set basketproduct = basketitemlist[basketindex] %}
                                                 {% set icon = basketproduct.getIcon() %}
                                                 <div class="col-4 col-md-3 col-lg-2">
-                                                    <img loading="lazy" src="{{ icon.getUrl()|raw }}" alt="{{ basketitem.getTitle()|striptags }}" class="cart-img img-fluid">
+                                                    <img loading="lazy" src="{{ icon.getIconUrl()|raw }}" alt="{{ basketitem.getTitle()|striptags }}" class="cart-img img-fluid">
                                                 </div>
 
                                                 <div class="col-8 col-md-9 col-lg-10">
