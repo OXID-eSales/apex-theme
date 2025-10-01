@@ -69,7 +69,7 @@
                                 {% block footer_payment_icons %}
                                 {% endblock %}
                                 {% ifcontent ident "footer_payment_icons" set oCont %}
-                                    {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) }}
+                                    {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) | sanitize_html }}
                                 {% endifcontent %}
                             </div>
                         {% endif %}
@@ -144,7 +144,7 @@
                                 {% block footer_trust_badges %}
                                 {% endblock %}
                                 {% ifcontent ident "footer_trust_badges" set oCont %}
-                                    {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) }}
+                                    {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) | sanitize_html }}
                                 {% endifcontent %}
                             </div>
                         </div>
@@ -183,7 +183,7 @@
                 <div class="container-xxl">
                     <div class="row">
                         <section class="col-12">
-                            {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) }}
+                            {{ include(template_from_string(oCont.oxcontents__oxcontent.value)) | sanitize_html }}
                         </section>
                     </div>
                 </div>
