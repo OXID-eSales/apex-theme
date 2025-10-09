@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v2.2.0 - Unreleased
+## v2.2.0 - 2025-10-09
 
 ### Added
 - Added password, Billing/shipping and newsletter settings section to my account dashboard
