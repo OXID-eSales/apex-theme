@@ -116,3 +116,7 @@
 ### Removed
 - PHP v8.1 support
 - Google legacy trusted store code
+
+[2.2.0]: https://github.com/OXID-eSales/apex-theme/compare/v2.1.0...v2.2.0
+[2.1.0]: https://github.com/OXID-eSales/apex-theme/compare/v2.0.0...v2.1.0
+[2.0.0]: https://github.com/OXID-eSales/apex-theme/compare/b-7.1.x...v2.0.0
