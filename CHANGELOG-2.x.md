@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v2.1.0 - 2025-04-09
+## [v2.1.0] - 2025-04-09
 
 ### Added
 - Short description as title attribute to subcategory links, displaying details on hover.
@@ -40,7 +40,7 @@
 - Navigation menu for tablet view might look distorted when using Visual CMS module
 - Prevent change basket form from submitting twice [#0007391](https://bugs.oxid-esales.com/view.php?id=7391)
 
-## v2.0.0 - 2024-10-14
+## [v2.0.0] - 2024-10-14
 
 ### Added
 - Restore translations for private sales
@@ -84,3 +84,6 @@
 ### Removed
 - PHP v8.1 support
 - Google legacy trusted store code
+
+[v2.1.0]: https://github.com/OXID-eSales/apex-theme/compare/v2.0.0...v2.1.0
+[v2.0.0]: https://github.com/OXID-eSales/apex-theme/compare/v1.4.0...v2.0.0

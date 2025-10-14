@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v3.0.0 - 2025-10-13
+## [v3.0.0] - 2025-10-14
 
 ### Added
 - Added password, Billing/shipping and newsletter settings section to my account dashboard
@@ -31,3 +31,5 @@
 ### Changed
 - Removed Grunt entirely and migrated all build tasks to Vite
 - Removed whitespace from the salutation field's default value in the subscription form
+
+[v3.0.0]: https://github.com/OXID-eSales/apex-theme/compare/v2.1.0...v3.0.0
