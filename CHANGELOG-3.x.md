@@ -1,5 +1,10 @@
 # Change Log for OXID APEX Theme
 
+## [v3.0.1] - 2025-10-15
+
+### Changed
+- Upgrade vite version
+
 ## [v3.0.0] - 2025-10-14
 
 ### Added
@@ -32,4 +37,5 @@
 - Removed Grunt entirely and migrated all build tasks to Vite
 - Removed whitespace from the salutation field's default value in the subscription form
 
+[v3.0.1]: https://github.com/OXID-eSales/apex-theme/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/OXID-eSales/apex-theme/compare/v2.1.0...v3.0.0
