@@ -1,12 +1,9 @@
 # Change Log for OXID APEX Theme
 
-## [v3.0.0-alpha.1] - 2025-02-03
-
-### Added
-- Custom stock message for product when amount gets low [#0004401](https://bugs.oxid-esales.com/view.php?id=4401)
+## [v3.0.1] - 2025-10-15
 
 ### Changed
-- Replace date_format filter with Twig date filter
+- Upgrade vite version
 
 ## [v3.0.0] - 2025-10-14
 
@@ -40,5 +37,5 @@
 - Removed Grunt entirely and migrated all build tasks to Vite
 - Removed whitespace from the salutation field's default value in the subscription form
 
-[v3.0.0-alpha.1]: https://github.com/OXID-eSales/apex-theme/compare/v3.0.0...v3.0.0-alpha.1
+[v3.0.1]: https://github.com/OXID-eSales/apex-theme/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/OXID-eSales/apex-theme/compare/v2.1.0...v3.0.0
