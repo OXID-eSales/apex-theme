@@ -13,6 +13,7 @@ composer require oxid-esales/apex-theme
 
 ### Branches
 * `b-8.0.x` - compatible with OXID eShop b-8.0.x branch
+* `b-7.5.x` - compatible with OXID eShop b-7.5.x branch
 * `b-7.4.x` - compatible with OXID eShop b-7.4.x branch
 * `b-7.3.x` - compatible with OXID eShop b-7.3.x branch
 * `b-7.2.x` - compatible with OXID eShop b-7.2.x branch

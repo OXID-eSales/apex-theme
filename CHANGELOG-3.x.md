@@ -1,5 +1,10 @@
 # Change Log for OXID APEX Theme
 
+## [v3.1.0] - Unreleased
+
+### Added
+- Sanitize HTML filter for content
+
 ## [v3.0.1] - 2025-10-15
 
 ### Changed
