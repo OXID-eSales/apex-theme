@@ -1,5 +1,10 @@
 # Change Log for OXID APEX Theme
 
+## [v3.0.2]- Unreleased
+
+### Fixed
+- Min order price display showing double formatted price by changing from deprecated oView.getMinOrderPrice() to oxcmp_basket.getMinOrderPrice()
+
 ## [v3.0.1] - 2025-10-15
 
 ### Changed
@@ -37,5 +42,6 @@
 - Removed Grunt entirely and migrated all build tasks to Vite
 - Removed whitespace from the salutation field's default value in the subscription form
 
+[v3.0.2]: https://github.com/OXID-eSales/apex-theme/compare/v3.0.1...v3.0.2
 [v3.0.1]: https://github.com/OXID-eSales/apex-theme/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/OXID-eSales/apex-theme/compare/v2.1.0...v3.0.0

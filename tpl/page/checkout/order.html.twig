@@ -10,7 +10,7 @@
         {% endif %}
         {% if oView.isLowOrderPrice() %}
             {% block widget_minibasket_loworderprice_top %}
-                <div class="alert alert-danger p-4 mt-4">{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ format_price(oView.getMinOrderPrice(), { currency: currency }) }}</div>
+                <div class="alert alert-danger p-4 mt-4">{{ translate({ ident: "MIN_ORDER_PRICE" }) }} {{ format_price(oxcmp_basket.getMinOrderPrice(), { currency: currency }) }}</div>
             {% endblock %}
         {% endif %}
     {% endblock %}
