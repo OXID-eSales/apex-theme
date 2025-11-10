@@ -5,7 +5,7 @@
 ### Added
 - Sanitize HTML filter for content
 
-## [v3.0.2]- Unreleased
+## [v3.0.2]- 2025-11-10
 
 ### Fixed
 - Min order price display showing double formatted price by changing from deprecated oView.getMinOrderPrice() to oxcmp_basket.getMinOrderPrice()
