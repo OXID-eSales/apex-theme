@@ -31,12 +31,10 @@
         <div class="payment-option-price">
             {% set oPaymentPrice = paymentmethod.getPrice() %}
             {% if oViewConf.isFunctionalityEnabled('blShowVATForPayCharge') %}
-                {% apply spaceless %}
-                    {{ format_price(oPaymentPrice.getNettoPrice(), { currency: currency }) }}
-                    {% if oPaymentPrice.getVatValue() > 0 %}
-                        {{ translate({ ident: "PLUS_VAT" }) }} {{ format_price(oPaymentPrice.getVatValue(), { currency: currency }) }}
-                    {% endif %}
-                {% endapply %}
+                {{- format_price(oPaymentPrice.getNettoPrice(), { currency: currency }) -}}
+                {% if oPaymentPrice.getVatValue() > 0 -%}
+                    {{- ' ' -}}{{- translate({ ident: "PLUS_VAT" }) -}} {{- format_price(oPaymentPrice.getVatValue(), { currency: currency }) -}}
+                {% endif %}
             {% else %}
                 {{ format_price(oPaymentPrice.getBruttoPrice(), { currency: currency }) }}
             {% endif %}

@@ -1,40 +1,38 @@
-{% block dd_widget_breadcrumb %}
-    {% apply spaceless %}
-        {% block dd_widget_breadcrumb_list_inner %}
-            <div class="breadcrumb-wrapper py-4 px-0">
-                <div class="container-xxl">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            {% block dd_widget_breadcrumb_list %}
-                                <li class="breadcrumb-item">
-                                    <a href="{{ oViewConf.getHomeLink()|raw }}" class="breadcrumb-link" title="{{ translate({ ident: "HOME" }) }}">
-                                        <svg>
-                                            <use xlink:href="#house-door"></use>
-                                        </svg>
-                                    </a>
+{% block dd_widget_breadcrumb -%}
+    {% block dd_widget_breadcrumb_list_inner -%}
+        <div class="breadcrumb-wrapper py-4 px-0">
+            <div class="container-xxl">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        {% block dd_widget_breadcrumb_list -%}
+                            <li class="breadcrumb-item">
+                                <a href="{{ oViewConf.getHomeLink()|raw }}" class="breadcrumb-link" title="{{ translate({ ident: "HOME" }) }}">
+                                    <svg>
+                                        <use xlink:href="#house-door"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            {% for sCrum in oView.getBreadCrumb() -%}
+                                <li class="breadcrumb-item{% if loop.last and oView.getClassKey() != "details" %} active{% endif %}">
+                                    {% if loop.last and oView.getClassKey() != "details" %}
+                                        {{- sCrum.title -}}
+                                    {% else %}
+                                        <a href="{% if sCrum.link %}{{ sCrum.link|raw }}{% else %}#{% endif %}" class="breadcrumb-link" title="{{ sCrum.title|escape('html') }}">
+                                            {{- sCrum.title -}}
+                                        </a>
+                                    {% endif %}
                                 </li>
-                                {% for sCrum in oView.getBreadCrumb() %}
-                                    <li class="breadcrumb-item{% if loop.last and oView.getClassKey() != "details" %} active{% endif %}">
-                                        {% if loop.last and oView.getClassKey() != "details" %}
-                                            {{ sCrum.title }}
-                                        {% else %}
-                                            <a href="{% if sCrum.link %}{{ sCrum.link|raw }}{% else %}#{% endif %}" class="breadcrumb-link" title="{{ sCrum.title|escape('html') }}">
-                                                {{ sCrum.title }}
-                                            </a>
-                                        {% endif %}
-                                    </li>
-                                {% endfor %}
-                                {% if oView.getClassKey() == "details" %}
-                                    {% set oDetailsProduct = oView.getProduct() %}
-                                    <li class="breadcrumb-item active">
-                                        {{ oDetailsProduct.oxarticles__oxtitle.value }}
-                                    </li>
-                                {% endif %}
-                            {% endblock %}
-                        </ol>
-                    </nav>
-                </div>
+                            {% endfor %}
+                            {% if oView.getClassKey() == "details" %}
+                                {% set oDetailsProduct = oView.getProduct() %}
+                                <li class="breadcrumb-item active">
+                                    {{- oDetailsProduct.oxarticles__oxtitle.value -}}
+                                </li>
+                            {% endif %}
+                        {% endblock %}
+                    </ol>
+                </nav>
             </div>
-        {% endblock %}
-    {% endapply %}
-{% endblock %}
+        </div>
+    {% endblock %}
+{%- endblock %}

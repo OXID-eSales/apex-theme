@@ -5,6 +5,9 @@
 ### Added
 - Sanitize HTML filter for content
 
+### Fixed
+- Replaced deprecated `spaceless` usage
+
 ## [v3.0.2]- 2025-11-10
 
 ### Fixed

@@ -1,9 +1,9 @@
 {{ script({ dynamic: __oxid_include_dynamic }) }}
 
-<script>{% apply spaceless %}
-    var sBaseUrl = '{{ oViewConf.getSelfActionLink()|raw }}';
-    var sActCl = '{{ oViewConf.getTopActiveClassName() }}';
-{% endapply %}</script>
+<script>
+    var sBaseUrl = '{{- oViewConf.getSelfActionLink()|raw -}}';
+    var sActCl = '{{- oViewConf.getTopActiveClassName() -}}';
+</script>
 
 {# Google Analytics Page Tracking #}
 {% set sGATrackingId = oViewConf.getViewThemeParam('sGATrackingId') %}
