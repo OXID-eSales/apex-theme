@@ -1,7 +1,8 @@
 {% block details_productmain_gallery_sliders %}
+    {% set mediaItems = mediaItems|default(oView.getMediaItems()) %}
     {% set themeZoom = oViewConf.getViewThemeParam('productZoomType') %}
     {% if not themeZoom %}
-        {% include "page/details/inc/gallery/zoom/product_no_zoom.html.twig" %}
+        {% include "page/details/inc/gallery/zoom/product_no_zoom.html.twig" with { mediaItems: mediaItems } %}
     {% else %}
         {% set filePath = oDetailsProduct.oxarticles__oxtemplate.value %}
 
@@ -13,9 +14,9 @@
         {% endif %}
 
         {% if pictureZoomOption %}
-            {% include "page/details/inc/gallery/zoom/" ~ pictureZoomOption %}
+            {% include "page/details/inc/gallery/zoom/" ~ pictureZoomOption with { mediaItems: mediaItems } %}
         {% else %}
-            {% include "page/details/inc/gallery/zoom/product_no_zoom.html.twig" %}
+            {% include "page/details/inc/gallery/zoom/product_no_zoom.html.twig" with { mediaItems: mediaItems } %}
         {% endif %}
     {% endif %}
 {% endblock %}

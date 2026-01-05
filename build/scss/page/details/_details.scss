@@ -184,10 +184,6 @@ $thumb-size: 120px;
 .gallery {
   position: relative;
 
-  input[name$="control"] {
-    display: none;
-  }
-
   > .carousel {
     @include media-breakpoint-up(md) {
       display: -webkit-box;
@@ -203,74 +199,66 @@ $thumb-size: 120px;
     }
   }
 
-  .wrap {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-
-    &::-webkit-scrollbar,
-    &::-webkit-scrollbar-thumb {
-      display: none;
+  & > .carousel.carousel-fade {
+    .carousel-item {
+      transition: opacity 0.25s ease-in-out 0.05s;
     }
+  }
 
-    &::-webkit-scrollbar-track {
-      background: transparent;
+  .carousel-inner {
+    width: 100%;
+
+    &.overflow-visible {
+      overflow: visible;
     }
 
     @include media-breakpoint-up(md) {
-      width: 100%;
+      flex: 1 1 auto;
       height: 100%;
-      position: static;
-      overflow: hidden;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-
-      align-items: center;
+      width: auto;
     }
+  }
 
-    figure {
-      scroll-snap-align: center;
-      min-width: 100%;
-
-      @include media-breakpoint-up(md) {
-        padding: 10px;
-        height: 100%;
-        transition: opacity 0.25s ease-in-out 0.05s;
-        position: relative;
-        left: 0;
-        transform: translateX(0%);
-        box-sizing: border-box;
-        text-align: center;
-        margin: 0;
-        display: block;
-        align-items: center;
-        justify-content: center;
-        opacity: 1;
-      }
-    }
-
-    label {
-      cursor: zoom-in;
-      width: 100%;
+  .carousel-item {
+    @include media-breakpoint-up(md) {
       height: 100%;
-      position: relative;
-      display: block;
     }
+  }
 
-    img {
+  .carousel-item figure {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0;
+    display: block;
+  }
+
+  .carousel-item figure.zoom-container {
+    cursor: zoom-in;
+  }
+
+  .carousel-item img {
+    max-width: 100%;
+    @include media-breakpoint-up(md) {
+      cursor: inherit;
+      height: auto;
       max-width: 100%;
+      max-height: 100%;
+      border-radius: 3px;
+      margin: 0 auto;
+      position: static;
+      top: auto;
+      transform: none;
+    }
+  }
 
-      @include media-breakpoint-up(md) {
-        cursor: inherit;
-        height: auto;
-        max-width: 100%;
-        max-height: 100%;
-        border-radius: 3px;
-        margin: 0 auto;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-      }
+  @include media-breakpoint-up(md) {
+    .carousel-item figure {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -286,7 +274,7 @@ $thumb-size: 120px;
       flex-grow: 0;
       align-self: center;
       flex-basis: auto;
-      position: relative;
+      position: static;
       white-space: nowrap;
       overflow: hidden;
       overflow-y: auto;
@@ -296,10 +284,21 @@ $thumb-size: 120px;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
       flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
       padding: 0 2px;
       z-index: 20;
+      margin: 0;
 
       .thumb {
+        text-indent: 0;
+        overflow: visible;
+        padding: 0;
+        border: 0;
+        border-top: 0;
+        border-bottom: 0;
+        background: transparent;
+        opacity: 1;
         min-width: 120px;
         height: 120px;
         background-position: center center;
@@ -311,8 +310,12 @@ $thumb-size: 120px;
         left: 0;
         cursor: pointer;
         background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         img {
+          display: block;
           width: 112px;
           height: 112px;
           padding: 2px;
@@ -321,40 +324,9 @@ $thumb-size: 120px;
           object-fit: contain;
         }
       }
-    }
-  }
 
-  @include media-breakpoint-up(md) {
-    @for $i from 0 through 9 {
-      $temp: $i + 1;
-      .gallery-helper:nth-child(#{$temp}):checked {
-        & ~ .wrap figure {
-          transform: translateX($i * (-100%));
-        }
-
-        & ~ .wrap figure:not(:nth-of-type(#{$temp})) {
-          opacity: 0;
-          visibility: hidden;
-        }
-
-        & ~ .wrap figure:nth-of-type(#{$temp}) {
-          opacity: 1;
-          visibility: visible;
-        }
-
-        & ~ .thumbnails {
-          .slider {
-            transform: translateY($i * (100%));
-          }
-
-          .thumb:nth-of-type(#{$temp}) {
-            cursor: default;
-
-            img {
-              border-color: $primary;
-            }
-          }
-        }
+      .thumb.active img {
+        border-color: $primary;
       }
     }
   }

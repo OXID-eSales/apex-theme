@@ -1,7 +1,12 @@
-<div class="wrap">
-    {% for mediaItem in oView.getMediaItems() %}
-        <figure>
-            <img src="{{ mediaItem.getZoomUrl()|raw }}" alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": loop.index, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}"/>
-        </figure>
+{% set mediaItems = mediaItems|default(oView.getMediaItems()) %}
+
+<div class="carousel-inner">
+    {% for mediaItem in mediaItems %}
+        <div class="carousel-item{% if loop.first %} active{% endif %}">
+            <figure>
+                <img src="{{ mediaItem.getZoomUrl()|raw }}"
+                     alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": loop.index, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}"/>
+            </figure>
+        </div>
     {% endfor %}
 </div>

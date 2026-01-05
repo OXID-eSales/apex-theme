@@ -4,7 +4,12 @@
  */
 
 document.addEventListener("DOMContentLoaded", function() {
-    const zoomContainers = document.querySelectorAll('.carousel-item');
+    const zoomModal = document.getElementById('zoomModal');
+    if (!zoomModal) {
+        return;
+    }
+
+    const zoomContainers = zoomModal.querySelectorAll('.carousel-item');
     zoomContainers.forEach(container => {
         const img = container.querySelector('img');
 
@@ -30,9 +35,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    const zoomModal = document.getElementById('zoomModal')
     zoomModal.addEventListener('hidden.bs.modal', function (event) {
-        const modalZoomImages = document.querySelectorAll('.carousel-item img.zoom');
+        const modalZoomImages = zoomModal.querySelectorAll('.carousel-item img.zoom');
         modalZoomImages.forEach(img => {
             img.classList.remove('zoom');
         });

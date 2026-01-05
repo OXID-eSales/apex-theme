@@ -1,19 +1,39 @@
 {% block details_productmain_gallery %}
-{% set imageCount = oView.getMediaItems()|length %}
+{% set mediaItems = oView.getMediaItems() %}
+{% set imageCount = mediaItems|length %}
 
-<div class="gallery">
-    <div class="carousel">
-        {% for mediaItem in oView.getMediaItems() %}
-            <input type="radio" class="gallery-helper" id="image{{ loop.index }}" name="gallery-control"{% if loop.first %} checked{% endif %} />
-        {% endfor %}
+{% if imageCount %}
+    <div class="gallery">
+        <div id="productGalleryCarousel"
+             class="carousel slide carousel-fade"
+             data-bs-ride="false"
+             data-bs-interval="false"
+             data-bs-touch="true">
+            {% block details_productmain_gallery_thumbnails_main %}
+                {% include "page/details/inc/gallery/thumbnails.html.twig" with { carouselId: "productGalleryCarousel", mediaItems: mediaItems } %}
+            {% endblock %}
 
-        {% block details_productmain_gallery_thumbnails_main %}
-            {% include "page/details/inc/gallery/thumbnails.html.twig" %}
-        {% endblock %}
+            {% block details_productmain_gallery_sliders_main %}
+                {% include "page/details/inc/gallery/sliders.html.twig" with { mediaItems: mediaItems } %}
+            {% endblock %}
 
-        {% block details_productmain_gallery_sliders_main %}
-            {% include "page/details/inc/gallery/sliders.html.twig" %}
-        {% endblock %}
+            {% if imageCount > 1 %}
+                <button class="carousel-control-prev d-md-none"
+                        type="button"
+                        data-bs-target="#productGalleryCarousel"
+                        data-bs-slide="prev"
+                        aria-label="Previous image">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next d-md-none"
+                        type="button"
+                        data-bs-target="#productGalleryCarousel"
+                        data-bs-slide="next"
+                        aria-label="Next image">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            {% endif %}
+        </div>
     </div>
-</div>
+{% endif %}
 {% endblock %}
