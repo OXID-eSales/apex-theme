@@ -97,7 +97,14 @@
                                 <span class="d-flex align-items-center">
                                     <span>{{ translate({ ident: "COUPON" }) }}&nbsp;({{ sVoucher.sVoucherNr }})</span>
                                     {% if editable %}
-                                        <a href="{{ oViewConf.getSelfLink()|raw }}&amp;cl=basket&fnc=removeVoucher&amp;voucherId={{ sVoucher.sVoucherId }}&amp;CustomError=basket&amp;stoken={{ oViewConf.getSessionChallengeToken() }}"
+                                        <form id="removeVoucherForm_{{ sVoucher.sVoucherId }}" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="d-none">
+                                            {{ oViewConf.getHiddenSid()|raw }}
+                                            <input type="hidden" name="cl" value="basket">
+                                            <input type="hidden" name="fnc" value="removeVoucher">
+                                            <input type="hidden" name="voucherId" value="{{ sVoucher.sVoucherId }}">
+                                            <input type="hidden" name="CustomError" value="basket">
+                                        </form>
+                                        <a href="#" onclick="document.getElementById('removeVoucherForm_{{ sVoucher.sVoucherId }}').submit(); return false;"
                                            class="btn removeFn py-0" title="{{ translate({ ident: "REMOVE" }) }}">
                                             <svg>
                                                 <use xlink:href="#trash"></use>

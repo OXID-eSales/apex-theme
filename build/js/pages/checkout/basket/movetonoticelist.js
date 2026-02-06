@@ -32,11 +32,15 @@ const addToNoticelistEventlisteners = function () {
 
 const addToNoticelistAjax = function(articleId, am = 1, callback) {
     var stoken = document.querySelector('input[name=stoken]').value;
-    var url = '/index.php?cl=details&aid=' + articleId + '&anid=' + articleId + '&fnc=tonoticelist&am=' + am + '&stoken=' + stoken;
+    var formData = 'cl=details&aid=' + encodeURIComponent(articleId) +
+        '&anid=' + encodeURIComponent(articleId) +
+        '&fnc=tonoticelist&am=' + encodeURIComponent(am) +
+        '&stoken=' + encodeURIComponent(stoken);
 
-    // perform ajax call
+    // perform ajax call via POST to avoid stoken exposure in URL
     var request = new XMLHttpRequest();
-    request.open('GET', url, true);
+    request.open('POST', '/index.php', true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     request.onerror = function () {
         // There was a connection error of some sort
@@ -49,5 +53,5 @@ const addToNoticelistAjax = function(articleId, am = 1, callback) {
         }
     };
 
-    request.send();
+    request.send(formData);
 }

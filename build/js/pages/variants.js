@@ -41,9 +41,10 @@ handleVariantDropdownLinkClick = (e) => {
         formData += '&varselid%5B' + i + '%5D=' + select.value;
     });
 
-    // perform ajax call
+    // perform ajax call via POST to avoid stoken exposure in URL
     var request = new XMLHttpRequest();
-    request.open('GET', '/widget.php?' + formData, true);
+    request.open('POST', '/widget.php', true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     request.onload = function () {
         if (this.status >= 200 && this.status < 400) {
@@ -61,7 +62,7 @@ handleVariantDropdownLinkClick = (e) => {
         console.log('error');
     };
 
-    request.send();
+    request.send(formData);
 };
 
 addDropdownLinksEventListeners();
