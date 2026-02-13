@@ -1,5 +1,10 @@
 # Change Log for OXID APEX Theme
 
+## [v3.1.0] - Unreleased
+
+### Added
+- New block `user_change_password_button` in `tpl/form/user_password.html.twig`
+
 ## [v3.0.2] - 2025-11-10
 
 ### Fixed
@@ -42,6 +47,7 @@
 - Removed Grunt entirely and migrated all build tasks to Vite
 - Removed whitespace from the salutation field's default value in the subscription form
 
+[v3.1.0]: https://github.com/OXID-eSales/apex-theme/compare/v3.0.2...b-7.4.x
 [v3.0.2]: https://github.com/OXID-eSales/apex-theme/compare/v3.0.1...v3.0.2
 [v3.0.1]: https://github.com/OXID-eSales/apex-theme/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/OXID-eSales/apex-theme/compare/v2.1.0...v3.0.0
