@@ -41,7 +41,7 @@ bin/oe-console oe:theme:activate apex
 
 ## Development
 
-[Grunt](https://gruntjs.com) and [npm](https://nodejs.org) are required to generate theme assets during development.
+[Vite](https://vitejs.dev) and [npm](https://nodejs.org) are required to generate theme assets during development.
 
 ## License
 
