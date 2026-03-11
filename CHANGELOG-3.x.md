@@ -8,6 +8,10 @@
 ### Changed
 - Removed Bootstrap 3 CSS classes from templates
 
+### Fixed
+- Product gallery and grid listing images now respect the `blConvertImagesToWebP` setting
+- Product grid listing hover image no longer broken on mobile viewports
+
 ## [v3.0.2]- 2025-11-10
 
 ### Fixed
