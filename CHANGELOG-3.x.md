@@ -5,6 +5,9 @@
 ### Added
 - Sanitize HTML filter for content
 
+### Changed
+- Removed Bootstrap 3 CSS classes from templates
+
 ## [v3.0.2]- 2025-11-10
 
 ### Fixed
