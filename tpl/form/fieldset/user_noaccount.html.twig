@@ -2,7 +2,7 @@
     {% block user_noaccount_email %}
         <input id="userLoginName" class="form-control" type="email" name="lgn_usr" value="{{ oView.getActiveUsername() }}">
         <label for="userLoginName" class="req">{{ translate({ ident: "EMAIL_ADDRESS" }) }}</label>
-        <div class="help-block">
+        <div class="form-text">
             {% include "message/inputvalidation.html.twig" with {aErrors: aErrors.oxuser__oxusername} %}
         </div>
     {% endblock %}
