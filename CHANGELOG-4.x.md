@@ -3,6 +3,9 @@
 ## [v8.0.0-alpha.3] - Unreleased
 *Compilation release*
 
+### Removed
+- Outer products list wrapper
+
 ## [v8.0.0-alpha.2] - 2026-02-12
 *Compilation release*
 

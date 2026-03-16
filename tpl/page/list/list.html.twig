@@ -153,17 +153,15 @@
                                 {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedTop(), attributes: oView.getAttributes(), listDisplayType: true, itemsPerPage: true, sort: true} %}
                             {% endblock %}
                         {% endif %}
-                        <div class="row">
-                            {% if oView.getArticleList() %}
-                                {# List types: grid|line #}
-                                {% block page_list_productlist %}
-                                    {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "productList", products: oView.getArticleList()} %}
-                                {% endblock %}
-                                {% block page_list_bottomlocator %}
-                                    {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedBottom(), place: "bottom"} %}
-                                {% endblock %}
-                            {% endif %}
-                        </div>
+                        {% if oView.getArticleList() %}
+                            {# List types: grid|line #}
+                            {% block page_list_productlist %}
+                                {% include "widget/product/list.html.twig" with {type: oView.getListDisplayType(), listId: "productList", products: oView.getArticleList()} %}
+                            {% endblock %}
+                            {% block page_list_bottomlocator %}
+                                {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigationLimitedBottom(), place: "bottom"} %}
+                            {% endblock %}
+                        {% endif %}
                     </div>
                 </div>
 
