@@ -10,31 +10,21 @@
         <div class="categories">
             <span class="visually-hidden">{{ translate({ ident: "CATEGORIES" }) }}</span>
             {% set categories = oxcmp_categories %}
-            <div class="category-list">
-                {% for _cat in categories %}
-                    {% if not _cat.getHasVisibleSubCats() %}
-                        <a class="btn btn-sm btn-tag btn-rounded todo" href="{{ _cat.getLink()|raw }}">
-                            {{ _cat.oxcategories__oxtitle.value }}
+            {% macro render_categories(categories) %}
+                {% for cat in categories %}
+                    {% if not cat.getHasVisibleSubCats() %}
+                        <a class="btn btn-sm btn-tag btn-rounded todo" href="{{ cat.getLink()|raw }}">
+                            {{ cat.oxcategories__oxtitle.value }}
                         </a>
                     {% else %}
-                        {% for _subcat in _cat.getSubCats() %}
-                            {% if not _subcat.getHasVisibleSubCats() %}
-                                <a class="btn btn-sm btn-tag btn-rounded todo" href="{{ _subcat.getLink()|raw }}">
-                                    {{ _subcat.oxcategories__oxtitle.value }}
-                                </a>
-                            {% else %}
-                                {% for _subsubcat in _subcat.getSubCats() %}
-                                    <a class="btn btn-sm btn-tag btn-rounded todo" href="{{ _subsubcat.getLink()|raw }}">
-                                        {{ _subsubcat.oxcategories__oxtitle.value }}
-                                    </a>
-                                {% endfor %}
-                            {% endif %}
-                        {% endfor %}
+                        {{ _self.render_categories(cat.getSubCats()) }}
                     {% endif %}
                 {% endfor %}
+            {% endmacro %}
+
+            <div class="category-list">
+                {{ _self.render_categories(categories) }}
             </div>
         </div>
     </div>
-
-
 {% endif %}
