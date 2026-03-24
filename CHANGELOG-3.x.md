@@ -11,6 +11,7 @@
 ### Fixed
 - Product gallery and grid listing images now respect the `blConvertImagesToWebP` setting
 - Product grid listing hover image no longer broken on mobile viewports
+- Category dropdown no longer shown when all subcategories are hidden [#0007178](https://bugs.oxid-esales.com/view.php?id=7178)
 
 ## [v3.0.2]- 2025-11-10
 
