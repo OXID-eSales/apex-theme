@@ -8,6 +8,7 @@
 
 ### Changed
 - Removed Bootstrap 3 CSS classes from templates
+- Removed usage of BaseController::getViewParameter()
 
 ### Fixed
 - Product gallery and grid listing images now respect the `blConvertImagesToWebP` setting
