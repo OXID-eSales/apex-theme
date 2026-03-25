@@ -27,7 +27,7 @@
         <div class="product-img-wrapper">
 
             <img {% if slider %}loading="lazy" {% endif %}width="350" height="220" src="{{ product.getThumbnailUrl()|raw }}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value ~ ' ' ~ product.oxarticles__oxvarselect.value }) }}" class="product-img">
-            {% if product.getMasterZoomPictureUrl(2) %}
+            {% if product.getPictureUrl(2) %}
                 <img class="product-img img-2 d-none d-lg-block" width="350" height="220" loading="lazy" src="{{ product.getPictureUrl(2)|raw }}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value ~ ' ' ~ product.oxarticles__oxvarselect.value }) }}">
             {% endif %}
             <a href="{{ _productLink|raw }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }} - {{ product.oxarticles__oxtitle.value }}"></a>
