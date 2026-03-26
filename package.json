@@ -1,30 +1,30 @@
 {
-  "name": "apex",
-  "version": "3.0.2",
-  "description": "APEX - Bootstrap 5 TWIG Theme",
-  "author": "Tino Favetto, c&c concepts and creations gmbh",
-  "type": "module",
-  "engines": {
-    "node": ">=8"
-  },
-  "devDependencies": {
-    "@fontsource/oswald": "^4.5.7",
-    "@popperjs/core": "^2.9.2",
-    "bootstrap": "5.2.3",
-    "dart-sass": "^1.25.0",
-    "autoprefixer": "^10.4.20",
-    "vite": "^5.3.0",
-    "vite-plugin-static-copy": "^2.1.0",
-    "sass": "~1.60.0",
-    "matchdep": "^2.0.0",
-    "roboto-fontface": "^0.10.0"
-  },
-  "scripts": {
-    "build": "vite build",
-    "watch": "vite build --watch"
-  },
-  "license": "ISC",
-  "dependencies": {
-    "js-cookie": "^3.0.5"
-  }
+    "name": "apex",
+    "version": "3.0.2",
+    "description": "APEX - Bootstrap 5 TWIG Theme",
+    "author": "Tino Favetto, c&c concepts and creations gmbh",
+    "type": "module",
+    "engines": {
+        "node": ">=8"
+    },
+    "devDependencies": {
+        "@fontsource/oswald": "^4.5.7",
+        "@popperjs/core": "^2.9.2",
+        "bootstrap": "5.2.3",
+        "dart-sass": "^1.25.0",
+        "autoprefixer": "^10.4.20",
+        "vite": "^5.3.0",
+        "vite-plugin-static-copy": "^2.1.0",
+        "sass": "~1.60.0",
+        "matchdep": "^2.0.0",
+        "roboto-fontface": "^0.10.0"
+    },
+    "scripts": {
+        "build": "vite build",
+        "watch": "vite build --watch"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "js-cookie": "^3.0.5"
+    }
 }
