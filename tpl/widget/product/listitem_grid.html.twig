@@ -95,7 +95,7 @@
                     <div class="right">
                         {% block widget_product_listitem_grid_addtowishlist %}
                             {% if oxcmp_user %}
-                                <a aria-label="{{ translate({ ident: "ADD_TO_WISH_LIST" }) }} - {{ product.oxarticles__oxtitle.value }}" class="btn btn-sm btn-light w-100" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getTopActiveClassName(), params: "aid=" ~ product.oxarticles__oxnid.value ~ "&amp;anid=" ~ product.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">
+                                <a aria-label="{{ translate({ ident: "ADD_TO_WISH_LIST" }) }} - {{ product.oxarticles__oxtitle.value }}" class="btn btn-sm btn-light w-100" href="#" onclick="document.getElementById('toNoticeListFormGrid_{{ product.oxarticles__oxnid.value }}').submit(); return false;">
                                     <svg>
                                         <use xlink:href="#star"></use>
                                     </svg>
@@ -181,4 +181,17 @@
             <a href="{{ _productLink|raw }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }} - {{ product.oxarticles__oxtitle.value }}"></a>
         </div>
     </div>
+
+    {# Hidden form for wishlist action #}
+    {% if oxcmp_user %}
+        <form id="toNoticeListFormGrid_{{ product.oxarticles__oxnid.value }}" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="d-none">
+            {{ oViewConf.getHiddenSid()|raw }}
+            {{ oViewConf.getNavFormParams()|raw }}
+            <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
+            <input type="hidden" name="fnc" value="tonoticelist">
+            <input type="hidden" name="aid" value="{{ product.oxarticles__oxnid.value }}">
+            <input type="hidden" name="anid" value="{{ product.oxarticles__oxnid.value }}">
+            <input type="hidden" name="am" value="1">
+        </form>
+    {% endif %}
 {% endblock %}
