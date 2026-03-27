@@ -10,7 +10,6 @@
         {% set categoryWidth = oViewConf.getViewThemeParam('sCategoryWidth') %}
 
         <form method="get" action="{{ oViewConf.getSelfActionLink()|raw }}" name="_filterlist" class="d-md-flex mb-auto">
-            {{ oViewConf.getHiddenSid()|raw }}
             {{ oViewConf.getNavFormParams()|raw }}
             <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
             <input type="hidden" name="tpl" value="{{ oViewConf.getActTplName() }}">
@@ -36,7 +35,6 @@
         {% if hasActiveValue %}
             <form method="get" action="{{ oViewConf.getSelfActionLink()|raw }}" name="_resetFilter"
                   id="resetFilter" class="pull-left">
-                {{ oViewConf.getHiddenSid()|raw() }}
                 {{ oViewConf.getNavFormParams()|raw() }}
                 <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">
                 <input type="hidden" name="fnc" value="resetFilter">
