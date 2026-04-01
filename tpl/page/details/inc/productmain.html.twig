@@ -17,6 +17,7 @@
     {% endfor %}
 
     <form class="js-oxWidgetReload" action="{{ oView.getWidgetLink()|raw }}" method="get">
+        {{ oViewConf.getHiddenSid()|raw }}
         {{ oViewConf.getNavFormParams()|raw }}
         <input type="hidden" name="cl" value="{{ oView.getClassKey() }}">
         <input type="hidden" name="oxwparent" value="{{ oViewConf.getTopActiveClassName() }}">
@@ -294,7 +295,7 @@
                             {% if oViewConf.getShowListmania() %}
                                 <div class="col-6">
                                     {% if oxcmp_user %}
-                                        <a class="btn btn-sm btn-light w-100" id="recommList" href="#" onclick="document.getElementById('toRecommListFormDetails_{{ oDetailsProduct.oxarticles__oxnid.value }}').submit(); return false;">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="recommList" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=recommadd", params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
                                     {% else %}
                                         <a class="btn btn-sm btn-light w-100" id="loginToRecommlist" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_LISTMANIA_LIST" }) }}</a>
                                     {% endif %}
@@ -304,7 +305,7 @@
                             <div class="col-6">
                                 {% block details_productmain_addtowishlist %}
                                     {% if oxcmp_user %}
-                                        <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="#" onclick="document.getElementById('toNoticeListFormDetails_{{ oDetailsProduct.oxarticles__oxnid.value }}').submit(); return false;">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="linkToNoticeList" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getTopActiveClassName(), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=tonoticelist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
                                     {% else %}
                                         <a class="btn btn-sm btn-light w-100" id="loginToNotice" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_WISH_LIST" }) }}</a>
                                     {% endif %}
@@ -314,7 +315,7 @@
                             {% if oViewConf.getShowWishlist() %}
                                 <div class="col-6">
                                     {% if oxcmp_user %}
-                                        <a class="btn btn-sm btn-light w-100" id="linkToWishList" href="#" onclick="document.getElementById('toWishListFormDetails_{{ oDetailsProduct.oxarticles__oxnid.value }}').submit(); return false;">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
+                                        <a class="btn btn-sm btn-light w-100" id="linkToWishList" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=" ~ oViewConf.getTopActiveClassName(), params: "aid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;fnc=towishlist&amp;am=1" ~ oViewConf.getNavUrlParams() ~ "&amp;stoken=" ~ oViewConf.getSessionChallengeToken() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                     {% else %}
                                         <a class="btn btn-sm btn-light w-100" id="loginToWish" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=account", params: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value ~ "&amp;sourcecl=" ~ oViewConf.getTopActiveClassName() ~ oViewConf.getNavUrlParams() }) }}">{{ translate({ ident: "ADD_TO_GIFT_REGISTRY" }) }}</a>
                                     {% endif %}
@@ -334,38 +335,3 @@
 {% hasrights { ident: "TOBASKET" } %}
     </form>
 {% endhasrights %}
-
-{# Hidden forms for wishlist/registry actions - placed outside js-oxProductForm to avoid nested forms #}
-{% if oxcmp_user %}
-    <form id="toNoticeListFormDetails_{{ oDetailsProduct.oxarticles__oxnid.value }}" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="d-none">
-        {{ oViewConf.getHiddenSid()|raw }}
-        {{ oViewConf.getNavFormParams()|raw }}
-        <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
-        <input type="hidden" name="fnc" value="tonoticelist">
-        <input type="hidden" name="aid" value="{{ oDetailsProduct.oxarticles__oxnid.value }}">
-        <input type="hidden" name="anid" value="{{ oDetailsProduct.oxarticles__oxnid.value }}">
-        <input type="hidden" name="am" value="1">
-    </form>
-
-    {% if oViewConf.getShowWishlist() %}
-        <form id="toWishListFormDetails_{{ oDetailsProduct.oxarticles__oxnid.value }}" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="d-none">
-            {{ oViewConf.getHiddenSid()|raw }}
-            {{ oViewConf.getNavFormParams()|raw }}
-            <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">
-            <input type="hidden" name="fnc" value="towishlist">
-            <input type="hidden" name="aid" value="{{ oDetailsProduct.oxarticles__oxnid.value }}">
-            <input type="hidden" name="anid" value="{{ oDetailsProduct.oxarticles__oxnid.value }}">
-            <input type="hidden" name="am" value="1">
-        </form>
-    {% endif %}
-
-    {% if oViewConf.getShowListmania() %}
-        <form id="toRecommListFormDetails_{{ oDetailsProduct.oxarticles__oxnid.value }}" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="d-none">
-            {{ oViewConf.getHiddenSid()|raw }}
-            {{ oViewConf.getNavFormParams()|raw }}
-            <input type="hidden" name="cl" value="recommadd">
-            <input type="hidden" name="aid" value="{{ oDetailsProduct.oxarticles__oxnid.value }}">
-            <input type="hidden" name="anid" value="{{ oDetailsProduct.oxarticles__oxnid.value }}">
-        </form>
-    {% endif %}
-{% endif %}
