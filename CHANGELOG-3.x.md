@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## [v3.1.0] - Unreleased
+## v3.1.0 - Unreleased
 
 ### Added
 - Sanitize HTML filter for content
@@ -9,23 +9,26 @@
 ### Changed
 - Removed Bootstrap 3 CSS classes from templates
 - Removed usage of BaseController::getViewParameter()
+- listitem_grid.html.twig: Wishlist link converted to POST form
+- summary_sidebar.html.twig: Voucher removal converted to POST form
+- movetonoticelist.js: AJAX request converted to POST
 
 ### Fixed
 - Product gallery and grid listing images now respect the `blConvertImagesToWebP` setting
 - Product grid listing hover image no longer broken on mobile viewports
 - Category dropdown no longer shown when all subcategories are hidden [#0007178](https://bugs.oxid-esales.com/view.php?id=7178)
 
-## [v3.0.2]- 2025-11-10
+## v3.0.2- 2025-11-10
 
 ### Fixed
 - Min order price display showing double formatted price by changing from deprecated oView.getMinOrderPrice() to oxcmp_basket.getMinOrderPrice()
 
-## [v3.0.1] - 2025-10-15
+## v3.0.1 - 2025-10-15
 
 ### Changed
 - Upgrade vite version
 
-## [v3.0.0] - 2025-10-14
+## v3.0.0 - 2025-10-14
 
 ### Added
 - Added password, Billing/shipping and newsletter settings section to my account dashboard
@@ -56,7 +59,3 @@
 ### Changed
 - Removed Grunt entirely and migrated all build tasks to Vite
 - Removed whitespace from the salutation field's default value in the subscription form
-
-[v3.0.2]: https://github.com/OXID-eSales/apex-theme/compare/v3.0.1...v3.0.2
-[v3.0.1]: https://github.com/OXID-eSales/apex-theme/compare/v3.0.0...v3.0.1
-[v3.0.0]: https://github.com/OXID-eSales/apex-theme/compare/v2.1.0...v3.0.0
