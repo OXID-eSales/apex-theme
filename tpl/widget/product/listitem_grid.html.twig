@@ -24,12 +24,12 @@
         <div class="product-img-wrapper">
 
             {% set thumbnail = product.getThumbnail() %}
-            <img {% if slider %}loading="lazy" {% endif %}width="350" height="220" src="{{ thumbnail.getThumbnailUrl()|raw }}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value ~ ' ' ~ product.oxarticles__oxvarselect.value }) }}" class="product-img">
+            <img {% if slider %}loading="lazy" {% endif %}width="350" height="220" src="{{ thumbnail.getThumbnailUrl()|raw }}" alt="{{ thumbnail.attributes.has('alt') ? thumbnail.attributes.alt : '' }}" class="product-img">
             {% set media = product.getMedia(1) %}
             {% if media and not media.isFallback() %}
                 <picture>
                     <source type="image/webp" srcset="{{ media.getThumbnailUrl()|raw }}" media="(min-width: 1024px)">
-                    <img class="product-img img-2" width="350" height="220" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value ~ ' ' ~ product.oxarticles__oxvarselect.value }) }}">
+                    <img class="product-img img-2" width="350" height="220" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ media.attributes.has('alt') ? media.attributes.alt : '' }}">
                 </picture>
             {% endif %}
             <a href="{{ _productLink|raw }}" class="stretched-link" aria-label="{{ translate({ ident: "DETAILS" }) }} - {{ product.oxarticles__oxtitle.value }}"></a>

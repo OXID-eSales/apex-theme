@@ -8,11 +8,18 @@
     {% set media = product.getMedia(1) %}
     {% set icon = product.getIcon() %}
     {% set thumbnail = product.getThumbnail() %}
+    {% if size == 'big' %}
+        {% set productImageAlt = media.attributes.has('alt') ? media.attributes.alt : '' %}
+    {% elseif size == 'thinest' %}
+        {% set productImageAlt = icon.attributes.has('alt') ? icon.attributes.alt : '' %}
+    {% else %}
+        {% set productImageAlt = thumbnail.attributes.has('alt') ? thumbnail.attributes.alt : '' %}
+    {% endif %}
 
     <div class="card">
         <div class="position-relative text-center">
             <a class="stretched-link" href="{{ _productLink|raw }}"{% if oView.noIndex() %} rel="nofollow"{% endif %}>
-                <img height="300" src="{% if size=='big' %}{{ media.getDetailUrl()|raw }}{% elseif size=='thinest' %}{{ icon.getIconUrl()|raw }}{% else %}{{ thumbnail.getThumbnailUrl()|raw }}{% endif %}" alt="{{ translate({ ident: "PRODUCT_SINGLE_IMAGE_ALT", args: product.oxarticles__oxtitle.value|striptags ~ ' ' ~ product.oxarticles__oxvarselect.value|default('') }) }}" class="product-img">
+                <img height="300" src="{% if size=='big' %}{{ media.getDetailUrl()|raw }}{% elseif size=='thinest' %}{{ icon.getIconUrl()|raw }}{% else %}{{ thumbnail.getThumbnailUrl()|raw }}{% endif %}" alt="{{ productImageAlt }}" class="product-img">
             </a>
         </div>
     </div>

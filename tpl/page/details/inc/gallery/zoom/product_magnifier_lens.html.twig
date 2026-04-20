@@ -7,7 +7,7 @@
         <div class="carousel-item{% if loop.first %} active{% endif %}">
             <figure class="zoom-container-magnifier">
                 <img src="{{ mediaItem.getZoomUrl()|raw }}"
-                     alt="{{ translate({ ident: "PRODUCT_GALLERY_IMAGE_ALT", args: { "count": loop.index, "title": oPictureProduct.oxarticles__oxtitle.value|striptags ~ ' ' ~ oPictureProduct.oxarticles__oxvarselect.value|striptags } }) }}">
+                     alt="{{ mediaItem.attributes.has('alt') ? mediaItem.attributes.alt : '' }}">
                 <div class="lens"></div>
                 <div class="zoom-result-magnifier">
                     <img src="" alt="Magnified image">
