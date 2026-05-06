@@ -19,7 +19,7 @@
   "require": {
     "oxid-esales/twig-component": "*"
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "extra": {
     "oxideshop": {
