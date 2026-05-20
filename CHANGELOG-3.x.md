@@ -1,5 +1,10 @@
 # Change Log for OXID APEX Theme
 
+## Unreleased
+
+### Fixed
+- Order history showing "Shipped" status for unshipped orders due to stale empty-date sentinel [PR-72](https://github.com/OXID-eSales/apex-theme/pull/72)
+
 ## v3.1.0 - 2026-04-08
 
 ### Added
