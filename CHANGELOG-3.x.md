@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Removed
+- PayPal module styles from the theme so the PayPal module's own styles are no longer overridden (fixes minibasket Express Checkout button position)
+
 ### Fixed
 - Order history showing "Shipped" status for unshipped orders due to stale empty-date sentinel [PR-72](https://github.com/OXID-eSales/apex-theme/pull/72)
 
