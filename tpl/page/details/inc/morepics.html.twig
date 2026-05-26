@@ -7,7 +7,7 @@
             {% for mediaItem in mediaItems %}
                 <li class="details-picture-more-list-item">
                     <a id="morePics_{{ loop.index }}" data-zoom-url="{{ mediaItem.getZoomUrl()|raw }}">
-                        <img class="details-picture-more-img" src="{{ mediaItem.getIconUrl()|raw }}" alt="{{ mediaItem.attributes.has('alt') ? mediaItem.attributes.alt : '' }}">
+                        <img class="details-picture-more-img" src="{{ mediaItem.getIconUrl()|raw }}" alt="{{ mediaItem.getAlt(oDetailsProduct.getTitle()) }}">
                     </a>
                 </li>
             {% endfor %}

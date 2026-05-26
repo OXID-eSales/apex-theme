@@ -7,7 +7,7 @@
         <div class="carousel-item{% if loop.first %} active{% endif %}">
             <figure class="zoom-container-hover">
                 <img src="{{ mediaItem.getZoomUrl()|raw }}"
-                     alt="{{ mediaItem.attributes.has('alt') ? mediaItem.attributes.alt : '' }}">
+                     alt="{{ mediaItem.getAlt(oDetailsProduct.getTitle()) }}">
             </figure>
         </div>
     {% endfor %}

@@ -9,11 +9,11 @@
     {% set icon = product.getIcon() %}
     {% set thumbnail = product.getThumbnail() %}
     {% if size == 'big' %}
-        {% set productImageAlt = media.attributes.has('alt') ? media.attributes.alt : '' %}
+        {% set productImageAlt = media.getAlt(product.getTitle()) %}
     {% elseif size == 'thinest' %}
-        {% set productImageAlt = icon.attributes.has('alt') ? icon.attributes.alt : '' %}
+        {% set productImageAlt = icon.getAlt(product.getTitle()) %}
     {% else %}
-        {% set productImageAlt = thumbnail.attributes.has('alt') ? thumbnail.attributes.alt : '' %}
+        {% set productImageAlt = thumbnail.getAlt(product.getTitle()) %}
     {% endif %}
 
     <div class="card">

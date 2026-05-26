@@ -9,10 +9,10 @@
                     data-bs-target="#{{ carouselId }}"
                     data-bs-slide-to="{{ loop.index0 }}"
                     {% if loop.first %}aria-current="true"{% endif %}
-                    aria-label="{{ mediaItem.attributes.has('alt') ? mediaItem.attributes.alt : '' }}">
+                    aria-label="{{ mediaItem.getAlt(oDetailsProduct.getTitle()) }}">
                 <img loading="lazy"
                      src="{{ mediaItem.getIconUrl()|raw }}"
-                     alt="{{ mediaItem.attributes.has('alt') ? mediaItem.attributes.alt : '' }}"
+                     alt="{{ mediaItem.getAlt(oDetailsProduct.getTitle()) }}"
                      width="112"
                      height="112">
             </button>

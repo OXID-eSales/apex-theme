@@ -7,7 +7,7 @@
         <div class="carousel-item{% if loop.first %} active{% endif %}">
             <figure class="zoom-container" data-bs-target="#carouselZoomPicturesIndicators" data-bs-slide-to="{{ loop.index0 }}">
                 <img src="{{ mediaItem.getZoomUrl()|raw }}"
-                     alt="{{ mediaItem.attributes.has('alt') ? mediaItem.attributes.alt : '' }}"
+                     alt="{{ mediaItem.getAlt(oDetailsProduct.getTitle()) }}"
                      data-bs-toggle="modal"
                      data-bs-target="#zoomModal" />
             </figure>
@@ -33,7 +33,7 @@
                                 <img
                                     src="{{ mediaItem.getZoomUrl()|raw }}"
                                     class="d-block mx-auto object-fit-contain w-100 h-100"
-                                    alt="{{ mediaItem.attributes.has('alt') ? mediaItem.attributes.alt : '' }}">
+                                    alt="{{ mediaItem.getAlt(oDetailsProduct.getTitle()) }}">
                             </div>
                         {% endfor %}
                     </div>
@@ -50,7 +50,7 @@
                         <img
                             src="{{ mediaItem.getIconUrl()|raw }}"
                             class="d-block w-100"
-                            alt="{{ mediaItem.attributes.has('alt') ? mediaItem.attributes.alt : '' }}"
+                            alt="{{ mediaItem.getAlt(oDetailsProduct.getTitle()) }}"
                         />
                     </button>
                 {% endfor %}
