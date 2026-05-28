@@ -28,7 +28,7 @@
                                     <span id="accOrderStatus_{{ order.oxorder__oxordernr.value }}">
                                             {% if order.oxorder__oxstorno.value %}
                                                 <span class="note">{{ translate({ ident: "ORDER_IS_CANCELED" }) }}</span>
-                                            {% elseif order.oxorder__oxsenddate.value|trim not in ["", "-", " - "] %}
+                                            {% elseif order.oxorder__oxsenddate.value|trim not in ["", "-"] %}
                                                 <span>{{ translate({ ident: "SHIPPED" }) }}</span>
                                             {% else %}
                                                 <span class="note">{{ translate({ ident: "NOT_SHIPPED_YET" }) }}</span>
