@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## Unreleased
+## v3.1.1 - Unreleased
 
 ### Removed
 - PayPal module styles from the theme so the PayPal module's own styles are no longer overridden (fixes minibasket Express Checkout button position)
