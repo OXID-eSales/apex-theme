@@ -410,3 +410,18 @@ $thumb-size: 120px;
     }
   }
 }
+
+.related-tabs {
+  .nav-tabs {
+    @include media-breakpoint-up(md) {
+      justify-content: center;
+    }
+
+    .nav-link.active {
+      background-color: #fff;
+      border-color: $primary;
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+    }
+  }
+}
