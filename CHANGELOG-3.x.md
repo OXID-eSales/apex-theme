@@ -8,6 +8,7 @@
 ### Fixed
 - Order history showing "Shipped" status for unshipped orders due to stale empty-date sentinel [PR-72](https://github.com/OXID-eSales/apex-theme/pull/72)
 - Price calculation in order summary e-mails [#0007880](https://bugs.oxid-esales.com/view.php?id=7880)
+- Tabs on product detail page not rendering content when using `tabs.html.twig` or `related_products_tabs.html.twig`[#0007703](https://bugs.oxid-esales.com/view.php?id=7703)
 
 ## v3.1.0 - 2026-04-08
 
