@@ -7,6 +7,7 @@
 
 ### Fixed
 - Order history showing "Shipped" status for unshipped orders due to stale empty-date sentinel [PR-72](https://github.com/OXID-eSales/apex-theme/pull/72)
+- Price calculation in order summary e-mails [#0007880](https://bugs.oxid-esales.com/view.php?id=7880)
 
 ## v3.1.0 - 2026-04-08
 
