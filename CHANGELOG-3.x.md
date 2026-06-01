@@ -4,6 +4,16 @@
 
 ### Removed
 - PayPal module styles from the theme so the PayPal module's own styles are no longer overridden (fixes minibasket Express Checkout button position)
+- non-functional Twig block hooks from `tabs.html.twig`: 
+  - `details_tabs_longdescription`
+  - `details_tabs_attributes`
+  - `details_tabs_tags`
+  - `details_tabs_media`
+- Twig block hooks from `related_products_tabs.html.twig`: 
+  - `details_relatedproducts_accessoires`
+  - `details_relatedproducts_also_bought`
+  - `details_relatedproducts_similarproducts`
+  - `details_relatedproducts_crossselling`
 
 ### Fixed
 - Order history showing "Shipped" status for unshipped orders due to stale empty-date sentinel [PR-72](https://github.com/OXID-eSales/apex-theme/pull/72)

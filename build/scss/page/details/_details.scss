@@ -413,15 +413,16 @@ $thumb-size: 120px;
 
 .related-tabs {
   .nav-tabs {
+    border-bottom-color: $gray-500;
+
     @include media-breakpoint-up(md) {
       justify-content: center;
     }
 
     .nav-link.active {
-      background-color: #fff;
-      border-color: $primary;
-      border-top-left-radius: $border-radius;
-      border-top-right-radius: $border-radius;
+      background-color: $body-bg;
+      border-color: $gray-500 $gray-500 $body-bg;
+      border-top: 2px solid $primary;
     }
   }
 }
