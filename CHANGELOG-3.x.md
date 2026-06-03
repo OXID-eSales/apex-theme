@@ -9,6 +9,8 @@
   - `details_tabs_attributes`
   - `details_tabs_tags`
   - `details_tabs_media`
+  - `details_tabs_comments`
+  - `details_tabs_invite`
 - Twig block hooks from `related_products_tabs.html.twig`: 
   - `details_relatedproducts_accessoires`
   - `details_relatedproducts_also_bought`
