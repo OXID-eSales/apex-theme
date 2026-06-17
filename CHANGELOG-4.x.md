@@ -1,7 +1,9 @@
 # Change Log for OXID APEX Theme
 
 ## [v8.0.0-alpha.3] - Unreleased
-*Compilation release*
+
+### Changed
+- Migrate theme metadata and settings from `theme.php` to `metadata.yaml` and `config.yaml`
 
 ### Added
 - ALT attributes for product images
