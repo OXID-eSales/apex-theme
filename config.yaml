@@ -1,0 +1,330 @@
+themeSettings:
+  aNrofCatArticles:
+    type: arr
+    value:
+      - '20'
+    group: display
+  aNrofCatArticlesInGrid:
+    type: arr
+    value:
+      - '20'
+    group: display
+  blShowBirthdayFields:
+    type: bool
+    value: true
+    group: display
+  blShowFinalStep:
+    type: bool
+    value: true
+    group: display
+  blShowListDisplayType:
+    type: bool
+    value: true
+    group: display
+  blShowWeightInList:
+    type: bool
+    value: true
+    group: display
+  iNewBasketItemMessage:
+    type: select
+    value: str
+    group: display
+    constraints:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+  sDefaultListDisplayType:
+    type: select
+    value: grid
+    group: display
+    constraints:
+      - line
+      - grid
+  showCategoryTiles:
+    type: bool
+    value: true
+    group: startpage
+    position: 21
+  bl_showManufacturer:
+    type: bool
+    value: true
+    group: startpage
+    position: 30
+  sShowBargainArticles:
+    type: bool
+    value: true
+    group: startpage
+    position: 35
+  sShowNewestArticles:
+    type: bool
+    value: true
+    group: startpage
+    position: 40
+  sShowTopArticles:
+    type: bool
+    value: true
+    group: startpage
+    position: 50
+  sProductListNavigation:
+    type: bool
+    value: false
+    group: pdp
+    position: 40
+  productZoomType:
+    type: select
+    value: no_zoom
+    group: pdp
+    constraints:
+      - no_zoom
+      - modal_zoom
+      - hover_zoom
+      - magnifier_lens
+  sShowPopBreadcrump:
+    type: bool
+    value: true
+    group: pop
+  bl_showCompareList:
+    type: bool
+    value: true
+    group: features
+  bl_showGiftWrapping:
+    type: bool
+    value: true
+    group: features
+  bl_showVouchers:
+    type: bool
+    value: true
+    group: features
+  bl_showWishlist:
+    type: bool
+    value: true
+    group: features
+  blEmailsShowProductPictures:
+    type: bool
+    value: false
+    group: emails
+  blFooterShowHelp:
+    type: bool
+    value: true
+    group: footer
+  blFooterShowLinks:
+    type: bool
+    value: true
+    group: footer
+  blFooterShowNewsletter:
+    type: bool
+    value: true
+    group: footer
+  blFooterShowNewsletterForm:
+    type: bool
+    value: true
+    group: footer
+  sBlogUrl:
+    type: str
+    value: 'https://wordpress.org'
+    group: footer
+  sFacebookUrl:
+    type: str
+    value: 'https://www.facebook.com'
+    group: footer
+  sInstagramUrl:
+    type: str
+    value: 'https://instagram.com'
+    group: footer
+  sTwitterUrl:
+    type: str
+    value: 'https://twitter.com'
+    group: footer
+  sYouTubeUrl:
+    type: str
+    value: 'https://www.youtube.com'
+    group: footer
+  sPaymentIcons:
+    type: bool
+    value: false
+    group: footer
+  sTrustBadges:
+    type: bool
+    value: false
+    group: footer
+  sDetailImageSize:
+    type: str
+    value: '800*600'
+    group: images
+  blSliderShowImageCaption:
+    type: bool
+    value: true
+    group: images
+  sCatIconsize:
+    type: str
+    value: '400*300'
+    group: images
+  sCatPromotionsize:
+    type: str
+    value: '370*107'
+    group: images
+  sCatThumbnailsize:
+    type: str
+    value: '1600*500'
+    group: images
+  sIconsize:
+    type: str
+    value: '100*100'
+    group: images
+  sManufacturerIconsize:
+    type: str
+    value: '100*100'
+    group: images
+  sManufacturerPicturesize:
+    type: str
+    value: '1140*1140'
+    group: images
+  sManufacturerThumbnailsize:
+    type: str
+    value: '370*370'
+    group: images
+  sManufacturerPromotionsize:
+    type: str
+    value: '370*107'
+    group: images
+  sThumbnailsize:
+    type: str
+    value: '500*500'
+    group: images
+  sZoomImageSize:
+    type: str
+    value: '1200*1200'
+    group: images
+  sEmailLogo:
+    type: str
+    value: logo.svg
+    group: logo
+  sLogoFile:
+    type: str
+    value: logo.svg
+    group: logo
+  sLogoHeight:
+    type: str
+    value: '38'
+    group: logo
+  sLogoWidth:
+    type: str
+    value: '200'
+    group: logo
+  sFavicon16File:
+    type: str
+    value: favicon-16x16.png
+    group: favicons
+  sFavicon32File:
+    type: str
+    value: favicon-32x32.png
+    group: favicons
+  aAppleTouchIcon:
+    type: str
+    value: apple-icon-310x310.png
+    group: favicons
+  sFaviconFile:
+    type: str
+    value: favicon.ico
+    group: favicons
+  sFaviconSvg:
+    type: str
+    value: favicon.svg
+    group: favicons
+  aOGImage:
+    type: str
+    value: apex.png
+    group: favicons
+  sSiteManifestFile:
+    type: str
+    value: ''
+    group: favicons
+  sThemeColor:
+    type: str
+    value: '#ffffff'
+    group: favicons
+  blGAAnonymizeIPs:
+    type: bool
+    value: true
+    group: googleanalytics
+  blUseGAEcommerceTracking:
+    type: bool
+    value: false
+    group: googleanalytics
+  blUseGAPageTracker:
+    type: bool
+    value: false
+    group: googleanalytics
+  sGATrackingId:
+    type: str
+    value: ''
+    group: googleanalytics
+  blUseGoogleTS:
+    type: bool
+    value: false
+    group: googlets
+  sDeliveryDaysNotOnStock:
+    type: str
+    value: '14'
+    group: googlets
+  sDeliveryDaysOnStock:
+    type: str
+    value: '6'
+    group: googlets
+  sGoogleShoppingAccountId:
+    type: str
+    value: ''
+    group: googlets
+  sGoogleVendorId:
+    type: str
+    value: ''
+    group: googlets
+  sPageLanguage:
+    type: str
+    value: de_DE
+    group: googlets
+  sShippingDaysNotOnStock:
+    type: str
+    value: '5'
+    group: googlets
+  sShippingDaysOnStock:
+    type: str
+    value: '3'
+    group: googlets
+  sShoppingCountry:
+    type: str
+    value: DE
+    group: googlets
+  sShoppingLanguage:
+    type: str
+    value: de
+    group: googlets
+  sGoogleMapsAddr:
+    type: str
+    value: 'OXID eSales AG, Bertoldstraße 48, 79098 Freiburg'
+    group: contact
+  sBasketNoticeListButtonFunction:
+    type: select
+    value: move
+    group: basket
+    constraints:
+      - hide
+      - move
+      - copy
+  basketLowOrderDisplayOrderButton:
+    type: select
+    value: hide
+    group: basket
+    constraints:
+      - show
+      - disabled
+      - hide
+  miniBasketLowOrderDisplayOrderButton:
+    type: select
+    value: show
+    group: basket
+    constraints:
+      - show
+      - disabled
+      - hide
