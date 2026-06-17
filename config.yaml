@@ -1,0 +1,286 @@
+themeSettings:
+  numberOfCategoryProducts:
+    type: arr
+    value:
+      - '20'
+    group: display
+  numberOfCategoryProductsInGrid:
+    type: arr
+    value:
+      - '20'
+    group: display
+  showBirthdayFields:
+    type: bool
+    value: true
+    group: display
+  showListDisplayType:
+    type: bool
+    value: true
+    group: display
+  showWeightInList:
+    type: bool
+    value: true
+    group: display
+  newBasketItemMessage:
+    type: select
+    value: '1'
+    group: display
+    constraints:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+  defaultListDisplayType:
+    type: select
+    value: grid
+    group: display
+    constraints:
+      - line
+      - grid
+  showCategoryTiles:
+    type: bool
+    value: true
+    group: startpage
+    position: 21
+  showManufacturer:
+    type: bool
+    value: true
+    group: startpage
+    position: 30
+  showBargainProducts:
+    type: bool
+    value: true
+    group: startpage
+    position: 35
+  showNewestProducts:
+    type: bool
+    value: true
+    group: startpage
+    position: 40
+  showTopProducts:
+    type: bool
+    value: true
+    group: startpage
+    position: 50
+  showProductListNavigation:
+    type: bool
+    value: false
+    group: pdp
+    position: 40
+  productZoomType:
+    type: select
+    value: no_zoom
+    group: pdp
+    constraints:
+      - no_zoom
+      - modal_zoom
+      - hover_zoom
+      - magnifier_lens
+  showPopupBreadcrumb:
+    type: bool
+    value: true
+    group: pop
+  showCompareList:
+    type: bool
+    value: true
+    group: features
+  showGiftWrapping:
+    type: bool
+    value: true
+    group: features
+  showVouchers:
+    type: bool
+    value: true
+    group: features
+  showWishlist:
+    type: bool
+    value: true
+    group: features
+  emailsShowProductPictures:
+    type: bool
+    value: false
+    group: emails
+  footerShowHelp:
+    type: bool
+    value: true
+    group: footer
+  footerShowLinks:
+    type: bool
+    value: true
+    group: footer
+  footerShowNewsletter:
+    type: bool
+    value: true
+    group: footer
+  footerShowNewsletterForm:
+    type: bool
+    value: true
+    group: footer
+  blogUrl:
+    type: str
+    value: 'https://wordpress.org'
+    group: footer
+  facebookUrl:
+    type: str
+    value: 'https://www.facebook.com'
+    group: footer
+  instagramUrl:
+    type: str
+    value: 'https://instagram.com'
+    group: footer
+  twitterUrl:
+    type: str
+    value: 'https://twitter.com'
+    group: footer
+  youTubeUrl:
+    type: str
+    value: 'https://www.youtube.com'
+    group: footer
+  showPaymentIcons:
+    type: bool
+    value: false
+    group: footer
+  showTrustBadges:
+    type: bool
+    value: false
+    group: footer
+  detailImageSize:
+    type: str
+    value: '800*600'
+    group: images
+  sliderShowImageCaption:
+    type: bool
+    value: true
+    group: images
+  categoryIconSize:
+    type: str
+    value: '400*300'
+    group: images
+  categoryPromotionSize:
+    type: str
+    value: '370*107'
+    group: images
+  categoryThumbnailSize:
+    type: str
+    value: '1600*500'
+    group: images
+  iconSize:
+    type: str
+    value: '100*100'
+    group: images
+  manufacturerIconSize:
+    type: str
+    value: '100*100'
+    group: images
+  manufacturerPictureSize:
+    type: str
+    value: '1140*1140'
+    group: images
+  manufacturerThumbnailSize:
+    type: str
+    value: '370*370'
+    group: images
+  manufacturerPromotionSize:
+    type: str
+    value: '370*107'
+    group: images
+  thumbnailSize:
+    type: str
+    value: '500*500'
+    group: images
+  zoomImageSize:
+    type: str
+    value: '1200*1200'
+    group: images
+  emailLogo:
+    type: str
+    value: logo.svg
+    group: logo
+  logoFile:
+    type: str
+    value: logo.svg
+    group: logo
+  logoHeight:
+    type: str
+    value: '38'
+    group: logo
+  logoWidth:
+    type: str
+    value: '200'
+    group: logo
+  favicon16File:
+    type: str
+    value: favicon-16x16.png
+    group: favicons
+  favicon32File:
+    type: str
+    value: favicon-32x32.png
+    group: favicons
+  appleTouchIcon:
+    type: str
+    value: apple-icon-310x310.png
+    group: favicons
+  faviconFile:
+    type: str
+    value: favicon.ico
+    group: favicons
+  faviconSvg:
+    type: str
+    value: favicon.svg
+    group: favicons
+  openGraphImage:
+    type: str
+    value: apex.png
+    group: favicons
+  siteManifestFile:
+    type: str
+    value: ''
+    group: favicons
+  themeColor:
+    type: str
+    value: '#ffffff'
+    group: favicons
+  googleAnalyticsAnonymizeIps:
+    type: bool
+    value: true
+    group: googleanalytics
+  useGoogleAnalyticsEcommerceTracking:
+    type: bool
+    value: false
+    group: googleanalytics
+  useGoogleAnalyticsPageTracker:
+    type: bool
+    value: false
+    group: googleanalytics
+  googleAnalyticsTrackingId:
+    type: str
+    value: ''
+    group: googleanalytics
+  googleMapsAddress:
+    type: str
+    value: 'OXID eSales AG, Bertoldstraße 48, 79098 Freiburg'
+    group: contact
+  basketNoticeListButtonFunction:
+    type: select
+    value: move
+    group: basket
+    constraints:
+      - hide
+      - move
+      - copy
+  basketLowOrderDisplayOrderButton:
+    type: select
+    value: hide
+    group: basket
+    constraints:
+      - show
+      - disabled
+      - hide
+  miniBasketLowOrderDisplayOrderButton:
+    type: select
+    value: show
+    group: basket
+    constraints:
+      - show
+      - disabled
+      - hide

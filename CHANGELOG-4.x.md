@@ -6,6 +6,14 @@
 ### Added
 - ALT attributes for product images
 
+### Changed
+- Theme metadata and settings moved from `theme.php` to `metadata.yaml` and `config.yaml`
+- Replace `oViewConf.getViewThemeParam()` with `oViewConf.getThemeSettings()` in templates
+- Theme settings renamed to remove Hungarian notation and outdated terms, e.g. `sShowNewestArticles` is now `showNewestProducts`
+
+### Removed
+- Unused theme settings `blShowFinalStep` and Google Trusted Stores theme settings
+
 ## [v8.0.0-alpha.2] - 2026-02-12
 *Compilation release*
 

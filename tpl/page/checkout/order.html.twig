@@ -252,7 +252,7 @@
                                 </div>
                             {% endif %}
                             {% block checkout_order_next_step_side %}
-                                {% set displayBasketOrderButton = oViewConf.getViewThemeParam('basketLowOrderDisplayOrderButton') %}
+                                {% set displayBasketOrderButton = oViewConf.getThemeSettings().getString('basketLowOrderDisplayOrderButton') %}
                                 {% if not oView.isLowOrderPrice() or (displayBasketOrderButton == 'show' or displayBasketOrderButton == 'disabled') %}
                                 <button type="button" class="btn btn-highlight btn-lg w-100"
                                         {% if oView.isLowOrderPrice() and displayBasketOrderButton == 'disabled' %}
