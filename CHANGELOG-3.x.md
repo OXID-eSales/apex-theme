@@ -2,6 +2,14 @@
 
 ## v3.1.1 - Unreleased
 
+### Added
+- New blocks wrapping the hidden form parameters in GET forms:
+  - `tpl/widget/header/search.html.twig`
+    - `widget_header_search_form_hidden_params`
+  - `tpl/widget/locator/attributes.html.twig`
+    - `widget_locator_attributes_filterlist_hidden_params`
+    - `widget_locator_attributes_resetfilter_hidden_params`
+
 ### Removed
 - PayPal module styles from the theme so the PayPal module's own styles are no longer overridden (fixes minibasket Express Checkout button position)
 - non-functional Twig block hooks from `tabs.html.twig`: 
