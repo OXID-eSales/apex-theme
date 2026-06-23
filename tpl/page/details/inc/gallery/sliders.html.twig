@@ -1,6 +1,6 @@
 {% block details_productmain_gallery_sliders %}
     {% set mediaItems = mediaItems|default(oView.getMediaItems()) %}
-    {% set themeZoom = oViewConf.getViewThemeParam('productZoomType') %}
+    {% set themeZoom = theme.setting('productZoomType') %}
     {% if not themeZoom %}
         {% include "page/details/inc/gallery/zoom/product_no_zoom.html.twig" with { mediaItems: mediaItems } %}
     {% else %}

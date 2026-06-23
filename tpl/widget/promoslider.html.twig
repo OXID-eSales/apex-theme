@@ -3,9 +3,9 @@
     {% set currency = oView.getActCurrency() %}
 
     {% if oBanners|length %}
-        {% set promosliderWidth = oViewConf.getViewThemeParam('sPromoWidth') %}
-        {% set promoSliderBg = oViewConf.getViewThemeParam('sPromoBg') %}
-        {% set promoSliderRowPadding = oViewConf.getViewThemeParam('sPromoRowPadding') %}
+        {% set promosliderWidth = theme.setting('sPromoWidth') %}
+        {% set promoSliderBg = theme.setting('sPromoBg') %}
+        {% set promoSliderRowPadding = theme.setting('sPromoRowPadding') %}
 
         {% if promosliderWidth == 'container' %}
             <div class="container-xxl">
@@ -36,7 +36,7 @@
                                                 {% if sBannerLink %}
                                                     </a>
                                                 {% endif %}
-                                                {% if oViewConf.getViewThemeParam('blSliderShowImageCaption') and oArticle %}
+                                                {% if theme.setting('blSliderShowImageCaption') and oArticle %}
                                                 {% if sBannerLink %}
                                                 <a href="{{ sBannerLink|raw }}" class="d-block" title="{{ oBanner.oxactions__oxtitle.value }}">
                                                     {% endif %}

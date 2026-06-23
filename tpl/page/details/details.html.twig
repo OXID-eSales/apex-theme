@@ -11,8 +11,8 @@
     {% set oPictureProduct = oView.getPicturesProduct() %}
     {% set currency = oView.getActCurrency() %}
     {% set sPageHeadTitle = oDetailsProduct.oxarticles__oxtitle.value ~ ' ' ~ oDetailsProduct.oxarticles__oxvarselect.value %}
-    {% set headerImageWidth = oViewConf.getViewThemeParam('sHeaderImageWidth') %}
-    {% set productListNavigation = oViewConf.getViewThemeParam('sProductListNavigation') %}
+    {% set headerImageWidth = theme.setting('sHeaderImageWidth') %}
+    {% set productListNavigation = theme.setting('sProductListNavigation') %}
 
     {% if oView.getPriceAlarmStatus() == 1 %}
         {% set _statusMessage1 = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate ~ " " ~ oxcmp_shop.oxshops__oxname.value %}

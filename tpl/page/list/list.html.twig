@@ -1,5 +1,5 @@
 {% set actCategory = oView.getActiveCategory() %}
-{% set showPopBreadcrump = oViewConf.getViewThemeParam('sShowPopBreadcrump') %}
+{% set showPopBreadcrump = theme.setting('sShowPopBreadcrump') %}
 {% set oPageNavigation = oView.getPageNavigation() %}
 
 {% capture append = "oxidBlock_sidebar" %}
@@ -145,7 +145,7 @@
     {% block page_list_listbody %}
         {% if oView.getArticleList() %}
 
-            {% set categoryWidth = oViewConf.getViewThemeParam('sCategoryWidth') %}
+            {% set categoryWidth = theme.setting('sCategoryWidth') %}
                 <div class="article-list pb-5">
                     <div class="container-xxl">
                         {% if oView.getArticleList() %}

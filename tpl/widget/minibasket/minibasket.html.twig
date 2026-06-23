@@ -38,7 +38,7 @@
                                                 {% endblock %}
                                             {% endif %}
 
-                                            {% set displayMiniBasketOrderButton = oViewConf.getViewThemeParam('miniBasketLowOrderDisplayOrderButton') %}
+                                            {% set displayMiniBasketOrderButton = theme.setting('miniBasketLowOrderDisplayOrderButton') %}
                                             {% if not oView.isLowOrderPrice() or (displayMiniBasketOrderButton == 'show' or displayMiniBasketOrderButton == 'disabled') %}
                                                 {% if oxcmp_user %}
                                                     <a href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=payment" }) }}" class="btn btn-highlight btn-lg w-100 mb-2{% if oView.isLowOrderPrice() and displayMiniBasketOrderButton == 'disabled' %} disabled{% endif %}">{{ translate({ ident: "CHECKOUT" }) }}</a>

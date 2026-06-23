@@ -112,7 +112,7 @@
 <table class="orderarticles" border="0" cellspacing="0" cellpadding="0" width="100%">
     <thead>
         <tr bgcolor="#ebebeb">
-            <th{% if oViewConf.getViewThemeParam('blEmailsShowProductPictures') %} colspan="2"{% endif %}>{{ translate({ ident: "PRODUCT" }) }}</th>
+            <th{% if theme.setting('blEmailsShowProductPictures') %} colspan="2"{% endif %}>{{ translate({ ident: "PRODUCT" }) }}</th>
             <th>{{ translate({ ident: "UNIT_PRICE" }) }}</th>
             <th>{{ translate({ ident: "QUANTITY" }) }}</th>
             <th>{{ translate({ ident: "VAT" }) }}</th>
@@ -127,7 +127,7 @@
                 {% set basketproduct = basketitemlist[basketindex] %}
                 {% set icon = basketproduct.getIcon() %}
                 <tr valign="top">
-                    {% if oViewConf.getViewThemeParam('blEmailsShowProductPictures') %}
+                    {% if theme.setting('blEmailsShowProductPictures') %}
                         <td>
                             <img src="{{ icon.getIconUrl()|raw }}" border="0" hspace="0" vspace="0" alt="{{ basketitem.getTitle()|striptags }}" align="texttop" style="max-width:80px;">
                         </td>
@@ -201,7 +201,7 @@
     </tbody>
     <tfoot>
         {% set iFooterColspan = 4 %}
-        {% if oViewConf.getViewThemeParam('blEmailsShowProductPictures') %}
+        {% if theme.setting('blEmailsShowProductPictures') %}
             {% set iFooterColspan = 5 %}
         {% endif %}
         {% block email_html_order_owner_voucherdiscount_top %}

@@ -19,9 +19,9 @@
             </div>
         </div>
         {% block mallstart_logo %}
-            {% set logoImage = oViewConf.getViewThemeParam('sLogoFile') %}
-            {% set logoWidth = oViewConf.getViewThemeParam('sLogoWidth') %}
-            {% set logoHeight = oViewConf.getViewThemeParam('sLogoHeight') %}
+            {% set logoImage = theme.setting('sLogoFile') %}
+            {% set logoWidth = theme.setting('sLogoWidth') %}
+            {% set logoHeight = theme.setting('sLogoHeight') %}
             <a id="logo" href="{{ oViewConf.getHomeLink()|raw }}"
                title="{{ oxcmp_shop.getFieldData('oxname') }}" class="logo-link d-flex">
                 {% if logoImage %}

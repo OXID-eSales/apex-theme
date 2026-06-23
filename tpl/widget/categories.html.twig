@@ -1,9 +1,9 @@
 {% if oxcmp_categories %}
-    {% set categoriesTilesWidth = oViewConf.getViewThemeParam('showCategoryTilesWidth') %}
-    {% set categoriesTilesGrid = oViewConf.getViewThemeParam('showCategoryTilesGrid') %}
-    {% set categoriesTilesBg = oViewConf.getViewThemeParam('showCategoryTilesBg') %}
-    {% set categoriesTilesSpacing = oViewConf.getViewThemeParam('showCategoryTilesSpacing') %}
-    {% set categoriesTilesRowPadding = oViewConf.getViewThemeParam('showCategoryTilesRowPadding') %}
+    {% set categoriesTilesWidth = theme.setting('showCategoryTilesWidth') %}
+    {% set categoriesTilesGrid = theme.setting('showCategoryTilesGrid') %}
+    {% set categoriesTilesBg = theme.setting('showCategoryTilesBg') %}
+    {% set categoriesTilesSpacing = theme.setting('showCategoryTilesSpacing') %}
+    {% set categoriesTilesRowPadding = theme.setting('showCategoryTilesRowPadding') %}
 
     {# TODO: We should turn this into vCMS content #}
     <div class="container-xxl row-spacer">

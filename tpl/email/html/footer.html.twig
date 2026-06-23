@@ -11,7 +11,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            {% if oViewConf.getViewThemeParam('sFacebookUrl') or oViewConf.getViewThemeParam('sTwitterUrl') or oViewConf.getViewThemeParam('sYouTubeUrl') or oViewConf.getViewThemeParam('sBlogUrl') %}
+                                            {% if theme.setting('sFacebookUrl') or theme.setting('sTwitterUrl') or theme.setting('sYouTubeUrl') or theme.setting('sBlogUrl') %}
                                                 <td class="wrapper last">
                                                     <table class="six columns">
                                                         <tr>
@@ -19,33 +19,33 @@
 
                                                                 <h5>{{ translate({ ident: "DD_FOOTER_FOLLOW_US", suffix: "COLON" }) }}</h5>
 
-                                                                {% if oViewConf.getViewThemeParam('sFacebookUrl') %}
+                                                                {% if theme.setting('sFacebookUrl') %}
                                                                     <table class="tiny-button facebook">
                                                                         <tr>
                                                                             <td>
-                                                                                <a href="{{ oViewConf.getViewThemeParam('sFacebookUrl')|raw }}" target="_blank">Facebook</a>
+                                                                                <a href="{{ theme.setting('sFacebookUrl')|raw }}" target="_blank">Facebook</a>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
                                                                     <br>
                                                                 {% endif %}
 
-                                                                {% if oViewConf.getViewThemeParam('sTwitterUrl') %}
+                                                                {% if theme.setting('sTwitterUrl') %}
                                                                     <table class="tiny-button twitter">
                                                                         <tr>
                                                                             <td>
-                                                                                <a href="{{ oViewConf.getViewThemeParam('sTwitterUrl')|raw }}" target="_blank">Twitter</a>
+                                                                                <a href="{{ theme.setting('sTwitterUrl')|raw }}" target="_blank">Twitter</a>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
                                                                     <br>
                                                                 {% endif %}
 
-                                                                {% if oViewConf.getViewThemeParam('sYouTubeUrl') %}
+                                                                {% if theme.setting('sYouTubeUrl') %}
                                                                     <table class="tiny-button youtube">
                                                                         <tr>
                                                                             <td>
-                                                                                <a href="{{ oViewConf.getViewThemeParam('sYouTubeUrl')|raw }}" target="_blank">YouTube</a>
+                                                                                <a href="{{ theme.setting('sYouTubeUrl')|raw }}" target="_blank">YouTube</a>
                                                                             </td>
                                                                         </tr>
                                                                     </table>

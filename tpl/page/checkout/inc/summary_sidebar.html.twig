@@ -293,7 +293,7 @@
         {% endblock %}
     {% endif %}
     {% block basket_btn_next_bottom %}
-        {% set displayBasketOrderButton = oViewConf.getViewThemeParam('basketLowOrderDisplayOrderButton') %}
+        {% set displayBasketOrderButton = theme.setting('basketLowOrderDisplayOrderButton') %}
         {% if (not oView.isLowOrderPrice() or (displayBasketOrderButton == 'show' or displayBasketOrderButton == 'disabled')) and btn %}
             <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
                 {{ oViewConf.getHiddenSid()|raw }}
