@@ -22,7 +22,6 @@ $aLang = array(
     'SHOP_THEME_GROUP_header'          => 'Header',
     'SHOP_THEME_GROUP_contact'         => 'Contact',
     'SHOP_THEME_GROUP_googleanalytics' => 'Google Analytics',
-    'SHOP_THEME_GROUP_googlets'        => 'Google Trusted Stores',
     'SHOP_THEME_GROUP_background'      => 'Background-image',
     'SHOP_THEME_GROUP_econda'          => 'econda Web Shop Controlling',
     'SHOP_THEME_GROUP_emails'          => 'Emails',
@@ -80,7 +79,6 @@ $aLang = array(
 
     'SHOP_THEME_iTopNaviCatCount'           => 'Amount of categories that is displayed at top',
     //SHOP_CONFIG_TOPNAVICATCOUNT
-    'SHOP_THEME_blShowFinalStep'            => 'Show order confirmation after order is finished (5th Step in Checkout)',
     //SHOP_SYSTEM_SHOWFINALSTEP
     'SHOP_THEME_iNewBasketItemMessage'      => 'Select action when product is added to cart',
     //SHOP_SYSTEM_SHOWNEWBASKETITEMMESSAGE
@@ -106,86 +104,13 @@ $aLang = array(
     'SHOP_THEME_productZoomType_hover_zoom'     => 'Hover zoom',
     'SHOP_THEME_productZoomType_magnifier_lens' => 'Magnifier zoom',
 
-    'SHOP_THEME_sFooterWidth'                => 'Footer width',
-    'SHOP_THEME_sFooterWidth_w100cContainer' => 'Background 100%, content centered',
-    'SHOP_THEME_sFooterWidth_w100c100'       => 'All 100%',
-    'SHOP_THEME_sFooterWidth_container'      => 'All centered',
-
-    'SHOP_THEME_sManufacturerWidth'                => 'Manufacturer width',
-    'SHOP_THEME_sManufacturerWidth_w100cContainer' => 'Background 100%, content centered',
-    'SHOP_THEME_sManufacturerWidth_w100c100'       => 'All 100%',
-    'SHOP_THEME_sManufacturerWidth_container'      => 'All centered',
-
-    'SHOP_THEME_sPromoWidth'                => 'Promo banner width',
-    'SHOP_THEME_sPromoWidth_w100cContainer' => 'Background 100%, content centered',
-    'SHOP_THEME_sPromoWidth_w100c100'       => 'All 100%',
-    'SHOP_THEME_sPromoWidth_container'      => 'All centered',
-
-    'SHOP_THEME_sPromoBg'         => 'Promo banner background',
-    'SHOP_THEME_sPromoBg_white'   => 'white',
-    'SHOP_THEME_sPromoBg_light'   => 'grey',
-    'SHOP_THEME_sPromoBg_dark'    => 'dark',
-    'SHOP_THEME_sPromoBg_primary' => 'primary color',
-
     'SHOP_THEME_showCategoryTiles'                     => 'Show category tiles',
-    'SHOP_THEME_showCategoryTilesWidth'                => 'Category Tile Row width',
-    'SHOP_THEME_showCategoryTilesWidth_w100cContainer' => 'Background 100%, content centered',
-    'SHOP_THEME_showCategoryTilesWidth_w100c100'       => 'All 100%',
-    'SHOP_THEME_showCategoryTilesWidth_container'      => 'All centered',
-
-    'SHOP_THEME_showCategoryTilesGrid'    => 'Category Tiles width',
-    'SHOP_THEME_showCategoryTilesGrid_50' => '50% on desktop',
-    'SHOP_THEME_showCategoryTilesGrid_33' => '33% on desktop',
-    'SHOP_THEME_showCategoryTilesGrid_25' => '25% on desktop',
-
-    'SHOP_THEME_showCategoryTilesRowPadding' => 'Category Tile Row inner spacing',
-    'SHOP_THEME_sPromoRowPadding'            => 'Promo banner line inside spacing',
-
-    'SHOP_THEME_showCategoryTilesSpacing'   => 'Tile spacing',
-    'SHOP_THEME_showCategoryTilesSpacing_0' => '0',
-    'SHOP_THEME_showCategoryTilesSpacing_1' => '1',
-    'SHOP_THEME_showCategoryTilesSpacing_2' => '2',
-    'SHOP_THEME_showCategoryTilesSpacing_3' => '3',
-    'SHOP_THEME_showCategoryTilesSpacing_4' => '4',
-    'SHOP_THEME_showCategoryTilesSpacing_5' => '5',
-
-    'SHOP_THEME_showCategoryTilesBg'         => 'Category tiles background',
-    'SHOP_THEME_showCategoryTilesBg_white'   => 'white',
-    'SHOP_THEME_showCategoryTilesBg_light'   => 'grey',
-    'SHOP_THEME_showCategoryTilesBg_dark'    => 'dark',
-    'SHOP_THEME_showCategoryTilesBg_primary' => 'primary color',
-
-    'SHOP_THEME_sWelcomeTextWidth'           => 'Welcome text width',
-    'SHOP_THEME_sWelcomeTextWidth_w100c100'  => 'All 100%',
-    'SHOP_THEME_sWelcomeTextWidth_container' => 'All centered',
 
     'SHOP_THEME_sShowBargainArticles'         => 'Show offers of the week',
-    'SHOP_THEME_sBargainWidth'                => 'Offers of the week width',
-    'SHOP_THEME_sBargainWidth_w100cContainer' => 'Background 100%, content centered',
-    'SHOP_THEME_sBargainWidth_w100c100'       => 'All 100%',
-    'SHOP_THEME_sBargainWidth_container'      => 'All centered',
 
     'SHOP_THEME_sShowTopArticles'         => 'Show Topsellers',
-    'SHOP_THEME_sTopWidth'                => 'Topsellers width',
-    'SHOP_THEME_sTopWidth_w100cContainer' => 'Background 100%, content centered',
-    'SHOP_THEME_sTopWidth_w100c100'       => 'All 100%',
-    'SHOP_THEME_sTopWidth_container'      => 'All centered',
 
     'SHOP_THEME_sShowNewestArticles'         => 'Show newest products',
-    'SHOP_THEME_sNewestWidth'                => 'Newest products width',
-    'SHOP_THEME_sNewestWidth_w100cContainer' => 'Background 100%, content centered',
-    'SHOP_THEME_sNewestWidth_w100c100'       => 'All 100%',
-    'SHOP_THEME_sNewestWidth_container'      => 'All centered',
-
-    'SHOP_THEME_sHeaderImageWidth'                => 'Category image width',
-    'SHOP_THEME_sHeaderImageWidth_w100cContainer' => 'Background 100%, content centered',
-    'SHOP_THEME_sHeaderImageWidth_w100c100'       => 'All 100%',
-    'SHOP_THEME_sHeaderImageWidth_container'      => 'All centered',
-
-    'SHOP_THEME_sCategoryWidth'                => 'Product list',
-    'SHOP_THEME_sCategoryWidth_w100cContainer' => 'Background 100%, content centered',
-    'SHOP_THEME_sCategoryWidth_w100c100'       => 'All 100%',
-    'SHOP_THEME_sCategoryWidth_container'      => 'All centered',
 
     'SHOP_THEME_sShowPopBreadcrump' => 'Show breadcrumps',
 
@@ -239,32 +164,8 @@ $aLang = array(
     'SHOP_THEME_aOGImage'                 => 'Open Graph image (OG-Image - is displayed when the page is shared)',
     'SHOP_THEME_sFaviconSvg'              => 'SVG Favicon',
 
-    'SHOP_THEME_blUseGoogleTS'                 => 'Use Google Trusted Stores',
-    'SHOP_THEME_sGoogleVendorId'               => 'Google Store-ID',
-    'HELP_SHOP_THEME_sGoogleVendorId'          => 'You can find this ID in your Trusted Stores Merchant Dashboard.',
-    'SHOP_THEME_sGoogleShoppingAccountId'      => 'Google Shopping Account-ID (optional)',
-    'HELP_SHOP_THEME_sGoogleShoppingAccountId' => 'Provide this field only if you submit feeds for Google Shopping.<br><br>Account ID from Google Merchant Center. This value should match the account ID you use to submit your <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">product data feed to Google Shopping</a> through Google Merchant center. If you have a MCA account, use the subaccount ID associated with that product feed.',
-    'SHOP_THEME_sPageLanguage'                 => 'Language of your Shop in ISO',
-    'HELP_SHOP_THEME_sPageLanguage'            => 'The locale should be in the format of &lt;language&gt;_&lt;country&gt;<br><br>&lt;Language&gt; is a two-letter language code defined in ISO 639-1, and &lt;country&gt; is a two-letter country code defined in ISO 3166-1 alpha-2. Usually &lt;country&gt; should be all capitalized, and &lt;language&gt; should be in lowercase. e.g. en_US, en_GB, en_AU, fr_FR, de_DE, or ja_JP.',
-    'SHOP_THEME_sShoppingCountry'              => 'Google Shopping-Feed Country (optional)',
-    'HELP_SHOP_THEME_sShoppingCountry'         => 'Provide this field only if you submit feeds for Google Shopping.<br><br>Account country from Google Shopping. This value should match the account country you use to submit your <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">product data feed to Google Shopping</a>.<br><br>The value of the country parameter should be a <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">two-letter ISO 3166 country code</a>.<br><br>For example, values could be US, GB, AU, FR, DE, JP.',
-    'SHOP_THEME_sShoppingLanguage'             => 'Google Shopping-Feed Language (optional)',
-    'HELP_SHOP_THEME_sShoppingLanguage'        => 'Provide this field only if you submit feeds for Google Shopping.<br><br>Account language from Google Shopping. This value should match the account language you use to submit your <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">product data feed to Google Shopping</a>.<br><br>The value of the language parameter should be a <a href="https://en.wikipedia.org/wiki/ISO_639-1" target="_blank">two-letter ISO 639-1 language code</a>.<br><br>For example, values could be en, fr, de, ja.',
-    'SHOP_THEME_sShippingDaysOnStock'          => 'Amount of days till shipping of an order that has all articles in stock.',
-    'HELP_SHOP_THEME_sShippingDaysOnStock'     => 'The estimated date on which you will ship the order; this is different from the estimated delivery date.<br><br>If the order contains multiple items, select the latest estimated ship date.<br><br>If you message to your customers a range of days, please include the later end of the range. (e.g., 7 days if your shipping range is 5-7 days).<br><br>The date provided here will be provided to the customer via email.<br><br>The customer will receive a post purchase survey after the Estimated Ship Date has passed.',
-    'SHOP_THEME_sShippingDaysNotOnStock'       => 'Amount of days till shipping of an order that has <b>not</b> all articles in stock.',
-    'HELP_SHOP_THEME_sShippingDaysNotOnStock'  => 'The estimated date on which you will ship the order; this is different from the estimated delivery date.<br><br>If the order contains multiple items, select the latest estimated ship date.<br><br>If you message to your customers a range of days, please include the later end of the range. (e.g., 7 days if your shipping range is 5-7 days).<br><br>The date provided here will be provided to the customer via email.<br><br>The customer will receive a post purchase survey after the Estimated Ship Date has passed.',
-    'SHOP_THEME_sDeliveryDaysOnStock'          => 'Amount of days till delivery of an order that has all articles in stock.',
-    'HELP_SHOP_THEME_sDeliveryDaysOnStock'     => 'The estimated date on which you expect delivery of the order to the customer. If the order contains multiple items, select the latest delivery date. If you message a range of days, please include the later end of the range. (e.g., 7 days if your range is 5-7 days).',
-    'SHOP_THEME_sDeliveryDaysNotOnStock'       => 'Amount of days till delivery of an order that has <b>not</b> all articles in stock.',
-    'HELP_SHOP_THEME_sDeliveryDaysNotOnStock'  => 'The estimated date on which you expect delivery of the order to the customer. If the order contains multiple items, select the latest delivery date. If you message a range of days, please include the later end of the range. (e.g., 7 days if your range is 5-7 days).',
-
     'SHOP_THEME_blSliderShowImageCaption'      => 'Activate captions for slider on home page',
     'HELP_SHOP_THEME_blSliderShowImageCaption' => 'A caption is visible, when the active slide has an assigned product.',
-
-    'SHOP_THEME_sImageStyle'          => 'Image style',
-    'SHOP_THEME_sImageStyle_grid'     => 'Grid',
-    'SHOP_THEME_sImageStyle_carousel' => 'Carousel',
 
     'SHOP_THEME_blEmailsShowProductPictures' => 'Show product pictures in emails',
 

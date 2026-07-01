@@ -1,14 +1,10 @@
 {% block footer_main %}
     {% set blShowFullFooter = oView.showSearch() %}
 
-    {{ oView.setShowNewsletter(oViewConf.getViewThemeParam('blFooterShowNewsletterForm')) }}
+    {{ oView.setShowNewsletter(oViewConf.getThemeSettings().getBoolean('blFooterShowNewsletterForm')) }}
 
     {% if oxcmp_user %}
         {% set force_sid = oView.getSidForWidget() %}
-    {% endif %}
-    {% set footerWidth = oViewConf.getViewThemeParam('sFooterWidth') %}
-    {% if footerWidth == 'container' %}
-        <div class="container-xxl">
     {% endif %}
     <footer class="footer">
         <div class="container-xxl">
@@ -63,7 +59,7 @@
                     {% endif %}
 
                     <div class="col-12 col-lg-3">
-                        {% if oViewConf.getViewThemeParam('sPaymentIcons') %}
+                        {% if oViewConf.getThemeSettings().getBoolean('sPaymentIcons') %}
                             <div class="payment-methods mb-5">
                                 <div class="h4">{{ translate({ ident: "PAYMENT_METHODS" }) }}</div>
                                 {% block footer_payment_icons %}
@@ -75,55 +71,55 @@
                         {% endif %}
                         {# <<START>> Social Links #}
                         {% block dd_footer_social_links %}
-                            {% if oViewConf.getViewThemeParam('sFacebookUrl') or oViewConf.getViewThemeParam('sTwitterUrl') or oViewConf.getViewThemeParam('sYouTubeUrl') or oViewConf.getViewThemeParam('sBlogUrl') %}
+                            {% if oViewConf.getThemeSettings().getString('sFacebookUrl') or oViewConf.getThemeSettings().getString('sTwitterUrl') or oViewConf.getThemeSettings().getString('sYouTubeUrl') or oViewConf.getThemeSettings().getString('sBlogUrl') %}
                                 <div class="social-links">
                                     <div class="h4">{{ translate({ ident: "SOCIAL_MEDIA" }) }}</div>
                                     {% block dd_footer_social_links_inner %}
                                         {% block dd_footer_social_links_list %}
-                                            {% if oViewConf.getViewThemeParam('sFacebookUrl') %}
+                                            {% if oViewConf.getThemeSettings().getString('sFacebookUrl') %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getViewThemeParam('sFacebookUrl')|raw }}">
+                                                   href="{{ oViewConf.getThemeSettings().getString('sFacebookUrl')|raw }}">
                                                     <span class="visually-hidden">Facebook</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#facebook"></use>
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getViewThemeParam('sInstagramUrl') %}
+                                            {% if oViewConf.getThemeSettings().getString('sInstagramUrl') %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getViewThemeParam('sInstagramUrl')|raw }}">
+                                                   href="{{ oViewConf.getThemeSettings().getString('sInstagramUrl')|raw }}">
                                                     <span class="visually-hidden">Instagram</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#instagram"></use>
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getViewThemeParam('sTwitterUrl') %}
+                                            {% if oViewConf.getThemeSettings().getString('sTwitterUrl') %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getViewThemeParam('sTwitterUrl')|raw }}">
+                                                   href="{{ oViewConf.getThemeSettings().getString('sTwitterUrl')|raw }}">
                                                     <span class="visually-hidden">Twitter</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#twitter"></use>
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getViewThemeParam('sYouTubeUrl') %}
+                                            {% if oViewConf.getThemeSettings().getString('sYouTubeUrl') %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getViewThemeParam('sYouTubeUrl')|raw }}">
+                                                   href="{{ oViewConf.getThemeSettings().getString('sYouTubeUrl')|raw }}">
                                                     <span class="visually-hidden">YouTube</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#youtube"></use>
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getViewThemeParam('sBlogUrl') %}
+                                            {% if oViewConf.getThemeSettings().getString('sBlogUrl') %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getViewThemeParam('sBlogUrl')|raw }}">
+                                                   href="{{ oViewConf.getThemeSettings().getString('sBlogUrl')|raw }}">
                                                     <span class="visually-hidden">Blog</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#wordpress"></use>
@@ -137,7 +133,7 @@
                         {% endblock %}
                         {# <<ENDE>> Social Links #}
                     </div>
-                    {% if oViewConf.getViewThemeParam('sTrustBadges') %}
+                    {% if oViewConf.getThemeSettings().getBoolean('sTrustBadges') %}
                         <div class="col-12 col-lg-2">
                             <div class="trust-badges mb-5">
                                 <div class="h4">{{ translate({ ident: "TRUST_BADGES" }) }}</div>
@@ -157,7 +153,7 @@
             {% block layout_page_vatinclude %}
                 {% block footer_deliveryinfo %}
                     {% ifcontent ident "oxdeliveryinfo" set oCont %}
-                        <div class="container{% if footerWidth == 'w100cContainer' %}-xxl{% else %}-fluid{% endif %}">
+                        <div class="container-fluid">
                             <div class="text-end">
                                 {% if oView.isVatIncluded() %}
                                     <span class="vat-info-text">
@@ -191,9 +187,6 @@
             {% endifcontent %}
         {% endblock %}
     </footer>
-    {% if footerWidth == 'container' %}
-        </div>
-    {% endif %}
 {% endblock %}
 
 {% if oView.isRootCatChanged() %}

@@ -13,10 +13,6 @@ themeSettings:
     type: bool
     value: true
     group: display
-  blShowFinalStep:
-    type: bool
-    value: true
-    group: display
   blShowListDisplayType:
     type: bool
     value: true
@@ -27,7 +23,7 @@ themeSettings:
     group: display
   iNewBasketItemMessage:
     type: select
-    value: str
+    value: '1'
     group: display
     constraints:
       - '0'
@@ -260,46 +256,6 @@ themeSettings:
     type: str
     value: ''
     group: googleanalytics
-  blUseGoogleTS:
-    type: bool
-    value: false
-    group: googlets
-  sDeliveryDaysNotOnStock:
-    type: str
-    value: '14'
-    group: googlets
-  sDeliveryDaysOnStock:
-    type: str
-    value: '6'
-    group: googlets
-  sGoogleShoppingAccountId:
-    type: str
-    value: ''
-    group: googlets
-  sGoogleVendorId:
-    type: str
-    value: ''
-    group: googlets
-  sPageLanguage:
-    type: str
-    value: de_DE
-    group: googlets
-  sShippingDaysNotOnStock:
-    type: str
-    value: '5'
-    group: googlets
-  sShippingDaysOnStock:
-    type: str
-    value: '3'
-    group: googlets
-  sShoppingCountry:
-    type: str
-    value: DE
-    group: googlets
-  sShoppingLanguage:
-    type: str
-    value: de
-    group: googlets
   sGoogleMapsAddr:
     type: str
     value: 'OXID eSales AG, Bertoldstraße 48, 79098 Freiburg'

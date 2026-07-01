@@ -26,7 +26,7 @@
 
                                     <img loading="lazy" src="{{ sBannerPictureUrl|raw }}" alt="{{ oBanner.oxactions__oxtitle.value }}" class="card-img">
 
-                                    {% if oViewConf.getViewThemeParam('blSliderShowImageCaption') and oArticle %}
+                                    {% if oViewConf.getThemeSettings().getBoolean('blSliderShowImageCaption') and oArticle %}
                                         <div class="card-img-overlay">
                                             <h3 class="card-title h2">{{ oArticle.oxarticles__oxtitle.value }}</h5>
                                             {% if oArticle.oxarticles__oxshortdesc.value|trim %}

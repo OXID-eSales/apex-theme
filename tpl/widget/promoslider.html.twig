@@ -3,17 +3,7 @@
     {% set currency = oView.getActCurrency() %}
 
     {% if oBanners|length %}
-        {% set promosliderWidth = oViewConf.getViewThemeParam('sPromoWidth') %}
-        {% set promoSliderBg = oViewConf.getViewThemeParam('sPromoBg') %}
-        {% set promoSliderRowPadding = oViewConf.getViewThemeParam('sPromoRowPadding') %}
-
-        {% if promosliderWidth == 'container' %}
-            <div class="container-xxl">
-        {% endif %}
-                <div class="promoslider {% if promoSliderRowPadding %} py-3 py-lg-5{% endif %} bg-{{ promoSliderBg }}">
-                    {% if promosliderWidth == 'w100cContainer' %}
-                    <div class="container-xxl">
-                    {% endif %}
+                <div class="promoslider">
                         <div id="promoCarousel" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 {% for iPicNr, oBanner in oBanners %}
@@ -36,13 +26,13 @@
                                                 {% if sBannerLink %}
                                                     </a>
                                                 {% endif %}
-                                                {% if oViewConf.getViewThemeParam('blSliderShowImageCaption') and oArticle %}
+                                                {% if oViewConf.getThemeSettings().getBoolean('blSliderShowImageCaption') and oArticle %}
                                                 {% if sBannerLink %}
                                                 <a href="{{ sBannerLink|raw }}" class="d-block" title="{{ oBanner.oxactions__oxtitle.value }}">
                                                     {% endif %}
                                                     <div class="carousel-caption d-none d-md-block">
 
-                                                        <h2 class="title">{{ oArticle.oxarticles__oxtitle.value }}</h5>
+                                                        <h2 class="title">{{ oArticle.oxarticles__oxtitle.value }}</h2>
                                                         {% if oArticle.oxarticles__oxshortdesc.value|trim %}
                                                                 <p class="shortdesc">{{ oArticle.oxarticles__oxshortdesc.value|trim }}</p>
                                                         {% endif %}
@@ -66,12 +56,6 @@
                                 <span class="visually-hidden-focusable">{{ translate({ ident: "NEXT" }) }}</span>
                             </a>
                         </div>
-                    {% if promosliderWidth == 'w100cContainer' %}
-                    </div>
-                    {% endif %}
                 </div>
-        {% if promosliderWidth == 'container' %}
-            </div>
-        {% endif %}
     {% endif %}
 {% endblock %}
