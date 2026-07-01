@@ -4,17 +4,16 @@
 
     {% include_content 'oxstartslot1' ignore missing  %}
 
-    {% if oViewConf.getViewThemeParam('showCategoryTiles') %}
+    {% if oViewConf.getThemeSettings().getBoolean('showCategoryTiles') %}
         {% include "widget/categories.html.twig" %}
     {% endif %}
 
     {% include_content 'oxstartslot2' ignore missing  %}
 
     {% block start_newest_articles %}
-        {% set showNewest = oViewConf.getViewThemeParam('sShowNewestArticles') %}
+        {% set showNewest = oViewConf.getThemeSettings().getBoolean('sShowNewestArticles') %}
         {% if showNewest %}
             {% set oNewestArticles = oView.getNewestArticles() %}
-            {% set newestWidth = oViewConf.getViewThemeParam('sNewestWidth') %}
             <div class="article-slider row-spacer">
                 {% if oNewestArticles and oNewestArticles|length > 0 %}
                     {% include "widget/product/list-slider.html.twig" with {head: "START_NEWEST_HEADER"|translate, subhead: "START_NEWEST_SUBHEADER"|translate, listId: "newItems", products: oNewestArticles, showMainLink: true, iProductsPerLine: 4} %}
@@ -24,9 +23,8 @@
     {% endblock %}
 
     {% block start_top_articles %}
-        {% set showTop = oViewConf.getViewThemeParam('sShowTopArticles') %}
+        {% set showTop = oViewConf.getThemeSettings().getBoolean('sShowTopArticles') %}
         {% if showTop %}
-            {% set topWidth = oViewConf.getViewThemeParam('sTopWidth') %}
             {% set oTopArticles = oView.getTop5ArticleList() %}
             <div class="article-slider row-spacer">
                 {% if oTopArticles and oTopArticles|length > 0 %}
@@ -37,10 +35,9 @@
     {% endblock %}
 
     {% block start_bargain_articles %}
-        {% set showBargain = oViewConf.getViewThemeParam('sShowBargainArticles') %}
+        {% set showBargain = oViewConf.getThemeSettings().getBoolean('sShowBargainArticles') %}
         {% if showBargain %}
             {% set oBargainArticles = oView.getBargainArticleList() %}
-            {% set bargainWidth = oViewConf.getViewThemeParam('sBargainWidth') %}
             <div class="article-slider row-spacer">
                 {% if oBargainArticles and oBargainArticles|length > 0 %}
                     {% include "widget/product/list-slider.html.twig" with {head: "START_BARGAIN_HEADER"|translate, subhead: "START_BARGAIN_SUBHEADER"|translate, listId: "bargainItems", products: oBargainArticles, showMainLink: true, iProductsPerLine: 4} %}
@@ -52,7 +49,7 @@
     {% include_content 'oxstartslot3' ignore missing  %}
 
     {% block start_manufacturer_slider %}
-        {% if oViewConf.getViewThemeParam('bl_showManufacturer') %}
+        {% if oViewConf.getThemeSettings().getBoolean('bl_showManufacturer') %}
             {% include "widget/manufacturer.html.twig" %}
         {% endif %}
     {% endblock %}
