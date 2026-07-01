@@ -1,7 +1,6 @@
 
 {% set oManufacturer = oView.getManufacturer() %}
 {% set aVariantSelections = oView.getVariantSelections() %}
-{% set imageStyle = oViewConf.getViewThemeParam('sImageStyle') %}
 
 {% if aVariantSelections and aVariantSelections.rawselections %}
     {% set _sSelectionHashCollection = "" %}

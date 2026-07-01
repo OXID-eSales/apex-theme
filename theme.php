@@ -36,12 +36,6 @@ $aTheme = [
         ],
         [
             'group' => 'display',
-            'name'  => 'blShowFinalStep',
-            'type'  => 'bool',
-            'value' => 1,
-        ],
-        [
-            'group' => 'display',
             'name'  => 'blShowListDisplayType',
             'type'  => 'bool',
             'value' => 1,
@@ -420,67 +414,6 @@ $aTheme = [
             'value' => '',
         ],
 
-//GOOGLE
-        [
-            'group' => 'googlets',
-            'name'  => 'blUseGoogleTS',
-            'type'  => 'bool',
-            'value' => 0,
-        ],
-        [
-            'group' => 'googlets',
-            'name'  => 'sDeliveryDaysNotOnStock',
-            'type'  => 'str',
-            'value' => '14',
-        ],
-        [
-            'group' => 'googlets',
-            'name'  => 'sDeliveryDaysOnStock',
-            'type'  => 'str',
-            'value' => '6',
-        ],
-        [
-            'group' => 'googlets',
-            'name'  => 'sGoogleShoppingAccountId',
-            'type'  => 'str',
-            'value' => '',
-        ],
-        [
-            'group' => 'googlets',
-            'name'  => 'sGoogleVendorId',
-            'type'  => 'str',
-            'value' => '',
-        ],
-        [
-            'group' => 'googlets',
-            'name'  => 'sPageLanguage',
-            'type'  => 'str',
-            'value' => 'de_DE',
-        ],
-        [
-            'group' => 'googlets',
-            'name'  => 'sShippingDaysNotOnStock',
-            'type'  => 'str',
-            'value' => '5',
-        ],
-        [
-            'group' => 'googlets',
-            'name'  => 'sShippingDaysOnStock',
-            'type'  => 'str',
-            'value' => '3',
-        ],
-        [
-            'group' => 'googlets',
-            'name'  => 'sShoppingCountry',
-            'type'  => 'str',
-            'value' => 'DE',
-        ],
-        [
-            'group' => 'googlets',
-            'name'  => 'sShoppingLanguage',
-            'type'  => 'str',
-            'value' => 'de',
-        ],
 //KONTAKT
         [
             'group' => 'contact',

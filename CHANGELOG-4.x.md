@@ -4,9 +4,13 @@
 
 ### Changed
 - Migrate theme metadata and settings from `theme.php` to `metadata.yaml` and `config.yaml`
+- Templates now read theme settings through the theme setting service `oViewConf.getThemeSettings()`
 
 ### Added
 - ALT attributes for product images
+
+### Removed
+- Theme settings that the templates no longer use
 
 ## [v8.0.0-alpha.2] - 2026-02-12
 *Compilation release*

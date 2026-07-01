@@ -7,8 +7,6 @@
             {% endif %}
         {% endfor %}
 
-        {% set categoryWidth = oViewConf.getViewThemeParam('sCategoryWidth') %}
-
         <form method="get" action="{{ oViewConf.getSelfActionLink()|raw }}" name="_filterlist" class="d-md-flex mb-auto">
             {{ oViewConf.getHiddenSid()|raw }}
             {{ oViewConf.getNavFormParams()|raw }}

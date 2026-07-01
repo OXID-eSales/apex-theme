@@ -22,7 +22,6 @@ $aLang = array(
     'SHOP_THEME_GROUP_header'          => 'Header',
     'SHOP_THEME_GROUP_contact'         => 'Kontakt',
     'SHOP_THEME_GROUP_googleanalytics' => 'Google Analytics',
-    'SHOP_THEME_GROUP_googlets'        => 'Google Zertifizierte Händler',
     'SHOP_THEME_GROUP_background'      => 'Hintergrundbild',
     'SHOP_THEME_GROUP_econda'          => 'econda Web Shop Controlling',
     'SHOP_THEME_GROUP_emails'          => 'E-Mails',
@@ -80,7 +79,6 @@ $aLang = array(
 
     'SHOP_THEME_iTopNaviCatCount'           => 'Anzahl der Kategorien, die oben angezeigt werden (weitere Kategorien werden ebenfalls oben unter "mehr" aufgelistet)',
     //SHOP_CONFIG_TOPNAVICATCOUNT
-    'SHOP_THEME_blShowFinalStep'            => 'Bestellbestätigung anzeigen, wenn die Bestellung abgeschlossen ist (fünfter Bestellschritt)',
     //SHOP_SYSTEM_SHOWFINALSTEP
     'SHOP_THEME_iNewBasketItemMessage'      => 'Wenn Produkt in den Warenkorb gelegt wird, folgende Aktion ausführen',
     //SHOP_SYSTEM_SHOWNEWBASKETITEMMESSAGE
@@ -106,86 +104,13 @@ $aLang = array(
     'SHOP_THEME_productZoomType_hover_zoom'     => 'Hover zoom',
     'SHOP_THEME_productZoomType_magnifier_lens' => 'Magnifier zoom',
 
-    'SHOP_THEME_sFooterWidth'                => 'Footer Breite',
-    'SHOP_THEME_sFooterWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
-    'SHOP_THEME_sFooterWidth_w100c100'       => 'Alles 100%',
-    'SHOP_THEME_sFooterWidth_container'      => 'Alles mittig',
-
-    'SHOP_THEME_sManufacturerWidth'                => 'Hersteller Breite',
-    'SHOP_THEME_sManufacturerWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
-    'SHOP_THEME_sManufacturerWidth_w100c100'       => 'Alles 100%',
-    'SHOP_THEME_sManufacturerWidth_container'      => 'Alles mittig',
-
-    'SHOP_THEME_sPromoWidth'                => 'Promo-Banner Breite',
-    'SHOP_THEME_sPromoWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
-    'SHOP_THEME_sPromoWidth_w100c100'       => 'Alles 100%',
-    'SHOP_THEME_sPromoWidth_container'      => 'Alles mittig',
-
-    'SHOP_THEME_sPromoBg'         => 'Promo-Banner Hintergrund',
-    'SHOP_THEME_sPromoBg_white'   => 'weiß',
-    'SHOP_THEME_sPromoBg_light'   => 'grau',
-    'SHOP_THEME_sPromoBg_dark'    => 'dunkel',
-    'SHOP_THEME_sPromoBg_primary' => 'primärfarbe',
-
     'SHOP_THEME_showCategoryTiles'                     => 'Kategorie-Kacheln anzeigen',
-    'SHOP_THEME_showCategoryTilesWidth'                => 'Kategorie-Kacheln-Zeile Breite',
-    'SHOP_THEME_showCategoryTilesWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
-    'SHOP_THEME_showCategoryTilesWidth_w100c100'       => 'Alles 100%',
-    'SHOP_THEME_showCategoryTilesWidth_container'      => 'Alles mittig',
-
-    'SHOP_THEME_showCategoryTilesGrid'    => 'Kategorie-Kacheln Breite',
-    'SHOP_THEME_showCategoryTilesGrid_50' => '50% auf Desktop',
-    'SHOP_THEME_showCategoryTilesGrid_33' => '33% auf Desktop',
-    'SHOP_THEME_showCategoryTilesGrid_25' => '25% auf Desktop',
-
-    'SHOP_THEME_showCategoryTilesRowPadding' => 'Kategorie-Kachel-Zeile Innenabstand',
-    'SHOP_THEME_sPromoRowPadding'            => 'Promo-Banner-Zeile Innenabstand',
-
-    'SHOP_THEME_showCategoryTilesSpacing'   => 'Kachel-Abstand',
-    'SHOP_THEME_showCategoryTilesSpacing_0' => '0',
-    'SHOP_THEME_showCategoryTilesSpacing_1' => '1',
-    'SHOP_THEME_showCategoryTilesSpacing_2' => '2',
-    'SHOP_THEME_showCategoryTilesSpacing_3' => '3',
-    'SHOP_THEME_showCategoryTilesSpacing_4' => '4',
-    'SHOP_THEME_showCategoryTilesSpacing_5' => '5',
-
-    'SHOP_THEME_showCategoryTilesBg'         => 'Kategorie-Kacheln Hintergrund',
-    'SHOP_THEME_showCategoryTilesBg_white'   => 'weiß',
-    'SHOP_THEME_showCategoryTilesBg_light'   => 'grau',
-    'SHOP_THEME_showCategoryTilesBg_dark'    => 'dunkel',
-    'SHOP_THEME_showCategoryTilesBg_primary' => 'primärfarbe',
-
-    'SHOP_THEME_sWelcomeTextWidth'           => 'Willkommen Text Breite',
-    'SHOP_THEME_sWelcomeTextWidth_w100c100'  => 'Alles 100%',
-    'SHOP_THEME_sWelcomeTextWidth_container' => 'Alles mittig',
 
     'SHOP_THEME_sShowBargainArticles'         => 'Angebote der Woche anzeigen',
-    'SHOP_THEME_sBargainWidth'                => 'Angebote der Woche Breite',
-    'SHOP_THEME_sBargainWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
-    'SHOP_THEME_sBargainWidth_w100c100'       => 'Alles 100%',
-    'SHOP_THEME_sBargainWidth_container'      => 'Alles mittig',
 
     'SHOP_THEME_sShowTopArticles'         => 'Topseller anzeigen',
-    'SHOP_THEME_sTopWidth'                => 'Topseller Breite',
-    'SHOP_THEME_sTopWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
-    'SHOP_THEME_sTopWidth_w100c100'       => 'Alles 100%',
-    'SHOP_THEME_sTopWidth_container'      => 'Alles mittig',
 
     'SHOP_THEME_sShowNewestArticles'         => 'Neueste Produkte anzeigen',
-    'SHOP_THEME_sNewestWidth'                => 'Neueste Produkte Breite',
-    'SHOP_THEME_sNewestWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
-    'SHOP_THEME_sNewestWidth_w100c100'       => 'Alles 100%',
-    'SHOP_THEME_sNewestWidth_container'      => 'Alles mittig',
-
-    'SHOP_THEME_sHeaderImageWidth'                => 'Kategoriebild Breite',
-    'SHOP_THEME_sHeaderImageWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
-    'SHOP_THEME_sHeaderImageWidth_w100c100'       => 'Alles 100%',
-    'SHOP_THEME_sHeaderImageWidth_container'      => 'Alles mittig',
-
-    'SHOP_THEME_sCategoryWidth'                => 'Produktliste',
-    'SHOP_THEME_sCategoryWidth_w100cContainer' => 'Hintergrund 100%, Inhalt mittig',
-    'SHOP_THEME_sCategoryWidth_w100c100'       => 'Alles 100%',
-    'SHOP_THEME_sCategoryWidth_container'      => 'Alles mittig',
 
     'SHOP_THEME_sShowPopBreadcrump' => 'Brotkrumenpfad anzeigen',
 
@@ -239,34 +164,10 @@ $aLang = array(
     'SHOP_THEME_aOGImage'                 => 'Open Graph image (OG-Image - wird angezeigt wenn die Seite geteilt wird)',
     'SHOP_THEME_sFaviconSvg'              => 'SVG Favicon',
 
-    'SHOP_THEME_blUseGoogleTS'                 => 'Google Zertifizierte Händler benutzen',
-    'SHOP_THEME_sGoogleVendorId'               => 'Google Store-ID (Erforderlich)',
-    'HELP_SHOP_THEME_sGoogleVendorId'          => 'Diese ID finden Sie im Händler-Dashboard von Google Zertifizierte Händler.',
-    'SHOP_THEME_sGoogleShoppingAccountId'      => 'Google Shopping Account-ID (Optional)',
-    'HELP_SHOP_THEME_sGoogleShoppingAccountId' => 'Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden.<br><br>Kundennummer im Google Merchant Center. Dieser Wert muss mit der Kundennummer übereinstimmen, die Sie zum Senden Ihres <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">Produktdatenfeeds an Google Shopping</a> über das Google Merchant Center verwenden. Wenn Sie ein MCA-Konto haben, verwenden Sie die Kundennummer des Unterkontos, das mit diesem Produktfeed verknüpft ist.',
-    'SHOP_THEME_sPageLanguage'                 => 'Sprache Ihres Shops in ISO (Erforderlich)',
-    'HELP_SHOP_THEME_sPageLanguage'            => 'Der Sprach-Wert ist ein aus zwei Buchstaben bestehender <a href="https://de.wikipedia.org/wiki/ISO_639#ISO_639-1" target="_blank">ISO 639-1-Sprachcode</a> und der Land-Wert ist ein aus zwei Buchstaben bestehender <a href="https://de.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 ALPHA-2-Ländercode</a>. In der Regel besteht &lt;Land&gt; aus Großbuchstaben und &lt;Sprache&gt; aus Kleinbuchstaben.<br><br>Beispiele: de_DE, en_GB, fr_FR, en_AU, en_US oder ja_JP.',
-    'SHOP_THEME_sShoppingCountry'              => 'Google Shopping-Feed Land (Optional)',
-    'HELP_SHOP_THEME_sShoppingCountry'         => 'Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden.<br><br>Dient zur Angabe des Landes, dem das Konto in Google Shopping zugeordnet ist. Dieser Wert sollte mit dem Land des Kontos übereinstimmen, das Sie verwenden, um Ihren <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">Produktdatenfeed an Google Shopping zu senden</a>.<br><br>Der Wert des Landesparameters muss ein <a href="https://de.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">aus zwei Buchstaben bestehender ISO 3166-Ländercode</a> sein.<br><br>Beispiele: US, GB, AU, FR, DE, JP.',
-    'SHOP_THEME_sShoppingLanguage'             => 'Google Shopping-Feed Sprache (Optional)',
-    'HELP_SHOP_THEME_sShoppingLanguage'        => 'Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden.<br><br>Dies ist die Sprache des Kontos aus Google Shopping. Dieser Wert sollte mit der Sprache des Kontos übereinstimmen, das Sie verwenden, um Ihren <a href="https://support.google.com/merchants/answer/188494#US" target="_blank">Produktdatenfeed an Google Shopping zu senden</a>.<br><br>Der Wert des Sprachparameters muss ein aus <a href="https://de.wikipedia.org/wiki/ISO_639#ISO_639-1" target="_blank">zwei Buchstaben bestehender ISO 639-1-Sprachcode</a> sein.<br><br>Beispiele: en, fr, de, ja.',
-    'SHOP_THEME_sShippingDaysOnStock'          => 'Anz. der Tage bis zum Versand einer Bestellung mit Artikeln, die alle auf Lager sind. (Erforderlich)',
-    'HELP_SHOP_THEME_sShippingDaysOnStock'     => 'Hierbei handelt es sich um das voraussichtliche Datum des Versands der Bestellung; dies ist nicht dasselbe wie das voraussichtliche Lieferdatum.<br><br>Wenn die Bestellung mehrere Artikel umfasst, wählen Sie das späteste voraussichtliche Versanddatum aus.<br><br>Wenn Sie Ihren Kunden einen Zeitraum nennen, geben Sie den letzten Tag des Zeitraums an. Wenn Sie beispielsweise innerhalb von 5 bis 7 Tagen versenden, geben Sie 7 Tage an.<br><br>Der hier genannte Termin wird dem Kunden per E-Mail mitgeteilt.<br><br>Nach dem voraussichtlichen Versanddatum erhält der Kunde eine Umfrage zum abgeschlossenen Kauf.',
-    'SHOP_THEME_sShippingDaysNotOnStock'       => 'Anz. der Tage bis zum Versand einer Bestellung, bei der mind. 1 Artikel nicht auf Lager ist. (Erforderlich)',
-    'HELP_SHOP_THEME_sShippingDaysNotOnStock'  => 'Hierbei handelt es sich um das voraussichtliche Datum des Versands der Bestellung; dies ist nicht dasselbe wie das voraussichtliche Lieferdatum.<br><br>Wenn die Bestellung mehrere Artikel umfasst, wählen Sie das späteste voraussichtliche Versanddatum aus.<br><br>Wenn Sie Ihren Kunden einen Zeitraum nennen, geben Sie den letzten Tag des Zeitraums an. Wenn Sie beispielsweise innerhalb von 5 bis 7 Tagen versenden, geben Sie 7 Tage an.<br><br>Der hier genannte Termin wird dem Kunden per E-Mail mitgeteilt.<br><br>Nach dem voraussichtlichen Versanddatum erhält der Kunde eine Umfrage zum abgeschlossenen Kauf.',
-    'SHOP_THEME_sDeliveryDaysOnStock'          => 'Anz. der Tage bis zur Lieferung einer Bestellung mit Artikeln, die alle auf Lager sind. (Erforderlich)',
-    'HELP_SHOP_THEME_sDeliveryDaysOnStock'     => 'Dies ist das voraussichtliche Datum, an dem Sie mit der Lieferung der Bestellung an den Kunden rechnen. Wenn die Bestellung mehrere Artikel umfasst, wählen Sie das späteste voraussichtliche Lieferdatum. Wenn Sie einen Lieferzeitraum nennen, geben Sie den letzten Tag des Zeitraums an, bei 5 bis 7 Tagen also 7 Tage.',
-    'SHOP_THEME_sDeliveryDaysNotOnStock'       => 'Anz. der Tage bis zur Lieferung einer Bestellung, bei der mind. 1 Artikel nicht auf Lager ist. (Erforderlich)',
-    'HELP_SHOP_THEME_sDeliveryDaysNotOnStock'  => 'Dies ist das voraussichtliche Datum, an dem Sie mit der Lieferung der Bestellung an den Kunden rechnen. Wenn die Bestellung mehrere Artikel umfasst, wählen Sie das späteste voraussichtliche Lieferdatum. Wenn Sie einen Lieferzeitraum nennen, geben Sie den letzten Tag des Zeitraums an, bei 5 bis 7 Tagen also 7 Tage.',
-
     'SHOP_THEME_blSliderShowImageCaption'      => 'Bildunterschriften im Slider auf der Startseite aktivieren',
     'HELP_SHOP_THEME_blSliderShowImageCaption' => 'Diese wird angezeigt, sobald einem Slide ein Produkt zugeordnet ist.',
 
     'SHOP_THEME_blEmailsShowProductPictures' => 'Produktbilder in E-Mails anzeigen',
-
-    'SHOP_THEME_sImageStyle'          => 'Bild-Stil',
-    'SHOP_THEME_sImageStyle_grid'     => 'Raster',
-    'SHOP_THEME_sImageStyle_carousel' => 'Karussel',
 
     'SHOP_THEME_sBasketNoticeListButtonFunction' => 'Funktion des Merklisten-Buttons im Warenkorb',
     'SHOP_THEME_sBasketNoticeListButtonFunction_hide' => 'Button ausblenden',
