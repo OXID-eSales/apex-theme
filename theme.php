@@ -48,6 +48,12 @@ $aTheme = [
         ],
         [
             'group' => 'display',
+            'name'  => 'blBrandAzEnabled',
+            'type'  => 'bool',
+            'value' => 1,
+        ],
+        [
+            'group' => 'display',
             'name'  => 'blShowWeightInList',
             'type'  => 'bool',
             'value' => 1,

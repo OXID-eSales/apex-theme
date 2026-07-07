@@ -93,7 +93,33 @@
     {% if oView.hasVisibleSubCats() %}
         <div class="container-xxl">
             {% set iSubCategoriesCount = 0 %}
-            <div class="cat-list mb-4 pb-3">
+            {# OPALE-137: Brand A–Z overview — jump filter + grid/line toggle.
+               Scoped to the manufacturer overview only; category/vendor sub-cat
+               grids are untouched. Progressive enhancement: with JS disabled the
+               full brand grid still renders exactly as before. Toggleable via the
+               theme option "blBrandAzEnabled" (default on; unset value = on). #}
+            {% set brandAzOption = oViewConf.getViewThemeParam('blBrandAzEnabled') %}
+            {# On by default; only an explicit boolean false (theme option unticked) disables it.
+               Strict compare so an unset value (null) keeps the feature enabled. #}
+            {% set brandAz = (listType == 'manufacturer') and (brandAzOption is not same as(false)) %}
+            {% if brandAz %}
+                <div class="brand-az mb-3" data-brand-az>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                        <nav class="brand-az-index d-flex flex-wrap gap-1" aria-label="{{ translate({ ident: "BRAND" }) }} A–Z" data-brand-az-index></nav>
+                        <div class="btn-group mb-auto brand-az-view" role="group" aria-label="{{ translate({ ident: "BRAND" }) }}">
+                            <button type="button" class="btn btn-primary btn-icon" data-brand-az-view="grid" aria-pressed="true" title="{{ translate({ ident: "grid" }) }}">
+                                <svg><use xlink:href="#grid-fill"></use></svg>
+                                <span class="visually-hidden">{{ translate({ ident: "grid" }) }}</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btn-icon" data-brand-az-view="line" aria-pressed="false" title="{{ translate({ ident: "line" }) }}">
+                                <svg><use xlink:href="#list-ul"></use></svg>
+                                <span class="visually-hidden">{{ translate({ ident: "line" }) }}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="cat-list mb-4 pb-3{% if brandAz %} brand-az-list{% endif %}"{% if brandAz %} data-brand-az-list{% endif %}>
                 {% for category in oView.getSubCatList() %}
                     {% if category.getIsVisible() %}
                         {% set iSubCategoriesCount = iSubCategoriesCount+1 %}
@@ -103,7 +129,11 @@
                         {% else %}
                             {% set iconAltAttribute = translate({ ident: "CATEGORY_IMAGE_ALT", args: category.oxcategories__oxtitle.value }) %}
                         {% endif %}
-                            <a href="{{ category.getLink()|raw }}" title="{{ category.oxcategories__oxdesc.value }}" class="cat-list-item">
+                        {% if brandAz %}
+                            {% set brandFirst = (category.oxcategories__oxtitle.value|trim|upper|replace({'Ä':'A','Ö':'O','Ü':'U','ß':'S','Á':'A','À':'A','Â':'A','Ã':'A','Å':'A','Æ':'A','É':'E','È':'E','Ê':'E','Ë':'E','Í':'I','Ì':'I','Î':'I','Ï':'I','Ó':'O','Ò':'O','Ô':'O','Õ':'O','Ø':'O','Ú':'U','Ù':'U','Û':'U','Ñ':'N','Ç':'C'})|first) %}
+                            {% set brandLetter = brandFirst matches '/^[A-Z]$/' ? brandFirst : '#' %}
+                        {% endif %}
+                            <a href="{{ category.getLink()|raw }}" title="{{ category.oxcategories__oxdesc.value }}" class="cat-list-item"{% if brandAz %} data-brand-letter="{{ brandLetter }}"{% endif %}>
                                 {% if iconUrl %}
                                     <img loading="lazy" src="{{ category.getIconUrl()|raw }}" alt="{{ iconAltAttribute }}" class="cat-list-item-img">
                                 {% else %}
@@ -136,6 +166,78 @@
                     {% endif %}
                 {% endfor %}
             </div>
+            {% if brandAz %}
+                <style>
+                    [data-brand-az] .brand-az-index .brand-az-letter { min-width: 2.25rem; text-align: center; }
+                    [data-brand-az] .brand-az-index .brand-az-letter.disabled { opacity: .4; pointer-events: none; }
+                    [data-brand-az-list] .cat-list-item[data-brand-letter] { scroll-margin-top: 6rem; }
+                    [data-brand-az-list].brand-az-list--line { display: block; }
+                    [data-brand-az-list].brand-az-list--line .cat-list-item { display: flex; align-items: center; gap: .75rem; width: 100%; max-width: none; padding: .5rem .25rem; border-bottom: 1px solid var(--bs-border-color); }
+                    [data-brand-az-list].brand-az-list--line .cat-list-item-img { width: 2.5rem; height: 2.5rem; object-fit: contain; flex: 0 0 auto; }
+                    [data-brand-az-list].brand-az-list--line .cat-list-item-name { text-align: left; }
+                </style>
+                <script>
+                    (function () {
+                        var root = document.querySelector('[data-brand-az]');
+                        var list = document.querySelector('[data-brand-az-list]');
+                        if (!root || !list) { return; }
+
+                        var ORDER = ['#','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+                        var items = Array.prototype.slice.call(list.querySelectorAll('.cat-list-item[data-brand-letter]'));
+                        var firstOf = {};
+                        items.forEach(function (item) {
+                            var l = item.getAttribute('data-brand-letter') || '#';
+                            if (!firstOf[l]) {
+                                firstOf[l] = item;
+                                item.id = 'brand-letter-' + (l === '#' ? 'num' : l);
+                            }
+                        });
+
+                        var nav = root.querySelector('[data-brand-az-index]');
+                        if (nav) {
+                            ORDER.forEach(function (l) {
+                                var present = !!firstOf[l];
+                                var el = document.createElement(present ? 'a' : 'span');
+                                el.className = 'btn btn-sm brand-az-letter ' + (present ? 'btn-outline-primary' : 'btn-outline-secondary disabled');
+                                el.textContent = (l === '#') ? '0–9' : l;
+                                if (present) {
+                                    el.href = '#' + firstOf[l].id;
+                                    el.addEventListener('click', function (e) {
+                                        e.preventDefault();
+                                        firstOf[l].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        if (history.replaceState) { history.replaceState(null, '', '#' + firstOf[l].id); }
+                                    });
+                                } else {
+                                    el.setAttribute('aria-disabled', 'true');
+                                }
+                                nav.appendChild(el);
+                            });
+                        }
+
+                        var KEY = 'opalBrandAzView';
+                        var buttons = Array.prototype.slice.call(root.querySelectorAll('[data-brand-az-view]'));
+                        function apply(view) {
+                            list.classList.toggle('brand-az-list--line', view === 'line');
+                            buttons.forEach(function (b) {
+                                var active = b.getAttribute('data-brand-az-view') === view;
+                                b.classList.toggle('btn-primary', active);
+                                b.classList.toggle('btn-outline-primary', !active);
+                                b.setAttribute('aria-pressed', active ? 'true' : 'false');
+                            });
+                        }
+                        buttons.forEach(function (b) {
+                            b.addEventListener('click', function () {
+                                var view = b.getAttribute('data-brand-az-view');
+                                try { localStorage.setItem(KEY, view); } catch (e) {}
+                                apply(view);
+                            });
+                        });
+                        var saved = null;
+                        try { saved = localStorage.getItem(KEY); } catch (e) {}
+                        apply(saved === 'line' ? 'line' : 'grid');
+                    }());
+                </script>
+            {% endif %}
         </div>
     {% endif %}
 

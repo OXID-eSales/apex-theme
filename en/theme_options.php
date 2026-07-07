@@ -93,6 +93,8 @@ $aLang = array(
 
     'SHOP_THEME_blShowListDisplayType'              => 'Display product list type selector',
     'HELP_SHOP_THEME_blShowListDisplayType'         => 'Decide if the visitor of your store can select the type of the product list in store front. If this options is not activated, your visitors will see the lists displayed like you adjusted in the drop box "Default product list type".',
+    'SHOP_THEME_blBrandAzEnabled'                   => 'A–Z brand filter on the manufacturer overview',
+    'HELP_SHOP_THEME_blBrandAzEnabled'              => 'Shows an A–Z jump bar and a grid/list toggle on the manufacturer overview page (By manufacturer). If this option is disabled, the manufacturer overview is displayed the default way.',
     'SHOP_THEME_sDefaultListDisplayType'            => 'Default product list type',
     'SHOP_THEME_sDefaultListDisplayType_grid'       => 'Grid',
     'SHOP_THEME_sDefaultListDisplayType_line'       => 'List',
