@@ -93,6 +93,8 @@ $aLang = array(
 
     'SHOP_THEME_blShowListDisplayType'              => 'Produktlistentyp in Produktlisten anzeigen',
     'HELP_SHOP_THEME_blShowListDisplayType'         => 'Darf der Besucher Ihres Online-Shops die Art der Listenansicht auswählen? Falls diese Option nicht aktiviert ist, werden die Listenansichten so angezeigt wie in der Dropbox "Standard für Produktlistentyp" eingestellt.',
+    'SHOP_THEME_blBrandAzEnabled'                   => 'A–Z-Markenfilter auf der Hersteller-Übersicht',
+    'HELP_SHOP_THEME_blBrandAzEnabled'              => 'Zeigt auf der Hersteller-Übersichtsseite (Nach Hersteller) eine A–Z-Sprungleiste sowie einen Galerie/Liste-Umschalter an. Ist diese Option deaktiviert, wird die Hersteller-Übersicht wie im Standard dargestellt.',
     'SHOP_THEME_sDefaultListDisplayType'            => 'Standard für Produktlistentyp',
     'SHOP_THEME_sDefaultListDisplayType_grid'       => 'Galerie',
     'SHOP_THEME_sDefaultListDisplayType_line'       => 'Liste',
