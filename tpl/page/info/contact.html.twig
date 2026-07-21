@@ -1,6 +1,6 @@
 {% capture append = "oxidBlock_content" %}
 
-    {% set sGoogleMapsAddr = oViewConf.getThemeSettings().getString('sGoogleMapsAddr') %}
+    {% set sGoogleMapsAddr = oViewConf.getThemeSettings().getString('googleMapsAddress') %}
     {% if sGoogleMapsAddr %}
         <div class="google-maps mb-5">
             <iframe title="{{ translate({ ident: "DD_CONTACT_MAP_TITLE", args: sGoogleMapsAddr }) }}" width="100%" height="400" style="width:100%;" frameborder="0" src="https://www.google.de/maps?t=m&amp;q={{ sGoogleMapsAddr|urlencode }}&amp;ie=UTF8&amp;hq={{ sGoogleMapsAddr|urlencode }}&amp;output=embed"></iframe>

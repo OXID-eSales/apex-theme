@@ -145,7 +145,7 @@
 
                                             {% if oUnitPrice %}
                                                 <span id="productPricePerUnit_{{ testid }}" class="pricePerUnit text-nowrap">{{ product.oxarticles__oxunitquantity.value }} {{ product.getUnitName() }} | {{ format_price(oUnitPrice, { currency: currency }) }}/{{ product.getUnitName() }}</span>
-                                            {% elseif product.oxarticles__oxweight.value and oViewConf.getThemeSettings().getBoolean('blShowWeightInList')  %}
+                                            {% elseif product.oxarticles__oxweight.value and oViewConf.getThemeSettings().getBoolean('showWeightInList')  %}
                                                 <span id="productPricePerUnit_Weight_{{ testid }}" class="pricePerUnit text-nowrap">
                                                     <span title="weight">{{ translate({ ident: "WEIGHT" }) }}</span>
                                                     <span class="value">{{ product.oxarticles__oxweight.value }} {{ translate({ ident: "KG" }) }}</span>
