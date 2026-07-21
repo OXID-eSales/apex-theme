@@ -5,6 +5,7 @@
 ### Changed
 - Migrate theme metadata and settings from `theme.php` to `metadata.yaml` and `config.yaml`
 - Templates now read theme settings through the theme setting service `oViewConf.getThemeSettings()`
+- Rename theme settings to remove Hungarian notation and outdated terms
 
 ### Added
 - ALT attributes for product images
