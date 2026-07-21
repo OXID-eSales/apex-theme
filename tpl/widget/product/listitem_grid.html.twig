@@ -163,11 +163,11 @@
                     {% endblock %}
                 </div>
             </div>
-            {% if oUnitPrice or (product.oxarticles__oxweight.value and oViewConf.getThemeSettings().getBoolean('blShowWeightInList'))%}
+            {% if oUnitPrice or (product.oxarticles__oxweight.value and oViewConf.getThemeSettings().getBoolean('showWeightInList'))%}
                 <div class="qty_weight">
                     {% if oUnitPrice %}
                         {{ product.oxarticles__oxunitquantity.value }} {{ product.getUnitName() }} <br>
-                    {% elseif product.oxarticles__oxweight.value and oViewConf.getThemeSettings().getBoolean('blShowWeightInList')  %}
+                    {% elseif product.oxarticles__oxweight.value and oViewConf.getThemeSettings().getBoolean('showWeightInList')  %}
                         <span id="productPricePerUnit_Weight_{{ testid }}" class="pricePerUnit">
                                 <span title="weight">{{ translate({ ident: "WEIGHT" }) }}</span>
                                 <span class="value">{{ product.oxarticles__oxweight.value }} {{ translate({ ident: "KG" }) }}</span>

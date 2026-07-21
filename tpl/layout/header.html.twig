@@ -46,9 +46,9 @@
 
                             <div class="header-container">
                                 {% block layout_header_logo %}
-                                    {% set slogoImg = oViewConf.getThemeSettings().getString('sLogoFile') %}
-                                    {% set sLogoWidth = oViewConf.getThemeSettings().getString('sLogoWidth') %}
-                                    {% set sLogoHeight = oViewConf.getThemeSettings().getString('sLogoHeight') %}
+                                    {% set slogoImg = oViewConf.getThemeSettings().getString('logoFile') %}
+                                    {% set sLogoWidth = oViewConf.getThemeSettings().getString('logoWidth') %}
+                                    {% set sLogoHeight = oViewConf.getThemeSettings().getString('logoHeight') %}
                                     <a href="{{ oViewConf.getHomeLink()|raw }}"
                                        title="{{ oxcmp_shop.oxshops__oxname.value }}" class="logo-link d-flex">
                                         {% if slogoImg %}

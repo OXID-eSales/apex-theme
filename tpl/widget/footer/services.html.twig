@@ -2,10 +2,10 @@
     <div class="nav flex-column">
         {% block footer_services_items %}
             <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=contact" }) }}">{{ translate({ ident: "CONTACT" }) }}</a>
-            {% if oViewConf.getThemeSettings().getBoolean('blFooterShowHelp') %}
+            {% if oViewConf.getThemeSettings().getBoolean('footerShowHelp') %}
                 <a class="nav-link" href="{{ oViewConf.getHelpPageLink()|raw }}">{{ translate({ ident: "HELP" }) }}</a>
             {% endif %}
-            {% if oViewConf.getThemeSettings().getBoolean('blFooterShowLinks') %}
+            {% if oViewConf.getThemeSettings().getBoolean('footerShowLinks') %}
                 <a class="nav-link" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=links" }) }}">{{ translate({ ident: "LINKS" }) }}</a>
             {% endif %}
             {% if oView.isActive('Invitations') %}

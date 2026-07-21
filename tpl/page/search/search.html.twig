@@ -4,7 +4,7 @@
     {% set template_title = search_title ~ "-" ~ searchparamforhtml %}
     {% set search_head = "HITS_FOR"|translate %}
     {% set search_head = oView.getArticleCount() ~ " " ~ search_head ~ ' "' ~ oView.getSearchParamForHtml() ~ '"' %}
-    {% set showPopBreadcrump = oViewConf.getThemeSettings().getBoolean('sShowPopBreadcrump') %}
+    {% set showPopBreadcrump = oViewConf.getThemeSettings().getBoolean('showPopupBreadcrumb') %}
 
     {% block search_header %}
         <div class="bg-white list-header mb-4">

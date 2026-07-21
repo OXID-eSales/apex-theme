@@ -11,7 +11,7 @@
     {% set oPictureProduct = oView.getPicturesProduct() %}
     {% set currency = oView.getActCurrency() %}
     {% set sPageHeadTitle = oDetailsProduct.oxarticles__oxtitle.value ~ ' ' ~ oDetailsProduct.oxarticles__oxvarselect.value %}
-    {% set productListNavigation = oViewConf.getThemeSettings().getBoolean('sProductListNavigation') %}
+    {% set productListNavigation = oViewConf.getThemeSettings().getBoolean('showProductListNavigation') %}
 
     {% if oView.getPriceAlarmStatus() == 1 %}
         {% set _statusMessage1 = "PAGE_DETAILS_THANKYOUMESSAGE1"|translate ~ " " ~ oxcmp_shop.oxshops__oxname.value %}

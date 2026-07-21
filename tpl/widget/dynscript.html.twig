@@ -6,8 +6,8 @@
 {% endapply %}</script>
 
 {# Google Analytics Page Tracking #}
-{% set sGATrackingId = oViewConf.getThemeSettings().getString('sGATrackingId') %}
-{% if oViewConf.getThemeSettings().getBoolean('blUseGAPageTracker') and sGATrackingId %}
+{% set sGATrackingId = oViewConf.getThemeSettings().getString('googleAnalyticsTrackingId') %}
+{% if oViewConf.getThemeSettings().getBoolean('useGoogleAnalyticsPageTracker') and sGATrackingId %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ sGATrackingId }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -15,7 +15,7 @@
         gtag('js', new Date());
 
         gtag('config', '{{ sGATrackingId }}', {
-            {% if oViewConf.getThemeSettings().getBoolean('blGAAnonymizeIPs') %}
+            {% if oViewConf.getThemeSettings().getBoolean('googleAnalyticsAnonymizeIps') %}
             'anonymize_ip': true
             {% endif %}
         });
@@ -23,7 +23,7 @@
 {% endif %}
 
 {# Google Analytics eCommerce Tracking #}
-{% if oViewConf.getThemeSettings().getBoolean('blUseGAEcommerceTracking') and sGATrackingId and oViewConf.getTopActiveClassName() == 'thankyou' %}
+{% if oViewConf.getThemeSettings().getBoolean('useGoogleAnalyticsEcommerceTracking') and sGATrackingId and oViewConf.getTopActiveClassName() == 'thankyou' %}
     {% set oOrder = oView.getOrder() %}
 
     {% if oOrder %}

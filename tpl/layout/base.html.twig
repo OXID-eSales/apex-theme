@@ -54,7 +54,7 @@
                 <meta property="og:image" content="{{ actCategory.getIconUrl()|raw }}">
                 <meta property="og:url" content="{{ oView.getCanonicalUrl()|raw }}">
             {% else %}
-                {% set aOGImage = oViewConf.getThemeSettings().getString('aOGImage') %}
+                {% set aOGImage = oViewConf.getThemeSettings().getString('openGraphImage') %}
                 <meta property="og:type" content="website">
                 <meta property="og:image" content="{{ oViewConf.getImageUrl(aOGImage)|raw }}">
                 <meta property="og:url" content="{{ oView.getCanonicalUrl()|raw }}">
@@ -90,7 +90,7 @@
         {% endif %}
 
         {% block head_link_favicon %}
-            {% set aAppleTouchIcon = oViewConf.getThemeSettings().getString('aAppleTouchIcon') %}
+            {% set aAppleTouchIcon = oViewConf.getThemeSettings().getString('appleTouchIcon') %}
             {% set appleTouchIcon = oViewConf.getImageUrl("favicons/" ~ aAppleTouchIcon) %}
             {% if aAppleTouchIcon %}
                 {% set appleTouchIcon72 = appleTouchIcon %}
@@ -101,12 +101,12 @@
             {% endif %}
 
             <!-- Shortcut Icons -->
-            {% set sFaviconFile = oViewConf.getThemeSettings().getString('sFaviconFile') %}
-            {% set sFavicon16File = oViewConf.getThemeSettings().getString('sFavicon16File') %}
-            {% set sFavicon32File = oViewConf.getThemeSettings().getString('sFavicon32File') %}
-            {% set sFaviconSvg = oViewConf.getThemeSettings().getString('sFaviconSvg') %}
-            {% set sSiteManifestFile = oViewConf.getThemeSettings().getString('sSiteManifestFile') %}
-            {% set sThemeColor = oViewConf.getThemeSettings().getString('sThemeColor') %}
+            {% set sFaviconFile = oViewConf.getThemeSettings().getString('faviconFile') %}
+            {% set sFavicon16File = oViewConf.getThemeSettings().getString('favicon16File') %}
+            {% set sFavicon32File = oViewConf.getThemeSettings().getString('favicon32File') %}
+            {% set sFaviconSvg = oViewConf.getThemeSettings().getString('faviconSvg') %}
+            {% set sSiteManifestFile = oViewConf.getThemeSettings().getString('siteManifestFile') %}
+            {% set sThemeColor = oViewConf.getThemeSettings().getString('themeColor') %}
 
             {% if sFaviconFile %}
                 <link rel="icon" href="{{ oViewConf.getImageUrl("favicons/" ~ sFaviconFile)|raw }}" type="image/x-icon">

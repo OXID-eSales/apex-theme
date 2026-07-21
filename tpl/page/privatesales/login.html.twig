@@ -7,9 +7,9 @@
             <div class="container-xxl">
                 <div class="d-flex justify-content-between">
                     {% block dd_layout_page_header_logo %}
-                        {% set slogoImg = oViewConf.getThemeSettings().getString('sLogoFile') %}
-                        {% set sLogoWidth = oViewConf.getThemeSettings().getString('sLogoWidth') %}
-                        {% set sLogoHeight = oViewConf.getThemeSettings().getString('sLogoHeight') %}
+                        {% set slogoImg = oViewConf.getThemeSettings().getString('logoFile') %}
+                        {% set sLogoWidth = oViewConf.getThemeSettings().getString('logoWidth') %}
+                        {% set sLogoHeight = oViewConf.getThemeSettings().getString('logoHeight') %}
                         {% if slogoImg %}
                             <img src="{{ oViewConf.getImageUrl(slogoImg)|raw }}"
                                  alt="{{ oxcmp_shop.oxshops__oxname.value }}" width="{{ sLogoWidth }}"
