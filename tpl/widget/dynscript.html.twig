@@ -8,13 +8,13 @@
 {# Google Analytics Page Tracking #}
 {% set sGATrackingId = oViewConf.getThemeSettings().getString('sGATrackingId') %}
 {% if oViewConf.getThemeSettings().getBoolean('blUseGAPageTracker') and sGATrackingId %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ sGATrackingId }}"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ sGATrackingId|url_encode }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', '{{ sGATrackingId }}', {
+        gtag('config', '{{ sGATrackingId|e('js') }}', {
             {% if oViewConf.getThemeSettings().getBoolean('blGAAnonymizeIPs') %}
             'anonymize_ip': true
             {% endif %}

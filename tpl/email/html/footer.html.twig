@@ -19,33 +19,33 @@
 
                                                                 <h5>{{ translate({ ident: "DD_FOOTER_FOLLOW_US", suffix: "COLON" }) }}</h5>
 
-                                                                {% if oViewConf.getThemeSettings().getString('sFacebookUrl') %}
+                                                                {% if oViewConf.getThemeSettings().getString('sFacebookUrl') matches '/^https?:\/\//i' %}
                                                                     <table class="tiny-button facebook">
                                                                         <tr>
                                                                             <td>
-                                                                                <a href="{{ oViewConf.getThemeSettings().getString('sFacebookUrl')|raw }}" target="_blank">Facebook</a>
+                                                                                <a href="{{ oViewConf.getThemeSettings().getString('sFacebookUrl') }}" target="_blank">Facebook</a>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
                                                                     <br>
                                                                 {% endif %}
 
-                                                                {% if oViewConf.getThemeSettings().getString('sTwitterUrl') %}
+                                                                {% if oViewConf.getThemeSettings().getString('sTwitterUrl') matches '/^https?:\/\//i' %}
                                                                     <table class="tiny-button twitter">
                                                                         <tr>
                                                                             <td>
-                                                                                <a href="{{ oViewConf.getThemeSettings().getString('sTwitterUrl')|raw }}" target="_blank">Twitter</a>
+                                                                                <a href="{{ oViewConf.getThemeSettings().getString('sTwitterUrl') }}" target="_blank">Twitter</a>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
                                                                     <br>
                                                                 {% endif %}
 
-                                                                {% if oViewConf.getThemeSettings().getString('sYouTubeUrl') %}
+                                                                {% if oViewConf.getThemeSettings().getString('sYouTubeUrl') matches '/^https?:\/\//i' %}
                                                                     <table class="tiny-button youtube">
                                                                         <tr>
                                                                             <td>
-                                                                                <a href="{{ oViewConf.getThemeSettings().getString('sYouTubeUrl')|raw }}" target="_blank">YouTube</a>
+                                                                                <a href="{{ oViewConf.getThemeSettings().getString('sYouTubeUrl') }}" target="_blank">YouTube</a>
                                                                             </td>
                                                                         </tr>
                                                                     </table>

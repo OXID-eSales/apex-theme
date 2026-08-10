@@ -76,50 +76,50 @@
                                     <div class="h4">{{ translate({ ident: "SOCIAL_MEDIA" }) }}</div>
                                     {% block dd_footer_social_links_inner %}
                                         {% block dd_footer_social_links_list %}
-                                            {% if oViewConf.getThemeSettings().getString('sFacebookUrl') %}
+                                            {% if oViewConf.getThemeSettings().getString('sFacebookUrl') matches '/^https?:\/\//i' %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getThemeSettings().getString('sFacebookUrl')|raw }}">
+                                                   href="{{ oViewConf.getThemeSettings().getString('sFacebookUrl') }}">
                                                     <span class="visually-hidden">Facebook</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#facebook"></use>
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getThemeSettings().getString('sInstagramUrl') %}
+                                            {% if oViewConf.getThemeSettings().getString('sInstagramUrl') matches '/^https?:\/\//i' %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getThemeSettings().getString('sInstagramUrl')|raw }}">
+                                                   href="{{ oViewConf.getThemeSettings().getString('sInstagramUrl') }}">
                                                     <span class="visually-hidden">Instagram</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#instagram"></use>
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getThemeSettings().getString('sTwitterUrl') %}
+                                            {% if oViewConf.getThemeSettings().getString('sTwitterUrl') matches '/^https?:\/\//i' %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getThemeSettings().getString('sTwitterUrl')|raw }}">
+                                                   href="{{ oViewConf.getThemeSettings().getString('sTwitterUrl') }}">
                                                     <span class="visually-hidden">Twitter</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#twitter"></use>
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getThemeSettings().getString('sYouTubeUrl') %}
+                                            {% if oViewConf.getThemeSettings().getString('sYouTubeUrl') matches '/^https?:\/\//i' %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getThemeSettings().getString('sYouTubeUrl')|raw }}">
+                                                   href="{{ oViewConf.getThemeSettings().getString('sYouTubeUrl') }}">
                                                     <span class="visually-hidden">YouTube</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#youtube"></use>
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getThemeSettings().getString('sBlogUrl') %}
+                                            {% if oViewConf.getThemeSettings().getString('sBlogUrl') matches '/^https?:\/\//i' %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
-                                                   href="{{ oViewConf.getThemeSettings().getString('sBlogUrl')|raw }}">
+                                                   href="{{ oViewConf.getThemeSettings().getString('sBlogUrl') }}">
                                                     <span class="visually-hidden">Blog</span>
                                                     <svg aria-hidden="true">
                                                         <use xlink:href="#wordpress"></use>

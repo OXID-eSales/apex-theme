@@ -5,6 +5,7 @@
 ### Changed
 - Migrate theme metadata and settings from `theme.php` to `metadata.yaml` and `config.yaml`
 - Templates now read theme settings through the theme setting service `oViewConf.getThemeSettings()`
+- Social media links and the Google Analytics tracking ID are now escaped in templates to prevent cross-site scripting
 
 ### Added
 - ALT attributes for product images
