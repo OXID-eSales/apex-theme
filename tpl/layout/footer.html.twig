@@ -76,7 +76,7 @@
                                     <div class="h4">{{ translate({ ident: "SOCIAL_MEDIA" }) }}</div>
                                     {% block dd_footer_social_links_inner %}
                                         {% block dd_footer_social_links_list %}
-                                            {% if oViewConf.getThemeSettings().getString('sFacebookUrl') matches '/^https?:\/\//i' %}
+                                            {% if oViewConf.getThemeSettings().getString('sFacebookUrl') matches '~^https?://~i' %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
                                                    href="{{ oViewConf.getThemeSettings().getString('sFacebookUrl') }}">
@@ -86,7 +86,7 @@
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getThemeSettings().getString('sInstagramUrl') matches '/^https?:\/\//i' %}
+                                            {% if oViewConf.getThemeSettings().getString('sInstagramUrl') matches '~^https?://~i' %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
                                                    href="{{ oViewConf.getThemeSettings().getString('sInstagramUrl') }}">
@@ -96,7 +96,7 @@
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getThemeSettings().getString('sTwitterUrl') matches '/^https?:\/\//i' %}
+                                            {% if oViewConf.getThemeSettings().getString('sTwitterUrl') matches '~^https?://~i' %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
                                                    href="{{ oViewConf.getThemeSettings().getString('sTwitterUrl') }}">
@@ -106,7 +106,7 @@
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getThemeSettings().getString('sYouTubeUrl') matches '/^https?:\/\//i' %}
+                                            {% if oViewConf.getThemeSettings().getString('sYouTubeUrl') matches '~^https?://~i' %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
                                                    href="{{ oViewConf.getThemeSettings().getString('sYouTubeUrl') }}">
@@ -116,7 +116,7 @@
                                                     </svg>
                                                 </a>
                                             {% endif %}
-                                            {% if oViewConf.getThemeSettings().getString('sBlogUrl') matches '/^https?:\/\//i' %}
+                                            {% if oViewConf.getThemeSettings().getString('sBlogUrl') matches '~^https?://~i' %}
                                                 <a target="_blank" class="btn btn-primary"
                                                    rel="noopener"
                                                    href="{{ oViewConf.getThemeSettings().getString('sBlogUrl') }}">

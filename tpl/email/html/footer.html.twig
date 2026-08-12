@@ -19,7 +19,7 @@
 
                                                                 <h5>{{ translate({ ident: "DD_FOOTER_FOLLOW_US", suffix: "COLON" }) }}</h5>
 
-                                                                {% if oViewConf.getThemeSettings().getString('sFacebookUrl') matches '/^https?:\/\//i' %}
+                                                                {% if oViewConf.getThemeSettings().getString('sFacebookUrl') matches '~^https?://~i' %}
                                                                     <table class="tiny-button facebook">
                                                                         <tr>
                                                                             <td>
@@ -30,7 +30,7 @@
                                                                     <br>
                                                                 {% endif %}
 
-                                                                {% if oViewConf.getThemeSettings().getString('sTwitterUrl') matches '/^https?:\/\//i' %}
+                                                                {% if oViewConf.getThemeSettings().getString('sTwitterUrl') matches '~^https?://~i' %}
                                                                     <table class="tiny-button twitter">
                                                                         <tr>
                                                                             <td>
@@ -41,7 +41,7 @@
                                                                     <br>
                                                                 {% endif %}
 
-                                                                {% if oViewConf.getThemeSettings().getString('sYouTubeUrl') matches '/^https?:\/\//i' %}
+                                                                {% if oViewConf.getThemeSettings().getString('sYouTubeUrl') matches '~^https?://~i' %}
                                                                     <table class="tiny-button youtube">
                                                                         <tr>
                                                                             <td>
