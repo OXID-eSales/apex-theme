@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .btn {
   svg {
     width: 16px;
@@ -37,7 +39,7 @@
 
     @include media-breakpoint-up(lg) {
       &:hover {
-        background: darken($tag-bg, 10%);
+        background: color.adjust($tag-bg, $lightness: -10%);
       }
     }
   }

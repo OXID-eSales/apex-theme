@@ -44,6 +44,21 @@ bin/oe-console oe:theme:activate apex
 
 [Vite](https://vitejs.dev) and [npm](https://nodejs.org) are required to generate theme assets during development.
 
+The asset build requires Node 20.19 or newer. Note that the odd Node release 21 is not supported by the toolchain.
+
+Install the dependencies and build the assets with:
+
+```bash
+npm install
+npm run build
+```
+
+To rebuild automatically on SCSS and JS file changes during development, use watch mode:
+
+```bash
+npm run watch
+```
+
 ## License
 
 See LICENSE file for license details.

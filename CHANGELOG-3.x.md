@@ -10,7 +10,13 @@
     - `widget_locator_attributes_filterlist_hidden_params`
     - `widget_locator_attributes_resetfilter_hidden_params`
 
+### Changed
+- Theme assets are built with Vite 7 and Sass 1.80 now, so the asset build requires Node 20.19 or newer
+- Bootstrap is imported in `build/scss/style.scss` through bare package specifiers instead of relative paths
+- Deprecated Sass syntax replaced in the theme styles
+
 ### Removed
+- Unused `dart-sass` and `matchdep` dev dependencies
 - PayPal module styles from the theme so the PayPal module's own styles are no longer overridden (fixes minibasket Express Checkout button position)
 - non-functional Twig block hooks from `tabs.html.twig`: 
   - `details_tabs_longdescription`
