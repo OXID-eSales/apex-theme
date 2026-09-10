@@ -1,0 +1,11 @@
+{% block widget_product_action %}
+    {% set oActionProducts = oView.getAction() %}
+
+    {% if oActionProducts %}
+        {% set listId = oView.getViewParameter('listId')|default('articles_' ~ oView.getViewParameter('action')) %}
+
+        <div class="container-xxl row-spacer">
+            {% include "widget/product/list.html.twig" with {type: oView.getListType(), listId: listId, head: oView.getActionName(), products: oActionProducts, showMainLink: true} %}
+        </div>
+    {% endif %}
+{% endblock %}
