@@ -1,10 +1,17 @@
 # Change Log for OXID APEX Theme
 
 ## [v8.0.0-alpha.3] - Unreleased
-*Compilation release*
+
+### Changed
+- Migrate theme metadata and settings from `theme.php` to `metadata.yaml` and `config.yaml`
+- Templates now read theme settings through the theme setting service `oViewConf.getThemeSettings()`
+- Rename theme settings to remove Hungarian notation and outdated terms
 
 ### Added
 - ALT attributes for product images
+
+### Removed
+- Theme settings that the templates no longer use
 
 ## [v8.0.0-alpha.2] - 2026-02-12
 *Compilation release*
