@@ -5,18 +5,16 @@
     "author": "Tino Favetto, c&c concepts and creations gmbh",
     "type": "module",
     "engines": {
-        "node": ">=8"
+        "node": "^20.19.0 || >=22.12.0"
     },
     "devDependencies": {
         "@fontsource/oswald": "^4.5.7",
         "@popperjs/core": "^2.9.2",
         "bootstrap": "5.2.3",
-        "dart-sass": "^1.25.0",
         "autoprefixer": "^10.4.20",
-        "vite": "^5.3.0",
-        "vite-plugin-static-copy": "^2.1.0",
-        "sass": "~1.60.0",
-        "matchdep": "^2.0.0",
+        "vite": "^7.3.6",
+        "vite-plugin-static-copy": "^3.1.5",
+        "sass": "~1.80.0",
         "roboto-fontface": "^0.10.0"
     },
     "scripts": {

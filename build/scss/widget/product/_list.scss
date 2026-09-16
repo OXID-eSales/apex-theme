@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import 'list/listitem-grid';
 @import 'list/listitem-line';
 
@@ -28,7 +30,7 @@
   scroll-behavior: smooth;
   scroll-margin-inline-start: 50px;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: $grid-gutter-width/2;
+  margin-bottom: math.div($grid-gutter-width, 2);
   display: flex;
 
   &::-webkit-scrollbar,
@@ -195,7 +197,7 @@
     font-size: 14px;
     background-color: transparent;
     border: 2px solid $primary;
-    margin-bottom: $grid-gutter-width/2;
+    margin-bottom: math.div($grid-gutter-width, 2);
 
     @include media-breakpoint-up(md) {
       max-width: 150px;

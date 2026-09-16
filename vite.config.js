@@ -23,6 +23,11 @@ export default defineConfig({
                 javascriptEnabled: true,
             },
             scss: {
+                // Silence deprecation warnings coming from dependencies (Bootstrap)
+                quietDeps: true,
+                silenceDeprecations: [
+                    'import',
+                ],
                 api: 'modern'
             },
             css: {
