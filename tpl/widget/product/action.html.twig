@@ -1,0 +1,9 @@
+{% block widget_product_action %}
+    {% set oActionProducts = oView.getAction() %}
+
+    {% if oActionProducts %}
+        <div class="container-xxl row-spacer">
+            {% include "widget/product/list.html.twig" with {type: oView.getListType(), listId: "articles", head: oView.getActionName(), products: oActionProducts, showMainLink: true} %}
+        </div>
+    {% endif %}
+{% endblock %}
