@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v3.1.1 - Unreleased
+## v3.2.0 - Unreleased
 
 ### Added
 - New blocks wrapping the hidden form parameters in GET forms:
