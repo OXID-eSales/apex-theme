@@ -32,6 +32,7 @@
   - `details_relatedproducts_crossselling`
 
 ### Fixed
+- Stored XSS on the product detail page: the value of article external URL is now escaped and only rendered for `http://` and `https://` URLs
 - Order history showing "Shipped" status for unshipped orders due to stale empty-date sentinel [PR-72](https://github.com/OXID-eSales/apex-theme/pull/72)
 - Price calculation in order summary e-mails [#0007880](https://bugs.oxid-esales.com/view.php?id=7880)
 - Tabs on product detail page not rendering content when using `tabs.html.twig` or `related_products_tabs.html.twig`[#0007703](https://bugs.oxid-esales.com/view.php?id=7703)
