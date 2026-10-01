@@ -1,9 +1,7 @@
 {% capture append = "oxidBlock_content" %}
     {% if oView.getActiveRecommList() %}
         {% set _actvrecommlist = oView.getActiveRecommList() %}
-        {% set recommendation_head = "LIST_BY"|translate %}
-        {% set recommendation_head = _actvrecommlist.oxrecommlists__oxtitle.value ~ " <span>(" ~ recommendation_head ~ " " ~ _actvrecommlist->oxrecommlists__oxauthor->value ~ ")</span>" %}
-        <h1 class="page-header">{{ recommendation_head }}</h1>
+        <h1 class="page-header">{{ _actvrecommlist.oxrecommlists__oxtitle.value }} <span>({{ "LIST_BY"|translate }} {{ _actvrecommlist.oxrecommlists__oxauthor.value }})</span></h1>
         <div class="listRefine clear bottomRound">
             {% include "widget/locator/listlocator.html.twig" with {locator: oView.getPageNavigation()} %}
         </div>
@@ -33,10 +31,7 @@
         {% endif %}
     {% else %}
 
-        {% set hitsfor = "HITS_FOR"|translate %}
-        {% set recommendation_head = oView.getArticleCount() ~ " " ~ hitsfor ~ " &quot;" ~ oView->getSearchForHtml() ~ "&quot;" %}
-
-        <h1 class="page-header">{{ recommendation_head }}</h1>
+        <h1 class="page-header">{{ oView.getArticleCount() }} {{ "HITS_FOR"|translate }} "{{ oView.getSearchForHtml() }}"</h1>
         {% include "page/recommendations/inc/list.html.twig" %}
     {% endif %}
     {{ insert_tracker() }}
