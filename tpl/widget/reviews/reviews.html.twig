@@ -6,7 +6,7 @@
                     <div class="h4">
                         {{ translate({ ident: "WRITE_PRODUCT_REVIEW" }) }}
                     </div>
-                    {% if oView.ratingIsActive() %}
+                    {% if not hideProductRating and oView.ratingIsActive() %}
                         {% block details_productmain_ratings %}
                             {% include "widget/reviews/rating.html.twig" with {itemid: "anid=" ~ oDetailsProduct.oxarticles__oxnid.value, sRateUrl: oDetailsProduct.getLink()} %}
                         {% endblock %}

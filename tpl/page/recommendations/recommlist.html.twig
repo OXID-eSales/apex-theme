@@ -26,7 +26,7 @@
         {% if oView.isReviewActive() %}
         <div class="widgetBox reviews">
             <h2 class="h4">{{ translate({ ident: "WRITE_PRODUCT_REVIEW" }) }}</h2>
-            {% include "widget/reviews/reviews.html.twig" %}
+            {% include "widget/reviews/reviews.html.twig" with {hideProductRating: true} %}
         </div>
         {% endif %}
     {% else %}
