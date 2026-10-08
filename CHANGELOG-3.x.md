@@ -1,6 +1,6 @@
 # Change Log for OXID APEX Theme
 
-## v3.2.0 - Unreleased
+## v3.2.0 - 2026-10-06
 
 ### Added
 - New blocks wrapping the hidden form parameters in GET forms:
@@ -32,11 +32,13 @@
   - `details_relatedproducts_crossselling`
 
 ### Fixed
-- Stored XSS on the product detail page: the value of article external URL is now escaped and only rendered for `http://` and `https://` URLs
+- Value of article external URL is now escaped and only rendered for `http://` and `https://` URLs
 - Order history showing "Shipped" status for unshipped orders due to stale empty-date sentinel [PR-72](https://github.com/OXID-eSales/apex-theme/pull/72)
 - Price calculation in order summary e-mails [#0007880](https://bugs.oxid-esales.com/view.php?id=7880)
 - Tabs on product detail page not rendering content when using `tabs.html.twig` or `related_products_tabs.html.twig`[#0007703](https://bugs.oxid-esales.com/view.php?id=7703)
 - Missing template `tpl/widget/product/action.html.twig` for the `oxwactions` widget [#0007866](https://bugs.oxid-esales.com/view.php?id=7866)
+- Recommendation list page (`cl=recommlist`) not rendering due to leftover Smarty `->` syntax in the template; heading title, author and search term are now properly escaped [#0008006](https://bugs.oxid-esales.com/view.php?id=8006)
+- Review page (`cl=review`) and recommendation list page (`cl=recommlist`) not rendering when reviews are enabled
 
 ## v3.1.0 - 2026-04-08
 
