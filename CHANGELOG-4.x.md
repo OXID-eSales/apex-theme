@@ -12,6 +12,7 @@
 
 ### Removed
 - Theme settings that the templates no longer use
+- `theme.php`
 
 ## [v8.0.0-alpha.2] - 2026-02-12
 *Compilation release*
