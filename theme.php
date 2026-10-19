@@ -34,12 +34,14 @@ $aTheme = [
             'type'  => 'bool',
             'value' => 1,
         ],
+        // @deprecated
         [
             'group' => 'display',
             'name'  => 'blShowFinalStep',
             'type'  => 'bool',
             'value' => 1,
         ],
+        // END deprecated
         [
             'group' => 'display',
             'name'  => 'blShowListDisplayType',
@@ -434,6 +436,7 @@ $aTheme = [
         ],
 
 //GOOGLE
+        // @deprecated
         [
             'group' => 'googlets',
             'name'  => 'blUseGoogleTS',
@@ -494,6 +497,7 @@ $aTheme = [
             'type'  => 'str',
             'value' => 'de',
         ],
+        // END deprecated
 //KONTAKT
         [
             'group' => 'contact',

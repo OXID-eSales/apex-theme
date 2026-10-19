@@ -1,5 +1,10 @@
 # Change Log for OXID APEX Theme
 
+## v3.3.0 - Unreleased
+
+### Deprecated
+- Theme setting `blShowFinalStep` and Google Trusted Stores theme settings (`blUseGoogleTS`, `sGoogleVendorId`, `sGoogleShoppingAccountId`, `sShoppingCountry`, `sShoppingLanguage`, `sPageLanguage`, `sDeliveryDaysOnStock`, `sDeliveryDaysNotOnStock`, `sShippingDaysOnStock`, `sShippingDaysNotOnStock`)
+
 ## v3.2.0 - 2026-10-06
 
 ### Added
