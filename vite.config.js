@@ -46,7 +46,7 @@ export default defineConfig({
     build: {
         minify: 'esbuild',
         sourcemap: true,
-        outDir: path.resolve(__dirname, 'out/apex/src'),
+        outDir: path.resolve(__dirname, 'assets/src'),
         emptyOutDir: true,
         rollupOptions: {
             preserveEntrySignatures: "strict",

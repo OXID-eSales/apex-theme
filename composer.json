@@ -23,7 +23,7 @@
     "prefer-stable": true,
     "extra": {
         "oxideshop": {
-            "assets-directory": "out/apex",
+            "assets-directory": "assets",
             "blacklist-filter": [
                 "build/**/*",
                 "grunt/**/*",

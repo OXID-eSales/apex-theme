@@ -10,6 +10,7 @@
 - Theme metadata and settings moved from `theme.php` to `metadata.yaml` and `config.yaml`
 - Replace `oViewConf.getViewThemeParam()` with `oViewConf.getThemeSettings()` in templates
 - Theme settings renamed to remove Hungarian notation and outdated terms, e.g. `sShowNewestArticles` is now `showNewestProducts`
+- Theme assets moved from `out/apex` to `assets`
 
 ### Removed
 - Unused theme settings `blShowFinalStep` and Google Trusted Stores theme settings
