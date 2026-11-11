@@ -1,4 +1,4 @@
-<form class="needs-validation" action="{{ oViewConf.getSelfActionLink()|raw }}" name="forgotpwd" method="post" novalidate>
+<form class="needs-validation" action="{{ oViewConf.getSelfLink()|raw }}" name="forgotpwd" method="post" novalidate>
     {% block forgotpwd_change_password %}
         {% set aErrors = oView.getFieldValidationErrors() %}
         {{ oViewConf.getHiddenSid()|raw }}

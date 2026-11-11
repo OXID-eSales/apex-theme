@@ -49,7 +49,7 @@
         {% set blShowToBasket = false %}
     {% endif %}
 
-    <form name="tobasket.{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink()|raw }}" method="post"{% else %}action="{{ _productLink|raw }}" method="get"{% endif %}>
+    <form name="tobasket.{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfLink()|raw }}" method="post"{% else %}action="{{ _productLink|raw }}" method="get"{% endif %}>
         <div class="variants">
             {% hasrights { ident: "TOBASKET" } %}
                 {% if blShowToBasket %}
@@ -165,7 +165,7 @@
 
     </form>
 
-    <form action="{{ oViewConf.getSelfActionLink()|raw }}" method="post">
+    <form action="{{ oViewConf.getSelfLink()|raw }}" method="post">
             {{ oViewConf.getHiddenSid()|raw }}
             {{ oViewConf.getNavFormParams()|raw }}
             <input type="hidden" name="cl" value="{{ oViewConf.getActiveClassName() }}">

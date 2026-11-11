@@ -32,7 +32,7 @@
 {% endif %}
 
 {% hasrights { ident: "TOBASKET" } %}
-    <form class="js-oxProductForm" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post">
+    <form class="js-oxProductForm" action="{{ oViewConf.getSelfLink()|raw }}" method="post">
             {{ oViewConf.getHiddenSid()|raw }}
             {{ oViewConf.getNavFormParams()|raw }}
             <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">

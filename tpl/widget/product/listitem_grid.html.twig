@@ -47,7 +47,7 @@
                     <div class="bottom">
                         {% if blShowToBasket %}
                             {% hasrights { ident: "TOBASKET" } %}
-                                <form name="tobasket{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfActionLink()|raw }}" method="post"{% else %}action="{{ _productLink|raw }}" method="get"{% endif %}>
+                                <form name="tobasket{{ testid }}" {% if blShowToBasket %}action="{{ oViewConf.getSelfLink()|raw }}" method="post"{% else %}action="{{ _productLink|raw }}" method="get"{% endif %}>
                                     <div class="d-none">
                                         {{ oViewConf.getNavFormParams()|raw }}
                                         {{ oViewConf.getHiddenSid()|raw }}
@@ -184,7 +184,7 @@
 
     {# Hidden form for wishlist action #}
     {% if oxcmp_user %}
-        <form id="toNoticeListFormGrid_{{ product.oxarticles__oxnid.value }}" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="d-none">
+        <form id="toNoticeListFormGrid_{{ product.oxarticles__oxnid.value }}" action="{{ oViewConf.getSelfLink()|raw }}" method="post" class="d-none">
             {{ oViewConf.getHiddenSid()|raw }}
             {{ oViewConf.getNavFormParams()|raw }}
             <input type="hidden" name="cl" value="{{ oViewConf.getTopActiveClassName() }}">

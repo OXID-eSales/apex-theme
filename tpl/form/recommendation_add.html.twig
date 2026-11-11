@@ -3,7 +3,7 @@
 {% else %}
     {% set product = oView.getProduct() %}
     {% if oxcmp_user.getRecommListsCount() %}
-        <form action="{{ oViewConf.getSelfActionLink()|raw }}" method="post">
+        <form action="{{ oViewConf.getSelfLink()|raw }}" method="post">
             <div class="card card-lg">
                 {{ oViewConf.getHiddenSid()|raw() }}
                 {{ oViewConf.getNavFormParams()|raw() }}

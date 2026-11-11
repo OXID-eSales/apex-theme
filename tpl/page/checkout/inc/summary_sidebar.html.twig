@@ -112,7 +112,7 @@
                         {# Hidden forms for voucher removal - placed outside list items #}
                         {% if editable %}
                             {% for key, sVoucher in oxcmp_basket.getVouchers() %}
-                                <form id="removeVoucherForm_{{ sVoucher.sVoucherId }}" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="d-none">
+                                <form id="removeVoucherForm_{{ sVoucher.sVoucherId }}" action="{{ oViewConf.getSelfLink()|raw }}" method="post" class="d-none">
                                     {{ oViewConf.getHiddenSid()|raw }}
                                     <input type="hidden" name="cl" value="basket">
                                     <input type="hidden" name="fnc" value="removeVoucher">
@@ -256,7 +256,7 @@
                 </h2>
                 <div class="collapse" id="voucherCollapse">
                     <div class="card-body">
-                        <form name="voucher" action="{{ oViewConf.getSelfActionLink()|raw }}" method="post" class="needs-validation" novalidate>
+                        <form name="voucher" action="{{ oViewConf.getSelfLink()|raw }}" method="post" class="needs-validation" novalidate>
                             {% block checkout_basket_vouchers_form_inner %}
                                 {{ oViewConf.getHiddenSid()|raw }}
                                 <input type="hidden" name="cl" value="basket">

@@ -3,7 +3,7 @@
     {{ translate({ ident: "HERE_YOU_SET_UP_NEW_PASSWORD" }) }}
 </p>
 
-<form action="{{ oViewConf.getSelfActionLink()|raw }}" class="needs-validation" name="forgotpwd" method="post" novalidate>
+<form action="{{ oViewConf.getSelfLink()|raw }}" class="needs-validation" name="forgotpwd" method="post" novalidate>
     {% block forgotpwd_email_form %}
     <div class="row">
         <div class="col-md-6">
