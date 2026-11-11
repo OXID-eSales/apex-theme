@@ -1,5 +1,5 @@
 <div class="card card-lg">
-    <form action="{{ oViewConf.getSslSelfLink()|raw }}" class="needs-validation" name="order" method="post" novalidate>
+    <form action="{{ oViewConf.getSelfLink()|raw }}" class="needs-validation" name="order" method="post" novalidate>
         {% set aErrors = oView.getFieldValidationErrors() %}
         {{ oViewConf.getHiddenSid()|raw }}
         {{ oViewConf.getNavFormParams()|raw }}

@@ -1,4 +1,4 @@
-<form id="optionLogin" class="needs-validation" name="login" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" novalidate>
+<form id="optionLogin" class="needs-validation" name="login" action="{{ oViewConf.getSelfLink()|raw }}" method="post" novalidate>
     {% block checkout_login_form_fields %}
         {{ oViewConf.getHiddenSid()|raw }}
         {{ oViewConf.getNavFormParams()|raw }}

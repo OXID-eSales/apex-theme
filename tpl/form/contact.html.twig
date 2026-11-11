@@ -2,7 +2,7 @@
     {% set editval = oView.getUserData() %}
 {% endif %}
 
-<form class="needs-validation" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" novalidate>
+<form class="needs-validation" action="{{ oViewConf.getSelfLink()|raw }}" method="post" novalidate>
     {{ oViewConf.getHiddenSid()|raw }}
     <input type="hidden" name="fnc" value="send">
     <input type="hidden" name="cl" value="contact">

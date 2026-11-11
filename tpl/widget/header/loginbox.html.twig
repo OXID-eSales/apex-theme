@@ -6,7 +6,7 @@
     {% endfor %}
 {% endcapture %}
 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-    <form class="px-3 py-2" name="login" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" style="width: 270px">
+    <form class="px-3 py-2" name="login" action="{{ oViewConf.getSelfLink()|raw }}" method="post" style="width: 270px">
         {% block loginbox_form_fields %}
             {{ oViewConf.getHiddenSid()|raw }}
             {{ oViewConf.getNavFormParams()|raw }}
@@ -30,7 +30,7 @@
                 <input id="loginPasword" type="password" name="lgn_pwd" autocomplete="current-password" class="form-control" placeholder="{{ translate({ ident: "PASSWORD" }) }}">
                 <label for="loginPasword">{{ translate({ ident: "PASSWORD" }) }}</label>
             </div>
-            <a class="small forgotPasswordOpener" href="{{ seo_url({ ident: oViewConf.getSslSelfLink() ~ "cl=forgotpwd" }) }}" title="{{ translate({ ident: "FORGOT_PASSWORD" }) }}">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
+            <a class="small forgotPasswordOpener" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=forgotpwd" }) }}" title="{{ translate({ ident: "FORGOT_PASSWORD" }) }}">{{ translate({ ident: "FORGOT_PASSWORD" }) }}</a>
 
             {% if oViewConf.isFunctionalityEnabled( "blShowRememberMe" ) %}
                 <div class="form-check mb-3">
@@ -47,7 +47,7 @@
         {% block loginbox_form_buttons %}
             <button type="submit" class="btn btn-primary">{{ translate({ ident: "LOGIN" }) }}</button>
 
-            <a class="btn btn-outline-primary" id="registerLink"  href="{{ seo_url({ ident: oViewConf.getSslSelfLink() ~ "cl=register" }) }}" title="{{ translate({ ident: "REGISTER" }) }}">{{ translate({ ident: "REGISTER" }) }}</a>
+            <a class="btn btn-outline-primary" id="registerLink"  href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=register" }) }}" title="{{ translate({ ident: "REGISTER" }) }}">{{ translate({ ident: "REGISTER" }) }}</a>
         {% endblock %}
 
         {% block thirdparty_login %}{% endblock %}

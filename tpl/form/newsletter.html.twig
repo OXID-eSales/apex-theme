@@ -9,7 +9,7 @@
 {% endif %}
 
 {% set aRegParams = oView.getRegParams() %}
-<form class="max-600 needs-validation" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" novalidate>
+<form class="max-600 needs-validation" action="{{ oViewConf.getSelfLink()|raw }}" method="post" novalidate>
     {% block newsletter_form_fields %}
         {{ oViewConf.getHiddenSid()|raw }}
         <input type="hidden" name="fnc" value="send">

@@ -7,7 +7,7 @@
     <div class="card card-lg">
         <h2 class="h4 card-header card-title">{{ translate({ ident: "LOGIN" }) }}</h2>
         <div class="card-body">
-            <form name="login" class="needs-validation" action="{{ oViewConf.getSslSelfLink()|raw }}" method="post" novalidate>
+            <form name="login" class="needs-validation" action="{{ oViewConf.getSelfLink()|raw }}" method="post" novalidate>
                 {% block account_login_form_fields %}
                     {{ oViewConf.getHiddenSid()|raw }}
                     {{ oViewConf.getNavFormParams()|raw }}
@@ -62,7 +62,7 @@
         <h2 class="h4 card-header card-title">{{ translate({ ident: "OPEN_ACCOUNT" }) }}</h2>
         <div class="card-body">
             <p>{{ translate({ ident: "DD_LOGIN_ACCOUNT_PANEL_CREATE_BODY" }) }}</p>
-            <a id="openAccountLink" href="{{ seo_url({ ident: oViewConf.getSslSelfLink() ~ "cl=register" }) }}" class="btn btn-primary" >{{ translate({ ident: "OPEN_ACCOUNT" }) }}</a><br>
+            <a id="openAccountLink" href="{{ seo_url({ ident: oViewConf.getSelfLink() ~ "cl=register" }) }}" class="btn btn-primary" >{{ translate({ ident: "OPEN_ACCOUNT" }) }}</a><br>
         </div>
     </div>
 </div>
