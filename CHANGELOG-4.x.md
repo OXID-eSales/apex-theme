@@ -10,6 +10,8 @@
 - Theme metadata and settings moved from `theme.php` to `metadata.yaml` and `config.yaml`
 - Replace `oViewConf.getViewThemeParam()` with `oViewConf.getThemeSettings()` in templates
 - Theme settings renamed to remove Hungarian notation and outdated terms, e.g. `sShowNewestArticles` is now `showNewestProducts`
+- Replace `oViewConf.getSslSelfLink()` and `oViewConf.getSelfActionLink()` with `oViewConf.getSelfLink()` in templates
+- Remove the obsolete SSL argument from `oViewConf.getImageUrl()` in the HTML email header
 
 ### Removed
 - Unused theme settings `blShowFinalStep` and Google Trusted Stores theme settings
