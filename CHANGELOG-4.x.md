@@ -14,6 +14,7 @@
 
 ### Removed
 - Unused theme settings `blShowFinalStep` and Google Trusted Stores theme settings
+- `target-directory`, `assets-directory` and `blacklist-filter` from the `extra` section of `composer.json`, the theme is not copied anymore
 
 ## [v8.0.0-alpha.2] - 2026-02-12
 *Compilation release*

@@ -20,20 +20,5 @@
         "oxid-esales/twig-component": "*"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "extra": {
-        "oxideshop": {
-            "assets-directory": "assets",
-            "blacklist-filter": [
-                "build/**/*",
-                "grunt/**/*",
-                ".gitignore",
-                "CHANGELOG-*",
-                "composer.json",
-                "Gruntfile.js",
-                "package.json"
-            ],
-            "target-directory": "apex"
-        }
-    }
+    "prefer-stable": true
 }
