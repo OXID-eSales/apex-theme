@@ -48,7 +48,7 @@
                                                 {% endif %}
                                             </div>
 
-                                            {% if editable %}
+                                            {% if editable and (not basketitem.isBundle() or basketNoticeListButtonFunction != 'hide') %}
                                                 <div class="btn-group d-lg-none ms-auto">
                                                     <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                         <svg aria-hidden="true">
@@ -56,12 +56,14 @@
                                                         </svg>
                                                     </button>
                                                     <ul class="dropdown-menu">
+                                                        {% if not basketitem.isBundle() %}
                                                         <li>
                                                             <button type="button" name="removeBtn" class="dropdown-item js-remove"
                                                                     onclick="document.getElementById( 'aproducts_{{ basketindex }}_remove' ).value = '1';">
                                                                 {{ translate({ ident: "REMOVE" }) }}
                                                             </button>
                                                         </li>
+                                                        {% endif %}
                                                         {% if basketNoticeListButtonFunction != 'hide' %}
                                                         <li>
                                                             <button
@@ -263,7 +265,7 @@
                                             <div class="col-6 col-md-8">
                                                 <div class="d-flex">
                                                     {% block checkout_basketcontents_basketitem_quantity %}
-                                                        <div class="quantity">
+                                                        <div class="quantity{% if editable and basketitem.isBundle() %} px-3 py-2 text-center{% endif %}">
                                                             {% if editable %}
                                                                 <input type="hidden" name="aproducts[{{ basketindex }}][aid]"
                                                                        value="{{ basketitem.getProductId() }}">
@@ -306,6 +308,7 @@
                                                     {% block checkout_basketcontents_basketitem_removecheckbox %}
                                                         {% if editable %}
                                                             <div class="d-none d-lg-block">
+                                                                {% if not basketitem.isBundle() %}
                                                                 <input type="hidden" name="aproducts[{{ basketindex }}][remove]"
                                                                        id="aproducts_{{ basketindex }}_remove" value="0">
                                                                 <button type="button" name="removeBtn" class="btn btn-remove js-remove"
@@ -315,6 +318,7 @@
                                                                         <use xlink:href="#trash"></use>
                                                                     </svg>
                                                                 </button>
+                                                                {% endif %}
 
                                                             {% if basketNoticeListButtonFunction != 'hide' %}
                                                                 <button

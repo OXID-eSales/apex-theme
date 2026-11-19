@@ -2,6 +2,9 @@
 
 ## v3.3.0 - Unreleased
 
+### Fixed
+- Remove button is no longer offered for bonus (bundle) products in the basket, as the shop recreates them anyway
+
 ### Deprecated
 - Theme setting `blShowFinalStep` and Google Trusted Stores theme settings (`blUseGoogleTS`, `sGoogleVendorId`, `sGoogleShoppingAccountId`, `sShoppingCountry`, `sShoppingLanguage`, `sPageLanguage`, `sDeliveryDaysOnStock`, `sDeliveryDaysNotOnStock`, `sShippingDaysOnStock`, `sShippingDaysNotOnStock`)
 
