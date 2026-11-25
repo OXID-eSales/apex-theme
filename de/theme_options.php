@@ -146,7 +146,7 @@ $aLang = array(
     'SHOP_THEME_googleAnalyticsAnonymizeIps'              => 'IP-Adressen anonymisieren (in DE Pflicht!)',
 
     'SHOP_THEME_logoFile'        => 'Dateiname des Logos im Header',
-    'HELP_SHOP_THEME_logoFile'   => 'Relativ zu dem Pfad <code>/out/apex/img/</code>.',
+    'HELP_SHOP_THEME_logoFile'   => 'Relativ zum Verzeichnis <code>assets/img/</code> des Themes. Ein eigenes Logo gehört in das Verzeichnis <code>assets/img/</code> eines Child-Themes.',
 
     'SHOP_THEME_logoWidth'       => 'Breite des Header-Logos',
     'HELP_SHOP_THEME_logoWidth'  => 'Angaben in Pixel.',
@@ -154,10 +154,10 @@ $aLang = array(
     'HELP_SHOP_THEME_logoHeight' => 'Angaben in Pixel.',
 
     'SHOP_THEME_emailLogo'      => 'Dateiname des Logos im E-Mail-Kopf',
-    'HELP_SHOP_THEME_emailLogo' => 'Relativ zu dem Pfad <code>/out/apex/img/</code>.',
+    'HELP_SHOP_THEME_emailLogo' => 'Relativ zum Verzeichnis <code>assets/img/</code> des Themes. Ein eigenes Logo gehört in das Verzeichnis <code>assets/img/</code> eines Child-Themes.',
 
     'SHOP_THEME_faviconFile'             => 'Dateiname des Favicons',
-    'HELP_SHOP_THEME_faviconFile'        => 'Hiermit ist das Favicon gemeint, welches im Browser auch beim Tab angezeigt wird.<br>In der Regel handelt es sich hier um eine .ico-Datei.<br>Relativ zu dem Pfad <code>/out/apex/img/favicons/</code>.',
+    'HELP_SHOP_THEME_faviconFile'        => 'Hiermit ist das Favicon gemeint, welches im Browser auch beim Tab angezeigt wird.<br>In der Regel handelt es sich hier um eine .ico-Datei.<br>Relativ zum Verzeichnis <code>assets/img/favicons/</code> des Themes. Ein eigenes Favicon gehört in das Verzeichnis <code>assets/img/favicons/</code> eines Child-Themes.',
     'SHOP_THEME_favicon16File'           => 'Dateiname des Favicons mit den Maßen 16*16px.',
     'SHOP_THEME_favicon32File'           => 'Dateiname des Favicons mit den Maßen 32*32px.',
     'SHOP_THEME_appleTouchIcon'          => 'Apple Home-Screen Icon 310*310px.',

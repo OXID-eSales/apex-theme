@@ -146,7 +146,7 @@ $aLang = array(
     'SHOP_THEME_googleAnalyticsAnonymizeIps'              => 'Anonymize IP-Adresses',
 
     'SHOP_THEME_logoFile'      => 'Filename of logo',
-    'HELP_SHOP_THEME_logoFile' => 'This is relative to the path <code>/out/apex/img/</code>.',
+    'HELP_SHOP_THEME_logoFile' => 'This is relative to the <code>assets/img/</code> directory of the theme. Put your own logo into the <code>assets/img/</code> directory of a child theme.',
 
     'SHOP_THEME_logoWidth'       => 'Width of header logo',
     'HELP_SHOP_THEME_logoWidth'  => 'Specify in as a pixel value.',
@@ -154,10 +154,10 @@ $aLang = array(
     'HELP_SHOP_THEME_logoHeight' => 'Specify in as a pixel value.',
 
     'SHOP_THEME_emailLogo'      => 'Filename of logo for email header',
-    'HELP_SHOP_THEME_emailLogo' => 'This is relative to the path <code>/out/apex/img/</code>.',
+    'HELP_SHOP_THEME_emailLogo' => 'This is relative to the <code>assets/img/</code> directory of the theme. Put your own logo into the <code>assets/img/</code> directory of a child theme.',
 
     'SHOP_THEME_faviconFile'             => 'Favicon filename',
-    'HELP_SHOP_THEME_faviconFile'        => 'This favicon is meant to be displayed in the browser\'s tab.<br>In general, this is an ico file.<br>This is relative to the path <code>/out/apex/img/favicons/</code>.',
+    'HELP_SHOP_THEME_faviconFile'        => 'This favicon is meant to be displayed in the browser\'s tab.<br>In general, this is an ico file.<br>This is relative to the <code>assets/img/favicons/</code> directory of the theme. Put your own favicon into the <code>assets/img/favicons/</code> directory of a child theme.',
     'SHOP_THEME_favicon16File'           => 'Filename of the favicon with 16*16px.',
     'SHOP_THEME_favicon32File'           => 'Filename of the favicon with 32*32px.',
     'SHOP_THEME_appleTouchIcon'          => 'Apple Home-Screen Icon 310*310px.',

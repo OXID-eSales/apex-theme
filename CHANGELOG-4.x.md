@@ -11,9 +11,11 @@
 - Replace `oViewConf.getViewThemeParam()` with `oViewConf.getThemeSettings()` in templates
 - Theme settings renamed to remove Hungarian notation and outdated terms, e.g. `sShowNewestArticles` is now `showNewestProducts`
 - Theme assets moved from `out/apex` to `assets`
+- Help texts of the theme settings `logoFile`, `emailLogo` and `faviconFile` refer to the `assets/img` directory instead of `out/apex/img`
 
 ### Removed
 - Unused theme settings `blShowFinalStep` and Google Trusted Stores theme settings
+- `target-directory`, `assets-directory` and `blacklist-filter` from the `extra` section of `composer.json`, the theme is not copied anymore
 
 ## [v8.0.0-alpha.2] - 2026-02-12
 *Compilation release*
